@@ -19,11 +19,11 @@ items:
   - System.Xml.XmlEntity.WriteTo(System.Xml.XmlWriter)
   langs:
   - csharp
-  name: "XmlEntity"
+  name: XmlEntity
   nameWithType: XmlEntity
   fullName: System.Xml.XmlEntity
   type: Class
-  summary: Represents an entity declaration, such as \
+  summary: "Represents an entity declaration, such as &lt;!ENTITY... &gt;."
   syntax:
     content: 'public class XmlEntity : System.Xml.XmlNode'
   inheritance:
@@ -68,23 +68,21 @@ items:
   - System.Xml.XmlNode.System#ICloneable#Clone
   - System.Xml.XmlNode.Value
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.BaseURI
   id: BaseURI
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "BaseURI"
+  name: BaseURI
   nameWithType: XmlEntity.BaseURI
   fullName: System.Xml.XmlEntity.BaseURI
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the base Uniform Resource Identifier (URI) of the current node.
-  remarks: "A networked XML document is comprised of chunks of data aggregated using various World Wide Web Consortium (W3C) standard inclusion mechanisms and therefore contains nodes that come from different places. The `BaseURI` tells you where these nodes came from.  \n  \n The value of this property varies depending on the node type. Nodes which are children of external EntityReference nodes return the location of the entity itself. For example, consider the following XML document:  \n  \n```  \n<!DOCTYPE item [  \n<!ENTITY xyz SYSTEM \"a/b.xml\">  \n]>  \n<item num='123'>&xyz;</item>  \n```  \n  \n where the external entity `a/b.xml` contains the XML text `<test>123</test>`.  \n  \n If the document is loaded from http://server/mydata.xml, `BaseURI` returns the following:  \n  \n|NodeType|Name|BaseURI|  \n|--------------|----------|-------------|  \n|Attribute|num|http://server/mydata.xml|  \n|Document|#document|http://server/mydata.xml|  \n|DocumentType|item|http://server/mydata.xml|  \n|Entity|xyz|http://server/mydata.xml|  \n|Element|item|http://server/mydata.xml|  \n|EntityReference|xyz|http://server/mydata.xml|  \n|Element|test|http://server/a/b.xml|  \n|Text|#text|http://server/a/b.xml|  \n  \n `BaseURI` looks for entity reference boundaries, so if entities are expanded, this information is not preserved and this property returns the location of the `XmlDocument` object in all cases.  \n  \n As a second example, given the following XML document:  \n  \n```  \n<!DOCTYPE Mydata SYSTEM \"http://localhost/doctype.dtd\">  \n<baa>&xyz;</baa>  \n```  \n  \n where the document type definition (DTD) file contains the following:  \n  \n```  \n<!ENTITY xyz \"<E1>My Data</E1>\">  \n<!ELEMENT baa #PCDATA>  \n<!ATTLIST baa attr1 \"woof\">  \n```  \n  \n If the XML document is loaded from http://localhost/mydata.xml, `BaseURI` returns the following for each of the nodes:  \n  \n|NodeType|Name|BaseURI|  \n|--------------|----------|-------------|  \n|Document|#document|http://localhost/mydata.xml|  \n|DocumentType|Mydata|http://localhost/doctype.dtd|  \n|Element|baa|http://localhost/mydata.xml|  \n|Entity|xyz|http://localhost/doctype.dtd|  \n|EntityReference|xyz|http://localhost/mydata.xml|  \n|Attribute|woof|http://localhost/mydata.xml|  \n  \n> [!NOTE]\n>  The base URI of a default attribute is the same as the base URI of the element to which they belong.  \n  \n This property is a Microsoft extension to the Document Object Model (DOM)."
+  summary: "Gets the base Uniform Resource Identifier (URI) of the current node."
+  remarks: "A networked XML document is comprised of chunks of data aggregated using various World Wide Web Consortium (W3C) standard inclusion mechanisms and therefore contains nodes that come from different places. The `BaseURI` tells you where these nodes came from.       The value of this property varies depending on the node type. Nodes which are children of external EntityReference nodes return the location of the entity itself. For example, consider the following XML document:      ```   <!DOCTYPE item [   <!ENTITY xyz SYSTEM &quot;a/b.xml&quot;>   ]>   <item num=&quot;123&quot;>&xyz;</item>   ```       where the external entity `a/b.xml` contains the XML text `<test>123</test>`.       If the document is loaded from http://server/mydata.xml, `BaseURI` returns the following:      |NodeType|Name|BaseURI|   |--------------|----------|-------------|   |Attribute|num|http://server/mydata.xml|   |Document|#document|http://server/mydata.xml|   |DocumentType|item|http://server/mydata.xml|   |Entity|xyz|http://server/mydata.xml|   |Element|item|http://server/mydata.xml|   |EntityReference|xyz|http://server/mydata.xml|   |Element|test|http://server/a/b.xml|   |Text|#text|http://server/a/b.xml|       `BaseURI` looks for entity reference boundaries, so if entities are expanded, this information is not preserved and this property returns the location of the `XmlDocument` object in all cases.       As a second example, given the following XML document:      ```   <!DOCTYPE Mydata SYSTEM &quot;http://localhost/doctype.dtd&quot;>   <baa>&xyz;</baa>   ```       where the document type definition (DTD) file contains the following:      ```   <!ENTITY xyz &quot;<E1>My Data</E1>&quot;>   <!ELEMENT baa #PCDATA>   <!ATTLIST baa attr1 &quot;woof&quot;>   ```       If the XML document is loaded from http://localhost/mydata.xml, `BaseURI` returns the following for each of the nodes:      |NodeType|Name|BaseURI|   |--------------|----------|-------------|   |Document|#document|http://localhost/mydata.xml|   |DocumentType|Mydata|http://localhost/doctype.dtd|   |Element|baa|http://localhost/mydata.xml|   |Entity|xyz|http://localhost/doctype.dtd|   |EntityReference|xyz|http://localhost/mydata.xml|   |Attribute|woof|http://localhost/mydata.xml|      > [!NOTE] >  The base URI of a default attribute is the same as the base URI of the element to which they belong.       This property is a Microsoft extension to the Document Object Model (DOM)."
   syntax:
     content: public override string BaseURI { get; }
     return:
@@ -93,54 +91,50 @@ items:
   overload: System.Xml.XmlEntity.BaseURI*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.CloneNode(System.Boolean)
   id: CloneNode(System.Boolean)
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "CloneNode(Boolean)"
+  name: CloneNode(Boolean)
   nameWithType: XmlEntity.CloneNode(Boolean)
   fullName: System.Xml.XmlEntity.CloneNode(Boolean)
   type: Method
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Creates a duplicate of this node. Entity nodes cannot be cloned. Calling this method on an <see cref="T:System.Xml.XmlEntity"></see> object throws an exception.
+  summary: "Creates a duplicate of this node. Entity nodes cannot be cloned. Calling this method on an <xref href=&quot;System.Xml.XmlEntity&quot;></xref> object throws an exception."
   syntax:
     content: public override System.Xml.XmlNode CloneNode (bool deep);
     parameters:
     - id: deep
       type: System.Boolean
-      description: "\n     to recursively clone the subtree under the specified node;  to clone only the node itself."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to recursively clone the subtree under the specified node; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to clone only the node itself."
     return:
       type: System.Xml.XmlNode
-      description: "To be added."
+      description: "Returns a copy of the <xref href=&quot;System.Xml.XmlNode&quot;></xref> from which the method is called."
   overload: System.Xml.XmlEntity.CloneNode*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Entity nodes cannot be cloned. Calling this method on an  object throws an exception."
+    description: "Entity nodes cannot be cloned. Calling this method on an <xref href=&quot;System.Xml.XmlEntity&quot;></xref> object throws an exception."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.InnerText
   id: InnerText
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "InnerText"
+  name: InnerText
   nameWithType: XmlEntity.InnerText
   fullName: System.Xml.XmlEntity.InnerText
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the concatenated values of the entity node and all its children.
-  remarks: "`XmlEntity` nodes are read-only. Setting this property throws an exception.  \n  \n This property is a Microsoft extension to the Document Object Model (DOM)."
+  summary: "Gets the concatenated values of the entity node and all its children."
+  remarks: "`XmlEntity` nodes are read-only. Setting this property throws an exception.       This property is a Microsoft extension to the Document Object Model (DOM)."
   syntax:
     content: public override string InnerText { get; set; }
     return:
@@ -152,23 +146,21 @@ items:
     commentId: T:System.InvalidOperationException
     description: "Attempting to set the property."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.InnerXml
   id: InnerXml
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "InnerXml"
+  name: InnerXml
   nameWithType: XmlEntity.InnerXml
   fullName: System.Xml.XmlEntity.InnerXml
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the markup representing the children of this node.
-  remarks: "`XmlEntity` nodes are read-only. Setting this property throws an exception.  \n  \n This property is a Microsoft extension to the Document Object Model (DOM)."
+  summary: "Gets the markup representing the children of this node."
+  remarks: "`XmlEntity` nodes are read-only. Setting this property throws an exception.       This property is a Microsoft extension to the Document Object Model (DOM)."
   syntax:
     content: public override string InnerXml { get; set; }
     return:
@@ -180,23 +172,21 @@ items:
     commentId: T:System.InvalidOperationException
     description: "Attempting to set the property."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.IsReadOnly
   id: IsReadOnly
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "IsReadOnly"
+  name: IsReadOnly
   nameWithType: XmlEntity.IsReadOnly
   fullName: System.Xml.XmlEntity.IsReadOnly
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets a value indicating whether the node is read-only.
-  remarks: A read-only node is one whose properties, attributes, or children cannot be changed. You can remove a read-only node from the tree and insert it somewhere else.
+  summary: "Gets a value indicating whether the node is read-only."
+  remarks: "A read-only node is one whose properties, attributes, or children cannot be changed. You can remove a read-only node from the tree and insert it somewhere else."
   syntax:
     content: public override bool IsReadOnly { get; }
     return:
@@ -205,22 +195,20 @@ items:
   overload: System.Xml.XmlEntity.IsReadOnly*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.LocalName
   id: LocalName
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "LocalName"
+  name: LocalName
   nameWithType: XmlEntity.LocalName
   fullName: System.Xml.XmlEntity.LocalName
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the name of the node without the namespace prefix.
+  summary: "Gets the name of the node without the namespace prefix."
   syntax:
     content: public override string LocalName { get; }
     return:
@@ -229,25 +217,23 @@ items:
   overload: System.Xml.XmlEntity.LocalName*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.Name
   id: Name
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "Name"
+  name: Name
   nameWithType: XmlEntity.Name
   fullName: System.Xml.XmlEntity.Name
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the name of the node.
+  summary: "Gets the name of the node."
   remarks: ''
   example:
-  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/CSharp/p-system.xml.xmlentity.n_2_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/CPP/p-system.xml.xmlentity.n_2_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/VisualBasic/p-system.xml.xmlentity.n_2_1.vb)]  \n  \n The example uses the file `doment.xml` as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/XML/p-system.xml.xmlentity.n_2_2.xml)]"
+  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/csharp/p-system.xml.xmlentity.n_2_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/cpp/p-system.xml.xmlentity.n_2_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/visualbasic/p-system.xml.xmlentity.n_2_1.vb)]  \n  \n The example uses the file `doment.xml` as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/xml/p-system.xml.xmlentity.n_2_2.xml)]"
   syntax:
     content: public override string Name { get; }
     return:
@@ -256,25 +242,23 @@ items:
   overload: System.Xml.XmlEntity.Name*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.NodeType
   id: NodeType
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "NodeType"
+  name: NodeType
   nameWithType: XmlEntity.NodeType
   fullName: System.Xml.XmlEntity.NodeType
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the type of the node.
+  summary: "Gets the type of the node."
   remarks: ''
   example:
-  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/CSharp/p-system.xml.xmlentity.n_1_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/CPP/p-system.xml.xmlentity.n_1_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/VisualBasic/p-system.xml.xmlentity.n_1_1.vb)]  \n  \n The example uses the file `doment.xml` as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/XML/p-system.xml.xmlentity.n_1_2.xml)]"
+  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/csharp/p-system.xml.xmlentity.n_1_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/cpp/p-system.xml.xmlentity.n_1_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/visualbasic/p-system.xml.xmlentity.n_1_1.vb)]  \n  \n The example uses the file `doment.xml` as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/xml/p-system.xml.xmlentity.n_1_2.xml)]"
   syntax:
     content: public override System.Xml.XmlNodeType NodeType { get; }
     return:
@@ -283,25 +267,23 @@ items:
   overload: System.Xml.XmlEntity.NodeType*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.NotationName
   id: NotationName
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "NotationName"
+  name: NotationName
   nameWithType: XmlEntity.NotationName
   fullName: System.Xml.XmlEntity.NotationName
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the name of the optional NDATA attribute on the entity declaration.
+  summary: "Gets the name of the optional NDATA attribute on the entity declaration."
   remarks: ''
   example:
-  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/CSharp/p-system.xml.xmlentity.n_0_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/CPP/p-system.xml.xmlentity.n_0_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/VisualBasic/p-system.xml.xmlentity.n_0_1.vb)]  \n  \n The example uses the file, `doment.xml`, as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/XML/p-system.xml.xmlentity.n_0_2.xml)]"
+  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/csharp/p-system.xml.xmlentity.n_0_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/cpp/p-system.xml.xmlentity.n_0_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/visualbasic/p-system.xml.xmlentity.n_0_1.vb)]  \n  \n The example uses the file, `doment.xml`, as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/xml/p-system.xml.xmlentity.n_0_2.xml)]"
   syntax:
     content: public string NotationName { get; }
     return:
@@ -310,23 +292,21 @@ items:
   overload: System.Xml.XmlEntity.NotationName*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.OuterXml
   id: OuterXml
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "OuterXml"
+  name: OuterXml
   nameWithType: XmlEntity.OuterXml
   fullName: System.Xml.XmlEntity.OuterXml
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the markup representing this node and all its children.
-  remarks: This property is a Microsoft extension to the Document Object Model (DOM).
+  summary: "Gets the markup representing this node and all its children."
+  remarks: "This property is a Microsoft extension to the Document Object Model (DOM)."
   syntax:
     content: public override string OuterXml { get; }
     return:
@@ -335,25 +315,23 @@ items:
   overload: System.Xml.XmlEntity.OuterXml*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.PublicId
   id: PublicId
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "PublicId"
+  name: PublicId
   nameWithType: XmlEntity.PublicId
   fullName: System.Xml.XmlEntity.PublicId
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the value of the public identifier on the entity declaration.
+  summary: "Gets the value of the public identifier on the entity declaration."
   remarks: ''
   example:
-  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/CSharp/p-system.xml.xmlentity.p_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/CPP/p-system.xml.xmlentity.p_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/VisualBasic/p-system.xml.xmlentity.p_1.vb)]  \n  \n The example uses the file, `doment.xml`, as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/XML/p-system.xml.xmlentity.p_2.xml)]"
+  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/csharp/p-system.xml.xmlentity.p_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/cpp/p-system.xml.xmlentity.p_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/visualbasic/p-system.xml.xmlentity.p_1.vb)]  \n  \n The example uses the file, `doment.xml`, as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/xml/p-system.xml.xmlentity.p_2.xml)]"
   syntax:
     content: public string PublicId { get; }
     return:
@@ -362,25 +340,23 @@ items:
   overload: System.Xml.XmlEntity.PublicId*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.SystemId
   id: SystemId
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "SystemId"
+  name: SystemId
   nameWithType: XmlEntity.SystemId
   fullName: System.Xml.XmlEntity.SystemId
   type: Property
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Gets the value of the system identifier on the entity declaration.
+  summary: "Gets the value of the system identifier on the entity declaration."
   remarks: ''
   example:
-  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/CSharp/p-system.xml.xmlentity.s_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/CPP/p-system.xml.xmlentity.s_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/VisualBasic/p-system.xml.xmlentity.s_1.vb)]  \n  \n The example uses the file `doment.xml` as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/XML/p-system.xml.xmlentity.s_2.xml)]"
+  - "The following example displays information on the entities declared in the XML document.  \n  \n [!code-cs[XmlEntity#1](~/add/codesnippet/csharp/p-system.xml.xmlentity.s_1.cs)]\n [!code-cpp[XmlEntity#1](~/add/codesnippet/cpp/p-system.xml.xmlentity.s_1.cpp)]\n [!code-vb[XmlEntity#1](~/add/codesnippet/visualbasic/p-system.xml.xmlentity.s_1.vb)]  \n  \n The example uses the file `doment.xml` as input.  \n  \n [!code-xml[XmlEntity#2](~/add/codesnippet/xml/p-system.xml.xmlentity.s_2.xml)]"
   syntax:
     content: public string SystemId { get; }
     return:
@@ -389,240 +365,237 @@ items:
   overload: System.Xml.XmlEntity.SystemId*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.WriteContentTo(System.Xml.XmlWriter)
   id: WriteContentTo(System.Xml.XmlWriter)
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "WriteContentTo(XmlWriter)"
+  name: WriteContentTo(XmlWriter)
   nameWithType: XmlEntity.WriteContentTo(XmlWriter)
   fullName: System.Xml.XmlEntity.WriteContentTo(XmlWriter)
   type: Method
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Saves all the children of the node to the specified &lt;xref:System.Xml.XmlWriter&gt;. For <xref uid="langword_csharp_XmlEntity" name="XmlEntity" href=""></xref> nodes, this method has no effect.
-  remarks: This method is a Microsoft extension to the Document Object Model (DOM).
+  summary: "Saves all the children of the node to the specified <xref:System.Xml.XmlWriter>. For <xref uid=&quot;langword_csharp_XmlEntity&quot; name=&quot;XmlEntity&quot; href=&quot;&quot;></xref> nodes, this method has no effect."
+  remarks: "This method is a Microsoft extension to the Document Object Model (DOM)."
   syntax:
     content: public override void WriteContentTo (System.Xml.XmlWriter w);
     parameters:
     - id: w
       type: System.Xml.XmlWriter
-      description: "The  to which you want to save."
+      description: "The <xref uid=&quot;langword_csharp_XmlWriter&quot; name=&quot;XmlWriter&quot; href=&quot;&quot;></xref> to which you want to save."
   overload: System.Xml.XmlEntity.WriteContentTo*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Xml.XmlEntity.WriteTo(System.Xml.XmlWriter)
   id: WriteTo(System.Xml.XmlWriter)
   parent: System.Xml.XmlEntity
   langs:
   - csharp
-  name: "WriteTo(XmlWriter)"
+  name: WriteTo(XmlWriter)
   nameWithType: XmlEntity.WriteTo(XmlWriter)
   fullName: System.Xml.XmlEntity.WriteTo(XmlWriter)
   type: Method
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: Saves the node to the specified &lt;xref:System.Xml.XmlWriter&gt;. For <xref uid="langword_csharp_XmlEntity" name="XmlEntity" href=""></xref> nodes, this method has no effect.
-  remarks: This method is a Microsoft extension to the Document Object Model (DOM).
+  summary: "Saves the node to the specified <xref:System.Xml.XmlWriter>. For <xref uid=&quot;langword_csharp_XmlEntity&quot; name=&quot;XmlEntity&quot; href=&quot;&quot;></xref> nodes, this method has no effect."
+  remarks: "This method is a Microsoft extension to the Document Object Model (DOM)."
   syntax:
     content: public override void WriteTo (System.Xml.XmlWriter w);
     parameters:
     - id: w
       type: System.Xml.XmlWriter
-      description: "The  to which you want to save."
+      description: "The <xref uid=&quot;langword_csharp_XmlWriter&quot; name=&quot;XmlWriter&quot; href=&quot;&quot;></xref> to which you want to save."
   overload: System.Xml.XmlEntity.WriteTo*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 references:
 - uid: System.Xml.XmlNode
   isExternal: false
-  name: "System.Xml.XmlNode"
+  name: System.Xml.XmlNode
+- uid: System.InvalidOperationException
+  isExternal: true
+  name: System.InvalidOperationException
 - uid: System.Xml.XmlEntity.BaseURI
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "BaseURI"
+  name: BaseURI
   nameWithType: XmlEntity.BaseURI
   fullName: System.Xml.XmlEntity.BaseURI
 - uid: System.String
   parent: System
   isExternal: true
-  name: "String"
+  name: String
   nameWithType: String
   fullName: System.String
 - uid: System.Xml.XmlEntity.CloneNode(System.Boolean)
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "CloneNode(Boolean)"
+  name: CloneNode(Boolean)
   nameWithType: XmlEntity.CloneNode(Boolean)
   fullName: System.Xml.XmlEntity.CloneNode(Boolean)
 - uid: System.Boolean
   parent: System
   isExternal: true
-  name: "Boolean"
+  name: Boolean
   nameWithType: Boolean
   fullName: System.Boolean
 - uid: System.Xml.XmlEntity.InnerText
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "InnerText"
+  name: InnerText
   nameWithType: XmlEntity.InnerText
   fullName: System.Xml.XmlEntity.InnerText
 - uid: System.Xml.XmlEntity.InnerXml
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "InnerXml"
+  name: InnerXml
   nameWithType: XmlEntity.InnerXml
   fullName: System.Xml.XmlEntity.InnerXml
 - uid: System.Xml.XmlEntity.IsReadOnly
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "IsReadOnly"
+  name: IsReadOnly
   nameWithType: XmlEntity.IsReadOnly
   fullName: System.Xml.XmlEntity.IsReadOnly
 - uid: System.Xml.XmlEntity.LocalName
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "LocalName"
+  name: LocalName
   nameWithType: XmlEntity.LocalName
   fullName: System.Xml.XmlEntity.LocalName
 - uid: System.Xml.XmlEntity.Name
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "Name"
+  name: Name
   nameWithType: XmlEntity.Name
   fullName: System.Xml.XmlEntity.Name
 - uid: System.Xml.XmlEntity.NodeType
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "NodeType"
+  name: NodeType
   nameWithType: XmlEntity.NodeType
   fullName: System.Xml.XmlEntity.NodeType
 - uid: System.Xml.XmlNodeType
   parent: System.Xml
   isExternal: true
-  name: "XmlNodeType"
+  name: XmlNodeType
   nameWithType: XmlNodeType
   fullName: System.Xml.XmlNodeType
 - uid: System.Xml.XmlEntity.NotationName
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "NotationName"
+  name: NotationName
   nameWithType: XmlEntity.NotationName
   fullName: System.Xml.XmlEntity.NotationName
 - uid: System.Xml.XmlEntity.OuterXml
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "OuterXml"
+  name: OuterXml
   nameWithType: XmlEntity.OuterXml
   fullName: System.Xml.XmlEntity.OuterXml
 - uid: System.Xml.XmlEntity.PublicId
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "PublicId"
+  name: PublicId
   nameWithType: XmlEntity.PublicId
   fullName: System.Xml.XmlEntity.PublicId
 - uid: System.Xml.XmlEntity.SystemId
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "SystemId"
+  name: SystemId
   nameWithType: XmlEntity.SystemId
   fullName: System.Xml.XmlEntity.SystemId
 - uid: System.Xml.XmlEntity.WriteContentTo(System.Xml.XmlWriter)
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "WriteContentTo(XmlWriter)"
+  name: WriteContentTo(XmlWriter)
   nameWithType: XmlEntity.WriteContentTo(XmlWriter)
   fullName: System.Xml.XmlEntity.WriteContentTo(XmlWriter)
 - uid: System.Xml.XmlWriter
   parent: System.Xml
   isExternal: true
-  name: "XmlWriter"
+  name: XmlWriter
   nameWithType: XmlWriter
   fullName: System.Xml.XmlWriter
 - uid: System.Xml.XmlEntity.WriteTo(System.Xml.XmlWriter)
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "WriteTo(XmlWriter)"
+  name: WriteTo(XmlWriter)
   nameWithType: XmlEntity.WriteTo(XmlWriter)
   fullName: System.Xml.XmlEntity.WriteTo(XmlWriter)
 - uid: System.Xml.XmlEntity.BaseURI*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "BaseURI"
+  name: BaseURI
   nameWithType: XmlEntity.BaseURI
 - uid: System.Xml.XmlEntity.CloneNode*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "CloneNode"
+  name: CloneNode
   nameWithType: XmlEntity.CloneNode
 - uid: System.Xml.XmlEntity.InnerText*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "InnerText"
+  name: InnerText
   nameWithType: XmlEntity.InnerText
 - uid: System.Xml.XmlEntity.InnerXml*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "InnerXml"
+  name: InnerXml
   nameWithType: XmlEntity.InnerXml
 - uid: System.Xml.XmlEntity.IsReadOnly*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "IsReadOnly"
+  name: IsReadOnly
   nameWithType: XmlEntity.IsReadOnly
 - uid: System.Xml.XmlEntity.LocalName*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "LocalName"
+  name: LocalName
   nameWithType: XmlEntity.LocalName
 - uid: System.Xml.XmlEntity.Name*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "Name"
+  name: Name
   nameWithType: XmlEntity.Name
 - uid: System.Xml.XmlEntity.NodeType*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "NodeType"
+  name: NodeType
   nameWithType: XmlEntity.NodeType
 - uid: System.Xml.XmlEntity.NotationName*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "NotationName"
+  name: NotationName
   nameWithType: XmlEntity.NotationName
 - uid: System.Xml.XmlEntity.OuterXml*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "OuterXml"
+  name: OuterXml
   nameWithType: XmlEntity.OuterXml
 - uid: System.Xml.XmlEntity.PublicId*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "PublicId"
+  name: PublicId
   nameWithType: XmlEntity.PublicId
 - uid: System.Xml.XmlEntity.SystemId*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "SystemId"
+  name: SystemId
   nameWithType: XmlEntity.SystemId
 - uid: System.Xml.XmlEntity.WriteContentTo*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "WriteContentTo"
+  name: WriteContentTo
   nameWithType: XmlEntity.WriteContentTo
 - uid: System.Xml.XmlEntity.WriteTo*
   parent: System.Xml.XmlEntity
   isExternal: false
-  name: "WriteTo"
+  name: WriteTo
   nameWithType: XmlEntity.WriteTo

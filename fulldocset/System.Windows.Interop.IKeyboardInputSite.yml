@@ -8,33 +8,31 @@ items:
   - System.Windows.Interop.IKeyboardInputSite.Unregister
   langs:
   - csharp
-  name: "IKeyboardInputSite"
+  name: IKeyboardInputSite
   nameWithType: IKeyboardInputSite
   fullName: System.Windows.Interop.IKeyboardInputSite
   type: Interface
-  summary: Manages keyboard focus within the container.  This interface implements keyboard message management in [!INCLUDE[TLA2#tla_winclient](../Token/TLA2%23tla_winclient_md.md)]-[!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] interoperation scenarios.
-  remarks: "A container should provide a unique instance of this interface for each of its contained components.  \n  \n The IKeyboardInputSite interface and the <xref:System.Windows.Interop.IKeyboardInputSink> are used together to provide support for keyboard actions across interoperation boundaries. A site (IKeyboardInputSite implementation) represents a parent of a sink (<xref:System.Windows.Interop.IKeyboardInputSink>). The sink (<xref:System.Windows.Interop.IKeyboardInputSink>) implements the majority of keyboard behavior. Each site must also provide a sink, because the site-specific sink is returned by a property of the IKeyboardInputSite interface.  \n  \n For a discussion of the input architecture specifically implemented for [!INCLUDE[TLA#tla_winforms](~/add/includes/tlasharptla-winforms-md.md)] interoperation, see [Windows Forms and WPF Interoperability Input Architecture](../Topic/Windows%20Forms%20and%20WPF%20Interoperability%20Input%20Architecture.md).  \n  \n For more information about [!INCLUDE[TLA2#tla_winclient](../Token/TLA2%23tla_winclient_md.md)]-[!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] interoperation scenarios, see [WPF and Win32 Interoperation](../Topic/WPF%20and%20Win32%20Interoperation.md)."
+  summary: "Manages keyboard focus within the container.  This interface implements keyboard message management in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]-[!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] interoperation scenarios."
+  remarks: "A container should provide a unique instance of this interface for each of its contained components.       The IKeyboardInputSite interface and the <xref:System.Windows.Interop.IKeyboardInputSink> are used together to provide support for keyboard actions across interoperation boundaries. A site (IKeyboardInputSite implementation) represents a parent of a sink (<xref:System.Windows.Interop.IKeyboardInputSink>). The sink (<xref:System.Windows.Interop.IKeyboardInputSink>) implements the majority of keyboard behavior. Each site must also provide a sink, because the site-specific sink is returned by a property of the IKeyboardInputSite interface.       For a discussion of the input architecture specifically implemented for [!INCLUDE[TLA#tla_winforms](~/add/includes/ajax-current-ext-md.md)] interoperation, see [Windows Forms and WPF Interoperability Input Architecture](~/add/includes/ajax-current-ext-md.md).       For more information about [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]-[!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] interoperation scenarios, see [WPF and Win32 Interoperation](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public interface IKeyboardInputSite
   implements: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops(System.Windows.Input.TraversalRequest)
   id: OnNoMoreTabStops(System.Windows.Input.TraversalRequest)
   parent: System.Windows.Interop.IKeyboardInputSite
   langs:
   - csharp
-  name: "OnNoMoreTabStops(TraversalRequest)"
+  name: OnNoMoreTabStops(TraversalRequest)
   nameWithType: IKeyboardInputSite.OnNoMoreTabStops(TraversalRequest)
   fullName: System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops(TraversalRequest)
   type: Method
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: Called by a contained component when it has reached its last tab stop and has no further items to tab to.
-  remarks: Components call OnNoMoreTabStops when the component attempts a requested focus move but there are no further tab stops in that direction within that own component.
+  summary: "Called by a contained component when it has reached its last tab stop and has no further items to tab to."
+  remarks: "Components call OnNoMoreTabStops when the component attempts a requested focus move but there are no further tab stops in that direction within that own component."
   syntax:
     content: public bool OnNoMoreTabStops (System.Windows.Input.TraversalRequest request);
     parameters:
@@ -43,110 +41,104 @@ items:
       description: "Specifies whether focus should be set to the first or the last tab stop."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "If this method returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, the site has shifted focus to another component. If this method returns <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, focus is still within the calling component. The component should &quot;wrap around&quot; and set focus to its first contained tab stop."
   overload: System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.IKeyboardInputSite.Sink
   id: Sink
   parent: System.Windows.Interop.IKeyboardInputSite
   langs:
   - csharp
-  name: "Sink"
+  name: Sink
   nameWithType: IKeyboardInputSite.Sink
   fullName: System.Windows.Interop.IKeyboardInputSite.Sink
   type: Property
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: Gets the keyboard sink associated with this site.
-  remarks: This property does not return the parent <xref:System.Windows.Interop.IKeyboardInputSink> interface.
+  summary: "Gets the keyboard sink associated with this site."
+  remarks: "This property does not return the parent <xref:System.Windows.Interop.IKeyboardInputSink> interface."
   syntax:
     content: public System.Windows.Interop.IKeyboardInputSink Sink { get; }
     return:
       type: System.Windows.Interop.IKeyboardInputSink
-      description: "The current site&quot;s <see cref=&quot;T:System.Windows.Interop.IKeyboardInputSink&quot;></see> interface."
+      description: "The current site&quot;s <xref href=&quot;System.Windows.Interop.IKeyboardInputSink&quot;></xref> interface."
   overload: System.Windows.Interop.IKeyboardInputSite.Sink*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Interop.IKeyboardInputSite.Unregister
   id: Unregister
   parent: System.Windows.Interop.IKeyboardInputSite
   langs:
   - csharp
-  name: "Unregister()"
+  name: Unregister()
   nameWithType: IKeyboardInputSite.Unregister()
   fullName: System.Windows.Interop.IKeyboardInputSite.Unregister()
   type: Method
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: Unregisters a child keyboard input sink from this site.
-  remarks: This property does not affect the site on the container.
+  summary: "Unregisters a child keyboard input sink from this site."
+  remarks: "This property does not affect the site on the container."
   syntax:
     content: public void Unregister ();
     parameters: []
   overload: System.Windows.Interop.IKeyboardInputSite.Unregister*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 references:
 - uid: System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops(System.Windows.Input.TraversalRequest)
   parent: System.Windows.Interop.IKeyboardInputSite
   isExternal: false
-  name: "OnNoMoreTabStops(TraversalRequest)"
+  name: OnNoMoreTabStops(TraversalRequest)
   nameWithType: IKeyboardInputSite.OnNoMoreTabStops(TraversalRequest)
   fullName: System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops(TraversalRequest)
 - uid: System.Boolean
   parent: System
   isExternal: true
-  name: "Boolean"
+  name: Boolean
   nameWithType: Boolean
   fullName: System.Boolean
 - uid: System.Windows.Input.TraversalRequest
   parent: System.Windows.Input
   isExternal: false
-  name: "TraversalRequest"
+  name: TraversalRequest
   nameWithType: TraversalRequest
   fullName: System.Windows.Input.TraversalRequest
 - uid: System.Windows.Interop.IKeyboardInputSite.Sink
   parent: System.Windows.Interop.IKeyboardInputSite
   isExternal: false
-  name: "Sink"
+  name: Sink
   nameWithType: IKeyboardInputSite.Sink
   fullName: System.Windows.Interop.IKeyboardInputSite.Sink
 - uid: System.Windows.Interop.IKeyboardInputSink
   parent: System.Windows.Interop
   isExternal: false
-  name: "IKeyboardInputSink"
+  name: IKeyboardInputSink
   nameWithType: IKeyboardInputSink
   fullName: System.Windows.Interop.IKeyboardInputSink
 - uid: System.Windows.Interop.IKeyboardInputSite.Unregister
   parent: System.Windows.Interop.IKeyboardInputSite
   isExternal: false
-  name: "Unregister()"
+  name: Unregister()
   nameWithType: IKeyboardInputSite.Unregister()
   fullName: System.Windows.Interop.IKeyboardInputSite.Unregister()
 - uid: System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops*
   parent: System.Windows.Interop.IKeyboardInputSite
   isExternal: false
-  name: "OnNoMoreTabStops"
+  name: OnNoMoreTabStops
   nameWithType: IKeyboardInputSite.OnNoMoreTabStops
 - uid: System.Windows.Interop.IKeyboardInputSite.Sink*
   parent: System.Windows.Interop.IKeyboardInputSite
   isExternal: false
-  name: "Sink"
+  name: Sink
   nameWithType: IKeyboardInputSite.Sink
 - uid: System.Windows.Interop.IKeyboardInputSite.Unregister*
   parent: System.Windows.Interop.IKeyboardInputSite
   isExternal: false
-  name: "Unregister"
+  name: Unregister
   nameWithType: IKeyboardInputSite.Unregister

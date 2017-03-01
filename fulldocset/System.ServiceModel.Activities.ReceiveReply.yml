@@ -11,11 +11,11 @@ items:
   - System.ServiceModel.Activities.ReceiveReply.Request
   langs:
   - csharp
-  name: "ReceiveReply"
+  name: ReceiveReply
   nameWithType: ReceiveReply
   fullName: System.ServiceModel.Activities.ReceiveReply
   type: Class
-  summary: An activity that receives a message as part of a request/reply message exchange pattern.
+  summary: "An activity that receives a message as part of a request/reply message exchange pattern."
   remarks: ''
   example:
   - "The following example shows how to use a ReceiveReply activity. A <xref:System.ServiceModel.Activities.Send> activity is created and added to a <xref:System.Activities.Statements.Sequence>. A ReceiveReply activity is then added to the <xref:System.Activities.Statements.Sequence> to receive the reply from the <xref:System.ServiceModel.Activities.Send> activity.  \n  \n```  \nstatic void CreateClientWorkflow()  \n{  \n   Variable<string> message = new Variable<string>(\"message\", \"Hello!\");  \n   Variable<string> result = new Variable<string> { Name = \"result\" };  \n  \n   Endpoint endpoint = new Endpoint  \n   {  \n      AddressUri = new Uri(Microsoft.Samples.WorkflowServicesSamples.Common.Constants.ServiceBaseAddress), Binding = new BasicHttpBinding(),  \n   };  \n  \n   Send requestEcho = new Send  \n   {  \n      ServiceContractName = XName.Get(\"Echo\", \"http://tempuri.org/\"),  \n                Endpoint = endpoint,  \n                OperationName = \"Echo\",  \n      //parameters for send  \n      Content = new SendParametersContent  \n      {  \n         Parameters =   \n            {   \n               { \"message\", new InArgument<string>(message) }  \n            }  \n        }  \n    };  \n    workflow = new CorrelationScope  \n    {  \n       Body = new Sequence  \n       {  \n          Variables = { message, result },  \n                    Activities =  \n                    {  \n                        new WriteLine {  \n                            Text = new InArgument<string>(\"Client is ready!\")  \n                        },  \n                        requestEcho,  \n  \n                        new WriteLine {  \n                            Text = new InArgument<string>(\"Message sent: Hello!\")  \n                        },  \n  \n                        new ReceiveReply  \n                        {  \n                            Request = requestEcho,  \n                            //parameters for the reply  \n                            Content = new ReceiveParametersContent                              \n                            {  \n                                Parameters =   \n                                {  \n                                    { \"echo\", new OutArgument<string>(result) }  \n                                }  \n                            }  \n                        },                                                  \n                        new WriteLine {  \n                            Text = new InArgument<string>(env => \"Message received: \"+result.Get(env))  \n                        }  \n                    }  \n                }  \n            };  \n        }  \n  \n```"
@@ -39,44 +39,40 @@ items:
   - System.Activities.Activity.ShouldSerializeDisplayName
   - System.Activities.Activity.ToString
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.ServiceModel.Activities.ReceiveReply.#ctor
   id: '#ctor'
   parent: System.ServiceModel.Activities.ReceiveReply
   langs:
   - csharp
-  name: "ReceiveReply()"
+  name: ReceiveReply()
   nameWithType: ReceiveReply.ReceiveReply()
   fullName: System.ServiceModel.Activities.ReceiveReply.ReceiveReply()
   type: Constructor
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: Initializes a new instance of the <see cref="T:System.ServiceModel.Activities.ReceiveReply"></see> class.
+  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Activities.ReceiveReply&quot;></xref> class."
   syntax:
     content: public ReceiveReply ();
     parameters: []
   overload: System.ServiceModel.Activities.ReceiveReply.#ctor*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.ServiceModel.Activities.ReceiveReply.Action
   id: Action
   parent: System.ServiceModel.Activities.ReceiveReply
   langs:
   - csharp
-  name: "Action"
+  name: Action
   nameWithType: ReceiveReply.Action
   fullName: System.ServiceModel.Activities.ReceiveReply.Action
   type: Property
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: Gets or sets the value of the action header of the message.
+  summary: "Gets or sets the value of the action header of the message."
   syntax:
     content: public string Action { get; set; }
     return:
@@ -85,15 +81,13 @@ items:
   overload: System.ServiceModel.Activities.ReceiveReply.Action*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.ServiceModel.Activities.ReceiveReply.CacheMetadata(System.Activities.ActivityMetadata)
   id: CacheMetadata(System.Activities.ActivityMetadata)
   parent: System.ServiceModel.Activities.ReceiveReply
   langs:
   - csharp
-  name: "CacheMetadata(ActivityMetadata)"
+  name: CacheMetadata(ActivityMetadata)
   nameWithType: ReceiveReply.CacheMetadata(ActivityMetadata)
   fullName: System.ServiceModel.Activities.ReceiveReply.CacheMetadata(ActivityMetadata)
   type: Method
@@ -109,22 +103,20 @@ items:
   overload: System.ServiceModel.Activities.ReceiveReply.CacheMetadata*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.ServiceModel.Activities.ReceiveReply.Content
   id: Content
   parent: System.ServiceModel.Activities.ReceiveReply
   langs:
   - csharp
-  name: "Content"
+  name: Content
   nameWithType: ReceiveReply.Content
   fullName: System.ServiceModel.Activities.ReceiveReply.Content
   type: Property
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: Gets or sets the content received by the <see cref="T:System.ServiceModel.Activities.ReceiveReply"></see> activity
+  summary: "Gets or sets the content received by the <xref href=&quot;System.ServiceModel.Activities.ReceiveReply&quot;></xref> activity"
   remarks: 'The content can be one of the following types: <xref:System.ServiceModel.Activities.ReceiveMessageContent> or <xref:System.ServiceModel.Activities.ReceiveParametersContent>. Use <xref:System.ServiceModel.Activities.ReceiveMessageContent> when receiving a message <xref:System.ServiceModel.Channels.Message> or a message contract type. Use <xref:System.ServiceModel.Activities.ReceiveParametersContent> when receiving data contract types.'
   syntax:
     content: public System.ServiceModel.Activities.ReceiveContent Content { get; set; }
@@ -134,23 +126,21 @@ items:
   overload: System.ServiceModel.Activities.ReceiveReply.Content*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.ServiceModel.Activities.ReceiveReply.CorrelationInitializers
   id: CorrelationInitializers
   parent: System.ServiceModel.Activities.ReceiveReply
   langs:
   - csharp
-  name: "CorrelationInitializers"
+  name: CorrelationInitializers
   nameWithType: ReceiveReply.CorrelationInitializers
   fullName: System.ServiceModel.Activities.ReceiveReply.CorrelationInitializers
   type: Property
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: Gets a collection of correlation initializers.
-  remarks: '[!INCLUDE[crabout](~/add/includes/crabout-md.md)] correlation see [Correlation](../Topic/Correlation.md).'
+  summary: "Gets a collection of correlation initializers."
+  remarks: '[!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] correlation see [Correlation](~/add/includes/ajax-current-ext-md.md).'
   syntax:
     content: public System.Collections.ObjectModel.Collection<System.ServiceModel.Activities.CorrelationInitializer> CorrelationInitializers { get; }
     return:
@@ -159,23 +149,21 @@ items:
   overload: System.ServiceModel.Activities.ReceiveReply.CorrelationInitializers*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.ServiceModel.Activities.ReceiveReply.Request
   id: Request
   parent: System.ServiceModel.Activities.ReceiveReply
   langs:
   - csharp
-  name: "Request"
+  name: Request
   nameWithType: ReceiveReply.Request
   fullName: System.ServiceModel.Activities.ReceiveReply.Request
   type: Property
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: Gets or sets a reference to the <see cref="T:System.ServiceModel.Activities.Send"></see> activity paired with this <see cref="T:System.ServiceModel.Activities.ReceiveReply"></see> activity.
-  remarks: <xref:System.ServiceModel.Activities.Send> and <xref:System.ServiceModel.Activities.ReceiveReply> activities are used together to model a request/response message exchange pattern. This property specifies which <xref:System.ServiceModel.Activities.Send> activity the <xref:System.ServiceModel.Activities.ReceiveReply> activity is paired with.
+  summary: "Gets or sets a reference to the <xref href=&quot;System.ServiceModel.Activities.Send&quot;></xref> activity paired with this <xref href=&quot;System.ServiceModel.Activities.ReceiveReply&quot;></xref> activity."
+  remarks: "<xref:System.ServiceModel.Activities.Send> and <xref:System.ServiceModel.Activities.ReceiveReply> activities are used together to model a request/response message exchange pattern. This property specifies which <xref:System.ServiceModel.Activities.Send> activity the <xref:System.ServiceModel.Activities.ReceiveReply> activity is paired with."
   syntax:
     content: public System.ServiceModel.Activities.Send Request { get; set; }
     return:
@@ -184,77 +172,75 @@ items:
   overload: System.ServiceModel.Activities.ReceiveReply.Request*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 references:
 - uid: System.Activities.Activity
   isExternal: false
-  name: "System.Activities.Activity"
+  name: System.Activities.Activity
 - uid: System.ServiceModel.Activities.ReceiveReply.#ctor
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "ReceiveReply()"
+  name: ReceiveReply()
   nameWithType: ReceiveReply.ReceiveReply()
   fullName: System.ServiceModel.Activities.ReceiveReply.ReceiveReply()
 - uid: System.ServiceModel.Activities.ReceiveReply.Action
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "Action"
+  name: Action
   nameWithType: ReceiveReply.Action
   fullName: System.ServiceModel.Activities.ReceiveReply.Action
 - uid: System.String
   parent: System
   isExternal: true
-  name: "String"
+  name: String
   nameWithType: String
   fullName: System.String
 - uid: System.ServiceModel.Activities.ReceiveReply.CacheMetadata(System.Activities.ActivityMetadata)
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "CacheMetadata(ActivityMetadata)"
+  name: CacheMetadata(ActivityMetadata)
   nameWithType: ReceiveReply.CacheMetadata(ActivityMetadata)
   fullName: System.ServiceModel.Activities.ReceiveReply.CacheMetadata(ActivityMetadata)
 - uid: System.Activities.ActivityMetadata
   parent: System.Activities
   isExternal: false
-  name: "ActivityMetadata"
+  name: ActivityMetadata
   nameWithType: ActivityMetadata
   fullName: System.Activities.ActivityMetadata
 - uid: System.ServiceModel.Activities.ReceiveReply.Content
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "Content"
+  name: Content
   nameWithType: ReceiveReply.Content
   fullName: System.ServiceModel.Activities.ReceiveReply.Content
 - uid: System.ServiceModel.Activities.ReceiveContent
   parent: System.ServiceModel.Activities
   isExternal: false
-  name: "ReceiveContent"
+  name: ReceiveContent
   nameWithType: ReceiveContent
   fullName: System.ServiceModel.Activities.ReceiveContent
 - uid: System.ServiceModel.Activities.ReceiveReply.CorrelationInitializers
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "CorrelationInitializers"
+  name: CorrelationInitializers
   nameWithType: ReceiveReply.CorrelationInitializers
   fullName: System.ServiceModel.Activities.ReceiveReply.CorrelationInitializers
 - uid: System.Collections.ObjectModel.Collection{System.ServiceModel.Activities.CorrelationInitializer}
   parent: System.Collections.ObjectModel
   isExternal: true
-  name: "Collection<CorrelationInitializer>"
+  name: Collection<CorrelationInitializer>
   nameWithType: Collection<CorrelationInitializer>
   fullName: System.Collections.ObjectModel.Collection<System.ServiceModel.Activities.CorrelationInitializer>
   spec.csharp:
   - uid: System.Collections.ObjectModel.Collection`1
-    name: "Collection"
+    name: Collection
     nameWithType: Collection
     fullName: Collection<System.ServiceModel.Activities.CorrelationInitializer>
-  - name: "<"
+  - name: <
     nameWithType: <
     fullName: <
   - uid: System.ServiceModel.Activities.CorrelationInitializer
-    name: "CorrelationInitializer"
+    name: CorrelationInitializer
     nameWithType: CorrelationInitializer
     fullName: CorrelationInitializer
   - name: '>'
@@ -263,42 +249,42 @@ references:
 - uid: System.ServiceModel.Activities.ReceiveReply.Request
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "Request"
+  name: Request
   nameWithType: ReceiveReply.Request
   fullName: System.ServiceModel.Activities.ReceiveReply.Request
 - uid: System.ServiceModel.Activities.Send
   parent: System.ServiceModel.Activities
   isExternal: false
-  name: "Send"
+  name: Send
   nameWithType: Send
   fullName: System.ServiceModel.Activities.Send
 - uid: System.ServiceModel.Activities.ReceiveReply.#ctor*
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "ReceiveReply"
+  name: ReceiveReply
   nameWithType: ReceiveReply.ReceiveReply
 - uid: System.ServiceModel.Activities.ReceiveReply.Action*
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "Action"
+  name: Action
   nameWithType: ReceiveReply.Action
 - uid: System.ServiceModel.Activities.ReceiveReply.CacheMetadata*
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "CacheMetadata"
+  name: CacheMetadata
   nameWithType: ReceiveReply.CacheMetadata
 - uid: System.ServiceModel.Activities.ReceiveReply.Content*
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "Content"
+  name: Content
   nameWithType: ReceiveReply.Content
 - uid: System.ServiceModel.Activities.ReceiveReply.CorrelationInitializers*
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "CorrelationInitializers"
+  name: CorrelationInitializers
   nameWithType: ReceiveReply.CorrelationInitializers
 - uid: System.ServiceModel.Activities.ReceiveReply.Request*
   parent: System.ServiceModel.Activities.ReceiveReply
   isExternal: false
-  name: "Request"
+  name: Request
   nameWithType: ReceiveReply.Request

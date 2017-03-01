@@ -46,14 +46,14 @@ items:
   - System.Windows.Navigation.NavigationWindow.System#Windows#Markup#IUriContext#BaseUri
   langs:
   - csharp
-  name: "NavigationWindow"
+  name: NavigationWindow
   nameWithType: NavigationWindow
   fullName: System.Windows.Navigation.NavigationWindow
   type: Class
-  summary: Represents a window that supports content navigation.
-  remarks: "NavigationWindow derives from <xref:System.Windows.Window> and extends it with the ability to navigate to and display content.  \n  \n Content can be any [!INCLUDE[TLA2#tla_winfx](~/add/includes/tla2sharptla-winfx-md.md)] object or [!INCLUDE[TLA#tla_html](~/add/includes/tlasharptla-html-md.md)] file. In general, however, a <xref:System.Windows.Controls.Page> object is the preferred way to package content for navigation.  \n  \n Content can be navigated to by setting the <xref:System.Windows.Navigation.NavigationWindow.Source%2A> property with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content. Additionally, content can be navigated to by using one of the following overloads of the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method:  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29>  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29>  \n  \n When content is navigated to by [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)], NavigationWindow will return an object that contains the content.  \n  \n> [!NOTE]\n>  Navigation by [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] also supports navigation to a content fragment. See <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.  \n  \n Alternatively, content can be navigated to by using one of the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method overloads that accepts an object:  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29>  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29>  \n  \n The lifetime of a navigation can be tracked through the following events:  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.Navigating>  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.Navigated>  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.NavigationProgress>  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.NavigationFailed>  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.LoadCompleted>  \n  \n-   <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.  \n  \n Not all events are raised each time that a navigation occurs; the set of events that are raised is determined by the type of navigation that occurs (content or content fragment) and how the navigation completes (canceled, stopped, or failed).  \n  \n The following figure illustrates the sequence in which these events will fire:  \n  \n ![Page navigation flow chart](~/add/media/navigationoverviewfigure11.png \"Page navigation flow chart\")  \n  \n During or after a navigation, NavigationWindow provides information about the content that is being navigated to, including the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the content being navigated to (<xref:System.Windows.Navigation.NavigationWindow.Source%2A>), the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the current content (<xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A>), and an object that contains the content that was navigated to (<xref:System.Windows.Controls.ContentControl.Content%2A>).  \n  \n When content is navigated to, NavigationWindow records the navigation as an entry in navigation history. An entry is added to back navigation history when either a new navigation occurs, by calling the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method, or by navigating to an entry in forward navigation history, by calling <xref:System.Windows.Navigation.NavigationWindow.GoForward%2A>. An entry is added to forward navigation history by navigating to an entry in back navigation history, by calling <xref:System.Windows.Navigation.NavigationWindow.GoBack%2A>. <xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A> and <xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A> report whether there are entries in back and forward navigation history, respectively.  \n  \n The first time that one piece of content is navigated to from another piece of content, NavigationWindow automatically displays a navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/tla2sharptla-ui-md.md)] that allows users to navigate back and forwards through navigation history. You can configure when the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/tla2sharptla-ui-md.md)] is shown by setting the <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A> property.  \n  \n The most recent entry in back navigation history can be removed by calling <xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>.  \n  \n NavigationWindow does not store an instance of a content object in navigation history. Instead, NavigationWindow creates a new instance of the content object each time it is navigated to by using navigation history. This behavior is designed to avoid excessive memory consumption when large numbers and large pieces of content are being navigated to. Consequently, the state of the content is not remembered from one navigation to the next. However, [!INCLUDE[TLA2#tla_wpf](~/add/includes/tla2sharptla-wpf-md.md)] provides several techniques by which you can store a piece of state for a piece of content in navigation history.  \n  \n Using <xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>, you can also remember multiple sets of state for a single page instance.  \n  \n NavigationWindow is one of two navigators in [!INCLUDE[TLA2#tla_wpf](~/add/includes/tla2sharptla-wpf-md.md)], the other being <xref:System.Windows.Controls.Frame>. Essentially, navigator is a class supports navigation and navigation history. Visually, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] use [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] as a navigator, to provide an integrated user experience. However, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] actually use NavigationWindow as the navigator; the <xref:System.Windows.Application.MainWindow%2A> property of an [!INCLUDE[TLA2#tla_xbap](~/add/includes/tla2sharptla-xbap-md.md)] running in [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] will return a reference to the NavigationWindow, and the navigation history that is managed by the NavigationWindow is integrated with the navigation history that is managed by [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)].  \n  \n **Content Model:**  NavigationWindow is a <xref:System.Windows.Controls.ContentControl>, which means that NavigationWindow can contain content such as text, images, or panels. Also, NavigationWindow is a root element and, consequently, cannot be part of another element's content. For more information about the content model for <xref:System.Windows.Controls.Button>, see [WPF Content Model](../Topic/WPF%20Content%20Model.md).  \n  \n## Customizing the NavigationWindow Control  \n To apply the same property settings to multiple NavigationWindow controls, use the <xref:System.Windows.FrameworkElement.Style%2A> property. You can modify the default <xref:System.Windows.Controls.ControlTemplate> to give the control a unique appearance. For more information about creating a <xref:System.Windows.Controls.ControlTemplate>, see [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md).  To see the parts and states that are specific to the NavigationWindow, see [NavigationWindow Styles and Templates](../Topic/NavigationWindow%20Styles%20and%20Templates.md).  \n  \n Dependency properties for this control might be set by the control’s default style.  If a property is set by a default style, the property might change from its default value when the control appears in the application. The default style is determined by which desktop theme is used when the application is running.  For more information, see [Default WPF Themes](http://go.microsoft.com/fwlink/?LinkID=158252).  \n  \n> [!NOTE]\n>  Setting a visual property will only have an effect if that property is both present in NavigationWindow control's default template and is set by using a . You can find a list of visual properties in the \"Changing the Visual Structure of a Control\" section in [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md)."
+  summary: "Represents a window that supports content navigation."
+  remarks: "NavigationWindow derives from <xref:System.Windows.Window> and extends it with the ability to navigate to and display content.       Content can be any [!INCLUDE[TLA2#tla_winfx](~/add/includes/tla2sharptla-winfx-md.md)] object or [!INCLUDE[TLA#tla_html](~/add/includes/tlasharptla-html-md.md)] file. In general, however, a <xref:System.Windows.Controls.Page> object is the preferred way to package content for navigation.       Content can be navigated to by setting the <xref:System.Windows.Navigation.NavigationWindow.Source%2A> property with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content. Additionally, content can be navigated to by using one of the following overloads of the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29>       When content is navigated to by [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)], NavigationWindow will return an object that contains the content.      > [!NOTE] >  Navigation by [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] also supports navigation to a content fragment. See <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.       Alternatively, content can be navigated to by using one of the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method overloads that accepts an object:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29>       The lifetime of a navigation can be tracked through the following events:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigating>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigated>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationProgress>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationFailed>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>      -   <xref:System.Windows.Navigation.NavigationWindow.LoadCompleted>      -   <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.       Not all events are raised each time that a navigation occurs; the set of events that are raised is determined by the type of navigation that occurs (content or content fragment) and how the navigation completes (canceled, stopped, or failed).       The following figure illustrates the sequence in which these events will fire:       ![Page navigation flow chart](~/add/media/navigationoverviewfigure11.png &quot;Page navigation flow chart&quot;)       During or after a navigation, NavigationWindow provides information about the content that is being navigated to, including the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the content being navigated to (<xref:System.Windows.Navigation.NavigationWindow.Source%2A>), the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the current content (<xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A>), and an object that contains the content that was navigated to (<xref:System.Windows.Controls.ContentControl.Content%2A>).       When content is navigated to, NavigationWindow records the navigation as an entry in navigation history. An entry is added to back navigation history when either a new navigation occurs, by calling the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method, or by navigating to an entry in forward navigation history, by calling <xref:System.Windows.Navigation.NavigationWindow.GoForward%2A>. An entry is added to forward navigation history by navigating to an entry in back navigation history, by calling <xref:System.Windows.Navigation.NavigationWindow.GoBack%2A>. <xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A> and <xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A> report whether there are entries in back and forward navigation history, respectively.       The first time that one piece of content is navigated to from another piece of content, NavigationWindow automatically displays a navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] that allows users to navigate back and forwards through navigation history. You can configure when the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is shown by setting the <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A> property.       The most recent entry in back navigation history can be removed by calling <xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>.       NavigationWindow does not store an instance of a content object in navigation history. Instead, NavigationWindow creates a new instance of the content object each time it is navigated to by using navigation history. This behavior is designed to avoid excessive memory consumption when large numbers and large pieces of content are being navigated to. Consequently, the state of the content is not remembered from one navigation to the next. However, [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)] provides several techniques by which you can store a piece of state for a piece of content in navigation history.       Using <xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>, you can also remember multiple sets of state for a single page instance.       NavigationWindow is one of two navigators in [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)], the other being <xref:System.Windows.Controls.Frame>. Essentially, navigator is a class supports navigation and navigation history. Visually, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] use [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] as a navigator, to provide an integrated user experience. However, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] actually use NavigationWindow as the navigator; the <xref:System.Windows.Application.MainWindow%2A> property of an [!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)] running in [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] will return a reference to the NavigationWindow, and the navigation history that is managed by the NavigationWindow is integrated with the navigation history that is managed by [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)].       **Content Model:**  NavigationWindow is a <xref:System.Windows.Controls.ContentControl>, which means that NavigationWindow can contain content such as text, images, or panels. Also, NavigationWindow is a root element and, consequently, cannot be part of another element&quot;s content. For more information about the content model for <xref:System.Windows.Controls.Button>, see [WPF Content Model](~/add/includes/ajax-current-ext-md.md).      ## Customizing the NavigationWindow Control    To apply the same property settings to multiple NavigationWindow controls, use the <xref:System.Windows.FrameworkElement.Style%2A> property. You can modify the default <xref:System.Windows.Controls.ControlTemplate> to give the control a unique appearance. For more information about creating a <xref:System.Windows.Controls.ControlTemplate>, see [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](~/add/includes/ajax-current-ext-md.md).  To see the parts and states that are specific to the NavigationWindow, see [NavigationWindow Styles and Templates](~/add/includes/ajax-current-ext-md.md).       Dependency properties for this control might be set by the control’s default style.  If a property is set by a default style, the property might change from its default value when the control appears in the application. The default style is determined by which desktop theme is used when the application is running.  For more information, see [Default WPF Themes](http://go.microsoft.com/fwlink/?LinkID=158252).      > [!NOTE] >  Setting a visual property will only have an effect if that property is both present in NavigationWindow control&quot;s default template and is set by using a . You can find a list of visual properties in the &quot;Changing the Visual Structure of a Control&quot; section in [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md)."
   example:
-  - "The following example shows how to create a NavigationWindow.  \n  \n [!code-xml[NavigationWindowSnippets#NavigationWindowAndSource](~/add/codesnippet/Xaml/t-system.windows.navigat_3_1.xaml)]\n [!code-xml[NavigationWindowSnippets#NavigationWindowAndSource](~/add/codesnippet/Xaml/csharp/mainwindow.xaml#navigationwindowandsource)]"
+  - "The following example shows how to create a NavigationWindow.  \n  \n [!code-xml[NavigationWindowSnippets#NavigationWindowAndSource](~/add/codesnippet/xaml/t-system.windows.navigat_3_1.xaml)]\n [!code-xml[NavigationWindowSnippets#NavigationWindowAndSource](~/add/codesnippet/xaml/csharp/mainwindow.xaml#navigationwindowandsource)]"
   syntax:
     content: >-
       [System.Windows.Markup.ContentProperty]
@@ -754,73 +754,67 @@ items:
   - System.Windows.Window.WindowStyle
   - System.Windows.Window.WindowStyleProperty
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.#ctor
   id: '#ctor'
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "NavigationWindow()"
+  name: NavigationWindow()
   nameWithType: NavigationWindow.NavigationWindow()
   fullName: System.Windows.Navigation.NavigationWindow.NavigationWindow()
   type: Constructor
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Initializes a new instance of the <see cref="T:System.Windows.Navigation.NavigationWindow"></see> class.
+  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> class."
   syntax:
     content: public NavigationWindow ();
     parameters: []
   overload: System.Windows.Navigation.NavigationWindow.#ctor*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.AddBackEntry(System.Windows.Navigation.CustomContentState)
   id: AddBackEntry(System.Windows.Navigation.CustomContentState)
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "AddBackEntry(CustomContentState)"
+  name: AddBackEntry(CustomContentState)
   nameWithType: NavigationWindow.AddBackEntry(CustomContentState)
   fullName: System.Windows.Navigation.NavigationWindow.AddBackEntry(CustomContentState)
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Adds an entry to back navigation history that contains a <see cref="T:System.Windows.Navigation.CustomContentState"></see> object.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A?displayProperty=fullName>.
+  summary: "Adds an entry to back navigation history that contains a <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A?displayProperty=fullName>."
   syntax:
     content: public void AddBackEntry (System.Windows.Navigation.CustomContentState state);
     parameters:
     - id: state
       type: System.Windows.Navigation.CustomContentState
-      description: "A  object that represents application-defined state that is associated with a specific piece of content."
+      description: "A <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object that represents application-defined state that is associated with a specific piece of content."
   overload: System.Windows.Navigation.NavigationWindow.AddBackEntry*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "\n    state is , and a  object isn't returned from <xref:System.Windows.Navigation.IProvideCustomContentState.GetContentState%2A>."
+    description: "<code>state</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, and a <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object isn&quot;t returned from <xref:System.Windows.Navigation.IProvideCustomContentState.GetContentState*>."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.AddChild(System.Object)
   id: AddChild(System.Object)
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "AddChild(Object)"
+  name: AddChild(Object)
   nameWithType: NavigationWindow.AddChild(Object)
   fullName: System.Windows.Navigation.NavigationWindow.AddChild(Object)
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Adds a child object.
+  summary: "Adds a child object."
   syntax:
     content: protected override void AddChild (object value);
     parameters:
@@ -831,24 +825,22 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "when this method is called. This prevents content from being added to  using [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)]."
+    description: "when this method is called. This prevents content from being added to <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> using [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)]."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.AddText(System.String)
   id: AddText(System.String)
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "AddText(String)"
+  name: AddText(String)
   nameWithType: NavigationWindow.AddText(String)
   fullName: System.Windows.Navigation.NavigationWindow.AddText(String)
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Adds text to the object.
+  summary: "Adds text to the object."
   syntax:
     content: protected override void AddText (string text);
     parameters:
@@ -861,47 +853,43 @@ items:
     commentId: T:System.ArgumentException
     description: "if the text parameter value contains non-whitespace characters."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.BackStack
   id: BackStack
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "BackStack"
+  name: BackStack
   nameWithType: NavigationWindow.BackStack
   fullName: System.Windows.Navigation.NavigationWindow.BackStack
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets an &lt;xref:System.Collections.IEnumerable&gt; that you use to enumerate the entries in back navigation history for a <see cref="T:System.Windows.Navigation.NavigationWindow"></see>.
-  remarks: "The entries that are returned by BackStack include whole content, fragment navigations, and custom state.  \n  \n<a name=\"dependencyPropertyInfo_NavigationWindowBackStack\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|BackStack|  \n|Metadata properties set to `true`|None|"
+  summary: "Gets an <xref:System.Collections.IEnumerable> that you use to enumerate the entries in back navigation history for a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
+  remarks: "The entries that are returned by BackStack include whole content, fragment navigations, and custom state.      <a name=&quot;dependencyPropertyInfo_NavigationWindowBackStack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|BackStack|   |Metadata properties set to `true`|None|"
   syntax:
     content: public System.Collections.IEnumerable BackStack { get; }
     return:
       type: System.Collections.IEnumerable
-      description: '&lt;xref:System.Collections.IEnumerable&gt; if at least one entry has been added to back navigation history, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are not entries or the <see cref=&quot;T:System.Windows.Navigation.NavigationWindow&quot;></see> does not own its own navigation history.'
+      description: "<xref:System.Collections.IEnumerable> if at least one entry has been added to back navigation history, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are not entries or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
   overload: System.Windows.Navigation.NavigationWindow.BackStack*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.BackStackProperty
   id: BackStackProperty
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "BackStackProperty"
+  name: BackStackProperty
   nameWithType: NavigationWindow.BackStackProperty
   fullName: System.Windows.Navigation.NavigationWindow.BackStackProperty
   type: Field
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Identifies the &lt;xref:System.Windows.Navigation.NavigationWindow.BackStack%2A&gt; dependency property.
+  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.BackStack*> dependency property."
   syntax:
     content: public static readonly System.Windows.DependencyProperty BackStackProperty;
     return:
@@ -909,47 +897,43 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.CanGoBack
   id: CanGoBack
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "CanGoBack"
+  name: CanGoBack
   nameWithType: NavigationWindow.CanGoBack
   fullName: System.Windows.Navigation.NavigationWindow.CanGoBack
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets a value that indicates whether there is at least one entry in back navigation history.
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.CanGoBack%2A?displayProperty=fullName>.  \n  \n<a name=\"dependencyPropertyInfo_NavigationWindowCanGoBack\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|CanGoBack|  \n|Metadata properties set to `true`|None|"
+  summary: "Gets a value that indicates whether there is at least one entry in back navigation history."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.CanGoBack%2A?displayProperty=fullName>.      <a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoBack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|CanGoBack|   |Metadata properties set to `true`|None|"
   syntax:
     content: public bool CanGoBack { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is at least one entry in back navigation history; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there are no entries in back navigation history or the <see cref=&quot;T:System.Windows.Navigation.NavigationWindow&quot;></see> does not own its own navigation history."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is at least one entry in back navigation history; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there are no entries in back navigation history or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
   overload: System.Windows.Navigation.NavigationWindow.CanGoBack*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.CanGoBackProperty
   id: CanGoBackProperty
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "CanGoBackProperty"
+  name: CanGoBackProperty
   nameWithType: NavigationWindow.CanGoBackProperty
   fullName: System.Windows.Navigation.NavigationWindow.CanGoBackProperty
   type: Field
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Identifies the &lt;xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A&gt; dependency property.
+  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.CanGoBack*> dependency property."
   syntax:
     content: public static readonly System.Windows.DependencyProperty CanGoBackProperty;
     return:
@@ -957,47 +941,43 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.CanGoForward
   id: CanGoForward
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "CanGoForward"
+  name: CanGoForward
   nameWithType: NavigationWindow.CanGoForward
   fullName: System.Windows.Navigation.NavigationWindow.CanGoForward
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets a value that indicates whether there is at least one entry in forward navigation history.
-  remarks: "<a name=\"dependencyPropertyInfo_NavigationWindowCanGoForward\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|CanGoForward|  \n|Metadata properties set to `true`|None|"
+  summary: "Gets a value that indicates whether there is at least one entry in forward navigation history."
+  remarks: "<a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoForward&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|CanGoForward|   |Metadata properties set to `true`|None|"
   syntax:
     content: public bool CanGoForward { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is at least one entry in forward navigation history; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there are no entries in forward navigation history, or the <see cref=&quot;T:System.Windows.Navigation.NavigationWindow&quot;></see> does not own its own navigation history."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is at least one entry in forward navigation history; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there are no entries in forward navigation history, or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
   overload: System.Windows.Navigation.NavigationWindow.CanGoForward*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.CanGoForwardProperty
   id: CanGoForwardProperty
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "CanGoForwardProperty"
+  name: CanGoForwardProperty
   nameWithType: NavigationWindow.CanGoForwardProperty
   fullName: System.Windows.Navigation.NavigationWindow.CanGoForwardProperty
   type: Field
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Identifies the &lt;xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A&gt; dependency property.
+  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.CanGoForward*> dependency property."
   syntax:
     content: public static readonly System.Windows.DependencyProperty CanGoForwardProperty;
     return:
@@ -1005,23 +985,21 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.CurrentSource
   id: CurrentSource
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "CurrentSource"
+  name: CurrentSource
   nameWithType: NavigationWindow.CurrentSource
   fullName: System.Windows.Navigation.NavigationWindow.CurrentSource
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the content that was last navigated to.
-  remarks: See CurrentSource.
+  summary: "Gets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the content that was last navigated to."
+  remarks: "See CurrentSource."
   syntax:
     content: public Uri CurrentSource { get; }
     return:
@@ -1030,47 +1008,43 @@ items:
   overload: System.Windows.Navigation.NavigationWindow.CurrentSource*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.ForwardStack
   id: ForwardStack
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "ForwardStack"
+  name: ForwardStack
   nameWithType: NavigationWindow.ForwardStack
   fullName: System.Windows.Navigation.NavigationWindow.ForwardStack
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets an &lt;xref:System.Collections.IEnumerable&gt; that you use to enumerate the entries in back navigation history for a <see cref="T:System.Windows.Navigation.NavigationWindow"></see>.
-  remarks: "The entries that are returned by ForwardStack include whole content, fragment navigations, and custom state.  \n  \n<a name=\"dependencyPropertyInfo_NavigationWindowForwardStack\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|ForwardStack|  \n|Metadata properties set to `true`|None|"
+  summary: "Gets an <xref:System.Collections.IEnumerable> that you use to enumerate the entries in back navigation history for a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
+  remarks: "The entries that are returned by ForwardStack include whole content, fragment navigations, and custom state.      <a name=&quot;dependencyPropertyInfo_NavigationWindowForwardStack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|ForwardStack|   |Metadata properties set to `true`|None|"
   syntax:
     content: public System.Collections.IEnumerable ForwardStack { get; }
     return:
       type: System.Collections.IEnumerable
-      description: '&lt;xref:System.Collections.IEnumerable&gt; if at least one entry has been added to forward navigation history, or null if there are no entries or the <see cref=&quot;T:System.Windows.Navigation.NavigationWindow&quot;></see> does not own its own navigation history.'
+      description: "<xref:System.Collections.IEnumerable> if at least one entry has been added to forward navigation history, or null if there are no entries or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
   overload: System.Windows.Navigation.NavigationWindow.ForwardStack*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.ForwardStackProperty
   id: ForwardStackProperty
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "ForwardStackProperty"
+  name: ForwardStackProperty
   nameWithType: NavigationWindow.ForwardStackProperty
   fullName: System.Windows.Navigation.NavigationWindow.ForwardStackProperty
   type: Field
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Identifies the &lt;xref:System.Windows.Navigation.NavigationWindow.ForwardStack%2A&gt; dependency property.
+  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.ForwardStack*> dependency property."
   syntax:
     content: public static readonly System.Windows.DependencyProperty ForwardStackProperty;
     return:
@@ -1078,23 +1052,21 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.FragmentNavigation
   id: FragmentNavigation
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "FragmentNavigation"
+  name: FragmentNavigation
   nameWithType: NavigationWindow.FragmentNavigation
   fullName: System.Windows.Navigation.NavigationWindow.FragmentNavigation
   type: Event
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Occurs when navigation to a content fragment begins, which occurs immediately, if the desired fragment is in the current content, or after the source [!INCLUDE[TLA2#tla_titlexaml](~/add/includes/tla2sharptla-titlexaml-md.md)] content has been loaded, if the desired fragment is in different content.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=fullName>.
+  summary: "Occurs when navigation to a content fragment begins, which occurs immediately, if the desired fragment is in the current content, or after the source [!INCLUDE[TLA2#tla_titlexaml](~/add/includes/tla2sharptla-titlexaml-md.md)] content has been loaded, if the desired fragment is in different content."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=fullName>."
   syntax:
     content: public event System.Windows.Navigation.FragmentNavigationEventHandler FragmentNavigation;
     return:
@@ -1102,22 +1074,20 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.GoBack
   id: GoBack
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "GoBack()"
+  name: GoBack()
   nameWithType: NavigationWindow.GoBack()
   fullName: System.Windows.Navigation.NavigationWindow.GoBack()
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Navigates to the most recent item in back navigation history.
+  summary: "Navigates to the most recent item in back navigation history."
   syntax:
     content: public void GoBack ();
     parameters: []
@@ -1127,22 +1097,20 @@ items:
     commentId: T:System.InvalidOperationException
     description: "GoBack is called when there are no entries in back navigation history."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.GoForward
   id: GoForward
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "GoForward()"
+  name: GoForward()
   nameWithType: NavigationWindow.GoForward()
   fullName: System.Windows.Navigation.NavigationWindow.GoForward()
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Navigates to the most recent item in forward navigation history.
+  summary: "Navigates to the most recent item in forward navigation history."
   syntax:
     content: public void GoForward ();
     parameters: []
@@ -1152,23 +1120,21 @@ items:
     commentId: T:System.InvalidOperationException
     description: "GoForward is called when there are no entries in forward navigation history."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.LoadCompleted
   id: LoadCompleted
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "LoadCompleted"
+  name: LoadCompleted
   nameWithType: NavigationWindow.LoadCompleted
   fullName: System.Windows.Navigation.NavigationWindow.LoadCompleted
   type: Event
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Occurs when content that was navigated to has been loaded, parsed, and has begun rendering.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.LoadCompleted?displayProperty=fullName>.
+  summary: "Occurs when content that was navigated to has been loaded, parsed, and has begun rendering."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.LoadCompleted?displayProperty=fullName>."
   syntax:
     content: public event System.Windows.Navigation.LoadCompletedEventHandler LoadCompleted;
     return:
@@ -1176,25 +1142,23 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.Navigate(System.Object)
   id: Navigate(System.Object)
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "Navigate(Object)"
+  name: Navigate(Object)
   nameWithType: NavigationWindow.Navigate(Object)
   fullName: System.Windows.Navigation.NavigationWindow.Navigate(Object)
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Navigates asynchronously to content that is contained by an object.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%29?displayProperty=fullName>.
+  summary: "Navigates asynchronously to content that is contained by an object."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%29?displayProperty=fullName>."
   example:
-  - "The following example shows how to navigate to content that is contained by an object.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageObjCODE](~/add/codesnippet/CSharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopageobjcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageObjCODE](~/add/codesnippet/VisualBasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopageobjcode)]"
+  - "The following example shows how to navigate to content that is contained by an object.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageObjCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopageobjcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageObjCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopageobjcode)]"
   syntax:
     content: public bool Navigate (object content);
     parameters:
@@ -1203,29 +1167,27 @@ items:
       description: "An <xref:System.Object> that contains the content to navigate to."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.Navigate(System.Uri)
   id: Navigate(System.Uri)
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "Navigate(Uri)"
+  name: Navigate(Uri)
   nameWithType: NavigationWindow.Navigate(Uri)
   fullName: System.Windows.Navigation.NavigationWindow.Navigate(Uri)
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Navigates asynchronously to content that is specified by a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)].
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=fullName>.  \n  \n> [!NOTE]\n>  [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] can be either relative or absolute. For more information, see [Pack URIs in WPF](../Topic/Pack%20URIs%20in%20WPF.md)."
+  summary: "Navigates asynchronously to content that is specified by a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)]."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=fullName>.      > [!NOTE] >  [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] can be either relative or absolute. For more information, see [Pack URIs in WPF](~/add/includes/ajax-current-ext-md.md)."
   example:
-  - "The following example shows how to use the Navigate method to navigate to a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)].  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageNavCODE](~/add/codesnippet/CSharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopagenavcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageNavCODE](~/add/codesnippet/VisualBasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopagenavcode)]"
+  - "The following example shows how to use the Navigate method to navigate to a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)].  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageNavCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopagenavcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageNavCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopagenavcode)]"
   syntax:
     content: public bool Navigate (Uri source);
     parameters:
@@ -1234,27 +1196,25 @@ items:
       description: "A <xref:System.Uri> object initialized with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.Navigate(System.Object,System.Object)
   id: Navigate(System.Object,System.Object)
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "Navigate(Object,Object)"
+  name: Navigate(Object,Object)
   nameWithType: NavigationWindow.Navigate(Object,Object)
   fullName: System.Windows.Navigation.NavigationWindow.Navigate(Object,Object)
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Navigates asynchronously to content that is contained by an object, and passes an object that contains data to be used for processing during navigation.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%2CSystem.Object%29?displayProperty=fullName>.
+  summary: "Navigates asynchronously to content that is contained by an object, and passes an object that contains data to be used for processing during navigation."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%2CSystem.Object%29?displayProperty=fullName>."
   syntax:
     content: public bool Navigate (object content, object extraData);
     parameters:
@@ -1266,27 +1226,25 @@ items:
       description: "A <xref:System.Object> that contains data to be used for processing during navigation."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.Navigate(System.Uri,System.Object)
   id: Navigate(System.Uri,System.Object)
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "Navigate(Uri,Object)"
+  name: Navigate(Uri,Object)
   nameWithType: NavigationWindow.Navigate(Uri,Object)
   fullName: System.Windows.Navigation.NavigationWindow.Navigate(Uri,Object)
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Navigates asynchronously to source content located at a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)], and pass an object that contains data to be used for processing during navigation.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%2CSystem.Object%29?displayProperty=fullName>.
+  summary: "Navigates asynchronously to source content located at a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)], and pass an object that contains data to be used for processing during navigation."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%2CSystem.Object%29?displayProperty=fullName>."
   syntax:
     content: public bool Navigate (Uri source, object extraData);
     parameters:
@@ -1298,27 +1256,25 @@ items:
       description: "A <xref:System.Object> that contains data to be used for processing during navigation."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.Navigated
   id: Navigated
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "Navigated"
+  name: Navigated
   nameWithType: NavigationWindow.Navigated
   fullName: System.Windows.Navigation.NavigationWindow.Navigated
   type: Event
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Occurs when the content that is being navigated to has been found, and is available from the &lt;xref:System.Windows.Controls.ContentControl.Content%2A&gt; property, although it may not have completed loading.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.Navigated?displayProperty=fullName>.
+  summary: "Occurs when the content that is being navigated to has been found, and is available from the <xref:System.Windows.Controls.ContentControl.Content*> property, although it may not have completed loading."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigated?displayProperty=fullName>."
   syntax:
     content: public event System.Windows.Navigation.NavigatedEventHandler Navigated;
     return:
@@ -1326,23 +1282,21 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.Navigating
   id: Navigating
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "Navigating"
+  name: Navigating
   nameWithType: NavigationWindow.Navigating
   fullName: System.Windows.Navigation.NavigationWindow.Navigating
   type: Event
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Occurs when a new navigation is requested.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=fullName>.
+  summary: "Occurs when a new navigation is requested."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=fullName>."
   syntax:
     content: public event System.Windows.Navigation.NavigatingCancelEventHandler Navigating;
     return:
@@ -1350,23 +1304,21 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.NavigationFailed
   id: NavigationFailed
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "NavigationFailed"
+  name: NavigationFailed
   nameWithType: NavigationWindow.NavigationFailed
   fullName: System.Windows.Navigation.NavigationWindow.NavigationFailed
   type: Event
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Occurs when an error is raised while navigating to the requested content.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.NavigationFailed?displayProperty=fullName>.
+  summary: "Occurs when an error is raised while navigating to the requested content."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationFailed?displayProperty=fullName>."
   syntax:
     content: public event System.Windows.Navigation.NavigationFailedEventHandler NavigationFailed;
     return:
@@ -1374,23 +1326,21 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.NavigationProgress
   id: NavigationProgress
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "NavigationProgress"
+  name: NavigationProgress
   nameWithType: NavigationWindow.NavigationProgress
   fullName: System.Windows.Navigation.NavigationWindow.NavigationProgress
   type: Event
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Occurs periodically during a download to provide navigation progress information.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.NavigationProgress?displayProperty=fullName>.
+  summary: "Occurs periodically during a download to provide navigation progress information."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationProgress?displayProperty=fullName>."
   syntax:
     content: public event System.Windows.Navigation.NavigationProgressEventHandler NavigationProgress;
     return:
@@ -1398,48 +1348,44 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.NavigationService
   id: NavigationService
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "NavigationService"
+  name: NavigationService
   nameWithType: NavigationWindow.NavigationService
   fullName: System.Windows.Navigation.NavigationWindow.NavigationService
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets the <see cref="T:System.Windows.Navigation.NavigationService"></see> that is used by this <see cref="T:System.Windows.Navigation.NavigationWindow"></see> to provide navigation services to its content.
-  remarks: "<xref:System.Windows.Navigation.NavigationWindow> uses a <xref:System.Windows.Navigation.NavigationService> to provide navigation services to content that is hosted by <xref:System.Windows.Navigation.NavigationWindow>. The NavigationService property is useful for code in a custom <xref:System.Windows.Navigation.NavigationWindow> to get a reference to the <xref:System.Windows.Navigation.NavigationService>, to handle navigation events, for example.  \n  \n Content that is hosted by a <xref:System.Windows.Navigation.NavigationWindow>, such as <xref:System.Windows.Controls.Page>, should use the <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=fullName> method or <xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=fullName> property to get a reference to the <xref:System.Windows.Navigation.NavigationService>."
+  summary: "Gets the <xref href=&quot;System.Windows.Navigation.NavigationService&quot;></xref> that is used by this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> to provide navigation services to its content."
+  remarks: "<xref:System.Windows.Navigation.NavigationWindow> uses a <xref:System.Windows.Navigation.NavigationService> to provide navigation services to content that is hosted by <xref:System.Windows.Navigation.NavigationWindow>. The NavigationService property is useful for code in a custom <xref:System.Windows.Navigation.NavigationWindow> to get a reference to the <xref:System.Windows.Navigation.NavigationService>, to handle navigation events, for example.       Content that is hosted by a <xref:System.Windows.Navigation.NavigationWindow>, such as <xref:System.Windows.Controls.Page>, should use the <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=fullName> method or <xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=fullName> property to get a reference to the <xref:System.Windows.Navigation.NavigationService>."
   syntax:
     content: public System.Windows.Navigation.NavigationService NavigationService { get; }
     return:
       type: System.Windows.Navigation.NavigationService
-      description: "The navigation service used by this <see cref=&quot;T:System.Windows.Navigation.NavigationWindow&quot;></see>."
+      description: "The navigation service used by this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
   overload: System.Windows.Navigation.NavigationWindow.NavigationService*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.NavigationStopped
   id: NavigationStopped
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "NavigationStopped"
+  name: NavigationStopped
   nameWithType: NavigationWindow.NavigationStopped
   fullName: System.Windows.Navigation.NavigationWindow.NavigationStopped
   type: Event
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Occurs when the &lt;xref:System.Windows.Navigation.NavigationWindow.StopLoading%2A&gt; method is called, or when a new navigation is requested while a current navigation is in progress.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.NavigationStopped?displayProperty=fullName>.
+  summary: "Occurs when the <xref:System.Windows.Navigation.NavigationWindow.StopLoading*> method is called, or when a new navigation is requested while a current navigation is in progress."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationStopped?displayProperty=fullName>."
   syntax:
     content: public event System.Windows.Navigation.NavigationStoppedEventHandler NavigationStopped;
     return:
@@ -1447,45 +1393,41 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.OnApplyTemplate
   id: OnApplyTemplate
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "OnApplyTemplate()"
+  name: OnApplyTemplate()
   nameWithType: NavigationWindow.OnApplyTemplate()
   fullName: System.Windows.Navigation.NavigationWindow.OnApplyTemplate()
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Called when the template generation for the visual tree is created.
+  summary: "Called when the template generation for the visual tree is created."
   syntax:
     content: public override void OnApplyTemplate ();
     parameters: []
   overload: System.Windows.Navigation.NavigationWindow.OnApplyTemplate*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.OnClosed(System.EventArgs)
   id: OnClosed(System.EventArgs)
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "OnClosed(EventArgs)"
+  name: OnClosed(EventArgs)
   nameWithType: NavigationWindow.OnClosed(EventArgs)
   fullName: System.Windows.Navigation.NavigationWindow.OnClosed(EventArgs)
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Raises the <see cref="E:System.Windows.Window.Closed"></see> event.
-  remarks: OnClosed releases the <xref:System.Windows.Navigation.NavigationService> object that it is using to manage navigation, before raising <xref:System.Windows.Window.Closed> event.
+  summary: "Raises the <xref href=&quot;System.Windows.Window.Closed&quot;></xref> event."
+  remarks: "OnClosed releases the <xref:System.Windows.Navigation.NavigationService> object that it is using to manage navigation, before raising <xref:System.Windows.Window.Closed> event."
   syntax:
     content: protected override void OnClosed (EventArgs args);
     parameters:
@@ -1495,100 +1437,92 @@ items:
   overload: System.Windows.Navigation.NavigationWindow.OnClosed*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.OnCreateAutomationPeer
   id: OnCreateAutomationPeer
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "OnCreateAutomationPeer()"
+  name: OnCreateAutomationPeer()
   nameWithType: NavigationWindow.OnCreateAutomationPeer()
   fullName: System.Windows.Navigation.NavigationWindow.OnCreateAutomationPeer()
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Creates and returns a <see cref="T:System.Windows.Automation.Peers.NavigationWindowAutomationPeer"></see> object for this <see cref="T:System.Windows.Navigation.NavigationWindow"></see>.
-  remarks: This method overrides <xref:System.Windows.ContentElement.OnCreateAutomationPeer%2A>.
+  summary: "Creates and returns a <xref href=&quot;System.Windows.Automation.Peers.NavigationWindowAutomationPeer&quot;></xref> object for this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
+  remarks: "This method overrides <xref:System.Windows.ContentElement.OnCreateAutomationPeer%2A>."
   syntax:
     content: protected override System.Windows.Automation.Peers.AutomationPeer OnCreateAutomationPeer ();
     parameters: []
     return:
       type: System.Windows.Automation.Peers.AutomationPeer
-      description: "To be added."
+      description: "A <xref href=&quot;System.Windows.Automation.Peers.NavigationWindowAutomationPeer&quot;></xref> object for this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
   overload: System.Windows.Navigation.NavigationWindow.OnCreateAutomationPeer*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.Refresh
   id: Refresh
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "Refresh()"
+  name: Refresh()
   nameWithType: NavigationWindow.Refresh()
   fullName: System.Windows.Navigation.NavigationWindow.Refresh()
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Reloads the current content.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=fullName>.
+  summary: "Reloads the current content."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=fullName>."
   example:
-  - "The following example shows how to call the Refresh method to reload the content in a <xref:System.Windows.Navigation.NavigationWindow>.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateRefreshCODE](~/add/codesnippet/CSharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigaterefreshcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateRefreshCODE](~/add/codesnippet/VisualBasic/howtonavigationsnippets/mainwindow.xaml.vb#navigaterefreshcode)]"
+  - "The following example shows how to call the Refresh method to reload the content in a <xref:System.Windows.Navigation.NavigationWindow>.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateRefreshCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigaterefreshcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateRefreshCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigaterefreshcode)]"
   syntax:
     content: public void Refresh ();
     parameters: []
   overload: System.Windows.Navigation.NavigationWindow.Refresh*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.RemoveBackEntry
   id: RemoveBackEntry
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "RemoveBackEntry()"
+  name: RemoveBackEntry()
   nameWithType: NavigationWindow.RemoveBackEntry()
   fullName: System.Windows.Navigation.NavigationWindow.RemoveBackEntry()
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Removes the most recent journal entry from back history.
-  remarks: See <xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>.
+  summary: "Removes the most recent journal entry from back history."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>."
   syntax:
     content: public System.Windows.Navigation.JournalEntry RemoveBackEntry ();
     parameters: []
     return:
       type: System.Windows.Navigation.JournalEntry
-      description: "To be added."
+      description: "The most recent <xref href=&quot;System.Windows.Navigation.JournalEntry&quot;></xref> in back navigation history, if there is one."
   overload: System.Windows.Navigation.NavigationWindow.RemoveBackEntry*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.SandboxExternalContent
   id: SandboxExternalContent
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "SandboxExternalContent"
+  name: SandboxExternalContent
   nameWithType: NavigationWindow.SandboxExternalContent
   fullName: System.Windows.Navigation.NavigationWindow.SandboxExternalContent
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets or sets a value that indicates whether a <see cref="T:System.Windows.Navigation.NavigationWindow"></see> isolates external [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] content within a partial trust security sandbox (with default Internet zone permission set).
-  remarks: "External content is [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] content that is not included with an application as either a resource file or a content file (for more information, see [WPF Application Resource, Content, and Data Files](../Topic/WPF%20Application%20Resource,%20Content,%20and%20Data%20Files.md)).  \n  \n When SandboxExternalContent is true, and the content of the <xref:System.Windows.Navigation.NavigationWindow> is an external [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] file, the content is loaded into a partial trust security sandbox that is limited to the default Internet zone permission set. Additionally, the external content is loaded into a separate process. Consequently, the external content becomes isolated and does not have access to application-scope resources, such as resource dictionaries (for more information, see <xref:System.Windows.ResourceDictionary>).  \n  \n> [!NOTE]\n>  <xref:System.Windows.Navigation.NavigationWindow> contains external content only when the <xref:System.Windows.Navigation.NavigationWindow.Source%2A> property is set to the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for an external [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] file. <xref:System.Windows.Navigation.NavigationWindow> content that is provided using the <xref:System.Windows.Controls.ContentControl.Content%2A> property is considered internal content and, subsequently, is not isolated.  \n  \n<a name=\"dependencyPropertyInfo_NavigationWindowSandboxExternalContent\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|SandboxExternalContent|  \n|Metadata properties set to `true`|None|"
+  summary: "Gets or sets a value that indicates whether a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> isolates external [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] content within a partial trust security sandbox (with default Internet zone permission set)."
+  remarks: "External content is [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] content that is not included with an application as either a resource file or a content file (for more information, see [WPF Application Resource, Content, and Data Files](~/add/includes/ajax-current-ext-md.md)).       When SandboxExternalContent is true, and the content of the <xref:System.Windows.Navigation.NavigationWindow> is an external [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] file, the content is loaded into a partial trust security sandbox that is limited to the default Internet zone permission set. Additionally, the external content is loaded into a separate process. Consequently, the external content becomes isolated and does not have access to application-scope resources, such as resource dictionaries (for more information, see <xref:System.Windows.ResourceDictionary>).      > [!NOTE] >  <xref:System.Windows.Navigation.NavigationWindow> contains external content only when the <xref:System.Windows.Navigation.NavigationWindow.Source%2A> property is set to the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for an external [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] file. <xref:System.Windows.Navigation.NavigationWindow> content that is provided using the <xref:System.Windows.Controls.ContentControl.Content%2A> property is considered internal content and, subsequently, is not isolated.      <a name=&quot;dependencyPropertyInfo_NavigationWindowSandboxExternalContent&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|SandboxExternalContent|   |Metadata properties set to `true`|None|"
   syntax:
     content: public bool SandboxExternalContent { get; set; }
     return:
@@ -1600,22 +1534,20 @@ items:
     commentId: T:System.Security.SecurityException
     description: "SandboxExternalContent is set when an application is executing in partial trust."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.SandboxExternalContentProperty
   id: SandboxExternalContentProperty
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "SandboxExternalContentProperty"
+  name: SandboxExternalContentProperty
   nameWithType: NavigationWindow.SandboxExternalContentProperty
   fullName: System.Windows.Navigation.NavigationWindow.SandboxExternalContentProperty
   type: Field
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Identifies the &lt;xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent%2A&gt; dependency property.
+  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent*> dependency property."
   syntax:
     content: public static readonly System.Windows.DependencyProperty SandboxExternalContentProperty;
     return:
@@ -1623,73 +1555,67 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent
   id: ShouldSerializeContent
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "ShouldSerializeContent()"
+  name: ShouldSerializeContent()
   nameWithType: NavigationWindow.ShouldSerializeContent()
   fullName: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent()
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Indicates whether the &lt;xref:System.Windows.Controls.ContentControl.Content%2A&gt; property should be persisted.
-  remarks: This `ShouldSerialize` method is provided because the <xref:System.Windows.Controls.ContentControl.Content%2A> property does not have a simple default value. This method indicates whether the property has changed from its default value. You typically call this method if you are either developing a designer for the <xref:System.Windows.Navigation.NavigationWindow> or developing your own control incorporating the <xref:System.Windows.Navigation.NavigationWindow>.
+  summary: "Indicates whether the <xref:System.Windows.Controls.ContentControl.Content*> property should be persisted."
+  remarks: "This `ShouldSerialize` method is provided because the <xref:System.Windows.Controls.ContentControl.Content%2A> property does not have a simple default value. This method indicates whether the property has changed from its default value. You typically call this method if you are either developing a designer for the <xref:System.Windows.Navigation.NavigationWindow> or developing your own control incorporating the <xref:System.Windows.Navigation.NavigationWindow>."
   syntax:
     content: public override bool ShouldSerializeContent ();
     parameters: []
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI
   id: ShowsNavigationUI
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "ShowsNavigationUI"
+  name: ShowsNavigationUI
   nameWithType: NavigationWindow.ShowsNavigationUI
   fullName: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets or sets a value that indicates whether a <see cref="T:System.Windows.Navigation.NavigationWindow"></see> shows its navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/tla2sharptla-ui-md.md)].
-  remarks: "To aid back and forward navigation, <xref:System.Windows.Navigation.NavigationWindow> automatically displays a navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/tla2sharptla-ui-md.md)]  \n  \n Navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/tla2sharptla-ui-md.md)] is displayed whether or not navigation has occurred.  \n  \n<a name=\"dependencyPropertyInfo_NavigationWindowShowsNavigationUI\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|ShowsNavigationUI|  \n|Metadata properties set to `true`|None|"
+  summary: "Gets or sets a value that indicates whether a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> shows its navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]."
+  remarks: "To aid back and forward navigation, <xref:System.Windows.Navigation.NavigationWindow> automatically displays a navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]       Navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is displayed whether or not navigation has occurred.      <a name=&quot;dependencyPropertyInfo_NavigationWindowShowsNavigationUI&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|ShowsNavigationUI|   |Metadata properties set to `true`|None|"
   syntax:
     content: public bool ShowsNavigationUI { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/tla2sharptla-ui-md.md)] is displayed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is displayed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
   overload: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.ShowsNavigationUIProperty
   id: ShowsNavigationUIProperty
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "ShowsNavigationUIProperty"
+  name: ShowsNavigationUIProperty
   nameWithType: NavigationWindow.ShowsNavigationUIProperty
   fullName: System.Windows.Navigation.NavigationWindow.ShowsNavigationUIProperty
   type: Field
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Identifies the &lt;xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A&gt; dependency property.
+  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*> dependency property."
   syntax:
     content: public static readonly System.Windows.DependencyProperty ShowsNavigationUIProperty;
     return:
@@ -1697,25 +1623,23 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.Source
   id: Source
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "Source"
+  name: Source
   nameWithType: NavigationWindow.Source
   fullName: System.Windows.Navigation.NavigationWindow.Source
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets or sets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the current content, or the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of new content that is currently being navigated to.
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=fullName>.  \n  \n> [!NOTE]\n>  [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] can be either relative or absolute. For more information, see [Pack URIs in WPF](../Topic/Pack%20URIs%20in%20WPF.md).  \n  \n<a name=\"dependencyPropertyInfo_NavigationWindowSource\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|Source|  \n|Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|"
+  summary: "Gets or sets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the current content, or the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of new content that is currently being navigated to."
+  remarks: "See <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=fullName>.      > [!NOTE] >  [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] can be either relative or absolute. For more information, see [Pack URIs in WPF](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;dependencyPropertyInfo_NavigationWindowSource&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|Source|   |Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|"
   example:
-  - "The following example shows how to navigate to a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] by setting the Source property.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/add/codesnippet/CSharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopagesrccode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/add/codesnippet/VisualBasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopagesrccode)]"
+  - "The following example shows how to navigate to a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] by setting the Source property.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopagesrccode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopagesrccode)]"
   syntax:
     content: public Uri Source { get; set; }
     return:
@@ -1724,22 +1648,20 @@ items:
   overload: System.Windows.Navigation.NavigationWindow.Source*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.SourceProperty
   id: SourceProperty
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "SourceProperty"
+  name: SourceProperty
   nameWithType: NavigationWindow.SourceProperty
   fullName: System.Windows.Navigation.NavigationWindow.SourceProperty
   type: Field
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Identifies the &lt;xref:System.Windows.Navigation.NavigationWindow.Source%2A&gt; dependency property.
+  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.Source*> dependency property."
   syntax:
     content: public static readonly System.Windows.DependencyProperty SourceProperty;
     return:
@@ -1747,49 +1669,45 @@ items:
       description: "To be added."
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.StopLoading
   id: StopLoading
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "StopLoading()"
+  name: StopLoading()
   nameWithType: NavigationWindow.StopLoading()
   fullName: System.Windows.Navigation.NavigationWindow.StopLoading()
   type: Method
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Stops further downloading of content for the current navigation request.
-  remarks: "StopLoading stops the download of the requested content, and causes the <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped> event to be raised.  \n  \n See <xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=fullName>."
+  summary: "Stops further downloading of content for the current navigation request."
+  remarks: "StopLoading stops the download of the requested content, and causes the <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped> event to be raised.       See <xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=fullName>."
   example:
-  - "The following example shows how to call the StopLoading method to stop navigation to content before it has finished being downloaded.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/add/codesnippet/CSharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatestoploadingcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/add/codesnippet/VisualBasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatestoploadingcode)]"
+  - "The following example shows how to call the StopLoading method to stop navigation to content before it has finished being downloaded.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatestoploadingcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatestoploadingcode)]"
   syntax:
     content: public void StopLoading ();
     parameters: []
   overload: System.Windows.Navigation.NavigationWindow.StopLoading*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Windows.Navigation.NavigationWindow.System#Windows#Markup#IUriContext#BaseUri
   id: System#Windows#Markup#IUriContext#BaseUri
   isEii: true
   parent: System.Windows.Navigation.NavigationWindow
   langs:
   - csharp
-  name: "System.Windows.Markup.IUriContext.BaseUri"
+  name: System.Windows.Markup.IUriContext.BaseUri
   nameWithType: NavigationWindow.System.Windows.Markup.IUriContext.BaseUri
   fullName: System.Windows.Navigation.NavigationWindow.System.Windows.Markup.IUriContext.BaseUri
   type: Property
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: Gets or sets the base uniform resource identifier (URI) of the current context.
-  remarks: This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Navigation.NavigationWindow> instance is cast to an <xref:System.Windows.Markup.IUriContext> interface.
+  summary: "Gets or sets the base uniform resource identifier (URI) of the current context."
+  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Navigation.NavigationWindow> instance is cast to an <xref:System.Windows.Markup.IUriContext> interface."
   syntax:
     content: Uri System.Windows.Markup.IUriContext.BaseUri { get; set; }
     return:
@@ -1798,484 +1716,491 @@ items:
   overload: System.Windows.Navigation.NavigationWindow.System#Windows#Markup#IUriContext#BaseUri*
   exceptions: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 references:
 - uid: System.Windows.Window
   isExternal: false
-  name: "System.Windows.Window"
+  name: System.Windows.Window
+- uid: System.InvalidOperationException
+  isExternal: true
+  name: System.InvalidOperationException
+- uid: System.ArgumentException
+  isExternal: true
+  name: System.ArgumentException
+- uid: System.Security.SecurityException
+  isExternal: true
+  name: System.Security.SecurityException
 - uid: System.Windows.Navigation.NavigationWindow.#ctor
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "NavigationWindow()"
+  name: NavigationWindow()
   nameWithType: NavigationWindow.NavigationWindow()
   fullName: System.Windows.Navigation.NavigationWindow.NavigationWindow()
 - uid: System.Windows.Navigation.NavigationWindow.AddBackEntry(System.Windows.Navigation.CustomContentState)
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "AddBackEntry(CustomContentState)"
+  name: AddBackEntry(CustomContentState)
   nameWithType: NavigationWindow.AddBackEntry(CustomContentState)
   fullName: System.Windows.Navigation.NavigationWindow.AddBackEntry(CustomContentState)
 - uid: System.Windows.Navigation.CustomContentState
   parent: System.Windows.Navigation
   isExternal: false
-  name: "CustomContentState"
+  name: CustomContentState
   nameWithType: CustomContentState
   fullName: System.Windows.Navigation.CustomContentState
 - uid: System.Windows.Navigation.NavigationWindow.AddChild(System.Object)
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "AddChild(Object)"
+  name: AddChild(Object)
   nameWithType: NavigationWindow.AddChild(Object)
   fullName: System.Windows.Navigation.NavigationWindow.AddChild(Object)
 - uid: System.Object
   parent: System
   isExternal: true
-  name: "Object"
+  name: Object
   nameWithType: Object
   fullName: System.Object
 - uid: System.Windows.Navigation.NavigationWindow.AddText(System.String)
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "AddText(String)"
+  name: AddText(String)
   nameWithType: NavigationWindow.AddText(String)
   fullName: System.Windows.Navigation.NavigationWindow.AddText(String)
 - uid: System.String
   parent: System
   isExternal: true
-  name: "String"
+  name: String
   nameWithType: String
   fullName: System.String
 - uid: System.Windows.Navigation.NavigationWindow.BackStack
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "BackStack"
+  name: BackStack
   nameWithType: NavigationWindow.BackStack
   fullName: System.Windows.Navigation.NavigationWindow.BackStack
 - uid: System.Collections.IEnumerable
   parent: System.Collections
   isExternal: true
-  name: "IEnumerable"
+  name: IEnumerable
   nameWithType: IEnumerable
   fullName: System.Collections.IEnumerable
 - uid: System.Windows.Navigation.NavigationWindow.BackStackProperty
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "BackStackProperty"
+  name: BackStackProperty
   nameWithType: NavigationWindow.BackStackProperty
   fullName: System.Windows.Navigation.NavigationWindow.BackStackProperty
 - uid: System.Windows.DependencyProperty
   parent: System.Windows
   isExternal: false
-  name: "DependencyProperty"
+  name: DependencyProperty
   nameWithType: DependencyProperty
   fullName: System.Windows.DependencyProperty
 - uid: System.Windows.Navigation.NavigationWindow.CanGoBack
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "CanGoBack"
+  name: CanGoBack
   nameWithType: NavigationWindow.CanGoBack
   fullName: System.Windows.Navigation.NavigationWindow.CanGoBack
 - uid: System.Boolean
   parent: System
   isExternal: true
-  name: "Boolean"
+  name: Boolean
   nameWithType: Boolean
   fullName: System.Boolean
 - uid: System.Windows.Navigation.NavigationWindow.CanGoBackProperty
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "CanGoBackProperty"
+  name: CanGoBackProperty
   nameWithType: NavigationWindow.CanGoBackProperty
   fullName: System.Windows.Navigation.NavigationWindow.CanGoBackProperty
 - uid: System.Windows.Navigation.NavigationWindow.CanGoForward
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "CanGoForward"
+  name: CanGoForward
   nameWithType: NavigationWindow.CanGoForward
   fullName: System.Windows.Navigation.NavigationWindow.CanGoForward
 - uid: System.Windows.Navigation.NavigationWindow.CanGoForwardProperty
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "CanGoForwardProperty"
+  name: CanGoForwardProperty
   nameWithType: NavigationWindow.CanGoForwardProperty
   fullName: System.Windows.Navigation.NavigationWindow.CanGoForwardProperty
 - uid: System.Windows.Navigation.NavigationWindow.CurrentSource
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "CurrentSource"
+  name: CurrentSource
   nameWithType: NavigationWindow.CurrentSource
   fullName: System.Windows.Navigation.NavigationWindow.CurrentSource
 - uid: System.Uri
   parent: System
   isExternal: true
-  name: "Uri"
+  name: Uri
   nameWithType: Uri
   fullName: System.Uri
 - uid: System.Windows.Navigation.NavigationWindow.ForwardStack
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "ForwardStack"
+  name: ForwardStack
   nameWithType: NavigationWindow.ForwardStack
   fullName: System.Windows.Navigation.NavigationWindow.ForwardStack
 - uid: System.Windows.Navigation.NavigationWindow.ForwardStackProperty
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "ForwardStackProperty"
+  name: ForwardStackProperty
   nameWithType: NavigationWindow.ForwardStackProperty
   fullName: System.Windows.Navigation.NavigationWindow.ForwardStackProperty
 - uid: System.Windows.Navigation.NavigationWindow.FragmentNavigation
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "FragmentNavigation"
+  name: FragmentNavigation
   nameWithType: NavigationWindow.FragmentNavigation
   fullName: System.Windows.Navigation.NavigationWindow.FragmentNavigation
 - uid: System.Windows.Navigation.FragmentNavigationEventHandler
   parent: System.Windows.Navigation
   isExternal: false
-  name: "FragmentNavigationEventHandler"
+  name: FragmentNavigationEventHandler
   nameWithType: FragmentNavigationEventHandler
   fullName: System.Windows.Navigation.FragmentNavigationEventHandler
 - uid: System.Windows.Navigation.NavigationWindow.GoBack
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "GoBack()"
+  name: GoBack()
   nameWithType: NavigationWindow.GoBack()
   fullName: System.Windows.Navigation.NavigationWindow.GoBack()
 - uid: System.Windows.Navigation.NavigationWindow.GoForward
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "GoForward()"
+  name: GoForward()
   nameWithType: NavigationWindow.GoForward()
   fullName: System.Windows.Navigation.NavigationWindow.GoForward()
 - uid: System.Windows.Navigation.NavigationWindow.LoadCompleted
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "LoadCompleted"
+  name: LoadCompleted
   nameWithType: NavigationWindow.LoadCompleted
   fullName: System.Windows.Navigation.NavigationWindow.LoadCompleted
 - uid: System.Windows.Navigation.LoadCompletedEventHandler
   parent: System.Windows.Navigation
   isExternal: false
-  name: "LoadCompletedEventHandler"
+  name: LoadCompletedEventHandler
   nameWithType: LoadCompletedEventHandler
   fullName: System.Windows.Navigation.LoadCompletedEventHandler
 - uid: System.Windows.Navigation.NavigationWindow.Navigate(System.Object)
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Navigate(Object)"
+  name: Navigate(Object)
   nameWithType: NavigationWindow.Navigate(Object)
   fullName: System.Windows.Navigation.NavigationWindow.Navigate(Object)
 - uid: System.Windows.Navigation.NavigationWindow.Navigate(System.Uri)
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Navigate(Uri)"
+  name: Navigate(Uri)
   nameWithType: NavigationWindow.Navigate(Uri)
   fullName: System.Windows.Navigation.NavigationWindow.Navigate(Uri)
 - uid: System.Windows.Navigation.NavigationWindow.Navigate(System.Object,System.Object)
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Navigate(Object,Object)"
+  name: Navigate(Object,Object)
   nameWithType: NavigationWindow.Navigate(Object,Object)
   fullName: System.Windows.Navigation.NavigationWindow.Navigate(Object,Object)
 - uid: System.Windows.Navigation.NavigationWindow.Navigate(System.Uri,System.Object)
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Navigate(Uri,Object)"
+  name: Navigate(Uri,Object)
   nameWithType: NavigationWindow.Navigate(Uri,Object)
   fullName: System.Windows.Navigation.NavigationWindow.Navigate(Uri,Object)
 - uid: System.Windows.Navigation.NavigationWindow.Navigated
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Navigated"
+  name: Navigated
   nameWithType: NavigationWindow.Navigated
   fullName: System.Windows.Navigation.NavigationWindow.Navigated
 - uid: System.Windows.Navigation.NavigatedEventHandler
   parent: System.Windows.Navigation
   isExternal: false
-  name: "NavigatedEventHandler"
+  name: NavigatedEventHandler
   nameWithType: NavigatedEventHandler
   fullName: System.Windows.Navigation.NavigatedEventHandler
 - uid: System.Windows.Navigation.NavigationWindow.Navigating
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Navigating"
+  name: Navigating
   nameWithType: NavigationWindow.Navigating
   fullName: System.Windows.Navigation.NavigationWindow.Navigating
 - uid: System.Windows.Navigation.NavigatingCancelEventHandler
   parent: System.Windows.Navigation
   isExternal: false
-  name: "NavigatingCancelEventHandler"
+  name: NavigatingCancelEventHandler
   nameWithType: NavigatingCancelEventHandler
   fullName: System.Windows.Navigation.NavigatingCancelEventHandler
 - uid: System.Windows.Navigation.NavigationWindow.NavigationFailed
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "NavigationFailed"
+  name: NavigationFailed
   nameWithType: NavigationWindow.NavigationFailed
   fullName: System.Windows.Navigation.NavigationWindow.NavigationFailed
 - uid: System.Windows.Navigation.NavigationFailedEventHandler
   parent: System.Windows.Navigation
   isExternal: false
-  name: "NavigationFailedEventHandler"
+  name: NavigationFailedEventHandler
   nameWithType: NavigationFailedEventHandler
   fullName: System.Windows.Navigation.NavigationFailedEventHandler
 - uid: System.Windows.Navigation.NavigationWindow.NavigationProgress
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "NavigationProgress"
+  name: NavigationProgress
   nameWithType: NavigationWindow.NavigationProgress
   fullName: System.Windows.Navigation.NavigationWindow.NavigationProgress
 - uid: System.Windows.Navigation.NavigationProgressEventHandler
   parent: System.Windows.Navigation
   isExternal: false
-  name: "NavigationProgressEventHandler"
+  name: NavigationProgressEventHandler
   nameWithType: NavigationProgressEventHandler
   fullName: System.Windows.Navigation.NavigationProgressEventHandler
 - uid: System.Windows.Navigation.NavigationWindow.NavigationService
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "NavigationService"
+  name: NavigationService
   nameWithType: NavigationWindow.NavigationService
   fullName: System.Windows.Navigation.NavigationWindow.NavigationService
 - uid: System.Windows.Navigation.NavigationService
   parent: System.Windows.Navigation
   isExternal: false
-  name: "NavigationService"
+  name: NavigationService
   nameWithType: NavigationService
   fullName: System.Windows.Navigation.NavigationService
 - uid: System.Windows.Navigation.NavigationWindow.NavigationStopped
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "NavigationStopped"
+  name: NavigationStopped
   nameWithType: NavigationWindow.NavigationStopped
   fullName: System.Windows.Navigation.NavigationWindow.NavigationStopped
 - uid: System.Windows.Navigation.NavigationStoppedEventHandler
   parent: System.Windows.Navigation
   isExternal: false
-  name: "NavigationStoppedEventHandler"
+  name: NavigationStoppedEventHandler
   nameWithType: NavigationStoppedEventHandler
   fullName: System.Windows.Navigation.NavigationStoppedEventHandler
 - uid: System.Windows.Navigation.NavigationWindow.OnApplyTemplate
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "OnApplyTemplate()"
+  name: OnApplyTemplate()
   nameWithType: NavigationWindow.OnApplyTemplate()
   fullName: System.Windows.Navigation.NavigationWindow.OnApplyTemplate()
 - uid: System.Windows.Navigation.NavigationWindow.OnClosed(System.EventArgs)
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "OnClosed(EventArgs)"
+  name: OnClosed(EventArgs)
   nameWithType: NavigationWindow.OnClosed(EventArgs)
   fullName: System.Windows.Navigation.NavigationWindow.OnClosed(EventArgs)
 - uid: System.EventArgs
   parent: System
   isExternal: true
-  name: "EventArgs"
+  name: EventArgs
   nameWithType: EventArgs
   fullName: System.EventArgs
 - uid: System.Windows.Navigation.NavigationWindow.OnCreateAutomationPeer
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "OnCreateAutomationPeer()"
+  name: OnCreateAutomationPeer()
   nameWithType: NavigationWindow.OnCreateAutomationPeer()
   fullName: System.Windows.Navigation.NavigationWindow.OnCreateAutomationPeer()
 - uid: System.Windows.Automation.Peers.AutomationPeer
   parent: System.Windows.Automation.Peers
   isExternal: false
-  name: "AutomationPeer"
+  name: AutomationPeer
   nameWithType: AutomationPeer
   fullName: System.Windows.Automation.Peers.AutomationPeer
 - uid: System.Windows.Navigation.NavigationWindow.Refresh
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Refresh()"
+  name: Refresh()
   nameWithType: NavigationWindow.Refresh()
   fullName: System.Windows.Navigation.NavigationWindow.Refresh()
 - uid: System.Windows.Navigation.NavigationWindow.RemoveBackEntry
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "RemoveBackEntry()"
+  name: RemoveBackEntry()
   nameWithType: NavigationWindow.RemoveBackEntry()
   fullName: System.Windows.Navigation.NavigationWindow.RemoveBackEntry()
 - uid: System.Windows.Navigation.JournalEntry
   parent: System.Windows.Navigation
   isExternal: false
-  name: "JournalEntry"
+  name: JournalEntry
   nameWithType: JournalEntry
   fullName: System.Windows.Navigation.JournalEntry
 - uid: System.Windows.Navigation.NavigationWindow.SandboxExternalContent
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "SandboxExternalContent"
+  name: SandboxExternalContent
   nameWithType: NavigationWindow.SandboxExternalContent
   fullName: System.Windows.Navigation.NavigationWindow.SandboxExternalContent
 - uid: System.Windows.Navigation.NavigationWindow.SandboxExternalContentProperty
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "SandboxExternalContentProperty"
+  name: SandboxExternalContentProperty
   nameWithType: NavigationWindow.SandboxExternalContentProperty
   fullName: System.Windows.Navigation.NavigationWindow.SandboxExternalContentProperty
 - uid: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "ShouldSerializeContent()"
+  name: ShouldSerializeContent()
   nameWithType: NavigationWindow.ShouldSerializeContent()
   fullName: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent()
 - uid: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "ShowsNavigationUI"
+  name: ShowsNavigationUI
   nameWithType: NavigationWindow.ShowsNavigationUI
   fullName: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI
 - uid: System.Windows.Navigation.NavigationWindow.ShowsNavigationUIProperty
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "ShowsNavigationUIProperty"
+  name: ShowsNavigationUIProperty
   nameWithType: NavigationWindow.ShowsNavigationUIProperty
   fullName: System.Windows.Navigation.NavigationWindow.ShowsNavigationUIProperty
 - uid: System.Windows.Navigation.NavigationWindow.Source
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Source"
+  name: Source
   nameWithType: NavigationWindow.Source
   fullName: System.Windows.Navigation.NavigationWindow.Source
 - uid: System.Windows.Navigation.NavigationWindow.SourceProperty
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "SourceProperty"
+  name: SourceProperty
   nameWithType: NavigationWindow.SourceProperty
   fullName: System.Windows.Navigation.NavigationWindow.SourceProperty
 - uid: System.Windows.Navigation.NavigationWindow.StopLoading
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "StopLoading()"
+  name: StopLoading()
   nameWithType: NavigationWindow.StopLoading()
   fullName: System.Windows.Navigation.NavigationWindow.StopLoading()
 - uid: System.Windows.Navigation.NavigationWindow.System#Windows#Markup#IUriContext#BaseUri
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "System.Windows.Markup.IUriContext.BaseUri"
+  name: System.Windows.Markup.IUriContext.BaseUri
   nameWithType: NavigationWindow.System.Windows.Markup.IUriContext.BaseUri
   fullName: System.Windows.Navigation.NavigationWindow.System.Windows.Markup.IUriContext.BaseUri
 - uid: System.Windows.Navigation.NavigationWindow.#ctor*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "NavigationWindow"
+  name: NavigationWindow
   nameWithType: NavigationWindow.NavigationWindow
 - uid: System.Windows.Navigation.NavigationWindow.AddBackEntry*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "AddBackEntry"
+  name: AddBackEntry
   nameWithType: NavigationWindow.AddBackEntry
 - uid: System.Windows.Navigation.NavigationWindow.AddChild*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "AddChild"
+  name: AddChild
   nameWithType: NavigationWindow.AddChild
 - uid: System.Windows.Navigation.NavigationWindow.AddText*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "AddText"
+  name: AddText
   nameWithType: NavigationWindow.AddText
 - uid: System.Windows.Navigation.NavigationWindow.BackStack*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "BackStack"
+  name: BackStack
   nameWithType: NavigationWindow.BackStack
 - uid: System.Windows.Navigation.NavigationWindow.CanGoBack*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "CanGoBack"
+  name: CanGoBack
   nameWithType: NavigationWindow.CanGoBack
 - uid: System.Windows.Navigation.NavigationWindow.CanGoForward*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "CanGoForward"
+  name: CanGoForward
   nameWithType: NavigationWindow.CanGoForward
 - uid: System.Windows.Navigation.NavigationWindow.CurrentSource*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "CurrentSource"
+  name: CurrentSource
   nameWithType: NavigationWindow.CurrentSource
 - uid: System.Windows.Navigation.NavigationWindow.ForwardStack*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "ForwardStack"
+  name: ForwardStack
   nameWithType: NavigationWindow.ForwardStack
 - uid: System.Windows.Navigation.NavigationWindow.GoBack*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "GoBack"
+  name: GoBack
   nameWithType: NavigationWindow.GoBack
 - uid: System.Windows.Navigation.NavigationWindow.GoForward*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "GoForward"
+  name: GoForward
   nameWithType: NavigationWindow.GoForward
 - uid: System.Windows.Navigation.NavigationWindow.Navigate*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Navigate"
+  name: Navigate
   nameWithType: NavigationWindow.Navigate
 - uid: System.Windows.Navigation.NavigationWindow.NavigationService*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "NavigationService"
+  name: NavigationService
   nameWithType: NavigationWindow.NavigationService
 - uid: System.Windows.Navigation.NavigationWindow.OnApplyTemplate*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "OnApplyTemplate"
+  name: OnApplyTemplate
   nameWithType: NavigationWindow.OnApplyTemplate
 - uid: System.Windows.Navigation.NavigationWindow.OnClosed*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "OnClosed"
+  name: OnClosed
   nameWithType: NavigationWindow.OnClosed
 - uid: System.Windows.Navigation.NavigationWindow.OnCreateAutomationPeer*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "OnCreateAutomationPeer"
+  name: OnCreateAutomationPeer
   nameWithType: NavigationWindow.OnCreateAutomationPeer
 - uid: System.Windows.Navigation.NavigationWindow.Refresh*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Refresh"
+  name: Refresh
   nameWithType: NavigationWindow.Refresh
 - uid: System.Windows.Navigation.NavigationWindow.RemoveBackEntry*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "RemoveBackEntry"
+  name: RemoveBackEntry
   nameWithType: NavigationWindow.RemoveBackEntry
 - uid: System.Windows.Navigation.NavigationWindow.SandboxExternalContent*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "SandboxExternalContent"
+  name: SandboxExternalContent
   nameWithType: NavigationWindow.SandboxExternalContent
 - uid: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "ShouldSerializeContent"
+  name: ShouldSerializeContent
   nameWithType: NavigationWindow.ShouldSerializeContent
 - uid: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "ShowsNavigationUI"
+  name: ShowsNavigationUI
   nameWithType: NavigationWindow.ShowsNavigationUI
 - uid: System.Windows.Navigation.NavigationWindow.Source*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "Source"
+  name: Source
   nameWithType: NavigationWindow.Source
 - uid: System.Windows.Navigation.NavigationWindow.StopLoading*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "StopLoading"
+  name: StopLoading
   nameWithType: NavigationWindow.StopLoading
 - uid: System.Windows.Navigation.NavigationWindow.System#Windows#Markup#IUriContext#BaseUri*
   parent: System.Windows.Navigation.NavigationWindow
   isExternal: false
-  name: "System.Windows.Markup.IUriContext.BaseUri"
+  name: System.Windows.Markup.IUriContext.BaseUri
   nameWithType: NavigationWindow.System.Windows.Markup.IUriContext.BaseUri

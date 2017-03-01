@@ -33,14 +33,14 @@ items:
   - System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String,System.String[])
   langs:
   - csharp
-  name: "PersonalizationAdministration"
+  name: PersonalizationAdministration
   nameWithType: PersonalizationAdministration
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   type: Class
-  summary: Implements management and administrative functionality for Web Parts personalization. This class cannot be inherited.
-  remarks: "This class provides several static methods and properties that expose management and administrative functionality for Web Parts personalization. These methods apply to the default personalization provider configured in the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control for a Web Parts control. If you need to administer several data stores that are acting as personalization providers, you should use the methods on the individual personalization provider classes directly. Note that the collection of configured personalization providers for a <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control is available from the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Providers%2A> static property.  \n  \n It is important to be aware that personalization will fail if your Web application does not run at the default trust level of <xref:System.Web.AspNetHostingPermissionLevel> or higher (you can set custom trust levels in a Web.config file using the `<trust level=\"\" />` element). The PersonalizationAdministration and <xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider> classes both check for a trust level of <xref:System.Web.AspNetHostingPermissionLevel> when they are initialized. If you configure your application to run at a trust level of <xref:System.Web.AspNetHostingPermissionLevel>, and you use the default <xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider> provider to manage the personalization data for your application, the first time that the application tries to access personalization data, it will fail because an ASP.NET worker process running in <xref:System.Web.AspNetHostingPermissionLevel> trust does not have the permissions necessary to call into the various classes in the <xref:System.Data.SqlClient> namespace."
+  summary: "Implements management and administrative functionality for Web Parts personalization. This class cannot be inherited."
+  remarks: "This class provides several static methods and properties that expose management and administrative functionality for Web Parts personalization. These methods apply to the default personalization provider configured in the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control for a Web Parts control. If you need to administer several data stores that are acting as personalization providers, you should use the methods on the individual personalization provider classes directly. Note that the collection of configured personalization providers for a <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control is available from the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Providers%2A> static property.       It is important to be aware that personalization will fail if your Web application does not run at the default trust level of <xref:System.Web.AspNetHostingPermissionLevel> or higher (you can set custom trust levels in a Web.config file using the `<trust level=&quot;&quot; />` element). The PersonalizationAdministration and <xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider> classes both check for a trust level of <xref:System.Web.AspNetHostingPermissionLevel> when they are initialized. If you configure your application to run at a trust level of <xref:System.Web.AspNetHostingPermissionLevel>, and you use the default <xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider> provider to manage the personalization data for your application, the first time that the application tries to access personalization data, it will fail because an ASP.NET worker process running in <xref:System.Web.AspNetHostingPermissionLevel> trust does not have the permissions necessary to call into the various classes in the <xref:System.Data.SqlClient> namespace."
   example:
-  - "The following code example demonstrates how to use several methods in the PersonalizationAdministration class. This example consists of an .aspx page that references a Web Parts user control named `Persadmin.ascx`. The following code provides the .aspx file for the example.  \n  \n [!code-cs[WebParts_PersAdmin#7](~/add/codesnippet/CSharp/t-system.web.ui.webcontr_363_1.aspx)]  \n  \n This code provides the `Persadmin.ascx` control.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](../Topic/Script%20Exploits%20Overview.md).  \n  \n [!code-cs[WebParts_PersAdmin#1](~/add/codesnippet/CSharp/t-system.web.ui.webcontr_363_2.ascx)]"
+  - "The following code example demonstrates how to use several methods in the PersonalizationAdministration class. This example consists of an .aspx page that references a Web Parts user control named `Persadmin.ascx`. The following code provides the .aspx file for the example.  \n  \n [!code-cs[WebParts_PersAdmin#7](~/add/codesnippet/csharp/t-system.web.ui.webcontr_363_1.aspx)]  \n  \n This code provides the `Persadmin.ascx` control.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[WebParts_PersAdmin#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_363_2.ascx)]"
   syntax:
     content: public static class PersonalizationAdministration
   inheritance:
@@ -48,23 +48,21 @@ items:
   implements: []
   inheritedMembers: []
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ApplicationName
   id: ApplicationName
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ApplicationName"
+  name: ApplicationName
   nameWithType: PersonalizationAdministration.ApplicationName
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ApplicationName
   type: Property
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Gets or sets the name of the application specified by the provider.
-  remarks: "The application name affects the data retrieved and saved by the personalization provider, and allows for multiple applications to either share data by setting an identical application name, or partition data within the same database by specifying different application names. The application name is found in the personalization provider section of the Web.config or System.config file.  \n  \n> [!CAUTION]\n>  Because a single default profile provider instance is used for all the requests served by an <xref:System.Web.HttpApplication> object, you can have multiple requests executing concurrently and attempting to set the ApplicationName property value. The ApplicationName property is not thread-safe for multiple writes, and changing the ApplicationName property value can result in unexpected behavior for multiple users of an application. It is recommended that you avoid code to allow users to set the ApplicationName property unless required. An example of an application where setting the ApplicationName property might be required is an administrative application that manages profile data for multiple applications. Such an application should be a single-user application and not a Web application."
+  summary: "Gets or sets the name of the application specified by the provider."
+  remarks: "The application name affects the data retrieved and saved by the personalization provider, and allows for multiple applications to either share data by setting an identical application name, or partition data within the same database by specifying different application names. The application name is found in the personalization provider section of the Web.config or System.config file.      > [!CAUTION] >  Because a single default profile provider instance is used for all the requests served by an <xref:System.Web.HttpApplication> object, you can have multiple requests executing concurrently and attempting to set the ApplicationName property value. The ApplicationName property is not thread-safe for multiple writes, and changing the ApplicationName property value can result in unexpected behavior for multiple users of an application. It is recommended that you avoid code to allow users to set the ApplicationName property unless required. An example of an application where setting the ApplicationName property might be required is an administrative application that manages profile data for multiple applications. Such an application should be a single-user application and not a Web application."
   syntax:
     content: public static string ApplicationName { get; set; }
     return:
@@ -79,23 +77,21 @@ items:
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState(System.String,System.String,System.DateTime)
   id: FindInactiveUserState(System.String,System.String,System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "FindInactiveUserState(String,String,DateTime)"
+  name: FindInactiveUserState(String,String,DateTime)
   nameWithType: PersonalizationAdministration.FindInactiveUserState(String,String,DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState(String,String,DateTime)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of per-user personalization state information for inactive users, based on the specified parameters.
-  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances, per-user personalization state information where the `pathToMatch` parameter value matches the path of a page, `usernameToMatch` matches a user name that has personalization data associated with that page, and the users are considered inactive. In other words, for each returned record the user's <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to `userInactiveSinceDate`. The returned collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances.  \n  \n This method passes query wildcard characters to the underlying data store. Support for wildcard characters is currently dependent on how each provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).  \n  \n Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with \"~/vdir\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to \"~/vdir%\".  \n  \n Likewise, a wildcard search on a partial user name could have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with \"John\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property would look like \"John%\".  \n  \n Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.  \n  \n If `userInactiveSinceDate` is <xref:System.DateTime.MaxValue>, then the returned values from this method are equivalent to <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState%2A>.  \n  \n Both `pathToMatch` and `usernameToMatch` can be `null`. The `usernameToMatch` parameter can include commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters."
+  summary: "Returns a collection of per-user personalization state information for inactive users, based on the specified parameters."
+  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances, per-user personalization state information where the `pathToMatch` parameter value matches the path of a page, `usernameToMatch` matches a user name that has personalization data associated with that page, and the users are considered inactive. In other words, for each returned record the user&quot;s <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to `userInactiveSinceDate`. The returned collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances.       This method passes query wildcard characters to the underlying data store. Support for wildcard characters is currently dependent on how each provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).       Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with &quot;~/vdir&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to &quot;~/vdir%&quot;.       Likewise, a wildcard search on a partial user name could have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with &quot;John&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property would look like &quot;John%&quot;.       Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.       If `userInactiveSinceDate` is <xref:System.DateTime.MaxValue>, then the returned values from this method are equivalent to <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState%2A>.       Both `pathToMatch` and `usernameToMatch` can be `null`. The `usernameToMatch` parameter can include commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection FindInactiveUserState (string pathToMatch, string usernameToMatch, DateTime userInactiveSinceDate);
     parameters:
@@ -110,33 +106,31 @@ items:
       description: "The last date a user&quot;s personalization information was accessed."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection&quot;></xref> that contains per-user personalization state information."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pathToMatch or usernameToMatch before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>pathToMatch</code> or <code>usernameToMatch</code> before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState(System.String,System.String,System.DateTime,System.Int32,System.Int32,System.Int32@)
   id: FindInactiveUserState(System.String,System.String,System.DateTime,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "FindInactiveUserState(String,String,DateTime,Int32,Int32,Int32)"
+  name: FindInactiveUserState(String,String,DateTime,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.FindInactiveUserState(String,String,DateTime,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState(String,String,DateTime,Int32,Int32,Int32)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of per-user personalization state information for inactive users, based on the specified parameters.
-  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances, per-user personalization state information where the `pathToMatch` parameter value matches the path of a page, `usernameToMatch` matches a user name that has personalization data associated with that page, and the users are considered inactive. In other words, for each returned record the user's <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to `userInactiveSinceDate`. The collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances.  \n  \n This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).  \n  \n Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with \"~/vdir\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to \"~/vdir%\".  \n  \n Likewise, a wildcard search on a partial user name could have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with \"John\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property would look like \"John%\".  \n  \n Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.  \n  \n If `userInactiveSinceDate` is <xref:System.DateTime.MaxValue>, then the returned values from this method are equivalent to <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState%2A>.  \n  \n Both `pathToMatch` and `usernameToMatch` can be `null`. The `usernameToMatch` parameter can have commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters.  \n  \n The data returned is constrained by `pageIndex` and `pageSize`, where `pageIndex` controls which records to return and `pageSize` controls the number of records to return. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available."
+  summary: "Returns a collection of per-user personalization state information for inactive users, based on the specified parameters."
+  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances, per-user personalization state information where the `pathToMatch` parameter value matches the path of a page, `usernameToMatch` matches a user name that has personalization data associated with that page, and the users are considered inactive. In other words, for each returned record the user&quot;s <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to `userInactiveSinceDate`. The collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances.       This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).       Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with &quot;~/vdir&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to &quot;~/vdir%&quot;.       Likewise, a wildcard search on a partial user name could have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with &quot;John&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property would look like &quot;John%&quot;.       Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.       If `userInactiveSinceDate` is <xref:System.DateTime.MaxValue>, then the returned values from this method are equivalent to <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState%2A>.       Both `pathToMatch` and `usernameToMatch` can be `null`. The `usernameToMatch` parameter can have commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters.       The data returned is constrained by `pageIndex` and `pageSize`, where `pageIndex` controls which records to return and `pageSize` controls the number of records to return. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection FindInactiveUserState (string pathToMatch, string usernameToMatch, DateTime userInactiveSinceDate, int pageIndex, int pageSize, out int totalRecords);
     parameters:
@@ -160,33 +154,31 @@ items:
       description: "The total number of records available."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection&quot;></xref> that contains per-user personalization state information."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pathToMatch or usernameToMatch before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n pageIndex is less than zero  \n  \n \\- or -  \n  \n pageSize is less than or equal to zero.  \n  \n \\- or -  \n  \n the combination of pageIndex and pageSize exceeds <xref:System.Int32.MaxValue>.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>pathToMatch</code> or <code>usernameToMatch</code> before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than or equal to zero.  \n  \n \\- or -  \n  \n the combination of <code>pageIndex</code> and <code>pageSize</code> exceeds <xref:System.Int32.MaxValue>.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState(System.String)
   id: FindSharedState(System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "FindSharedState(String)"
+  name: FindSharedState(String)
   nameWithType: PersonalizationAdministration.FindSharedState(String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState(String)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of shared personalization state information based on the specified path.
-  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances where the `pathToMatch` value matches the path of a page that has shared personalization state data. The collection contains only <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> instances.  \n  \n This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).  \n  \n Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with \"~/vdir\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to \"~/vdir%\".  \n  \n Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The ordering of the objects in the collection is determined by the provider.  \n  \n The `pathToMatch` parameter can be `null`. If set to `null`, the parameter is ignored when performing queries."
+  summary: "Returns a collection of shared personalization state information based on the specified path."
+  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances where the `pathToMatch` value matches the path of a page that has shared personalization state data. The collection contains only <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> instances.       This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).       Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with &quot;~/vdir&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to &quot;~/vdir%&quot;.       Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The ordering of the objects in the collection is determined by the provider.       The `pathToMatch` parameter can be `null`. If set to `null`, the parameter is ignored when performing queries."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection FindSharedState (string pathToMatch);
     parameters:
@@ -195,33 +187,31 @@ items:
       description: "The path of the page to match."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection&quot;></xref> that contains shared personalization state information."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pathToMatch is an empty string (\"\") either before or after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>pathToMatch</code> is an empty string (\"\") either before or after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState(System.String,System.Int32,System.Int32,System.Int32@)
   id: FindSharedState(System.String,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "FindSharedState(String,Int32,Int32,Int32)"
+  name: FindSharedState(String,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.FindSharedState(String,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState(String,Int32,Int32,Int32)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of shared personalization state information based on the specified parameters.
-  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances where the `pathToMatch` value matches the path of a page that has shared personalization state data. The collection contains only <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> instances.  \n  \n This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).  \n  \n Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with \"~/vdir\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to \"~/vdir%\".  \n  \n Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.  \n  \n The `pathToMatch` parameter can be `null`. If set to `null`, the parameter is ignored when performing queries.  \n  \n The data returned is constrained by `pageIndex` and `pageSize`, where `pageIndex` controls which records to return and `pageSize` controls the number of records to return. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available."
+  summary: "Returns a collection of shared personalization state information based on the specified parameters."
+  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances where the `pathToMatch` value matches the path of a page that has shared personalization state data. The collection contains only <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> instances.       This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).       Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with &quot;~/vdir&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to &quot;~/vdir%&quot;.       Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.       The `pathToMatch` parameter can be `null`. If set to `null`, the parameter is ignored when performing queries.       The data returned is constrained by `pageIndex` and `pageSize`, where `pageIndex` controls which records to return and `pageSize` controls the number of records to return. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection FindSharedState (string pathToMatch, int pageIndex, int pageSize, out int totalRecords);
     parameters:
@@ -239,35 +229,33 @@ items:
       description: "The total number of records available."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection&quot;></xref> that contains shared personalization state information."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pathToMatch before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n pageIndex is less than zero.  \n  \n \\- or -  \n  \n pageSize is less than or equal to zero.  \n  \n \\- or -  \n  \n The combination of pageIndex and pageSize exceeds <xref:System.Int32.MaxValue>.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>pathToMatch</code> before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than or equal to zero.  \n  \n \\- or -  \n  \n The combination of <code>pageIndex</code> and <code>pageSize</code> exceeds <xref:System.Int32.MaxValue>.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState(System.String,System.String)
   id: FindUserState(System.String,System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "FindUserState(String,String)"
+  name: FindUserState(String,String)
   nameWithType: PersonalizationAdministration.FindUserState(String,String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState(String,String)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of per-user personalization state information based on the user name and page path.
-  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances where the `pathToMatch` parameter value matches the path of a page, and `usernameToMatch` matches a user name that has personalization data associated with that page. The collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances.  \n  \n This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).  \n  \n Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with \"~/vdir\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to \"~/vdir%\".  \n  \n Likewise, a wildcard search on a partial user name could have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with \"John\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property would look like \"John%\".  \n  \n Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The ordering of the objects in the collection is determined by the provider.  \n  \n Both `pathToMatch` and `usernameToMatch` can be `null`. The `usernameToMatch` parameter can have commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters."
+  summary: "Returns a collection of per-user personalization state information based on the user name and page path."
+  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances where the `pathToMatch` parameter value matches the path of a page, and `usernameToMatch` matches a user name that has personalization data associated with that page. The collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances.       This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).       Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with &quot;~/vdir&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to &quot;~/vdir%&quot;.       Likewise, a wildcard search on a partial user name could have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with &quot;John&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property would look like &quot;John%&quot;.       Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The ordering of the objects in the collection is determined by the provider.       Both `pathToMatch` and `usernameToMatch` can be `null`. The `usernameToMatch` parameter can have commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters."
   example:
-  - "The following code example demonstrates how to use the FindUserState method. The complete example can be found in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration> class overview topic.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](../Topic/Script%20Exploits%20Overview.md).  \n  \n [!code-cs[WebParts_PersAdmin#2](~/add/codesnippet/CSharp/0c172183-0fd7-4869-9b74-_1.ascx)]"
+  - "The following code example demonstrates how to use the FindUserState method. The complete example can be found in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration> class overview topic.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[WebParts_PersAdmin#2](~/add/codesnippet/csharp/0c172183-0fd7-4869-9b74-_1.ascx)]"
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection FindUserState (string pathToMatch, string usernameToMatch);
     parameters:
@@ -279,35 +267,33 @@ items:
       description: "The user name to match that has personalization data associated with the page."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection&quot;></xref> that contains per-user personalization state information."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pathToMatch or usernameToMatch before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>pathToMatch</code> or <code>usernameToMatch</code> before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState(System.String,System.String,System.Int32,System.Int32,System.Int32@)
   id: FindUserState(System.String,System.String,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "FindUserState(String,String,Int32,Int32,Int32)"
+  name: FindUserState(String,String,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.FindUserState(String,String,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState(String,String,Int32,Int32,Int32)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of per-user personalization state information based on the specified parameters.
-  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances where the `pathToMatch` parameter value matches the path of a page and `usernameToMatch` matches a user name that has personalization data associated with that page. The collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances.  \n  \n This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters as an asterisk (*), a percent symbol (%), or an underscore (_).  \n  \n Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with \"~/vdir\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to \"~/vdir%\".  \n  \n Likewise, a wildcard search on a partial user name could have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with \"John\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property would look like \"John%\".  \n  \n Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.  \n  \n Both `pathToMatch` and `usernameToMatch` can be `null`. The `usernameToMatch` parameter can have commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters.  \n  \n The data returned is constrained by `pageIndex` and `pageSize`, where `pageIndex` controls which records to return and `pageSize` controls the number of records to return. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available."
+  summary: "Returns a collection of per-user personalization state information based on the specified parameters."
+  remarks: "This method returns a collection of <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances where the `pathToMatch` parameter value matches the path of a page and `usernameToMatch` matches a user name that has personalization data associated with that page. The collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances.       This method passes parameter wildcard characters to the underlying personalization provider, so how the data store handles these characters depends on how the provider handles characters as an asterisk (*), a percent symbol (%), or an underscore (_).       Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with &quot;~/vdir&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to &quot;~/vdir%&quot;.       Likewise, a wildcard search on a partial user name could have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with &quot;John&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property would look like &quot;John%&quot;.       Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.       Both `pathToMatch` and `usernameToMatch` can be `null`. The `usernameToMatch` parameter can have commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters.       The data returned is constrained by `pageIndex` and `pageSize`, where `pageIndex` controls which records to return and `pageSize` controls the number of records to return. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available."
   example:
-  - "The following code example demonstrates how to use the FindUserState method. The complete example can be found in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration> class overview topic.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](../Topic/Script%20Exploits%20Overview.md).  \n  \n [!code-cs[WebParts_PersAdmin#2](~/add/codesnippet/CSharp/2426ef7b-aba1-497d-bdb3-_1.ascx)]"
+  - "The following code example demonstrates how to use the FindUserState method. The complete example can be found in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration> class overview topic.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[WebParts_PersAdmin#2](~/add/codesnippet/csharp/2426ef7b-aba1-497d-bdb3-_1.ascx)]"
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection FindUserState (string pathToMatch, string usernameToMatch, int pageIndex, int pageSize, out int totalRecords);
     parameters:
@@ -328,33 +314,31 @@ items:
       description: "The total number or records available."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection&quot;></xref> that contains per-user personalization state information."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pathToMatch or usernameToMatch before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n pageIndex is less than zero.  \n  \n \\- or -  \n  \n pageSize is less than or equal to zero.  \n  \n -or-  \n  \n The combination of pageIndex and pageSize exceeds <xref:System.Int32.MaxValue>.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>pathToMatch</code> or <code>usernameToMatch</code> before or after trimming is an empty string (\"\").  \n  \n \\- or -  \n  \n <code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than or equal to zero.  \n  \n -or-  \n  \n The combination of <code>pageIndex</code> and <code>pageSize</code> exceeds <xref:System.Int32.MaxValue>.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState(System.DateTime)
   id: GetAllInactiveUserState(System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetAllInactiveUserState(DateTime)"
+  name: GetAllInactiveUserState(DateTime)
   nameWithType: PersonalizationAdministration.GetAllInactiveUserState(DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState(DateTime)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of all per-user personalization state information associated with inactive users, based on the specified date.
-  remarks: "The returned collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances. Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.  \n  \n This method returns items where the user's <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value. If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is <xref:System.DateTime.MaxValue>, this method effectively returns all per-user data in the underlying data store."
+  summary: "Returns a collection of all per-user personalization state information associated with inactive users, based on the specified date."
+  remarks: "The returned collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances. Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.       This method returns items where the user&quot;s <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value. If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is <xref:System.DateTime.MaxValue>, this method effectively returns all per-user data in the underlying data store."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection GetAllInactiveUserState (DateTime userInactiveSinceDate);
     parameters:
@@ -363,7 +347,7 @@ items:
       description: "The last date a user&quot;s personalization information was accessed."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A collection of <xref href=&quot;System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo&quot;></xref> instances."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState*
   exceptions:
   - type: System.ArgumentException
@@ -373,23 +357,21 @@ items:
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState(System.DateTime,System.Int32,System.Int32,System.Int32@)
   id: GetAllInactiveUserState(System.DateTime,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetAllInactiveUserState(DateTime,Int32,Int32,Int32)"
+  name: GetAllInactiveUserState(DateTime,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.GetAllInactiveUserState(DateTime,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState(DateTime,Int32,Int32,Int32)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a subset of all per-user personalization state information associated with inactive users, based on the specified parameters.
-  remarks: "The returned collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances. Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.  \n  \n This method returns items where the user's <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value. If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is <xref:System.DateTime.MaxValue>, this method effectively returns all per-user data in the underlying data store.  \n  \n The return values are constrained by the `pageIndex` and `pageSize` parameters, where `pageIndex` controls which records to return and `pageSize` controls the number of records to return. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available."
+  summary: "Returns a subset of all per-user personalization state information associated with inactive users, based on the specified parameters."
+  remarks: "The returned collection contains only <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances. Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.       This method returns items where the user&quot;s <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value. If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is <xref:System.DateTime.MaxValue>, this method effectively returns all per-user data in the underlying data store.       The return values are constrained by the `pageIndex` and `pageSize` parameters, where `pageIndex` controls which records to return and `pageSize` controls the number of records to return. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection GetAllInactiveUserState (DateTime userInactiveSinceDate, int pageIndex, int pageSize, out int totalRecords);
     parameters:
@@ -407,33 +389,31 @@ items:
       description: "The total number of records available."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A collection of <xref href=&quot;System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo&quot;></xref> instances."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pageIndex is less than zero.  \n  \n \\- or -  \n  \n pageSize is less than or equal to zero.  \n  \n \\- or -  \n  \n The combination of pageIndex and pageSize exceeds <xref:System.Int32.MaxValue>.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type."
+    description: "<code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than or equal to zero.  \n  \n \\- or -  \n  \n The combination of <code>pageIndex</code> and <code>pageSize</code> exceeds <xref:System.Int32.MaxValue>.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   id: GetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetAllState(PersonalizationScope)"
+  name: GetAllState(PersonalizationScope)
   nameWithType: PersonalizationAdministration.GetAllState(PersonalizationScope)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState(PersonalizationScope)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of all personalization state information from the underlying data store for the requested personalization scope.
-  remarks: Note that the returned collection contains only <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects of either type <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> or type <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo>. Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider.
+  summary: "Returns a collection of all personalization state information from the underlying data store for the requested personalization scope."
+  remarks: "Note that the returned collection contains only <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects of either type <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> or type <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo>. Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection GetAllState (System.Web.UI.WebControls.WebParts.PersonalizationScope scope);
     parameters:
@@ -442,7 +422,7 @@ items:
       description: "The scope of the personalization information to be retrieved."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection&quot;></xref> containing state information for the specified scope."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState*
   exceptions:
   - type: System.ArgumentException
@@ -453,25 +433,23 @@ items:
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "\n    scope is not a valid member of the  enumeration."
+    description: "<code>scope</code> is not a valid member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope,System.Int32,System.Int32,System.Int32@)
   id: GetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetAllState(PersonalizationScope,Int32,Int32,Int32)"
+  name: GetAllState(PersonalizationScope,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.GetAllState(PersonalizationScope,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState(PersonalizationScope,Int32,Int32,Int32)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a subset of all personalization state information from the underlying data store, based on the specified parameters.
-  remarks: "The items in the collection returned are based primarily on scope, and then the records corresponding to that scope are further reduced to a subset based on the `pageIndex` and `pageSize` parameters. The collection returned contains either <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> instances only, or <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances only.  \n  \n The items returned are constrained by the `pageIndex` and `pageSize` parameters, where `pageIndex` controls which records to return and `pageSize` controls the number of records returned. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available.  \n  \n Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider."
+  summary: "Returns a subset of all personalization state information from the underlying data store, based on the specified parameters."
+  remarks: "The items in the collection returned are based primarily on scope, and then the records corresponding to that scope are further reduced to a subset based on the `pageIndex` and `pageSize` parameters. The collection returned contains either <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> instances only, or <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> instances only.       The items returned are constrained by the `pageIndex` and `pageSize` parameters, where `pageIndex` controls which records to return and `pageSize` controls the number of records returned. For example, if `pageIndex` was set to 0 and `pageSize` was set to 25, the data returned would be the first 25 entries. If `pageIndex` was set to 1 and `pageSize` was set to 25, the data returned would be entries 26 to 50. The `totalRecords` parameter returns the total number of records that are available.       Using the default personalization provider, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo>-derived objects are returned in alphabetical order, and sorted by a combination of path and user name in ascending order. The order of the objects in the collection is determined by the provider."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection GetAllState (System.Web.UI.WebControls.WebParts.PersonalizationScope scope, int pageIndex, int pageSize, out int totalRecords);
     parameters:
@@ -489,36 +467,34 @@ items:
       description: "The total number of records available."
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "To be added."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection&quot;></xref> containing state information for the specified scope and parameters."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pageIndex is less than zero.  \n  \n \\- or -  \n  \n pageSize is less than or equal to zero.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The combination of pageIndex and pageSize exceeds <xref:System.Int32.MaxValue>."
+    description: "<code>pageIndex</code> is less than zero.  \n  \n \\- or -  \n  \n <code>pageSize</code> is less than or equal to zero.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The combination of <code>pageIndex</code> and <code>pageSize</code> exceeds <xref:System.Int32.MaxValue>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "\n    scope is not a valid member of the  enumeration."
+    description: "<code>scope</code> is not a valid member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState(System.DateTime)
   id: GetCountOfInactiveUserState(System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetCountOfInactiveUserState(DateTime)"
+  name: GetCountOfInactiveUserState(DateTime)
   nameWithType: PersonalizationAdministration.GetCountOfInactiveUserState(DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState(DateTime)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a count of the per-user personalization items in the underlying data store for inactive users, based on the parameter specified.
-  remarks: This method returns records where the user's <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value. If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is set to <xref:System.DateTime.MaxValue>, a count of all users' personalization information is returned.
+  summary: "Returns a count of the per-user personalization items in the underlying data store for inactive users, based on the parameter specified."
+  remarks: "This method returns records where the user&quot;s <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value. If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is set to <xref:System.DateTime.MaxValue>, a count of all users&quot; personalization information is returned."
   syntax:
     content: public static int GetCountOfInactiveUserState (DateTime userInactiveSinceDate);
     parameters:
@@ -527,7 +503,7 @@ items:
       description: "The last date a user&quot;s personalization information was accessed."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of personalization items for inactive users."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState*
   exceptions:
   - type: System.ArgumentException
@@ -540,23 +516,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider returned a negative number for the count."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState(System.String,System.DateTime)
   id: GetCountOfInactiveUserState(System.String,System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetCountOfInactiveUserState(String,DateTime)"
+  name: GetCountOfInactiveUserState(String,DateTime)
   nameWithType: PersonalizationAdministration.GetCountOfInactiveUserState(String,DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState(String,DateTime)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a count of the per-user personalization items in the underlying data store for inactive users, based on the specified parameters.
-  remarks: "This method returns records where the page matches the specified `pathtoMatch` parameter and the user's <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value. If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is set to <xref:System.DateTime.MaxValue>, a count of all users' personalization information is returned.  \n  \n Note that the `pathToMatch` parameter can include wildcard characters. The method passes wildcard characters to the underlying data store. Wildcard character support is currently dependent on how each provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).  \n  \n Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with \"~/vdir\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to \"~/vdir%\".  \n  \n The `pathToMatch` parameter can be `null`. If set to `null`, the parameter is ignored when performing queries."
+  summary: "Returns a count of the per-user personalization items in the underlying data store for inactive users, based on the specified parameters."
+  remarks: "This method returns records where the page matches the specified `pathtoMatch` parameter and the user&quot;s <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value. If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is set to <xref:System.DateTime.MaxValue>, a count of all users&quot; personalization information is returned.       Note that the `pathToMatch` parameter can include wildcard characters. The method passes wildcard characters to the underlying data store. Wildcard character support is currently dependent on how each provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).       Normally, for SQL-compliant data stores, you can perform a wildcard search on a partial path with the wildcard character appearing at the beginning, the end, or the middle of the search string text in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property. For example, to find all paths that start with &quot;~/vdir&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.PathToMatch%2A> property would be set to &quot;~/vdir%&quot;.       The `pathToMatch` parameter can be `null`. If set to `null`, the parameter is ignored when performing queries."
   syntax:
     content: public static int GetCountOfInactiveUserState (string pathToMatch, DateTime userInactiveSinceDate);
     parameters:
@@ -568,12 +542,12 @@ items:
       description: "The last date a user&quot;s personalization information was accessed."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The count of the per-user personalization items in the underlying data store for inactive users."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    pathToMatch, after trimming, is an empty string (\"\").  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>pathToMatch</code>, after trimming, is an empty string (\"\").  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -581,25 +555,23 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider returned a negative number for the count."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   id: GetCountOfState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetCountOfState(PersonalizationScope)"
+  name: GetCountOfState(PersonalizationScope)
   nameWithType: PersonalizationAdministration.GetCountOfState(PersonalizationScope)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState(PersonalizationScope)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a count of the personalization state items in the underlying data store that exist for the specified scope.
-  remarks: Use this method to determine the number of personalization state items in the underlying data store for the specified scope. Use the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState%2A> method to further narrow the count to a particular page.
+  summary: "Returns a count of the personalization state items in the underlying data store that exist for the specified scope."
+  remarks: "Use this method to determine the number of personalization state items in the underlying data store for the specified scope. Use the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState%2A> method to further narrow the count to a particular page."
   example:
-  - "The following code example demonstrates how to use the GetCountOfState method. The complete example can be found in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration> class overview topic.  \n  \n [!code-cs[WebParts_PersAdmin#5](~/add/codesnippet/CSharp/140dd6bd-6b96-4e0e-9b1a-_1.ascx)]"
+  - "The following code example demonstrates how to use the GetCountOfState method. The complete example can be found in the <xref:System.Web.UI.WebControls.WebParts.PersonalizationAdministration> class overview topic.  \n  \n [!code-cs[WebParts_PersAdmin#5](~/add/codesnippet/csharp/140dd6bd-6b96-4e0e-9b1a-_1.ascx)]"
   syntax:
     content: public static int GetCountOfState (System.Web.UI.WebControls.WebParts.PersonalizationScope scope);
     parameters:
@@ -608,12 +580,12 @@ items:
       description: "The scope of the personalization state items to retrieve."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of personalization state items for the specified scope."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "\n    scope is not a valid member of the  enumeration."
+    description: "<code>scope</code> is not a valid member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
@@ -624,23 +596,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider returned a negative number for the count."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState(System.Web.UI.WebControls.WebParts.PersonalizationScope,System.String)
   id: GetCountOfState(System.Web.UI.WebControls.WebParts.PersonalizationScope,System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetCountOfState(PersonalizationScope,String)"
+  name: GetCountOfState(PersonalizationScope,String)
   nameWithType: PersonalizationAdministration.GetCountOfState(PersonalizationScope,String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState(PersonalizationScope,String)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a count of the personalization state items in the underlying data store that exist for the specified parameters.
-  remarks: Use this method to determine the number of personalization state items in the underlying data store for the specified scope and path.
+  summary: "Returns a count of the personalization state items in the underlying data store that exist for the specified parameters."
+  remarks: "Use this method to determine the number of personalization state items in the underlying data store for the specified scope and path."
   syntax:
     content: public static int GetCountOfState (System.Web.UI.WebControls.WebParts.PersonalizationScope scope, string pathToMatch);
     parameters:
@@ -652,39 +622,37 @@ items:
       description: "The path to the page with personalization state items to retrieve."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of personalization state items for the specified scope."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n pathToMatch, after trimming, is an empty string (\"\").  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n <code>pathToMatch</code>, after trimming, is an empty string (\"\").  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "\n    scope is not a valid member of the  enumeration."
+    description: "<code>scope</code> is not a valid member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
     description: "The default provider returned a negative number for the count."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfUserState(System.String)
   id: GetCountOfUserState(System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "GetCountOfUserState(String)"
+  name: GetCountOfUserState(String)
   nameWithType: PersonalizationAdministration.GetCountOfUserState(String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfUserState(String)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a count of the personalization state items in the underlying data store that exist for the specified user.
-  remarks: "This method returns a count of the number of per-user personalization items in the underlying data store that exist for the given `usernameToMatch`.  \n  \n Note that the `usernameToMatch` parameter can include wildcard characters. This method passes wildcard characters to the underlying data store. Wildcard character support is currently dependent on how each provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).  \n  \n Normally, for SQL-compliant data stores, a wildcard search on a partial user name can have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with \"John\", the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> parameter would look like \"John%\".  \n  \n The `usernameToMatch` parameter can be `null`. If set to `null`, the parameter is ignored when performing queries. The `usernameToMatch` parameter is allowed to have commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters."
+  summary: "Returns a count of the personalization state items in the underlying data store that exist for the specified user."
+  remarks: "This method returns a count of the number of per-user personalization items in the underlying data store that exist for the given `usernameToMatch`.       Note that the `usernameToMatch` parameter can include wildcard characters. This method passes wildcard characters to the underlying data store. Wildcard character support is currently dependent on how each provider handles characters such as an asterisk (*), a percent symbol (%), or an underscore (_).       Normally, for SQL-compliant data stores, a wildcard search on a partial user name can have the wildcard character appear at any point in the text string of the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> property. For example, to find all user names that start with &quot;John&quot;, the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UsernameToMatch%2A> parameter would look like &quot;John%&quot;.       The `usernameToMatch` parameter can be `null`. If set to `null`, the parameter is ignored when performing queries. The `usernameToMatch` parameter is allowed to have commas (,) because some data stores, such as those running Microsoft SQL Server, allow commas as wildcard characters."
   syntax:
     content: public static int GetCountOfUserState (string usernameToMatch);
     parameters:
@@ -693,12 +661,12 @@ items:
       description: "The user name associated with the personalization state information to retrieve."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of personalization state items for the specified user."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfUserState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    usernameToMatch is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>usernameToMatch</code> is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -706,30 +674,28 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider returned a negative number for the count."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Provider
   id: Provider
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "Provider"
+  name: Provider
   nameWithType: PersonalizationAdministration.Provider
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Provider
   type: Property
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns an instance of the default personalization provider.
-  remarks: Use this property to retrieve an instance of the default personalization provider. This is the provider specified in the personalization provider section of the Web.config or Machine.config file.
+  summary: "Returns an instance of the default personalization provider."
+  remarks: "Use this property to retrieve an instance of the default personalization provider. This is the provider specified in the personalization provider section of the Web.config or Machine.config file."
   example:
-  - "The following code example demonstrates how to use the Provider property.  \n  \n [!code-cs[WebParts_PersAdmin#4](~/add/codesnippet/CSharp/p-system.web.ui.webcontr_1178_1.ascx)]"
+  - "The following code example demonstrates how to use the Provider property.  \n  \n [!code-cs[WebParts_PersAdmin#4](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1178_1.ascx)]"
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationProvider Provider { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationProvider
-      description: "A <see cref=&quot;T:System.Web.UI.WebControls.WebParts.PersonalizationProvider&quot;></see> of the default provider."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationProvider&quot;></xref> of the default provider."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Provider*
   exceptions:
   - type: System.ArgumentException
@@ -739,28 +705,26 @@ items:
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Providers
   id: Providers
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "Providers"
+  name: Providers
   nameWithType: PersonalizationAdministration.Providers
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Providers
   type: Property
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Returns a collection of personalization providers indexed by name.
-  remarks: "This property returns a collection of personalization providers. The collection is populated at the initialization of the application and contains references to provider objects indexed by name. The default provider is indexed by the name specified in the Web.config or Machine.config configuration file.  \n  \n Note that the returned collection is read-only; calls to `Remove`, `Add`, or `Clear` will result in an exception being thrown."
+  summary: "Returns a collection of personalization providers indexed by name."
+  remarks: "This property returns a collection of personalization providers. The collection is populated at the initialization of the application and contains references to provider objects indexed by name. The default provider is indexed by the name specified in the Web.config or Machine.config configuration file.       Note that the returned collection is read-only; calls to `Remove`, `Add`, or `Clear` will result in an exception being thrown."
   syntax:
     content: public static System.Web.UI.WebControls.WebParts.PersonalizationProviderCollection Providers { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationProviderCollection
-      description: "A read-only <see cref=&quot;T:System.Web.UI.WebControls.WebParts.PersonalizationProviderCollection&quot;></see> that contains the personalization providers available to the application."
+      description: "A read-only <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationProviderCollection&quot;></xref> that contains the personalization providers available to the application."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Providers*
   exceptions:
   - type: System.ArgumentException
@@ -770,23 +734,21 @@ items:
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   id: ResetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetAllState(PersonalizationScope)"
+  name: ResetAllState(PersonalizationScope)
   nameWithType: PersonalizationAdministration.ResetAllState(PersonalizationScope)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetAllState(PersonalizationScope)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets all personalization data in the underlying data store by deleting all rows associated with the specified scope.
-  remarks: This method deletes all rows in the underlying data store associated with the specified personalization scope.
+  summary: "Resets all personalization data in the underlying data store by deleting all rows associated with the specified scope."
+  remarks: "This method deletes all rows in the underlying data store associated with the specified personalization scope."
   syntax:
     content: public static int ResetAllState (System.Web.UI.WebControls.WebParts.PersonalizationScope scope);
     parameters:
@@ -795,12 +757,12 @@ items:
       description: "The scope associated with the personalization data to be deleted."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of items that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetAllState*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "\n    scope is not a valid member of the  enumeration."
+    description: "<code>scope</code> is not a valid member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
     description: "The provider for a personalization provider defined in configuration is not of the correct type."
@@ -811,23 +773,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider returned a negative number for the count of affected rows."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState(System.DateTime)
   id: ResetInactiveUserState(System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetInactiveUserState(DateTime)"
+  name: ResetInactiveUserState(DateTime)
   nameWithType: PersonalizationAdministration.ResetInactiveUserState(DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState(DateTime)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets all per-user personalization state information in the underlying data store, based on the specified parameter.
-  remarks: "This method resets all per-user state information in the underlying data store, where the user's <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> value.  \n  \n If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is set to <xref:System.DateTime.MaxValue>, this method resets all per-user data in the underlying data store."
+  summary: "Resets all per-user personalization state information in the underlying data store, based on the specified parameter."
+  remarks: "This method resets all per-user state information in the underlying data store, where the user&quot;s <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> value.       If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is set to <xref:System.DateTime.MaxValue>, this method resets all per-user data in the underlying data store."
   syntax:
     content: public static int ResetInactiveUserState (DateTime userInactiveSinceDate);
     parameters:
@@ -836,7 +796,7 @@ items:
       description: "The last date a user&quot;s personalization information was accessed."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of rows in the underlying data store that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState*
   exceptions:
   - type: System.ArgumentException
@@ -849,23 +809,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider returned a negative number for the count."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState(System.String,System.DateTime)
   id: ResetInactiveUserState(System.String,System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetInactiveUserState(String,DateTime)"
+  name: ResetInactiveUserState(String,DateTime)
   nameWithType: PersonalizationAdministration.ResetInactiveUserState(String,DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState(String,DateTime)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets all per-user state information in the underlying data store for inactive users, based on the specified parameters.
-  remarks: "This method resets all per-user state in the underlying data store associated with the specified path, where the user's <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value.  \n  \n For data stores that require more than one row of data to store personalization state for a page, or for a user and page combination, the count of reset rows might differ from the count of personalization state. If the underlying provider exposes data from a transaction-aware data store, this method performs its operations in a single transaction.  \n  \n It is not an error to attempt to reset nonexistent shared state.  \n  \n If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is <xref:System.DateTime.MaxValue>, this method effectively resets all per-user data in the underlying data store for the specified path."
+  summary: "Resets all per-user state information in the underlying data store for inactive users, based on the specified parameters."
+  remarks: "This method resets all per-user state in the underlying data store associated with the specified path, where the user&quot;s <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo.LastActivityDate%2A> property value is less than or equal to the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> property value.       For data stores that require more than one row of data to store personalization state for a page, or for a user and page combination, the count of reset rows might differ from the count of personalization state. If the underlying provider exposes data from a transaction-aware data store, this method performs its operations in a single transaction.       It is not an error to attempt to reset nonexistent shared state.       If <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateQuery.UserInactiveSinceDate%2A> is <xref:System.DateTime.MaxValue>, this method effectively resets all per-user data in the underlying data store for the specified path."
   syntax:
     content: public static int ResetInactiveUserState (string path, DateTime userInactiveSinceDate);
     parameters:
@@ -877,15 +835,15 @@ items:
       description: "The last active date to be used in resetting user state personalization items."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of rows in the underlying data store that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "\n    path is ."
+    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    path is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>path</code> is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -893,23 +851,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider returned a negative number for the count."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState(System.String)
   id: ResetSharedState(System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetSharedState(String)"
+  name: ResetSharedState(String)
   nameWithType: PersonalizationAdministration.ResetSharedState(String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState(String)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets shared state in the underlying data store for the specified path.
-  remarks: It is not an error to attempt to reset nonexistent shared state.
+  summary: "Resets shared state in the underlying data store for the specified path."
+  remarks: "It is not an error to attempt to reset nonexistent shared state."
   syntax:
     content: public static bool ResetSharedState (string path);
     parameters:
@@ -918,15 +874,15 @@ items:
       description: "The path to the page associated with the personalization state information to be reset."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization shared state was reset; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "\n    path is ."
+    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    path is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>path</code> is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -934,23 +890,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider indicated that the number of deleted rows was either a negative number or was greater than one."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState(System.String[])
   id: ResetSharedState(System.String[])
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetSharedState(String[])"
+  name: ResetSharedState(String[])
   nameWithType: PersonalizationAdministration.ResetSharedState(String[])
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState(String[])
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets shared state in the underlying data store for the specified paths.
-  remarks: This method returns the count of the number of rows that were reset. It is not an error to attempt to reset nonexistent shared state.
+  summary: "Resets shared state in the underlying data store for the specified paths."
+  remarks: "This method returns the count of the number of rows that were reset. It is not an error to attempt to reset nonexistent shared state."
   syntax:
     content: public static int ResetSharedState (string[] paths);
     parameters:
@@ -959,15 +913,15 @@ items:
       description: "The paths to the pages associated with the personalization state information to be reset."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of rows that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "\n    paths is ."
+    description: "<code>paths</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    paths is a zero-length array.  \n  \n \\- or -  \n  \n A member of paths is either  or an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>paths</code> is a zero-length array.  \n  \n \\- or -  \n  \n A member of <code>paths</code> is either <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref> or an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -975,40 +929,38 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider indicated that the number of deleted rows was a negative number."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetState(System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection)
   id: ResetState(System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetState(PersonalizationStateInfoCollection)"
+  name: ResetState(PersonalizationStateInfoCollection)
   nameWithType: PersonalizationAdministration.ResetState(PersonalizationStateInfoCollection)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetState(PersonalizationStateInfoCollection)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets personalization data in the underlying data store, based on the items contained in the collection.
-  remarks: "This method resets personalization data in the underlying data store, based on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo> objects contained in the collection. You can use this method to selectively delete a mixture of shared and per-user data based on the collection's contents. <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> objects indicate that shared data for a page will be reset; <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> objects indicate that per-user data for a specific page will be reset.  \n  \n> [!NOTE]\n>  This method does not guarantee that all resets occur within a single transaction because the collection points to random sets of personalization data.  \n  \n It is not an error for the collection to contain objects that reference nonexistent data."
+  summary: "Resets personalization data in the underlying data store, based on the items contained in the collection."
+  remarks: "This method resets personalization data in the underlying data store, based on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationStateInfo> objects contained in the collection. You can use this method to selectively delete a mixture of shared and per-user data based on the collection&quot;s contents. <xref:System.Web.UI.WebControls.WebParts.SharedPersonalizationStateInfo> objects indicate that shared data for a page will be reset; <xref:System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo> objects indicate that per-user data for a specific page will be reset.      > [!NOTE] >  This method does not guarantee that all resets occur within a single transaction because the collection points to random sets of personalization data.       It is not an error for the collection to contain objects that reference nonexistent data."
   syntax:
     content: public static int ResetState (System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection data);
     parameters:
     - id: data
       type: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
-      description: "A collection of  objects indicating what data should be reset."
+      description: "A collection of <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationStateInfo&quot;></xref> objects indicating what data should be reset."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of rows that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetState*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "\n    data is ."
+    description: "<code>data</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    data is an empty collection.  \n  \n -or-  \n  \n An element of the collection is .  \n  \n -or-  \n  \n The path value of a  instance in the collection is  or an empty string (\"\").  \n  \n -or-  \n  \n The user value of a  instance in the collection is , an empty string, or contains commas.  \n  \n -or-  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n -or-  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>data</code> is an empty collection.       -or-       An element of the collection is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The path value of a <xref href=&quot;System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo&quot;></xref> instance in the collection is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string (&quot;&quot;).       -or-       The <code>user</code> value of a <xref href=&quot;System.Web.UI.WebControls.WebParts.UserPersonalizationStateInfo&quot;></xref> instance in the collection is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, an empty string, or contains commas.       -or-       The provider for a personalization provider defined in configuration is not of the correct type.       -or-       The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.       -or-       The default personalization provider defined in configuration could not be found."
@@ -1016,23 +968,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider indicated that the number of deleted rows was a negative number."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String)
   id: ResetUserState(System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetUserState(String)"
+  name: ResetUserState(String)
   nameWithType: PersonalizationAdministration.ResetUserState(String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(String)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets all per-user state in the underlying data store for the specified path.
-  remarks: This method returns the count of the number of rows that were reset. It is not an error to attempt to reset nonexistent shared state.
+  summary: "Resets all per-user state in the underlying data store for the specified path."
+  remarks: "This method returns the count of the number of rows that were reset. It is not an error to attempt to reset nonexistent shared state."
   syntax:
     content: public static int ResetUserState (string path);
     parameters:
@@ -1041,15 +991,15 @@ items:
       description: "The path to the page associated with the personalization state information to be reset."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of rows that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "\n    path is ."
+    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    path is an empty string (\"\").  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>path</code> is an empty string (\"\").  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -1057,23 +1007,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider indicated that the number of deleted rows was a negative number."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String[])
   id: ResetUserState(System.String[])
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetUserState(String[])"
+  name: ResetUserState(String[])
   nameWithType: PersonalizationAdministration.ResetUserState(String[])
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(String[])
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets all per-user state in the underlying data store for the specified paths.
-  remarks: "This method resets all per-user state in the underlying data store associated with the users contained in the `usernames` parameter, and returns a count of the number of rows that were reset.  \n  \n It is not an error to attempt to reset nonexistent shared state."
+  summary: "Resets all per-user state in the underlying data store for the specified paths."
+  remarks: "This method resets all per-user state in the underlying data store associated with the users contained in the `usernames` parameter, and returns a count of the number of rows that were reset.       It is not an error to attempt to reset nonexistent shared state."
   syntax:
     content: public static int ResetUserState (string[] usernames);
     parameters:
@@ -1082,15 +1030,15 @@ items:
       description: "An array of user names whose per-user data should be reset."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of rows that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "\n    usernames is ."
+    description: "<code>usernames</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    usernames is a zero-length array.  \n  \n \\- or -  \n  \n A member of usernames is either , contains commas, or is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>usernames</code> is a zero-length array.  \n  \n \\- or -  \n  \n A member of <code>usernames</code> is either <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, contains commas, or is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -1098,23 +1046,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider indicated that the number of deleted rows was a negative number."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String,System.String)
   id: ResetUserState(System.String,System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetUserState(String,String)"
+  name: ResetUserState(String,String)
   nameWithType: PersonalizationAdministration.ResetUserState(String,String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(String,String)
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets per-user state in the underlying data store for the specified combination of user name and path.
-  remarks: It is not an error to attempt to reset nonexistent user state.
+  summary: "Resets per-user state in the underlying data store for the specified combination of user name and path."
+  remarks: "It is not an error to attempt to reset nonexistent user state."
   syntax:
     content: public static bool ResetUserState (string path, string username);
     parameters:
@@ -1126,15 +1072,15 @@ items:
       description: "The user name associated with the personalization data to be reset."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "The number of rows that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "\n    path or username is ."
+    description: "<code>path</code> or <code>username</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    path or username is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n username contains commas.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>path</code> or <code>username</code> is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n <code>username</code> contains commas.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -1142,23 +1088,21 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider indicated that the number of deleted rows was a negative number."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String,System.String[])
   id: ResetUserState(System.String,System.String[])
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   langs:
   - csharp
-  name: "ResetUserState(String,String[])"
+  name: ResetUserState(String,String[])
   nameWithType: PersonalizationAdministration.ResetUserState(String,String[])
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(String,String[])
   type: Method
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: Resets per-user state in the underlying data store for the page and users specified.
-  remarks: "This method resets per-user state in the underlying data store associated with each user contained in the `usernames` parameter for the page specified by `path.`  \n  \n It is not an error to attempt to reset nonexistent user state."
+  summary: "Resets per-user state in the underlying data store for the page and users specified."
+  remarks: "This method resets per-user state in the underlying data store associated with each user contained in the `usernames` parameter for the page specified by `path.`       It is not an error to attempt to reset nonexistent user state."
   syntax:
     content: public static int ResetUserState (string path, string[] usernames);
     parameters:
@@ -1170,15 +1114,15 @@ items:
       description: "The user names associated with the personalization data to be reset."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "The number of rows that were reset."
   overload: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "\n    path or usernames is ."
+    description: "<code>path</code> or <code>usernames</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "\n    path is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n A member of usernames is , an empty string after trimming, or contains commas.  \n  \n \\- or -  \n  \n usernames is a zero-length array.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
+    description: "<code>path</code> is an empty string (\"\") after trimming.  \n  \n \\- or -  \n  \n A member of <code>usernames</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>, an empty string after trimming, or contains commas.  \n  \n \\- or -  \n  \n <code>usernames</code> is a zero-length array.  \n  \n \\- or -  \n  \n The provider for a personalization provider defined in configuration is not of the correct type.  \n  \n \\- or -  \n  \n The length of the string of any parameter is greater than 256 characters."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
     description: "A configuration exception occurred while attempting to create and initialize an instance of one of the configured personalization providers.  \n  \n \\- or -  \n  \n The default personalization provider defined in configuration could not be found."
@@ -1186,208 +1130,227 @@ items:
     commentId: T:System.Web.HttpException
     description: "The default provider indicated that the number of deleted rows was a negative number."
   platform:
-  - net-11
-  - net-20
-  - netcore-10
+  - net462
 references:
 - uid: System.Object
   isExternal: false
-  name: "System.Object"
+  name: System.Object
+- uid: System.ArgumentException
+  isExternal: true
+  name: System.ArgumentException
+- uid: System.Configuration.ConfigurationErrorsException
+  parent: System.Configuration
+  isExternal: false
+  name: ConfigurationErrorsException
+  nameWithType: ConfigurationErrorsException
+  fullName: System.Configuration.ConfigurationErrorsException
+- uid: System.ArgumentOutOfRangeException
+  isExternal: true
+  name: System.ArgumentOutOfRangeException
+- uid: System.Web.HttpException
+  parent: System.Web
+  isExternal: false
+  name: HttpException
+  nameWithType: HttpException
+  fullName: System.Web.HttpException
+- uid: System.ArgumentNullException
+  isExternal: true
+  name: System.ArgumentNullException
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ApplicationName
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ApplicationName"
+  name: ApplicationName
   nameWithType: PersonalizationAdministration.ApplicationName
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ApplicationName
 - uid: System.String
   parent: System
   isExternal: true
-  name: "String"
+  name: String
   nameWithType: String
   fullName: System.String
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState(System.String,System.String,System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindInactiveUserState(String,String,DateTime)"
+  name: FindInactiveUserState(String,String,DateTime)
   nameWithType: PersonalizationAdministration.FindInactiveUserState(String,String,DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState(String,String,DateTime)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
   parent: System.Web.UI.WebControls.WebParts
   isExternal: false
-  name: "PersonalizationStateInfoCollection"
+  name: PersonalizationStateInfoCollection
   nameWithType: PersonalizationStateInfoCollection
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection
 - uid: System.DateTime
   parent: System
   isExternal: true
-  name: "DateTime"
+  name: DateTime
   nameWithType: DateTime
   fullName: System.DateTime
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState(System.String,System.String,System.DateTime,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindInactiveUserState(String,String,DateTime,Int32,Int32,Int32)"
+  name: FindInactiveUserState(String,String,DateTime,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.FindInactiveUserState(String,String,DateTime,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState(String,String,DateTime,Int32,Int32,Int32)
 - uid: System.Int32
   parent: System
   isExternal: true
-  name: "Int32"
+  name: Int32
   nameWithType: Int32
   fullName: System.Int32
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState(System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindSharedState(String)"
+  name: FindSharedState(String)
   nameWithType: PersonalizationAdministration.FindSharedState(String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState(String)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState(System.String,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindSharedState(String,Int32,Int32,Int32)"
+  name: FindSharedState(String,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.FindSharedState(String,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState(String,Int32,Int32,Int32)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState(System.String,System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindUserState(String,String)"
+  name: FindUserState(String,String)
   nameWithType: PersonalizationAdministration.FindUserState(String,String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState(String,String)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState(System.String,System.String,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindUserState(String,String,Int32,Int32,Int32)"
+  name: FindUserState(String,String,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.FindUserState(String,String,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState(String,String,Int32,Int32,Int32)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState(System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetAllInactiveUserState(DateTime)"
+  name: GetAllInactiveUserState(DateTime)
   nameWithType: PersonalizationAdministration.GetAllInactiveUserState(DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState(DateTime)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState(System.DateTime,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetAllInactiveUserState(DateTime,Int32,Int32,Int32)"
+  name: GetAllInactiveUserState(DateTime,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.GetAllInactiveUserState(DateTime,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState(DateTime,Int32,Int32,Int32)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetAllState(PersonalizationScope)"
+  name: GetAllState(PersonalizationScope)
   nameWithType: PersonalizationAdministration.GetAllState(PersonalizationScope)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState(PersonalizationScope)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationScope
   parent: System.Web.UI.WebControls.WebParts
   isExternal: false
-  name: "PersonalizationScope"
+  name: PersonalizationScope
   nameWithType: PersonalizationScope
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationScope
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope,System.Int32,System.Int32,System.Int32@)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetAllState(PersonalizationScope,Int32,Int32,Int32)"
+  name: GetAllState(PersonalizationScope,Int32,Int32,Int32)
   nameWithType: PersonalizationAdministration.GetAllState(PersonalizationScope,Int32,Int32,Int32)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState(PersonalizationScope,Int32,Int32,Int32)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState(System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetCountOfInactiveUserState(DateTime)"
+  name: GetCountOfInactiveUserState(DateTime)
   nameWithType: PersonalizationAdministration.GetCountOfInactiveUserState(DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState(DateTime)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState(System.String,System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetCountOfInactiveUserState(String,DateTime)"
+  name: GetCountOfInactiveUserState(String,DateTime)
   nameWithType: PersonalizationAdministration.GetCountOfInactiveUserState(String,DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState(String,DateTime)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetCountOfState(PersonalizationScope)"
+  name: GetCountOfState(PersonalizationScope)
   nameWithType: PersonalizationAdministration.GetCountOfState(PersonalizationScope)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState(PersonalizationScope)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState(System.Web.UI.WebControls.WebParts.PersonalizationScope,System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetCountOfState(PersonalizationScope,String)"
+  name: GetCountOfState(PersonalizationScope,String)
   nameWithType: PersonalizationAdministration.GetCountOfState(PersonalizationScope,String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState(PersonalizationScope,String)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfUserState(System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetCountOfUserState(String)"
+  name: GetCountOfUserState(String)
   nameWithType: PersonalizationAdministration.GetCountOfUserState(String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfUserState(String)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Provider
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "Provider"
+  name: Provider
   nameWithType: PersonalizationAdministration.Provider
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Provider
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationProvider
   parent: System.Web.UI.WebControls.WebParts
   isExternal: false
-  name: "PersonalizationProvider"
+  name: PersonalizationProvider
   nameWithType: PersonalizationProvider
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationProvider
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Providers
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "Providers"
+  name: Providers
   nameWithType: PersonalizationAdministration.Providers
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Providers
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationProviderCollection
   parent: System.Web.UI.WebControls.WebParts
   isExternal: false
-  name: "PersonalizationProviderCollection"
+  name: PersonalizationProviderCollection
   nameWithType: PersonalizationProviderCollection
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationProviderCollection
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetAllState(System.Web.UI.WebControls.WebParts.PersonalizationScope)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetAllState(PersonalizationScope)"
+  name: ResetAllState(PersonalizationScope)
   nameWithType: PersonalizationAdministration.ResetAllState(PersonalizationScope)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetAllState(PersonalizationScope)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState(System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetInactiveUserState(DateTime)"
+  name: ResetInactiveUserState(DateTime)
   nameWithType: PersonalizationAdministration.ResetInactiveUserState(DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState(DateTime)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState(System.String,System.DateTime)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetInactiveUserState(String,DateTime)"
+  name: ResetInactiveUserState(String,DateTime)
   nameWithType: PersonalizationAdministration.ResetInactiveUserState(String,DateTime)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState(String,DateTime)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState(System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetSharedState(String)"
+  name: ResetSharedState(String)
   nameWithType: PersonalizationAdministration.ResetSharedState(String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState(String)
 - uid: System.Boolean
   parent: System
   isExternal: true
-  name: "Boolean"
+  name: Boolean
   nameWithType: Boolean
   fullName: System.Boolean
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState(System.String[])
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetSharedState(String[])"
+  name: ResetSharedState(String[])
   nameWithType: PersonalizationAdministration.ResetSharedState(String[])
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState(String[])
 - uid: System.String[]
   parent: System
   isExternal: true
-  name: "String"
+  name: String
   nameWithType: String
   fullName: System.String[]
   spec.csharp:
   - uid: System.String
-    name: "String"
+    name: String
     nameWithType: String
     fullName: String[]
   - name: '[]'
@@ -1396,110 +1359,110 @@ references:
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetState(System.Web.UI.WebControls.WebParts.PersonalizationStateInfoCollection)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetState(PersonalizationStateInfoCollection)"
+  name: ResetState(PersonalizationStateInfoCollection)
   nameWithType: PersonalizationAdministration.ResetState(PersonalizationStateInfoCollection)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetState(PersonalizationStateInfoCollection)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetUserState(String)"
+  name: ResetUserState(String)
   nameWithType: PersonalizationAdministration.ResetUserState(String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(String)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String[])
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetUserState(String[])"
+  name: ResetUserState(String[])
   nameWithType: PersonalizationAdministration.ResetUserState(String[])
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(String[])
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String,System.String)
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetUserState(String,String)"
+  name: ResetUserState(String,String)
   nameWithType: PersonalizationAdministration.ResetUserState(String,String)
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(String,String)
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(System.String,System.String[])
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetUserState(String,String[])"
+  name: ResetUserState(String,String[])
   nameWithType: PersonalizationAdministration.ResetUserState(String,String[])
   fullName: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState(String,String[])
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ApplicationName*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ApplicationName"
+  name: ApplicationName
   nameWithType: PersonalizationAdministration.ApplicationName
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindInactiveUserState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindInactiveUserState"
+  name: FindInactiveUserState
   nameWithType: PersonalizationAdministration.FindInactiveUserState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindSharedState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindSharedState"
+  name: FindSharedState
   nameWithType: PersonalizationAdministration.FindSharedState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.FindUserState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "FindUserState"
+  name: FindUserState
   nameWithType: PersonalizationAdministration.FindUserState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllInactiveUserState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetAllInactiveUserState"
+  name: GetAllInactiveUserState
   nameWithType: PersonalizationAdministration.GetAllInactiveUserState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetAllState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetAllState"
+  name: GetAllState
   nameWithType: PersonalizationAdministration.GetAllState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfInactiveUserState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetCountOfInactiveUserState"
+  name: GetCountOfInactiveUserState
   nameWithType: PersonalizationAdministration.GetCountOfInactiveUserState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetCountOfState"
+  name: GetCountOfState
   nameWithType: PersonalizationAdministration.GetCountOfState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.GetCountOfUserState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "GetCountOfUserState"
+  name: GetCountOfUserState
   nameWithType: PersonalizationAdministration.GetCountOfUserState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Provider*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "Provider"
+  name: Provider
   nameWithType: PersonalizationAdministration.Provider
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.Providers*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "Providers"
+  name: Providers
   nameWithType: PersonalizationAdministration.Providers
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetAllState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetAllState"
+  name: ResetAllState
   nameWithType: PersonalizationAdministration.ResetAllState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetInactiveUserState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetInactiveUserState"
+  name: ResetInactiveUserState
   nameWithType: PersonalizationAdministration.ResetInactiveUserState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetSharedState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetSharedState"
+  name: ResetSharedState
   nameWithType: PersonalizationAdministration.ResetSharedState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetState"
+  name: ResetState
   nameWithType: PersonalizationAdministration.ResetState
 - uid: System.Web.UI.WebControls.WebParts.PersonalizationAdministration.ResetUserState*
   parent: System.Web.UI.WebControls.WebParts.PersonalizationAdministration
   isExternal: false
-  name: "ResetUserState"
+  name: ResetUserState
   nameWithType: PersonalizationAdministration.ResetUserState
