@@ -1,0 +1,314 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.Build.Framework.ITaskFactory
+  id: ITaskFactory
+  children:
+  - Microsoft.Build.Framework.ITaskFactory.CleanupTask(Microsoft.Build.Framework.ITask)
+  - Microsoft.Build.Framework.ITaskFactory.CreateTask(Microsoft.Build.Framework.IBuildEngine)
+  - Microsoft.Build.Framework.ITaskFactory.FactoryName
+  - Microsoft.Build.Framework.ITaskFactory.GetTaskParameters
+  - Microsoft.Build.Framework.ITaskFactory.Initialize(System.String,System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Framework.TaskPropertyInfo},System.String,Microsoft.Build.Framework.IBuildEngine)
+  - Microsoft.Build.Framework.ITaskFactory.TaskType
+  langs:
+  - csharp
+  name: ITaskFactory
+  nameWithType: ITaskFactory
+  fullName: Microsoft.Build.Framework.ITaskFactory
+  type: Interface
+  summary: "Interfaccia che deve implementare una factory delle attività istanza."
+  syntax:
+    content: public interface ITaskFactory
+  implements: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITaskFactory.CleanupTask(Microsoft.Build.Framework.ITask)
+  id: CleanupTask(Microsoft.Build.Framework.ITask)
+  parent: Microsoft.Build.Framework.ITaskFactory
+  langs:
+  - csharp
+  name: CleanupTask(ITask)
+  nameWithType: ITaskFactory.CleanupTask(ITask)
+  fullName: Microsoft.Build.Framework.ITaskFactory.CleanupTask(ITask)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Pulisce qualsiasi contesto o lo stato che potrebbe essere stato compilato per una determinata attività."
+  syntax:
+    content: public void CleanupTask (Microsoft.Build.Framework.ITask task);
+    parameters:
+    - id: task
+      type: Microsoft.Build.Framework.ITask
+      description: "L&quot;attività di pulizia."
+  overload: Microsoft.Build.Framework.ITaskFactory.CleanupTask*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITaskFactory.CreateTask(Microsoft.Build.Framework.IBuildEngine)
+  id: CreateTask(Microsoft.Build.Framework.IBuildEngine)
+  parent: Microsoft.Build.Framework.ITaskFactory
+  langs:
+  - csharp
+  name: CreateTask(IBuildEngine)
+  nameWithType: ITaskFactory.CreateTask(IBuildEngine)
+  fullName: Microsoft.Build.Framework.ITaskFactory.CreateTask(IBuildEngine)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Crea un&quot;istanza dell&quot;attività da utilizzare in un batch. Host attività di registrazione factory registrerà messaggi nel contesto dell&quot;attività."
+  syntax:
+    content: public Microsoft.Build.Framework.ITask CreateTask (Microsoft.Build.Framework.IBuildEngine taskFactoryLoggingHost);
+    parameters:
+    - id: taskFactoryLoggingHost
+      type: Microsoft.Build.Framework.IBuildEngine
+      description: "L&quot;host di registrazione per la factory delle attività."
+    return:
+      type: Microsoft.Build.Framework.ITask
+      description: "Restituisce un&quot;istanza dell&quot;attività da utilizzare in un batch."
+  overload: Microsoft.Build.Framework.ITaskFactory.CreateTask*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITaskFactory.FactoryName
+  id: FactoryName
+  parent: Microsoft.Build.Framework.ITaskFactory
+  langs:
+  - csharp
+  name: FactoryName
+  nameWithType: ITaskFactory.FactoryName
+  fullName: Microsoft.Build.Framework.ITaskFactory.FactoryName
+  type: Property
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Ottiene il nome della factory."
+  syntax:
+    content: public string FactoryName { get; }
+    return:
+      type: System.String
+      description: "Il nome della factory."
+  overload: Microsoft.Build.Framework.ITaskFactory.FactoryName*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITaskFactory.GetTaskParameters
+  id: GetTaskParameters
+  parent: Microsoft.Build.Framework.ITaskFactory
+  langs:
+  - csharp
+  name: GetTaskParameters()
+  nameWithType: ITaskFactory.GetTaskParameters()
+  fullName: Microsoft.Build.Framework.ITaskFactory.GetTaskParameters()
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Ottenere le descrizioni per i parametri dell&quot;attività."
+  syntax:
+    content: public Microsoft.Build.Framework.TaskPropertyInfo[] GetTaskParameters ();
+    parameters: []
+    return:
+      type: Microsoft.Build.Framework.TaskPropertyInfo[]
+      description: "Una matrice non null di descrizioni delle proprietà."
+  overload: Microsoft.Build.Framework.ITaskFactory.GetTaskParameters*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITaskFactory.Initialize(System.String,System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Framework.TaskPropertyInfo},System.String,Microsoft.Build.Framework.IBuildEngine)
+  id: Initialize(System.String,System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Framework.TaskPropertyInfo},System.String,Microsoft.Build.Framework.IBuildEngine)
+  parent: Microsoft.Build.Framework.ITaskFactory
+  langs:
+  - csharp
+  name: Initialize(String,IDictionary<String,TaskPropertyInfo>,String,IBuildEngine)
+  nameWithType: ITaskFactory.Initialize(String,IDictionary<String,TaskPropertyInfo>,String,IBuildEngine)
+  fullName: Microsoft.Build.Framework.ITaskFactory.Initialize(String,IDictionary<String,TaskPropertyInfo>,String,IBuildEngine)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Inizializza la factory per creare un&quot;istanza di attività con un blocco di attività inline particolare."
+  remarks: "Il motore MSBuild chiama questo metodo per inizializzare la factory. Dopo l&quot;inizializzazione, la factory può essere eseguita o meno i nomi delle attività può essere creati dalla factory.       Il `taskFactoryLoggingHost` registrerà messaggi nel contesto di destinazione in cui è stata utilizzata l&quot;attività."
+  syntax:
+    content: public bool Initialize (string taskName, System.Collections.Generic.IDictionary<string,Microsoft.Build.Framework.TaskPropertyInfo> parameterGroup, string taskBody, Microsoft.Build.Framework.IBuildEngine taskFactoryLoggingHost);
+    parameters:
+    - id: taskName
+      type: System.String
+      description: "Nome dell&quot;attività."
+    - id: parameterGroup
+      type: System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Framework.TaskPropertyInfo}
+      description: "Il gruppo di parametri."
+    - id: taskBody
+      type: System.String
+      description: "Il corpo dell&quot;attività."
+    - id: taskFactoryLoggingHost
+      type: Microsoft.Build.Framework.IBuildEngine
+      description: "Host registrazione factory delle attività."
+    return:
+      type: System.Boolean
+      description: "Un valore che indica se l&quot;inizializzazione è stata completata."
+  overload: Microsoft.Build.Framework.ITaskFactory.Initialize*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITaskFactory.TaskType
+  id: TaskType
+  parent: Microsoft.Build.Framework.ITaskFactory
+  langs:
+  - csharp
+  name: TaskType
+  nameWithType: ITaskFactory.TaskType
+  fullName: Microsoft.Build.Framework.ITaskFactory.TaskType
+  type: Property
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Ottiene il tipo dell&quot;attività che verrà creata un&quot;istanza di questa factory."
+  syntax:
+    content: public Type TaskType { get; }
+    return:
+      type: System.Type
+      description: "Il tipo di attività."
+  overload: Microsoft.Build.Framework.ITaskFactory.TaskType*
+  exceptions: []
+  platform:
+  - net462
+references:
+- uid: Microsoft.Build.Framework.ITaskFactory.CleanupTask(Microsoft.Build.Framework.ITask)
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: CleanupTask(ITask)
+  nameWithType: ITaskFactory.CleanupTask(ITask)
+  fullName: Microsoft.Build.Framework.ITaskFactory.CleanupTask(ITask)
+- uid: Microsoft.Build.Framework.ITask
+  parent: Microsoft.Build.Framework
+  isExternal: false
+  name: ITask
+  nameWithType: ITask
+  fullName: Microsoft.Build.Framework.ITask
+- uid: Microsoft.Build.Framework.ITaskFactory.CreateTask(Microsoft.Build.Framework.IBuildEngine)
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: CreateTask(IBuildEngine)
+  nameWithType: ITaskFactory.CreateTask(IBuildEngine)
+  fullName: Microsoft.Build.Framework.ITaskFactory.CreateTask(IBuildEngine)
+- uid: Microsoft.Build.Framework.IBuildEngine
+  parent: Microsoft.Build.Framework
+  isExternal: false
+  name: IBuildEngine
+  nameWithType: IBuildEngine
+  fullName: Microsoft.Build.Framework.IBuildEngine
+- uid: Microsoft.Build.Framework.ITaskFactory.FactoryName
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: FactoryName
+  nameWithType: ITaskFactory.FactoryName
+  fullName: Microsoft.Build.Framework.ITaskFactory.FactoryName
+- uid: System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Microsoft.Build.Framework.ITaskFactory.GetTaskParameters
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: GetTaskParameters()
+  nameWithType: ITaskFactory.GetTaskParameters()
+  fullName: Microsoft.Build.Framework.ITaskFactory.GetTaskParameters()
+- uid: Microsoft.Build.Framework.TaskPropertyInfo[]
+  parent: Microsoft.Build.Framework
+  isExternal: false
+  name: TaskPropertyInfo
+  nameWithType: TaskPropertyInfo
+  fullName: Microsoft.Build.Framework.TaskPropertyInfo[]
+  spec.csharp:
+  - uid: Microsoft.Build.Framework.TaskPropertyInfo
+    name: TaskPropertyInfo
+    nameWithType: TaskPropertyInfo
+    fullName: TaskPropertyInfo[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: Microsoft.Build.Framework.ITaskFactory.Initialize(System.String,System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Framework.TaskPropertyInfo},System.String,Microsoft.Build.Framework.IBuildEngine)
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: Initialize(String,IDictionary<String,TaskPropertyInfo>,String,IBuildEngine)
+  nameWithType: ITaskFactory.Initialize(String,IDictionary<String,TaskPropertyInfo>,String,IBuildEngine)
+  fullName: Microsoft.Build.Framework.ITaskFactory.Initialize(String,IDictionary<String,TaskPropertyInfo>,String,IBuildEngine)
+- uid: System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Framework.TaskPropertyInfo}
+  parent: System.Collections.Generic
+  isExternal: true
+  name: IDictionary<String,TaskPropertyInfo>
+  nameWithType: IDictionary<String,TaskPropertyInfo>
+  fullName: System.Collections.Generic.IDictionary<System.String,Microsoft.Build.Framework.TaskPropertyInfo>
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: IDictionary<System.String,Microsoft.Build.Framework.TaskPropertyInfo>
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String
+  - name: ','
+    nameWithType: ','
+    fullName: ','
+  - uid: Microsoft.Build.Framework.TaskPropertyInfo
+    name: TaskPropertyInfo
+    nameWithType: TaskPropertyInfo
+    fullName: TaskPropertyInfo
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+- uid: Microsoft.Build.Framework.ITaskFactory.TaskType
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: TaskType
+  nameWithType: ITaskFactory.TaskType
+  fullName: Microsoft.Build.Framework.ITaskFactory.TaskType
+- uid: System.Type
+  parent: System
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Microsoft.Build.Framework.ITaskFactory.CleanupTask*
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: CleanupTask
+  nameWithType: ITaskFactory.CleanupTask
+- uid: Microsoft.Build.Framework.ITaskFactory.CreateTask*
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: CreateTask
+  nameWithType: ITaskFactory.CreateTask
+- uid: Microsoft.Build.Framework.ITaskFactory.FactoryName*
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: FactoryName
+  nameWithType: ITaskFactory.FactoryName
+- uid: Microsoft.Build.Framework.ITaskFactory.GetTaskParameters*
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: GetTaskParameters
+  nameWithType: ITaskFactory.GetTaskParameters
+- uid: Microsoft.Build.Framework.ITaskFactory.Initialize*
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: Initialize
+  nameWithType: ITaskFactory.Initialize
+- uid: Microsoft.Build.Framework.ITaskFactory.TaskType*
+  parent: Microsoft.Build.Framework.ITaskFactory
+  isExternal: false
+  name: TaskType
+  nameWithType: ITaskFactory.TaskType
