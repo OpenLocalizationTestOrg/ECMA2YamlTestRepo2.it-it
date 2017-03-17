@@ -23,8 +23,8 @@ items:
   nameWithType: ChannelListenerBase
   fullName: System.ServiceModel.Channels.ChannelListenerBase
   type: Class
-  summary: "Provides a common base implementation for channel listeners on the service."
-  remarks: "The channel listeners on the service wait for and then accept the channels created by factories on the client. Once the channel connection is established between client and service, messages can be exchanged and distributed applications can communicate. The processing functionality provided by the listener is layered into a stacked set of channel listeners to provide modularity when selecting the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] features to deploy. Each channel listener in the service stack corresponds to a channel factory in the client stack. The channel created by the factory is really a stack of channels that are accepted and processed by the stack of listeners on the service."
+  summary: "Fornisce un&quot;implementazione di base comune per i listener del canale nel servizio."
+  remarks: "I listener del canale nel servizio attendono e quindi accettano i canali creati dalle factory nel client. Una volta stabilita la connessione del canale tra client e servizio, è possibile scambiare messaggi e le applicazioni distribuite possono comunicare. La funzionalità di elaborazione fornita dal listener è su più livelli in una serie in pila del listener del canale per fornire modularità quando si seleziona il [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] le funzionalità da distribuire. Ogni listener del canale nello stack del servizio corrisponde a una channel factory nello stack client. Il canale creato dalla factory è effettivamente uno stack di canali accettati ed elaborati dallo stack di listener nel servizio."
   syntax:
     content: 'public abstract class ChannelListenerBase : System.ServiceModel.Channels.ChannelManagerBase, System.ServiceModel.Channels.IChannelListener'
   inheritance:
@@ -46,8 +46,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ChannelListenerBase&quot;></xref> class."
-  remarks: "The default constructor initializes timeout properties with the service model timeout values when exchanging messages. The default value is 1 minute for open, send, and close operations and 10 minutes for the receive operation. Use <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29> if you want to specify other values for these operation timeouts."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ServiceModel.Channels.ChannelListenerBase&quot;> </xref> classe."
+  remarks: "Il costruttore predefinito inizializza le proprietà di timeout con i valori di timeout del modello di servizio quando si scambiano messaggi. Il valore predefinito è 1 minuto per l&quot;apertura, invio e chiudere operazioni e a 10 minuti per l&quot;operazione di ricezione. Utilizzare <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>Se si desidera specificare altri valori per i timeout dell&quot;operazione.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>"
   syntax:
     content: protected ChannelListenerBase ();
     parameters: []
@@ -67,14 +67,14 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ChannelListenerBase&quot;></xref> class with specified default communication timeouts."
-  remarks: "Use ChannelListenerBase instead of the default constructor if you want to specify custom values for the open, send, receive, and close operation timeouts instead of using the service model default values."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ServiceModel.Channels.ChannelListenerBase&quot;> </xref> classe con i timeout di comunicazione predefiniti specificati."
+  remarks: "Se si desidera specificare valori personalizzati per l&quot;open, send, ricezione e chiudere i timeout operazione anziché utilizzare i valori predefiniti del modello di servizio, utilizzare ChannelListenerBase anziché il costruttore predefinito."
   syntax:
     content: protected ChannelListenerBase (System.ServiceModel.IDefaultCommunicationTimeouts timeouts);
     parameters:
     - id: timeouts
       type: System.ServiceModel.IDefaultCommunicationTimeouts
-      description: "The <xref:System.ServiceModel.IDefaultCommunicationTimeouts> that specify the default timeouts for open, send, receive, and close operations when exchanging messages."
+      description: "Il <xref:System.ServiceModel.IDefaultCommunicationTimeouts>che consente di specificare i timeout predefiniti per apertura, inviare, ricevere e operazioni di chiusura quando si scambiano messaggi.</xref:System.ServiceModel.IDefaultCommunicationTimeouts>"
   overload: System.ServiceModel.Channels.ChannelListenerBase.#ctor*
   exceptions: []
   platform:
@@ -91,27 +91,27 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When implemented in a derived class, begins an asynchronous operation to wait for a channel to arrive."
+  summary: "Quando viene implementato in una classe derivata, avvia un&quot;operazione asincrona per attendere l&quot;arrivo di un canale."
   syntax:
     content: public IAsyncResult BeginWaitForChannel (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies how long the wait for a channel operation has to complete before timing out."
+      description: "Il <xref:System.TimeSpan>che specifica quanto tempo l&quot;operazione di attesa di una canale deve essere completata prima del timeout.</xref:System.TimeSpan>"
     - id: callback
       type: System.AsyncCallback
-      description: "The <xref:System.AsyncCallback> delegate that receives the notification of the asynchronous completion of the wait for a channel operation."
+      description: "Il <xref:System.AsyncCallback>delegato che riceve la notifica del completamento asincrono dell&quot;attesa per un&quot;operazione di canale.</xref:System.AsyncCallback>"
     - id: state
       type: System.Object
-      description: "An object, specified by the application, that contains state information associated with the asynchronous wait for a channel operation."
+      description: "Un oggetto, specificato dall&quot;applicazione, che contiene informazioni sullo stato associate all&quot;asincrona di attesa per un&quot;operazione di canale."
     return:
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous wait for a channel operation."
+      description: "Il <xref:System.IAsyncResult>che fa riferimento l&quot;asincrona di attesa di un&quot;operazione di canale.</xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ChannelListenerBase.BeginWaitForChannel*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The channel listener has not been opened and so cannot be used."
+    description: "Il listener del canale non è stata aperta e non può essere utilizzato."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ChannelListenerBase.DefaultCloseTimeout
@@ -126,13 +126,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets the default interval of time provided for a close operation to complete."
-  remarks: "This value is set when creating a new <xref:System.ServiceModel.Channels.ChannelListenerBase> object. The default <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor> constructor sets the DefaultCloseTimeout property to a value of 1 minute. Use <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29> if you want to specify another value for this timeout."
+  summary: "Ottiene l&quot;intervallo di tempo fornito per completare un&quot;operazione di chiusura predefinito."
+  remarks: "Questo valore viene impostato quando si crea un nuovo <xref:System.ServiceModel.Channels.ChannelListenerBase>oggetto.</xref:System.ServiceModel.Channels.ChannelListenerBase> Il valore predefinito <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor>costruttore imposta la proprietà DefaultCloseTimeout su un valore di 1 minuto.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor> Utilizzare <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>Se si desidera specificare un altro valore per il timeout.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>"
   syntax:
     content: protected override TimeSpan DefaultCloseTimeout { get; }
     return:
       type: System.TimeSpan
-      description: "The default <xref:System.TimeSpan> that specifies how long the close operation has to complete before timing out."
+      description: "Il valore predefinito <xref:System.TimeSpan>che specifica quanto tempo l&quot;operazione di chiusura deve essere completata prima del timeout.</xref:System.TimeSpan>"
   overload: System.ServiceModel.Channels.ChannelListenerBase.DefaultCloseTimeout*
   exceptions: []
   platform:
@@ -149,13 +149,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets the default interval of time provided for an open operation to complete."
-  remarks: "This value is set when creating a new <xref:System.ServiceModel.Channels.ChannelListenerBase> object. The default <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor> constructor sets the DefaultOpenTimeout property to a value of 1 minute. Use <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29> if you want to specify another value for this timeout."
+  summary: "Ottiene l&quot;intervallo di tempo fornito per completare un&quot;operazione di apertura predefinito."
+  remarks: "Questo valore viene impostato quando si crea un nuovo <xref:System.ServiceModel.Channels.ChannelListenerBase>oggetto.</xref:System.ServiceModel.Channels.ChannelListenerBase> Il valore predefinito <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor>costruttore imposta la proprietà DefaultOpenTimeout su un valore di 1 minuto.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor> Utilizzare <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>Se si desidera specificare un altro valore per il timeout.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>"
   syntax:
     content: protected override TimeSpan DefaultOpenTimeout { get; }
     return:
       type: System.TimeSpan
-      description: "The default <xref:System.TimeSpan> that specifies how long the open operation has to complete before timing out."
+      description: "Il valore predefinito <xref:System.TimeSpan>che specifica quanto tempo l&quot;operazione di apertura deve essere completata prima del timeout.</xref:System.TimeSpan>"
   overload: System.ServiceModel.Channels.ChannelListenerBase.DefaultOpenTimeout*
   exceptions: []
   platform:
@@ -172,13 +172,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets the default interval of time provided for a receive operation to complete."
-  remarks: "This value is set when creating a new <xref:System.ServiceModel.Channels.ChannelListenerBase> object. The default <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor> constructor sets the DefaultReceiveTimeout property to a value of 10 minutes. Use <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29> if you want to specify another value for this timeout."
+  summary: "Ottiene l&quot;intervallo di tempo fornito completare un&quot;operazione di ricezione predefinito."
+  remarks: "Questo valore viene impostato quando si crea un nuovo <xref:System.ServiceModel.Channels.ChannelListenerBase>oggetto.</xref:System.ServiceModel.Channels.ChannelListenerBase> Il valore predefinito <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor>costruttore imposta la proprietà DefaultReceiveTimeout su un valore di 10 minuti.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor> Utilizzare <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>Se si desidera specificare un altro valore per il timeout.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>"
   syntax:
     content: protected override TimeSpan DefaultReceiveTimeout { get; }
     return:
       type: System.TimeSpan
-      description: "The default <xref:System.TimeSpan> that specifies how long the receive operation has to complete before timing out."
+      description: "Il valore predefinito <xref:System.TimeSpan>che specifica quanto tempo l&quot;operazione di ricezione deve essere completata prima del timeout.</xref:System.TimeSpan>"
   overload: System.ServiceModel.Channels.ChannelListenerBase.DefaultReceiveTimeout*
   exceptions: []
   platform:
@@ -195,13 +195,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets the default interval of time provided for a send operation to complete."
-  remarks: "This value is set when creating a new <xref:System.ServiceModel.Channels.ChannelListenerBase> object. The default <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor> constructor sets the DefaultSendTimeout property to a value of 1 minute. Use <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29> if you want to specify another value for this timeout."
+  summary: "Ottiene l&quot;intervallo di tempo fornito per completare un&quot;operazione di trasmissione predefinito."
+  remarks: "Questo valore viene impostato quando si crea un nuovo <xref:System.ServiceModel.Channels.ChannelListenerBase>oggetto.</xref:System.ServiceModel.Channels.ChannelListenerBase> Il valore predefinito <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor>costruttore imposta la proprietà DefaultSendTimeout su un valore di 1 minuto.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor> Utilizzare <xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>Se si desidera specificare un altro valore per il timeout.</xref:System.ServiceModel.Channels.ChannelListenerBase.%23ctor%28System.ServiceModel.IDefaultCommunicationTimeouts%29>"
   syntax:
     content: protected override TimeSpan DefaultSendTimeout { get; }
     return:
       type: System.TimeSpan
-      description: "The default <xref:System.TimeSpan> that specifies how long the send operation has to complete before timing out."
+      description: "Il valore predefinito <xref:System.TimeSpan>che specifica la durata dell&quot;operazione di invio deve essere completata prima del timeout.</xref:System.TimeSpan>"
   overload: System.ServiceModel.Channels.ChannelListenerBase.DefaultSendTimeout*
   exceptions: []
   platform:
@@ -218,16 +218,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When implemented in a derived class, completes an asynchronous operation to wait for channels to arrive."
+  summary: "Quando viene implementato in una classe derivata, completa un&quot;operazione asincrona per attendere l&quot;arrivo dei canali."
   syntax:
     content: public bool EndWaitForChannel (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> returned by a call to the EndWaitForChannel method."
+      description: "Il <xref:System.IAsyncResult>restituito da una chiamata al metodo EndWaitForChannel.</xref:System.IAsyncResult>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a message arrived; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se è arrivato un messaggio. in caso contrario <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ChannelListenerBase.EndWaitForChannel*
   exceptions: []
   platform:
@@ -249,7 +249,7 @@ items:
     parameters: []
     return:
       type: T
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.ServiceModel.Channels.ChannelListenerBase.GetProperty<T>*
   exceptions: []
   platform:
@@ -266,22 +266,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When implemented in a derived class, provides a point of extensibility when starting to wait for a channel to arrive."
+  summary: "Quando implementato in una classe derivata, fornisce un punto di estendibilità quando inizia ad attendere l&quot;arrivo di un canale."
   syntax:
     content: protected abstract IAsyncResult OnBeginWaitForChannel (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies how long the on begin wait operation has to complete before timing out."
+      description: "Il <xref:System.TimeSpan>che specifica quanto tempo l&quot;operazione di attesa iniziale deve essere completata prima del timeout.</xref:System.TimeSpan>"
     - id: callback
       type: System.AsyncCallback
-      description: "The <xref:System.AsyncCallback> delegate that receives the notification of the asynchronous operation on begin wait completion."
+      description: "Il <xref:System.AsyncCallback>delegato che riceve la notifica dell&quot;operazione asincrona per iniziare a completamento dell&quot;attesa.</xref:System.AsyncCallback>"
     - id: state
       type: System.Object
-      description: "An object, specified by the application, that contains state information associated with the asynchronous on begin wait operation."
+      description: "Un oggetto, specificato dall&quot;applicazione, che contiene informazioni sullo stato associato asincrono su iniziare un&quot;operazione di attesa."
     return:
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous on begin wait operation."
+      description: "Il <xref:System.IAsyncResult>riferimenti asincrona begin operazione di attesa.</xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ChannelListenerBase.OnBeginWaitForChannel*
   exceptions: []
   platform:
@@ -298,16 +298,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When implemented in a derived class, provides a point of extensibility when ending the waiting for a channel to arrive."
+  summary: "Quando implementato in una classe derivata, fornisce un punto di estendibilità quando termina l&quot;attesa dell&quot;arrivo di un canale."
   syntax:
     content: protected abstract bool OnEndWaitForChannel (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> returned by a call to the &lt;xref:System.ServiceModel.Channels.ChannelListenerBase.OnBeginWaitForChannel%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt; method."
+      description: "Il <xref:System.IAsyncResult>restituito da una chiamata al &lt;xref:System.ServiceModel.Channels.ChannelListenerBase.OnBeginWaitForChannel%28System.TimeSpan%2CSystem.AsyncCallback%2CSystem.Object%29&gt; metodo.</xref:System.IAsyncResult>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method completed before the interval of time specified by the <code>timeout</code> expired; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il metodo viene completato prima dell&quot;intervallo di tempo specificato da di <code> timeout </code> scaduta; in caso contrario <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ChannelListenerBase.OnEndWaitForChannel*
   exceptions: []
   platform:
@@ -324,16 +324,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, provides a point of extensibility when waiting for a channel to arrive."
+  summary: "Quando sottoposto a override in una classe derivata, fornisce un punto di estendibilità quando in attesa dell&quot;arrivo di un canale."
   syntax:
     content: protected abstract bool OnWaitForChannel (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies how long the on wait for a channel operation has to complete before timing out."
+      description: "Il <xref:System.TimeSpan>che specifica il tempo di attesa per un&quot;operazione di canale deve essere completata prima del timeout.</xref:System.TimeSpan>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method completed before the interval of time specified by the <code>timeout</code> expired; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il metodo viene completato prima dell&quot;intervallo di tempo specificato da di <code> timeout </code> scaduta; in caso contrario <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ChannelListenerBase.OnWaitForChannel*
   exceptions: []
   platform:
@@ -350,12 +350,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When implemented in derived class, gets the URI on which the channel listener listens for an incoming channel."
+  summary: "Se implementato in una classe derivata, ottiene l&quot;URI su cui il listener del canale ascolta un canale in ingresso."
   syntax:
     content: public abstract Uri Uri { get; }
     return:
       type: System.Uri
-      description: "The <xref:System.Uri> on which the channel listener listens for incoming channels."
+      description: "Il <xref:System.Uri>in cui il listener del canale è in ascolto di canali in ingresso.</xref:System.Uri>"
   overload: System.ServiceModel.Channels.ChannelListenerBase.Uri*
   exceptions: []
   platform:
@@ -372,16 +372,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When implemented in a derived class, waits for a channel to arrive."
+  summary: "Quando viene implementato in una classe derivata, attende l&quot;arrivo di un canale."
   syntax:
     content: public bool WaitForChannel (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies how long the wait for a channel operation has to complete before timing out."
+      description: "Il <xref:System.TimeSpan>che specifica quanto tempo l&quot;operazione di attesa di una canale deve essere completata prima del timeout.</xref:System.TimeSpan>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a channel arrived before the interval of time specified by the <code>timeout</code> expired; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se un canale arriva prima che l&quot;intervallo di tempo specificato da di <code> timeout </code> scaduta; in caso contrario <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ChannelListenerBase.WaitForChannel*
   exceptions: []
   platform:
