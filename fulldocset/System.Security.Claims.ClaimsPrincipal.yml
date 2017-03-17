@@ -36,8 +36,8 @@ items:
   nameWithType: ClaimsPrincipal
   fullName: System.Security.Claims.ClaimsPrincipal
   type: Class
-  summary: "An <xref:System.Security.Principal.IPrincipal> implementation that supports multiple claims-based identities."
-  remarks: "Beginning with .NET Framework 4.5, Windows Identity Foundation (WIF) and claims-based identity have been fully integrated into the .NET Framework. This means that many classes that represent a principal in the .NET Framework now derive from ClaimsPrincipal rather than simply implementing the <xref:System.Security.Principal.IPrincipal> interface. In addition to implementing the <xref:System.Security.Principal.IPrincipal> interface, ClaimsPrincipal exposes properties and methods that are useful for working with claims.       ClaimsPrincipal exposes a collection of identities, each of which is a <xref:System.Security.Claims.ClaimsIdentity>. In the common case, this collection, which is accessed through the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> property, will only have a single element.       The introduction of ClaimsPrincipal in .NET 4.5 as the principal from which most principal classes derive does not force you to change anything in the way in which you deal with identity. It does, however open up more possibilities and offer more chances to exercise finer access control. For example:      -   The application code itself can work directly with the claims contained in the current principal to drive extra authentication, authorization, and personalization tasks.      -   You can front your resources with a claims processing pipeline, which can deal with authentication requests and authorization policy even before execution reaches your code. For example, you can configure a web-based application or service with a custom claims authentication manager, an instance of a class that derives from the <xref:System.Security.Claims.ClaimsAuthenticationManager> class. When so configured, the request processing pipeline invokes the <xref:System.Security.Claims.ClaimsAuthenticationManager.Authenticate%2A> method on your claims authentication manager passing it a ClaimsPrincipal that represents the context of the incoming request. Your claims authentication manager can then perform authentication based on the values of the incoming claims. It can also filter, transform, or add claims to the incoming claim set. For example, it could be used to enrich the incoming claim set with new claims created from a local data source such as a local user profile      -   You can configure a web-based application with a custom claims authorization manager, an instance of a class that derives from the <xref:System.Security.Claims.ClaimsAuthorizationManager> class. When so configured, the request processing pipeline packages the incoming ClaimsPrincipal in an <xref:System.Security.Claims.AuthorizationContext> and invokes the <xref:System.Security.Claims.ClaimsAuthorizationManager.CheckAccess%2A> method on your claims authorization manager. Your claims authorization manager can then enforce authorization based on the incoming claims.      -   Inline claims-based code access checks can be performed by configuring your application with a custom claims authorization manager and using either the <xref:System.IdentityModel.Services.ClaimsPrincipalPermission> class to perform imperative access checks or the <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute> to perform declarative access checks. Claims-based code access checks are performed inline, outside of the processing pipeline, and so are available to all applications as long as a claims authorization manager is configured.       You can obtain a ClaimsPrincipal instance for the principal associated with a request in an RP application (or the principal under which a thread is executing) by casting the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property to ClaimsPrincipal. The claims associated with an ClaimsPrincipal object are available through its <xref:System.Security.Claims.ClaimsPrincipal.Claims%2A> property. The <xref:System.Security.Claims.ClaimsPrincipal.Claims%2A> property returns all of the claims contained by the identities associated with the principal. In the uncommon case in which the ClaimsPrincipal contains multiple <xref:System.Security.Claims.ClaimsIdentity> instances, you can use the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> property or you can access the primary identity by using the <xref:System.Security.Claims.ClaimsPrincipal.Identity%2A> property. ClaimsPrincipal provides several methods through which these claims may be searched and fully supports Language Integrated Query (LINQ). Identities can be added to the principal by using the <xref:System.Security.Claims.ClaimsPrincipal.AddIdentities%2A> or <xref:System.Security.Claims.ClaimsPrincipal.AddIdentity%2A> methods.      > [!NOTE] >  To add identities to the ClaimsPrincipal, a caller must have full trust.       By default, WIF prioritizes <xref:System.Security.Principal.WindowsIdentity> objects when selecting the primary identity to return through the <xref:System.Security.Claims.ClaimsPrincipal.Identity%2A> property. You can modify this behavior by supplying a delegate through the <xref:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector%2A> property to perform the selection. The <xref:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector%2A> property provides similar functionality for the <xref:System.Security.Claims.ClaimsPrincipal.Current%2A> property.       In the claim-based model, whether a principal is in a specified role is determined by the claims presented by its underlying identities. The <xref:System.Security.Claims.ClaimsPrincipal.IsInRole%2A> method essentially examines each identity associated with the principal to determine whether it possesses a claim with the specified role value. The type of the claim (represented by its <xref:System.Security.Claims.Claim.Type%2A?displayProperty=fullName> property) used to determine which claims should be examined during role checks is specified on an identity through its <xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName> property. Thus, the claims examined during role checks can be of a different type for different identities associated with the principal."
+  summary: "Un <xref:System.Security.Principal.IPrincipal>implementazione che supporta più identità basata sulle attestazioni.</xref:System.Security.Principal.IPrincipal>"
+  remarks: "A partire da .NET Framework 4.5, Windows Identity Foundation (WIF) e l&quot;identità basata sulle attestazioni sono state completamente integrate in .NET Framework. Ciò significa che molte classi che rappresentano un&quot;entità in .NET Framework ora derivano da ClaimsPrincipal anziché semplicemente l&quot;implementazione di <xref:System.Security.Principal.IPrincipal>interfaccia.</xref:System.Security.Principal.IPrincipal> Oltre all&quot;implementazione di <xref:System.Security.Principal.IPrincipal>interfaccia ClaimsPrincipal espone proprietà e metodi utili per l&quot;utilizzo di attestazioni.</xref:System.Security.Principal.IPrincipal>       ClaimsPrincipal espone una raccolta di valori Identity, ognuno dei quali è un <xref:System.Security.Claims.ClaimsIdentity>.</xref:System.Security.Claims.ClaimsIdentity> In genere, questa raccolta, a cui si accede tramite il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>proprietà, sarà necessario solo un singolo elemento.</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>       L&quot;introduzione di ClaimsPrincipal in .NET 4.5 come entità da cui derivano più classi di entità non impone di modificare qualsiasi elemento nel modo in cui si gestiscono identità. Tuttavia aprire altre possibilità e offrire ulteriori possibilità di esercitare un maggiore controllo di accesso. Ad esempio:-il codice dell&quot;applicazione stessa può lavorare direttamente con le attestazioni contenute nel principale corrente per operazioni di autenticazione, autorizzazione e personalizzazione aggiuntive.      -È possibile front le risorse con una pipeline, che consente di gestire richieste di autenticazione e criteri di autorizzazione prima dell&quot;esecuzione raggiunge il codice di elaborazione delle richieste. Ad esempio, è possibile configurare un servizio o applicazione basata sul web con un gestore di autenticazione attestazioni personalizzate, un&quot;istanza di una classe che deriva dalla <xref:System.Security.Claims.ClaimsAuthenticationManager>classe.</xref:System.Security.Claims.ClaimsAuthenticationManager> Se così configurato, la pipeline di elaborazione richieste richiama il <xref:System.Security.Claims.ClaimsAuthenticationManager.Authenticate%2A>metodo del gestore di autenticazione attestazioni passandolo ClaimsPrincipal che rappresenta il contesto della richiesta in arrivo.</xref:System.Security.Claims.ClaimsAuthenticationManager.Authenticate%2A> Il gestore di autenticazione delle attestazioni è quindi possibile eseguire l&quot;autenticazione in base ai valori delle attestazioni in ingresso. Anche possibile filtrare, trasformare o aggiungere attestazioni al set di attestazioni in ingresso. Ad esempio, può essere usato per arricchire l&quot;attestazione in ingresso impostato con nuove attestazioni create da un&quot;origine dati locale, ad esempio un profilo utente locale, è possibile configurare un&quot;applicazione basata su web con un gestore autorizzazioni di attestazioni personalizzate, un&quot;istanza di una classe che deriva dalla <xref:System.Security.Claims.ClaimsAuthorizationManager>classe.</xref:System.Security.Claims.ClaimsAuthorizationManager> Se così configurato, la pipeline di elaborazione richieste pacchetti in ingresso entità ClaimsPrincipal in un <xref:System.Security.Claims.AuthorizationContext>e richiama il <xref:System.Security.Claims.ClaimsAuthorizationManager.CheckAccess%2A>metodo nel gestore di autorizzazione delle attestazioni.</xref:System.Security.Claims.ClaimsAuthorizationManager.CheckAccess%2A> </xref:System.Security.Claims.AuthorizationContext> Il gestore di autorizzazione delle attestazioni può quindi applicare l&quot;autorizzazione basata sulle attestazioni in ingresso.      -Inline controlli di accesso di codice basato su attestazioni possono essere eseguiti tramite la configurazione dell&quot;applicazione con un oggetto personalizzato attestazioni Gestione autorizzazioni e utilizzando la <xref:System.IdentityModel.Services.ClaimsPrincipalPermission>classe per eseguire controlli di accesso imperativo o <xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute>per eseguire l&quot;accesso dichiarativo i controlli.</xref:System.IdentityModel.Services.ClaimsPrincipalPermissionAttribute> </xref:System.IdentityModel.Services.ClaimsPrincipalPermission> Controlli di accesso di codice basato su attestazioni vengono eseguite in linea, di fuori della pipeline di elaborazione e pertanto sono disponibili a tutte le applicazioni come un gestore di autorizzazione delle attestazioni è configurato.       Per ottenere un&quot;istanza ClaimsPrincipal per l&quot;entità associata a una richiesta in un&quot;applicazione relying Party (o l&quot;entità in cui un thread è in esecuzione), è possibile eseguire il cast di <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>proprietà ClaimsPrincipal.</xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> Le attestazioni associate a un oggetto ClaimsPrincipal sono disponibili tramite il relativo <xref:System.Security.Claims.ClaimsPrincipal.Claims%2A>proprietà.</xref:System.Security.Claims.ClaimsPrincipal.Claims%2A> Il <xref:System.Security.Claims.ClaimsPrincipal.Claims%2A>restituisce tutte le attestazioni contenute dalle identità associato all&quot;entità.</xref:System.Security.Claims.ClaimsPrincipal.Claims%2A> Nel caso comune in cui l&quot;entità ClaimsPrincipal contiene più <xref:System.Security.Claims.ClaimsIdentity>istanze, è possibile utilizzare il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>proprietà oppure è possibile accedere alle identità primaria con la <xref:System.Security.Claims.ClaimsPrincipal.Identity%2A>proprietà.</xref:System.Security.Claims.ClaimsPrincipal.Identity%2A> </xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> </xref:System.Security.Claims.ClaimsIdentity> ClaimsPrincipal fornisce diversi metodi tramite cui possono cercare tali attestazioni e supporta completamente Language Integrated Query (LINQ). Identità possono essere aggiunto all&quot;entità utilizzando la <xref:System.Security.Claims.ClaimsPrincipal.AddIdentities%2A>o <xref:System.Security.Claims.ClaimsPrincipal.AddIdentity%2A>metodi.</xref:System.Security.Claims.ClaimsPrincipal.AddIdentity%2A> </xref:System.Security.Claims.ClaimsPrincipal.AddIdentities%2A>      > [!NOTE] > Per aggiungere le identità all&quot;entità ClaimsPrincipal, un chiamante deve essere completamente attendibile.       Per impostazione predefinita, WIF priorità <xref:System.Security.Principal.WindowsIdentity>oggetti quando si seleziona l&quot;identità primaria restituita attraverso il <xref:System.Security.Claims.ClaimsPrincipal.Identity%2A>proprietà.</xref:System.Security.Claims.ClaimsPrincipal.Identity%2A> </xref:System.Security.Principal.WindowsIdentity> È possibile modificare questo comportamento specificando un delegato tramite il <xref:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector%2A>proprietà per eseguire la selezione.</xref:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector%2A> Il <xref:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector%2A>proprietà fornisce una funzionalità simile per la <xref:System.Security.Claims.ClaimsPrincipal.Current%2A>proprietà.</xref:System.Security.Claims.ClaimsPrincipal.Current%2A> </xref:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector%2A>       Nel modello basato sulle attestazioni, se un&quot;entità è un ruolo specificato è le attestazioni presentate dalle identità sottostante. Il <xref:System.Security.Claims.ClaimsPrincipal.IsInRole%2A>metodo essenzialmente esamina ogni identità associato all&quot;entità per determinare se dispone di un&quot;attestazione con il valore di ruolo specificato.</xref:System.Security.Claims.ClaimsPrincipal.IsInRole%2A> Il tipo di attestazione (rappresentato da relativo <xref:System.Security.Claims.Claim.Type%2A?displayProperty=fullName>proprietà) utilizzato per determinare quali attestazioni devono essere esaminate durante ruolo controlli viene specificato in un&quot;identità tramite il relativo <xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName>proprietà.</xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName> </xref:System.Security.Claims.Claim.Type%2A?displayProperty=fullName> Pertanto, le attestazioni esaminate durante i controlli di ruolo possono essere di tipo diverso per diverse identità associato all&quot;entità."
   example:
   - "The following example extracts the claims presented by a user in an HTTP request and writes them to the HTTP response. The current user is read from the <xref:System.Web.HttpContext> as a ClaimsPrincipal. The claims are then read from it and then are written to the response.  \n  \n```  \n  \nClaimsPrincipal principal = HttpContext.Current.User as ClaimsPrincipal;  \nif (null != principal)  \n{  \n   foreach (Claim claim in principal.Claims)  \n   {  \n      Response.Write(\"CLAIM TYPE: \" + claim.Type + \"; CLAIM VALUE: \" + claim.Value + \"</br>\");  \n   }  \n}  \n```"
   syntax:
@@ -64,8 +64,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;></xref> class."
-  remarks: "No identities are associated with the new instance. (The <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection is empty)."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;> </xref> classe."
+  remarks: "Nessuna identità è associata con la nuova istanza. (Il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>raccolta è vuota).</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>"
   syntax:
     content: public ClaimsPrincipal ();
     parameters: []
@@ -85,19 +85,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;></xref> class using the specified claims identities."
-  remarks: "The <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection is initialized with the specified identities."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;> </xref> classe utilizzando l&quot;identità delle attestazioni specificate."
+  remarks: "Il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>insieme viene inizializzato con l&quot;identità specificata.</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>"
   syntax:
     content: public ClaimsPrincipal (System.Collections.Generic.IEnumerable<System.Security.Claims.ClaimsIdentity> identities);
     parameters:
     - id: identities
       type: System.Collections.Generic.IEnumerable{System.Security.Claims.ClaimsIdentity}
-      description: "The identities from which to initialize the new claims principal."
+      description: "Identità da cui inizializzare la nuova entità delle attestazioni."
   overload: System.Security.Claims.ClaimsPrincipal.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identities</code> is **null**."
+    description: "<code>identities</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.#ctor(System.IO.BinaryReader)
@@ -117,7 +117,7 @@ items:
     parameters:
     - id: reader
       type: System.IO.BinaryReader
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Security.Claims.ClaimsPrincipal.#ctor*
   exceptions: []
   platform:
@@ -134,19 +134,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;></xref> class from the specified identity."
-  remarks: "If the specified identity is assignable from <xref:System.Security.Claims.ClaimsIdentity>, it is used to initialize the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection. Otherwise, a <xref:System.Security.Claims.ClaimsIdentity> is created using the specified identity and is used to initialize the collection."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;> </xref> classe dall&quot;identità specificata."
+  remarks: "Se l&quot;identità specificata non è assegnabile da <xref:System.Security.Claims.ClaimsIdentity>, viene utilizzato per inizializzare il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>insieme.</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> </xref:System.Security.Claims.ClaimsIdentity> In caso contrario, un <xref:System.Security.Claims.ClaimsIdentity>viene creato utilizzando l&quot;identità specificata e viene utilizzato per inizializzare la raccolta.</xref:System.Security.Claims.ClaimsIdentity>"
   syntax:
     content: public ClaimsPrincipal (System.Security.Principal.IIdentity identity);
     parameters:
     - id: identity
       type: System.Security.Principal.IIdentity
-      description: "The identity from which to initialize the new claims principal."
+      description: "L&quot;identità da cui inizializzare la nuova entità delle attestazioni."
   overload: System.Security.Claims.ClaimsPrincipal.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identity</code> is **null**."
+    description: "<code>identity</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.#ctor(System.Security.Principal.IPrincipal)
@@ -161,19 +161,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;></xref> class from the specified principal."
-  remarks: "If the specified principal is assignable from <xref:System.Security.Claims.ClaimsPrincipal>, all of its identities are added to the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection. If the specified principal is not assignable from <xref:System.Security.Claims.ClaimsPrincipal>, a new <xref:System.Security.Claims.ClaimsIdentity> is created from the <xref:System.Security.Principal.IIdentity> in its <xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=fullName> property and added to the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;> </xref> classe dall&quot;entità specificata."
+  remarks: "Se l&quot;entità specificata è assegnabile da <xref:System.Security.Claims.ClaimsPrincipal>, tutte le identità vengono aggiunti i <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>insieme.</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> </xref:System.Security.Claims.ClaimsPrincipal> Se l&quot;entità specificata non è assegnabile da <xref:System.Security.Claims.ClaimsPrincipal>, un nuovo <xref:System.Security.Claims.ClaimsIdentity>viene creato dal <xref:System.Security.Principal.IIdentity>nel relativo <xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=fullName>proprietà e aggiunto al <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>insieme.</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> </xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=fullName> </xref:System.Security.Principal.IIdentity> </xref:System.Security.Claims.ClaimsIdentity> </xref:System.Security.Claims.ClaimsPrincipal>"
   syntax:
     content: public ClaimsPrincipal (System.Security.Principal.IPrincipal principal);
     parameters:
     - id: principal
       type: System.Security.Principal.IPrincipal
-      description: "The principal from which to initialize the new claims principal."
+      description: "L&quot;entità da cui inizializzare la nuova entità delle attestazioni."
   overload: System.Security.Claims.ClaimsPrincipal.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>principal</code> is **null**."
+    description: "<code>principal</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
@@ -188,21 +188,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;></xref> class from a serialized stream created by using <xref href=&quot;System.Runtime.Serialization.ISerializable&quot;></xref>."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;> </xref> classe da un flusso serializzato creato usando <xref href=&quot;System.Runtime.Serialization.ISerializable&quot;> </xref>."
   syntax:
     content: protected ClaimsPrincipal (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The serialized data."
+      description: "I dati serializzati."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The context for serialization."
+      description: "Il contesto per la serializzazione."
   overload: System.Security.Claims.ClaimsPrincipal.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>info</code> is **null**."
+    description: "<code>info</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.AddIdentities(System.Collections.Generic.IEnumerable{System.Security.Claims.ClaimsIdentity})
@@ -217,19 +217,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Adds the specified claims identities to this claims principal."
-  remarks: "The identities are added to the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection."
+  summary: "Aggiunge le identità delle attestazioni specificate a questa entità delle attestazioni."
+  remarks: "Le identità vengono aggiunti per il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>insieme.</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>"
   syntax:
     content: public virtual void AddIdentities (System.Collections.Generic.IEnumerable<System.Security.Claims.ClaimsIdentity> identities);
     parameters:
     - id: identities
       type: System.Collections.Generic.IEnumerable{System.Security.Claims.ClaimsIdentity}
-      description: "The claims identities to add."
+      description: "Le identità delle attestazioni da aggiungere."
   overload: System.Security.Claims.ClaimsPrincipal.AddIdentities*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identities</code> is **null**."
+    description: "<code>identities</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.AddIdentity(System.Security.Claims.ClaimsIdentity)
@@ -244,19 +244,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Adds the specified claims identity to this claims principal."
-  remarks: "The identity is added to the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection."
+  summary: "Aggiunge l&quot;identità delle attestazioni specificate a questa entità delle attestazioni."
+  remarks: "L&quot;identità viene aggiunto per il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>insieme.</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>"
   syntax:
     content: public virtual void AddIdentity (System.Security.Claims.ClaimsIdentity identity);
     parameters:
     - id: identity
       type: System.Security.Claims.ClaimsIdentity
-      description: "The claims identity to add."
+      description: "Identità basata sulle attestazioni da aggiungere."
   overload: System.Security.Claims.ClaimsPrincipal.AddIdentity*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identity</code> is **null**."
+    description: "<code>identity</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.Claims
@@ -271,13 +271,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Gets a collection that contains all of the claims from all of the claims identities associated with this claims principal."
-  remarks: "A claims principal has a collection of <xref:System.Security.Claims.ClaimsIdentity> objects that is accessible through the Identities property. Each <xref:System.Security.Claims.ClaimsIdentity> in the collection contains one or more claims. The Claims property returns all of the claims from all of the claims identities in this collection.       The Claims property can be examined by custom implementations of the <xref:System.Security.Claims.ClaimsAuthenticationManager> class to make authentication decisions or to filter, transform, or enrich an incoming claim set; by custom implementations of the <xref:System.Security.Claims.ClaimsAuthorizationManager> class to enforce authorization policy; or by application code to make authorization decisions or to customize user experience based on the claims present in the collection."
+  summary: "Ottiene una raccolta che contiene tutte le attestazioni da tutte le identità delle attestazioni associata a questa entità delle attestazioni."
+  remarks: "Un&quot;entità delle attestazioni è una raccolta di <xref:System.Security.Claims.ClaimsIdentity>gli oggetti che è possibile accedere tramite la proprietà di identità.</xref:System.Security.Claims.ClaimsIdentity> Ogni <xref:System.Security.Claims.ClaimsIdentity>nella raccolta contiene una o più attestazioni.</xref:System.Security.Claims.ClaimsIdentity> La proprietà di attestazioni restituisce tutte le attestazioni da tutte le identità delle attestazioni in questa raccolta.       La proprietà di attestazioni può essere esaminata le implementazioni personalizzate della <xref:System.Security.Claims.ClaimsAuthenticationManager>classe per prendere decisioni di autenticazione o per filtrare, trasformare o migliorare un set di attestazioni in ingresso; da implementazioni personalizzate del <xref:System.Security.Claims.ClaimsAuthorizationManager>classe per applicare i criteri di autorizzazione; o dal codice dell&quot;applicazione per prendere decisioni di autorizzazione o per personalizzare l&quot;utente un&quot;esperienza in base alle attestazioni presente nella raccolta.</xref:System.Security.Claims.ClaimsAuthorizationManager> </xref:System.Security.Claims.ClaimsAuthenticationManager>"
   syntax:
     content: public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> Claims { get; }
     return:
       type: System.Collections.Generic.IEnumerable{System.Security.Claims.Claim}
-      description: "The claims associated with this principal."
+      description: "Le attestazioni associate all&quot;entità."
   overload: System.Security.Claims.ClaimsPrincipal.Claims*
   exceptions: []
   platform:
@@ -294,13 +294,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Gets and sets the delegate used to select the claims principal returned by the <xref:System.Security.Claims.ClaimsPrincipal.Current*> property."
-  remarks: "You can set this property to override the default behavior of the <xref:System.Security.Claims.ClaimsPrincipal.Current%2A> property."
+  summary: "Ottiene e imposta il delegato utilizzato per selezionare l&quot;entità delle attestazioni restituita dal <xref:System.Security.Claims.ClaimsPrincipal.Current*>proprietà.</xref:System.Security.Claims.ClaimsPrincipal.Current*>"
+  remarks: "È possibile impostare questa proprietà per eseguire l&quot;override del comportamento predefinito del <xref:System.Security.Claims.ClaimsPrincipal.Current%2A>proprietà.</xref:System.Security.Claims.ClaimsPrincipal.Current%2A>"
   syntax:
     content: public static Func<System.Security.Claims.ClaimsPrincipal> ClaimsPrincipalSelector { get; set; }
     return:
       type: System.Func{System.Security.Claims.ClaimsPrincipal}
-      description: "The delegate. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Il delegato. Il valore predefinito è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector*
   exceptions: []
   platform:
@@ -317,13 +317,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Returns a copy of this instance."
+  summary: "Restituisce una copia di questa istanza."
   syntax:
     content: public virtual System.Security.Claims.ClaimsPrincipal Clone ();
     parameters: []
     return:
       type: System.Security.Claims.ClaimsPrincipal
-      description: "A new copy of the <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;></xref> object."
+      description: "Una nuova copia di <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;> </xref> oggetto."
   overload: System.Security.Claims.ClaimsPrincipal.Clone*
   exceptions: []
   platform:
@@ -340,16 +340,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Creates a new claims identity."
+  summary: "Crea una nuova identità di attestazioni."
   syntax:
     content: protected virtual System.Security.Claims.ClaimsIdentity CreateClaimsIdentity (System.IO.BinaryReader reader);
     parameters:
     - id: reader
       type: System.IO.BinaryReader
-      description: "The binary reader."
+      description: "Lettore binario."
     return:
       type: System.Security.Claims.ClaimsIdentity
-      description: "The created claims identity."
+      description: "L&quot;identità delle attestazioni creata."
   overload: System.Security.Claims.ClaimsPrincipal.CreateClaimsIdentity*
   exceptions: []
   platform:
@@ -366,13 +366,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Gets the current claims principal."
-  remarks: "By default, <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> is returned. You can change this behavior by setting the <xref:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector%2A> property to specify a delegate to be called to determine the current principal."
+  summary: "Ottiene l&quot;entità delle attestazioni corrente."
+  remarks: "Per impostazione predefinita, <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>viene restituito.</xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> È possibile modificare questo comportamento impostando la <xref:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector%2A>proprietà per specificare un delegato da chiamare per determinare l&quot;entità corrente.</xref:System.Security.Claims.ClaimsPrincipal.ClaimsPrincipalSelector%2A>"
   syntax:
     content: public static System.Security.Claims.ClaimsPrincipal Current { get; }
     return:
       type: System.Security.Claims.ClaimsPrincipal
-      description: "The current claims principal."
+      description: "L&quot;entità delle attestazioni corrente."
   overload: System.Security.Claims.ClaimsPrincipal.Current*
   exceptions: []
   platform:
@@ -393,7 +393,7 @@ items:
     content: protected virtual byte[] CustomSerializationData { get; }
     return:
       type: System.Byte[]
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Security.Claims.ClaimsPrincipal.CustomSerializationData*
   exceptions: []
   platform:
@@ -410,22 +410,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Retrieves all of the claims that are matched by the specified predicate."
-  remarks: "Returns claims from all identities associated with the claims principal."
+  summary: "Recupera tutte le attestazioni corrispondenti al predicato specificato."
+  remarks: "Restituisce le attestazioni da tutte le identità associate all&quot;entità delle attestazioni."
   syntax:
     content: public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> FindAll (Predicate<System.Security.Claims.Claim> match);
     parameters:
     - id: match
       type: System.Predicate{System.Security.Claims.Claim}
-      description: "The function that performs the matching logic."
+      description: "Funzione che esegue la logica corrispondente."
     return:
       type: System.Collections.Generic.IEnumerable{System.Security.Claims.Claim}
-      description: "The matching claims."
+      description: "Attestazioni corrispondenti."
   overload: System.Security.Claims.ClaimsPrincipal.FindAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>match</code> is **null**."
+    description: "<code>match</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.FindAll(System.String)
@@ -440,22 +440,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Retrieves all or the claims that have the specified claim type."
-  remarks: "Returns claims from all identities associated with the claims principal. The comparison is made using Ordinal case in-sensitive on `type`."
+  summary: "Recupera tutti o le attestazioni che presentano il tipo di attestazione specificato."
+  remarks: "Restituisce le attestazioni da tutte le identità associate all&quot;entità delle attestazioni. Viene eseguito il confronto ordinale maiuscole in basate su `type`."
   syntax:
     content: public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.Claim> FindAll (string type);
     parameters:
     - id: type
       type: System.String
-      description: "The claim type against which to match claims."
+      description: "Tipo di attestazione su cui eseguire la corrispondenza di attestazioni."
     return:
       type: System.Collections.Generic.IEnumerable{System.Security.Claims.Claim}
-      description: "The matching claims."
+      description: "Attestazioni corrispondenti."
   overload: System.Security.Claims.ClaimsPrincipal.FindAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is **null**."
+    description: "<code>type</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.FindFirst(System.Predicate{System.Security.Claims.Claim})
@@ -470,21 +470,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Retrieves the first claim that is matched by the specified predicate."
+  summary: "Recupera la prima attestazione che corrisponde al predicato specificato."
   syntax:
     content: public virtual System.Security.Claims.Claim FindFirst (Predicate<System.Security.Claims.Claim> match);
     parameters:
     - id: match
       type: System.Predicate{System.Security.Claims.Claim}
-      description: "The function that performs the matching logic."
+      description: "Funzione che esegue la logica corrispondente."
     return:
       type: System.Security.Claims.Claim
-      description: "The first matching claim or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no match is found."
+      description: "La prima attestazione corrispondente o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se viene trovata alcuna corrispondenza."
   overload: System.Security.Claims.ClaimsPrincipal.FindFirst*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>match</code> is **null**."
+    description: "<code>match</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.FindFirst(System.String)
@@ -499,21 +499,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Retrieves the first claim with the specified claim type."
+  summary: "Recupera la prima attestazione con il tipo di attestazione specificato."
   syntax:
     content: public virtual System.Security.Claims.Claim FindFirst (string type);
     parameters:
     - id: type
       type: System.String
-      description: "The claim type to match."
+      description: "Il tipo di attestazione per la corrispondenza."
     return:
       type: System.Security.Claims.Claim
-      description: "The first matching claim or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no match is found."
+      description: "La prima attestazione corrispondente o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se viene trovata alcuna corrispondenza."
   overload: System.Security.Claims.ClaimsPrincipal.FindFirst*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is **null**."
+    description: "<code>type</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
@@ -528,21 +528,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Populates the <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> with data needed to serialize the current <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;></xref> object."
+  summary: "Consente di popolare il <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> con i dati necessari per serializzare l&quot;oggetto corrente <xref href=&quot;System.Security.Claims.ClaimsPrincipal&quot;> </xref> oggetto."
   syntax:
     content: protected virtual void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The object to populate with data."
+      description: "Oggetto da popolare con i dati."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The destination for this serialization. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "La destinazione per questa serializzazione. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   overload: System.Security.Claims.ClaimsPrincipal.GetObjectData*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>info</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>info</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.HasClaim(System.Predicate{System.Security.Claims.Claim})
@@ -557,21 +557,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Determines whether any of the claims identities associated with this claims principal contains a claim that is matched by the specified predicate."
+  summary: "Determina che se una qualsiasi delle identità di attestazioni associate all&quot;entità delle attestazioni contiene un&quot;attestazione che corrisponde al predicato specificato."
   syntax:
     content: public virtual bool HasClaim (Predicate<System.Security.Claims.Claim> match);
     parameters:
     - id: match
       type: System.Predicate{System.Security.Claims.Claim}
-      description: "The function that performs the matching logic."
+      description: "Funzione che esegue la logica corrispondente."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a matching claim exists; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se esiste un&quot;attestazione corrispondente. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Claims.ClaimsPrincipal.HasClaim*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>match</code> is **null**."
+    description: "<code>match</code>is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.HasClaim(System.String,System.String)
@@ -586,25 +586,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Determines whether any of the claims identities associated with this claims principal contains a claim with the specified claim type and value."
-  remarks: "Does not check the <xref:System.Security.Claims.Claim.Issuer%2A> or <xref:System.Security.Claims.Claim.OriginalIssuer%2A> properties. The comparison is made using Ordinal, case sensitive on value; case in-sensitive on type."
+  summary: "Determina che se una qualsiasi delle identità di attestazioni associate all&quot;entità delle attestazioni contiene un&quot;attestazione con il tipo di attestazione specificato e il valore."
+  remarks: "Non controlla il <xref:System.Security.Claims.Claim.Issuer%2A>o <xref:System.Security.Claims.Claim.OriginalIssuer%2A>proprietà.</xref:System.Security.Claims.Claim.OriginalIssuer%2A> </xref:System.Security.Claims.Claim.Issuer%2A> Il confronto viene eseguito utilizzando l&quot;ordinale, tra maiuscole e minuscole nel valore. case tipo dipendente."
   syntax:
     content: public virtual bool HasClaim (string type, string value);
     parameters:
     - id: type
       type: System.String
-      description: "The type of the claim to match."
+      description: "Il tipo di attestazione per la corrispondenza."
     - id: value
       type: System.String
-      description: "The value of the claim to match."
+      description: "Il valore dell&quot;attestazione per la corrispondenza."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a matching claim exists; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se esiste un&quot;attestazione corrispondente. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Claims.ClaimsPrincipal.HasClaim*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is **null**.       -or-       <code>value</code> is **null**."
+    description: "<code>type</code>is **null**.       -or-       <code>value</code> is **null**."
   platform:
   - net462
 - uid: System.Security.Claims.ClaimsPrincipal.Identities
@@ -619,13 +619,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Gets a collection that contains all of the claims identities associated with this claims principal."
-  remarks: "In the common case, the collection contains only a single element.       It is possible for the collection to contain some elements which are `null`."
+  summary: "Ottiene una raccolta che contiene tutte le identità delle attestazioni associata a questa entità delle attestazioni."
+  remarks: "In genere, la raccolta contiene un solo elemento.       È possibile che la raccolta contenere alcuni elementi che sono `null`."
   syntax:
     content: public virtual System.Collections.Generic.IEnumerable<System.Security.Claims.ClaimsIdentity> Identities { get; }
     return:
       type: System.Collections.Generic.IEnumerable{System.Security.Claims.ClaimsIdentity}
-      description: "The collection of claims identities."
+      description: "Raccolta di identità delle attestazioni."
   overload: System.Security.Claims.ClaimsPrincipal.Identities*
   exceptions: []
   platform:
@@ -642,13 +642,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Gets the primary claims identity associated with this claims principal."
-  remarks: "By default, the framework prioritizes identities of type <xref:System.Security.Principal.WindowsIdentity> when returning the identity. The first <xref:System.Security.Principal.WindowsIdentity> found in the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection is returned. If there is no <xref:System.Security.Principal.WindowsIdentity> in the collection, the first identity assignable from <xref:System.Security.Claims.ClaimsIdentity> is returned. If there is no <xref:System.Security.Claims.ClaimsIdentity>, `null` is returned. If the <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> collection is empty, an <xref:System.ArgumentNullException> is thrown.       You can change the default behavior by setting the <xref:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector%2A> property to specify a delegate to be called to determine the identity."
+  summary: "Ottiene il database primario associato a questa entità delle attestazioni di identità basata sulle attestazioni."
+  remarks: "Per impostazione predefinita, il framework assegna la priorità delle identità di tipo <xref:System.Security.Principal.WindowsIdentity>quando viene restituita l&quot;identità.</xref:System.Security.Principal.WindowsIdentity> Il primo <xref:System.Security.Principal.WindowsIdentity>, vedere il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>viene restituita una raccolta.</xref:System.Security.Claims.ClaimsPrincipal.Identities%2A> </xref:System.Security.Principal.WindowsIdentity> Se è presente alcun <xref:System.Security.Principal.WindowsIdentity>nella raccolta, la prima identità assegnabile da <xref:System.Security.Claims.ClaimsIdentity>viene restituito.</xref:System.Security.Claims.ClaimsIdentity> </xref:System.Security.Principal.WindowsIdentity> Se è presente alcun <xref:System.Security.Claims.ClaimsIdentity>, `null` viene restituito.</xref:System.Security.Claims.ClaimsIdentity> Se il <xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>raccolta è vuota, un <xref:System.ArgumentNullException>viene generata un&quot;eccezione.</xref:System.ArgumentNullException> </xref:System.Security.Claims.ClaimsPrincipal.Identities%2A>       È possibile modificare il comportamento predefinito impostando il <xref:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector%2A>proprietà per specificare un delegato da chiamare per determinare l&quot;identità.</xref:System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector%2A>"
   syntax:
     content: public virtual System.Security.Principal.IIdentity Identity { get; }
     return:
       type: System.Security.Principal.IIdentity
-      description: "The primary claims identity associated with this claims principal."
+      description: "L&quot;identità delle attestazioni primaria associata a questa entità delle attestazioni."
   overload: System.Security.Claims.ClaimsPrincipal.Identity*
   exceptions: []
   platform:
@@ -665,17 +665,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Returns a value that indicates whether the entity (user) represented by this claims principal is in the specified role."
-  remarks: "The IsInRole method checks whether an identity that this claims principal possesses contains a claim of type <xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName> where the value of the claim is equal to the value specified by the `role` parameter.      > [!NOTE] >  Each <xref:System.Security.Claims.ClaimsIdentity> has its own definition of the claim type that represents a role. This claim type can be accessed and set through the <xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName> property."
+  summary: "Restituisce un valore che indica se l&quot;entità (utente) rappresentata da questa entità delle attestazioni è nel ruolo specificato."
+  remarks: "Il metodo IsInRole controlla se un&quot;identità che dispone di questa entità delle attestazioni contiene un&quot;attestazione di tipo <xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName>dove il valore dell&quot;attestazione è uguale al valore specificato per il `role` parametro.</xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName>      > [!NOTE] > Ogni <xref:System.Security.Claims.ClaimsIdentity>ha una propria definizione del tipo di attestazione che rappresenta un ruolo.</xref:System.Security.Claims.ClaimsIdentity> Questo tipo di attestazione siano accessibili e impostato tramite la <xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName>proprietà.</xref:System.Security.Claims.ClaimsIdentity.RoleClaimType%2A?displayProperty=fullName>"
   syntax:
     content: public virtual bool IsInRole (string role);
     parameters:
     - id: role
       type: System.String
-      description: "The role for which to check."
+      description: "Il ruolo per cui si desidera controllare."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if claims principal is in the specified role; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se l&quot;entità delle attestazioni è nel ruolo specificato. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Claims.ClaimsPrincipal.IsInRole*
   exceptions: []
   platform:
@@ -692,13 +692,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Claims
-  summary: "Gets and sets the delegate used to select the claims identity returned by the <xref:System.Security.Claims.ClaimsPrincipal.Identity*> property."
-  remarks: "You can set this property to override the default behavior of the <xref:System.Security.Claims.ClaimsPrincipal.Identity%2A> property."
+  summary: "Ottiene e imposta il delegato utilizzato per selezionare l&quot;identità di attestazioni restituita da di <xref:System.Security.Claims.ClaimsPrincipal.Identity*>proprietà.</xref:System.Security.Claims.ClaimsPrincipal.Identity*>"
+  remarks: "È possibile impostare questa proprietà per eseguire l&quot;override del comportamento predefinito del <xref:System.Security.Claims.ClaimsPrincipal.Identity%2A>proprietà.</xref:System.Security.Claims.ClaimsPrincipal.Identity%2A>"
   syntax:
     content: public static Func<System.Collections.Generic.IEnumerable<System.Security.Claims.ClaimsIdentity>,System.Security.Claims.ClaimsIdentity> PrimaryIdentitySelector { get; set; }
     return:
       type: System.Func{System.Collections.Generic.IEnumerable{System.Security.Claims.ClaimsIdentity},System.Security.Claims.ClaimsIdentity}
-      description: "The delegate. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Il delegato. Il valore predefinito è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Claims.ClaimsPrincipal.PrimaryIdentitySelector*
   exceptions: []
   platform:
@@ -720,7 +720,7 @@ items:
     parameters:
     - id: writer
       type: System.IO.BinaryWriter
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Security.Claims.ClaimsPrincipal.WriteTo*
   exceptions: []
   platform:
@@ -742,10 +742,10 @@ items:
     parameters:
     - id: writer
       type: System.IO.BinaryWriter
-      description: "To be added."
+      description: "Da aggiungere."
     - id: userData
       type: System.Byte[]
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Security.Claims.ClaimsPrincipal.WriteTo*
   exceptions: []
   platform:

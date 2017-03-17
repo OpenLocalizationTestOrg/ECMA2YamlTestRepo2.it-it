@@ -25,8 +25,8 @@ items:
   nameWithType: ReservationCollection
   fullName: System.IO.Log.ReservationCollection
   type: Class
-  summary: "Manages the collection of space reservations made in a record sequence."
-  remarks: "This class represents a set of reservation areas that are made in a record sequence. Adding items to the collection allocates new reservations. Removing items from the collection frees those reservations.       An application reserves space in the log when it has data that is to be written to the log in the future, but cannot write it immediately. Reservations provide a guarantee that the data can be written to the log when the data is available to be written. When using logs, applications often reserve one or more log records in a marshalling area. You must reserve records prior to appending them.       Reservations can be used to guarantee that an operation can be completed before the data is committed; otherwise, the changes are rolled back. It can also be used to record an &quot;undo action&quot; in the log. During a rollback operation, a transactional resource manager (RM) must be able to recover its state if the RM is interrupted during the rollback operation. By using a reservation area, an RM can reserve space in a log before it is used.       The <xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A> method can either reserve space or append data, or both, depending on the parameters that are specified when making the call. As work progresses in a transaction, an application can append the undo information and reserve space for compensation records. During a rollback operation, compensation records that are created indicate what has been undone on the disk. The records are appended using space that has been previously reserved. This guarantees that an RM does not run out of log space, which is a fatal condition, while performing a rollback operation. If a log fills up during a transaction, an application can safely roll back a transaction without corrupting durable data.       CLFS is an ARIES-compliant logging system, meant for write-ahead logging. In write-ahead logging, an application writes an undo record before it performs the operation, reserving the amount of space it takes in the log to write a compensating record, which may be used during rollback. Later, the reserved space is used when the compensation record is actually written.       Applications can either reserve or access long space at any given time (they are mutually exclusive operations). After a commit record is written to the log, an application can free up the reservations for the compensation records. This action can be done by calling either the <xref:System.IO.Log.ReservationCollection.FreeReservation%2A> or <xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A> method. Calling the <xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A> method guarantees that the operation is atomic, while calling the <xref:System.IO.Log.ReservationCollection.FreeReservation%2A> method does not.       When you free records, you must free the same records that you reserved together in a previous call to the <xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A> method.      > [!NOTE] >  Your implementation of <xref:System.IO.Log.IRecordSequence> must implement the <xref:System.IO.Log.ReservationCollection.MakeReservation%2A> and <xref:System.IO.Log.ReservationCollection.FreeReservation%2A> methods to perform the actual reservation allocation and deallocation. In addition, your implementation must also call <xref:System.IO.Log.ReservationCollection.ReservationFreed%2A> when a record is written into a reserved space."
+  summary: "Gestisce la raccolta di prenotazioni dello spazio eseguite in una sequenza di record."
+  remarks: "Questa classe rappresenta un set di aree di prenotazione che vengono eseguite in una sequenza di record. Aggiunta di elementi alla raccolta alloca nuove prenotazioni. Rimozione di elementi dalla raccolta comporta la liberazione tali prenotazioni.       Un&quot;applicazione viene riservato spazio nel log quando dispone di dati che devono essere scritti nel log in futuro, ma non è possibile scrivere immediatamente. Le prenotazioni costituiscono la garanzia che i dati possono essere scritti nel log quando i dati sono disponibili da scrivere. Quando si utilizza i registri, le applicazioni vengono spesso riservati uno o più record di log in un&quot;area di marshalling. È necessario riservare i record prima di aggiungerli.       Le prenotazioni possono essere utilizzate per garantire che un&quot;operazione possa essere completata prima che venga eseguito il commit; i dati in caso contrario, il rollback delle modifiche. E può essere utilizzato anche per registrare un&quot; &quot;azione di annullamento&quot; nel registro. Durante un&quot;operazione di rollback, il gestore di risorse transazionale (RM) deve essere in grado di ripristinare il proprio stato se viene interrotto durante l&quot;operazione di rollback. Tramite un&quot;area di prenotazione, un gestore di risorse può riservare spazio in un log prima che venga utilizzato.       Il <xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A>metodo possibile riservare spazio o aggiungere dati o entrambi, a seconda dei parametri vengono specificati durante la chiamata.</xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A> Man mano che in una transazione, un&quot;applicazione può aggiungere le informazioni di annullamento e riservare spazio per i record di compensazione. Durante un&quot;operazione di rollback, i record di compensazione creati indicano ciò che è stato annullato sul disco. I record vengono aggiunti utilizzando spazio precedentemente riservato. In questo modo si garantisce che un gestore di risorse non esaurisca lo spazio di log, che è una condizione irreversibile, durante l&quot;esecuzione di un&quot;operazione di rollback. Se un log si riempie durante una transazione, un&quot;applicazione può tranquillamente rollback della transazione senza danneggiare dati durevoli.       CLFS è un sistema di registrazione conforme con ARIES, destinato a registrazione write-ahead. Nel log write-ahead, un&quot;applicazione scrive un record di annullamento prima di eseguire l&quot;operazione, prenotando la quantità di spazio che nel log necessario per la scrittura di un record di compensazione, che può essere utilizzato durante il rollback. In un secondo momento, lo spazio riservato viene utilizzato quando il record di compensazione verrà effettivamente scritto.       Applicazioni possono prenotare o accedere allo spazio di registro in qualsiasi momento (sono operazioni si escludono a vicenda). Dopo il commit record viene scritto nel log, un&quot;applicazione può liberare le prenotazioni per i record di compensazione. Questa azione può essere eseguita chiamando il <xref:System.IO.Log.ReservationCollection.FreeReservation%2A>o <xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A>metodo.</xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A> </xref:System.IO.Log.ReservationCollection.FreeReservation%2A> La chiamata di <xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A>metodo garantisce che l&quot;operazione è atomica, durante la chiamata di <xref:System.IO.Log.ReservationCollection.FreeReservation%2A>non dal metodo.</xref:System.IO.Log.ReservationCollection.FreeReservation%2A> </xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A>       Quando si liberano record, è necessario liberare gli stessi record prenotati insieme in una chiamata precedente al <xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A>metodo.</xref:System.IO.Log.IRecordSequence.ReserveAndAppend%2A>      > [!NOTE] > L&quot;implementazione di <xref:System.IO.Log.IRecordSequence>deve implementare il <xref:System.IO.Log.ReservationCollection.MakeReservation%2A>e <xref:System.IO.Log.ReservationCollection.FreeReservation%2A>metodi per eseguire l&quot;allocazione di prenotazione effettiva e la deallocazione.</xref:System.IO.Log.ReservationCollection.FreeReservation%2A> </xref:System.IO.Log.ReservationCollection.MakeReservation%2A> </xref:System.IO.Log.IRecordSequence> Inoltre, deve chiamare l&quot;implementazione <xref:System.IO.Log.ReservationCollection.ReservationFreed%2A>quando viene scritto un record in uno spazio riservato.</xref:System.IO.Log.ReservationCollection.ReservationFreed%2A>"
   example:
   - "Reservations can be performed in two ways as shown in the following examples. You can adopt the practices in the samples for robust processing. Notice that this task can only be performed when using the CLFS-based <xref:System.IO.Log.LogRecordSequence> class.  \n  \n```  \n//Using the ReserveAndAppend Method  \nReservationCollection reservations = recordSequence.CreateReservationCollection();  \nlong[] lengthOfUndoRecords = new long[] { 1000 };  \nrecordSequence.ReserveAndAppend(recordData,  \n                                                     userSqn,  \n                                                     previousSqn,  \n                                                     RecordSequenceAppendOptions.None,  \n                                                     reservations,  \n                                                     lengthOfUndoRecords);  \nrecordSequence.Append(undoRecordData,    // If necessary …  \n                                    userSqn,  \n                                    previousSqn,  \n                                    RecordSequenceAppendOptions.ForceFlush,  \n                                    reservations);  \n  \n// Using the Manual Approach  \nReservationCollection reservations = recordSequence.CreateReservationCollection();  \nreservations.Add(lengthOfUndoRecord);  \ntry  \n{  \n   recordSequence.Append(recordData, userSqn, previousSqn, RecordAppendOptions.None);  \n}  \ncatch (Exception)  \n{  \n   reservations.Remove(lengthOfUndoRecord);  \n   throw;  \n}  \n  \nrecordSequence.Append(undoRecordData, userSqn, previousSqn, RecordAppendOptions.ForceFlush, reservations);  \n```"
   syntax:
@@ -51,7 +51,7 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> class."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> classe."
   syntax:
     content: protected ReservationCollection ();
     parameters: []
@@ -71,7 +71,7 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Allocates a reservation and adds it to the collection. This method cannot be inherited."
+  summary: "Alloca una prenotazione e la aggiunge alla raccolta. Questo metodo non può essere ereditato."
   remarks: ''
   example:
   - "The following example shows how to manually make a reservation. Notice that this task can only be performed when using the CLFS-based <xref:System.IO.Log.LogRecordSequence> class.  \n  \n```  \nReservationCollection reservations = recordSequence.CreateReservationCollection();  \nreservations.Add(lengthOfUndoRecord);  \ntry  \n{  \n   recordSequence.Append(recordData, userSqn, previousSqn, RecordAppendOptions.None);  \n}  \ncatch (Exception)  \n{  \n   reservations.Remove(lengthOfUndoRecord);  \n   throw;  \n}  \n  \nrecordSequence.Append(undoRecordData, userSqn, previousSqn, RecordAppendOptions.ForceFlush, reservations);  \n```"
@@ -80,30 +80,30 @@ items:
     parameters:
     - id: size
       type: System.Int64
-      description: "The size of the requested reservation, in bytes."
+      description: "La dimensione della prenotazione richiesta, in byte."
   overload: System.IO.Log.ReservationCollection.Add*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>archiveTail</code> is not between the base and last sequence numbers of this sequence."
+    description: "<code>archiveTail</code>non è compreso tra i numeri di sequenza di base e finale di questa sequenza."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>size</code> is invalid or exceeds maximum reservation size."
+    description: "<code>size</code>non è valido o supera la dimensione massima della prenotazione."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when creating the archive snapshot."
+    description: "Si verifica un errore dei / o durante la creazione dell&quot;istantanea dell&quot;archivio."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "Il metodo è stato chiamato dopo la sequenza è stata eliminata."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of the program."
+    description: "Non è disponibile memoria sufficiente per continuare l&quot;esecuzione del programma."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "L&quot;accesso per l&quot;archivio dei registri specificato viene negato dal sistema operativo."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence is full."
+    description: "La sequenza di record è completa."
   platform:
   - net462
 - uid: System.IO.Log.ReservationCollection.Clear
@@ -118,7 +118,7 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Releases all of the reservations in the collection. This method cannot be inherited."
+  summary: "Rilascia tutte le prenotazioni contenute nella raccolta. Questo metodo non può essere ereditato."
   syntax:
     content: public void Clear ();
     parameters: []
@@ -126,22 +126,22 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>size</code> is invalid or exceeds maximum reservation size."
+    description: "<code>size</code>non è valido o supera la dimensione massima della prenotazione."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when creating the archive snapshot."
+    description: "Si verifica un errore dei / o durante la creazione dell&quot;istantanea dell&quot;archivio."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "Il metodo è stato chiamato dopo la sequenza è stata eliminata."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of the program."
+    description: "Non è disponibile memoria sufficiente per continuare l&quot;esecuzione del programma."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence is full."
+    description: "La sequenza di record è completa."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "L&quot;accesso per l&quot;archivio dei registri specificato viene negato dal sistema operativo."
   platform:
   - net462
 - uid: System.IO.Log.ReservationCollection.Contains(System.Int64)
@@ -156,27 +156,27 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Determines whether a reservation of the specified size has been made. This method cannot be inherited."
+  summary: "Determina se è stata effettuata una prenotazione della dimensione specificata. Questo metodo non può essere ereditato."
   syntax:
     content: public bool Contains (long size);
     parameters:
     - id: size
       type: System.Int64
-      description: "The size to locate in the collection."
+      description: "La dimensione da individuare nella raccolta."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if at least one reservation of the specified size has been made; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se almeno una prenotazione della dimensione specificata è stata stabilita; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IO.Log.ReservationCollection.Contains*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "Il metodo è stato chiamato dopo la sequenza è stata eliminata."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of the program."
+    description: "Non è disponibile memoria sufficiente per continuare l&quot;esecuzione del programma."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "L&quot;accesso per l&quot;archivio dei registri specificato viene negato dal sistema operativo."
   platform:
   - net462
 - uid: System.IO.Log.ReservationCollection.CopyTo(System.Int64[],System.Int32)
@@ -191,36 +191,36 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Copies the entire collection to a one-dimensional array, starting at the specified index of the target array. This method cannot be inherited."
+  summary: "Copia l&quot;intera raccolta in una matrice unidimensionale, iniziando dall&quot;indice specificato della matrice di destinazione. Questo metodo non può essere ereditato."
   syntax:
     content: public void CopyTo (long[] array, int arrayIndex);
     parameters:
     - id: array
       type: System.Int64[]
-      description: "The array that is the destination of the copy."
+      description: "Matrice che rappresenta la destinazione della copia."
     - id: arrayIndex
       type: System.Int32
-      description: "The zero-based index in the array at which copying begins."
+      description: "Indice in base zero nella matrice da cui iniziare la copia."
   overload: System.IO.Log.ReservationCollection.CopyTo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>array</code> or <code>arrayIndex</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>array</code>or <code>arrayIndex</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>arrayIndex</code> is less than zero, or greater than or equal to the length of <code>array</code>."
+    description: "<code>arrayIndex</code>è minore di zero o maggiore o uguale alla lunghezza di <code>array</code>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "There is not enough space in the specified array to copy the data.       -or-       <code>array</code> is not a single dimensional array, which is the only type supported for the requested action."
+    description: "Non c&quot;è spazio sufficiente nella matrice specificata per copiare i dati.       - oppure - <code> array </code> non è una matrice unidimensionale, che è l&quot;unico tipo supportato per l&quot;azione richiesta."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "Il metodo è stato chiamato dopo la sequenza è stata eliminata."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of the program."
+    description: "Non è disponibile memoria sufficiente per continuare l&quot;esecuzione del programma."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "L&quot;accesso per l&quot;archivio dei registri specificato viene negato dal sistema operativo."
   platform:
   - net462
 - uid: System.IO.Log.ReservationCollection.Count
@@ -235,12 +235,12 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the number of reservations in the collection."
+  summary: "Ottiene il numero di prenotazioni contenute nella raccolta."
   syntax:
     content: public int Count { get; }
     return:
       type: System.Int32
-      description: "The number of reservations in the collection."
+      description: "Il numero di prenotazioni contenute nella raccolta."
   overload: System.IO.Log.ReservationCollection.Count*
   exceptions: []
   platform:
@@ -257,7 +257,7 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Allows the <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> to free resources before it is destroyed by the garbage collector."
+  summary: "Consente di <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> per liberare risorse prima di essere eliminato dal garbage collector."
   syntax:
     content: ~ReservationCollection ();
     parameters: []
@@ -277,13 +277,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, releases a reservation of the specified size."
+  summary: "Quando sottoposto a override in una classe derivata, rilascia una prenotazione della dimensione specificata."
   syntax:
     content: protected abstract void FreeReservation (long size);
     parameters:
     - id: size
       type: System.Int64
-      description: "The size of the reservation to release."
+      description: "La dimensione della prenotazione da rilasciare."
   overload: System.IO.Log.ReservationCollection.FreeReservation*
   exceptions: []
   platform:
@@ -300,17 +300,17 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the best matching reservation for a given size."
-  remarks: "This method is typically called when appending a record from reserved space to a record sequence. When it returns, a reservation of the returned size has been removed from the collection. If, for some reason, the reserved space is not actually accessed, the <xref:System.IO.Log.ReservationCollection.ReservationMade%2A> method should be called to ensure that the <xref:System.IO.Log.ReservationCollection> accurately represents the amount of reserved space in the record sequence."
+  summary: "Quando sottoposto a override in una classe derivata, ottiene la migliore prenotazione corrispondente per una dimensione specificata."
+  remarks: "Questo metodo viene chiamato in genere quando si accoda un record dallo spazio riservato per una sequenza di record. Quando viene restituito, una prenotazione della dimensione restituita è stato rimosso dalla raccolta. Se, per qualche motivo, lo spazio riservato non è disponibile in realtà, il <xref:System.IO.Log.ReservationCollection.ReservationMade%2A>metodo deve essere chiamato per assicurarsi che il <xref:System.IO.Log.ReservationCollection>rappresenta in modo accurato la quantità di spazio riservato nella sequenza di record.</xref:System.IO.Log.ReservationCollection> </xref:System.IO.Log.ReservationCollection.ReservationMade%2A>"
   syntax:
     content: protected long GetBestMatchingReservation (long size);
     parameters:
     - id: size
       type: System.Int64
-      description: "The size of the reservation that must be fit."
+      description: "La dimensione della prenotazione che deve essere rispettata."
     return:
       type: System.Int64
-      description: "A reservation from the collection that is greater than or equal to the specified size, or -1 if no such reservation exists."
+      description: "Una prenotazione della raccolta che è maggiore o uguale alla dimensione specificata oppure -1 se tale prenotazione non esiste."
   overload: System.IO.Log.ReservationCollection.GetBestMatchingReservation*
   exceptions: []
   platform:
@@ -327,27 +327,27 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Returns an enumerator that can iterate through the <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref>. This method cannot be inherited."
+  summary: "Restituisce un enumeratore che può scorrere il <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref>. Questo metodo non può essere ereditato."
   syntax:
     content: public System.Collections.Generic.IEnumerator<long> GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerator{System.Int64}
-      description: "An enumerator that can iterate through the <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref>."
+      description: "Un enumeratore che può scorrere il <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref>."
   overload: System.IO.Log.ReservationCollection.GetEnumerator*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is invalid for one of the following reasons:      -   The enumeration has ended.      -   The collection has been modified.      -   The enumeration has not been started. A call to <xref:System.Collections.IEnumerator.MoveNext*> must be made."
+    description: "L&quot;operazione non è valido per uno dei seguenti motivi:-l&quot;enumerazione è terminata.      -La raccolta è stata modificata.      -L&quot;enumerazione non è stato avviato. Una chiamata a <xref:System.Collections.IEnumerator.MoveNext*>devono essere eseguite.</xref:System.Collections.IEnumerator.MoveNext*>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "Il metodo è stato chiamato dopo la sequenza è stata eliminata."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of the program."
+    description: "Non è disponibile memoria sufficiente per continuare l&quot;esecuzione del programma."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "L&quot;accesso per l&quot;archivio dei registri specificato viene negato dal sistema operativo."
   platform:
   - net462
 - uid: System.IO.Log.ReservationCollection.IsReadOnly
@@ -362,13 +362,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets a value that indicates whether the collection is read-only."
-  remarks: "A <xref:System.IO.Log.ReservationCollection> is never read-only."
+  summary: "Ottiene un valore che indica se la raccolta è di sola lettura."
+  remarks: "Oggetto <xref:System.IO.Log.ReservationCollection>mai è di sola lettura.</xref:System.IO.Log.ReservationCollection>"
   syntax:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: "This property always returns <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Questa proprietà restituisce sempre <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IO.Log.ReservationCollection.IsReadOnly*
   exceptions: []
   platform:
@@ -385,13 +385,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, allocates a reservation of the specified size."
+  summary: "Quando sottoposto a override in una classe derivata, alloca una prenotazione della dimensione specificata."
   syntax:
     content: protected abstract void MakeReservation (long size);
     parameters:
     - id: size
       type: System.Int64
-      description: "The size of the reservation to allocate."
+      description: "La dimensione della prenotazione da allocare."
   overload: System.IO.Log.ReservationCollection.MakeReservation*
   exceptions: []
   platform:
@@ -408,7 +408,7 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Releases a reservation of the specified size, if one has been made. This method cannot be inherited."
+  summary: "Rilascia una prenotazione della dimensione specificata, se una è stata effettuata. Questo metodo non può essere ereditato."
   remarks: ''
   example:
   - "The following example shows how to manually make a reservation. Notice that this task can only be performed when using the CLFS-based <xref:System.IO.Log.LogRecordSequence> class.  \n  \n```  \nReservationCollection reservations = recordSequence.CreateReservationCollection();  \nreservations.Add(lengthOfUndoRecord);  \ntry  \n{  \n   recordSequence.Append(recordData, userSqn, previousSqn, RecordAppendOptions.None);  \n}  \ncatch (Exception)  \n{  \n   reservations.Remove(lengthOfUndoRecord);  \n   throw;  \n}  \n  \nrecordSequence.Append(undoRecordData, userSqn, previousSqn, RecordAppendOptions.ForceFlush, reservations);  \n```"
@@ -417,30 +417,30 @@ items:
     parameters:
     - id: item
       type: System.Int64
-      description: "The size of the reservation to release."
+      description: "La dimensione della prenotazione da rilasciare."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a reservation of the specified size was found and removed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se una prenotazione della dimensione specificata è stata trovata e rimossa; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IO.Log.ReservationCollection.Remove*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "No reservation large enough to fit the provided record can be found in the specified reservation collection."
+    description: "Prenotazione sufficientemente grande per il record specificato non è reperibile nella raccolta di prenotazioni specificata."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurs when creating the archive snapshot."
+    description: "Si verifica un errore dei / o durante la creazione dell&quot;istantanea dell&quot;archivio."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "Il metodo è stato chiamato dopo la sequenza è stata eliminata."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of the program."
+    description: "Non è disponibile memoria sufficiente per continuare l&quot;esecuzione del programma."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence is full."
+    description: "La sequenza di record è completa."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "L&quot;accesso per l&quot;archivio dei registri specificato viene negato dal sistema operativo."
   platform:
   - net462
 - uid: System.IO.Log.ReservationCollection.ReservationFreed(System.Int64)
@@ -455,14 +455,14 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, indicates that a reservation has been released."
-  remarks: "When you inherit from <xref:System.IO.Log.ReservationCollection>, you must call this method when a reservation is released for a reason other than removing it from the collection."
+  summary: "Quando sottoposto a override in una classe derivata, indica che una prenotazione è stata rilasciata."
+  remarks: "Quando si eredita da <xref:System.IO.Log.ReservationCollection>, è necessario chiamare questo metodo quando una prenotazione viene rilasciata per una ragione diversa dalla rimozione dalla raccolta.</xref:System.IO.Log.ReservationCollection>"
   syntax:
     content: protected void ReservationFreed (long size);
     parameters:
     - id: size
       type: System.Int64
-      description: "The size of the reservation that has been released."
+      description: "La dimensione della prenotazione è stata rilasciata."
   overload: System.IO.Log.ReservationCollection.ReservationFreed*
   exceptions: []
   platform:
@@ -479,14 +479,14 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, indicates that a reservation has been made."
-  remarks: "When you inherit from <xref:System.IO.Log.ReservationCollection>, you must call this method when a reservation is made outside of a call to <xref:System.IO.Log.ReservationCollection.Add%2A>."
+  summary: "Quando sottoposto a override in una classe derivata, indica che una prenotazione è stata apportata."
+  remarks: "Quando si eredita da <xref:System.IO.Log.ReservationCollection>, è necessario chiamare questo metodo quando una prenotazione viene creata di fuori di una chiamata a <xref:System.IO.Log.ReservationCollection.Add%2A>.</xref:System.IO.Log.ReservationCollection.Add%2A> </xref:System.IO.Log.ReservationCollection>"
   syntax:
     content: protected void ReservationMade (long size);
     parameters:
     - id: size
       type: System.Int64
-      description: "The size of the reservation that has been made."
+      description: "La dimensione della prenotazione è stata apportata."
   overload: System.IO.Log.ReservationCollection.ReservationMade*
   exceptions: []
   platform:
@@ -504,27 +504,27 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Returns an enumerator that can iterate through the <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref>. This method cannot be inherited."
+  summary: "Restituisce un enumeratore che può scorrere il <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref>. Questo metodo non può essere ereditato."
   syntax:
     content: System.Collections.IEnumerator IEnumerable.GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.IEnumerator
-      description: "An enumerator that can iterate through the <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref>."
+      description: "Un enumeratore che può scorrere il <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref>."
   overload: System.IO.Log.ReservationCollection.System#Collections#IEnumerable#GetEnumerator*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The operation is invalid for one of the following reasons:      -   The enumeration has ended.      -   The collection has been modified.      -   The enumeration has not been started. A call to <xref:System.Collections.IEnumerator.MoveNext*> must be made."
+    description: "L&quot;operazione non è valido per uno dei seguenti motivi:-l&quot;enumerazione è terminata.      -La raccolta è stata modificata.      -L&quot;enumerazione non è stato avviato. Una chiamata a <xref:System.Collections.IEnumerator.MoveNext*>devono essere eseguite.</xref:System.Collections.IEnumerator.MoveNext*>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "Il metodo è stato chiamato dopo la sequenza è stata eliminata."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "There is not enough memory to continue the execution of the program."
+    description: "Non è disponibile memoria sufficiente per continuare l&quot;esecuzione del programma."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "Access for the specified log store is denied by the operating system."
+    description: "L&quot;accesso per l&quot;archivio dei registri specificato viene negato dal sistema operativo."
   platform:
   - net462
 references:

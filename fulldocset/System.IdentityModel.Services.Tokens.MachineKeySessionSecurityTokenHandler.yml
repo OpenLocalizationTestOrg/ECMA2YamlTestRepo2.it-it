@@ -11,8 +11,8 @@ items:
   nameWithType: MachineKeySessionSecurityTokenHandler
   fullName: System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler
   type: Class
-  summary: "Processes session tokens by using signing and encryption keys specified in the ASP.NET <xref uid=&quot;langword_csharp_&lt;machineKey&gt;&quot; name=&quot;&lt;machineKey&gt;&quot; href=&quot;&quot;></xref> element in a configuration file."
-  remarks: "By default, the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> class uses the <xref:System.IdentityModel.ProtectedDataCookieTransform> class, which uses the Data Protection API (DPAPI), to protect the session token. The DPAPI provides protection by using the user or machine credentials and stores the key data in the user profile. This means that a session token signed and encrypted on one computer cannot be validated or decrypted on a different computer.       By contrast, the MachineKeySessionSecurityTokenHandler class uses the <xref:System.IdentityModel.Services.MachineKeyTransform> class, which protects the session cookie data by using the cryptographic material specified in the `<machineKey>` element in the configuration file. This means that the same keys (and session tokens) can be used across multiple computers. This is particularly important when an application is deployed in a web farm. For more information about how to use Windows Identity Foundation to protect applications that are deployed in a web farm, see [WIF and Web Farms](~/add/includes/ajax-current-ext-md.md).       Configure the application to use the MachineKeySessionSecurityTokenHandler by adding it to the token handler collection. You must first remove the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> (or any handler derived from the <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> class) from the token handler collection if such a handler is present. This is because MachineKeySessionSecurityTokenHandler derives from <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> and a token handler collection cannot contain multiple handlers of any given type."
+  summary: "Elabora i token di sessione tramite chiavi di firma e crittografia specificate in ASP.NET <xref uid=&quot;langword_csharp_&lt;machineKey&gt;&quot; name=&quot;&lt;machineKey&gt;&quot; href=&quot;&quot;> </xref> elemento in un file di configurazione."
+  remarks: "Per impostazione predefinita, il <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>utilizzato dalla classe di <xref:System.IdentityModel.ProtectedDataCookieTransform>(classe), che usa l&quot;API di protezione dati (DPAPI), per proteggere il token di sessione.</xref:System.IdentityModel.ProtectedDataCookieTransform> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> Il DPAPI offre una protezione con le credenziali utente o al computer e archivia i dati della chiave nel profilo utente. Questo significa che un token di sessione firmati e crittografati in un computer non può essere convalidato o decrittografato in un computer diverso.       Al contrario, la classe MachineKeySessionSecurityTokenHandler utilizza il <xref:System.IdentityModel.Services.MachineKeyTransform>(classe), che consente di proteggere i dati del cookie di sessione usando il materiale crittografico specificato nella `<machineKey>` elemento nel file di configurazione.</xref:System.IdentityModel.Services.MachineKeyTransform> Ciò significa che le stesse chiavi (e i token di sessione) possono essere utilizzati in più computer. Ciò è particolarmente importante quando un&quot;applicazione viene distribuita in una web farm. Per ulteriori informazioni sull&quot;utilizzo di Windows Identity Foundation per proteggere le applicazioni distribuite in una web farm, vedere [WIF e Web farm](~/add/includes/ajax-current-ext-md.md).       Configurare l&quot;applicazione per utilizzare il MachineKeySessionSecurityTokenHandler aggiungendolo alla raccolta di gestori di token. È necessario rimuovere prima il <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>(o qualsiasi gestore derivato dalla <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>classe) dalla raccolta gestore dei token, se è presente un gestore di questo tipo.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> </xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> In questo modo MachineKeySessionSecurityTokenHandler deriva da <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>e una raccolta di gestori di token non può contenere più gestori di un tipo specificato.</xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler>"
   example:
   - "The following XML shows how to use the ASP.NET `<machineKey>` element in configuration to explicitly specify signing and encryption keys. The `<machineKey>` element is specified under the `<system.web>` element in a configuration file.  \n  \n```xml  \n<machineKey compatibilityMode=\"Framework45\" decryptionKey=\"CC510D … 8925E6\" validationKey=\"BEAC8 … 6A4B1DE\" />  \n```  \n  \n The following XML shows how to add the MachineKeySessionSecurityTokenHandler to a token handler collection. The default <xref:System.IdentityModel.Tokens.SessionSecurityTokenHandler> is first removed from the collection. Token handlers are configured under the [\\&lt;securityTokenHandlers\\&gt;](../Topic/%3CsecurityTokenHandlers%3E.md) element.  \n  \n```xml  \n<securityTokenHandlers>  \n  <remove type=\"System.IdentityModel.Tokens.SessionSecurityTokenHandler, System.IdentityModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" />  \n  <add type=\"System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler, System.IdentityModel.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\" />  \n</securityTokenHandlers>  \n```"
   syntax:
@@ -75,7 +75,7 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler&quot;></xref> class."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler&quot;> </xref> classe."
   syntax:
     content: public MachineKeySessionSecurityTokenHandler ();
     parameters: []
@@ -95,18 +95,18 @@ items:
   assemblies:
   - System.IdentityModel.Services
   namespace: System.IdentityModel.Services.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler&quot;></xref> class that has the specified default token lifetime."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler&quot;> </xref> classe che ha la durata del token predefinito specificato."
   syntax:
     content: public MachineKeySessionSecurityTokenHandler (TimeSpan tokenLifetime);
     parameters:
     - id: tokenLifetime
       type: System.TimeSpan
-      description: "The default lifetime for a token."
+      description: "La durata predefinita per un token."
   overload: System.IdentityModel.Services.Tokens.MachineKeySessionSecurityTokenHandler.#ctor*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>tokenLifetime</code> is shorter than or equal to &lt;xref:System.TimeSpan?displayProperty=fullName&gt;"
+    description: "<code>tokenLifetime</code>è minore o uguale a &lt;xref:System.TimeSpan?displayProperty=fullName&gt;"
   platform:
   - net462
 references:
