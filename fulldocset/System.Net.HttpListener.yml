@@ -31,7 +31,7 @@ items:
   nameWithType: HttpListener
   fullName: System.Net.HttpListener
   type: Class
-  summary: "Provides a simple, programmatically controlled HTTP protocol listener. This class cannot be inherited."
+  summary: "Fornisce un listener di protocollo HTTP controllato a livello di codice, semplice. Questa classe non può essere ereditata."
   remarks: "Using the HttpListener class, you can create a simple HTTP protocol listener that responds to HTTP requests. The listener is active for the lifetime of the HttpListener object and runs within your application with its permissions.  \n  \n> [!NOTE]\n>  This class is available only on computers running the Windows XP SP2 or Windows Server 2003 operating systems. If you attempt to create an HttpListener object on a computer that is running an earlier operating system, the constructor throws a <xref:System.PlatformNotSupportedException> exception.  \n  \n To use HttpListener, create a new instance of the class using the HttpListener constructor and use the <xref:System.Net.HttpListener.Prefixes%2A> property to gain access to the collection that holds the strings that specify which Uniform Resource Identifier (URI) prefixes the HttpListener should process.  \n  \n A URI prefix string is composed of a scheme (http or https), a host, an optional port, and an optional path. An example of a complete prefix string is \"`http://www.contoso.com:8080/customerData``/`\". Prefixes must end in a forward slash (\"/\"). The HttpListener object with the prefix that most closely matches a requested URI responds to the request. Multiple HttpListener objects cannot add the same prefix; a <xref:System.ComponentModel.Win32Exception> exception is thrown if a HttpListener adds a prefix that is already in use.  \n  \n When a port is specified, the host element can be replaced with \"*\" to indicate that the HttpListener accepts requests sent to the port if the requested URI does not match any other prefix. For example, to receive all requests sent to port 8080 when the requested URI is not handled by any HttpListener, the prefix is \"`http://*:8080``/`\". Similarly, to specify that the HttpListener accepts all requests sent to a port, replace the host element with the \"+\" character, \"`https://+:8080`\". The \"\\*\" and \"+\" characters can be present in prefixes that include paths.  \n  \n Starting with .NET 4.5.3 and Windows 10, wildcard subdomains are supported in URI prefixes that are managed by an HttpListener object. To specify a wildcard subdomain, use the \"*\" character as part of the hostname in a URI prefix: for example, `http://*.foo.com/`, and pass this as the argument to the HttpListenerPrefixCollection.Add method. This will work on .NET 4.5.3 and Windows 10; in earlier versions, this would generate an <xref:System.Net.HttpListenerException>  \n  \n To begin listening for requests from clients, add the URI prefixes to the collection and call the <xref:System.Net.HttpListener.Start%2A> method. HttpListener offers both synchronous and asynchronous models for processing client requests. Requests and their associated responses are accessed using the <xref:System.Net.HttpListenerContext> object returned by the <xref:System.Net.HttpListener.GetContext%2A> method or its asynchronous counterparts, the <xref:System.Net.HttpListener.BeginGetContext%2A> and <xref:System.Net.HttpListener.EndGetContext%2A> methods.  \n  \n The synchronous model is appropriate if your application should block while waiting for a client request and if you want to process only one request at a time. Using the synchronous model, call the <xref:System.Net.HttpListener.GetContext%2A> method, which waits for a client to send a request. The method returns an <xref:System.Net.HttpListenerContext> object to you for processing when one occurs.  \n  \n In the more complex asynchronous model, your application does not block while waiting for requests and each request is processed in its own execution thread. Use the <xref:System.Net.HttpListener.BeginGetContext%2A> method to specify an application-defined method to be called for each incoming request. Within that method, call the <xref:System.Net.HttpListener.EndGetContext%2A> method to obtain the request, process it, and respond.  \n  \n In either model, incoming requests are accessed using the <xref:System.Net.HttpListenerContext.Request%2A?displayProperty=fullName> property and are represented by <xref:System.Net.HttpListenerRequest> objects. Similarly, responses are accessed using the <xref:System.Net.HttpListenerContext.Response%2A?displayProperty=fullName> property and are represented by <xref:System.Net.HttpListenerResponse> objects. These objects share some functionality with the <xref:System.Net.HttpWebRequest> and <xref:System.Net.HttpWebResponse> objects, but the latter objects cannot be used in conjunction with HttpListener because they implement client, not server, behaviors.  \n  \n An HttpListener can require client authentication. You can either specify a particular scheme to use for authentication, or you can specify a delegate that determines the scheme to use. You must require some form of authentication to obtain information about the client's identity. For additional information, see the <xref:System.Net.HttpListenerContext.User%2A>, <xref:System.Net.HttpListener.AuthenticationSchemes%2A>, and <xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A> properties.  \n  \n> [!NOTE]\n>  If you create an HttpListener using https, you must select a Server Certificate for that listener. Otherwise, an <xref:System.Net.HttpWebRequest> query of this HttpListener will fail with an unexpected close of the connection.  \n  \n> [!NOTE]\n>  You can configure Server Certificates and other listener options by using HttpCfg.exe. See [http://msdn.microsoft.com/library/default.asp?url=/library/en-us/http/http/httpcfg_exe.asp](http://msdn.microsoft.com/library/default.asp?url=/library/http/http/httpcfg_exe.asp) for more details. The executable is shipped with Windows Server 2003, or can be built from source code available in the Platform SDK.  \n  \n> [!NOTE]\n>  If you specify multiple authentication schemes for the HttpListener, the listener will challenge clients in the following order: `Negotiate`, `NTLM`, `Digest`, and then `Basic`."
   example:
   - "The following code example demonstrates using a HttpListener.  \n  \n [!code-cs[Net_Listener_Basic#2](~/add/codesnippet/csharp/t-system.net.httplistener_1.cs)]"
@@ -56,8 +56,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Initializes a new instance of the <xref href=&quot;System.Net.HttpListener&quot;></xref> class."
-  remarks: "Before using the instance returned by this constructor, you must invoke its <xref:System.Net.HttpListener.Start%2A> method."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Net.HttpListener&quot;> </xref> classe."
+  remarks: "Prima di utilizzare l&quot;istanza restituita da questo costruttore, è necessario richiamare il <xref:System.Net.HttpListener.Start%2A>metodo.</xref:System.Net.HttpListener.Start%2A>"
   example:
   - "The following code example demonstrates using the <xref:System.Net.HttpListener> constructor to create a new <xref:System.Net.HttpListener> object. For the complete example, see the <xref:System.Net.HttpListener> class topic.  \n  \n [!code-cs[Net_listener_Basic#9](~/add/codesnippet/csharp/m-system.net.httplistene_20_1.cs)]"
   syntax:
@@ -67,7 +67,7 @@ items:
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "This class cannot be used on the current operating system. Windows Server 2003 or Windows XP SP2 is required to use instances of this class."
+    description: "Questa classe non può essere utilizzata nel sistema operativo corrente. Windows Server 2003 o Windows XP SP2 è necessario utilizzare istanze di questa classe."
   platform:
   - net462
 - uid: System.Net.HttpListener.Abort
@@ -82,8 +82,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Shuts down the <xref href=&quot;System.Net.HttpListener&quot;></xref> object immediately, discarding all currently queued requests."
-  remarks: "This method disposes of all resources held by this listener. Any pending requests are unable to complete.       After calling this method, you will receive an <xref:System.ObjectDisposedException> if you attempt to use this <xref:System.Net.HttpListener>."
+  summary: "Arresta il <xref href=&quot;System.Net.HttpListener&quot;> </xref> oggetto immediatamente, annullando tutte attualmente in coda le richieste."
+  remarks: "Questo metodo elimina tutte le risorse utilizzate da questo listener. Sono in grado di completare le richieste in sospeso.       Dopo aver chiamato questo metodo, si riceverà un <xref:System.ObjectDisposedException>Se si tenta di utilizzare questo <xref:System.Net.HttpListener>.</xref:System.Net.HttpListener> </xref:System.ObjectDisposedException>"
   example:
   - "The following code example demonstrates calling this method.  \n  \n [!code-cs[Net_Listener_Basic#11](~/add/codesnippet/csharp/m-system.net.httplistene_4_1.cs)]"
   syntax:
@@ -105,20 +105,20 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets or sets the scheme used to authenticate clients."
-  remarks: "The <xref:System.Net.HttpListener> uses the specified scheme to authenticate all incoming requests. The <xref:System.Net.HttpListener.GetContext%2A> and <xref:System.Net.HttpListener.EndGetContext%2A> methods return an incoming client request only if the <xref:System.Net.HttpListener> successfully authenticates the request.       You can interrogate the identity of a successfully authenticated client by using the <xref:System.Net.HttpListenerContext.User%2A?displayProperty=fullName> property.       If you want an <xref:System.Net.HttpListener> object to use different authentication mechanisms based on characteristics of the requests it receives (for example, the request&quot;s <xref:System.Net.HttpListenerRequest.Url%2A> or <xref:System.Net.HttpListenerRequest.UserHostName%2A> property), you must implement a method that chooses the authentication scheme. For instructions about how to do this, see the <xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A> property documentation.      > [!NOTE] >  To set this property to enable Digest, NTLM, or Negotiate requires the <xref:System.Security.Permissions.SecurityPermission>, <xref:System.Security.Permissions.SecurityPermissionFlag>."
+  summary: "Ottiene o imposta lo schema utilizzato per autenticare i client."
+  remarks: "Il <xref:System.Net.HttpListener>utilizza lo schema specificato per autenticare tutte le richieste in ingresso.</xref:System.Net.HttpListener> Il <xref:System.Net.HttpListener.GetContext%2A>e <xref:System.Net.HttpListener.EndGetContext%2A>i metodi restituiscono una richiesta client in ingresso solo se il <xref:System.Net.HttpListener>autentica correttamente la richiesta.</xref:System.Net.HttpListener> </xref:System.Net.HttpListener.EndGetContext%2A> </xref:System.Net.HttpListener.GetContext%2A>       È possibile interrogare l&quot;identità di un client autenticato correttamente tramite il <xref:System.Net.HttpListenerContext.User%2A?displayProperty=fullName>proprietà.</xref:System.Net.HttpListenerContext.User%2A?displayProperty=fullName>       Se si desidera un <xref:System.Net.HttpListener>oggetto da utilizzare meccanismi di autenticazione in base alle caratteristiche di richieste ricevute (del ad esempio, la richiesta <xref:System.Net.HttpListenerRequest.Url%2A>o <xref:System.Net.HttpListenerRequest.UserHostName%2A>proprietà), è necessario implementare un metodo che sceglie lo schema di autenticazione.</xref:System.Net.HttpListenerRequest.UserHostName%2A> </xref:System.Net.HttpListenerRequest.Url%2A> </xref:System.Net.HttpListener> Per istruzioni su come eseguire questa operazione, vedere il <xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A>documentazione relativa alla proprietà.</xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A>      > [!NOTE] > Per impostare questa proprietà per abilitare Digest, NTLM o Negotiate richiede <xref:System.Security.Permissions.SecurityPermission> <xref:System.Security.Permissions.SecurityPermissionFlag>.</xref:System.Security.Permissions.SecurityPermissionFlag> </xref:System.Security.Permissions.SecurityPermission>"
   example:
   - "The following code example demonstrates using the AuthenticationSchemes property to specify an authentication scheme.  \n  \n [!code-cs[Net_listener_Basic#14](~/add/codesnippet/csharp/p-system.net.httplistene_0_1.cs)]"
   syntax:
     content: public System.Net.AuthenticationSchemes AuthenticationSchemes { get; set; }
     return:
       type: System.Net.AuthenticationSchemes
-      description: "A bitwise combination of <xref:System.Net.AuthenticationSchemes> enumeration values that indicates how clients are to be authenticated. The default value is <xref:System.Net.AuthenticationSchemes>."
+      description: "Combinazione bit per bit di <xref:System.Net.AuthenticationSchemes>valori di enumerazione che indica come l&quot;autenticazione client.</xref:System.Net.AuthenticationSchemes> Il valore predefinito è <xref:System.Net.AuthenticationSchemes>.</xref:System.Net.AuthenticationSchemes>"
   overload: System.Net.HttpListener.AuthenticationSchemes*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object has been closed."
+    description: "Questo oggetto è stato chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.AuthenticationSchemeSelectorDelegate
@@ -133,20 +133,20 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets or sets the delegate called to determine the protocol used to authenticate clients."
-  remarks: "> [!NOTE] >  If you want the same authentication protocol to be used for all requests handled by a particular instance of <xref:System.Net.HttpListener>, you do not need to set this property. To specify a protocol to be used for all client requests, use the <xref:System.Net.HttpListener.AuthenticationSchemes%2A> property.       If the client has not specified authentication information in its headers, the <xref:System.Net.HttpListener> calls the specified delegate for each unauthenticated incoming request to determine which, if any, protocol to use to authenticate the client. The <xref:System.Net.HttpListener.GetContext%2A> and <xref:System.Net.HttpListener.EndGetContext%2A> methods return an incoming request only if the <xref:System.Net.HttpListener> successfully authenticated the request. If a request cannot be authenticated, the <xref:System.Net.HttpListener> automatically sends back a 401 response. You can get the identity of a successfully authenticated client using the <xref:System.Web.HttpRequest.LogonUserIdentity%2A?displayProperty=fullName> property.       The ability to delegate the choice of authentication protocol to an application-specific method is useful if you want an instance of <xref:System.Net.HttpListener> to use different authentication protocols depending on the characteristics of the requests it receives (for example, the request&quot;s <xref:System.Net.HttpListenerRequest.Url%2A> or <xref:System.Net.HttpListenerRequest.UserHostAddress%2A> property).      > [!NOTE] >  To set this property to enable Digest, NTLM, or Negotiate requires the <xref:System.Security.Permissions.SecurityPermission>, <xref:System.Security.Permissions.SecurityPermissionFlag>."
+  summary: "Ottiene o imposta il delegato chiamato per determinare il protocollo usato per autenticare i client."
+  remarks: "> [!NOTE]> Se si desidera che lo stesso protocollo di autenticazione da utilizzare per tutte le richieste gestite da un&quot;istanza particolare di <xref:System.Net.HttpListener>, non è necessario impostare questa proprietà.</xref:System.Net.HttpListener> Per specificare un protocollo da utilizzare per tutte le richieste client, utilizzare il <xref:System.Net.HttpListener.AuthenticationSchemes%2A>proprietà.</xref:System.Net.HttpListener.AuthenticationSchemes%2A>       Se il client non è specificate le informazioni di autenticazione nelle intestazioni, la <xref:System.Net.HttpListener>chiama il delegato specificato per ogni richiesta in ingresso non autenticato determinare il protocollo, se presente, da utilizzare per autenticare il client.</xref:System.Net.HttpListener> Il <xref:System.Net.HttpListener.GetContext%2A>e <xref:System.Net.HttpListener.EndGetContext%2A>restituiscono una richiesta in ingresso solo se il <xref:System.Net.HttpListener>autenticato correttamente la richiesta.</xref:System.Net.HttpListener> </xref:System.Net.HttpListener.EndGetContext%2A> </xref:System.Net.HttpListener.GetContext%2A> Se una richiesta non può essere autenticata, il <xref:System.Net.HttpListener>Invia una risposta 401.</xref:System.Net.HttpListener> È possibile ottenere l&quot;identità di un client autenticato correttamente tramite il <xref:System.Web.HttpRequest.LogonUserIdentity%2A?displayProperty=fullName>proprietà.</xref:System.Web.HttpRequest.LogonUserIdentity%2A?displayProperty=fullName>       La possibilità di delegare la scelta del protocollo di autenticazione a un metodo specifico dell&quot;applicazione è utile se si desidera un&quot;istanza di <xref:System.Net.HttpListener>per utilizzare i protocolli di autenticazione diverso a seconda delle caratteristiche di richieste ricevute (del ad esempio, la richiesta <xref:System.Net.HttpListenerRequest.Url%2A>o <xref:System.Net.HttpListenerRequest.UserHostAddress%2A>proprietà).</xref:System.Net.HttpListenerRequest.UserHostAddress%2A> </xref:System.Net.HttpListenerRequest.Url%2A> </xref:System.Net.HttpListener>      > [!NOTE] > Per impostare questa proprietà per abilitare Digest, NTLM o Negotiate richiede <xref:System.Security.Permissions.SecurityPermission> <xref:System.Security.Permissions.SecurityPermissionFlag>.</xref:System.Security.Permissions.SecurityPermissionFlag> </xref:System.Security.Permissions.SecurityPermission>"
   example:
   - "The following code example sets the value of this property.  \n  \n [!code-vb[NclListener#2](~/add/codesnippet/visualbasic/p-system.net.httplistene_2_1.vb)]\n [!code-cs[NclListener#2](~/add/codesnippet/csharp/p-system.net.httplistene_2_1.cs)]  \n  \n The following code example provides an implementation of a method invoked by an <xref:System.Net.AuthenticationSchemeSelector> delegate.  \n  \n [!code-vb[NclListener#1](~/add/codesnippet/visualbasic/p-system.net.httplistene_2_2.vb)]\n [!code-cs[NclListener#1](~/add/codesnippet/csharp/p-system.net.httplistene_2_2.cs)]"
   syntax:
     content: public System.Net.AuthenticationSchemeSelector AuthenticationSchemeSelectorDelegate { get; set; }
     return:
       type: System.Net.AuthenticationSchemeSelector
-      description: "An <xref href=&quot;System.Net.AuthenticationSchemeSelector&quot;></xref> delegate that invokes the method used to select an authentication protocol. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Un <xref href=&quot;System.Net.AuthenticationSchemeSelector&quot;> </xref> delegato che richiama il metodo utilizzato per selezionare un protocollo di autenticazione. Il valore predefinito è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Net.HttpListener.AuthenticationSchemeSelectorDelegate*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object has been closed."
+    description: "Questo oggetto è stato chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.BeginGetContext(System.AsyncCallback,System.Object)
@@ -161,8 +161,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Begins asynchronously retrieving an incoming request."
-  remarks: "The BeginGetContext method begins an asynchronous (non-blocking) call to receive incoming client requests. Before calling this method, you must call the <xref:System.Net.HttpListener.Start%2A> method and add at least one Uniform Resource Identifier (URI) prefix to listen for by adding the URI strings to the <xref:System.Net.HttpListenerPrefixCollection> returned by the <xref:System.Net.HttpListener.Prefixes%2A> property.       The asynchronous operation must be completed by calling the <xref:System.Net.HttpListener.EndGetContext%2A> method. Typically, the method is invoked by the `callback` delegate.       This method does not block while the operation completes. To get an incoming request and block until the operation completes, call the <xref:System.Net.HttpListener.GetContext%2A> method.       For detailed information about using the asynchronous programming model, see [Calling Synchronous Methods Asynchronously](~/add/includes/ajax-current-ext-md.md)"
+  summary: "Inizia a recuperare in modo asincrono una richiesta in ingresso."
+  remarks: "Il metodo BeginGetContext inizia una chiamata asincrona (non bloccanti) per ricevere le richieste client in ingresso. Prima di chiamare questo metodo, è necessario chiamare il <xref:System.Net.HttpListener.Start%2A>(metodo) e aggiungere almeno un prefisso Uniform Resource Identifier (URI) per l&quot;ascolto aggiungendo le stringhe URI per il <xref:System.Net.HttpListenerPrefixCollection>restituito dal <xref:System.Net.HttpListener.Prefixes%2A>proprietà.</xref:System.Net.HttpListener.Prefixes%2A> </xref:System.Net.HttpListenerPrefixCollection> </xref:System.Net.HttpListener.Start%2A>       L&quot;operazione asincrona deve essere completata chiamando il <xref:System.Net.HttpListener.EndGetContext%2A>metodo.</xref:System.Net.HttpListener.EndGetContext%2A> In genere, il metodo viene richiamato dalla `callback` delegato.       Questo metodo non blocca durante il completamento dell&quot;operazione. Per ottenere una richiesta in arrivo e il blocco fino al completamento dell&quot;operazione, chiamare il <xref:System.Net.HttpListener.GetContext%2A>metodo.</xref:System.Net.HttpListener.GetContext%2A>       Per informazioni dettagliate sull&quot;uso del modello di programmazione asincrono, vedere [la chiamata dei metodi sincroni](~/add/includes/ajax-current-ext-md.md)"
   example:
   - "The following code example demonstrates using the BeginGetContext method to specify a callback method that will handle incoming client requests.  \n  \n [!code-cs[Net_Listener_Basic#12](~/add/codesnippet/csharp/m-system.net.httplistene_13_1.cs)]  \n  \n The following code example implements a callback method.  \n  \n [!code-cs[Net_Listener_Basic#13](~/add/codesnippet/csharp/m-system.net.httplistene_13_2.cs)]"
   syntax:
@@ -170,24 +170,24 @@ items:
     parameters:
     - id: callback
       type: System.AsyncCallback
-      description: "An <xref:System.AsyncCallback> delegate that references the method to invoke when a client request is available."
+      description: "Un <xref:System.AsyncCallback>delegato che fa riferimento al metodo da richiamare quando una richiesta client è disponibile.</xref:System.AsyncCallback>"
     - id: state
       type: System.Object
-      description: "A user-defined object that contains information about the operation. This object is passed to the `callback` delegate when the operation completes."
+      description: "Un oggetto definito dall&quot;utente che contiene informazioni sull&quot;operazione. Questo oggetto viene passato per il `callback` delegato al completamento dell&quot;operazione."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> object that indicates the status of the asynchronous operation."
+      description: "Un <xref:System.IAsyncResult>oggetto che indica lo stato dell&quot;operazione asincrona.</xref:System.IAsyncResult>"
   overload: System.Net.HttpListener.BeginGetContext*
   exceptions:
   - type: System.Net.HttpListenerException
     commentId: T:System.Net.HttpListenerException
-    description: "A Win32 function call failed. Check the exception&quot;s <xref:System.Net.HttpListenerException.ErrorCode*> property to determine the cause of the exception."
+    description: "Una chiamata di funzione Win32 non riuscita. Controllare l&quot;eccezione <xref:System.Net.HttpListenerException.ErrorCode*>proprietà per determinare la causa dell&quot;eccezione.</xref:System.Net.HttpListenerException.ErrorCode*>"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This object has not been started or is currently stopped."
+    description: "Questo oggetto non è stato avviato o è inattivo."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object is closed."
+    description: "L&quot;oggetto è chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.Close
@@ -202,8 +202,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Shuts down the <xref href=&quot;System.Net.HttpListener&quot;></xref>."
-  remarks: "After calling this method, you can no longer use the <xref:System.Net.HttpListener> object. To temporarily pause an <xref:System.Net.HttpListener> object, use the <xref:System.Net.HttpListener.Stop%2A> method.       This method shut downs the <xref:System.Net.HttpListener> object without processing queued requests. Any pending requests are unable to complete."
+  summary: "Arresta il <xref href=&quot;System.Net.HttpListener&quot;> </xref>."
+  remarks: "Dopo aver chiamato questo metodo, non è possibile usare il <xref:System.Net.HttpListener>oggetto.</xref:System.Net.HttpListener> Per sospendere temporaneamente un <xref:System.Net.HttpListener>oggetto, usare il <xref:System.Net.HttpListener.Stop%2A>metodo.</xref:System.Net.HttpListener.Stop%2A> </xref:System.Net.HttpListener>       Questo metodo chiude gli elenchi di <xref:System.Net.HttpListener>oggetto senza l&quot;elaborazione delle richieste in coda.</xref:System.Net.HttpListener> Sono in grado di completare le richieste in sospeso."
   example:
   - "The following code example demonstrates calling this method.  \n  \n [!code-cs[Net_Listener_Basic#2](~/add/codesnippet/csharp/m-system.net.httplistene_10_1.cs)]"
   syntax:
@@ -225,13 +225,13 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets a default list of Service Provider Names (SPNs) as determined by registered prefixes."
+  summary: "Ottiene un elenco predefinito di nomi di Provider di servizio (SPN), come determinato dai prefissi registrati."
   remarks: "The DefaultServiceNames property is used with integrated Windows authentication to provide extended protection. The list of SPNs is initialized from the <xref:System.Net.HttpListener.Prefixes%2A> property when accessed and cleared when new prefixes are added to the <xref:System.Net.HttpListener.Prefixes%2A> property.  \n  \n The DefaultServiceNames property is used if an application doesn't set the <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomServiceNames%2A> property on its extended protection policy.  \n  \n The <xref:System.Security.Authentication.ExtendedProtection.ServiceNameCollection> that is retrieved with the DefaultServiceNames property is built from the <xref:System.Net.HttpListener.Prefixes%2A> property according to the following rules:  \n  \n1.  If the hostname is \"+\", \"*\", or an IPv4 or IPv6 literal (equivalent to \"\\*\" but restricted to a specific local interface), the following SPN is added:  \n  \n `\"HTTP/\"` plus the fully qualified domain name of the computer.  \n  \n1.  If the hostname contains no dots (no domains or subdomains), an attempt is made to resolve the fully-qualified domain name using DNS (the same behavior used by <xref:System.Net.HttpWebRequest>). If the fully-qualified domain name can be resolved, the following SPNs are added:  \n  \n `\"HTTP/\"` plus the hostname (the short name).  \n  \n `\"HTTP/\"` plus the fully qualified domain name for the hostname.  \n  \n1.  If the hostname contains not dots (no domains or subdomains) and a fully-qualified domain name can't be resolved, the following SPN is added:  \n  \n `\"HTTP/\"` plus the hostname.  \n  \n1.  If the hostname contains dots (domains or subdomains), the following SPN is added:  \n  \n `\"HTTP/\"` plus the hostname.  \n  \n The DefaultServiceNames property can be used by an application to review the list of default SPNs which will be used for authentication if no custom list is supplied. If other SPNs are needed, an application can add them using one of the <xref:System.Security.Authentication.ExtendedProtection.ServiceNameCollection.Merge%2A> methods.  \n  \n It is not safe when using extended protection to make policy decisions based on the requested URL, since this can be spoofed. Rather, applications should rely on the <xref:System.Net.HttpListenerRequest.LocalEndPoint%2A> or <xref:System.Net.HttpListenerRequest.RemoteEndPoint%2A> properties to make such policy decisions."
   syntax:
     content: public System.Security.Authentication.ExtendedProtection.ServiceNameCollection DefaultServiceNames { get; }
     return:
       type: System.Security.Authentication.ExtendedProtection.ServiceNameCollection
-      description: "A <xref href=&quot;System.Security.Authentication.ExtendedProtection.ServiceNameCollection&quot;></xref> that contains a list of SPNs."
+      description: "Oggetto <xref href=&quot;System.Security.Authentication.ExtendedProtection.ServiceNameCollection&quot;> </xref> che contiene un elenco di nomi SPN."
   overload: System.Net.HttpListener.DefaultServiceNames*
   exceptions: []
   platform:
@@ -248,8 +248,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Completes an asynchronous operation to retrieve an incoming client request."
-  remarks: "The EndGetContext method is called, usually within an application-defined callback method invoked by a delegate, to obtain the <xref:System.Net.HttpListenerContext> object that contains an incoming client request and its associated response. This method completes an operation previously started by calling the <xref:System.Net.HttpListener.BeginGetContext%2A> method. If the operation has not completed, this method blocks until it does.       Because calling the EndGetContext method requires the <xref:System.Net.HttpListener> object, this object is typically passed into a callback method by using the state object passed into the <xref:System.Net.HttpListener.BeginGetContext%2A> method. You can obtain this state object by using the <xref:System.IAsyncResult.AsyncState%2A> property of the `asyncResult` object.       For detailed information about using the asynchronous programming model, see [Calling Synchronous Methods Asynchronously](~/add/includes/ajax-current-ext-md.md)"
+  summary: "Completa un&quot;operazione asincrona per recuperare una richiesta client in ingresso."
+  remarks: "Viene chiamato il metodo EndGetContext, in genere all&quot;interno di un metodo di callback definita dall&quot;applicazione richiamato da un delegato, per ottenere il <xref:System.Net.HttpListenerContext>oggetto che contiene una richiesta client in ingresso e la relativa risposta associata.</xref:System.Net.HttpListenerContext> Questo metodo completa un&quot;operazione avviata in precedenza chiamando il <xref:System.Net.HttpListener.BeginGetContext%2A>metodo.</xref:System.Net.HttpListener.BeginGetContext%2A> Se l&quot;operazione non è stata completata, questo metodo si blocca fino a quando non avviene.       Poiché la chiamata al metodo EndGetContext richiede il <xref:System.Net.HttpListener>dell&quot;oggetto, questo oggetto è in genere passato a un metodo di callback utilizzando l&quot;oggetto di stato passato il <xref:System.Net.HttpListener.BeginGetContext%2A>metodo.</xref:System.Net.HttpListener.BeginGetContext%2A> </xref:System.Net.HttpListener> È possibile ottenere questo oggetto stato usando la <xref:System.IAsyncResult.AsyncState%2A>proprietà del `asyncResult` oggetto.</xref:System.IAsyncResult.AsyncState%2A>       Per informazioni dettagliate sull&quot;uso del modello di programmazione asincrono, vedere [la chiamata dei metodi sincroni](~/add/includes/ajax-current-ext-md.md)"
   example:
   - "The following code example shows the implementation of a callback method that calls the EndGetContext method.  \n  \n [!code-cs[Net_Listener_Basic#13](~/add/codesnippet/csharp/m-system.net.httplistene_1_1.cs)]"
   syntax:
@@ -257,24 +257,24 @@ items:
     parameters:
     - id: asyncResult
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> object that was obtained when the asynchronous operation was started."
+      description: "Un <xref:System.IAsyncResult>oggetto ottenuto all&quot;avvio dell&quot;operazione asincrona.</xref:System.IAsyncResult>"
     return:
       type: System.Net.HttpListenerContext
-      description: "An <xref href=&quot;System.Net.HttpListenerContext&quot;></xref> object that represents the client request."
+      description: "Un <xref href=&quot;System.Net.HttpListenerContext&quot;> </xref> oggetto che rappresenta la richiesta del client."
   overload: System.Net.HttpListener.EndGetContext*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>asyncResult</code> was not obtained by calling the <xref:System.Net.HttpListener.BeginGetContext*> method."
+    description: "<code>asyncResult</code>non è stato ottenuto chiamando il <xref:System.Net.HttpListener.BeginGetContext*> metodo."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>asyncResult</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>asyncResult</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The EndGetContext method was already called for the specified <code>asyncResult</code> object."
+    description: "È già stato chiamato il metodo EndGetContext per l&quot;oggetto specificato <code> asyncResult </code> oggetto."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object is closed."
+    description: "L&quot;oggetto è chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.ExtendedProtectionPolicy
@@ -289,30 +289,30 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Get or set the <xref href=&quot;System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy&quot;></xref> to use for extended protection for a session."
-  remarks: "The ExtendedProtectionPolicy property is used with integrated Windows authentication to provide extended protection. The ExtendedProtectionPolicy property allows the configuration of the extended protection policy for the whole <xref:System.Net.HttpListener> session. The <xref:System.Net.HttpListener.ExtendedProtectionSelectorDelegate%2A> property allows the configuration of the extended protection policy for each individual request.       The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding%2A> property must be `null`. The <xref:System.Net.HttpListener> instance gets the Channel Binding Token (CBT) directly from its own TLS session if there is one."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy&quot;> </xref> da utilizzare per la protezione estesa per una sessione."
+  remarks: "La proprietà ExtendedProtectionPolicy è utilizzata con l&quot;autenticazione integrata di Windows per fornire la protezione estesa. La proprietà ExtendedProtectionPolicy consente la configurazione dei criteri di protezione estesa per l&quot;intero <xref:System.Net.HttpListener>sessione.</xref:System.Net.HttpListener> Il <xref:System.Net.HttpListener.ExtendedProtectionSelectorDelegate%2A>proprietà consente la configurazione dei criteri di protezione estesa per ogni singola richiesta.</xref:System.Net.HttpListener.ExtendedProtectionSelectorDelegate%2A>       Il <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding%2A>proprietà deve essere `null`.</xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding%2A> La <xref:System.Net.HttpListener>istanza Ottiene l&quot;associazione di Token del canale direttamente dalla propria sessione TLS, se presente.</xref:System.Net.HttpListener>"
   syntax:
     content: public System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy ExtendedProtectionPolicy { get; set; }
     return:
       type: System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy
-      description: "A <xref href=&quot;System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy&quot;></xref> that specifies the policy to use for extended protection."
+      description: "Oggetto <xref href=&quot;System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy&quot;> </xref> che specifica i criteri da utilizzare per la protezione estesa."
   overload: System.Net.HttpListener.ExtendedProtectionPolicy*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to set the ExtendedProtectionPolicy property, but the <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> property was not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "Si è verificato un tentativo di impostare la proprietà ExtendedProtectionPolicy, ma la <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*>proprietà non è stata <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*>"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "An attempt was made to set the ExtendedProtectionPolicy property to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "Si è verificato un tentativo di impostare la proprietà ExtendedProtectionPolicy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set the ExtendedProtectionPolicy property after the <xref:System.Net.HttpListener.Start*> method was already called."
+    description: "Si è verificato un tentativo di impostare la proprietà ExtendedProtectionPolicy dopo il <xref:System.Net.HttpListener.Start*>chiamata al metodo.</xref:System.Net.HttpListener.Start*>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object is closed."
+    description: "L&quot;oggetto è chiuso."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.PolicyEnforcement*> property was set to <xref href=&quot;System.Security.Authentication.ExtendedProtection.PolicyEnforcement&quot;></xref> on a platform that does not support extended protection."
+    description: "Il <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.PolicyEnforcement*>è stata impostata su <xref href=&quot;System.Security.Authentication.ExtendedProtection.PolicyEnforcement&quot;> </xref> su una piattaforma che non supporta la protezione estesa.</xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.PolicyEnforcement*>"
   platform:
   - net462
 - uid: System.Net.HttpListener.ExtendedProtectionSelectorDelegate
@@ -327,30 +327,30 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Get or set the delegate called to determine the <xref href=&quot;System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy&quot;></xref> to use for each request."
-  remarks: "The <xref:System.Net.HttpListener.ExtendedProtectionPolicy%2A> property is used with integrated Windows authentication to provide extended protection. The <xref:System.Net.HttpListener.ExtendedProtectionPolicy%2A> property allows the configuration of the extended protection policy for the whole <xref:System.Net.HttpListener> session. The ExtendedProtectionSelectorDelegate property allows the configuration of the extended protection policy per individual request.       The <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding%2A> property must be `null`. The <xref:System.Net.HttpListener> instance gets the Channel Binding Token (CBT) directly from its own TLS session if there is one.       For each request, the delegate can choose the settings that the <xref:System.Net.HttpListener> instance will use to provide extended protection.       If a delegate returns `null` for this property, this represents a <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy> which the <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.PolicyEnforcement%2A> property set to <xref:System.Security.Authentication.ExtendedProtection.PolicyEnforcement>."
+  summary: "Ottiene o imposta il delegato chiamato per determinare la <xref href=&quot;System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy&quot;> </xref> da usare per ogni richiesta."
+  remarks: "Il <xref:System.Net.HttpListener.ExtendedProtectionPolicy%2A>proprietà viene utilizzata con l&quot;autenticazione integrata di Windows per fornire la protezione estesa.</xref:System.Net.HttpListener.ExtendedProtectionPolicy%2A> Il <xref:System.Net.HttpListener.ExtendedProtectionPolicy%2A>proprietà consente la configurazione dei criteri di protezione estesa per l&quot;intera <xref:System.Net.HttpListener>sessione.</xref:System.Net.HttpListener> </xref:System.Net.HttpListener.ExtendedProtectionPolicy%2A> La proprietà ExtendedProtectionSelectorDelegate consente la configurazione dei criteri di protezione estesa per ogni singola richiesta.       Il <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding%2A>proprietà deve essere `null`.</xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding%2A> La <xref:System.Net.HttpListener>istanza Ottiene l&quot;associazione di Token del canale direttamente dalla propria sessione TLS, se presente.</xref:System.Net.HttpListener>       Per ogni richiesta, il delegato può scegliere le impostazioni che il <xref:System.Net.HttpListener>istanza sarà utilizzato per garantire la protezione estesa.</xref:System.Net.HttpListener>       Se un delegato restituisce `null` per questa proprietà rappresenta un <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy>che la <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.PolicyEnforcement%2A>proprietà è impostata su <xref:System.Security.Authentication.ExtendedProtection.PolicyEnforcement>.</xref:System.Security.Authentication.ExtendedProtection.PolicyEnforcement> </xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.PolicyEnforcement%2A> </xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy>"
   syntax:
     content: public System.Net.HttpListener.ExtendedProtectionSelector ExtendedProtectionSelectorDelegate { get; set; }
     return:
       type: System.Net.HttpListener.ExtendedProtectionSelector
-      description: "A <xref href=&quot;System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy&quot;></xref> that specifies the policy to use for extended protection."
+      description: "Oggetto <xref href=&quot;System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy&quot;> </xref> che specifica i criteri da utilizzare per la protezione estesa."
   overload: System.Net.HttpListener.ExtendedProtectionSelectorDelegate*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to set the ExtendedProtectionSelectorDelegate property, but the <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*> property must be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "Si è verificato un tentativo di impostare la proprietà ExtendedProtectionSelectorDelegate, ma la <xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*>proprietà deve essere <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Authentication.ExtendedProtection.ExtendedProtectionPolicy.CustomChannelBinding*>"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "An attempt was made to set the ExtendedProtectionSelectorDelegate property to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "Si è verificato un tentativo di impostare la proprietà ExtendedProtectionSelectorDelegate <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set the ExtendedProtectionSelectorDelegate property after the <xref:System.Net.HttpListener.Start*> method was already called."
+    description: "Si è verificato un tentativo di impostare la proprietà ExtendedProtectionSelectorDelegate dopo il <xref:System.Net.HttpListener.Start*>chiamata al metodo.</xref:System.Net.HttpListener.Start*>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object is closed."
+    description: "L&quot;oggetto è chiuso."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "An attempt was made to set the ExtendedProtectionSelectorDelegate property on a platform that does not support extended protection."
+    description: "È stato effettuato un tentativo di impostare la proprietà ExtendedProtectionSelectorDelegate su una piattaforma che non supporta la protezione estesa."
   platform:
   - net462
 - uid: System.Net.HttpListener.GetContext
@@ -365,8 +365,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Waits for an incoming request and returns when one is received."
-  remarks: "Before calling this method, you must call the <xref:System.Net.HttpListener.Start%2A> method and add at least one URI prefix to listen for by adding the URI strings to the <xref:System.Net.HttpListenerPrefixCollection> returned by the <xref:System.Net.HttpListener.Prefixes%2A> property. For a detailed description of prefixes, see the <xref:System.Net.HttpListener> class overview.       This method blocks while waiting for an incoming request. If you want incoming requests to be processed asynchronously (on separate threads) so that your application does not block, use the <xref:System.Net.HttpListener.BeginGetContext%2A> method."
+  summary: "È in attesa di una richiesta in ingresso e restituisce quando ne viene ricevuta."
+  remarks: "Prima di chiamare questo metodo, è necessario chiamare il <xref:System.Net.HttpListener.Start%2A>(metodo) e aggiungere almeno un prefisso URI per l&quot;ascolto aggiungendo le stringhe URI per il <xref:System.Net.HttpListenerPrefixCollection>restituito dal <xref:System.Net.HttpListener.Prefixes%2A>proprietà.</xref:System.Net.HttpListener.Prefixes%2A> </xref:System.Net.HttpListenerPrefixCollection> </xref:System.Net.HttpListener.Start%2A> Per una descrizione dettagliata dei prefissi, vedere la <xref:System.Net.HttpListener>Cenni preliminari sulla classe.</xref:System.Net.HttpListener>       Questo metodo si blocca durante l&quot;attesa di una richiesta in ingresso. Se si desidera le richieste in ingresso da elaborare in modo asincrono (in thread separati) in modo che non blocca l&quot;applicazione, utilizzare il <xref:System.Net.HttpListener.BeginGetContext%2A>metodo.</xref:System.Net.HttpListener.BeginGetContext%2A>"
   example:
   - "The following code example demonstrates calling this method.  \n  \n [!code-cs[Net_Listener_Basic#2](~/add/codesnippet/csharp/m-system.net.httplistene_19_1.cs)]"
   syntax:
@@ -374,18 +374,18 @@ items:
     parameters: []
     return:
       type: System.Net.HttpListenerContext
-      description: "An <xref href=&quot;System.Net.HttpListenerContext&quot;></xref> object that represents a client request."
+      description: "Un <xref href=&quot;System.Net.HttpListenerContext&quot;> </xref> oggetto che rappresenta una richiesta client."
   overload: System.Net.HttpListener.GetContext*
   exceptions:
   - type: System.Net.HttpListenerException
     commentId: T:System.Net.HttpListenerException
-    description: "A Win32 function call failed. Check the exception&quot;s <xref:System.Net.HttpListenerException.ErrorCode*> property to determine the cause of the exception."
+    description: "Una chiamata di funzione Win32 non riuscita. Controllare l&quot;eccezione <xref:System.Net.HttpListenerException.ErrorCode*>proprietà per determinare la causa dell&quot;eccezione.</xref:System.Net.HttpListenerException.ErrorCode*>"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This object has not been started or is currently stopped.       -or-       The <xref href=&quot;System.Net.HttpListener&quot;></xref> does not have any Uniform Resource Identifier (URI) prefixes to respond to. See Remarks."
+    description: "Questo oggetto non è stato avviato o è inattivo.       - o - <xref href=&quot;System.Net.HttpListener&quot;> </xref> dispone di alcun prefisso Uniform Resource Identifier (URI) a cui rispondere. Vedere la sezione Osservazioni."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object is closed."
+    description: "L&quot;oggetto è chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.GetContextAsync
@@ -400,14 +400,14 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Waits for an incoming request as an asynchronous operation."
-  remarks: "This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> object will complete when the incoming request has been received.       Before calling this method, you must call the <xref:System.Net.HttpListener.Start%2A> method and add at least one URI prefix to listen for by adding the URI strings to the <xref:System.Net.HttpListenerPrefixCollection> returned by the <xref:System.Net.HttpListener.Prefixes%2A> property. For a detailed description of prefixes, see the <xref:System.Net.HttpListener> class overview."
+  summary: "In attesa di una richiesta in ingresso come operazione asincrona."
+  remarks: "Questa operazione non verrà bloccata. L&quot;oggetto restituito <xref:System.Threading.Tasks.Task%601>oggetto verrà completata quando è stata ricevuta la richiesta in ingresso.</xref:System.Threading.Tasks.Task%601>       Prima di chiamare questo metodo, è necessario chiamare il <xref:System.Net.HttpListener.Start%2A>(metodo) e aggiungere almeno un prefisso URI per l&quot;ascolto aggiungendo le stringhe URI per il <xref:System.Net.HttpListenerPrefixCollection>restituito dal <xref:System.Net.HttpListener.Prefixes%2A>proprietà.</xref:System.Net.HttpListener.Prefixes%2A> </xref:System.Net.HttpListenerPrefixCollection> </xref:System.Net.HttpListener.Start%2A> Per una descrizione dettagliata dei prefissi, vedere la <xref:System.Net.HttpListener>Cenni preliminari sulla classe.</xref:System.Net.HttpListener>"
   syntax:
     content: public System.Threading.Tasks.Task<System.Net.HttpListenerContext> GetContextAsync ();
     parameters: []
     return:
       type: System.Threading.Tasks.Task{System.Net.HttpListenerContext}
-      description: "Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.       The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <xref href=&quot;System.Net.HttpListenerContext&quot;></xref> object that represents a client request."
+      description: "Restituisce &lt;xref:System.Threading.Tasks.Task%601&gt;.       Oggetto dell&quot;attività che rappresenta l&quot;operazione asincrona. La &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; proprietà nell&quot;oggetto attività restituisce un <xref href=&quot;System.Net.HttpListenerContext&quot;> </xref> oggetto che rappresenta una richiesta client."
   overload: System.Net.HttpListener.GetContextAsync*
   exceptions: []
   platform:
@@ -424,20 +424,20 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets or sets a <xref:System.Boolean> value that specifies whether your application receives exceptions that occur when an <xref href=&quot;System.Net.HttpListener&quot;></xref> sends the response to the client."
-  remarks: "Set this property to `true` if your application does not require that a response is successfully sent to each client."
+  summary: "Ottiene o imposta un <xref:System.Boolean>valore che specifica se l&quot;applicazione riceve le eccezioni che si verificano quando un <xref href=&quot;System.Net.HttpListener&quot;> </xref> invia la risposta al client.</xref:System.Boolean>"
+  remarks: "Impostare questa proprietà su `true` se l&quot;applicazione non richiede che venga completato l&quot;invio di una risposta a ogni client."
   example:
   - "The following code example demonstrates setting this property.  \n  \n [!code-cs[Net_Listener_Basic#14](~/add/codesnippet/csharp/p-system.net.httplistene_31_1.cs)]"
   syntax:
     content: public bool IgnoreWriteExceptions { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this <xref href=&quot;System.Net.HttpListener&quot;></xref> should not return exceptions that occur when sending the response to the client; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se questo <xref href=&quot;System.Net.HttpListener&quot;> </xref> non deve restituire le eccezioni che si verificano all&quot;invio della risposta al client; in caso contrario <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Il valore predefinito è <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Net.HttpListener.IgnoreWriteExceptions*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object has been closed."
+    description: "Questo oggetto è stato chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.IsListening
@@ -452,15 +452,15 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets a value that indicates whether <xref href=&quot;System.Net.HttpListener&quot;></xref> has been started."
-  remarks: "To start an <xref:System.Net.HttpListener>, call the <xref:System.Net.HttpListener.Start%2A> method."
+  summary: "Ottiene un valore che indica se <xref href=&quot;System.Net.HttpListener&quot;> </xref> è stato avviato."
+  remarks: "Per avviare un <xref:System.Net.HttpListener>, chiamare il <xref:System.Net.HttpListener.Start%2A>metodo.</xref:System.Net.HttpListener.Start%2A> </xref:System.Net.HttpListener>"
   example:
   - "The following code example demonstrates using this property to determine the listening state of an instance.  \n  \n [!code-cs[Net_Listener_Basic#1](~/add/codesnippet/csharp/p-system.net.httplistene_41_1.cs)]"
   syntax:
     content: public bool IsListening { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Net.HttpListener&quot;></xref> was started; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il <xref href=&quot;System.Net.HttpListener&quot;> </xref> è stato avviato; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Net.HttpListener.IsListening*
   exceptions: []
   platform:
@@ -477,15 +477,15 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets a value that indicates whether <xref href=&quot;System.Net.HttpListener&quot;></xref> can be used with the current operating system."
-  remarks: "This class is available only on computers running the Windows XP SP2 or Windows Server 2003 operating systems."
+  summary: "Ottiene un valore che indica se <xref href=&quot;System.Net.HttpListener&quot;> </xref> può essere utilizzato con il sistema operativo corrente."
+  remarks: "Questa classe è disponibile solo nei computer che eseguono i sistemi operativi Windows XP SP2 o Windows Server 2003."
   example:
   - "The following code example demonstrates the use of the IsSupported property to detect whether an <xref:System.Net.HttpListener> object can be used with the current operating system.  \n  \n [!code-cs[Net_Listener_Basic#2](~/add/codesnippet/csharp/p-system.net.httplistene_21_1.cs)]"
   syntax:
     content: public static bool IsSupported { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <xref href=&quot;System.Net.HttpListener&quot;></xref> is supported; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se <xref href=&quot;System.Net.HttpListener&quot;> </xref> è supportato; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Net.HttpListener.IsSupported*
   exceptions: []
   platform:
@@ -502,20 +502,20 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets the Uniform Resource Identifier (URI) prefixes handled by this <xref href=&quot;System.Net.HttpListener&quot;></xref> object."
-  remarks: "The prefixes are in canonical form. For a detailed description of prefixes, see the <xref:System.Net.HttpListener> class overview."
+  summary: "Ottiene i prefissi di identificatore URI (Uniform Resource) gestiti da questo <xref href=&quot;System.Net.HttpListener&quot;> </xref> oggetto."
+  remarks: "I prefissi sono in forma canonica. Per una descrizione dettagliata dei prefissi, vedere la <xref:System.Net.HttpListener>Cenni preliminari sulla classe.</xref:System.Net.HttpListener>"
   example:
   - "The following code example demonstrates using the Prefixes property to obtain and print the URI prefixes that are handled.  \n  \n [!code-cs[Net_Listener_Basic#1](~/add/codesnippet/csharp/p-system.net.httplistene_24_1.cs)]"
   syntax:
     content: public System.Net.HttpListenerPrefixCollection Prefixes { get; }
     return:
       type: System.Net.HttpListenerPrefixCollection
-      description: "An <xref href=&quot;System.Net.HttpListenerPrefixCollection&quot;></xref> that contains the URI prefixes that this <xref href=&quot;System.Net.HttpListener&quot;></xref> object is configured to handle."
+      description: "Un <xref href=&quot;System.Net.HttpListenerPrefixCollection&quot;> </xref> che contiene l&quot;URI prefissi da questo <xref href=&quot;System.Net.HttpListener&quot;> </xref> oggetto è configurato per la gestione."
   overload: System.Net.HttpListener.Prefixes*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object has been closed."
+    description: "Questo oggetto è stato chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.Realm
@@ -530,20 +530,20 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets or sets the realm, or resource partition, associated with this <xref href=&quot;System.Net.HttpListener&quot;></xref> object."
-  remarks: "Servers use realms to partition protected resources; each partition can have its own authentication scheme and/or authorization database. Realms are used only for basic and digest authentication. After a client successfully authenticates, the authentication is valid for all resources in a given realm. For a detailed description of realms, see RFC 2617 at [http://www.ietf.org](http://www.ietf.org).       An instance of <xref:System.Net.HttpListener> has only one associated realm."
+  summary: "Ottiene o imposta l&quot;area di autenticazione, o partizione di risorsa associata a questo <xref href=&quot;System.Net.HttpListener&quot;> </xref> oggetto."
+  remarks: "I server usano aree di autenticazione per separare risorse protette; ogni partizione può avere un proprio database lo schema e/o l&quot;autorizzazione di autenticazione. Le aree vengono usate solo per basic e l&quot;autenticazione del digest. Se un client viene autenticato correttamente, l&quot;autenticazione è valida per tutte le risorse in una determinata area. Per una descrizione dettagliata delle aree, vedere RFC 2617 al [http://www.ietf.org](http://www.ietf.org).       Un&quot;istanza di <xref:System.Net.HttpListener>ha una sola area associata.</xref:System.Net.HttpListener>"
   example:
   - "The following code example demonstrates setting the Realm property.  \n  \n [!code-cs[Net_Listener_Basic#10](~/add/codesnippet/csharp/p-system.net.httplistene_26_1.cs)]"
   syntax:
     content: public string Realm { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value that contains the name of the realm associated with the <xref href=&quot;System.Net.HttpListener&quot;></xref> object."
+      description: "Oggetto <xref:System.String>valore contenente il nome dell&quot;area di cui è associato il <xref href=&quot;System.Net.HttpListener&quot;> </xref> oggetto.</xref:System.String>"
   overload: System.Net.HttpListener.Realm*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object has been closed."
+    description: "Questo oggetto è stato chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.Start
@@ -558,8 +558,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Allows this instance to receive incoming requests."
-  remarks: "This method must be called before you call the <xref:System.Net.HttpListener.GetContext%2A> or <xref:System.Net.HttpListener.BeginGetContext%2A> method.       After you have started an <xref:System.Net.HttpListener> object, you can use the <xref:System.Net.HttpListener.Stop%2A> method to stop it.      > [!NOTE] >  If this listener instance uses https, you must install and select a Server Certificate. Otherwise, an <xref:System.Net.HttpWebRequest> query of this <xref:System.Net.HttpListener> will fail with an unexpected close of the connection. You can configure Server Certificates and other listener options by using HttpCfg.exe. See [http://msdn.microsoft.com/library/default.asp?url=/library/http/http/httpcfg_exe.asp](http://msdn.microsoft.com/library/default.asp?url=/library/http/http/httpcfg_exe.asp) for more details."
+  summary: "Consente a questa istanza di ricevere le richieste in ingresso."
+  remarks: "Questo metodo deve essere chiamato prima di chiamare il <xref:System.Net.HttpListener.GetContext%2A>o <xref:System.Net.HttpListener.BeginGetContext%2A>metodo.</xref:System.Net.HttpListener.BeginGetContext%2A> </xref:System.Net.HttpListener.GetContext%2A>       Dopo aver avviato un <xref:System.Net.HttpListener>oggetto, è possibile utilizzare il <xref:System.Net.HttpListener.Stop%2A>metodo per interrompere tale</xref:System.Net.HttpListener.Stop%2A> </xref:System.Net.HttpListener>      > [!NOTE] > Se questa istanza di listener utilizza https, è necessario installare e selezionare un certificato Server. In caso contrario, un <xref:System.Net.HttpWebRequest>query di questo <xref:System.Net.HttpListener>avrà esito negativo con una chiusura imprevista della connessione.</xref:System.Net.HttpListener> </xref:System.Net.HttpWebRequest> È possibile configurare i certificati del Server e altre opzioni del listener utilizzando HttpCfg.exe. Vedere [http://msdn.microsoft.com/library/default.asp?url=/library/http/http/httpcfg_exe.asp](http://msdn.microsoft.com/library/default.asp?url=/library/http/http/httpcfg_exe.asp) per altri dettagli."
   example:
   - "The following code example demonstrates using the Start method to begin processing incoming requests.  \n  \n [!code-cs[Net_Listener_Basic#12](~/add/codesnippet/csharp/m-system.net.httplistene_12_1.cs)]"
   syntax:
@@ -569,10 +569,10 @@ items:
   exceptions:
   - type: System.Net.HttpListenerException
     commentId: T:System.Net.HttpListenerException
-    description: "A Win32 function call failed. Check the exception&quot;s <xref:System.Net.HttpListenerException.ErrorCode*> property to determine the cause of the exception."
+    description: "Una chiamata di funzione Win32 non riuscita. Controllare l&quot;eccezione <xref:System.Net.HttpListenerException.ErrorCode*>proprietà per determinare la causa dell&quot;eccezione.</xref:System.Net.HttpListenerException.ErrorCode*>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object is closed."
+    description: "L&quot;oggetto è chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.Stop
@@ -587,8 +587,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Causes this instance to stop receiving incoming requests."
-  remarks: "If this instance is already stopped, calling this method has no effect.       After you have stopped an <xref:System.Net.HttpListener> object, you can use the <xref:System.Net.HttpListener.Start%2A> method to restart it."
+  summary: "Modifica questa istanza non ricevere le richieste in ingresso."
+  remarks: "Se questa istanza è già arrestata, questo metodo non ha alcun effetto.       Dopo aver arrestato un <xref:System.Net.HttpListener>oggetto, è possibile utilizzare il <xref:System.Net.HttpListener.Start%2A>metodo per riavviarlo.</xref:System.Net.HttpListener.Start%2A> </xref:System.Net.HttpListener>"
   example:
   - "The following code example demonstrates using the Stop method to stop processing incoming requests.  \n  \n [!code-cs[Net_Listener_Basic#12](~/add/codesnippet/csharp/m-system.net.httplistene_5_1.cs)]"
   syntax:
@@ -598,7 +598,7 @@ items:
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object has been closed."
+    description: "Questo oggetto è stato chiuso."
   platform:
   - net462
 - uid: System.Net.HttpListener.System#IDisposable#Dispose
@@ -614,8 +614,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Releases the resources held by this <xref href=&quot;System.Net.HttpListener&quot;></xref> object."
-  remarks: "Applications should use the <xref:System.Net.HttpListener.Close%2A> method instead of calling this method."
+  summary: "Rilascia le risorse contenute da questo <xref href=&quot;System.Net.HttpListener&quot;> </xref> oggetto."
+  remarks: "Le applicazioni devono utilizzare il <xref:System.Net.HttpListener.Close%2A>metodo anziché chiamare questo metodo.</xref:System.Net.HttpListener.Close%2A>"
   syntax:
     content: void IDisposable.Dispose ();
     parameters: []
@@ -635,13 +635,13 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "The timeout manager for this <xref href=&quot;System.Net.HttpListener&quot;></xref> instance."
-  remarks: "The timeout manager defines the connection timeout limits for this <xref:System.Net.HttpListener> instance."
+  summary: "Il gestore di timeout per l&quot;oggetto <xref href=&quot;System.Net.HttpListener&quot;> </xref> istanza."
+  remarks: "Il gestore di timeout definisce i limiti di timeout della connessione per questo oggetto <xref:System.Net.HttpListener>istanza.</xref:System.Net.HttpListener>"
   syntax:
     content: public System.Net.HttpListenerTimeoutManager TimeoutManager { get; }
     return:
       type: System.Net.HttpListenerTimeoutManager
-      description: "Returns <xref href=&quot;System.Net.HttpListenerTimeoutManager&quot;></xref>.       The timeout manager for this <xref href=&quot;System.Net.HttpListener&quot;></xref> instance."
+      description: "Returns <xref href=&quot;System.Net.HttpListenerTimeoutManager&quot;></xref>.       Il gestore di timeout per l&quot;oggetto <xref href=&quot;System.Net.HttpListener&quot;> </xref> istanza."
   overload: System.Net.HttpListener.TimeoutManager*
   exceptions: []
   platform:
@@ -658,20 +658,20 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets or sets a <xref:System.Boolean> value that controls whether, when NTLM is used, additional requests using the same Transmission Control Protocol (TCP) connection are required to authenticate."
-  remarks: "When this property is set to `true` and the first request over a particular TCP connection is authenticated using NTLM, subsequent requests over the same TCP connection are processed using the authentication information (<xref:System.Security.Principal.IIdentity>) of the initial request.       This property has no effect when NTLM is not the authentication protocol. When Negotiate is specified as the authentication protocol, this property has an effect only if NTLM is the actual protocol used for authentication.      > [!NOTE] >  While setting this property to `true` increases performance because the <xref:System.Net.HttpListener> does not send additional NTLM authentication challenges, there is a security risk in not requiring all requests to provide authentication information. You must determine whether the increase in performance is worth this risk."
+  summary: "Ottiene o imposta un <xref:System.Boolean>valore che controlla se, quando viene utilizzato NTLM, sono necessarie per autenticare le richieste aggiuntive utilizzando la stessa connessione di protocollo TCP (Transmission Control).</xref:System.Boolean>"
+  remarks: "Quando questa proprietà è impostata su `true` e la prima richiesta su una determinata connessione TCP viene autenticata tramite NTLM, le successive richieste sulla stessa connessione TCP vengono elaborate utilizzando le informazioni di autenticazione (<xref:System.Security.Principal.IIdentity>) della richiesta iniziale.</xref:System.Security.Principal.IIdentity>       Questa proprietà non ha alcun effetto quando NTLM non è il protocollo di autenticazione. Quando Negotiate è specificato come il protocollo di autenticazione, questa proprietà ha effetto solo se il protocollo utilizzato per l&quot;autenticazione è NTLM.      > [!NOTE] > Durante l&quot;impostazione di questa proprietà `true` migliora le prestazioni perché il <xref:System.Net.HttpListener>non non invia l&quot;autenticazione NTLM aggiuntive, c&quot;è un rischio di sicurezza di non richiedere tutte le richieste per fornire informazioni di autenticazione.</xref:System.Net.HttpListener> È necessario determinare se il miglioramento delle prestazioni è giustifica questo rischio."
   example:
   - "The following code example demonstrates setting this property.  \n  \n [!code-cs[Net_Listener_Basic#14](~/add/codesnippet/csharp/p-system.net.httplistene_34_1.cs)]"
   syntax:
     content: public bool UnsafeConnectionNtlmAuthentication { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref:System.Security.Principal.IIdentity> of the first request will be used for subsequent requests on the same connection; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il <xref:System.Security.Principal.IIdentity>della prima richiesta verrà usato per le richieste successive nella stessa connessione; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Security.Principal.IIdentity> Il valore predefinito è <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Net.HttpListener.UnsafeConnectionNtlmAuthentication*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This object has been closed."
+    description: "Questo oggetto è stato chiuso."
   platform:
   - net462
 references:

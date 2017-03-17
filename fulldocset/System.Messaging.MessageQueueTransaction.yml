@@ -17,8 +17,8 @@ items:
   nameWithType: MessageQueueTransaction
   fullName: System.Messaging.MessageQueueTransaction
   type: Class
-  summary: "Provides a Message Queuing internal transaction."
-  remarks: "To send or receive a message as part of a transaction, you can use the MessageQueueTransaction class to create a transaction and pass it to an overload of the <xref:System.Messaging.MessageQueue.Send%2A?displayProperty=fullName> method or the <xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName> method that takes a `transaction` parameter. Messages sent as part of a transaction must be sent to transactional queues. Messages received from transactional queues must be received using a specified transaction.       In addition to the <xref:System.Messaging.MessageQueue.Receive%2A> method, you can receive messages with a specified identifier or specified correlation identifier. See the <xref:System.Messaging.MessageQueue.ReceiveById%2A> and <xref:System.Messaging.MessageQueue.ReceiveByCorrelationId%2A> methods for more information about selectively receiving messages from transactional queues.       Messages sent to transactional queues are removed if the transaction is committed. Similarly, messages received from transactional queues are returned to the queue if the transaction is rolled back.       If you instantiate a MessageQueueTransaction and pass it to an applicable overload of the <xref:System.Messaging.MessageQueue.Send%2A> method or <xref:System.Messaging.MessageQueue.Receive%2A> method to send a message to a non-transactional queue or receive a message from a non-transactional queue, the method throws an exception that indicates &quot;Wrong Transaction Usage.&quot;       [Visual Basic]       MessageQueueTransaction is threading apartment aware, so if your apartment state is `STA`, you cannot use the transaction in multiple threads. Visual Basic sets the state of the main thread to `STA`, so you must apply the <xref:System.MTAThreadAttribute> in the `Main` subroutine. Otherwise, sending a transactional message using another thread throws a <xref:System.Messaging.MessageQueueException> exception. You apply the <xref:System.MTAThreadAttribute> by using the following fragment.      ```   <System.MTAThreadAttribute>    public sub Main()   ```      ```vb#      ```"
+  summary: "Fornisce una transazione interna di Accodamento messaggi."
+  remarks: "Per inviare o ricevere un messaggio come parte di una transazione, è possibile utilizzare la classe MessageQueueTransaction per creare una transazione e passarlo a un overload di <xref:System.Messaging.MessageQueue.Send%2A?displayProperty=fullName>metodo o <xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName>metodo che accetta un `transaction` parametro.</xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName> </xref:System.Messaging.MessageQueue.Send%2A?displayProperty=fullName> I messaggi inviati come parte di una transazione devono essere inviati alle code transazionali. I messaggi ricevuti dalle code transazionali devono essere ricevuti utilizzando la transazione specificata.       Oltre al <xref:System.Messaging.MessageQueue.Receive%2A>(metodo), è possibile ricevere messaggi con un identificatore o identificatore di correlazione specificato.</xref:System.Messaging.MessageQueue.Receive%2A> Vedere il <xref:System.Messaging.MessageQueue.ReceiveById%2A>e <xref:System.Messaging.MessageQueue.ReceiveByCorrelationId%2A>metodi per ulteriori informazioni sulla ricezione in modo selettivo i messaggi dalle code transazionali.</xref:System.Messaging.MessageQueue.ReceiveByCorrelationId%2A> </xref:System.Messaging.MessageQueue.ReceiveById%2A>       Se viene eseguito il commit della transazione, i messaggi inviati alle code transazionali vengono rimosse. Analogamente, i messaggi ricevuti dalle code transazionali vengono restituiti alla coda se viene eseguito il rollback della transazione.       Se si crea un&quot;istanza di una classe MessageQueueTransaction e passarlo a un overload applicabile del <xref:System.Messaging.MessageQueue.Send%2A>metodo o <xref:System.Messaging.MessageQueue.Receive%2A>metodo per inviare un messaggio a una coda non transazionale o di ricevere un messaggio da una coda non transazionale, il metodo genera un&quot;eccezione che indica &quot;Utilizzo delle transazioni non corretto&quot;.</xref:System.Messaging.MessageQueue.Receive%2A> </xref:System.Messaging.MessageQueue.Send%2A>       [Visual Basic]       MessageQueueTransaction è riconosce il threading apartment, pertanto se lo stato dell&quot;apartment è `STA`, è possibile utilizzare la transazione in più thread. Visual Basic imposta lo stato del thread principale di `STA`, pertanto è necessario applicare il <xref:System.MTAThreadAttribute>nel `Main` subroutine.</xref:System.MTAThreadAttribute> In caso contrario, l&quot;invio di un messaggio transazionale mediante un altro thread genererà un <xref:System.Messaging.MessageQueueException>eccezione.</xref:System.Messaging.MessageQueueException> Si applica il <xref:System.MTAThreadAttribute>utilizzando il seguente frammento.</xref:System.MTAThreadAttribute>      ```   <System.MTAThreadAttribute>    public sub Main()   ```      ```vb#      ```"
   syntax:
     content: 'public class MessageQueueTransaction : IDisposable'
   inheritance:
@@ -40,8 +40,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.MessageQueueTransaction&quot;></xref> class."
-  remarks: "This constructor sets the <xref:System.Messaging.MessageQueueTransaction.Status%2A> property to `Initialized`."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Messaging.MessageQueueTransaction&quot;> </xref> classe."
+  remarks: "Questo costruttore imposta la <xref:System.Messaging.MessageQueueTransaction.Status%2A>proprietà `Initialized`.</xref:System.Messaging.MessageQueueTransaction.Status%2A>"
   syntax:
     content: public MessageQueueTransaction ();
     parameters: []
@@ -61,8 +61,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Rolls back the pending internal transaction."
-  remarks: "Abort marks the unsuccessful completion of a process begun at a call to <xref:System.Messaging.MessageQueueTransaction.Begin%2A>.       Typically, one makes a call to <xref:System.Messaging.MessageQueueTransaction.Begin%2A> within a `Try...Catch` exception-handling block, putting a call to <xref:System.Messaging.MessageQueueTransaction.Commit%2A> in the `Try` clause, and a call to Abort in the `Catch` clause.       Abort rolls back the entire transaction. This includes all messages sent or received after the call to <xref:System.Messaging.MessageQueueTransaction.Begin%2A>."
+  summary: "Eseguire il rollback della transazione interna in sospeso."
+  remarks: "Interruzione contrassegna il mancato completamento di un processo iniziato una chiamata a <xref:System.Messaging.MessageQueueTransaction.Begin%2A>.</xref:System.Messaging.MessageQueueTransaction.Begin%2A>       In genere, si effettua una chiamata a <xref:System.Messaging.MessageQueueTransaction.Begin%2A>all&quot;interno di un `Try...Catch` blocco di gestione delle eccezioni, inserire una chiamata a <xref:System.Messaging.MessageQueueTransaction.Commit%2A>nel `Try` clausola e una chiamata di interruzione nel `Catch` clausola.</xref:System.Messaging.MessageQueueTransaction.Commit%2A> </xref:System.Messaging.MessageQueueTransaction.Begin%2A>       Interruzione rollback dell&quot;intera transazione. Sono inclusi tutti i messaggi inviati o ricevuti dopo la chiamata a <xref:System.Messaging.MessageQueueTransaction.Begin%2A>.</xref:System.Messaging.MessageQueueTransaction.Begin%2A>"
   syntax:
     content: public void Abort ();
     parameters: []
@@ -70,10 +70,10 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The internal transaction you are attempting to roll back has not started."
+    description: "La transazione interna che si sta tentando di eseguire il rollback non è stato avviato."
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "An internal Message Queuing error occurs."
+    description: "Si verifica un errore interno di Accodamento messaggi."
   platform:
   - net462
 - uid: System.Messaging.MessageQueueTransaction.Begin
@@ -88,8 +88,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Begins a new Message Queuing internal transaction."
-  remarks: "Begin marks the start of processing that will be committed or rolled back, depending on the success of the transaction. If an exception occurs during processing, the entire transaction is rolled back. This includes all messages sent or received after the call to Begin.       Typically, one makes a call to Begin within a `Try...Catch` exception-handling block, putting a call to <xref:System.Messaging.MessageQueueTransaction.Commit%2A> in the `Try` clause, and a call to <xref:System.Messaging.MessageQueueTransaction.Abort%2A> in the `Catch` clause."
+  summary: "Avvia una nuova transazione interna di Accodamento messaggi."
+  remarks: "Iniziare i segni di inizio dell&quot;elaborazione che verrà eseguito il commit o rollback, a seconda dell&quot;esito della transazione. Se si verifica un&quot;eccezione durante l&quot;elaborazione, viene eseguito il rollback dell&quot;intera transazione. Sono inclusi tutti i messaggi inviati o ricevuti dopo la chiamata a Begin.       In genere, si effettua una chiamata a Begin all&quot;interno di un `Try...Catch` blocco di gestione delle eccezioni, inserire una chiamata a <xref:System.Messaging.MessageQueueTransaction.Commit%2A>nel `Try` clausola e una chiamata a <xref:System.Messaging.MessageQueueTransaction.Abort%2A>nel `Catch` clausola.</xref:System.Messaging.MessageQueueTransaction.Abort%2A> </xref:System.Messaging.MessageQueueTransaction.Commit%2A>"
   syntax:
     content: public void Begin ();
     parameters: []
@@ -97,10 +97,10 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The transaction has already been started."
+    description: "La transazione è già stata avviata."
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "An internal Message Queuing error occurs."
+    description: "Si verifica un errore interno di Accodamento messaggi."
   platform:
   - net462
 - uid: System.Messaging.MessageQueueTransaction.Commit
@@ -115,8 +115,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Commits a pending internal transaction."
-  remarks: "Commit marks the successful completion of processing begun at a call to <xref:System.Messaging.MessageQueueTransaction.Begin%2A>. If an exception occurs between the call the <xref:System.Messaging.MessageQueueTransaction.Begin%2A> and the call to Commit, the entire transaction is rolled back. This includes all messages sent or received after the call to <xref:System.Messaging.MessageQueueTransaction.Begin%2A>.       Typically, one makes a call to <xref:System.Messaging.MessageQueueTransaction.Begin%2A> within a `Try...Catch` exception-handling block, putting a call to Commit in the `Try` clause, and a call to <xref:System.Messaging.MessageQueueTransaction.Abort%2A> in the `Catch` clause."
+  summary: "Esegue il commit di una transazione interna in sospeso."
+  remarks: "Commit contrassegna il completamento di un&quot;elaborazione iniziata una chiamata a <xref:System.Messaging.MessageQueueTransaction.Begin%2A>.</xref:System.Messaging.MessageQueueTransaction.Begin%2A> Se si verifica un&quot;eccezione tra la chiamata di <xref:System.Messaging.MessageQueueTransaction.Begin%2A>e la chiamata a Commit, l&quot;intera transazione viene eseguito il rollback.</xref:System.Messaging.MessageQueueTransaction.Begin%2A> Sono inclusi tutti i messaggi inviati o ricevuti dopo la chiamata a <xref:System.Messaging.MessageQueueTransaction.Begin%2A>.</xref:System.Messaging.MessageQueueTransaction.Begin%2A>       In genere, si effettua una chiamata a <xref:System.Messaging.MessageQueueTransaction.Begin%2A>all&quot;interno di un `Try...Catch` blocco di gestione delle eccezioni, inserire una chiamata a Commit nel `Try` clausola e una chiamata a <xref:System.Messaging.MessageQueueTransaction.Abort%2A>nel `Catch` clausola.</xref:System.Messaging.MessageQueueTransaction.Abort%2A> </xref:System.Messaging.MessageQueueTransaction.Begin%2A>"
   syntax:
     content: public void Commit ();
     parameters: []
@@ -124,10 +124,10 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The transaction you are trying to commit has not started."
+    description: "La transazione di cui che si sta tentando di eseguire il commit non è stato avviato."
   - type: System.Messaging.MessageQueueException
     commentId: T:System.Messaging.MessageQueueException
-    description: "An internal Message Queuing error occurs."
+    description: "Si verifica un errore interno di Accodamento messaggi."
   platform:
   - net462
 - uid: System.Messaging.MessageQueueTransaction.Dispose
@@ -142,8 +142,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Releases all resources used by the <xref href=&quot;System.Messaging.MessageQueueTransaction&quot;></xref>."
-  remarks: "Calling Dispose allows the resources used by the <xref:System.Messaging.MessageQueueTransaction> to be reallocated for other purposes. For more information about `Dispose`, see [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md).       Any pending internal transactions are rolled back by Dispose."
+  summary: "Rilascia tutte le risorse usate dal <xref href=&quot;System.Messaging.MessageQueueTransaction&quot;> </xref>."
+  remarks: "La chiamata a Dispose consente le risorse usate dal <xref:System.Messaging.MessageQueueTransaction>riallocazione per altri scopi.</xref:System.Messaging.MessageQueueTransaction> Per ulteriori informazioni su `Dispose`, vedere [la pulizia di risorse non gestite](~/add/includes/ajax-current-ext-md.md).       Rollback in sospeso transazioni interne sono dal metodo Dispose."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -163,14 +163,14 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.Messaging.MessageQueueTransaction&quot;></xref> and optionally releases the managed resources."
-  remarks: "This method is called by the public <xref:System.Messaging.MessageQueueTransaction.Dispose%2A> method and the <xref:System.Object.Finalize%2A> method. `Dispose` invokes the protected `Dispose(Boolean)` method with the `disposing` parameter set to `true`. <xref:System.Object.Finalize%2A> invokes `Dispose` with `disposing` set to `false`.       When the `disposing` parameter is `true`, this method releases all resources held by any managed objects that this <xref:System.Messaging.MessageQueueTransaction> references. This method invokes the `Dispose` method of each referenced object."
+  summary: "Rilascia le risorse non gestite usate da di <xref href=&quot;System.Messaging.MessageQueueTransaction&quot;> </xref> e facoltativamente rilascia le risorse gestite."
+  remarks: "Questo metodo viene chiamato dal metodo pubblico <xref:System.Messaging.MessageQueueTransaction.Dispose%2A>metodo e <xref:System.Object.Finalize%2A>metodo.</xref:System.Object.Finalize%2A> </xref:System.Messaging.MessageQueueTransaction.Dispose%2A> `Dispose`richiama il metodo protetto `Dispose(Boolean)` metodo con il `disposing` parametro impostato su `true`. <xref:System.Object.Finalize%2A>richiama `Dispose` con `disposing` impostato su `false`.</xref:System.Object.Finalize%2A>       Quando il `disposing` parametro `true`, questo metodo rilascia tutte le risorse utilizzate dagli oggetti gestiti da questo <xref:System.Messaging.MessageQueueTransaction>riferimenti.</xref:System.Messaging.MessageQueueTransaction> Questo metodo richiama il `Dispose` metodo di ciascun oggetto cui viene fatto riferimento."
   syntax:
     content: protected virtual void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>per rilasciare le risorse gestite e non gestite. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> per rilasciare solo le risorse non gestite."
   overload: System.Messaging.MessageQueueTransaction.Dispose*
   exceptions: []
   platform:
@@ -187,8 +187,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Releases the resources held by the current instance."
-  remarks: "This method overrides <xref:System.Object.Finalize%2A?displayProperty=fullName>. Application code should not call this method; an object&quot;s Finalize method is automatically invoked during garbage collection, unless finalization by the garbage collector has been disabled by a call to the <xref:System.GC.SuppressFinalize%2A?displayProperty=fullName> method.       For more information, see [Finalize Methods and Destructors](http://msdn.microsoft.com/en-us/fd376774-1643-499b-869e-9546a3aeea70), [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md), and [Overriding the Finalize Method](http://msdn.microsoft.com/en-us/8026cb68-fe93-43fc-96c1-c09ad7d64cd3)."
+  summary: "Rilascia le risorse contenute nell&quot;istanza corrente."
+  remarks: "Questo metodo esegue l&quot;override <xref:System.Object.Finalize%2A?displayProperty=fullName>.</xref:System.Object.Finalize%2A?displayProperty=fullName> Il codice dell&quot;applicazione non deve chiamare questo metodo. metodo Finalize di un oggetto viene richiamato automaticamente durante l&quot;operazione di garbage collection, a meno che la finalizzazione del garbage collector non è stata disabilitata da una chiamata al <xref:System.GC.SuppressFinalize%2A?displayProperty=fullName>metodo.</xref:System.GC.SuppressFinalize%2A?displayProperty=fullName>       Per ulteriori informazioni, vedere [metodi Finalize e distruttori](http://msdn.microsoft.com/en-us/fd376774-1643-499b-869e-9546a3aeea70), [la pulizia di risorse non gestite](~/add/includes/ajax-current-ext-md.md), e [si esegue l&quot;override del metodo Finalize](http://msdn.microsoft.com/en-us/8026cb68-fe93-43fc-96c1-c09ad7d64cd3)."
   syntax:
     content: ~MessageQueueTransaction ();
     parameters: []
@@ -208,13 +208,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets the status of the transaction."
-  remarks: "When an instance of the <xref:System.Messaging.MessageQueueTransaction> class has been created, the Status is set by the constructor to `Initialized`. After a call to <xref:System.Messaging.MessageQueueTransaction.Begin%2A> but before a call to <xref:System.Messaging.MessageQueueTransaction.Commit%2A> or <xref:System.Messaging.MessageQueueTransaction.Abort%2A>, the Status is `Pending`."
+  summary: "Ottiene lo stato della transazione."
+  remarks: "Quando un&quot;istanza di <xref:System.Messaging.MessageQueueTransaction>classe è stata creata, lo stato viene impostato dal costruttore per `Initialized`.</xref:System.Messaging.MessageQueueTransaction> Dopo una chiamata a <xref:System.Messaging.MessageQueueTransaction.Begin%2A>ma prima di chiamare <xref:System.Messaging.MessageQueueTransaction.Commit%2A>o <xref:System.Messaging.MessageQueueTransaction.Abort%2A>, lo stato è `Pending`.</xref:System.Messaging.MessageQueueTransaction.Abort%2A> </xref:System.Messaging.MessageQueueTransaction.Commit%2A> </xref:System.Messaging.MessageQueueTransaction.Begin%2A>"
   syntax:
     content: public System.Messaging.MessageQueueTransactionStatus Status { get; }
     return:
       type: System.Messaging.MessageQueueTransactionStatus
-      description: "One of the <xref href=&quot;System.Messaging.MessageQueueTransactionStatus&quot;></xref> values that indicates whether the transaction has been committed, aborted, initialized, or is pending."
+      description: "Uno del <xref href=&quot;System.Messaging.MessageQueueTransactionStatus&quot;> </xref> valori che indica se la transazione è stato eseguito il commit, interrotta, inizializzata, o è in sospeso."
   overload: System.Messaging.MessageQueueTransaction.Status*
   exceptions: []
   platform:

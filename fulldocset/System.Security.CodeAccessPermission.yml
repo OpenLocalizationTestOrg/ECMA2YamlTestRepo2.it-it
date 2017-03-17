@@ -27,8 +27,8 @@ items:
   nameWithType: CodeAccessPermission
   fullName: System.Security.CodeAccessPermission
   type: Class
-  summary: "Defines the underlying structure of all code access permissions."
-  remarks: "Code access permissions use a stack walk to ensure that all callers of the code have been granted a permission. If a permission object is `null`, it is handled the same as a permission object with the state <xref:System.Security.Permissions.PermissionState?displayProperty=fullName>.       The call stack is typically represented as growing down, so that methods higher in the call stack call methods lower in the call stack.       Inheritors of the CodeAccessPermission class must be granted full trust to function correctly as permissions extending the security infrastructure. To determine that the inheritors are fully trusted, CodeAccessPermission issues an <xref:System.Security.Permissions.SecurityAction> for <xref:System.Security.Permissions.SecurityPermissionFlag> = `true` and <xref:System.Security.Permissions.SecurityPermissionFlag> = `true`."
+  summary: "Definisce la struttura sottostante di tutte le autorizzazioni di accesso di codice."
+  remarks: "Le autorizzazioni di accesso di codice utilizzano un percorso stack per assicurarsi che tutti i chiamanti del codice sono stata concessa un&quot;autorizzazione. Se un oggetto di autorizzazione è `null`, viene gestita come un oggetto di autorizzazione con lo stato <xref:System.Security.Permissions.PermissionState?displayProperty=fullName>.</xref:System.Security.Permissions.PermissionState?displayProperty=fullName>       Lo stack di chiamate viene rappresentato in genere come espansione verso il basso, in modo che più in alto nello stack di chiamate a metodi chiamano metodi inferiore nello stack di chiamate.       Gli eredi di CodeAccessPermission (classe) è necessario concedere l&quot;attendibilità totale per il corretto funzionamento delle autorizzazioni estendendo l&quot;infrastruttura di sicurezza. Per determinare che gli eredi siano completamente attendibili, CodeAccessPermission emette un <xref:System.Security.Permissions.SecurityAction>per <xref:System.Security.Permissions.SecurityPermissionFlag>= `true` e <xref:System.Security.Permissions.SecurityPermissionFlag>= `true`.</xref:System.Security.Permissions.SecurityPermissionFlag> </xref:System.Security.Permissions.SecurityPermissionFlag> </xref:System.Security.Permissions.SecurityAction>"
   example:
   - "The following code example shows a permission derived from the CodeAccessPermission class.  \n  \n [!code-cs[System.Security.Permissions.NameIdPermission#1](~/add/codesnippet/csharp/t-system.security.codeac_1.cs)]\n [!code-cpp[System.Security.Permissions.NameIdPermission#1](~/add/codesnippet/cpp/t-system.security.codeac_1.cpp)]\n [!code-vb[System.Security.Permissions.NameIdPermission#1](~/add/codesnippet/visualbasic/t-system.security.codeac_1.vb)]"
   syntax:
@@ -56,8 +56,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref> class."
-  remarks: "This constructor is called to initialize state in the type whenever an instance of the derived class is created. Although you can explicitly call this constructor in the constructor declaration of the derived class constructor, this is not usually necessary; most compilers will automatically generate the call for you."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref> classe."
+  remarks: "Questo costruttore viene chiamato per inizializzare lo stato del tipo ogni volta che viene creata un&quot;istanza della classe derivata. Sebbene in modo esplicito, è possibile chiamare questo costruttore nella dichiarazione del costruttore della classe derivata, questo non è in genere necessario; la maggior parte dei compilatori genererà automaticamente la chiamata."
   syntax:
     content: protected CodeAccessPermission ();
     parameters: []
@@ -77,8 +77,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Declares that the calling code can access the resource protected by a permission demand through the code that calls this method, even if callers higher in the stack have not been granted permission to access the resource. Using Assert can create security issues."
-  remarks: "The call stack is typically represented as growing down, so that methods higher in the call stack call methods lower in the call stack. Calling Assert prevents a stack walk originating lower in the call stack from proceeding up the call stack beyond the code that calls this method. Therefore, even if callers higher on the call stack do not have the requisite permissions to access a resource, they can still access it through the code that calls this method on the necessary permission. An assertion is effective only if the code that calls Assert passes the security check for the permission that it is asserting.       The call to Assert is effective until the calling code returns to its caller. Only one Assert can be active on a frame. An attempt to call Assert when an active Assert exists on the frame results in a <xref:System.Security.SecurityException>. Call <xref:System.Security.CodeAccessPermission.RevertAssert%2A> or <xref:System.Security.CodeAccessPermission.RevertAll%2A> to remove an active Assert.       Assert is ignored for a permission not granted because a demand for that permission will not succeed. However, if code lower on the call stack calls <xref:System.Security.CodeAccessPermission.Demand%2A> for that permission, a <xref:System.Security.SecurityException> is thrown when the stack walk reaches the code that tried to call Assert. This happens because the code that called Assert has not been granted the permission, even though it tried to Assert it.      > [!CAUTION] >  Because calling Assert removes the requirement that all code in the call chain must be granted permission to access the specified resource, it can open up security issues if used incorrectly or inappropriately. Therefore, it should be used with great caution."
+  summary: "Dichiara che il codice chiamante può accedere alla risorsa protetta da una richiesta di autorizzazione tramite il codice che chiama questo metodo, anche se i chiamanti nello stack non dispongono dell&quot;autorizzazione per accedere alla risorsa. Utilizzando il metodo Assert, è possibile creare problemi di sicurezza."
+  remarks: "Lo stack di chiamate viene rappresentato in genere come espansione verso il basso, in modo che più in alto nello stack di chiamate a metodi chiamano metodi inferiore nello stack di chiamate. Chiamata Assert impedisce a un percorso stack originari inferiore nello stack di chiamate di procedere, lo stack di chiamate oltre il codice che chiama questo metodo. Di conseguenza, anche se i chiamanti nello stack di chiamate non dispone di autorizzazioni necessarie per accedere a una risorsa, è ancora accessibile tramite il codice che chiama questo metodo su dell&quot;autorizzazione necessaria. Un&quot;asserzione è efficace solo se il codice che chiama Assert passa il controllo della sicurezza per l&quot;autorizzazione che genera un&quot;asserzione.       La chiamata di Assert è efficace fino a quando il codice chiamante restituisce al chiamante. Assert solo uno può essere attivo su un frame. Un tentativo di chiamare Assert quando nel frame esiste un&quot;asserzione attiva comporta un <xref:System.Security.SecurityException>.</xref:System.Security.SecurityException> Chiamare <xref:System.Security.CodeAccessPermission.RevertAssert%2A>o <xref:System.Security.CodeAccessPermission.RevertAll%2A>per rimuovere un&quot;asserzione active.</xref:System.Security.CodeAccessPermission.RevertAll%2A> </xref:System.Security.CodeAccessPermission.RevertAssert%2A>       L&quot;asserzione viene ignorato per un&quot;autorizzazione non concessa perché una richiesta di tale autorizzazione non riuscirà. Tuttavia, se il codice inferiore nello stack di chiamate chiama <xref:System.Security.CodeAccessPermission.Demand%2A>per l&quot;autorizzazione, un <xref:System.Security.SecurityException>viene generata quando il percorso stack raggiunge il codice che ha tentato di chiamare Assert.</xref:System.Security.SecurityException> </xref:System.Security.CodeAccessPermission.Demand%2A> Ciò accade perché il codice che ha chiamato l&quot;asserzione non è stata concessa l&quot;autorizzazione, anche se si è tentato di asserzione.      > [!CAUTION] > Perché la chiamata Assert rimuove il requisito che tutto il codice nella catena di chiamate deve essere concessa l&quot;autorizzazione per accedere alla risorsa specificata, può provocare problemi di sicurezza se usata in modo non corretto o inappropriato. Pertanto, devono essere utilizzata con estrema cautela."
   syntax:
     content: public void Assert ();
     parameters: []
@@ -86,7 +86,7 @@ items:
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The calling code does not have <xref href=&quot;System.Security.Permissions.SecurityPermissionFlag&quot;></xref>.       -or-       There is already an active Assert for the current frame."
+    description: "Il codice chiamante non ha <xref href=&quot;System.Security.Permissions.SecurityPermissionFlag&quot;> </xref>.       - oppure - è già presente un&quot;asserzione attiva per il fotogramma corrente."
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.Copy
@@ -101,8 +101,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "When implemented by a derived class, creates and returns an identical copy of the current permission object."
-  remarks: "A copy of a permission object represents the same access to resources as the original permission object."
+  summary: "Quando viene implementato da una classe derivata, crea e restituisce una copia identica dell&quot;oggetto autorizzazione corrente."
+  remarks: "Una copia di un oggetto di autorizzazione rappresenta lo stesso accesso alle risorse dell&quot;oggetto di autorizzazione originale."
   example:
   - "The following code example shows an override of the Copy method. This code example is part of a larger example provided for the <xref:System.Security.CodeAccessPermission> class.  \n  \n [!code-cs[System.Security.Permissions.NameIdPermission#2](~/add/codesnippet/csharp/m-system.security.codeac_0_1.cs)]\n [!code-cpp[System.Security.Permissions.NameIdPermission#2](~/add/codesnippet/cpp/m-system.security.codeac_0_1.cpp)]\n [!code-vb[System.Security.Permissions.NameIdPermission#2](~/add/codesnippet/visualbasic/m-system.security.codeac_0_1.vb)]"
   syntax:
@@ -110,7 +110,7 @@ items:
     parameters: []
     return:
       type: System.Security.IPermission
-      description: "A copy of the current permission object."
+      description: "Una copia dell&quot;oggetto autorizzazione corrente."
   overload: System.Security.CodeAccessPermission.Copy*
   exceptions: []
   platform:
@@ -127,8 +127,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Forces a <xref:System.Security.SecurityException> at run time if all callers higher in the call stack have not been granted the permission specified by the current instance."
-  remarks: "This method is typically used by secure libraries to ensure that callers have permission to access a resource. For example, a file class in a secure class library calls Demand for the necessary <xref:System.Security.Permissions.FileIOPermission> before performing a file operation requested by the caller.       The permissions of the code that calls this method are not examined; the check begins from the immediate caller of that code and proceeds up the stack. The call stack is typically represented as growing down, so that methods higher in the call stack call methods lower in the call stack. Demand succeeds only if no <xref:System.Security.SecurityException> is raised."
+  summary: "Forza un <xref:System.Security.SecurityException>in fase di esecuzione se tutti i chiamanti nello stack di chiamate non sono stata concessa l&quot;autorizzazione specificata dall&quot;istanza corrente.</xref:System.Security.SecurityException>"
+  remarks: "Questo metodo viene in genere utilizzato da librerie protette per garantire che i chiamanti dispongano dell&quot;autorizzazione per accedere a una risorsa. Ad esempio, una classe di file in una libreria di classi protette chiama richiesta per gli oggetti necessari <xref:System.Security.Permissions.FileIOPermission>prima di eseguire un&quot;operazione di file richiesta dal chiamante.</xref:System.Security.Permissions.FileIOPermission>       Le autorizzazioni del codice che chiama questo metodo non vengono esaminate; il controllo inizia da parte del chiamante immediato del codice e continua fino allo stack. Lo stack di chiamate viene rappresentato in genere come espansione verso il basso, in modo che più in alto nello stack di chiamate a metodi chiamano metodi inferiore nello stack di chiamate. Richiesta ha esito positivo solo se nessun <xref:System.Security.SecurityException>viene generato.</xref:System.Security.SecurityException>"
   syntax:
     content: public void Demand ();
     parameters: []
@@ -136,7 +136,7 @@ items:
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "A caller higher in the call stack does not have the permission specified by the current instance.       -or-       A caller higher in the call stack has called <xref:System.Security.CodeAccessPermission.Deny*> on the current permission object."
+    description: "Un chiamante di livello superiore nello stack di chiamate non dispone dell&quot;autorizzazione specificata dall&quot;istanza corrente.       - oppure - un chiamante superiore nello stack di chiamate ha chiamato <xref:System.Security.CodeAccessPermission.Deny*>sull&quot;oggetto di autorizzazione corrente.</xref:System.Security.CodeAccessPermission.Deny*>"
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.Deny
@@ -151,8 +151,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Prevents callers higher in the call stack from using the code that calls this method to access the resource specified by the current instance."
-  remarks: "> [!IMPORTANT] >  The Deny method should be used only to protect resources from accidental access by fully trusted code. It should not be used to protect resources from intentional misuse by untrusted code. For example, if method `A` issues a Deny for a permission and then calls method `B`, method `B` can overtly override the Deny by issuing an <xref:System.Security.CodeAccessPermission.Assert%2A>. The called method is always higher in the stack. Therefore, if method `B` tries to access a protected resource, the security system begins checking for permissions with it because method `B` is the immediate caller, and then walks down the stack to confirm that there is no Deny or <xref:System.Security.CodeAccessPermission.PermitOnly%2A> lower in the stack. Method `B`, which is trying to access the resource, can stop the stack walk immediately by using the <xref:System.Security.CodeAccessPermission.Assert%2A> method. In that case, the Deny placed on the stack by method `A` (the calling method) is never discovered.       This method prevents callers higher in the call stack from accessing the protected resource through the code that calls this method, even if those callers have been granted permission to access it. The call stack is typically represented as growing down, so that methods higher in the call stack call methods lower in the call stack.       Deny can limit the liability of the programmer or help prevent accidental security issues because it helps prevent the method that calls Deny from being used to access the resource protected by the denied permission. If a method calls Deny on a permission, and if a <xref:System.Security.CodeAccessPermission.Demand%2A> for that permission is invoked by a caller lower in the call stack, that security check will fail when it reaches the Deny.       The call to Deny is effective until the calling code returns to its caller. Only one Deny can be active on a frame. An attempt to call Deny when an active Deny exists on the frame results in a <xref:System.Security.SecurityException>. Call <xref:System.Security.CodeAccessPermission.RevertDeny%2A> or <xref:System.Security.CodeAccessPermission.RevertAll%2A> to remove an active Deny. Deny is ignored for a permission not granted because a demand for that permission will not succeed."
+  summary: "Impedisce ai chiamanti più in alto nello stack di chiamate di usare il codice che chiama questo metodo per accedere alla risorsa specificata dall&quot;istanza corrente."
+  remarks: "> [!IMPORTANT]> Il metodo Deny deve essere utilizzato soltanto per proteggere le risorse dall&quot;accesso accidentale da codice completamente attendibile. Non da utilizzare per proteggere le risorse da un uso improprio intenzionale da codice non attendibile. Ad esempio, se metodo `A` esegue un&quot;istruzione Deny per un&quot;autorizzazione e quindi chiama metodo `B`, metodo `B` possibile eseguire l&quot;override Deny dimostra generando un <xref:System.Security.CodeAccessPermission.Assert%2A>.</xref:System.Security.CodeAccessPermission.Assert%2A> Il metodo chiamato è sempre superiore dello stack. Pertanto, se metodo `B` tenta di accedere a una risorsa protetta, il sistema di sicurezza inizia a verificare le autorizzazioni, in quanto metodo `B` è il chiamante immediato, e quindi percorre lo stack per verificare che non sia presente alcun Deny o <xref:System.Security.CodeAccessPermission.PermitOnly%2A>inferiore nello stack.</xref:System.Security.CodeAccessPermission.PermitOnly%2A> Metodo `B`, che sta tentando di accedere alla risorsa, può arrestare l&quot;analisi dello stack immediatamente utilizzando il <xref:System.Security.CodeAccessPermission.Assert%2A>metodo.</xref:System.Security.CodeAccessPermission.Assert%2A> In tal caso, l&quot;istruzione Deny inseriti nello stack dal metodo `A` (il metodo chiamante) non viene mai individuato.       Questo metodo impedisce ai chiamanti più in alto nello stack di chiamate di accedere alla risorsa protetta tramite il codice che chiama questo metodo, anche se i chiamanti dispongono dell&quot;autorizzazione per accedervi. Lo stack di chiamate viene rappresentato in genere come espansione verso il basso, in modo che più in alto nello stack di chiamate a metodi chiamano metodi inferiore nello stack di chiamate.       Deny può limitare la responsabilità del programmatore o impedire problemi di sicurezza accidentale, in quanto impedisce che il metodo che chiama Deny venga utilizzato per accedere alla risorsa protetta dall&quot;autorizzazione negata. Se un metodo chiama nega un&quot;autorizzazione e un <xref:System.Security.CodeAccessPermission.Demand%2A>per tale autorizzazione viene richiamato da un chiamante inferiore nello stack di chiamate, la verifica della sicurezza avrà esito negativo quando viene raggiunta l&quot;istruzione Deny.</xref:System.Security.CodeAccessPermission.Demand%2A>       La chiamata di Deny è efficace fino a quando il codice chiamante restituisce al chiamante. Un solo Nega può essere attivo su un frame. Un tentativo di chiamare Deny quando esiste un Deny active sui risultati del frame del <xref:System.Security.SecurityException>.</xref:System.Security.SecurityException> Chiamare <xref:System.Security.CodeAccessPermission.RevertDeny%2A>o <xref:System.Security.CodeAccessPermission.RevertAll%2A>per rimuovere un Deny active.</xref:System.Security.CodeAccessPermission.RevertAll%2A> </xref:System.Security.CodeAccessPermission.RevertDeny%2A> Negare viene ignorato per un&quot;autorizzazione non concessa perché una richiesta di tale autorizzazione non riuscirà."
   syntax:
     content: public void Deny ();
     parameters: []
@@ -160,7 +160,7 @@ items:
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "There is already an active Deny for the current frame."
+    description: "È già presente un Deny attivo per il fotogramma corrente."
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.Equals(System.Object)
@@ -175,17 +175,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Determines whether the specified <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref> object is equal to the current <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref>."
-  remarks: "For more information, see <xref:System.Object.Equals%2A>."
+  summary: "Determina se l&quot;oggetto specificato <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref> oggetto è uguale all&quot;oggetto corrente <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref>."
+  remarks: "Per ulteriori informazioni, vedere <xref:System.Object.Equals%2A>.</xref:System.Object.Equals%2A>"
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref> object to compare with the current <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref>."
+      description: "Il <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref> oggetto da confrontare con l&quot;oggetto corrente <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref> object is equal to the current <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se l&quot;oggetto specificato <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref> oggetto è uguale all&quot;oggetto corrente <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref>; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.CodeAccessPermission.Equals*
   exceptions: []
   platform:
@@ -202,8 +202,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "When overridden in a derived class, reconstructs a security object with a specified state from an XML encoding."
-  remarks: "Custom code that extends security objects needs to implement the <xref:System.Security.CodeAccessPermission.ToXml%2A> and FromXml methods to make the objects security-encodable."
+  summary: "Quando sottoposto a override in una classe derivata, ricostruisce un oggetto di sicurezza con uno stato specificato da una codifica XML."
+  remarks: "Codice personalizzato che estende gli oggetti di sicurezza deve implementare il <xref:System.Security.CodeAccessPermission.ToXml%2A>FromXml metodi e per rendere gli oggetti codificabili.</xref:System.Security.CodeAccessPermission.ToXml%2A>"
   example:
   - "The following code example shows an override of the FromXml method. This code example is part of a larger example provided for the <xref:System.Security.CodeAccessPermission> class.  \n  \n [!code-cs[System.Security.Permissions.NameIdPermission#10](~/add/codesnippet/csharp/m-system.security.codeac_1_1.cs)]\n [!code-cpp[System.Security.Permissions.NameIdPermission#10](~/add/codesnippet/cpp/m-system.security.codeac_1_1.cpp)]\n [!code-vb[System.Security.Permissions.NameIdPermission#10](~/add/codesnippet/visualbasic/m-system.security.codeac_1_1.vb)]"
   syntax:
@@ -211,7 +211,7 @@ items:
     parameters:
     - id: elem
       type: System.Security.SecurityElement
-      description: "The XML encoding to use to reconstruct the security object."
+      description: "La codifica XML da usare per ricostruire l&quot;oggetto di sicurezza."
   overload: System.Security.CodeAccessPermission.FromXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -219,7 +219,7 @@ items:
     description: "The <code>elem</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>elem</code> parameter does not contain the XML encoding for an instance of the same type as the current instance.       -or-       The version number of the <code>elem</code> parameter is not supported."
+    description: "Il <code> elem </code> parametro non contiene la codifica XML per un&quot;istanza dello stesso tipo dell&quot;istanza corrente.       - oppure - il numero di versione di <code> elem </code> parametro non è supportato."
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.GetHashCode
@@ -234,14 +234,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Gets a hash code for the <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref> object that is suitable for use in hashing algorithms and data structures such as a hash table."
-  remarks: "The hash code for two instances of the same permission might be different, hence a hash code should not be used to compare two <xref:System.Security.CodeAccessPermission> objects."
+  summary: "Ottiene un codice hash per il <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref> oggetto adatto per l&quot;utilizzo in algoritmi hash e dati strutture, ad esempio una tabella hash."
+  remarks: "Il codice hash per due istanze della stessa autorizzazione potrebbe essere diverso, pertanto è consigliabile non utilizzare un codice hash per confrontare due <xref:System.Security.CodeAccessPermission>oggetti.</xref:System.Security.CodeAccessPermission>"
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A hash code for the current <xref href=&quot;System.Security.CodeAccessPermission&quot;></xref> object."
+      description: "Codice hash per l&quot;oggetto corrente <xref href=&quot;System.Security.CodeAccessPermission&quot;> </xref> oggetto."
   overload: System.Security.CodeAccessPermission.GetHashCode*
   exceptions: []
   platform:
@@ -258,8 +258,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "When implemented by a derived class, creates and returns a permission that is the intersection of the current permission and the specified permission."
-  remarks: "The intersection of two permissions is a permission that describes the set of operations they both describe in common. Only a demand that passes both original permissions will pass the intersection."
+  summary: "Quando viene implementato da una classe derivata, crea e restituisce un&quot;autorizzazione che rappresenta l&quot;intersezione dell&quot;autorizzazione corrente e l&quot;autorizzazione specificata."
+  remarks: "L&quot;intersezione delle due autorizzazioni è un&quot;autorizzazione che descrive il set di operazioni che hanno in comune. Solo una richiesta che supera entrambe le autorizzazioni originali passerà l&quot;intersezione."
   example:
   - "The following code example shows an override of the Intersect method. This code example is part of a larger example provided for the <xref:System.Security.CodeAccessPermission> class.  \n  \n [!code-cs[System.Security.Permissions.NameIdPermission#5](~/add/codesnippet/csharp/m-system.security.codeac_3_1.cs)]\n [!code-cpp[System.Security.Permissions.NameIdPermission#5](~/add/codesnippet/cpp/m-system.security.codeac_3_1.cpp)]\n [!code-vb[System.Security.Permissions.NameIdPermission#5](~/add/codesnippet/visualbasic/m-system.security.codeac_3_1.vb)]"
   syntax:
@@ -267,15 +267,15 @@ items:
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission to intersect with the current permission. It must be of the same type as the current permission."
+      description: "Autorizzazione da intersecare con l&quot;autorizzazione corrente. Deve essere dello stesso tipo dell&quot;autorizzazione corrente."
     return:
       type: System.Security.IPermission
-      description: "A new permission that represents the intersection of the current permission and the specified permission. This new permission is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the intersection is empty."
+      description: "Nuova autorizzazione che rappresenta l&quot;intersezione dell&quot;autorizzazione corrente e l&quot;autorizzazione specificata. La nuova autorizzazione è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se l&quot;intersezione è vuota."
   overload: System.Security.CodeAccessPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not an instance of the same class as the current permission."
+    description: "Il <code> target </code> parametro non è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> e non è un&quot;istanza della stessa classe dell&quot;autorizzazione corrente."
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.IsSubsetOf(System.Security.IPermission)
@@ -290,7 +290,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "When implemented by a derived class, determines whether the current permission is a subset of the specified permission."
+  summary: "Quando viene implementato da una classe derivata, determina se l&quot;autorizzazione corrente è un subset dell&quot;autorizzazione specificata."
   remarks: "The current permission is a subset of the specified permission if the current permission specifies a set of operations that is wholly contained by the specified permission. For example, a permission that represents access to C:\\example.txt is a subset of a permission that represents access to C:\\\\. If this method returns `true`, the current permission represents no more access to the protected resource than does the specified permission.  \n  \n The following statements are required to be `true` for all overrides of the IsSubsetOf method. *X*, *Y*, and *Z* represent custom code access permission objects that are not null references, *U* represents an unrestricted code access permission, and *N* represents an empty permission with a <xref:System.Security.Permissions.PermissionState> of <xref:System.Security.Permissions.PermissionState>.  \n  \n-   *X*.IsSubsetOf(*X*) returns `true`.  \n  \n-   *X*.IsSubsetOf(*Y*) returns the same value as *Y*.IsSubsetOf(*X*) if and only if *X* and *Y* represent the same set of permissions.  \n  \n-   If *X*.IsSubsetOf(*Y*) and *Y*.IsSubsetOf(*Z*) both return `true`, *X*.IsSubsetOf(*Z*) returns `true`.  \n  \n-   *X*.IsSubsetOf(*U*) returns `true`.  \n  \n-   *X*.IsSubsetOf(*N*) returns `false`.  \n  \n-   *N*.IsSubsetOf(*X*) returns `true`.  \n  \n If *X* and *Y* represent custom code access permission objects that are null references, *X*.IsSubsetOf(*Y*) returns `true`. If *Z* is also null, the compound set operation *X*.Union(*Y*).IsSubsetOf(*Z*) also returns `true` because the union of two null permissions is a null permission."
   example:
   - "The following code example shows an override of the IsSubsetOf method. This code example is part of a larger example provided for the <xref:System.Security.CodeAccessPermission> class.  \n  \n [!code-cs[System.Security.Permissions.NameIdPermission#4](~/add/codesnippet/csharp/m-system.security.codeac_5_1.cs)]\n [!code-cpp[System.Security.Permissions.NameIdPermission#4](~/add/codesnippet/cpp/m-system.security.codeac_5_1.cpp)]\n [!code-vb[System.Security.Permissions.NameIdPermission#4](~/add/codesnippet/visualbasic/m-system.security.codeac_5_1.vb)]"
@@ -299,15 +299,15 @@ items:
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission that is to be tested for the subset relationship. This permission must be of the same type as the current permission."
+      description: "Autorizzazione da testare per la relazione del subset. Questa autorizzazione deve essere dello stesso tipo dell&quot;autorizzazione corrente."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se l&quot;autorizzazione corrente è un subset dell&quot;autorizzazione specificata. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.CodeAccessPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "Il <code> target </code> parametro non è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> e non è dello stesso tipo dell&quot;autorizzazione corrente."
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.PermitOnly
@@ -322,8 +322,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Prevents callers higher in the call stack from using the code that calls this method to access all resources except for the resource specified by the current instance."
-  remarks: "> [!IMPORTANT] >  The PermitOnly method should be used only to protect resources from accidental access by fully trusted code. It should not be used to protect resources from intentional misuse by untrusted code. For example, if method `A` issues a PermitOnly for a permission and then calls method `B`, method `B` can overtly override the PermitOnly by issuing an <xref:System.Security.CodeAccessPermission.Assert%2A>. The called method is always higher in the stack. Therefore, if method `B` tries to access a protected resource, the security system begins checking for permissions with it because method `B` is the immediate caller, and then walks down the stack to confirm that there is no <xref:System.Security.CodeAccessPermission.Deny%2A> or PermitOnly lower in the stack. Method `B`, which is trying to access the resource, can stop the stack walk immediately by using the <xref:System.Security.CodeAccessPermission.Assert%2A> method. In that case, the PermitOnly placed on the stack by method `A` (the calling method) is never discovered.       PermitOnly is similar to <xref:System.Security.CodeAccessPermission.Deny%2A>, in that both cause stack walks to fail when they would otherwise succeed. The difference is that <xref:System.Security.CodeAccessPermission.Deny%2A> specifies permissions that will cause the stack walk to fail, but PermitOnly specifies the only permissions that do not cause the stack walk to fail.       Call this method to ensure that your code can be used to access only the specified resources. The call to PermitOnly is effective until the calling code returns to its caller. Only one PermitOnly can be active on a frame. An attempt to call PermitOnly when an active PermitOnly exists on the frame results in a <xref:System.Security.SecurityException>. Call <xref:System.Security.CodeAccessPermission.RevertPermitOnly%2A> or <xref:System.Security.CodeAccessPermission.RevertAll%2A> to remove an active PermitOnly.       PermitOnly is ignored for a permission not granted because a demand for that permission will not succeed. However, if code lower on the call stack later calls <xref:System.Security.CodeAccessPermission.Demand%2A> for that permission, a <xref:System.Security.SecurityException> is thrown when the stack walk reaches the code that tried to call PermitOnly. This is because the code that called PermitOnly has not been granted the permission, even though it called PermitOnly for that permission. The call stack is typically represented as growing down, so that methods higher in the call stack call methods lower in the call stack."
+  summary: "Impedisce ai chiamanti più in alto nello stack di chiamate di usare il codice che chiama questo metodo per accedere a tutte le risorse eccetto quella specificata dall&quot;istanza corrente."
+  remarks: "> [!IMPORTANT]> Il metodo PermitOnly deve essere utilizzato soltanto per proteggere le risorse dall&quot;accesso accidentale da codice completamente attendibile. Non da utilizzare per proteggere le risorse da un uso improprio intenzionale da codice non attendibile. Ad esempio, se metodo `A` emette un PermitOnly per un&quot;autorizzazione e quindi chiama metodo `B`, metodo `B` possibile eseguire l&quot;override PermitOnly dimostra generando un <xref:System.Security.CodeAccessPermission.Assert%2A>.</xref:System.Security.CodeAccessPermission.Assert%2A> Il metodo chiamato è sempre superiore dello stack. Pertanto, se (metodo) `B` tenta di accedere a una risorsa protetta, il sistema di sicurezza inizia a verificare le autorizzazioni, in quanto metodo `B` è il chiamante immediato, e quindi percorre lo stack per verificare che sia presente alcun <xref:System.Security.CodeAccessPermission.Deny%2A>o PermitOnly inferiore nello stack di.</xref:System.Security.CodeAccessPermission.Deny%2A> Metodo `B`, che sta tentando di accedere alla risorsa, può arrestare l&quot;analisi dello stack immediatamente utilizzando il <xref:System.Security.CodeAccessPermission.Assert%2A>metodo.</xref:System.Security.CodeAccessPermission.Assert%2A> In tal caso, PermitOnly inseriti nello stack dal metodo `A` (il metodo chiamante) non viene mai individuato.       È simile a PermitOnly <xref:System.Security.CodeAccessPermission.Deny%2A>, perché entrambi provocano l&quot;analisi dello stack se avranno esito positivo.</xref:System.Security.CodeAccessPermission.Deny%2A> La differenza è che <xref:System.Security.CodeAccessPermission.Deny%2A>Specifica le autorizzazioni che provocano lo stack di percorso, mentre PermitOnly specifica solo le autorizzazioni che non provocano il percorso di stack.</xref:System.Security.CodeAccessPermission.Deny%2A>       Chiamare questo metodo per verificare che il codice può essere utilizzato per accedere solo le risorse specificate. La chiamata a PermitOnly è efficace fino a quando il codice chiamante restituisce al chiamante. PermitOnly solo uno può essere attivo su un frame. Un tentativo di chiamare PermitOnly quando esiste un PermitOnly active sui risultati del frame del <xref:System.Security.SecurityException>.</xref:System.Security.SecurityException> Chiamare <xref:System.Security.CodeAccessPermission.RevertPermitOnly%2A>o <xref:System.Security.CodeAccessPermission.RevertAll%2A>per rimuovere un PermitOnly active.</xref:System.Security.CodeAccessPermission.RevertAll%2A> </xref:System.Security.CodeAccessPermission.RevertPermitOnly%2A>       PermitOnly viene ignorato per un&quot;autorizzazione non concessa perché una richiesta di tale autorizzazione non riuscirà. Tuttavia, se il codice inferiore nello stack di in un secondo momento chiama <xref:System.Security.CodeAccessPermission.Demand%2A>per l&quot;autorizzazione, un <xref:System.Security.SecurityException>viene generata quando il percorso stack raggiunge il codice che ha tentato di chiamare PermitOnly.</xref:System.Security.SecurityException> </xref:System.Security.CodeAccessPermission.Demand%2A> In questo modo il codice che ha chiamato PermitOnly non è stata concessa l&quot;autorizzazione, anche se chiamato PermitOnly per l&quot;autorizzazione. Lo stack di chiamate viene rappresentato in genere come espansione verso il basso, in modo che più in alto nello stack di chiamate a metodi chiamano metodi inferiore nello stack di chiamate."
   syntax:
     content: public void PermitOnly ();
     parameters: []
@@ -331,7 +331,7 @@ items:
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "There is already an active PermitOnly for the current frame."
+    description: "È già presente un PermitOnly attivo per il fotogramma corrente."
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.RevertAll
@@ -346,8 +346,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Causes all previous overrides for the current frame to be removed and no longer in effect."
-  remarks: "If there are no overrides (<xref:System.Security.CodeAccessPermission.Assert%2A>, <xref:System.Security.CodeAccessPermission.Deny%2A>, or <xref:System.Security.CodeAccessPermission.PermitOnly%2A>) for the current frame, an <xref:System.ExecutionEngineException> is thrown."
+  summary: "Fa sì che tutti i precedenti override per il frame corrente viene rimosso e non è più attivo."
+  remarks: "Se esistono override (<xref:System.Security.CodeAccessPermission.Assert%2A>, <xref:System.Security.CodeAccessPermission.Deny%2A>, o <xref:System.Security.CodeAccessPermission.PermitOnly%2A>) per il frame corrente, un <xref:System.ExecutionEngineException>viene generata un&quot;eccezione.</xref:System.ExecutionEngineException> </xref:System.Security.CodeAccessPermission.PermitOnly%2A> </xref:System.Security.CodeAccessPermission.Deny%2A> </xref:System.Security.CodeAccessPermission.Assert%2A>"
   syntax:
     content: public static void RevertAll ();
     parameters: []
@@ -355,7 +355,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is no previous <xref:System.Security.CodeAccessPermission.Assert*>, <xref:System.Security.CodeAccessPermission.Deny*>, or <xref:System.Security.CodeAccessPermission.PermitOnly*> for the current frame."
+    description: "Non è non precedente <> </> *>, <> </> *>, o <xref:System.Security.CodeAccessPermission.PermitOnly*>per il fotogramma corrente.</xref:System.Security.CodeAccessPermission.PermitOnly*>"
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.RevertAssert
@@ -370,8 +370,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Causes any previous <xref:System.Security.CodeAccessPermission.Assert*> for the current frame to be removed and no longer in effect."
-  remarks: "If there is no <xref:System.Security.CodeAccessPermission.Assert%2A> for the current frame, an <xref:System.ExecutionEngineException> is thrown."
+  summary: "Cause precedenti <xref:System.Security.CodeAccessPermission.Assert*>per il frame corrente viene rimosso e non è più attivo.</xref:System.Security.CodeAccessPermission.Assert*>"
+  remarks: "Se è presente alcun <xref:System.Security.CodeAccessPermission.Assert%2A>per il frame corrente, un <xref:System.ExecutionEngineException>viene generata un&quot;eccezione.</xref:System.ExecutionEngineException> </xref:System.Security.CodeAccessPermission.Assert%2A>"
   syntax:
     content: public static void RevertAssert ();
     parameters: []
@@ -379,7 +379,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is no previous <xref:System.Security.CodeAccessPermission.Assert*> for the current frame."
+    description: "Non è non precedente <xref:System.Security.CodeAccessPermission.Assert*>per il fotogramma corrente.</xref:System.Security.CodeAccessPermission.Assert*>"
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.RevertDeny
@@ -394,8 +394,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Causes any previous <xref:System.Security.CodeAccessPermission.Deny*> for the current frame to be removed and no longer in effect."
-  remarks: "If there is no <xref:System.Security.CodeAccessPermission.Deny%2A> for the current frame, an <xref:System.ExecutionEngineException> is thrown."
+  summary: "Cause precedenti <xref:System.Security.CodeAccessPermission.Deny*>per il frame corrente viene rimosso e non è più attivo.</xref:System.Security.CodeAccessPermission.Deny*>"
+  remarks: "Se è presente alcun <xref:System.Security.CodeAccessPermission.Deny%2A>per il frame corrente, un <xref:System.ExecutionEngineException>viene generata un&quot;eccezione.</xref:System.ExecutionEngineException> </xref:System.Security.CodeAccessPermission.Deny%2A>"
   syntax:
     content: public static void RevertDeny ();
     parameters: []
@@ -403,7 +403,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is no previous <xref:System.Security.CodeAccessPermission.Deny*> for the current frame."
+    description: "Non è non precedente <xref:System.Security.CodeAccessPermission.Deny*>per il fotogramma corrente.</xref:System.Security.CodeAccessPermission.Deny*>"
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.RevertPermitOnly
@@ -418,8 +418,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Causes any previous <xref:System.Security.CodeAccessPermission.PermitOnly*> for the current frame to be removed and no longer in effect."
-  remarks: "If there is no <xref:System.Security.CodeAccessPermission.PermitOnly%2A> for the current frame, an <xref:System.ExecutionEngineException> is thrown."
+  summary: "Cause precedenti <xref:System.Security.CodeAccessPermission.PermitOnly*>per il frame corrente viene rimosso e non è più attivo.</xref:System.Security.CodeAccessPermission.PermitOnly*>"
+  remarks: "Se è presente alcun <xref:System.Security.CodeAccessPermission.PermitOnly%2A>per il frame corrente, un <xref:System.ExecutionEngineException>viene generata un&quot;eccezione.</xref:System.ExecutionEngineException> </xref:System.Security.CodeAccessPermission.PermitOnly%2A>"
   syntax:
     content: public static void RevertPermitOnly ();
     parameters: []
@@ -427,7 +427,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There is no previous <xref:System.Security.CodeAccessPermission.PermitOnly*> for the current frame."
+    description: "Non è non precedente <xref:System.Security.CodeAccessPermission.PermitOnly*>per il fotogramma corrente.</xref:System.Security.CodeAccessPermission.PermitOnly*>"
   platform:
   - net462
 - uid: System.Security.CodeAccessPermission.ToString
@@ -442,14 +442,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Creates and returns a string representation of the current permission object."
-  remarks: "This method is useful in debugging when you need to display the permission as a string."
+  summary: "Crea e restituisce una rappresentazione di stringa dell&quot;oggetto autorizzazione corrente."
+  remarks: "Questo metodo è utile per il debug quando è necessario visualizzare l&quot;autorizzazione come stringa."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A string representation of the current permission object."
+      description: "Rappresentazione di stringa dell&quot;oggetto autorizzazione corrente."
   overload: System.Security.CodeAccessPermission.ToString*
   exceptions: []
   platform:
@@ -466,8 +466,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "When overridden in a derived class, creates an XML encoding of the security object and its current state."
-  remarks: "Custom code that extends security objects needs to implement the ToXml and <xref:System.Security.CodeAccessPermission.FromXml%2A> methods to make the objects security-encodable."
+  summary: "Quando sottoposto a override in una classe derivata, crea una codifica XML dell&quot;oggetto di sicurezza e lo stato corrente."
+  remarks: "Codice personalizzato che estende gli oggetti di sicurezza deve implementare il metodo ToXml e <xref:System.Security.CodeAccessPermission.FromXml%2A>metodi per rendere gli oggetti codificabili.</xref:System.Security.CodeAccessPermission.FromXml%2A>"
   example:
   - "The following code example shows an override of the ToXml method. This code example is part of a larger example provided for the <xref:System.Security.CodeAccessPermission> class.  \n  \n [!code-cs[System.Security.Permissions.NameIdPermission#11](~/add/codesnippet/csharp/m-system.security.codeac_4_1.cs)]\n [!code-cpp[System.Security.Permissions.NameIdPermission#11](~/add/codesnippet/cpp/m-system.security.codeac_4_1.cpp)]\n [!code-vb[System.Security.Permissions.NameIdPermission#11](~/add/codesnippet/visualbasic/m-system.security.codeac_4_1.vb)]"
   syntax:
@@ -475,7 +475,7 @@ items:
     parameters: []
     return:
       type: System.Security.SecurityElement
-      description: "An XML encoding of the security object, including any state information."
+      description: "Codifica XML dell&quot;oggetto di sicurezza, inclusi eventuali informazioni sullo stato."
   overload: System.Security.CodeAccessPermission.ToXml*
   exceptions: []
   platform:
@@ -492,8 +492,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "When overridden in a derived class, creates a permission that is the union of the current permission and the specified permission."
-  remarks: "The result of a call to Union is a permission that represents all the operations represented by both the current permission and the specified permission. Any demand that passes either permission passes their union."
+  summary: "Quando sottoposto a override in una classe derivata, crea un&quot;autorizzazione che rappresenta l&quot;unione dell&quot;autorizzazione corrente e l&quot;autorizzazione specificata."
+  remarks: "Il risultato di una chiamata a un&quot;unione è un&quot;autorizzazione che rappresenta tutte le operazioni indicate sia dell&quot;autorizzazione corrente e l&quot;autorizzazione specificata. Qualsiasi richiesta che passa l&quot;autorizzazione passa l&quot;unione."
   example:
   - "The following code example shows an override of the Union method. This code example is part of a larger example provided for the <xref:System.Security.CodeAccessPermission> class.  \n  \n [!code-cs[System.Security.Permissions.NameIdPermission#12](~/add/codesnippet/csharp/m-system.security.codeac_2_1.cs)]\n [!code-cpp[System.Security.Permissions.NameIdPermission#12](~/add/codesnippet/cpp/m-system.security.codeac_2_1.cpp)]\n [!code-vb[System.Security.Permissions.NameIdPermission#12](~/add/codesnippet/visualbasic/m-system.security.codeac_2_1.vb)]"
   syntax:
@@ -501,15 +501,15 @@ items:
     parameters:
     - id: other
       type: System.Security.IPermission
-      description: "A permission to combine with the current permission. It must be of the same type as the current permission."
+      description: "Autorizzazione da combinare con l&quot;autorizzazione corrente. Deve essere dello stesso tipo dell&quot;autorizzazione corrente."
     return:
       type: System.Security.IPermission
-      description: "A new permission that represents the union of the current permission and the specified permission."
+      description: "Nuova autorizzazione che rappresenta l&quot;unione dell&quot;autorizzazione corrente e l&quot;autorizzazione specificata."
   overload: System.Security.CodeAccessPermission.Union*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <code>other</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This method is only supported at this level when passed <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "The <code>other</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. Questo metodo è supportato solo a questo livello quando viene passato <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 references:
