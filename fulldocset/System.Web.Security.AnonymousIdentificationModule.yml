@@ -15,8 +15,8 @@ items:
   nameWithType: AnonymousIdentificationModule
   fullName: System.Web.Security.AnonymousIdentificationModule
   type: Class
-  summary: "Manages anonymous identifiers for the ASP.NET application."
-  remarks: "The AnonymousIdentificationModule class creates and manages anonymous identifiers for an ASP.NET application. Anonymous identifiers are used by features that support anonymous identification such as the ASP.NET <xref:System.Web.Profile>.       The AnonymousIdentificationModule exposes a <xref:System.Web.Security.AnonymousIdentificationModule.Creating> event that enables you to set the anonymous identifier to a custom value. If you do not specify a custom anonymous identifier value, a <xref:System.Guid> is used.       The <xref:System.Web.Security.AnonymousIdentificationModule.Creating> event is accessed by specifying a subroutine named **AnonymousIdentification_Creating** in the Global.asax file for your ASP.NET application.       The AnonymousIdentificationModule is only used when anonymous identification is <xref:System.Web.Security.AnonymousIdentificationModule.Enabled%2A> by setting the enabled attribute of the  configuration element to `true`.      > [!NOTE] >  Anonymous identification is independent of any type of ASP.NET authentication."
+  summary: "Gestisce gli identificatori anonimi per l&quot;applicazione ASP.NET."
+  remarks: "La classe AnonymousIdentificationModule crea e gestisce gli identificatori anonimi per un&quot;applicazione ASP.NET. Gli identificatori anonimi vengono usati da funzionalità che supportano l&quot;identificazione anonima, ad esempio ASP.NET <xref:System.Web.Profile>.</xref:System.Web.Profile>       Espone il AnonymousIdentificationModule un <xref:System.Web.Security.AnonymousIdentificationModule.Creating>evento che consente di impostare l&quot;identificatore anonimo su un valore personalizzato.</xref:System.Web.Security.AnonymousIdentificationModule.Creating> Se non si specifica un valore di identificatore anonimo personalizzato, un <xref:System.Guid>viene utilizzato.</xref:System.Guid>       Il <xref:System.Web.Security.AnonymousIdentificationModule.Creating>eventi sono possibile specificare una subroutine denominata **AnonymousIdentification_Creating** nel file Global. asax dell&quot;applicazione ASP.NET.</xref:System.Web.Security.AnonymousIdentificationModule.Creating>       Il AnonymousIdentificationModule viene utilizzato solo quando è l&quot;identificazione anonima <xref:System.Web.Security.AnonymousIdentificationModule.Enabled%2A>impostando l&quot;attributo enabled dell&quot;elemento di configurazione per `true`.</xref:System.Web.Security.AnonymousIdentificationModule.Enabled%2A>      > [!NOTE] > Identificazione anonima è indipendente da qualsiasi tipo di autenticazione ASP.NET."
   example:
   - "The following code example shows a Web.config file for an application that enables anonymous identification.  \n  \n```  \n<configuration>  \n  <system.web>  \n    <authentication mode=\"Forms\" >  \n      <forms loginUrl=\"login.aspx\" name=\".ASPXFORMSAUTH\" />  \n    </authentication>  \n  \n    <anonymousIdentification enabled=\"true\" />  \n  \n    <profile defaultProvider=\"AspNetSqlProvider\">  \n      <properties>  \n        <add name=\"ZipCode\" allowAnonymous=\"true\" />  \n        <add name=\"CityAndState\" allowAnonymous=\"true\" />  \n        <add name=\"StockSymbols\" type=\"System.Collections.ArrayList\"   \n          allowAnonymous=\"true\" />  \n      </properties>  \n    </profile>  \n  </system.web>  \n</configuration>  \n```"
   syntax:
@@ -40,8 +40,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Creates an instance of the <xref href=&quot;System.Web.Security.AnonymousIdentificationModule&quot;></xref> class."
-  remarks: "This constructor is not intended to be called from application code.       ASP.NET calls this constructor to create an instance of the <xref:System.Web.Security.AnonymousIdentificationModule> class. After calling the constructor, it calls the <xref:System.Web.Security.AnonymousIdentificationModule.Init%2A> method to initialize the new <xref:System.Web.Security.AnonymousIdentificationModule> object."
+  summary: "Crea un&quot;istanza di <xref href=&quot;System.Web.Security.AnonymousIdentificationModule&quot;> </xref> classe."
+  remarks: "Questo costruttore non è destinato a essere chiamato dal codice dell&quot;applicazione.       In ASP.NET viene chiamato questo costruttore per creare un&quot;istanza della <xref:System.Web.Security.AnonymousIdentificationModule>classe.</xref:System.Web.Security.AnonymousIdentificationModule> Dopo aver chiamato il costruttore, viene chiamato il <xref:System.Web.Security.AnonymousIdentificationModule.Init%2A>metodo per inizializzare la nuova <xref:System.Web.Security.AnonymousIdentificationModule>oggetto.</xref:System.Web.Security.AnonymousIdentificationModule> </xref:System.Web.Security.AnonymousIdentificationModule.Init%2A>"
   syntax:
     content: public AnonymousIdentificationModule ();
     parameters: []
@@ -61,8 +61,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Clears the anonymous cookie or identifier associated with a session."
-  remarks: "The ClearAnonymousIdentifier method removes the anonymous identifier associated with a session on a Web site.  Use the ClearAnonymousIdentifier method to remove the anonymous identifier associated with a session when the user switches to an authenticated session associated with a user ID, for example when the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event occurs.       Since a new anonymous identifier will be issued immediately if the current anonymous identifier is removed, the ClearAnonymousIdentifier method will throw a <xref:System.NotSupportedException> if it is called while the session is identified by an anonymous identifier.       If the site is using cookies, the ClearAnonymousIdentifier method issues a clear cookie to remove the anonymous identifier from the browser. The clear cookie is issued even if an anonymous cookie was not sent on the previous request.       The clear cookie is constructed as follows:      -   If the browser supports empty strings in a cookie, the cookie is issued with the empty string as its value; otherwise, the cookie is issued with &quot;NoCookie&quot; as its value.      -   The values for the cookie name, path, and domain are set to the defaults configured in the Web application&quot;s configuration file.      -   The expiration date is set to October 12, 1999.       If the site is using cookieless authentication, and an anonymous identifier is present in the URL, the anonymous identifier is removed from the URL. No other changes are made to the address or query string. After the URL is modified, a redirect is issued to return to the currently executing page."
+  summary: "Cancella il cookie anonimo o l&quot;identificatore associato a una sessione."
+  remarks: "Il metodo ClearAnonymousIdentifier rimuove l&quot;identificatore anonimo associata a una sessione in un sito Web.  Utilizzare il metodo ClearAnonymousIdentifier per rimuovere l&quot;identificatore anonimo associata a una sessione quando l&quot;utente passa a una sessione autenticata associata un ID utente, ad esempio quando il <xref:System.Web.Profile.ProfileModule.MigrateAnonymous>evento si verifica.</xref:System.Web.Profile.ProfileModule.MigrateAnonymous>       Poiché verrà generato un nuovo identificatore anonimo immediatamente se l&quot;identificatore anonimo corrente viene rimosso, il metodo ClearAnonymousIdentifier genererà un <xref:System.NotSupportedException>Se viene chiamato durante la sessione viene identificata da un identificatore anonimo.</xref:System.NotSupportedException>       Se il sito utilizza i cookie, il metodo ClearAnonymousIdentifier genera un cookie crittografato per rimuovere l&quot;identificatore anonimo dal browser. Anche se un cookie anonimo non è stato inviato nella richiesta precedente, viene emesso il cookie crittografato.       Il cookie crittografato viene costruito come segue:-se il browser supporta stringhe vuote in un cookie, il cookie viene eseguito con una stringa vuota come valore. in caso contrario, il cookie viene inviato con &quot;NoCookie&quot; come valore.      -I valori per il nome del cookie, un percorso e un dominio vengono impostati sui valori predefiniti configurati nel file di configurazione dell&quot;applicazione Web.      -La data di scadenza è impostata a 12 ottobre 1999.       Se il sito utilizza l&quot;autenticazione senza cookie e un identificatore anonimo è presente nell&quot;URL, l&quot;identificatore anonimo viene rimosso dall&quot;URL. Altre modifiche non vengono apportate alla stringa di query o l&quot;indirizzo. Dopo avere modificato l&quot;URL, viene emesso un reindirizzamento per tornare alla pagina attualmente in esecuzione."
   syntax:
     content: public static void ClearAnonymousIdentifier ();
     parameters: []
@@ -70,7 +70,7 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Calling ClearAnonymousIdentifier when the anonymous identification is not enabled.       -or-       The user for the current request is anonymous."
+    description: "La chiamata ClearAnonymousIdentifier quando non è abilitata l&quot;identificazione anonima.       - oppure - l&quot;utente per la richiesta corrente è anonimo."
   platform:
   - net462
 - uid: System.Web.Security.AnonymousIdentificationModule.Creating
@@ -85,15 +85,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Occurs when a new anonymous identifier is created."
-  remarks: "The Creating event is raised during the <xref:System.Web.HttpApplication.PostAuthenticateRequest> event.       You can access the Creating event of the <xref:System.Web.Security.AnonymousIdentificationModule> class by specifying a subroutine named **AnonymousIdentification_Creating** in the Global.asax file for your ASP.NET application.       You can use the <xref:System.Web.Security.AnonymousIdentificationEventArgs.AnonymousID%2A> property of the <xref:System.Web.Security.AnonymousIdentificationEventArgs> object supplied to the **AnonymousIdentification_Creating** event to set the anonymous identifier to a custom value. If you do not specify a value for the <xref:System.Web.Security.AnonymousIdentificationEventArgs.AnonymousID%2A> property during the **AnonymousIdentification_Creating** event, a <xref:System.Guid> is used.       The **AnonymousIdentification_Creating** event is only raised when the anonymous identification is <xref:System.Web.Security.AnonymousIdentificationModule.Enabled%2A>."
+  summary: "Si verifica quando viene creato un nuovo identificatore anonimo."
+  remarks: "L&quot;evento di creazione viene generato durante il <xref:System.Web.HttpApplication.PostAuthenticateRequest>evento.</xref:System.Web.HttpApplication.PostAuthenticateRequest>       È possibile accedere all&quot;evento di creazione del <xref:System.Web.Security.AnonymousIdentificationModule>classe specificando una subroutine denominata **AnonymousIdentification_Creating** nel file Global. asax dell&quot;applicazione ASP.NET.</xref:System.Web.Security.AnonymousIdentificationModule>       È possibile utilizzare il <xref:System.Web.Security.AnonymousIdentificationEventArgs.AnonymousID%2A>proprietà del <xref:System.Web.Security.AnonymousIdentificationEventArgs>oggetto fornito per il **AnonymousIdentification_Creating** evento per impostare l&quot;identificatore anonimo su un valore personalizzato.</xref:System.Web.Security.AnonymousIdentificationEventArgs> </xref:System.Web.Security.AnonymousIdentificationEventArgs.AnonymousID%2A> Se non si specifica un valore per il <xref:System.Web.Security.AnonymousIdentificationEventArgs.AnonymousID%2A>proprietà durante il **AnonymousIdentification_Creating** evento, un <xref:System.Guid>viene utilizzato.</xref:System.Guid> </xref:System.Web.Security.AnonymousIdentificationEventArgs.AnonymousID%2A>       Il **AnonymousIdentification_Creating** evento viene generato solo quando l&quot;identificazione anonima è <xref:System.Web.Security.AnonymousIdentificationModule.Enabled%2A>.</xref:System.Web.Security.AnonymousIdentificationModule.Enabled%2A>"
   example:
   - "The following code example uses the **AnonymousIdentification_Creating** event to set the anonymous identifier to a custom value.  \n  \n [!code-cs[System.Web.Security.AnonymousIdentificationModule#1](~/add/codesnippet/csharp/e-system.web.security.an_1.asax)]\n [!code-vb[System.Web.Security.AnonymousIdentificationModule#1](~/add/codesnippet/visualbasic/e-system.web.security.an_1.asax)]"
   syntax:
     content: public event System.Web.Security.AnonymousIdentificationEventHandler Creating;
     return:
       type: System.Web.Security.AnonymousIdentificationEventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -109,8 +109,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Releases all resources, other than memory, used by the <xref href=&quot;System.Web.Security.AnonymousIdentificationModule&quot;></xref>."
-  remarks: "This method is not intended to be called from application code."
+  summary: "Rilascia tutte le risorse, tranne la memoria, usate per il <xref href=&quot;System.Web.Security.AnonymousIdentificationModule&quot;> </xref>."
+  remarks: "Questo metodo non deve essere chiamato dal codice dell&quot;applicazione."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -130,7 +130,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a value indicating whether anonymous identification is enabled for the ASP.NET application."
+  summary: "Ottiene un valore che indica se l&quot;identificazione anonima è abilitata per l&quot;applicazione ASP.NET."
   remarks: ''
   example:
   - "The following code example shows a Web.config file for an application that enables anonymous identification.  \n  \n```  \n<configuration>  \n  <system.web>  \n    <authentication mode=\"Forms\" >  \n      <forms loginUrl=\"login.aspx\" name=\".ASPXFORMSAUTH\" />  \n    </authentication>  \n  \n    <anonymousIdentification enabled=\"true\" />  \n  \n    <profile defaultProvider=\"AspNetSqlProvider\">  \n      <properties>  \n        <add name=\"ZipCode\" allowAnonymous=\"true\" />  \n        <add name=\"CityAndState\" allowAnonymous=\"true\" />  \n        <add name=\"StockSymbols\" type=\"System.Collections.ArrayList\"   \n          allowAnonymous=\"true\" />  \n      </properties>  \n    </profile>  \n  </system.web>  \n</configuration>  \n```"
@@ -138,7 +138,7 @@ items:
     content: public static bool Enabled { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if anonymous identification is enabled for the ASP.NET application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se l&quot;identificazione anonima è abilitata per l&quot;applicazione ASP.NET. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Il valore predefinito è <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.AnonymousIdentificationModule.Enabled*
   exceptions: []
   platform:
@@ -155,14 +155,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Initializes the <xref href=&quot;System.Web.Security.AnonymousIdentificationModule&quot;></xref> object."
-  remarks: "This method is not intended to be called from application code.       The Init method ensures that the <xref:System.Web.Security.AnonymousIdentificationModule> is included in the processing of the <xref:System.Web.HttpApplication.PostAuthenticateRequest> event."
+  summary: "Inizializza il <xref href=&quot;System.Web.Security.AnonymousIdentificationModule&quot;> </xref> oggetto."
+  remarks: "Questo metodo non deve essere chiamato dal codice dell&quot;applicazione.       Il metodo di inizializzazione assicura che il <xref:System.Web.Security.AnonymousIdentificationModule>è incluso nell&quot;elaborazione del <xref:System.Web.HttpApplication.PostAuthenticateRequest>evento.</xref:System.Web.HttpApplication.PostAuthenticateRequest> </xref:System.Web.Security.AnonymousIdentificationModule>"
   syntax:
     content: public void Init (System.Web.HttpApplication app);
     parameters:
     - id: app
       type: System.Web.HttpApplication
-      description: "The current <xref href=&quot;System.Web.HttpApplication&quot;></xref> instance."
+      description: "Corrente <xref href=&quot;System.Web.HttpApplication&quot;> </xref> istanza."
   overload: System.Web.Security.AnonymousIdentificationModule.Init*
   exceptions: []
   platform:

@@ -12,8 +12,8 @@ items:
   nameWithType: WebAuditEvent
   fullName: System.Web.Management.WebAuditEvent
   type: Class
-  summary: "Serves as the base class for all ASP.NET health-monitoring audit events."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       The WebAuditEvent class is the base class from which the ASP.NET health-monitoring audit-event classes derive. The audit events generate information about security-related operations in a Web application and provide both a success and failure event for each audited operation.       The health-monitoring system can audit both successful and unsuccessful events, which means an application can be monitored for both normal and malfunctioning conditions. By default, only the failure audit events are recorded.       The following operations are audited by ASP.NET, and may generate success-or-failure health-monitoring audit events:      -   Login attempts made by users of an ASP.NET application. For more details about this auditing, see <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent> and <xref:System.Web.Management.WebSuccessAuditEvent>.      -   Security-related events, such as authentication failures, failed resource access attempts, and other security-related events. The log of these events can be useful when investigating an intrusion or attack on the application. By default, no auditing support is provided for authorization failures of anonymous users. For more details about failure event audits, see <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> and <xref:System.Web.Management.WebFailureAuditEvent>.      -   Custom events raised by an ASP.NET application. You can audit custom events by extending the functionality provided by the WebAuditEvent class and derived classes      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of deriving from the WebAuditEvent class, see the example provided in this topic."
+  summary: "Funge da classe base per gli eventi di controllo sul monitoraggio dello stato ASP.NET."
+  remarks: "Il monitoraggio dello stato ASP.NET consente di produzione e lo staff operativo per la gestione di applicazioni Web distribuite. Il <xref:System.Web.Management>dello spazio dei nomi contiene i tipi di evento di stato responsabili per comprimere i dati di stato di integrità dell&quot;applicazione e i tipi di provider responsabili dell&quot;elaborazione dei dati.</xref:System.Web.Management> Contiene inoltre i tipi di supporto che semplificano la gestione degli eventi di integrità.       La classe WebAuditEvent è la classe base dalla quale derivano le classi di evento di controllo sul monitoraggio dello stato di ASP.NET. Gli eventi di controllo generano informazioni sulle operazioni di relative alla sicurezza in un&quot;applicazione Web e forniscono l&quot;evento sia un esito positivo e negativo per ciascuna operazione controllata.       Il sistema di monitoraggio dello stato è possibile controllare gli eventi riusciti e non, ovvero che un&quot;applicazione può essere monitorata per le condizioni di normale e non funziona correttamente. Per impostazione predefinita, vengono registrati solo gli eventi di controllo di un errore.       In ASP.NET vengono controllate le operazioni seguenti e può generare eventi di controllo di monitoraggio dello stato di esito positivo o negativo:-tentativi di accesso eseguiti dagli utenti di un&quot;applicazione ASP.NET. Per ulteriori informazioni su questo controllo, vedere <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>e <xref:System.Web.Management.WebSuccessAuditEvent>.</xref:System.Web.Management.WebSuccessAuditEvent> </xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>      Gli eventi di sicurezza, ad esempio errori di autenticazione, tentativi di accesso non riuscito di risorsa e altri eventi correlati alla sicurezza. Il log di questi eventi può essere utile quando si analizzano un&quot;intrusione o un attacco a un&quot;applicazione. Per impostazione predefinita, non viene fornito alcun supporto per il controllo per gli errori di autorizzazione degli utenti anonimi. Per ulteriori informazioni sui controlli di eventi di errore, vedere <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>e <xref:System.Web.Management.WebFailureAuditEvent>.</xref:System.Web.Management.WebFailureAuditEvent> </xref:System.Web.Management.WebAuthenticationFailureAuditEvent>      -Eventi personalizzati generati da un&quot;applicazione ASP.NET. È possibile controllare gli eventi personalizzati per estendere la funzionalità fornita dalla classe WebAuditEvent e le classi derivate > [!NOTE] > nella maggior parte dei casi sarà possibile utilizzare i tipi di monitoraggio dello stato ASP.NET, come implementato e controllare il sistema di monitoraggio dello stato specificando i valori di `healthMonitoring` sezione di configurazione. È anche possibile derivare da tipi di monitoraggio dello stato per creare eventi personalizzati e i provider. Per un esempio di derivazione dalla classe WebAuditEvent, vedere l&quot;esempio fornito in questo argomento."
   example:
   - "The following code example shows how to derive from the WebAuditEvent class to create a custom audit event.  \n  \n [!code-cs[System.Web.Management.WebAuditEvent#1](~/add/codesnippet/csharp/t-system.web.management._1_1.cs)]\n [!code-vb[System.Web.Management.WebAuditEvent#1](~/add/codesnippet/visualbasic/t-system.web.management._1_1.vb)]  \n  \n The following is an excerpt of the configuration file that enables ASP.NET to use the event.  \n  \n```  \n<healthMonitoring   \n  enabled=\"true\"  \n  heartBeatInterval=\"0\">   \n  \n  <providers>  \n    <add name=\"EventLogProvider\"   \n      type=\"System.Web.Management.EventLogWebEventProvider,  \n      System.Web,Version=2.0.3600.0,Culture=neutral,  \n      PublicKeyToken=b03f5f7f11d50a3a\"/>  \n  </providers>  \n  \n  <eventMappings>  \n    <add  name=\"SampleWebAuditEvent\"   \n      type=\"SamplesAspNet.SampleWebAuditEvent,  \n      webauditevent,Version=1.0.1663.31140,   \n      Culture=neutral,   \n      PublicKeyToken=0d1fa0f69d94de96,   \n      processorArchitecture=MSIL\"/>  \n  </eventMappings>  \n  \n  <rules>  \n    <add name=\"Custom Audit Default\"  \n      eventName=\"SampleWebAuditEvent\"  \n      provider=\"EventLogProvider\"  \n      profile=\"Default\"/>    \n  </rules>  \n  \n</healthMonitoring>  \n```"
   syntax:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.WebAuditEvent&quot;></xref> class using the supplied parameters."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You will never use it to instantiate a <xref:System.Web.Management.WebAuditEvent> object, but you can call this constructor when implementing your own event type that inherits from this class."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Web.Management.WebAuditEvent&quot;> </xref> classe utilizzando i parametri forniti."
+  remarks: "Questo costruttore viene utilizzato internamente dal sistema di monitoraggio dello stato di ASP.NET. Non verrà mai utilizzato per creare un&quot;istanza di un <xref:System.Web.Management.WebAuditEvent>oggetto, ma è possibile chiamare questo costruttore quando si implementa un tipo di evento che eredita da questa classe.</xref:System.Web.Management.WebAuditEvent>"
   example:
   - "The following code example shows how to call this constructor. This code example is part of a larger example provided for the <xref:System.Web.Management.WebAuditEvent> class.  \n  \n [!code-cs[System.Web.Management.WebAuditEvent#2](~/add/codesnippet/csharp/52e543aa-2080-4fab-ac1a-_1.cs)]\n [!code-vb[System.Web.Management.WebAuditEvent#2](~/add/codesnippet/visualbasic/52e543aa-2080-4fab-ac1a-_1.vb)]"
   syntax:
@@ -64,13 +64,13 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The event description."
+      description: "Descrizione dell&quot;evento."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "Oggetto che rappresenta l&quot;origine dell&quot;evento."
     - id: eventCode
       type: System.Int32
-      description: "The code associated with the event. When you implement a custom event, the event code must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "Il codice associato all&quot;evento. Quando si implementa un evento personalizzato, il codice dell&quot;evento deve essere maggiore di <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>."
   overload: System.Web.Management.WebAuditEvent.#ctor*
   exceptions: []
   platform:
@@ -87,8 +87,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.WebAuditEvent&quot;></xref> class with specified event parameters."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You will never use it to instantiate a <xref:System.Web.Management.WebAuditEvent> object, but you can call this constructor when implementing your own event type that inherits from this class."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Web.Management.WebAuditEvent&quot;> </xref> classe con parametri di evento specificati."
+  remarks: "Questo costruttore viene utilizzato internamente dal sistema di monitoraggio dello stato di ASP.NET. Non verrà mai utilizzato per creare un&quot;istanza di un <xref:System.Web.Management.WebAuditEvent>oggetto, ma è possibile chiamare questo costruttore quando si implementa un tipo di evento che eredita da questa classe.</xref:System.Web.Management.WebAuditEvent>"
   example:
   - "The following code example shows how to call this constructor. This code example is part of a larger example provided for the <xref:System.Web.Management.WebAuditEvent> class.  \n  \n [!code-cs[System.Web.Management.WebAuditEvent#3](~/add/codesnippet/csharp/2ea9ddd5-d72f-4e91-92b6-_1.cs)]\n [!code-vb[System.Web.Management.WebAuditEvent#3](~/add/codesnippet/visualbasic/2ea9ddd5-d72f-4e91-92b6-_1.vb)]"
   syntax:
@@ -96,16 +96,16 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The event description."
+      description: "Descrizione dell&quot;evento."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "Oggetto che rappresenta l&quot;origine dell&quot;evento."
     - id: eventCode
       type: System.Int32
-      description: "The code associated with the event. When you implement a custom event, the event code must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "Il codice associato all&quot;evento. Quando si implementa un evento personalizzato, il codice dell&quot;evento deve essere maggiore di <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>."
     - id: eventDetailCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> value that specifies the detailed identifier for the event."
+      description: "Il <xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> valore che specifica l&quot;identificatore dettagliato per l&quot;evento."
   overload: System.Web.Management.WebAuditEvent.#ctor*
   exceptions: []
   platform:
@@ -122,15 +122,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Get the information associated with the Web request."
-  remarks: "Use the information provided by the RequestInformation property to help in the discovery of the causes of a malfunction."
+  summary: "Ottenere le informazioni associate alla richiesta Web."
+  remarks: "Utilizzare le informazioni fornite dalla proprietà RequestInformation consente di semplificare l&quot;individuazione delle cause di un malfunzionamento."
   example:
   - "The following code example shows how to obtain request information through the <xref:System.Web.Management.WebRequestInformation> property.  \n  \n [!code-cs[System.Web.Management.WebAuditEvent#5](~/add/codesnippet/csharp/p-system.web.management._14_1.cs)]\n [!code-vb[System.Web.Management.WebAuditEvent#5](~/add/codesnippet/visualbasic/p-system.web.management._14_1.vb)]"
   syntax:
     content: public System.Web.Management.WebRequestInformation RequestInformation { get; }
     return:
       type: System.Web.Management.WebRequestInformation
-      description: "A <xref href=&quot;System.Web.Management.WebRequestInformation&quot;></xref> that contains the information associated with the Web request."
+      description: "Oggetto <xref href=&quot;System.Web.Management.WebRequestInformation&quot;> </xref> che contiene le informazioni associate alla richiesta Web."
   overload: System.Web.Management.WebAuditEvent.RequestInformation*
   exceptions: []
   platform:
