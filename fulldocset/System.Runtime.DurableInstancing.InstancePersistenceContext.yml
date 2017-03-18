@@ -39,8 +39,8 @@ items:
   nameWithType: InstancePersistenceContext
   fullName: System.Runtime.DurableInstancing.InstancePersistenceContext
   type: Class
-  summary: "Represents execution state information while a persistence command is being executed."
-  remarks: "An instance of this class is passed to the TryCommand method of persistence provider implementations. Persistence providers use this class to inspect the in-memory view of the instance as well as indicate the results of operations on the external store which may affect the view or other in-memory context."
+  summary: "Rappresenta le informazioni sullo stato di esecuzione durante l&quot;esecuzione di un comando di persistenza."
+  remarks: "Un&quot;istanza di questa classe viene passata al metodo TryCommand delle implementazioni di provider di persistenza. I provider di persistenza utilizzano questa classe per controllare la visualizzazione in memoria dell&quot;istanza, nonché indicare i risultati delle operazioni sull&quot;archivio esterno che potrebbero influire sulla visualizzazione o su altro contesto in memoria."
   syntax:
     content: public sealed class InstancePersistenceContext
   inheritance:
@@ -61,14 +61,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully associated a key to the current instance in the instance store. The identifier of the key is specified as a parameter."
-  remarks: "The instance key must be unassociated. The current instance handle must be bound to an instance as well as a lock on that instance."
+  summary: "Indica che il provider di persistenza ha associato correttamente una chiave per l&quot;istanza corrente nell&quot;archivio di istanze. L&quot;identificatore della chiave viene specificato come parametro."
+  remarks: "La chiave di istanza deve essere non associata. Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza, nonché un blocco su quell&quot;istanza."
   syntax:
     content: public void AssociatedInstanceKey (Guid key);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier  for the key that has been associated. Must not be Guid.Empty."
+      description: "Identificatore di chiave di istanza per la chiave che è stata associata. Non deve essere Empty."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.AssociatedInstanceKey*
   exceptions: []
   platform:
@@ -85,26 +85,26 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Begin an asynchronous operation to bind an existing lock on an instance to the current instance handle. The version of the existing lock is passed as a parameter."
-  remarks: "When attempting to acquire a lock, the persistence provider may decide that the current instance is already locked in the current store. If the lock token matches the current handle’s lock token, then the persistence provider can attempt to reclaim the lock by inspecting its version and passing it to BeginBindReclaimedLock. The persistence provider must not make changes to the instance until the lock is successfully reclaimed. If no other handle is bound to the lock, then the BeginBindReclaimedLock operation succeeds and the current handle becomes bound to the lock. Otherwise, BeginBindReclaimedLock or EndBindReclaimedLock throws InstanceHandleConflictException. If commands are in progress on other handles, the operation may not complete while waiting for the outcome of those commands to decide whether the lock can be reclaimed.       The current instance handle must be bound to an instance and a lock owner. The instance must not be completed. The lock token associated with the lock owner is used to identify the owner of the lock.       Once a lock is bound to a handle, it remains bound for the lifetime of the handle. Neither the lock token nor the instance version can be changed."
+  summary: "Avviare un&quot;operazione asincrona per associare un blocco esistente su un&quot;istanza all&quot;handle dell&quot;istanza corrente. La versione del blocco esistente viene passata come parametro."
+  remarks: "Quando si tenta di acquisire un blocco, il provider di persistenza potrebbe decidere che l&quot;istanza corrente è già bloccata nell&quot;archivio corrente. Se il token di blocco corrisponde al token di blocco dell&quot;handle corrente, il provider di persistenza può tentare di recuperare il blocco controllandone la versione e passandolo a BeginBindReclaimedLock. Il provider di persistenza non deve apportare modifiche all&quot;istanza finché il blocco viene recuperato correttamente. Se nessun altro handle è associato al blocco, quindi il BeginBindReclaimedLock operazione ha esito positivo e l&quot;handle corrente viene associato al blocco. In caso contrario, BeginBindReclaimedLock o EndBindReclaimedLock genera InstanceHandleConflictException. Se i comandi sono in corso su altri handle, l&quot;operazione potrebbe non essere completata durante l&quot;attesa per il risultato di tali comandi per decidere se è possibile recuperare il blocco.       Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza e un proprietario di blocco. L&quot;istanza non deve essere completata. Il token di blocco associato al proprietario di blocco viene utilizzato per identificare il proprietario del blocco.       Una volta che un blocco è associato a un handle, esso rimane associato per la durata dell&quot;handle. Il token di blocco né la versione dell&quot;istanza può essere modificata."
   syntax:
     content: public IAsyncResult BeginBindReclaimedLock (long instanceVersion, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: instanceVersion
       type: System.Int64
-      description: "The version of the lock held on the instance, or zero if the persistence provider does not implement lock versions."
+      description: "La versione del blocco mantenuto sull&quot;istanza oppure zero se il provider di persistenza non implementa le versioni di blocco."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout period for the asynchronous operation."
+      description: "Il periodo di timeout per l&quot;operazione asincrona."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "Il metodo da chiamare al completamento dell&quot;operazione."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Le informazioni sullo state associate all&quot;operazione asincrona."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Lo stato di un&quot;operazione asincrona."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock*
   exceptions: []
   platform:
@@ -121,26 +121,26 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Begins executing a persistence command asynchronously."
-  remarks: "A persistence provider can use this method to execute sub-commands as part of a command. The sub-command will be executed using BeginTryCommand, similar to commands passed to InstanceStore.BeginExecute. Commands can be nested, but a command must not execute more than one sub-command at a time."
+  summary: "Inizia l&quot;esecuzione di un comando di persistenza in modo asincrono."
+  remarks: "Un provider di persistenza può utilizzare questo metodo per eseguire sottocomandi come parte di un comando. Il sottocomando sarà eseguito utilizzando BeginTryCommand, simile ai comandi passati a BeginExecute. I comandi possono essere annidati, ma un comando non deve eseguire più di un sottocomando alla volta."
   syntax:
     content: public IAsyncResult BeginExecute (System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The persistence command to be executed."
+      description: "Il comando di persistenza da eseguire."
     - id: timeout
       type: System.TimeSpan
-      description: "The time-out value for the operation."
+      description: "Il valore di timeout per l&quot;operazione."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification of the asynchronous receive that a request operation completes."
+      description: "Delegato che riceve la notifica asincrona di ricezione che viene completata un&quot;operazione di richiesta."
     - id: state
       type: System.Object
-      description: "The state information."
+      description: "Le informazioni sullo stato."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Lo stato di un&quot;operazione asincrona."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BeginExecute*
   exceptions: []
   platform:
@@ -157,14 +157,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds a newly acquired lock on an instance to the current instance handle. The version of the acquired lock is passed as a parameter."
-  remarks: "If a persistence provider implements lock versioning, then each time a lock is acquired on the instance, the version must be incremented by one in the external store. The first time the instance is locked, the version should be 1. Each lock acquisition invalidates the previous lock. The current instance handle must be bound to an instance and a lock owner. The instance must not be completed. The lock token associated with the lock owner is used to identify the owner of the lock       Once a lock is bound to a handle, it remains bound for the lifetime of the handle. Neither the lock token nor the instance version can be changed."
+  summary: "Associa un blocco appena acquisito su un&quot;istanza all&quot;handle dell&quot;istanza corrente. La versione del blocco acquisito viene passata come parametro."
+  remarks: "Se un provider di persistenza implementa il controllo delle versioni di blocco, quindi ogni volta che viene acquisito un blocco sull&quot;istanza, la versione deve essere incrementata di uno nell&quot;archivio esterno. La prima volta che l&quot;istanza è bloccata, la versione deve essere 1. Ogni acquisizione del blocco invalida il blocco precedente. Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza e un proprietario di blocco. L&quot;istanza non deve essere completata. Il token di blocco associato al proprietario di blocco viene utilizzato per identificare il proprietario del blocco dopo un blocco è associato a un handle, esso rimane associato per la durata dell&quot;handle. Il token di blocco né la versione dell&quot;istanza può essere modificata."
   syntax:
     content: public void BindAcquiredLock (long instanceVersion);
     parameters:
     - id: instanceVersion
       type: System.Int64
-      description: "Version of the lock acquired on the instance, or zero if the persistence provider does not implement lock versions."
+      description: "Versione del blocco acquisito sull&quot;istanza oppure zero se il provider di persistenza non implementa le versioni di blocco."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindAcquiredLock*
   exceptions: []
   platform:
@@ -181,13 +181,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds an <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> to an instance handle."
+  summary: "Associa un <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> per un handle di istanza."
   syntax:
     content: public void BindEvent (System.Runtime.DurableInstancing.InstancePersistenceEvent persistenceEvent);
     parameters:
     - id: persistenceEvent
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent
-      description: "An <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> object containing information about the event."
+      description: "Un <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> oggetto contenente informazioni sull&quot;evento."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindEvent*
   exceptions: []
   platform:
@@ -204,14 +204,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds an instance whose identifier is specified as a parameter to the current instance handle."
-  remarks: "Once an instance is bound to a handle, it remains bound for the lifetime of the handle. No other instance can ever be bound to the handle."
+  summary: "Associa un&quot;istanza il cui identificatore è specificato come parametro all&quot;handle dell&quot;istanza corrente."
+  remarks: "Una volta un&quot;istanza è associata a un handle, esso rimane associato per la durata dell&quot;handle. Nessun&quot;altra istanza può essere mai associata all&quot;handle."
   syntax:
     content: public void BindInstance (Guid instanceId);
     parameters:
     - id: instanceId
       type: System.Guid
-      description: "An instance identifier. Must not be Guid.Empty."
+      description: "Identificatore dell&quot;istanza. Non deve essere Empty."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindInstance*
   exceptions: []
   platform:
@@ -228,17 +228,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds an instance owner to the current instance handle."
-  remarks: "Once an instance owner is bound to a handle, it remains bound for the lifetime of the handle. No other instance owner can ever be bound to the handle."
+  summary: "Associa un proprietario di istanza all&quot;handle dell&quot;istanza corrente."
+  remarks: "Una volta associato un proprietario di istanza a un handle, esso rimane associato per la durata dell&quot;handle. Nessun altro proprietario di istanza può essere sempre associato all&quot;handle."
   syntax:
     content: public void BindInstanceOwner (Guid instanceOwnerId, Guid lockToken);
     parameters:
     - id: instanceOwnerId
       type: System.Guid
-      description: "The identifier for the instance owner."
+      description: "L&quot;identificatore per il proprietario dell&quot;istanza."
     - id: lockToken
       type: System.Guid
-      description: "The lock token of the instance owner. A persistence provider may choose to use the same value for the instance owner identifier and the owner’s lock token."
+      description: "Il token di blocco del proprietario dell&quot;istanza. Un provider di persistenza può scegliere di utilizzare lo stesso valore per l&quot;identificatore di proprietario di istanza e il token di blocco del proprietario."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindInstanceOwner*
   exceptions: []
   platform:
@@ -255,17 +255,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Binds an existing lock on an instance to the current instance handle. The version of the existing lock is passed as a parameter."
-  remarks: "When attempting to acquire a lock, the persistence provider may decide that the current instance is already locked in the current store. If the lock token matches the current handle’s lock token, then the persistence provider can attempt to reclaim the lock by inspecting its version and passing it to BindReclaimedLock. The persistence provider must not make changes to the instance until the lock is successfully reclaimed. If no other handle is bound to the lock, then BindReclaimedLock succeeds and the current handle becomes bound to the lock. Otherwise, BindReclaimedLock throws InstanceHandleConflictException. If commands are in progress on other handles, BindReclaimedLock may block waiting for the outcome of those commands before deciding whether the lock can be reclaimed.       The current instance handle must be bound to an instance and a lock owner. The instance must not be completed. The lock token associated with the lock owner is used to identify the owner of the lock.       Once a lock is bound to a handle, it remains bound for the lifetime of the handle. Neither the lock token nor the instance version can be changed."
+  summary: "Associa un blocco esistente su un&quot;istanza all&quot;handle dell&quot;istanza corrente. La versione del blocco esistente viene passata come parametro."
+  remarks: "Quando si tenta di acquisire un blocco, il provider di persistenza potrebbe decidere che l&quot;istanza corrente è già bloccata nell&quot;archivio corrente. Se il token di blocco corrisponde al token di blocco dell&quot;handle corrente, il provider di persistenza può tentare di recuperare il blocco controllandone la versione e passandolo a BindReclaimedLock. Il provider di persistenza non deve apportare modifiche all&quot;istanza finché il blocco viene recuperato correttamente. Se nessun altro handle è associato al blocco, BindReclaimedLock ha esito positivo e l&quot;handle corrente viene associato al blocco. In caso contrario, BindReclaimedLock genera InstanceHandleConflictException. Se i comandi sono in corso su altri handle, BindReclaimedLock può bloccare l&quot;attesa per il risultato di tali comandi prima di decidere se è possibile recuperare il blocco.       Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza e un proprietario di blocco. L&quot;istanza non deve essere completata. Il token di blocco associato al proprietario di blocco viene utilizzato per identificare il proprietario del blocco.       Una volta che un blocco è associato a un handle, esso rimane associato per la durata dell&quot;handle. Il token di blocco né la versione dell&quot;istanza può essere modificata."
   syntax:
     content: public void BindReclaimedLock (long instanceVersion, TimeSpan timeout);
     parameters:
     - id: instanceVersion
       type: System.Int64
-      description: "Version of the lock held on the instance, or zero if the persistence provider does not implement lock versions."
+      description: "Versione del blocco mantenuto sull&quot;istanza oppure zero se il provider di persistenza non implementa le versioni di blocco."
     - id: timeout
       type: System.TimeSpan
-      description: "The time-out value for the operation."
+      description: "Il valore di timeout per l&quot;operazione."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.BindReclaimedLock*
   exceptions: []
   platform:
@@ -282,8 +282,8 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully marked the current instance as complete in the instance store."
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. The instance must be initialized and not be already completed. (An instance is initialized if a set of instance data has ever been persisted to it.) All of the keys associated to the instance must be completed."
+  summary: "Indica che il provider di persistenza ha contrassegnato correttamente l&quot;istanza corrente come completa nell&quot;archivio di istanze."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza, nonché un blocco su quell&quot;istanza. L&quot;istanza deve essere inizializzato e non è già stata completata. (Un&quot;istanza viene inizializzata se un set di dati dell&quot;istanza è mai stata resa persistente a esso). Tutte le chiavi associate all&quot;istanza devono essere eseguite."
   syntax:
     content: public void CompletedInstance ();
     parameters: []
@@ -303,14 +303,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully marked a key as complete in the external store. The identifier of the key is specified as a parameter."
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. The instance key must be associated to the current instance and not be already completed."
+  summary: "Indica che il provider di persistenza ha contrassegnato correttamente una chiave come completa nell&quot;archivio esterno. L&quot;identificatore della chiave viene specificato come parametro."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza, nonché un blocco su quell&quot;istanza. La chiave di istanza deve essere associata all&quot;istanza corrente e non è già stata completata."
   syntax:
     content: public void CompletedInstanceKey (Guid key);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier for the key that has been completed. Must not be Guid.Empty."
+      description: "Identificatore di chiave di istanza per la chiave che è stata completata. Non deve essere Empty."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.CompletedInstanceKey*
   exceptions: []
   platform:
@@ -327,17 +327,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance of an exception which can be thrown from TryCommand to trigger BindReclaimedLock behavior."
-  remarks: "Sample code:      ```      protected override bool TryCommand(InstancePersistenceContext context, InstancePersistenceCommand command, TimeSpan timeout)   {       throw context.CreateBindReclaimedLockException(5);   }   is equivalent to   protected override bool TryCommand(InstancePersistenceContext context, InstancePersistenceCommand command, TimeSpan timeout)   {       context.BindReclaimedLock(5, timeout);       throw new OperationCanceledException();   }      ```"
+  summary: "Crea un&quot;istanza di un&quot;eccezione che può essere generata da TryCommand per attivare il comportamento di BindReclaimedLock."
+  remarks: "Esempio di codice:```      protected override bool TryCommand(InstancePersistenceContext context, InstancePersistenceCommand command, TimeSpan timeout)   {       throw context.CreateBindReclaimedLockException(5);   }   is equivalent to   protected override bool TryCommand(InstancePersistenceContext context, InstancePersistenceCommand command, TimeSpan timeout)   {       context.BindReclaimedLock(5, timeout);       throw new OperationCanceledException();   }      ```"
   syntax:
     content: public Exception CreateBindReclaimedLockException (long instanceVersion);
     parameters:
     - id: instanceVersion
       type: System.Int64
-      description: "The version of the lock held on the instance, or zero if the persistence provider does not implement lock versions."
+      description: "La versione del blocco mantenuto sull&quot;istanza oppure zero se il provider di persistenza non implementa le versioni di blocco."
     return:
       type: System.Exception
-      description: "An exception."
+      description: "Un&quot;eccezione."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.CreateBindReclaimedLockException*
   exceptions: []
   platform:
@@ -354,13 +354,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation started by the <xref:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock*> method."
+  summary: "Termina l&quot;operazione asincrona avviata dal <xref:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock*>metodo.</xref:System.Runtime.DurableInstancing.InstancePersistenceContext.BeginBindReclaimedLock*>"
   syntax:
     content: public void EndBindReclaimedLock (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous operation."
+      description: "Il risultato dell&quot;operazione asincrona."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.EndBindReclaimedLock*
   exceptions: []
   platform:
@@ -377,13 +377,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation."
+  summary: "Termina l&quot;operazione asincrona."
   syntax:
     content: public void EndExecute (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Lo stato di un&quot;operazione asincrona."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.EndExecute*
   exceptions: []
   platform:
@@ -400,17 +400,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Executes a persistence command."
-  remarks: "A persistence provider can use this method to execute sub-commands as part of a command. The sub-command will be executed using TryCommand, similar to commands passed to InstanceStore.Execute. Commands can be nested, but a command must not execute more than one sub-command at a time."
+  summary: "Esegue un comando di persistenza."
+  remarks: "Un provider di persistenza può utilizzare questo metodo per eseguire sottocomandi come parte di un comando. Il sottocomando sarà eseguito utilizzando TryCommand, simile ai comandi passati a instancestore. Execute. I comandi possono essere annidati, ma un comando non deve eseguire più di un sottocomando alla volta."
   syntax:
     content: public void Execute (System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout);
     parameters:
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The persistence command to be executed."
+      description: "Il comando di persistenza da eseguire."
     - id: timeout
       type: System.TimeSpan
-      description: "The time-out value for the operation."
+      description: "Il valore di timeout per l&quot;operazione."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.Execute*
   exceptions: []
   platform:
@@ -427,12 +427,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the current instance handle."
+  summary: "Ottiene l&quot;handle dell&quot;istanza corrente."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle InstanceHandle { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The current instance handle."
+      description: "Handle dell&quot;istanza corrente."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceHandle*
   exceptions: []
   platform:
@@ -449,13 +449,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the version of the lock held on the current instance by the current instance handle."
-  remarks: "The persistence provider should check this value against the lock version of the lock held on an instance in the instance store when performing an operation that requires a lock (such as persisting instance data) using a handle bound to the lock. If the lock version doesn’t match, the command should fail with InstanceLockLostException."
+  summary: "Ottiene la versione del blocco mantenuto sull&quot;istanza corrente dall&quot;handle dell&quot;istanza corrente."
+  remarks: "Il provider di persistenza deve controllare questo valore rispetto alla versione del blocco mantenuto su un&quot;istanza nell&quot;archivio di istanze quando viene eseguita un&quot;operazione che richiede un blocco (ad esempio, rendere persistenti i dati di istanza) mediante un handle associato al blocco. Se la versione del blocco non corrisponde, il comando deve avere esito negativo e genera InstanceLockLostException."
   syntax:
     content: public long InstanceVersion { get; }
     return:
       type: System.Int64
-      description: "The version of the instance lock bound to the current instance handle, or -1 if the handle isn’t bound to a lock."
+      description: "La versione del blocco dell&quot;istanza associato all&quot;handle dell&quot;istanza corrente, oppure -1 se l&quot;handle non è associato a un blocco."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceVersion*
   exceptions: []
   platform:
@@ -472,12 +472,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the instance view object that represents the in-memory state of the current instance. This view reflects updates as they are made by the command in progress."
+  summary: "Ottiene l&quot;oggetto visualizzazione dell&quot;istanza che rappresenta lo stato in memoria dell&quot;istanza corrente. Questa visualizzazione riflette gli aggiornamenti sono state apportate dal comando in corso."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceView InstanceView { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "The instance view object."
+      description: "L&quot;oggetto visualizzazione dell&quot;istanza."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.InstanceView*
   exceptions: []
   platform:
@@ -494,26 +494,26 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully retrieved the current instance from the instance store."
-  remarks: "The current instance handle must be bound to an instance. If the instance handle is bound to a lock or the loaded instance is marked as complete, the loaded data is considered to be consistent; otherwise, it is considered to be in doubt."
+  summary: "Indica che il provider di persistenza ha recuperato correttamente l&quot;istanza corrente dall&quot;archivio di istanze."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza. Se l&quot;handle dell&quot;istanza viene associato a un blocco o l&quot;istanza caricata è contrassegnata come completa, i dati caricati sono considerati coerenti; in caso contrario, vengono considerati incerti."
   syntax:
     content: public void LoadedInstance (System.Runtime.DurableInstancing.InstanceState state, System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> instanceData, System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> instanceMetadata, System.Collections.Generic.IDictionary<Guid,System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue>> associatedInstanceKeyMetadata, System.Collections.Generic.IDictionary<Guid,System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue>> completedInstanceKeyMetadata);
     parameters:
     - id: state
       type: System.Runtime.DurableInstancing.InstanceState
-      description: "The instance state information."
+      description: "Le informazioni sullo stato di istanza."
     - id: instanceData
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The instance data as a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "I dati dell&quot;istanza come dizionario di <xref:System.Xml.Linq.XName>e <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> oggetti.</xref:System.Xml.Linq.XName>"
     - id: instanceMetadata
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "Instance metadata as a collection of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "I metadati dell&quot;istanza come raccolta di <xref:System.Xml.Linq.XName>e <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> oggetti.</xref:System.Xml.Linq.XName>"
     - id: associatedInstanceKeyMetadata
       type: System.Collections.Generic.IDictionary{System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}}
-      description: "Associated instance key metadata as a dictionary of instance identifier and instance key metadata, which is a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "I metadati di chiave di istanza associati come dizionario di identificatore di istanza e i metadati di chiave di istanza, ovvero un dizionario di <xref:System.Xml.Linq.XName>e <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> oggetti.</xref:System.Xml.Linq.XName>"
     - id: completedInstanceKeyMetadata
       type: System.Collections.Generic.IDictionary{System.Guid,System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}}
-      description: "Completed instance metadata as a dictionary of instance identifier and instance key metadata, which is a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "Metadati dell&quot;istanza completata come dizionario di identificatore di istanza e i metadati di chiave di istanza, ovvero un dizionario di <xref:System.Xml.Linq.XName>e <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> oggetti.</xref:System.Xml.Linq.XName>"
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.LoadedInstance*
   exceptions: []
   platform:
@@ -530,13 +530,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the lock token of the instance owner bound to the current instance handle."
-  remarks: "The persistence provider should check this value against the lock token of the lock held on an instance in the instance store when performing an operation that requires a lock (such as persisting instance data) using a handle bound to the lock. If the lock token doesn’t match, the command should fail with InstanceLockLostException.       The persistence provider should use this value as the lock token when acquiring a new lock on an instance (such as persisting instance data using a handle not already bound to a lock). If the instance is already locked in the instance store and the lock token matches this lock token, the persistence provider can attempt to reclaim the instance using BindReclaimedLock."
+  summary: "Ottiene il blocco del proprietario dell&quot;istanza associato all&quot;handle dell&quot;istanza corrente."
+  remarks: "Il provider di persistenza deve controllare questo valore rispetto al token del blocco mantenuto su un&quot;istanza nell&quot;archivio di istanze quando viene eseguita un&quot;operazione che richiede un blocco (ad esempio, rendere persistenti i dati di istanza) mediante un handle associato al blocco. Se il token di blocco non corrisponde, il comando deve avere esito negativo e genera InstanceLockLostException.       Il provider di persistenza deve utilizzare questo valore come token di blocco durante l&quot;acquisizione di un nuovo blocco su un&quot;istanza (ad esempio, rendere persistenti i dati di istanza tramite un handle non è già associato a un blocco). Se l&quot;istanza è già bloccata nell&quot;archivio di istanze e il token di blocco corrisponde a questo token di blocco, il provider di persistenza può tentare di recuperare l&quot;istanza utilizzando BindReclaimedLock."
   syntax:
     content: public Guid LockToken { get; }
     return:
       type: System.Guid
-      description: "The lock token bound to the current instance handle, or Guid.Empty if the handle isn’t bound to an instance owner."
+      description: "Il token di blocco associato all&quot;handle dell&quot;istanza corrente o GUID. Empty se l&quot;handle non è associato a un proprietario di istanza."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.LockToken*
   exceptions: []
   platform:
@@ -553,14 +553,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully persisted a set of instance data to the instance store. This has the effect of initializing the instance if it wasn’t already."
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. Each set of instance data completely replaces the previous set. The set of instance data may be null – this is the same as empty. Persisting a null set of instance data deletes the existing set of instance data. (Persisting a set of instance data has no effect on instance metadata.)"
+  summary: "Indica che il provider di persistenza ha reso correttamente persistente un set di dati dell&quot;istanza nell&quot;archivio di istanze. Questo ha l&quot;effetto di inizializzazione dell&quot;istanza, se non è stato già."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza, nonché un blocco su quell&quot;istanza. Ogni set di dati dell&quot;istanza sostituisce completamente il set precedente. Il set di dati di istanza può essere null – questo è lo stesso come vuoti. Il mantenimento di un set di dati dell&quot;istanza null Elimina il set di dati dell&quot;istanza esistente. (Rendere persistente un set di dati dell&quot;istanza ha alcun effetto sui metadati dell&quot;istanza)."
   syntax:
     content: public void PersistedInstance (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> data);
     parameters:
     - id: data
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "Instance data as a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "Dati dell&quot;istanza come dizionario di <xref:System.Xml.Linq.XName>e <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> oggetti.</xref:System.Xml.Linq.XName>"
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.PersistedInstance*
   exceptions: []
   platform:
@@ -577,13 +577,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Adds the <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;></xref> passed as a parameter to a list of <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;></xref> objects in an <xref href=&quot;System.Runtime.DurableInstancing.InstanceView&quot;></xref>."
+  summary: "Aggiunge il <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;> </xref> passato come parametro a un elenco di <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;> </xref> gli oggetti in un <xref href=&quot;System.Runtime.DurableInstancing.InstanceView&quot;> </xref>."
   syntax:
     content: public void QueriedInstanceStore (System.Runtime.DurableInstancing.InstanceStoreQueryResult queryResult);
     parameters:
     - id: queryResult
       type: System.Runtime.DurableInstancing.InstanceStoreQueryResult
-      description: "The results of a query against an instance store."
+      description: "I risultati di una query su un archivio di istanze."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.QueriedInstanceStore*
   exceptions: []
   platform:
@@ -600,20 +600,20 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully read some instance key metadata for a key associated to the current instance from the instance store."
-  remarks: "The current instance handle must be bound to an instance. If the instance handle is bound to a lock or the current instance is marked as complete, the metadata is considered to be consistent; otherwise, it is considered to be in doubt."
+  summary: "Indica che il provider di persistenza ha letto correttamente alcuni metadati di chiave di istanza per una chiave associata all&quot;istanza corrente dall&quot;archivio di istanze."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza. Se l&quot;handle dell&quot;istanza viene associato a un blocco o l&quot;istanza corrente è contrassegnata come completa, i metadati sono considerati coerenti; in caso contrario, vengono considerati incerti."
   syntax:
     content: public void ReadInstanceKeyMetadata (Guid key, System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> metadata, bool complete);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier for the key whose metadata was read. Must not be Guid.Empty."
+      description: "Identificatore di chiave di istanza per la chiave i cui metadati è stato letto. Non deve essere Empty."
     - id: metadata
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The metadata as a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "I metadati come dizionario di <xref:System.Xml.Linq.XName>e <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> oggetti.</xref:System.Xml.Linq.XName>"
     - id: complete
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the metadata represents all of the metadata associated to the instance key, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Se i metadati rappresentano tutti i metadati associati alla chiave di istanza, in caso contrario <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceKeyMetadata*
   exceptions: []
   platform:
@@ -630,16 +630,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully read some instance metadata for the current instance from the instance store."
+  summary: "Indica che il provider di persistenza ha letto correttamente alcuni metadati dell&quot;istanza per l&quot;istanza corrente dall&quot;archivio di istanze."
   syntax:
     content: public void ReadInstanceMetadata (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> metadata, bool complete);
     parameters:
     - id: metadata
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The metadata as a dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "I metadati come dizionario di <xref:System.Xml.Linq.XName>e <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> oggetti.</xref:System.Xml.Linq.XName>"
     - id: complete
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the metadata represents all of the metadata associated to the instance, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Se i metadati rappresentano tutti i metadati associati all&quot;istanza, in caso contrario <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceMetadata*
   exceptions: []
   platform:
@@ -656,17 +656,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Sets the instance owner metadata using the data passed in the parameter."
-  remarks: "The current instance handle must be bound to an instance. If the instance handle is bound to a lock or the current instance is marked as complete, the metadata is considered to be consistent; otherwise, it is considered to be in doubt."
+  summary: "Imposta i metadati del proprietario di istanza utilizzando i dati passati nel parametro."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza. Se l&quot;handle dell&quot;istanza viene associato a un blocco o l&quot;istanza corrente è contrassegnata come completa, i metadati sono considerati coerenti; in caso contrario, vengono considerati incerti."
   syntax:
     content: public void ReadInstanceOwnerMetadata (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> metadata, bool complete);
     parameters:
     - id: metadata
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The dictionary of <xref:System.Xml.Linq.XName> and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+      description: "Il dizionario di <xref:System.Xml.Linq.XName>e <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> oggetti.</xref:System.Xml.Linq.XName>"
     - id: complete
       type: System.Boolean
-      description: "The value to specify whether the consistency to be set to <xref href=&quot;System.Runtime.DurableInstancing.InstanceValueConsistency&quot;></xref> or <xref href=&quot;System.Runtime.DurableInstancing.InstanceValueConsistency&quot;></xref>."
+      description: "Il valore per specificare se la coerenza deve essere impostato su <xref href=&quot;System.Runtime.DurableInstancing.InstanceValueConsistency&quot;> </xref> o <xref href=&quot;System.Runtime.DurableInstancing.InstanceValueConsistency&quot;> </xref>."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.ReadInstanceOwnerMetadata*
   exceptions: []
   platform:
@@ -683,14 +683,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Sets the cancellation handler to be called when the cancel of an operation is requested."
-  remarks: "If the cancellation handler is called, the persistence provider should cancel all pending operations and throw OperationCanceledException from TryCommand to indicate that the persistence command was interrupted before it could be completed."
+  summary: "Imposta il gestore di annullamento da chiamare quando viene richiesto l&quot;annullamento di un&quot;operazione."
+  remarks: "Se viene chiamato il gestore di annullamento, il provider di persistenza deve annullare tutte le operazioni in sospeso e generare OperationCanceledException da TryCommand per indicare che il comando di persistenza è stata interrotta prima di essere completata."
   syntax:
     content: public void SetCancellationHandler (Action<System.Runtime.DurableInstancing.InstancePersistenceContext> cancellationHandler);
     parameters:
     - id: cancellationHandler
       type: System.Action{System.Runtime.DurableInstancing.InstancePersistenceContext}
-      description: "The reference to a function to be called."
+      description: "Riferimento a una funzione da chiamare."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.SetCancellationHandler*
   exceptions: []
   platform:
@@ -707,14 +707,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully disassociated a key from the current instance in the instance store. The identifier of the key is specified as a parameter."
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. The instance key must be associated to the current instance and must be marked complete. The current instance must not be marked complete."
+  summary: "Indica che il provider di persistenza ha dissociato correttamente una chiave dall&quot;istanza corrente nell&quot;archivio di istanze. L&quot;identificatore della chiave viene specificato come parametro."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza, nonché un blocco su quell&quot;istanza. La chiave di istanza deve essere associata all&quot;istanza corrente e deve essere contrassegnato come completata. L&quot;istanza corrente non deve essere contrassegnata come completa."
   syntax:
     content: public void UnassociatedInstanceKey (Guid key);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier for the key that has been unassociated. Must not be Guid.Empty."
+      description: "Identificatore di chiave di istanza per la chiave dissociata. Non deve essere Empty."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.UnassociatedInstanceKey*
   exceptions: []
   platform:
@@ -731,13 +731,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the user context information attached to the current instance handle."
-  remarks: "The object is the one that is returned from InstanceStore.OnNewInstanceHandle for the current instance handle."
+  summary: "Ottiene le informazioni sul contesto utente associati all&quot;handle dell&quot;istanza corrente."
+  remarks: "L&quot;oggetto è quello restituito da Onnewinstancehandle per l&quot;handle dell&quot;istanza corrente."
   syntax:
     content: public object UserContext { get; }
     return:
       type: System.Object
-      description: "The user context information."
+      description: "Le informazioni sul contesto utente."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.UserContext*
   exceptions: []
   platform:
@@ -754,20 +754,20 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully written a metadata value for an instance key that is associated with the current instance to the instance store"
-  remarks: "The current instance handle must be bound to an instance as well as a lock on that instance. The instance key must be associated with the current instance and must not be completed."
+  summary: "Indica che il provider di persistenza ha scritto correttamente un valore di metadati per una chiave di istanza che viene associato all&quot;istanza corrente nell&quot;archivio di istanze"
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza, nonché un blocco su quell&quot;istanza. La chiave di istanza deve essere associata all&quot;istanza corrente e non deve essere completata."
   syntax:
     content: public void WroteInstanceKeyMetadataValue (Guid key, System.Xml.Linq.XName name, System.Runtime.DurableInstancing.InstanceValue value);
     parameters:
     - id: key
       type: System.Guid
-      description: "The instance key identifier for the key. Must not be Guid.Empty."
+      description: "Identificatore di chiave di istanza per la chiave. Non deve essere Empty."
     - id: name
       type: System.Xml.Linq.XName
-      description: "The name of the metadata property."
+      description: "Il nome della proprietà dei metadati."
     - id: value
       type: System.Runtime.DurableInstancing.InstanceValue
-      description: "The value of the metadata property."
+      description: "Il valore della proprietà dei metadati."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceKeyMetadataValue*
   exceptions: []
   platform:
@@ -784,17 +784,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully written a metadata value for the current instance to the external instance store."
-  remarks: "The current instance handle must be bound to an instance as well as has a lock on that instance. The instance must not be completed."
+  summary: "Indica che il provider di persistenza ha scritto correttamente un valore di metadati per l&quot;istanza corrente nell&quot;archivio di istanze esterno."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un&quot;istanza, nonché dispone di un blocco su quell&quot;istanza. L&quot;istanza non deve essere completata."
   syntax:
     content: public void WroteInstanceMetadataValue (System.Xml.Linq.XName name, System.Runtime.DurableInstancing.InstanceValue value);
     parameters:
     - id: name
       type: System.Xml.Linq.XName
-      description: "The name of the metadata property."
+      description: "Il nome della proprietà dei metadati."
     - id: value
       type: System.Runtime.DurableInstancing.InstanceValue
-      description: "The value of the metadata property."
+      description: "Il valore della proprietà dei metadati."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceMetadataValue*
   exceptions: []
   platform:
@@ -811,17 +811,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates that the persistence provider has successfully written a metadata value for the current instance owner to the instance store."
-  remarks: "The current instance handle must be bound to an instance owner."
+  summary: "Indica che il provider di persistenza ha scritto correttamente un valore di metadati per il proprietario dell&quot;istanza corrente nell&quot;archivio di istanze."
+  remarks: "Handle dell&quot;istanza corrente deve essere associato a un proprietario di istanza."
   syntax:
     content: public void WroteInstanceOwnerMetadataValue (System.Xml.Linq.XName name, System.Runtime.DurableInstancing.InstanceValue value);
     parameters:
     - id: name
       type: System.Xml.Linq.XName
-      description: "The name of the metadata property."
+      description: "Il nome della proprietà dei metadati."
     - id: value
       type: System.Runtime.DurableInstancing.InstanceValue
-      description: "The value of the metadata property."
+      description: "Il valore della proprietà dei metadati."
   overload: System.Runtime.DurableInstancing.InstancePersistenceContext.WroteInstanceOwnerMetadataValue*
   exceptions: []
   platform:

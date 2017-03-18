@@ -12,7 +12,7 @@ items:
   nameWithType: EventTypeFilter
   fullName: System.Diagnostics.EventTypeFilter
   type: Class
-  summary: "Indicates whether a listener should trace based on the event type."
+  summary: "Indica se un listener deve analizzare in base al tipo di evento."
   remarks: "One of several different types of filters can be assigned to a trace listener through the <xref:System.Diagnostics.TraceListener.Filter%2A> property to provide a layer of screening beyond that provided by the <xref:System.Diagnostics.TraceSwitch>. The filter can be used to control the event types that are produced by the listener.  \n  \n This class filters events based on the value of the <xref:System.Diagnostics.EventTypeFilter.EventType%2A> property.  This property can be set by code or in a configuration file to specify the event type of messages that should be traced by the listener. The value of the property indicates the threshold at which to begin tracing. Event types at and above the specified level are traced. The <xref:System.Diagnostics.TraceFilter.ShouldTrace%2A> method, called by listeners  to determine if an event should be traced, uses the value of the <xref:System.Diagnostics.EventTypeFilter.EventType%2A> property.  \n  \n To set the event type at which to begin tracing, edit the configuration file that corresponds to the name of your application. Within this file, you can add a listener, set its filter type, and specify the event type to trace. The configuration file should be formatted as follows.  \n  \n```  \n<configuration>  \n  <system.diagnostics>  \n    <sharedListeners>  \n      <add name=\"Console\" type=\"System.Diagnostics.ConsoleTraceListener\">  \n        <filter type=\"System.Diagnostics.EventTypeFilter\"   \n          initializeData=\"Warning\" />  \n      </add>  \n    </sharedListeners>  \n  </system.diagnostics>  \n</configuration>  \n```  \n  \n For more information about how to initialize data for an EventTypeFilter, see [\\&lt;filter\\&gt;](../Topic/%3Cfilter%3E%20Element%20for%20%3Cadd%3E%20for%20%3CsharedListeners%3E.md)."
   syntax:
     content: 'public class EventTypeFilter : System.Diagnostics.TraceFilter'
@@ -35,14 +35,14 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.EventTypeFilter&quot;></xref> class."
-  remarks: "The value of the `level` parameter is used to initialize the <xref:System.Diagnostics.EventTypeFilter.EventType%2A> property."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Diagnostics.EventTypeFilter&quot;> </xref> classe."
+  remarks: "Il valore di `level` parametro viene utilizzato per inizializzare il <xref:System.Diagnostics.EventTypeFilter.EventType%2A>proprietà.</xref:System.Diagnostics.EventTypeFilter.EventType%2A>"
   syntax:
     content: public EventTypeFilter (System.Diagnostics.SourceLevels level);
     parameters:
     - id: level
       type: System.Diagnostics.SourceLevels
-      description: "A bitwise combination of the <xref href=&quot;System.Diagnostics.SourceLevels&quot;></xref> values that specifies the event type of the messages to trace."
+      description: "Combinazione bit per bit di <xref href=&quot;System.Diagnostics.SourceLevels&quot;> </xref> valori che specifica il tipo di evento di traccia dei messaggi."
   overload: System.Diagnostics.EventTypeFilter.#ctor*
   exceptions: []
   platform:
@@ -59,13 +59,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets or sets the event type of the messages to trace."
-  remarks: "The EventType property indicates the level at which to trace."
+  summary: "Ottiene o imposta il tipo di evento dei messaggi di traccia."
+  remarks: "La proprietà EventType indica il livello in corrispondenza del quale tracciare."
   syntax:
     content: public System.Diagnostics.SourceLevels EventType { get; set; }
     return:
       type: System.Diagnostics.SourceLevels
-      description: "A bitwise combination of the <xref href=&quot;System.Diagnostics.SourceLevels&quot;></xref> values."
+      description: "Combinazione bit per bit di <xref href=&quot;System.Diagnostics.SourceLevels&quot;> </xref> valori."
   overload: System.Diagnostics.EventTypeFilter.EventType*
   exceptions: []
   platform:
@@ -82,38 +82,38 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Determines whether the trace listener should trace the event."
-  remarks: "If the value of the `eventType` parameter is greater than or equal to the value of the <xref:System.Diagnostics.EventTypeFilter.EventType%2A> property, the method returns `true`."
+  summary: "Determina se il listener di traccia deve analizzare l&quot;evento."
+  remarks: "Se il valore di `eventType` parametro è maggiore o uguale al valore del <xref:System.Diagnostics.EventTypeFilter.EventType%2A>proprietà, il metodo restituisce `true`.</xref:System.Diagnostics.EventTypeFilter.EventType%2A>"
   syntax:
     content: public override bool ShouldTrace (System.Diagnostics.TraceEventCache cache, string source, System.Diagnostics.TraceEventType eventType, int id, string formatOrMessage, object[] args, object data1, object[] data);
     parameters:
     - id: cache
       type: System.Diagnostics.TraceEventCache
-      description: "A <xref href=&quot;System.Diagnostics.TraceEventCache&quot;></xref> that represents the information cache for the trace event."
+      description: "Oggetto <xref href=&quot;System.Diagnostics.TraceEventCache&quot;> </xref> che rappresenta la cache di informazioni per l&quot;evento di traccia."
     - id: source
       type: System.String
-      description: "The name of the source."
+      description: "Il nome dell&quot;origine."
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the <xref href=&quot;System.Diagnostics.TraceEventType&quot;></xref> values."
+      description: "Uno del <xref href=&quot;System.Diagnostics.TraceEventType&quot;> </xref> valori."
     - id: id
       type: System.Int32
-      description: "A trace identifier number."
+      description: "Un numero di identificazione di traccia."
     - id: formatOrMessage
       type: System.String
-      description: "The format to use for writing an array of arguments, or a message to write."
+      description: "Il formato da utilizzare per la scrittura di una matrice di argomenti o un messaggio da scrivere."
     - id: args
       type: System.Object[]
-      description: "An array of argument objects."
+      description: "Matrice di oggetti argomento."
     - id: data1
       type: System.Object
-      description: "A trace data object."
+      description: "Un oggetto dati di traccia."
     - id: data
       type: System.Object[]
-      description: "An array of trace data objects."
+      description: "Matrice di oggetti di dati di traccia."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>if the trace should be produced; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se la traccia deve essere prodotta; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Diagnostics.EventTypeFilter.ShouldTrace*
   exceptions: []
   platform:
