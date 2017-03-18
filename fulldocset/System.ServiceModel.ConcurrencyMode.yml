@@ -12,8 +12,8 @@ items:
   nameWithType: ConcurrencyMode
   fullName: System.ServiceModel.ConcurrencyMode
   type: Enum
-  summary: "Specifies whether a service class supports single-threaded or multi-threaded modes of operation."
-  remarks: "ConcurrencyMode is used in conjunction with the <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A> property to specify whether a service class supports single-threaded or multi-threaded modes of operation. A single-threaded operation can be either reentrant or non-reentrant.       The following table shows when [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] permits an operation to be invoked while another one is in progress, depending upon the ConcurrencyMode.      |ConcurrencyMode Value|Can a new operation be invoked?|   |---------------------------|-------------------------------------|   |Single|Never.|   |Reentrant|Only while invoking another service or a callback.|   |Multiple|Always.|"
+  summary: "Specifica se una classe di servizio supporta la modalità a thread singolo o multithread dell&quot;operazione."
+  remarks: "ConcurrencyMode è utilizzato in combinazione con la <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A>proprietà per specificare se una classe di servizio supporta la modalità a thread singolo o multithread dell&quot;operazione.</xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A> Un&quot;operazione a thread singolo può essere rientrante o non rientrante.       Nella tabella seguente viene illustrato quando [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] consente a un&quot;operazione da richiamare mentre un altro è in corso, a seconda di ConcurrencyMode.      | Valore di ConcurrencyMode | Può essere richiamata una nuova operazione? |   |---------------------------|-------------------------------------|   | Singolo | Mai. |   | Rientranti | Solo durante la chiamata a un altro servizio o un callback. |   | Più | Sempre. |"
   example:
   - "The following code example demonstrates the different between using Single, Reentrant, and Multiple. This sample does not compile without a real implementation behind it, but does demonstrate the kind of threading guarantees that [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] makes and what that means for your operation code.  \n  \n [!code-cs[C_BestPractices-Concurrency#1](~/add/codesnippet/csharp/reentrantandmultiple/reentrantandmultiple.cs#1)]"
   syntax:
@@ -34,12 +34,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is multi-threaded. No synchronization guarantees are made. Because other threads can change your service object at any time, you must handle synchronization and state consistency at all times."
+  summary: "L&quot;istanza del servizio è a thread multipli. Viene resa alcuna garanzia di sincronizzazione. Poiché altri thread può modificare l&quot;oggetto servizio in qualsiasi momento, è necessario gestire la sincronizzazione e la coerenza dello stato in qualsiasi momento."
   syntax:
     content: Multiple
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -55,12 +55,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is single-threaded and accepts reentrant calls. The reentrant service accepts calls when you call another service; it is therefore your responsibility to leave your object state consistent before callouts and you must confirm that operation-local data is valid after callouts. Note that the service instance is unlocked only by calling another service over a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] channel. In this case, the called service can reenter the first service via a callback. If the first service is not reentrant, the sequence of calls results in a deadlock. For details, see <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>."
+  summary: "L&quot;istanza del servizio è a thread singolo e accetta chiamate rientranti. Il servizio rientrante accetta chiamate quando si chiama un altro servizio. è pertanto responsabilità dello stato dell&quot;oggetto coerente prima di callout ed è necessario verificare che i dati locali dell&quot;operazione siano validi dopo i callout. Si noti che l&quot;istanza del servizio viene sbloccata solo chiamando un altro servizio su un [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] canale. In questo caso, il servizio chiamato può rientrare nel primo servizio tramite un callback. Se il primo servizio non è rientrante, la sequenza di chiamate determina un deadlock. Per informazioni dettagliate, vedere <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>.</xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>"
   syntax:
     content: Reentrant
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -76,12 +76,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is single-threaded and does not accept reentrant calls. If the <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*> property is <xref href=&quot;System.ServiceModel.InstanceContextMode&quot;></xref>, and additional messages arrive while the instance services a call, these messages must wait until the service is available or until the messages time out."
+  summary: "L&quot;istanza del servizio è a thread singolo e non accetta chiamate rientranti. Se il <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*>proprietà <xref href=&quot;System.ServiceModel.InstanceContextMode&quot;> </xref>e giungono altri messaggi mentre l&quot;istanza di una chiamata di servizi, questi messaggi è necessario attendere fino a quando il servizio è disponibile o fino a quando il valore di timeout di messaggi.</xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*>"
   syntax:
     content: Single
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
