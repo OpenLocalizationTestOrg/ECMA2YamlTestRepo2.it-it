@@ -11,8 +11,8 @@ items:
   nameWithType: IPartitionResolver
   fullName: System.Web.IPartitionResolver
   type: Interface
-  summary: "Defines methods that must be implemented for custom session-state partition resolution."
-  remarks: "Implement the IPartitionResolver interface and the <xref:System.Web.IPartitionResolver.Initialize%2A> and <xref:System.Web.IPartitionResolver.ResolvePartition%2A> methods, if you are providing custom partition resolution for session-state data across multiple backend nodes when in SQL or state-server mode.       The session-state management information can be configured in the [sessionState Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/bda6fb8c-0076-43e3-9ce2-8cf1f8bdaa7d) of the configuration file with the `partitionResolverType` attribute. If a value is specified for the `partitionResolverType` attribute, the `sqlConnectionString` and `stateConnectionString` attributes are ignored.       The partition resolution configuration can also be set programmatically using the <xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A> property. If the <xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A> property is specified, the <xref:System.Web.Configuration.SessionStateSection.SqlConnectionString%2A> and <xref:System.Web.Configuration.SessionStateSection.StateConnectionString%2A> properties are ignored."
+  summary: "Definisce i metodi che devono essere implementati per la risoluzione della partizione di sessione personalizzata."
+  remarks: "Implementare l&quot;interfaccia IPartitionResolver e <xref:System.Web.IPartitionResolver.Initialize%2A>e <xref:System.Web.IPartitionResolver.ResolvePartition%2A>metodi, se si specifica la risoluzione di partizioni personalizzata per i dati dello stato della sessione tra più nodi di back-end in SQL o in modalità server di stato.</xref:System.Web.IPartitionResolver.ResolvePartition%2A> </xref:System.Web.IPartitionResolver.Initialize%2A>       Le informazioni sulla gestione dello stato della sessione possono essere configurate nel [sessionState Element (Schema delle impostazioni ASP.NET)](http://msdn.microsoft.com/en-us/bda6fb8c-0076-43e3-9ce2-8cf1f8bdaa7d) del file di configurazione con il `partitionResolverType` attributo. Se viene specificato un valore per il `partitionResolverType` attributo, il `sqlConnectionString` e `stateConnectionString` gli attributi vengono ignorati.       La configurazione della risoluzione di partizione possono essere impostate anche a livello di codice utilizzando il <xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A>proprietà.</xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A> Se il <xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A>proprietà viene specificata, il <xref:System.Web.Configuration.SessionStateSection.SqlConnectionString%2A>e <xref:System.Web.Configuration.SessionStateSection.StateConnectionString%2A>vengono ignorate.</xref:System.Web.Configuration.SessionStateSection.StateConnectionString%2A> </xref:System.Web.Configuration.SessionStateSection.SqlConnectionString%2A> </xref:System.Web.Configuration.SessionStateSection.PartitionResolverType%2A>"
   syntax:
     content: public interface IPartitionResolver
   implements: []
@@ -30,8 +30,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Initializes the custom partition resolver."
-  remarks: "Use the Initialize method to provide any initialization code that is needed for your custom partition resolution. The <xref:System.Web.SessionState.SessionStateModule> creates the type implementing the <xref:System.Web.IPartitionResolver> interface, calls the Initialize method to initialize it (once per instance), and then indicates to the ASP.NET state service or SQL Server provider that partitioning is being used and passes a resolver instance to the provider."
+  summary: "Inizializza il sistema di risoluzione personalizzato di partizione."
+  remarks: "Utilizzare il metodo Initialize per fornire un codice di inizializzazione necessari per la risoluzione della partizione personalizzata. Il <xref:System.Web.SessionState.SessionStateModule>Crea il tipo che implementa il <xref:System.Web.IPartitionResolver>interfaccia, chiama il metodo Initialize per inizializzarla (una volta per ogni istanza) e quindi indica al provider di SQL Server che il partizionamento viene utilizzato e passa un&quot;istanza del resolver al provider o il servizio di stato di ASP.NET.</xref:System.Web.IPartitionResolver> </xref:System.Web.SessionState.SessionStateModule>"
   syntax:
     content: public void Initialize ();
     parameters: []
@@ -51,17 +51,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Resolves the partition based on a key parameter."
-  remarks: "The `key` parameter of the ResolvePartition method is the <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> property. The <xref:System.Web.SessionState.HttpSessionState.SessionID%2A> property uniquely identifies a browser with session data on the server."
+  summary: "Risolve la partizione in base a un parametro di chiave."
+  remarks: "Il `key` parametro del metodo ResolvePartition è il <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>proprietà.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A> Il <xref:System.Web.SessionState.HttpSessionState.SessionID%2A>proprietà identifica in modo univoco un browser con i dati di sessione nel server.</xref:System.Web.SessionState.HttpSessionState.SessionID%2A>"
   syntax:
     content: public string ResolvePartition (object key);
     parameters:
     - id: key
       type: System.Object
-      description: "An identifier used to determine which partition to use for the current session state."
+      description: "Un identificatore utilizzato per determinare quale partizione da utilizzare per lo stato della sessione corrente."
     return:
       type: System.String
-      description: "A string with connection information."
+      description: "Una stringa con informazioni di connessione."
   overload: System.Web.IPartitionResolver.ResolvePartition*
   exceptions: []
   platform:
