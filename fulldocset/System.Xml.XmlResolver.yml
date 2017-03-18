@@ -15,8 +15,8 @@ items:
   nameWithType: XmlResolver
   fullName: System.Xml.XmlResolver
   type: Class
-  summary: "Resolves external XML resources named by a Uniform Resource Identifier (URI)."
-  remarks: "The XmlResolver type is used to resolve external XML resources, such as entities, document type definitions (DTDs), or schemas. It is also used to process include and import elements found in Extensible Stylesheet Language (XSL) style sheets or XML Schema definition language (XSD) schemas.       XmlResolver handles all aspects of negotiating the connection to the resources, including handling security credentials, opening the connection to the data source, and returning the resource in the form of a stream or other object type. The object that calls XmlResolver has the task of interpreting the stream.       The <xref:System.Xml> namespace includes two concrete implementations of the XmlResolver class:      -   <xref:System.Xml.XmlUrlResolver> is the default resolver for all classes in the <xref:System.Xml> namespace. It supports the `file://` and `http://` protocols and requests from the <xref:System.Net.WebRequest?displayProperty=fullName> class. For examples of extending the class to improve performance, see the <xref:System.Xml.XmlUrlResolver> reference page.      -   <xref:System.Xml.XmlSecureResolver> helps secure another XmlResolver object by wrapping the object object and restricting the resources that it can access. For example, the <xref:System.Xml.XmlSecureResolver> can prohibit access to specific Internet sites or zones.       You can create and specify your own resolver. If you don&quot;t specify a resolver, the reader uses a default <xref:System.Xml.XmlUrlResolver> with no user credentials.       You specify the XmlResolver to use by setting the <xref:System.Xml.XmlReaderSettings.XmlResolver%2A?displayProperty=fullName> property and passing the <xref:System.Xml.XmlReaderSettings> object to the <xref:System.Xml.XmlReader.Create%2A> method.       If the resource is stored on a system that requires authentication, you use the <xref:System.Xml.XmlResolver.Credentials%2A?displayProperty=fullName> property to specify the necessary credentials.      ## Supplying authentication credentials    The file that contains the XML data to read may have a restricted access policy. If authentication is required to access a network resource, use the <xref:System.Xml.XmlResolver.Credentials%2A> property to specify the necessary credentials. If the <xref:System.Xml.XmlResolver.Credentials%2A> property is not set, credentials are set to `null`.       For example, assume that credentials are needed when requesting data from the web for authentication purposes. Unless the web virtual directory allows anonymous access, you must set the <xref:System.Xml.XmlResolver.Credentials%2A> property to supply credentials. The following example creates an <xref:System.Xml.XmlReader> object that uses an <xref:System.Xml.XmlUrlResolver> with default credentials to access the http://localhost/bookstore/inventory.xml site.       [!code-cpp[XmlReaderSettings.cctor#2](~/add/codesnippet/cpp/t-system.xml.xmlresolver_1.cpp)]  [!code-cs[XmlReaderSettings.cctor#2](~/add/codesnippet/csharp/t-system.xml.xmlresolver_1.cs)]  [!code-vb[XmlReaderSettings.cctor#2](~/add/codesnippet/visualbasic/t-system.xml.xmlresolver_1.vb)]       You can supply different credentials for different URIs and add them to a cache. These credentials are used to check authentication for the different URIs regardless of the original source of the XML. The following example shows how to add credentials to a cache.       [!code-vb[XslCompiledTransform.Load#11](~/add/codesnippet/visualbasic/t-system.xml.xmlresolver_2.vb)]  [!code-cs[XslCompiledTransform.Load#11](~/add/codesnippet/csharp/t-system.xml.xmlresolver_2.cs)]      ## Security considerations    Consider the following items when working with the XmlResolver class.      -   XmlResolver objects can contain sensitive information such as user credentials. You should be careful when caching XmlResolver objects and should not pass the XmlResolver object to an untrusted component.      -   If you are designing a class property that uses the XmlResolver class, the property should be defined as a write-only property. The property can be used to specify the XmlResolver to use, but it cannot be used to return an XmlResolver object.      -   If your application accepts XmlResolver objects from untrusted code, you cannot assume that the URI passed into the <xref:System.Xml.XmlResolver.GetEntity%2A> method will be the same as that returned by the <xref:System.Xml.XmlResolver.ResolveUri%2A> method. Classes derived from the XmlResolver class can override the <xref:System.Xml.XmlResolver.GetEntity%2A> method and return data that is different than what was contained in the original URI.      -   Your application can mitigate memory denial of service threats to the <xref:System.Xml.XmlResolver.GetEntity%2A> method by implementing an <xref:System.Runtime.InteropServices.ComTypes.IStream> that limits the number of bytes read. This helps guard against situations where malicious code attempts to pass an infinite stream of bytes to the <xref:System.Xml.XmlResolver.GetEntity%2A> method."
+  summary: "Risolve risorse XML esterne denominate da un URI (Uniform Resource Identifier)."
+  remarks: "Il tipo di XmlResolver viene utilizzato per risolvere risorse XML esterne, ad esempio entità, le definizioni di tipo di documento (DTD) o schemi. È inoltre utilizzato per processo di inclusione e importazione di elementi presenti in fogli di stile di foglio di stile XSL (Extensible Language) o schemi XML Schema definition language (XSD).       XmlResolver gestisce tutti gli aspetti della negoziazione della connessione alle risorse, tra cui la gestione delle credenziali di sicurezza, aprire la connessione all&quot;origine dati e la restituzione della risorsa in forma di un flusso o di altro tipo di oggetto. L&quot;oggetto che chiama XmlResolver ha il compito di interpretare il flusso.       Il <xref:System.Xml>spazio dei nomi include due implementazioni concrete della classe XmlResolver:- <xref:System.Xml.XmlUrlResolver>è l&quot;impostazione predefinita per tutte le classi di <xref:System.Xml>dello spazio dei nomi.</xref:System.Xml> </xref:System.Xml.XmlUrlResolver> </xref:System.Xml> Supporta il `file://` e `http://` protocolli e le richieste dalla <xref:System.Net.WebRequest?displayProperty=fullName>classe.</xref:System.Net.WebRequest?displayProperty=fullName> Per esempi di estensione della classe per migliorare le prestazioni, vedere il <xref:System.Xml.XmlUrlResolver>pagina di riferimento.</xref:System.Xml.XmlUrlResolver>      - <xref:System.Xml.XmlSecureResolver>consente di proteggere il wrapping dell&quot;oggetto di oggetto e limitando le risorse che può accedere a un altro oggetto XmlResolver.</xref:System.Xml.XmlSecureResolver> Ad esempio, il <xref:System.Xml.XmlSecureResolver>può impedire l&quot;accesso a specifici siti Internet o nelle zone.</xref:System.Xml.XmlSecureResolver>       È possibile creare e specificare il proprio resolver. Se non si specifica un resolver, il visualizzatore utilizza un valore predefinito <xref:System.Xml.XmlUrlResolver>senza credenziali utente.</xref:System.Xml.XmlUrlResolver>       Specificare XmlResolver da utilizzare impostando il <xref:System.Xml.XmlReaderSettings.XmlResolver%2A?displayProperty=fullName>proprietà e passando il <xref:System.Xml.XmlReaderSettings>dell&quot;oggetto per il <xref:System.Xml.XmlReader.Create%2A>metodo.</xref:System.Xml.XmlReader.Create%2A> </xref:System.Xml.XmlReaderSettings> </xref:System.Xml.XmlReaderSettings.XmlResolver%2A?displayProperty=fullName>       Se la risorsa viene archiviata in un sistema che richiede l&quot;autenticazione, utilizzare il <xref:System.Xml.XmlResolver.Credentials%2A?displayProperty=fullName>proprietà per specificare le credenziali necessarie.</xref:System.Xml.XmlResolver.Credentials%2A?displayProperty=fullName>      ## Fornire le credenziali di autenticazione il file che contiene i dati XML da leggere potrebbe contenere un criterio di accesso con restrizioni. Se è necessaria l&quot;autenticazione per accedere a una risorsa di rete, utilizzare il <xref:System.Xml.XmlResolver.Credentials%2A>proprietà per specificare le credenziali necessarie.</xref:System.Xml.XmlResolver.Credentials%2A> Se il <xref:System.Xml.XmlResolver.Credentials%2A>non è impostata, le credenziali vengono impostate su `null`.</xref:System.Xml.XmlResolver.Credentials%2A>       Si supponga, ad esempio, che sono necessarie le credenziali quando si richiedono dati dal web per scopi di autenticazione. A meno che la directory virtuale web consente l&quot;accesso anonimo, è necessario impostare il <xref:System.Xml.XmlResolver.Credentials%2A>proprietà per fornire le credenziali.</xref:System.Xml.XmlResolver.Credentials%2A> Nell&quot;esempio seguente viene creato un <xref:System.Xml.XmlReader>oggetto che utilizza un <xref:System.Xml.XmlUrlResolver>con le credenziali predefinite per accedere al sito http://localhost/bookstore/inventory.xml.</xref:System.Xml.XmlUrlResolver> </xref:System.Xml.XmlReader>       [!code-cpp[XmlReaderSettings.cctor#2](~/add/codesnippet/cpp/t-system.xml.xmlresolver_1.cpp)][!code-cs[XmlReaderSettings.cctor#2](~/add/codesnippet/csharp/t-system.xml.xmlresolver_1.cs)][!code-vb[XmlReaderSettings.cctor#2](~/add/codesnippet/visualbasic/t-system.xml.xmlresolver_1.vb) ] è possibile specificare credenziali diverse per diversi URI e aggiungerli a una cache.     Queste credenziali vengono utilizzate per verificare l&quot;autenticazione dei diversi URI, indipendentemente dall&quot;origine del codice XML. Nell&quot;esempio seguente viene illustrato come aggiungere le credenziali a una cache.       [!code-vb[XslCompiledTransform.Load#11](~/add/codesnippet/visualbasic/t-system.xml.xmlresolver_2.vb)][!code-cs[XslCompiledTransform.Load#11](~/add/codesnippet/csharp/t-system.xml.xmlresolver_2.cs) ] # # considerazioni sulla sicurezza tenere presente quanto segue quando si utilizza la classe XmlResolver.        -XmlResolver oggetti possono contenere informazioni sensibili quali le credenziali utente. È necessario prestare attenzione quando la memorizzazione nella cache XmlResolver oggetti e non passare l&quot;oggetto XmlResolver a un componente non attendibile.      -Se si progetta una proprietà di classe che utilizza la classe XmlResolver, la proprietà deve essere definita come una proprietà di sola scrittura. La proprietà può essere utilizzata per specificare XmlResolver da utilizzare, ma non può essere utilizzato per restituire un oggetto XmlResolver.      -Se l&quot;applicazione accetta oggetti XmlResolver da codice non attendibile, non è possibile presumere che l&quot;URI passato il <xref:System.Xml.XmlResolver.GetEntity%2A>sarà uguale a quello restituito dal metodo di <xref:System.Xml.XmlResolver.ResolveUri%2A>metodo.</xref:System.Xml.XmlResolver.ResolveUri%2A> </xref:System.Xml.XmlResolver.GetEntity%2A> Le classi derivate dalla classe XmlResolver possono eseguire l&quot;override di <xref:System.Xml.XmlResolver.GetEntity%2A>metodo e restituire dati diversi da quelli contenuti nell&quot;URI originale.</xref:System.Xml.XmlResolver.GetEntity%2A>      -L&quot;applicazione consente di ridurre memoria attacchi denial of service per il <xref:System.Xml.XmlResolver.GetEntity%2A>metodo implementando un <xref:System.Runtime.InteropServices.ComTypes.IStream>che limita il numero di byte letti.</xref:System.Runtime.InteropServices.ComTypes.IStream> </xref:System.Xml.XmlResolver.GetEntity%2A> Questo aiuta a proteggersi da situazioni in cui codice dannoso tenta di passare un flusso di byte da infinito di <xref:System.Xml.XmlResolver.GetEntity%2A>metodo.</xref:System.Xml.XmlResolver.GetEntity%2A>"
   example:
   - "The following example creates an <xref:System.Xml.XmlUrlResolver> with default credentials. A <xref:System.Xml.XmlReader> is used to read and display the resulting data stream.  \n  \n [!code-cs[XmlResolver_ex#1](~/add/codesnippet/csharp/t-system.xml.xmlresolver_3.cs)]\n [!code-vb[XmlResolver_ex#1](~/add/codesnippet/visualbasic/t-system.xml.xmlresolver_3.vb)]"
   syntax:
@@ -39,8 +39,8 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xml.XmlResolver&quot;></xref> class."
-  remarks: "This constructor is called by derived class constructors to initialize state in this type."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Xml.XmlResolver&quot;> </xref> classe."
+  remarks: "Questo costruttore viene chiamato da costruttori di classi derivate per inizializzare lo stato in questo tipo."
   syntax:
     content: protected XmlResolver ();
     parameters: []
@@ -60,15 +60,15 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "When overridden in a derived class, sets the credentials used to authenticate web requests."
-  remarks: "If the virtual directory does not require authentication, this property doesn&quot;t have to be set. Otherwise, the credentials of the user must be supplied.       The following C# code sets credentials on the <xref:System.Xml.XmlResolver> object.      ```   NetworkCredential nc = new NetWorkCredential(UserName,SecurelyStoredPassword,Domain);   XmlUrlResolver resolver = new XmlUrlResolver();   resolver.Credentials = nc;   ```       You can associate different credentials with different URIs and add them to a cache. You can then use the credentials to check authentication for different URIs regardless of the original source of the XML.      ```   NetworkCredential myCred = new NetworkCredential(UserName,SecurelyStoredPassword,Domain);    CredentialCache myCache = new CredentialCache();    myCache.Add(new Uri(&quot;http://www.contoso.com/&quot;), &quot;Basic&quot;, myCred);    myCache.Add(new Uri(&quot;http://app.contoso.com/&quot;), &quot;Basic&quot;, myCred);   XmlUrlResolver resolver = new XmlUrlResolver();   resolver.Credentials = myCache;   ```"
+  summary: "Quando sottoposto a override in una classe derivata, imposta le credenziali utilizzate per autenticare le richieste web."
+  remarks: "Se la directory virtuale non richiede l&quot;autenticazione, questa proprietà non deve essere impostato. In caso contrario, è necessario specificare le credenziali dell&quot;utente.       Il codice c# seguente imposta le credenziali nel <xref:System.Xml.XmlResolver>oggetto.</xref:System.Xml.XmlResolver>      ```   NetworkCredential nc = new NetWorkCredential(UserName,SecurelyStoredPassword,Domain);   XmlUrlResolver resolver = new XmlUrlResolver();   resolver.Credentials = nc;   ```È possibile associare credenziali differenti a diversi URI e aggiungerli a una cache. È quindi possibile utilizzare le credenziali per verificare l&quot;autenticazione per diversi URI indipendentemente dall&quot;origine del codice XML.      ```   NetworkCredential myCred = new NetworkCredential(UserName,SecurelyStoredPassword,Domain);    CredentialCache myCache = new CredentialCache();    myCache.Add(new Uri(&quot;http://www.contoso.com/&quot;), &quot;Basic&quot;, myCred);    myCache.Add(new Uri(&quot;http://app.contoso.com/&quot;), &quot;Basic&quot;, myCred);   XmlUrlResolver resolver = new XmlUrlResolver();   resolver.Credentials = myCache;   ```"
   example:
   - See <xref:System.Xml.XmlUrlResolver.Credentials%2A?displayProperty=fullName> for an example that uses this property.
   syntax:
     content: public virtual System.Net.ICredentials Credentials { set; }
     return:
       type: System.Net.ICredentials
-      description: "The credentials to be used to authenticate web requests. If this property is not set, the value defaults to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>; that is, the <xref uid=&quot;langword_csharp_XmlResolver&quot; name=&quot;XmlResolver&quot; href=&quot;&quot;></xref> has no user credentials."
+      description: "Le credenziali da utilizzare per autenticare le richieste web. Se questa proprietà non è impostata, il valore predefinito è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, vale a dire il <xref uid=&quot;langword_csharp_XmlResolver&quot; name=&quot;XmlResolver&quot; href=&quot;&quot;> </xref> non ha credenziali utente."
   overload: System.Xml.XmlResolver.Credentials*
   exceptions: []
   platform:
@@ -85,8 +85,8 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "When overridden in a derived class, maps a URI to an object that contains the actual resource."
-  remarks: "This method is used when the caller wants to map a given URI into the object containing the actual resource that the URI represents. The type of object returned is negotiable; however, the implementation must always support <xref:System.IO.Stream?displayProperty=fullName>.       For the asynchronous version of this method, see <xref:System.Xml.XmlResolver.GetEntityAsync%2A>.      > [!IMPORTANT] >  Your application can mitigate memory denial of service threats to the GetEntity method by implementing an <xref:System.Runtime.InteropServices.ComTypes.IStream> that limits the number of bytes read. This helps guard against situations where malicious code attempts to pass an infinite stream of bytes to the GetEntity method."
+  summary: "Quando sottoposto a override in una classe derivata, esegue il mapping di un URI a un oggetto che contiene la risorsa effettiva."
+  remarks: "Questo metodo viene utilizzato quando il chiamante desidera eseguire il mapping di un URI specificato nell&quot;oggetto che contiene la risorsa effettiva che rappresenta l&quot;URI. Il tipo di oggetto restituito è negoziabile; Tuttavia, l&quot;implementazione deve supportare sempre <xref:System.IO.Stream?displayProperty=fullName>.</xref:System.IO.Stream?displayProperty=fullName>       Per la versione asincrona del metodo, vedere <xref:System.Xml.XmlResolver.GetEntityAsync%2A>.</xref:System.Xml.XmlResolver.GetEntityAsync%2A>      > [!IMPORTANT] > L&quot;applicazione può ridurre i memoria attacchi denial of service al metodo GetEntity implementando un <xref:System.Runtime.InteropServices.ComTypes.IStream>che limita il numero di byte letti.</xref:System.Runtime.InteropServices.ComTypes.IStream> Questo aiuta a proteggersi da situazioni in cui codice dannoso tenta di passare un flusso di byte infinito per il metodo GetEntity."
   example:
   - See <xref:System.Xml.XmlUrlResolver.GetEntity%2A?displayProperty=fullName> for an example using this method.
   syntax:
@@ -94,30 +94,30 @@ items:
     parameters:
     - id: absoluteUri
       type: System.Uri
-      description: "The URI returned from <xref:System.Xml.XmlResolver.ResolveUri*>."
+      description: "URI restituito da <xref:System.Xml.XmlResolver.ResolveUri*>.</xref:System.Xml.XmlResolver.ResolveUri*>"
     - id: role
       type: System.String
-      description: "Currently not used."
+      description: "Attualmente non utilizzato."
     - id: ofObjectToReturn
       type: System.Type
-      description: "The type of object to return. The current version only returns System.IO.Stream objects."
+      description: "Il tipo di oggetto da restituire. La versione corrente restituisce solo oggetti System.IO. Stream."
     return:
       type: System.Object
-      description: "A stream object or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if a type other than stream is specified."
+      description: "Un oggetto flusso o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se viene specificato un tipo diverso dal flusso."
   overload: System.Xml.XmlResolver.GetEntity*
   exceptions:
   - type: System.Xml.XmlException
     commentId: T:System.Xml.XmlException
-    description: "<code>ofObjectToReturn</code> is not a <xref uid=&quot;langword_csharp_Stream&quot; name=&quot;Stream&quot; href=&quot;&quot;></xref> type."
+    description: "<code>ofObjectToReturn</code>non è un <xref uid=&quot;langword_csharp_Stream&quot; name=&quot;Stream&quot; href=&quot;&quot;> </xref> tipo."
   - type: System.UriFormatException
     commentId: T:System.UriFormatException
-    description: "The specified URI is not an absolute URI."
+    description: "L&quot;URI specificato non è un URI assoluto."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>absoluteUri</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>absoluteUri</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Exception
     commentId: T:System.Exception
-    description: "There is a runtime error (for example, an interrupted server connection)."
+    description: "Si verifica un errore di runtime (ad esempio, una connessione server interrotto)."
   platform:
   - net462
 - uid: System.Xml.XmlResolver.GetEntityAsync(System.Uri,System.String,System.Type)
@@ -132,23 +132,23 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Asynchronously maps a URI to an object that contains the actual resource."
-  remarks: "This is the asynchronous version of <xref:System.Xml.XmlResolver.GetEntity%2A>, with the same functionality. To use this method, you must set the <xref:System.Xml.XmlReaderSettings.Async%2A> flag to `true`."
+  summary: "Esegue il mapping in modo asincrono un URI a un oggetto che contiene la risorsa effettiva."
+  remarks: "Si tratta della versione asincrona di <xref:System.Xml.XmlResolver.GetEntity%2A>, con la stessa funzionalità.</xref:System.Xml.XmlResolver.GetEntity%2A> Per utilizzare questo metodo, è necessario impostare il <xref:System.Xml.XmlReaderSettings.Async%2A>flag `true`.</xref:System.Xml.XmlReaderSettings.Async%2A>"
   syntax:
     content: public virtual System.Threading.Tasks.Task<object> GetEntityAsync (Uri absoluteUri, string role, Type ofObjectToReturn);
     parameters:
     - id: absoluteUri
       type: System.Uri
-      description: "The URI returned from <xref:System.Xml.XmlResolver.ResolveUri*>."
+      description: "URI restituito da <xref:System.Xml.XmlResolver.ResolveUri*>.</xref:System.Xml.XmlResolver.ResolveUri*>"
     - id: role
       type: System.String
-      description: "Currently not used."
+      description: "Attualmente non utilizzato."
     - id: ofObjectToReturn
       type: System.Type
-      description: "The type of object to return. The current version only returns <xref:System.IO.Stream> objects."
+      description: "Il tipo di oggetto da restituire. La versione corrente restituisce soltanto <xref:System.IO.Stream>oggetti.</xref:System.IO.Stream>"
     return:
       type: System.Threading.Tasks.Task{System.Object}
-      description: "A stream object or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if a type other than stream is specified."
+      description: "Un oggetto flusso o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se viene specificato un tipo diverso dal flusso."
   overload: System.Xml.XmlResolver.GetEntityAsync*
   exceptions: []
   platform:
@@ -165,8 +165,8 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "When overridden in a derived class, resolves the absolute URI from the base and relative URIs."
-  remarks: "The absolute URI may be used as the base URI for any subsequent requests for entities that are relative to this URI."
+  summary: "Quando sottoposto a override in una classe derivata, risolve l&quot;URI assoluto dagli URI di base e relativi."
+  remarks: "L&quot;URI assoluto può essere utilizzato come URI di base per le successive richieste per le entità che riguardano questo URI."
   example:
   - See <xref:System.Xml.XmlUrlResolver.GetEntity%2A?displayProperty=fullName> for an example that uses this method.
   syntax:
@@ -174,18 +174,18 @@ items:
     parameters:
     - id: baseUri
       type: System.Uri
-      description: "The base URI used to resolve the relative URI."
+      description: "L&quot;URI di base usato per risolvere l&quot;URI relativo."
     - id: relativeUri
       type: System.String
-      description: "The URI to resolve. The URI can be absolute or relative. If absolute, this value effectively replaces the `baseUri` value. If relative, it combines with the `baseUri` to make an absolute URI."
+      description: "URI da risolvere. L&quot;URI può essere assoluto o relativo. Se assoluto, questo valore sostituisce il `baseUri` valore. Se relativo, viene combinato con il `baseUri` per ottenere un URI assoluto."
     return:
       type: System.Uri
-      description: "The absolute URI or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the relative URI cannot be resolved."
+      description: "L&quot;URI assoluto o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se non è possibile risolta l&quot;URI relativo."
   overload: System.Xml.XmlResolver.ResolveUri*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>relativeUri</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>relativeUri</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xml.XmlResolver.SupportsType(System.Uri,System.Type)
@@ -200,19 +200,19 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml
-  summary: "Enables the resolver to return types other than &lt;xref:System.IO.Stream?displayProperty=fullName&gt;."
+  summary: "Consente il resolver di tipi restituiti diversi da &lt;xref:System.IO.Stream?displayProperty=fullName&gt;."
   syntax:
     content: public virtual bool SupportsType (Uri absoluteUri, Type type);
     parameters:
     - id: absoluteUri
       type: System.Uri
-      description: "The URI."
+      description: "L&quot;URI."
     - id: type
       type: System.Type
-      description: "The type to return."
+      description: "Tipo da restituire."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <code>type</code> is supported; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il <code> type </code> è supportato; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Xml.XmlResolver.SupportsType*
   exceptions: []
   platform:
