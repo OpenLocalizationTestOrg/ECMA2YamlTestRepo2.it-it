@@ -15,8 +15,8 @@ items:
   nameWithType: IExpressionEditorService
   fullName: System.Activities.Presentation.View.IExpressionEditorService
   type: Interface
-  summary: "Creates or closes expression editors."
-  remarks: "An expression editor is a Visual Basic control used to edit expressions inside Visual Studio. This control provides a full-fledged IDE editing experience, including IntelliSense, colorization, ParamInfo, error squiggles, among other features.       The IExpressionEditorService can also be used to manage instances of custom expression editors. To register a custom expression editor, you must publish the IExpressionEditorService using the following code :       `this.expressionEditorService = new ExpressionEditorService();`       `this.workflowDesigner.Context.Services.Publish<IExpressionEditorService>(this.expressionEditorService);`       An expression editor is created when an <xref:System.Activities.Presentation.View.ExpressionTextBox> instance gains focus and is destroyed on losing focus of a valid expression, or on reloading of the designer.       The default expression editor is not available for use in rehosted applications. If the default expression editor is used in a rehosted application, a text box is available for editing. However, custom expression editors can be used in a rehosted application by publishing the IExpressionEditorService in the application.       If you are using an <xref:System.Activities.Presentation.View.ExpressionTextBox> control in a custom activity designer, it is not necessary to create and destroy expression editors using this interface. The <xref:System.Activities.Presentation.View.ExpressionTextBox> class manages this for you."
+  summary: "Crea o chiude gli editor di espressioni."
+  remarks: "Un editor di espressioni è un controllo di Visual Basic utilizzato per modificare le espressioni all&quot;interno di Visual Studio. Questo controllo fornisce un IDE completa che modifica l&quot;esperienza, tra cui IntelliSense, colorazione, ParamInfo, durante la digitazione, fra le altre funzionalità.       Il IExpressionEditorService anche utilizzabile per gestire le istanze di editor di espressioni personalizzato. Per registrare un editor di espressioni personalizzato, è necessario pubblicare il IExpressionEditorService utilizzando il seguente codice: `this.expressionEditorService = new ExpressionEditorService();` `this.workflowDesigner.Context.Services.Publish<IExpressionEditorService>(this.expressionEditorService);` un editor di espressioni viene creato quando un <xref:System.Activities.Presentation.View.ExpressionTextBox>istanza lo stato attivo e viene eliminato definitivamente perde lo stato attivo di un&quot;espressione valida oppure al nuovo caricamento della finestra di progettazione.</xref:System.Activities.Presentation.View.ExpressionTextBox>              L&quot;editor di espressioni predefinito non è disponibile per l&quot;utilizzo in applicazioni riallocate. Se l&quot;editor di espressioni predefinito viene utilizzato in un&quot;applicazione riallocata, una casella di testo è disponibile per la modifica. Tuttavia, gli editor di espressioni personalizzato utilizzabile in un&quot;applicazione riallocata pubblicando il IExpressionEditorService nell&quot;applicazione.       Se si utilizza un <xref:System.Activities.Presentation.View.ExpressionTextBox>controllo in un ActivityDesigner personalizzato, non è necessario creare e distruggere gli editor di espressioni utilizzando questa interfaccia.</xref:System.Activities.Presentation.View.ExpressionTextBox> La <xref:System.Activities.Presentation.View.ExpressionTextBox>classe gestisce questo per l&quot;utente.</xref:System.Activities.Presentation.View.ExpressionTextBox>"
   example:
   - '[!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]'
   syntax:
@@ -36,7 +36,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Closes all the active expression editors."
+  summary: "Chiude tutti gli editor di espressione attiva."
   syntax:
     content: public void CloseExpressionEditors ();
     parameters: []
@@ -56,25 +56,25 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor."
+  summary: "Crea una nuova espressione editor."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "Used to set the context for the editor session."
+      description: "Consente di impostare il contesto per la sessione dell&quot;editor."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces to be used by the expression editor."
+      description: "Spazi dei nomi importati utilizzati dall&quot;editor di espressioni."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "Variabili locali per l&quot;editor espressioni."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "Stringa utilizzata per popolare l&quot;editor espressioni."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "Returns a<xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "Restituisce un<xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -91,28 +91,28 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, and expression type."
+  summary: "Crea una nuova espressione editor utilizzando l&quot;assembly specificato, spazi dei nomi importati, variabili, testo dell&quot;espressione e il tipo di espressione."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, Type expressionType);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "Gli assembly locali e di riferimenti nell&quot;ambiente."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "L&quot;importati spazi dei nomi utilizzati dall&quot;editor di espressioni."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "Variabili locali per l&quot;editor espressioni."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "Stringa utilizzata per popolare l&quot;editor espressioni."
     - id: expressionType
       type: System.Type
-      description: "The type of the expression."
+      description: "Il tipo dell&quot;espressione."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "Una nuova istanza di <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -129,28 +129,28 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, and the initial size."
+  summary: "Crea una nuova espressione editor utilizzando le dimensioni iniziali, testo dell&quot;espressione, variabili, spazi dei nomi importati e gli assembly specificati."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, System.Windows.Size initialSize);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "Gli assembly locali e di riferimenti nell&quot;ambiente."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "L&quot;importati spazi dei nomi utilizzati dall&quot;editor di espressioni."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "Variabili locali per l&quot;editor espressioni."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "Stringa utilizzata per popolare l&quot;editor espressioni."
     - id: initialSize
       type: System.Windows.Size
-      description: "The initial height and width of the expression editor control."
+      description: "L&quot;altezza e larghezza iniziali del controllo editor espressioni."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "Una nuova istanza di <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -167,31 +167,31 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, expression type, and the initial size."
+  summary: "Crea una nuova espressione editor utilizzando gli assembly specificati, spazi dei nomi importati, variabili, testo dell&quot;espressione, il tipo di espressione e le dimensioni iniziali."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, Type expressionType, System.Windows.Size initialSize);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "Gli assembly locali e di riferimenti nell&quot;ambiente."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "L&quot;importati spazi dei nomi utilizzati dall&quot;editor di espressioni."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "Variabili locali per l&quot;editor espressioni."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "Stringa utilizzata per popolare l&quot;editor espressioni."
     - id: expressionType
       type: System.Type
-      description: "The type of the expression."
+      description: "Il tipo dell&quot;espressione."
     - id: initialSize
       type: System.Windows.Size
-      description: "The initial height and width of the expression editor control."
+      description: "L&quot;altezza e larghezza iniziali del controllo editor espressioni."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "Una nuova istanza di <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -208,16 +208,16 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Updates the context for the editing session."
+  summary: "Aggiorna il contesto della sessione di modifica."
   syntax:
     content: public void UpdateContext (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "Used to set the context for the editor session."
+      description: "Consente di impostare il contesto per la sessione dell&quot;editor."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "L&quot;importati spazi dei nomi utilizzati dall&quot;editor di espressioni."
   overload: System.Activities.Presentation.View.IExpressionEditorService.UpdateContext*
   exceptions: []
   platform:
