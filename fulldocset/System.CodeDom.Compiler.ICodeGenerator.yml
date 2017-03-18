@@ -20,8 +20,8 @@ items:
   nameWithType: ICodeGenerator
   fullName: System.CodeDom.Compiler.ICodeGenerator
   type: Interface
-  summary: "Defines an interface for generating code."
-  remarks: "> [!NOTE] >  In the .NET Framework versions 1.0 and 1.1, code providers consist of implementations of <xref:System.CodeDom.Compiler.CodeDomProvider>, ICodeGenerator, <xref:System.CodeDom.Compiler.ICodeParser>, and <xref:System.CodeDom.Compiler.ICodeCompiler>. In the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)], the <xref:System.CodeDom.Compiler.CodeDomProvider.CreateGenerator%2A>, <xref:System.CodeDom.Compiler.CodeDomProvider.CreateParser%2A>, and <xref:System.CodeDom.Compiler.CodeDomProvider.CreateCompiler%2A> methods are obsolete, and the methods of ICodeGenerator and <xref:System.CodeDom.Compiler.ICodeCompiler> are directly available in the <xref:System.CodeDom.Compiler.CodeDomProvider> class. You should override those methods in your code provider implementation and not call the base methods.       Developers of compilers can implement this interface to allow people to dynamically generate code in a particular language. This can be used for a variety of purposes, such as creating code-generating wizards, creating dynamic assemblies with content that can be debugged, and for templated documents with embedded code, such as ASP.NET.       An ICodeGenerator implementation is typically obtained through a call to the <xref:System.CodeDom.Compiler.CodeDomProvider.CreateGenerator%2A> method of <xref:System.CodeDom.Compiler.CodeDomProvider>."
+  summary: "Definisce un&quot;interfaccia per la generazione di codice."
+  remarks: "> [!NOTE]> Nelle versioni di .NET Framework 1.0 e 1.1, provider di codice sono costituiti da implementazioni di <xref:System.CodeDom.Compiler.CodeDomProvider>, ICodeGenerator, <xref:System.CodeDom.Compiler.ICodeParser>e <xref:System.CodeDom.Compiler.ICodeCompiler>.</xref:System.CodeDom.Compiler.ICodeCompiler> </xref:System.CodeDom.Compiler.ICodeParser> </xref:System.CodeDom.Compiler.CodeDomProvider> Nel [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)], <xref:System.CodeDom.Compiler.CodeDomProvider.CreateGenerator%2A>, <xref:System.CodeDom.Compiler.CodeDomProvider.CreateParser%2A>, e <xref:System.CodeDom.Compiler.CodeDomProvider.CreateCompiler%2A>i metodi sono obsoleti e i metodi di ICodeGenerator e <xref:System.CodeDom.Compiler.ICodeCompiler>sono direttamente disponibili nella <xref:System.CodeDom.Compiler.CodeDomProvider>classe.</xref:System.CodeDom.Compiler.CodeDomProvider> </xref:System.CodeDom.Compiler.ICodeCompiler> </xref:System.CodeDom.Compiler.CodeDomProvider.CreateCompiler%2A> </xref:System.CodeDom.Compiler.CodeDomProvider.CreateParser%2A> </xref:System.CodeDom.Compiler.CodeDomProvider.CreateGenerator%2A> È necessario eseguire l&quot;override di tali metodi nell&quot;implementazione del provider di codice e non chiamare i metodi di base.       Gli sviluppatori dei compilatori possono implementare questa interfaccia per consentire agli utenti di generare dinamicamente codice in una determinata lingua. Può essere utilizzato per vari scopi, ad esempio la creazione di procedure guidate per la generazione di codice, creazione di assembly dinamici con contenuto che è possibile eseguire il debug e per i documenti basati su modelli con un codice incorporato, ad esempio ASP.NET.       Un&quot;implementazione di ICodeGenerator viene in genere ottenuta tramite una chiamata al <xref:System.CodeDom.Compiler.CodeDomProvider.CreateGenerator%2A>metodo <xref:System.CodeDom.Compiler.CodeDomProvider>.</xref:System.CodeDom.Compiler.CodeDomProvider> </xref:System.CodeDom.Compiler.CodeDomProvider.CreateGenerator%2A>"
   syntax:
     content: public interface ICodeGenerator
   implements: []
@@ -39,17 +39,17 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Creates an escaped identifier for the specified value."
-  remarks: "CreateEscapedIdentifier tests whether the identifier conflicts with reserved or language keywords, and if so, returns an equivalent name with language-specific escape code formatting. This is referred to an escaped identifier. The escaped identifier will contain the same `value` but will have escape code formatting added to differentiate the identifier from the keyword. Two implementation examples are preceding the `value` with &quot;@&quot; or bracketing the `value` with &quot;[&quot; and &quot;]&quot;."
+  summary: "Crea un identificatore di escape per il valore specificato."
+  remarks: "CreateEscapedIdentifier verifica se l&quot;identificatore in conflitto con riservate o parole chiave del linguaggio e in caso affermativo, restituisce un nome equivalente con la formattazione del codice di escape specifiche della lingua. Si fa riferimento a un carattere di escape. Il carattere di escape contiene lo stesso `value` ma avrà escape la formattazione del codice per contraddistinguere l&quot;identificatore dalla parola chiave. Nei due esempi di implementazione di `value` con &quot;@&quot; o racchiuso tra parentesi quadre di `value` con &quot;[&quot; e &quot;]&quot;."
   syntax:
     content: public string CreateEscapedIdentifier (string value);
     parameters:
     - id: value
       type: System.String
-      description: "The string to create an escaped identifier for."
+      description: "La stringa per creare un identificatore di escape."
     return:
       type: System.String
-      description: "The escaped identifier for the value."
+      description: "Identificatore per il valore di escape."
   overload: System.CodeDom.Compiler.ICodeGenerator.CreateEscapedIdentifier*
   exceptions: []
   platform:
@@ -66,17 +66,17 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Creates a valid identifier for the specified value."
-  remarks: "CreateValidIdentifier tests whether the identifier conflicts with reserved or language keywords, and returns a valid identifier name that does not conflict. The returned identifier will contain the same `value` but, if it conflicts with reserved or language keywords, will have escape code formatting added to differentiate the identifier from the keyword. Typically, if the value needs modification, value is returned preceded by an underscore &quot;_&quot;."
+  summary: "Crea un identificatore valido per il valore specificato."
+  remarks: "Test CreateValidIdentifier se l&quot;identificatore è in conflitto con riservate o parole chiave del linguaggio e restituisce un nome di identificatore valido non è in conflitto. L&quot;identificatore restituito contiene lo stesso `value` ma, se è in conflitto con riservate o parole chiave del linguaggio, sarà necessario formattazione codice di escape che contraddistingue l&quot;identificatore dalla parola chiave. In genere, se il valore deve essere modificato, viene restituito preceduto da un carattere di sottolineatura &quot;_&quot;."
   syntax:
     content: public string CreateValidIdentifier (string value);
     parameters:
     - id: value
       type: System.String
-      description: "The string to generate a valid identifier for."
+      description: "La stringa per generare un identificatore valido."
     return:
       type: System.String
-      description: "A valid identifier for the specified value."
+      description: "Un identificatore valido per il valore specificato."
   overload: System.CodeDom.Compiler.ICodeGenerator.CreateValidIdentifier*
   exceptions: []
   platform:
@@ -93,19 +93,19 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Generates code for the specified Code Document Object Model (CodeDOM) compilation unit and outputs it to the specified text writer using the specified options."
+  summary: "Genera codice per l&quot;unità di compilazione di Code Document Object Model (CodeDOM) specificato e lo restituisce al writer di testo specificato utilizzando le opzioni specificate."
   syntax:
     content: public void GenerateCodeFromCompileUnit (System.CodeDom.CodeCompileUnit e, System.IO.TextWriter w, System.CodeDom.Compiler.CodeGeneratorOptions o);
     parameters:
     - id: e
       type: System.CodeDom.CodeCompileUnit
-      description: "A <xref href=&quot;System.CodeDom.CodeCompileUnit&quot;></xref> to generate code for."
+      description: "Oggetto <xref href=&quot;System.CodeDom.CodeCompileUnit&quot;> </xref> a generare il codice."
     - id: w
       type: System.IO.TextWriter
-      description: "The <xref:System.IO.TextWriter> to output code to."
+      description: "Il <xref:System.IO.TextWriter>al codice di output per.</xref:System.IO.TextWriter>"
     - id: o
       type: System.CodeDom.Compiler.CodeGeneratorOptions
-      description: "A <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;></xref> that indicates the options to use for generating code."
+      description: "Oggetto <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;> </xref> che indica le opzioni da utilizzare per la generazione di codice."
   overload: System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromCompileUnit*
   exceptions: []
   platform:
@@ -122,19 +122,19 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Generates code for the specified Code Document Object Model (CodeDOM) expression and outputs it to the specified text writer."
+  summary: "Genera codice per l&quot;espressione Code Document Object Model (CodeDOM) specificata e lo restituisce nel writer di testo specificato."
   syntax:
     content: public void GenerateCodeFromExpression (System.CodeDom.CodeExpression e, System.IO.TextWriter w, System.CodeDom.Compiler.CodeGeneratorOptions o);
     parameters:
     - id: e
       type: System.CodeDom.CodeExpression
-      description: "A <xref href=&quot;System.CodeDom.CodeExpression&quot;></xref> that indicates the expression to generate code for."
+      description: "Oggetto <xref href=&quot;System.CodeDom.CodeExpression&quot;> </xref> che indica l&quot;espressione a generare il codice."
     - id: w
       type: System.IO.TextWriter
-      description: "The <xref:System.IO.TextWriter> to output code to."
+      description: "Il <xref:System.IO.TextWriter>al codice di output per.</xref:System.IO.TextWriter>"
     - id: o
       type: System.CodeDom.Compiler.CodeGeneratorOptions
-      description: "A <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;></xref> that indicates the options to use for generating code."
+      description: "Oggetto <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;> </xref> che indica le opzioni da utilizzare per la generazione di codice."
   overload: System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromExpression*
   exceptions: []
   platform:
@@ -151,19 +151,19 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Generates code for the specified Code Document Object Model (CodeDOM) namespace and outputs it to the specified text writer using the specified options."
+  summary: "Genera codice per lo spazio dei nomi di Code Document Object Model (CodeDOM) specificato e lo restituisce al writer di testo specificato utilizzando le opzioni specificate."
   syntax:
     content: public void GenerateCodeFromNamespace (System.CodeDom.CodeNamespace e, System.IO.TextWriter w, System.CodeDom.Compiler.CodeGeneratorOptions o);
     parameters:
     - id: e
       type: System.CodeDom.CodeNamespace
-      description: "A <xref href=&quot;System.CodeDom.CodeNamespace&quot;></xref> that indicates the namespace to generate code for."
+      description: "Oggetto <xref href=&quot;System.CodeDom.CodeNamespace&quot;> </xref> che indica lo spazio dei nomi per generare codice per."
     - id: w
       type: System.IO.TextWriter
-      description: "The <xref:System.IO.TextWriter> to output code to."
+      description: "Il <xref:System.IO.TextWriter>al codice di output per.</xref:System.IO.TextWriter>"
     - id: o
       type: System.CodeDom.Compiler.CodeGeneratorOptions
-      description: "A <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;></xref> that indicates the options to use for generating code."
+      description: "Oggetto <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;> </xref> che indica le opzioni da utilizzare per la generazione di codice."
   overload: System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromNamespace*
   exceptions: []
   platform:
@@ -180,19 +180,19 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Generates code for the specified Code Document Object Model (CodeDOM) statement and outputs it to the specified text writer using the specified options."
+  summary: "Genera codice per l&quot;istruzione Code Document Object Model (CodeDOM) specificato e lo restituisce al writer di testo specificato utilizzando le opzioni specificate."
   syntax:
     content: public void GenerateCodeFromStatement (System.CodeDom.CodeStatement e, System.IO.TextWriter w, System.CodeDom.Compiler.CodeGeneratorOptions o);
     parameters:
     - id: e
       type: System.CodeDom.CodeStatement
-      description: "A <xref href=&quot;System.CodeDom.CodeStatement&quot;></xref> containing the CodeDOM elements to translate."
+      description: "Oggetto <xref href=&quot;System.CodeDom.CodeStatement&quot;> </xref> contenente gli elementi CodeDOM da convertire."
     - id: w
       type: System.IO.TextWriter
-      description: "The <xref:System.IO.TextWriter> to output code to."
+      description: "Il <xref:System.IO.TextWriter>al codice di output per.</xref:System.IO.TextWriter>"
     - id: o
       type: System.CodeDom.Compiler.CodeGeneratorOptions
-      description: "A <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;></xref> that indicates the options to use for generating code."
+      description: "Oggetto <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;> </xref> che indica le opzioni da utilizzare per la generazione di codice."
   overload: System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromStatement*
   exceptions: []
   platform:
@@ -209,19 +209,19 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Generates code for the specified Code Document Object Model (CodeDOM) type declaration and outputs it to the specified text writer using the specified options."
+  summary: "Genera codice per la dichiarazione di tipo Code Document Object Model (CodeDOM) specificato e lo restituisce al writer di testo specificato utilizzando le opzioni specificate."
   syntax:
     content: public void GenerateCodeFromType (System.CodeDom.CodeTypeDeclaration e, System.IO.TextWriter w, System.CodeDom.Compiler.CodeGeneratorOptions o);
     parameters:
     - id: e
       type: System.CodeDom.CodeTypeDeclaration
-      description: "A <xref href=&quot;System.CodeDom.CodeTypeDeclaration&quot;></xref> that indicates the type to generate code for."
+      description: "Oggetto <xref href=&quot;System.CodeDom.CodeTypeDeclaration&quot;> </xref> che indica il tipo per generare codice per."
     - id: w
       type: System.IO.TextWriter
-      description: "The <xref:System.IO.TextWriter> to output code to."
+      description: "Il <xref:System.IO.TextWriter>al codice di output per.</xref:System.IO.TextWriter>"
     - id: o
       type: System.CodeDom.Compiler.CodeGeneratorOptions
-      description: "A <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;></xref> that indicates the options to use for generating code."
+      description: "Oggetto <xref href=&quot;System.CodeDom.Compiler.CodeGeneratorOptions&quot;> </xref> che indica le opzioni da utilizzare per la generazione di codice."
   overload: System.CodeDom.Compiler.ICodeGenerator.GenerateCodeFromType*
   exceptions: []
   platform:
@@ -238,16 +238,16 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Gets the type indicated by the specified <xref href=&quot;System.CodeDom.CodeTypeReference&quot;></xref>."
+  summary: "Ottiene il tipo indicato dall&quot;oggetto specificato <xref href=&quot;System.CodeDom.CodeTypeReference&quot;> </xref>."
   syntax:
     content: public string GetTypeOutput (System.CodeDom.CodeTypeReference type);
     parameters:
     - id: type
       type: System.CodeDom.CodeTypeReference
-      description: "A <xref href=&quot;System.CodeDom.CodeTypeReference&quot;></xref> that indicates the type to return."
+      description: "Oggetto <xref href=&quot;System.CodeDom.CodeTypeReference&quot;> </xref> che indica il tipo da restituire."
     return:
       type: System.String
-      description: "A text representation of the specified type for the language this code generator is designed to generate code in. For example, in Visual Basic, passing in type System.Int32 will return &quot;Integer&quot;."
+      description: "Rappresentazione testo del tipo specificato per il linguaggio che è progettato questo generatore di codice per generare il codice. In Visual Basic, ad esempio, il passaggio di tipo System. Int32 restituirà &quot;Integer&quot;."
   overload: System.CodeDom.Compiler.ICodeGenerator.GetTypeOutput*
   exceptions: []
   platform:
@@ -264,17 +264,17 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Gets a value that indicates whether the specified value is a valid identifier for the current language."
-  remarks: "This method tests whether an identifier is valid. When implementing IsValidIdentifier in a derived class, design the method to test the value passed to it, and return `true` only if the value fits the rules of the language and does not conflict with a keyword."
+  summary: "Ottiene un valore che indica se il valore specificato è un identificatore valido per la lingua corrente."
+  remarks: "Questo metodo verifica se un identificatore è valido. Quando si implementa IsValidIdentifier in una classe derivata, progettare il metodo per verificare il valore passato e restituire `true` solo se il valore conforme alle regole del linguaggio e non è in conflitto con una parola chiave."
   syntax:
     content: public bool IsValidIdentifier (string value);
     parameters:
     - id: value
       type: System.String
-      description: "The value to test for being a valid identifier."
+      description: "Valore da testare per essere un identificatore valido."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <code>value</code> parameter is a valid identifier; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il <code> value </code> parametro è un identificatore valido; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.CodeDom.Compiler.ICodeGenerator.IsValidIdentifier*
   exceptions: []
   platform:
@@ -291,17 +291,17 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Gets a value indicating whether the generator provides support for the language features represented by the specified <xref href=&quot;System.CodeDom.Compiler.GeneratorSupport&quot;></xref> object."
-  remarks: "This method can be called with a number of <xref:System.CodeDom.Compiler.GeneratorSupport> flags at once to test for a set of capabilities by joining a set of appropriate capability flags together with a binary &quot;Or&quot; operator (&#124;)."
+  summary: "Ottiene un valore che indica se il generatore fornisce supporto per le funzionalità del linguaggio rappresentate dall&quot;oggetto <xref href=&quot;System.CodeDom.Compiler.GeneratorSupport&quot;> </xref> oggetto."
+  remarks: "Questo metodo può essere chiamato con un numero di <xref:System.CodeDom.Compiler.GeneratorSupport>flag per verificare un set di funzionalità creando un join di un set di flag di capacità appropriata insieme a un file binario operatore &quot;Or&quot; (|).</xref:System.CodeDom.Compiler.GeneratorSupport>"
   syntax:
     content: public bool Supports (System.CodeDom.Compiler.GeneratorSupport supports);
     parameters:
     - id: supports
       type: System.CodeDom.Compiler.GeneratorSupport
-      description: "The capabilities to test the generator for."
+      description: "Le funzionalità per il generatore di test."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified capabilities are supported; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se sono supportate le funzionalità specificate. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.CodeDom.Compiler.ICodeGenerator.Supports*
   exceptions: []
   platform:
@@ -318,19 +318,19 @@ items:
   assemblies:
   - System
   namespace: System.CodeDom.Compiler
-  summary: "Throws an exception if the specified value is not a valid identifier."
-  remarks: "Rather than returning a value, this method throws an exception if the specified identifier is not valid according to the method implementation. Typically, the exception is an <xref:System.ArgumentException>. This method enables a code generator that implements this method to produce an informative error message based upon the value of an invalid identifier."
+  summary: "Genera un&quot;eccezione se il valore specificato non è un identificatore valido."
+  remarks: "Anziché restituire un valore, questo metodo genera un&quot;eccezione se l&quot;identificatore specificato non è valido in base all&quot;implementazione del metodo. In genere, l&quot;eccezione è un <xref:System.ArgumentException>.</xref:System.ArgumentException> Questo metodo consente a un generatore di codice che implementa questo metodo per generare un messaggio di errore informativo in base al valore di un identificatore non valido."
   syntax:
     content: public void ValidateIdentifier (string value);
     parameters:
     - id: value
       type: System.String
-      description: "The identifier to validate."
+      description: "Identificatore da convalidare."
   overload: System.CodeDom.Compiler.ICodeGenerator.ValidateIdentifier*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The identifier is not valid."
+    description: "L&quot;identificatore non è valido."
   platform:
   - net462
 references:

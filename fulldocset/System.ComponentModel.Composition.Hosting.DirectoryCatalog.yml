@@ -32,8 +32,8 @@ items:
   nameWithType: DirectoryCatalog
   fullName: System.ComponentModel.Composition.Hosting.DirectoryCatalog
   type: Class
-  summary: "Discovers attributed parts in the assemblies in a specified directory."
-  remarks: "You can use a DirectoryCatalog object to parse the contents of a designated directory. Any attributed parts contained in dynamic link library (DLL) files are extracted and made available through the catalog.To restrict parsing to specific DLLs, you can specify a search pattern by using the same syntax as the <xref:System.IO.Directory.GetFiles%2A?displayProperty=fullName> method.      > [!WARNING] >  The designated directory should not allow access to non-administrators. For example, using a folder that contains temporary Internet files could create vulnerabilities in your application.       This type implements the <xref:System.IDisposable> interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its <xref:System.IDisposable.Dispose%2A> method in a `try`/`catch` block. To dispose of it indirectly, use a language construct such as `using` (in C#) or `Using` (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the <xref:System.IDisposable> interface topic."
+  summary: "Individua le parti con Attribute negli assembly in una directory specificata."
+  remarks: "È possibile utilizzare un oggetto DirectoryCatalog per analizzare il contenuto di una directory designata. Le parti con attributi contenute nei file di libreria (DLL) di collegamento dinamico vengono estratti e resi disponibili tramite il catalogo. Per limitare l&quot;analisi a specifiche DLL, è possibile specificare un criterio di ricerca utilizzando la stessa sintassi di <xref:System.IO.Directory.GetFiles%2A?displayProperty=fullName>metodo.</xref:System.IO.Directory.GetFiles%2A?displayProperty=fullName>      > [!WARNING] > Directory designata non deve consentire l&quot;accesso a utenti non amministratori. Ad esempio, utilizzando una cartella contenente file temporanei Internet è stato possibile creare vulnerabilità nell&quot;applicazione.       Questo tipo implementa il <xref:System.IDisposable>interfaccia.</xref:System.IDisposable> Dopo aver utilizzando il tipo, è necessario eliminarlo di esso direttamente o indirettamente. Per eliminare direttamente il tipo, chiamare il relativo <xref:System.IDisposable.Dispose%2A>metodo in un `try` / `catch` blocco.</xref:System.IDisposable.Dispose%2A> Per eliminarlo indirettamente, utilizzare un costrutto di linguaggio, ad esempio `using` (in c#) o `Using` (in Visual Basic). Per ulteriori informazioni, vedere la sezione &quot;Utilizzo di oggetti che implementano IDisposable&quot; nel <xref:System.IDisposable>argomento relativo all&quot;interfaccia.</xref:System.IDisposable>"
   example:
   - "The following example creates a DirectoryCatalog object that searches the directory the application runs from for parts. It uses a simple import to test the catalog. To fulfill this import, a DLL in the directory must have a matching export, as illustrated in the second code block.  \n  \n [!code-cs[Composition.DirectoryCatalog#1](~/add/codesnippet/csharp/consoleapplication7/program.cs#1)]\n [!code-vb[Composition.DirectoryCatalog#1](~/add/codesnippet/visualbasic/consoleapplication8/module1.vb#1)]  \n  \n To create the matching export, the following code must be in a DLL file. To create a DLL file in Visual Studio, add a new project of the type \"Class Library\" to your solution, and place this code in it.  \n  \n [!code-cs[Composition.DirectoryCatalog#2](~/add/codesnippet/csharp/classlibrary1/class1.cs#2)]\n [!code-vb[Composition.DirectoryCatalog#2](~/add/codesnippet/visualbasic/classlibrary1/class1.vb#2)]"
   syntax:
@@ -65,30 +65,30 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> class by using <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects based on all the DLL files in the specified directory path."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> classe usando <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> gli oggetti basati su tutti i file DLL nel percorso di directory specificato."
   syntax:
     content: public DirectoryCatalog (string path);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the directory to scan for assemblies to add to the catalog.       The path must be absolute or relative to <xref:System.AppDomain.BaseDirectory*>."
+      description: "Il percorso della directory in cui cercare gli assembly da aggiungere al catalogo.       Il percorso deve essere assoluto o relativo rispetto alla <xref:System.AppDomain.BaseDirectory*>.</xref:System.AppDomain.BaseDirectory*>"
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid (for example, it is on an unmapped drive)."
+    description: "Specificato <code> path </code> non è valido (ad esempio, si trova in un&quot;unità non mappata)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission."
+    description: "Il chiamante non dispone dell&quot;autorizzazione richiesta."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more implementation-specific invalid characters."
+    description: "<code>path</code>è una stringa di lunghezza zero, contiene solo spazi vuoti o contiene uno o più caratteri non validi specifico dell&quot;implementazione."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based computers, paths must be less than 248 characters and file names must be less than 260 characters."
+    description: "Specificato <code> path </code>, nome del file o entrambi superano la lunghezza massima definita dal sistema. Ad esempio, nei computer basati su Windows i percorsi devono contenere meno di 248 caratteri e i nomi di file devono essere meno di 260 caratteri."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -103,33 +103,33 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> class by using <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects based on all the DLL files in the specified directory path with the specified source for parts."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> classe usando <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> oggetti basati su tutti i file DLL nel percorso di directory specificato con l&quot;origine specificata per le parti."
   syntax:
     content: public DirectoryCatalog (string path, System.ComponentModel.Composition.Primitives.ICompositionElement definitionOrigin);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the directory to scan for assemblies to add to the catalog.       The path must be absolute or relative to <xref:System.AppDomain.BaseDirectory*>."
+      description: "Il percorso della directory in cui cercare gli assembly da aggiungere al catalogo.       Il percorso deve essere assoluto o relativo rispetto alla <xref:System.AppDomain.BaseDirectory*>.</xref:System.AppDomain.BaseDirectory*>"
     - id: definitionOrigin
       type: System.ComponentModel.Composition.Primitives.ICompositionElement
-      description: "The element used by diagnostics to identify the source for parts."
+      description: "L&quot;elemento utilizzato dagli strumenti di diagnostica per identificare l&quot;origine per le parti."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid (for example, it is on an unmapped drive)."
+    description: "Specificato <code> path </code> non è valido (ad esempio, si trova in un&quot;unità non mappata)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission."
+    description: "Il chiamante non dispone dell&quot;autorizzazione richiesta."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more implementation-specific invalid characters."
+    description: "<code>path</code>è una stringa di lunghezza zero, contiene solo spazi vuoti o contiene uno o più caratteri non validi specifico dell&quot;implementazione."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based computers, paths must be less than 248 characters and file names must be less than 260 characters."
+    description: "Specificato <code> path </code>, nome del file o entrambi superano la lunghezza massima definita dal sistema. Ad esempio, nei computer basati su Windows i percorsi devono contenere meno di 248 caratteri e i nomi di file devono essere meno di 260 caratteri."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.Reflection.ReflectionContext)
@@ -144,33 +144,33 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> class by using <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects based on all the DLL files in the specified directory path, in the specified reflection context."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> classe usando <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> gli oggetti basati su tutti i file DLL nel percorso di directory specificata, nel contesto di reflection specificato."
   syntax:
     content: public DirectoryCatalog (string path, System.Reflection.ReflectionContext reflectionContext);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the directory to scan for assemblies to add to the catalog.       The path must be absolute or relative to <xref:System.AppDomain.BaseDirectory*>."
+      description: "Il percorso della directory in cui cercare gli assembly da aggiungere al catalogo.       Il percorso deve essere assoluto o relativo rispetto alla <xref:System.AppDomain.BaseDirectory*>.</xref:System.AppDomain.BaseDirectory*>"
     - id: reflectionContext
       type: System.Reflection.ReflectionContext
-      description: "The context used to create parts."
+      description: "Il contesto utilizzato per creare le parti."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid (for example, it is on an unmapped drive)."
+    description: "Specificato <code> path </code> non è valido (ad esempio, si trova in un&quot;unità non mappata)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission."
+    description: "Il chiamante non dispone dell&quot;autorizzazione richiesta."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more implementation-specific invalid characters."
+    description: "<code>path</code>è una stringa di lunghezza zero, contiene solo spazi vuoti o contiene uno o più caratteri non validi specifico dell&quot;implementazione."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based computers, paths must be less than 248 characters and file names must be less than 260 characters."
+    description: "Specificato <code> path </code>, nome del file o entrambi superano la lunghezza massima definita dal sistema. Ad esempio, nei computer basati su Windows i percorsi devono contenere meno di 248 caratteri e i nomi di file devono essere meno di 260 caratteri."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.String)
@@ -185,33 +185,33 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> class by using <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects that match a specified search pattern in the specified directory path."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> classe usando <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> gli oggetti che soddisfano un criterio di ricerca specificato nel percorso di directory specificato."
   syntax:
     content: public DirectoryCatalog (string path, string searchPattern);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the directory to scan for assemblies to add to the catalog.       The path must be absolute or relative to <xref:System.AppDomain.BaseDirectory*>."
+      description: "Il percorso della directory in cui cercare gli assembly da aggiungere al catalogo.       Il percorso deve essere assoluto o relativo rispetto alla <xref:System.AppDomain.BaseDirectory*>.</xref:System.AppDomain.BaseDirectory*>"
     - id: searchPattern
       type: System.String
-      description: "The search string. The format of the string should be the same as specified for the <xref:System.IO.Directory.GetFiles*> method."
+      description: "La stringa di ricerca. Il formato della stringa deve essere identico a quello specificato per il <xref:System.IO.Directory.GetFiles*>metodo.</xref:System.IO.Directory.GetFiles*>"
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid (for example, it is on an unmapped drive)."
+    description: "Specificato <code> path </code> non è valido (ad esempio, si trova in un&quot;unità non mappata)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> or <code>searchPattern</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>or <code>searchPattern</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission."
+    description: "Il chiamante non dispone dell&quot;autorizzazione richiesta."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more implementation-specific invalid characters.       -or-       <code>searchPattern</code> does not contain a valid pattern."
+    description: "<code>path</code>è una stringa di lunghezza zero, contiene solo spazi vuoti o contiene uno o più caratteri non validi specifico dell&quot;implementazione.       - oppure - <code>searchPattern</code> non contiene un modello valido."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based computers, paths must be less than 248 characters and file names must be less than 260 characters."
+    description: "Specificato <code> path </code>, nome del file o entrambi superano la lunghezza massima definita dal sistema. Ad esempio, nei computer basati su Windows i percorsi devono contenere meno di 248 caratteri e i nomi di file devono essere meno di 260 caratteri."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.Reflection.ReflectionContext,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -226,36 +226,36 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> class by  using <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects based on all the DLL files in the specified directory path, in the specified reflection context."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> classe usando <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> gli oggetti basati su tutti i file DLL nel percorso di directory specificata, nel contesto di reflection specificato."
   syntax:
     content: public DirectoryCatalog (string path, System.Reflection.ReflectionContext reflectionContext, System.ComponentModel.Composition.Primitives.ICompositionElement definitionOrigin);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the directory to scan for assemblies to add to the catalog.       The path must be absolute or relative to <xref:System.AppDomain.BaseDirectory*>."
+      description: "Il percorso della directory in cui cercare gli assembly da aggiungere al catalogo.       Il percorso deve essere assoluto o relativo rispetto alla <xref:System.AppDomain.BaseDirectory*>.</xref:System.AppDomain.BaseDirectory*>"
     - id: reflectionContext
       type: System.Reflection.ReflectionContext
-      description: "The context used to create parts."
+      description: "Il contesto utilizzato per creare le parti."
     - id: definitionOrigin
       type: System.ComponentModel.Composition.Primitives.ICompositionElement
-      description: "The element used by diagnostics to identify the source for parts."
+      description: "L&quot;elemento utilizzato dagli strumenti di diagnostica per identificare l&quot;origine per le parti."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid (for example, it is on an unmapped drive)."
+    description: "Specificato <code> path </code> non è valido (ad esempio, si trova in un&quot;unità non mappata)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission."
+    description: "Il chiamante non dispone dell&quot;autorizzazione richiesta."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more implementation-specific invalid characters."
+    description: "<code>path</code>è una stringa di lunghezza zero, contiene solo spazi vuoti o contiene uno o più caratteri non validi specifico dell&quot;implementazione."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based computers, paths must be less than 248 characters and file names must be less than 260 characters."
+    description: "Specificato <code> path </code>, nome del file o entrambi superano la lunghezza massima definita dal sistema. Ad esempio, nei computer basati su Windows i percorsi devono contenere meno di 248 caratteri e i nomi di file devono essere meno di 260 caratteri."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.String,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -270,36 +270,36 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> class by using <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects based on the specified search pattern in the specified directory path with the specified source for parts."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> classe usando <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> oggetti in base al criterio di ricerca specificato nel percorso della directory specificata con l&quot;origine specificata per le parti."
   syntax:
     content: public DirectoryCatalog (string path, string searchPattern, System.ComponentModel.Composition.Primitives.ICompositionElement definitionOrigin);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the directory to scan for assemblies to add to the catalog.       The path must be absolute or relative to <xref:System.AppDomain.BaseDirectory*>."
+      description: "Il percorso della directory in cui cercare gli assembly da aggiungere al catalogo.       Il percorso deve essere assoluto o relativo rispetto alla <xref:System.AppDomain.BaseDirectory*>.</xref:System.AppDomain.BaseDirectory*>"
     - id: searchPattern
       type: System.String
-      description: "The search string. The format of the string should be the same as specified for the <xref:System.IO.Directory.GetFiles*> method."
+      description: "La stringa di ricerca. Il formato della stringa deve essere identico a quello specificato per il <xref:System.IO.Directory.GetFiles*>metodo.</xref:System.IO.Directory.GetFiles*>"
     - id: definitionOrigin
       type: System.ComponentModel.Composition.Primitives.ICompositionElement
-      description: "The element used by diagnostics to identify the source for parts."
+      description: "L&quot;elemento utilizzato dagli strumenti di diagnostica per identificare l&quot;origine per le parti."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid (for example, it is on an unmapped drive)."
+    description: "Specificato <code> path </code> non è valido (ad esempio, si trova in un&quot;unità non mappata)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> or <code>searchPattern</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>or <code>searchPattern</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission."
+    description: "Il chiamante non dispone dell&quot;autorizzazione richiesta."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more implementation-specific invalid characters.       -or-       <code>searchPattern</code> does not contain a valid pattern."
+    description: "<code>path</code>è una stringa di lunghezza zero, contiene solo spazi vuoti o contiene uno o più caratteri non validi specifico dell&quot;implementazione.       - oppure - <code>searchPattern</code> non contiene un modello valido."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based computers, paths must be less than 248 characters and file names must be less than 260 characters."
+    description: "Specificato <code> path </code>, nome del file o entrambi superano la lunghezza massima definita dal sistema. Ad esempio, nei computer basati su Windows i percorsi devono contenere meno di 248 caratteri e i nomi di file devono essere meno di 260 caratteri."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.String,System.Reflection.ReflectionContext)
@@ -314,36 +314,36 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> class by using <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects based on the specified search pattern in the specified directory path, using the specified reflection context."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> classe usando <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> oggetti in base al criterio di ricerca specificato nel percorso di directory specificata, utilizzando il contesto di reflection specificato."
   syntax:
     content: public DirectoryCatalog (string path, string searchPattern, System.Reflection.ReflectionContext reflectionContext);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the directory to scan for assemblies to add to the catalog.       The path must be absolute or relative to <xref:System.AppDomain.BaseDirectory*>."
+      description: "Il percorso della directory in cui cercare gli assembly da aggiungere al catalogo.       Il percorso deve essere assoluto o relativo rispetto alla <xref:System.AppDomain.BaseDirectory*>.</xref:System.AppDomain.BaseDirectory*>"
     - id: searchPattern
       type: System.String
-      description: "The search string. The format of the string should be the same as specified for the <xref:System.IO.Directory.GetFiles*> method."
+      description: "La stringa di ricerca. Il formato della stringa deve essere identico a quello specificato per il <xref:System.IO.Directory.GetFiles*>metodo.</xref:System.IO.Directory.GetFiles*>"
     - id: reflectionContext
       type: System.Reflection.ReflectionContext
-      description: "The context used to create parts."
+      description: "Il contesto utilizzato per creare le parti."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid (for example, it is on an unmapped drive)."
+    description: "Specificato <code> path </code> non è valido (ad esempio, si trova in un&quot;unità non mappata)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> or <code>searchPattern</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>or <code>searchPattern</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission."
+    description: "Il chiamante non dispone dell&quot;autorizzazione richiesta."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more implementation-specific invalid characters.       -or-       <code>searchPattern</code> does not contain a valid pattern."
+    description: "<code>path</code>è una stringa di lunghezza zero, contiene solo spazi vuoti o contiene uno o più caratteri non validi specifico dell&quot;implementazione.       - oppure - <code>searchPattern</code> non contiene un modello valido."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based computers, paths must be less than 248 characters and file names must be less than 260 characters."
+    description: "Specificato <code> path </code>, nome del file o entrambi superano la lunghezza massima definita dal sistema. Ad esempio, nei computer basati su Windows i percorsi devono contenere meno di 248 caratteri e i nomi di file devono essere meno di 260 caratteri."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor(System.String,System.String,System.Reflection.ReflectionContext,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -358,39 +358,39 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> class by using <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects based on the specified search pattern in the specified directory path, using the specified reflection context."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> classe usando <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> oggetti in base al criterio di ricerca specificato nel percorso di directory specificata, utilizzando il contesto di reflection specificato."
   syntax:
     content: public DirectoryCatalog (string path, string searchPattern, System.Reflection.ReflectionContext reflectionContext, System.ComponentModel.Composition.Primitives.ICompositionElement definitionOrigin);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the directory to scan for assemblies to add to the catalog.       The path must be absolute or relative to <xref:System.AppDomain.BaseDirectory*>."
+      description: "Il percorso della directory in cui cercare gli assembly da aggiungere al catalogo.       Il percorso deve essere assoluto o relativo rispetto alla <xref:System.AppDomain.BaseDirectory*>.</xref:System.AppDomain.BaseDirectory*>"
     - id: searchPattern
       type: System.String
-      description: "The search string. The format of the string should be the same as specified for the <xref:System.IO.Directory.GetFiles*> method."
+      description: "La stringa di ricerca. Il formato della stringa deve essere identico a quello specificato per il <xref:System.IO.Directory.GetFiles*>metodo.</xref:System.IO.Directory.GetFiles*>"
     - id: reflectionContext
       type: System.Reflection.ReflectionContext
-      description: "The context used to create parts."
+      description: "Il contesto utilizzato per creare le parti."
     - id: definitionOrigin
       type: System.ComponentModel.Composition.Primitives.ICompositionElement
-      description: "The element used by diagnostics to identify the source for parts."
+      description: "L&quot;elemento utilizzato dagli strumenti di diagnostica per identificare l&quot;origine per le parti."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.#ctor*
   exceptions:
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid (for example, it is on an unmapped drive)."
+    description: "Specificato <code> path </code> non è valido (ad esempio, si trova in un&quot;unità non mappata)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> or <code>searchPattern</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>or <code>searchPattern</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The caller does not have the required permission."
+    description: "Il chiamante non dispone dell&quot;autorizzazione richiesta."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>path</code> is a zero-length string, contains only white space, or contains one or more implementation-specific invalid characters.       -or-       <code>searchPattern</code> does not contain a valid pattern."
+    description: "<code>path</code>è una stringa di lunghezza zero, contiene solo spazi vuoti o contiene uno o più caratteri non validi specifico dell&quot;implementazione.       - oppure - <code>searchPattern</code> non contiene un modello valido."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified <code>path</code>, file name, or both exceed the system-defined maximum length. For example, on Windows-based computers, paths must be less than 248 characters and file names must be less than 260 characters."
+    description: "Specificato <code> path </code>, nome del file o entrambi superano la lunghezza massima definita dal sistema. Ad esempio, nei computer basati su Windows i percorsi devono contenere meno di 248 caratteri e i nomi di file devono essere meno di 260 caratteri."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.Changed
@@ -405,12 +405,12 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Occurs when the contents of the catalog has changed."
+  summary: "Si verifica quando è stato modificato il contenuto del catalogo."
   syntax:
     content: public event EventHandler<System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs> Changed;
     return:
       type: System.EventHandler{System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs}
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -426,12 +426,12 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Occurs when the catalog is changing."
+  summary: "Si verifica quando la modifica del catalogo."
   syntax:
     content: public event EventHandler<System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs> Changing;
     return:
       type: System.EventHandler{System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs}
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -447,13 +447,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> and optionally releases the managed resources."
+  summary: "Rilascia le risorse non gestite usate dal <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> e facoltativamente rilascia le risorse gestite."
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>per rilasciare le risorse gestite e non gestite. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> per rilasciare solo le risorse non gestite."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.Dispose*
   exceptions: []
   platform:
@@ -470,12 +470,12 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the translated absolute path observed by the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> object."
+  summary: "Ottiene il percorso assoluto convertito analizzato il <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> oggetto."
   syntax:
     content: public string FullPath { get; }
     return:
       type: System.String
-      description: "The translated absolute path observed by the catalog."
+      description: "Il percorso assoluto convertito osservato dal catalogo."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.FullPath*
   exceptions: []
   platform:
@@ -492,13 +492,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Returns an enumerator that iterates through the catalog."
+  summary: "Restituisce un enumeratore che scorre il catalogo."
   syntax:
     content: public override System.Collections.Generic.IEnumerator<System.ComponentModel.Composition.Primitives.ComposablePartDefinition> GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerator{System.ComponentModel.Composition.Primitives.ComposablePartDefinition}
-      description: "An enumerator that can be used to iterate through the catalog."
+      description: "Un enumeratore che può essere utilizzato per scorrere il catalogo."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.GetEnumerator*
   exceptions: []
   platform:
@@ -515,24 +515,24 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the export definitions that match the constraint expressed by the specified import definition."
+  summary: "Ottiene le definizioni di esportazione che corrispondano al vincolo espresso dalla definizione di importazione specificato."
   syntax:
     content: public override System.Collections.Generic.IEnumerable<Tuple<System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.ComponentModel.Composition.Primitives.ExportDefinition>> GetExports (System.ComponentModel.Composition.Primitives.ImportDefinition definition);
     parameters:
     - id: definition
       type: System.ComponentModel.Composition.Primitives.ImportDefinition
-      description: "The conditions of the <xref href=&quot;System.ComponentModel.Composition.Primitives.ExportDefinition&quot;></xref> objects to be returned."
+      description: "Le condizioni del <xref href=&quot;System.ComponentModel.Composition.Primitives.ExportDefinition&quot;> </xref> oggetti da restituire."
     return:
       type: System.Collections.Generic.IEnumerable{System.Tuple{System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.ComponentModel.Composition.Primitives.ExportDefinition}}
-      description: "A collection of objects that contain the <xref href=&quot;System.ComponentModel.Composition.Primitives.ExportDefinition&quot;></xref> objects and their associated <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects that match the constraint specified by <code>definition</code>."
+      description: "Una raccolta di oggetti che contengono il <xref href=&quot;System.ComponentModel.Composition.Primitives.ExportDefinition&quot;> </xref> oggetti e i relativi <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> gli oggetti che soddisfano il vincolo specificato da <code> definition </code>."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.GetExports*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> object has been disposed."
+    description: "Il <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> oggetto è stato eliminato."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>definition</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>definition</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.DirectoryCatalog.LoadedFiles
@@ -547,12 +547,12 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the collection of files currently loaded in the catalog."
+  summary: "Ottiene la raccolta di file attualmente caricati nel catalogo."
   syntax:
     content: public System.Collections.ObjectModel.ReadOnlyCollection<string> LoadedFiles { get; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.String}
-      description: "A collection of files currently loaded in the catalog."
+      description: "Una raccolta di file caricati nel catalogo."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.LoadedFiles*
   exceptions: []
   platform:
@@ -569,13 +569,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Raises the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog.Changed&quot;></xref> event."
+  summary: "Genera il <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog.Changed&quot;> </xref> evento."
   syntax:
     content: protected virtual void OnChanged (System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs e);
     parameters:
     - id: e
       type: System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs
-      description: "An object  that contains the event data."
+      description: "Oggetto che contiene i dati dell&quot;evento."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.OnChanged*
   exceptions: []
   platform:
@@ -592,13 +592,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Raises the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog.Changing&quot;></xref> event."
+  summary: "Genera il <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog.Changing&quot;> </xref> evento."
   syntax:
     content: protected virtual void OnChanging (System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs e);
     parameters:
     - id: e
       type: System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs
-      description: "An object  that contains the event data."
+      description: "Oggetto che contiene i dati dell&quot;evento."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.OnChanging*
   exceptions: []
   platform:
@@ -615,12 +615,12 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the path observed by the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> object."
+  summary: "Ottiene il percorso osservato dal <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> oggetto."
   syntax:
     content: public string Path { get; }
     return:
       type: System.String
-      description: "The path observed by the catalog."
+      description: "Il percorso osservato dal catalogo."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.Path*
   exceptions: []
   platform:
@@ -637,8 +637,8 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Refreshes the <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;></xref> objects with the latest files in the directory that match the search pattern."
-  remarks: "If files were added to the directory, they are also added to the catalog. If files were removed from the directory, they are also removed from the catalog. For files that have been removed, the assembly cannot be unloaded from the process, so <xref:System.ComponentModel.Composition.Primitives.ComposablePartDefinition> objects for those files will be removed only from the catalog."
+  summary: "Aggiorna il <xref href=&quot;System.ComponentModel.Composition.Primitives.ComposablePartDefinition&quot;> </xref> oggetti con i file più recenti nella directory che corrispondono al criterio di ricerca."
+  remarks: "Se i file sono stati aggiunti alla directory, vengono aggiunti al catalogo. Se i file sono stati rimossi dalla directory, vengono rimossi anche dal catalogo. Per i file che sono state rimosse, l&quot;assembly non può essere scaricato dal processo, pertanto <xref:System.ComponentModel.Composition.Primitives.ComposablePartDefinition>oggetti per tali file verranno rimossi solo dal catalogo.</xref:System.ComponentModel.Composition.Primitives.ComposablePartDefinition>"
   syntax:
     content: public void Refresh ();
     parameters: []
@@ -658,12 +658,12 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the search pattern that is passed into the constructor of the <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;></xref> object."
+  summary: "Ottiene il pattern di ricerca che viene passato al costruttore del <xref href=&quot;System.ComponentModel.Composition.Hosting.DirectoryCatalog&quot;> </xref> oggetto."
   syntax:
     content: public string SearchPattern { get; }
     return:
       type: System.String
-      description: "The search pattern the catalog uses to find files. The default is *.dll, which returns all DLL files."
+      description: "Il criterio di ricerca nel catalogo viene utilizzato per trovare i file. Il valore predefinito è *. dll, che restituisce tutti i file DLL."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.SearchPattern*
   exceptions: []
   platform:
@@ -681,13 +681,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the display name of the directory catalog."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.Composition.Hosting.DirectoryCatalog> instance is cast to an <xref:System.ComponentModel.Composition.Primitives.ICompositionElement> interface."
+  summary: "Ottiene il nome visualizzato del catalogo di directory."
+  remarks: "Questo membro è un&quot;implementazione esplicita dell&quot;interfaccia di un membro. E può essere utilizzato solo quando il <xref:System.ComponentModel.Composition.Hosting.DirectoryCatalog>esegue il cast dell&quot;istanza di un <xref:System.ComponentModel.Composition.Primitives.ICompositionElement>interfaccia.</xref:System.ComponentModel.Composition.Primitives.ICompositionElement> </xref:System.ComponentModel.Composition.Hosting.DirectoryCatalog>"
   syntax:
     content: string System.ComponentModel.Composition.Primitives.ICompositionElement.DisplayName { get; }
     return:
       type: System.String
-      description: "A string that contains a human-readable display name of the directory catalog."
+      description: "Stringa che contiene un nome leggibile del catalogo di directory."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.System#ComponentModel#Composition#Primitives#ICompositionElement#DisplayName*
   exceptions: []
   platform:
@@ -705,8 +705,8 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the composition element from which the directory catalog originated."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.Composition.Hosting.DirectoryCatalog> instance is cast to an <xref:System.ComponentModel.Composition.Primitives.ICompositionElement> interface."
+  summary: "Ottiene l&quot;elemento di composizione da cui proviene il catalogo di directory."
+  remarks: "Questo membro è un&quot;implementazione esplicita dell&quot;interfaccia di un membro. E può essere utilizzato solo quando il <xref:System.ComponentModel.Composition.Hosting.DirectoryCatalog>esegue il cast dell&quot;istanza di un <xref:System.ComponentModel.Composition.Primitives.ICompositionElement>interfaccia.</xref:System.ComponentModel.Composition.Primitives.ICompositionElement> </xref:System.ComponentModel.Composition.Hosting.DirectoryCatalog>"
   syntax:
     content: System.ComponentModel.Composition.Primitives.ICompositionElement System.ComponentModel.Composition.Primitives.ICompositionElement.Origin { get; }
     return:
@@ -728,13 +728,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets a string representation of the directory catalog."
+  summary: "Ottiene una rappresentazione di stringa del catalogo di directory."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A string representation of the catalog."
+      description: "Rappresentazione di stringa del catalogo."
   overload: System.ComponentModel.Composition.Hosting.DirectoryCatalog.ToString*
   exceptions: []
   platform:

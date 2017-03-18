@@ -21,8 +21,8 @@ items:
   nameWithType: DesignerTransaction
   fullName: System.ComponentModel.Design.DesignerTransaction
   type: Class
-  summary: "Provides a way to group a series of design-time actions to improve performance and enable most types of changes to be undone."
-  remarks: "Transactions can track actions that can be undone later. Changes made during a transaction can be reversed by canceling a transaction, which automatically attempts to reverse each change by setting each changed property to its pre-change value. Transactions can also improve performance during a series of operations by deferring updates to the display until the completion of the transaction.       When a transaction is in progress, some components defer their processing until the transaction has completed by listening to the <xref:System.ComponentModel.Design.IDesignerHost.TransactionOpening> and <xref:System.ComponentModel.Design.IDesignerHost.TransactionClosed> events. The Properties window, for example, does not update its display after a transaction has opened until the transaction has closed.       To use transactions for reversible or multiple operations, have your designer create a DesignerTransaction for each operation or series of operations which should be reversible. Be careful not to perform actions outside the transactions that might prevent a sequence of undo events from completing successfully.       You can obtain a new DesignerTransaction by calling the <xref:System.ComponentModel.Design.IDesignerHost.CreateTransaction%2A> method of an <xref:System.ComponentModel.Design.IDesignerHost>. Be sure to obtain each DesignerTransaction from the active <xref:System.ComponentModel.Design.IDesignerHost> in order to correctly integrate with the designer transaction processing mechanism, rather than creating a new DesignerTransaction directly.       To perform an action within a transaction, you must first create a transaction. Then you must call the <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanging%2A> method before each change or set of changes occurs, and the <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanged%2A> method after each change or set of changes occur. Finally, complete and close the transaction by calling the <xref:System.ComponentModel.Design.DesignerTransaction.Commit%2A> method.      > [!NOTE] >  When making changes to property values, use the <xref:System.ComponentModel.PropertyDescriptor.SetValue%2A> method of a <xref:System.ComponentModel.PropertyDescriptor>, which calls the component change methods of the <xref:System.ComponentModel.Design.IComponentChangeService> and creates a DesignerTransaction representing the change automatically.       To perform a transaction, complete the following steps:      1.  Call <xref:System.ComponentModel.Design.IDesignerHost.CreateTransaction%2A> to obtain a DesignerTransaction that can be used to control the transaction.      2.  Within a `try` block, for each action that you want to track with a DesignerTransaction, call the <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanging%2A> method, make the change or changes, then call the <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanged%2A> method to signal that the change or changes have been made.      3.  To complete the transaction, call <xref:System.ComponentModel.Design.DesignerTransaction.Commit%2A> from within a `finally` block.       In C#, you can use the `using` statement rather than a `try/finally` block, such as in the following example.      ```   using (host.CreateTransaction() {   // Insert your code here.   }   ```       To cancel and attempt to roll back a transaction before it has been committed, call the <xref:System.ComponentModel.Design.DesignerTransaction.Cancel%2A> method. When the <xref:System.ComponentModel.Design.DesignerTransaction.Cancel%2A> method is invoked, the actions tracked by the DesignerTransaction are reversed to attempt to roll back the changes. To undo actions that occurred as part of earlier transactions, you must use the undo command provided by the development environment."
+  summary: "Fornisce un modo per raggruppare una serie di azioni in fase di progettazione per migliorare le prestazioni e consentire la maggior parte dei tipi di modifiche da annullare."
+  remarks: "Le transazioni possono tenere traccia delle azioni che possono essere annullate in un secondo momento. Le modifiche apportate durante una transazione possono essere annullate annullando una transazione, che tenterà automaticamente di invertire ogni modifica impostando tutte le proprietà modificate al valore prima della modifica. Le transazioni possono inoltre migliorare le prestazioni durante una serie di operazioni rinviando gli aggiornamenti della visualizzazione fino al completamento della transazione.       Quando una transazione è in corso, alcuni componenti viene rinviata fino al completamento della transazione in attesa di elaborazione di <xref:System.ComponentModel.Design.IDesignerHost.TransactionOpening>e <xref:System.ComponentModel.Design.IDesignerHost.TransactionClosed>eventi.</xref:System.ComponentModel.Design.IDesignerHost.TransactionClosed> </xref:System.ComponentModel.Design.IDesignerHost.TransactionOpening> Finestra Proprietà, ad esempio, non aggiornare la visualizzazione dopo l&quot;apertura di una transazione fino a quando la transazione è chiuso.       Per utilizzare le transazioni per operazioni reversibili o più, è necessario creare un DesignerTransaction per ogni operazione o una serie di operazioni che devono essere reversibile. Prestare attenzione a non eseguire operazioni all&quot;esterno le transazioni che potrebbero impedire il completamento una sequenza di eventi di annullamento.       È possibile ottenere un nuovo DesignerTransaction chiamando il <xref:System.ComponentModel.Design.IDesignerHost.CreateTransaction%2A>metodo di un <xref:System.ComponentModel.Design.IDesignerHost>.</xref:System.ComponentModel.Design.IDesignerHost> </xref:System.ComponentModel.Design.IDesignerHost.CreateTransaction%2A> Assicurarsi di ottenere ogni DesignerTransaction dalla scheda attiva <xref:System.ComponentModel.Design.IDesignerHost>per garantire una corretta integrazione con la transazione della finestra di progettazione al meccanismo di elaborazione, anziché creare un nuovo DesignerTransaction direttamente.</xref:System.ComponentModel.Design.IDesignerHost>       Per eseguire un&quot;azione all&quot;interno di una transazione, è innanzitutto necessario creare una transazione. È necessario chiamare il <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanging%2A>metodo prima che si verifica una modifica o un set di modifiche e <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanged%2A>metodo dopo una modifica o un set di modifiche.</xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanged%2A> </xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanging%2A> Infine, completare e chiudere la transazione chiamando il <xref:System.ComponentModel.Design.DesignerTransaction.Commit%2A>metodo.</xref:System.ComponentModel.Design.DesignerTransaction.Commit%2A>      > [!NOTE] > Quando si apportano modifiche ai valori delle proprietà, utilizzare il <xref:System.ComponentModel.PropertyDescriptor.SetValue%2A>metodo di un <xref:System.ComponentModel.PropertyDescriptor>, che chiama i metodi di modifica del componente del <xref:System.ComponentModel.Design.IComponentChangeService>e crea un DesignerTransaction che rappresenta la modifica automaticamente.</xref:System.ComponentModel.Design.IComponentChangeService> </xref:System.ComponentModel.PropertyDescriptor> </xref:System.ComponentModel.PropertyDescriptor.SetValue%2A>       Per eseguire una transazione, completare i passaggi seguenti: 1.  Chiamare <xref:System.ComponentModel.Design.IDesignerHost.CreateTransaction%2A>per ottenere un DesignerTransaction che può essere utilizzato per controllare la transazione.</xref:System.ComponentModel.Design.IDesignerHost.CreateTransaction%2A>      2.  All&quot;interno di un `try` blocco, per ogni azione che si desidera tenere traccia con un DesignerTransaction, chiamata di <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanging%2A>(metodo), apportare la modifica o le modifiche, quindi chiamare il <xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanged%2A>metodo per segnalare che la modifica o le modifiche apportate.</xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanged%2A> </xref:System.ComponentModel.Design.IComponentChangeService.OnComponentChanging%2A>      3.  Per completare la transazione, chiamare <xref:System.ComponentModel.Design.DesignerTransaction.Commit%2A>dall&quot;interno un `finally` blocco.</xref:System.ComponentModel.Design.DesignerTransaction.Commit%2A>       In c#, è possibile utilizzare il `using` istruzione piuttosto che un `try/finally` blocco, come illustrato nell&quot;esempio seguente.      ```   using (host.CreateTransaction() {   // Insert your code here.   }   ```Per annullare e tentare di ripristinare una transazione prima che sia stato eseguito il commit, chiamare il <xref:System.ComponentModel.Design.DesignerTransaction.Cancel%2A>metodo.</xref:System.ComponentModel.Design.DesignerTransaction.Cancel%2A> Quando il <xref:System.ComponentModel.Design.DesignerTransaction.Cancel%2A>metodo viene richiamato, le operazioni tiene traccia di DesignerTransaction vengono annullate per tentare di eseguire il rollback delle modifiche.</xref:System.ComponentModel.Design.DesignerTransaction.Cancel%2A> Per annullare le operazioni che si sono verificati nell&quot;ambito di transazioni precedenti, è necessario utilizzare il comando di annullamento fornito dall&quot;ambiente di sviluppo."
   example:
   - "The following code example program demonstrates how to create a DesignerTransaction from a designer. To run this sample, compile the source code into a class library. You must add a reference to the System.Design assembly. In a new project, add a reference to the compiled DLL and add the component in the library to the **Toolbox**.  \n  \n There is extensive support for this feature in Visual Studio.  \n  \n Also see [Walkthrough: Automatically Populating the Toolbox with Custom Components](http://msdn.microsoft.com/library/fw694kde\\(v=vs.110\\).aspx).  \n  \n The designer can optionally display notifications about designer transaction events. If you add an instance of the `DTComponent` to a form while in design mode, a message box appears asking whether you would like to receive designer transaction event notifications. You may toggle these notifications using the shortcut menu that appears when you right-click an instance of the `DTComponent`. Transactions are created when you change values using the Properties window. You can also have the designer perform a transaction by clicking **Perform Example Transaction** on the shortcut menu for the component.  \n  \n [!code-cpp[DesignerTransaction Sample#1](~/add/codesnippet/cpp/t-system.componentmodel._6_1.cpp)]\n [!code-vb[DesignerTransaction Sample#1](~/add/codesnippet/visualbasic/t-system.componentmodel._6_1.vb)]\n [!code-cs[DesignerTransaction Sample#1](~/add/codesnippet/csharp/t-system.componentmodel._6_1.cs)]"
   syntax:
@@ -46,7 +46,7 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Design.DesignerTransaction&quot;></xref> class with no description."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Design.DesignerTransaction&quot;> </xref> classe senza descrizione."
   syntax:
     content: protected DesignerTransaction ();
     parameters: []
@@ -66,14 +66,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Design.DesignerTransaction&quot;></xref> class using the specified transaction description."
-  remarks: "This constructor initializes the transaction with the specified description."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ComponentModel.Design.DesignerTransaction&quot;> </xref> classe utilizzando la descrizione della transazione specificata."
+  remarks: "Questo costruttore inizializza la transazione con la descrizione specificata."
   syntax:
     content: protected DesignerTransaction (string description);
     parameters:
     - id: description
       type: System.String
-      description: "A description for this transaction."
+      description: "Descrizione per questa transazione."
   overload: System.ComponentModel.Design.DesignerTransaction.#ctor*
   exceptions: []
   platform:
@@ -90,7 +90,7 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Cancels the transaction and attempts to roll back the changes made by the events of the transaction."
+  summary: "Annulla la transazione e prova a ripristinare le modifiche apportate dagli eventi della transazione."
   syntax:
     content: public void Cancel ();
     parameters: []
@@ -110,13 +110,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Gets a value indicating whether the transaction was canceled."
-  remarks: "When a designer transaction is canceled, the transaction processing mechanism attempts to roll back the changes that have been made so far in the transaction. Whether this succeeds is dependent upon such factors as the type of each operation, whether other operations interfered with any of the involved code&quot;s state, and whether a sequence of expected operations failed to complete."
+  summary: "Ottiene un valore che indica se la transazione è stata annullata."
+  remarks: "Quando una transazione della finestra di progettazione viene annullata, il meccanismo di elaborazione delle transazioni tenta di eseguire il rollback delle modifiche apportate finora nella transazione. Se l&quot;esito è positivo è dipendente da fattori quali il tipo di ogni operazione, se altre operazioni abbiano interferito con lo stato del codice coinvolto e se una sequenza di operazioni previsto non è stato completato."
   syntax:
     content: public bool Canceled { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the transaction was canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se la transazione è stata annullata. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.Design.DesignerTransaction.Canceled*
   exceptions: []
   platform:
@@ -133,8 +133,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Commits this transaction."
-  remarks: "When a designer transaction is committed, the transaction is considered complete and does not track further changes.       Once a transaction has been committed, further calls to this method do nothing. Always call this method after creating a transaction to ensure that the transaction closes properly."
+  summary: "Il commit della transazione."
+  remarks: "Quando una transazione della finestra di progettazione viene eseguito il commit, la transazione viene considerata completa e non rilevare altre modifiche.       Una volta che una transazione è stato eseguito il commit, ulteriormente le chiamate a questo metodo non eseguire alcuna operazione. Chiamare sempre questo metodo dopo la creazione di una transazione per garantire che la transazione venga chiusa correttamente."
   syntax:
     content: public void Commit ();
     parameters: []
@@ -154,13 +154,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Gets a value indicating whether the transaction was committed."
-  remarks: "When a designer transaction is committed, the transaction is considered complete and does not track further changes."
+  summary: "Ottiene un valore che indica se è stato eseguito il commit della transazione."
+  remarks: "Quando una transazione della finestra di progettazione viene eseguito il commit, la transazione viene considerata completa e non rilevare altre modifiche."
   syntax:
     content: public bool Committed { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the transaction was committed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se la transazione è stata salvata. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.Design.DesignerTransaction.Committed*
   exceptions: []
   platform:
@@ -177,13 +177,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Gets a description for the transaction."
-  remarks: "A transaction can have a description that is useful in identifying the nature of the operation or operations."
+  summary: "Ottiene una descrizione per la transazione."
+  remarks: "Una transazione può avere una descrizione che si rivela utile per identificare la natura dell&quot;operazione o operazioni."
   syntax:
     content: public string Description { get; }
     return:
       type: System.String
-      description: "A description for the transaction."
+      description: "Descrizione per la transazione."
   overload: System.ComponentModel.Design.DesignerTransaction.Description*
   exceptions: []
   platform:
@@ -200,14 +200,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.ComponentModel.Design.DesignerTransaction&quot;></xref> and optionally releases the managed resources."
-  remarks: "This method is called by the public `Dispose()` method and the <xref:System.Object.Finalize%2A> method. `Dispose()` invokes the protected `Dispose(Boolean)` method with the `disposing` parameter set to `true`. <xref:System.Object.Finalize%2A> invokes `Dispose` with `disposing` set to `false`.       When the `disposing` parameter is `true`, this method releases all resources held by any managed objects that this <xref:System.ComponentModel.Design.DesignerTransaction> references. This method invokes the `Dispose()` method of each referenced object."
+  summary: "Rilascia le risorse non gestite usate dal <xref href=&quot;System.ComponentModel.Design.DesignerTransaction&quot;> </xref> e facoltativamente rilascia le risorse gestite."
+  remarks: "Questo metodo viene chiamato dal metodo pubblico `Dispose()` (metodo) e <xref:System.Object.Finalize%2A>metodo.</xref:System.Object.Finalize%2A> `Dispose()`richiama il metodo protetto `Dispose(Boolean)` metodo con il `disposing` parametro impostato su `true`. <xref:System.Object.Finalize%2A>richiama `Dispose` con `disposing` impostato su `false`.</xref:System.Object.Finalize%2A>       Quando il `disposing` parametro `true`, questo metodo rilascia tutte le risorse utilizzate dagli oggetti gestiti da questo <xref:System.ComponentModel.Design.DesignerTransaction>riferimenti.</xref:System.ComponentModel.Design.DesignerTransaction> Questo metodo richiama il `Dispose()` metodo di ciascun oggetto cui viene fatto riferimento."
   syntax:
     content: protected virtual void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>per rilasciare le risorse gestite e non gestite. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> per rilasciare solo le risorse non gestite."
   overload: System.ComponentModel.Design.DesignerTransaction.Dispose*
   exceptions: []
   platform:
@@ -224,8 +224,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Releases the resources associated with this object. This override commits this transaction if it was not already committed."
-  remarks: "This method overrides <xref:System.Object.Finalize%2A?displayProperty=fullName> and cleans up resources by calling `Dispose(false)`. Override `Dispose(Boolean)` to customize the cleanup.       Application code should not call this method; an object&quot;s `Finalize` method is automatically invoked during garbage collection, unless finalization by the garbage collector has been disabled by a call to the <xref:System.GC.SuppressFinalize%2A?displayProperty=fullName> method.       For more information, see [Finalize Methods and Destructors](http://msdn.microsoft.com/en-us/fd376774-1643-499b-869e-9546a3aeea70), [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md), and [Overriding the Finalize Method](http://msdn.microsoft.com/en-us/8026cb68-fe93-43fc-96c1-c09ad7d64cd3)."
+  summary: "Rilascia le risorse associate all&quot;oggetto. Questa sostituzione il commit della transazione se non è già stato eseguito il commit."
+  remarks: "Questo metodo esegue l&quot;override <xref:System.Object.Finalize%2A?displayProperty=fullName>e pulisce le risorse chiamando `Dispose(false)`.</xref:System.Object.Finalize%2A?displayProperty=fullName> Eseguire l&quot;override `Dispose(Boolean)` per personalizzare la pulizia.       Il codice dell&quot;applicazione non deve chiamare questo metodo. un oggetto `Finalize` metodo viene richiamato automaticamente durante l&quot;operazione di garbage collection, a meno che la finalizzazione del garbage collector non è stata disabilitata da una chiamata al <xref:System.GC.SuppressFinalize%2A?displayProperty=fullName>metodo.</xref:System.GC.SuppressFinalize%2A?displayProperty=fullName>       Per ulteriori informazioni, vedere [metodi Finalize e distruttori](http://msdn.microsoft.com/en-us/fd376774-1643-499b-869e-9546a3aeea70), [la pulizia di risorse non gestite](~/add/includes/ajax-current-ext-md.md), e [si esegue l&quot;override del metodo Finalize](http://msdn.microsoft.com/en-us/8026cb68-fe93-43fc-96c1-c09ad7d64cd3)."
   syntax:
     content: ~DesignerTransaction ();
     parameters: []
@@ -245,8 +245,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Raises the <xref uid=&quot;langword_csharp_Cancel&quot; name=&quot;Cancel&quot; href=&quot;&quot;></xref> event."
-  remarks: "When a designer transaction is canceled, the transaction processing mechanism attempts to roll back the changes that have been made so far in the transaction. Whether this succeeds is dependent upon such factors as the type of each operation, whether other operations interfered with any of the involved code&quot;s state, and whether a sequence of expected operations failed to complete."
+  summary: "Genera il <xref uid=&quot;langword_csharp_Cancel&quot; name=&quot;Cancel&quot; href=&quot;&quot;> </xref> evento."
+  remarks: "Quando una transazione della finestra di progettazione viene annullata, il meccanismo di elaborazione delle transazioni tenta di eseguire il rollback delle modifiche apportate finora nella transazione. Se l&quot;esito è positivo è dipendente da fattori quali il tipo di ogni operazione, se altre operazioni abbiano interferito con lo stato del codice coinvolto e se una sequenza di operazioni previsto non è stato completato."
   syntax:
     content: protected abstract void OnCancel ();
     parameters: []
@@ -266,8 +266,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Performs the actual work of committing a transaction."
-  remarks: "When a designer transaction is committed, the transaction is considered complete and does not track further changes."
+  summary: "Esegue l&quot;effettiva operazione di commit di una transazione."
+  remarks: "Quando una transazione della finestra di progettazione viene eseguito il commit, la transazione viene considerata completa e non rilevare altre modifiche."
   syntax:
     content: protected abstract void OnCommit ();
     parameters: []
@@ -288,8 +288,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Releases all resources used by the <xref href=&quot;System.ComponentModel.Design.DesignerTransaction&quot;></xref>."
-  remarks: "When a transaction is disposed, it is committed."
+  summary: "Rilascia tutte le risorse usate dal <xref href=&quot;System.ComponentModel.Design.DesignerTransaction&quot;> </xref>."
+  remarks: "Quando viene eliminata una transazione, viene eseguito il commit."
   syntax:
     content: void IDisposable.Dispose ();
     parameters: []

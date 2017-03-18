@@ -19,8 +19,8 @@ items:
   nameWithType: AddInProcess
   fullName: System.AddIn.Hosting.AddInProcess
   type: Class
-  summary: "Provides an external process for running add-ins out-of-process from the host application."
-  remarks: "To activate an add-in in an external process, pass an AddInProcess object to the appropriate <xref:System.AddIn.Hosting.AddInToken.Activate%60%601%28System.AddIn.Hosting.AddInProcess%2CSystem.Security.PermissionSet%29?displayProperty=fullName> method overload.       The executable that runs the add-in is obtained from one of two files installed with the .NET Framework under the Windows directory. By default, the executable that matches the bits-per-word of the host application is used. If the host is a 64-bit process, AddInProcess.exe is run; otherwise, AddInProcess32.exe is run. To specify the way the executable is selected, use the <xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29> constructor to create the AddInProcess object."
+  summary: "Fornisce un processo esterno per l&quot;esecuzione out-of-process aggiuntivi dall&quot;applicazione host."
+  remarks: "Per attivare un componente aggiuntivo in un processo esterno, passare un oggetto di AddInProcess appropriati <xref:System.AddIn.Hosting.AddInToken.Activate%60%601%28System.AddIn.Hosting.AddInProcess%2CSystem.Security.PermissionSet%29?displayProperty=fullName>overload del metodo.</xref:System.AddIn.Hosting.AddInToken.Activate%60%601%28System.AddIn.Hosting.AddInProcess%2CSystem.Security.PermissionSet%29?displayProperty=fullName>       Il file eseguibile che esegue il componente aggiuntivo viene ottenuto da uno dei due file installati con .NET Framework nella directory Windows. Per impostazione predefinita, viene utilizzato il file eseguibile che soddisfi il bit per parola dell&quot;applicazione host. Se l&quot;host è un processo a 64 bit, viene eseguito AddInProcess.exe; in caso contrario, viene eseguito AddInProcess32.exe. Per specificare il modo in cui è stato selezionato il file eseguibile, usare il <xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29>costruttore per creare l&quot;oggetto di AddInProcess.</xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29>"
   example:
   - "The following example activates an add-in in an external process.  \n  \n [!code-vb[AddInP3Host#10](~/add/codesnippet/visualbasic/addinp3hostvb/p3host.vb#10)]\n [!code-cs[AddInP3Host#10](~/add/codesnippet/csharp/addinP3Host/P3Host.cs#10)]"
   syntax:
@@ -43,8 +43,8 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> class."
-  remarks: "This constructor has the same effect as using the <xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29> constructor with the <xref:System.AddIn.Hosting.Platform?displayProperty=fullName> flag, to specify that the process that runs the add-in will have the same bits-per-word as the host process."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> classe."
+  remarks: "Questo costruttore ha lo stesso effetto dell&quot;utilizzo di <xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29>costruttore con la <xref:System.AddIn.Hosting.Platform?displayProperty=fullName>flag per specificare che il processo che esegue il componente aggiuntivo avrà la stessa bit per parola del processo host.</xref:System.AddIn.Hosting.Platform?displayProperty=fullName> </xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29>"
   syntax:
     content: public AddInProcess ();
     parameters: []
@@ -64,19 +64,19 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> class, specifying the bits-per-word of the process in which the add-in runs."
-  remarks: "The following table shows how `platform` affects the bits-per-word of the process on different operating systems:      ||32-bit operating system|64-bit operating system|   |-|------------------------------|------------------------------|   |Host|32-bit|Same as the host process|   |AnyCPU|32-bit|64-bit|   |X86|32-bit|32-bit|   |X64|Exception is thrown|64-bit|"
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> (classe), che specifica il bit per parola del processo in cui il componente aggiuntivo viene eseguito."
+  remarks: "La tabella seguente mostra come `platform` interessa i bit per parola del processo in diversi sistemi operativi: | | sistema operativo a&32; bit | sistema operativo a&64; bit |   |-|------------------------------|------------------------------|   | Host |&32;-bit | Stesso come il processo host |   | AnyCPU |&32;-bit |&64;-bit |   | X86 |&32;-bit |&32;-bit |   | X64 | Viene generata un&quot;eccezione |&64;-bit |"
   syntax:
     content: public AddInProcess (System.AddIn.Hosting.Platform platform);
     parameters:
     - id: platform
       type: System.AddIn.Hosting.Platform
-      description: "A value that specifies the bits-per-word of the process that runs the add-in."
+      description: "Un valore che specifica il bit per parola del processo che esegue il componente aggiuntivo."
   overload: System.AddIn.Hosting.AddInProcess.#ctor*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The registry entry for the path to the executable (AddInProcess.exe or AddInProcess32.exe) is missing.       -or-       The executable is missing."
+    description: "La voce del Registro di sistema per il percorso del file eseguibile (AddInProcess.exe o AddInProcess32.exe) è mancante.       - oppure - il file eseguibile è mancano."
   platform:
   - net462
 - uid: System.AddIn.Hosting.AddInProcess.IsCurrentProcess
@@ -91,15 +91,15 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets a value that indicates whether the current <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> object represents the host application process."
-  remarks: "If the value of this property is `true`, the add-in is running in-process with the host application. In that case, using the <xref:System.AddIn.Hosting.AddInProcess.Start%2A> or <xref:System.AddIn.Hosting.AddInProcess.Shutdown%2A> method throws an <xref:System.InvalidOperationException>.      > [!NOTE] >  The <xref:System.AddIn.Hosting.AddInEnvironment.Process%2A?displayProperty=fullName> property returns an <xref:System.AddIn.Hosting.AddInProcess> object that represents the host application process if the add-in is running in-process."
+  summary: "Ottiene un valore che indica se l&quot;oggetto corrente <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> oggetto rappresenta il processo dell&quot;applicazione host."
+  remarks: "Se il valore di questa proprietà è `true`, il componente aggiuntivo viene eseguito in-process con l&quot;applicazione host. In tal caso, utilizzare <xref:System.AddIn.Hosting.AddInProcess.Start%2A>o <xref:System.AddIn.Hosting.AddInProcess.Shutdown%2A>il metodo genera un <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> </xref:System.AddIn.Hosting.AddInProcess.Shutdown%2A> </xref:System.AddIn.Hosting.AddInProcess.Start%2A>      > [!NOTE] > Il <xref:System.AddIn.Hosting.AddInEnvironment.Process%2A?displayProperty=fullName>proprietà restituisce un <xref:System.AddIn.Hosting.AddInProcess>oggetto che rappresenta il processo dell&quot;applicazione host, se il componente aggiuntivo viene eseguito in-process.</xref:System.AddIn.Hosting.AddInProcess> </xref:System.AddIn.Hosting.AddInEnvironment.Process%2A?displayProperty=fullName>"
   example:
   - "The following example activates an add-in in an external process and uses the IsCurrentProcess property to determine whether the add-in is in the same process as the host application process.  \n  \n [!code-vb[AddInP3Host#10](~/add/codesnippet/visualbasic/addinp3hostvb/p3host.vb#10)]\n [!code-cs[AddInP3Host#10](~/add/codesnippet/csharp/addinP3Host/P3Host.cs#10)]"
   syntax:
     content: public bool IsCurrentProcess { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> object corresponds to the current process; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> oggetto corrisponde all&quot;oggetto processo; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.AddIn.Hosting.AddInProcess.IsCurrentProcess*
   exceptions: []
   platform:
@@ -116,13 +116,13 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets or sets a value that indicates whether to keep the external process alive."
-  remarks: "Set this property to `false` to aggressively shut down the external process after the last add-in inside the process has been shut down."
+  summary: "Ottiene o imposta un valore che indica se mantenere attivo il processo esterno."
+  remarks: "Impostare questa proprietà su `false` per imporre la chiusura del processo esterno dopo l&quot;ultimo componente aggiuntivo all&quot;interno del processo è stato arrestato."
   syntax:
     content: public bool KeepAlive { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the external process should be kept alive; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il processo esterno deve essere mantenuto attivo. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Il valore predefinito è <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.AddIn.Hosting.AddInProcess.KeepAlive*
   exceptions: []
   platform:
@@ -139,13 +139,13 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets the bits-per-word of the process in which the out-of-process add-in is run."
-  remarks: "The bits-per-word is set when the <xref:System.AddIn.Hosting.AddInProcess> object is initialized, and cannot be changed."
+  summary: "Ottiene il bit per parola del processo in cui viene eseguito il componente aggiuntivo out-of-process."
+  remarks: "Bit per parola viene impostata quando il <xref:System.AddIn.Hosting.AddInProcess>oggetto viene inizializzato e non può essere modificato.</xref:System.AddIn.Hosting.AddInProcess>"
   syntax:
     content: public System.AddIn.Hosting.Platform Platform { get; }
     return:
       type: System.AddIn.Hosting.Platform
-      description: "The bits-per-word of the process that runs the add-in."
+      description: "Il bit per parola del processo che esegue il componente aggiuntivo."
   overload: System.AddIn.Hosting.AddInProcess.Platform*
   exceptions: []
   platform:
@@ -162,13 +162,13 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets the process ID of the external process."
-  remarks: "Use this property for debugging."
+  summary: "Ottiene l&quot;ID del processo del processo esterno."
+  remarks: "Utilizzare questa proprietà per il debug."
   syntax:
     content: public int ProcessId { get; }
     return:
       type: System.Int32
-      description: "The process ID, or -1 if the external process has not started."
+      description: "L&quot;ID del processo, oppure -1 se non è avviato il processo esterno."
   overload: System.AddIn.Hosting.AddInProcess.ProcessId*
   exceptions: []
   platform:
@@ -185,18 +185,18 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Forcibly shuts down the external process."
+  summary: "Arresta forzatamente il processo esterno."
   syntax:
     content: public bool Shutdown ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the external process was running and is successfully shut down; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there is no active process associated with the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il processo esterno era in esecuzione e viene chiuso correttamente. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> se è presente non attiva processo è associato il <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref>."
   overload: System.AddIn.Hosting.AddInProcess.Shutdown*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The add-in is running in-process with the host application. Starting and stopping the process is allowed only for external processes, not for the host process."
+    description: "Il componente aggiuntivo viene eseguito in-process con l&quot;applicazione host. Avvio e arresto del processo è consentito solo per i processi esterni, non per il processo host."
   platform:
   - net462
 - uid: System.AddIn.Hosting.AddInProcess.ShuttingDown
@@ -211,12 +211,12 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Occurs when the process represented by the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> object is about to be shut down."
+  summary: "Si verifica quando il processo è rappresentata la <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> oggetto sta per essere arrestato."
   syntax:
     content: public event EventHandler<System.ComponentModel.CancelEventArgs> ShuttingDown;
     return:
       type: System.EventHandler{System.ComponentModel.CancelEventArgs}
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -232,18 +232,18 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Starts the external process."
+  summary: "Avvia il processo esterno."
   syntax:
     content: public bool Start ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the process is successfully started; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the process is already running."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il processo è stato avviato correttamente. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> se il processo è già in esecuzione."
   overload: System.AddIn.Hosting.AddInProcess.Start*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The add-in is running in-process with the host application. Starting and stopping the process is allowed only for external processes, not for the host process."
+    description: "Il componente aggiuntivo viene eseguito in-process con l&quot;applicazione host. Avvio e arresto del processo è consentito solo per i processi esterni, non per il processo host."
   platform:
   - net462
 - uid: System.AddIn.Hosting.AddInProcess.StartupTimeout
@@ -258,21 +258,21 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets or sets the number of seconds to allow for the process to start."
-  remarks: "The default value is 10 seconds. This property is usually used during debugging, to increase the startup time for the process that runs the out-of-process add-in."
+  summary: "Ottiene o imposta il numero di secondi consentiti per l&quot;avvio del processo."
+  remarks: "Il valore predefinito è 10 secondi. Questa proprietà viene in genere utilizzata durante il debug, per aumentare il tempo di avvio per il processo che esegue il componente aggiuntivo out-of-process."
   syntax:
     content: public TimeSpan StartupTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The number of seconds to allow for process startup."
+      description: "Il numero di secondi consentiti per l&quot;avvio del processo."
   overload: System.AddIn.Hosting.AddInProcess.StartupTimeout*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The process is already running."
+    description: "Il processo è già in esecuzione."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The assigned value is less than 0 (zero)."
+    description: "Il valore assegnato è minore di 0 (zero)."
   platform:
   - net462
 references:

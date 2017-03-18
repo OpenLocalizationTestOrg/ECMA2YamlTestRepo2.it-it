@@ -13,8 +13,8 @@ items:
   nameWithType: AppDomainUnloadedException
   fullName: System.AppDomainUnloadedException
   type: Class
-  summary: "The exception that is thrown when an attempt is made to access an unloaded application domain."
-  remarks: "In the .NET Framework version 2.0, an AppDomainUnloadedException that is not handled in user code has the following effect:      -   If a thread was started in managed code, it is terminated. The unhandled exception is not allowed to terminate the application.      -   If a task is executing on a <xref:System.Threading.ThreadPool> thread, it is terminated and the thread is returned to the thread pool. The unhandled exception is not allowed to terminate the application.      -   If a thread started in unmanaged code, such as the main application thread, it is terminated. The unhandled exception is allowed to proceed, and the operating system terminates the application.       AppDomainUnloadedException uses the HRESULT COR_E_APPDOMAINUNLOADED, which has the value 0x80131014.       For a list of initial property values for an instance of AppDomainUnloadedException, see the <xref:System.AppDomainUnloadedException.%23ctor%2A> constructors."
+  summary: "Eccezione generata quando viene effettuato un tentativo di accedere a un dominio applicazione non caricato."
+  remarks: "In .NET Framework versione 2.0, un AppDomainUnloadedException non gestita nel codice utente ha l&quot;effetto seguente:-se è stato avviato un thread in codice gestito, viene terminata. L&quot;eccezione non gestita non è possibile terminare l&quot;applicazione.      -Se un&quot;attività è in esecuzione su un <xref:System.Threading.ThreadPool>thread, viene terminata e il thread viene restituito al pool di thread.</xref:System.Threading.ThreadPool> L&quot;eccezione non gestita non è possibile terminare l&quot;applicazione.      -Se avviato da un thread in codice non gestito, ad esempio il thread principale dell&quot;applicazione, viene terminata. L&quot;eccezione non gestita viene consentita di procedere, e il sistema operativo termina l&quot;applicazione.       AppDomainUnloadedException utilizza HRESULT COR_E_APPDOMAINUNLOADED, con valore 0x80131014.       Per un elenco di valori di proprietà iniziali per un&quot;istanza di AppDomainUnloadedException, vedere il <xref:System.AppDomainUnloadedException.%23ctor%2A>costruttori.</xref:System.AppDomainUnloadedException.%23ctor%2A>"
   example:
   - "This section contains two code examples. The first example demonstrates the effects of an AppDomainUnloadedException on various threads, and the second shows elementary application domain unloading.  \n  \n Example 1  \n  \n The following code example defines a `TestClass` class that can be marshaled across application domain boundaries and an `Example` class containing a `static` (`Shared` in Visual Basic) `ThreadProc` method. The `ThreadProc` method creates an application domain, creates a `TestClass` object in the domain, and calls a method of `TestClass` that unloads the executing domain, causing an AppDomainUnloadedException.  \n  \n The `TestClass` method is executed without exception handling from a <xref:System.Threading.ThreadPool> thread and from an ordinary thread, demonstrating that the unhandled exception terminates the task or thread but not the application. It is then executed with and without exception handling from the main application thread, demonstrating that it terminates the application if not handled.  \n  \n [!code-vb[AppDomainUnloadedException#1](~/add/codesnippet/visualbasic/t-system.appdomainunload_1.vb)]\n [!code-cs[AppDomainUnloadedException#1](~/add/codesnippet/csharp/t-system.appdomainunload_1.cs)]  \n  \n Example 2  \n  \n The following code example creates and unloads an application domain, and demonstrates that an AppDomainUnloadedException is thrown on a subsequent attempt to access the unloaded domain.  \n  \n [!code-cpp[ADUnload#1](~/add/codesnippet/cpp/t-system.appdomainunload_2.cpp)]\n [!code-vb[ADUnload#1](~/add/codesnippet/visualbasic/t-system.appdomainunload_2.vb)]\n [!code-cs[ADUnload#1](~/add/codesnippet/csharp/t-system.appdomainunload_2.cs)]"
   syntax:
@@ -41,8 +41,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.AppDomainUnloadedException&quot;></xref> class."
-  remarks: "This constructor initializes the <xref:System.Exception.Message%2A> property of the new instance to a system-supplied message that describes the error, such as &quot;The target application domain has been unloaded.&quot; This message takes into account the current system culture.       The following table shows the initial property values for an instance of <xref:System.AppDomainUnloadedException>.      |Property|Value|   |--------------|-----------|   |<xref:System.Exception.InnerException%2A>|A null reference (`Nothing` in Visual Basic).|   |<xref:System.Exception.Message%2A>|The localized error message string.|"
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.AppDomainUnloadedException&quot;> </xref> classe."
+  remarks: "Questo costruttore inizializza la <xref:System.Exception.Message%2A>proprietà della nuova istanza di un messaggio fornito dal sistema che descrive l&quot;errore, ad esempio &quot;dominio di applicazione di destinazione è stato scaricato.&quot;</xref:System.Exception.Message%2A> Questo messaggio prende in considerazione le impostazioni cultura correnti.       Nella tabella seguente vengono illustrati i valori di proprietà iniziali per un&quot;istanza di <xref:System.AppDomainUnloadedException>.</xref:System.AppDomainUnloadedException>      | Proprietà | Valore |   |--------------|-----------|   | <xref:System.Exception.InnerException%2A>| Un riferimento null (`Nothing` in Visual Basic). |   | <xref:System.Exception.Message%2A>| La stringa di messaggio di errore localizzato. |</xref:System.Exception.Message%2A> </xref:System.Exception.InnerException%2A>"
   syntax:
     content: public AppDomainUnloadedException ();
     parameters: []
@@ -62,14 +62,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.AppDomainUnloadedException&quot;></xref> class with a specified error message."
-  remarks: "The content of the `message` parameter is intended to be understood by humans. The caller of this constructor is required to ensure that this string has been localized for the current system culture.       The following table shows the initial property values for an instance of <xref:System.AppDomainUnloadedException>.      |Property|Value|   |--------------|-----------|   |<xref:System.Exception.InnerException%2A>|A null reference (`Nothing` in Visual Basic).|   |<xref:System.Exception.Message%2A>|The error message string.|"
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.AppDomainUnloadedException&quot;> </xref> classe con un messaggio di errore specificato."
+  remarks: "Il contenuto del `message` parametro deve essere facilmente comprensibile. Il chiamante del costruttore è necessario per garantire che la stringa sia stata localizzata per la lingua corrente.       Nella tabella seguente vengono illustrati i valori di proprietà iniziali per un&quot;istanza di <xref:System.AppDomainUnloadedException>.</xref:System.AppDomainUnloadedException>      | Proprietà | Valore |   |--------------|-----------|   | <xref:System.Exception.InnerException%2A>| Un riferimento null (`Nothing` in Visual Basic). |   | <xref:System.Exception.Message%2A>| La stringa di messaggio di errore. |</xref:System.Exception.Message%2A> </xref:System.Exception.InnerException%2A>"
   syntax:
     content: public AppDomainUnloadedException (string message);
     parameters:
     - id: message
       type: System.String
-      description: "The message that describes the error."
+      description: "Il messaggio che descrive l&quot;errore."
   overload: System.AppDomainUnloadedException.#ctor*
   exceptions: []
   platform:
@@ -86,17 +86,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.AppDomainUnloadedException&quot;></xref> class with serialized data."
-  remarks: "This constructor is called during deserialization to reconstitute the exception object transmitted over a stream. For more information, see [XML and SOAP Serialization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.AppDomainUnloadedException&quot;> </xref> classe con dati serializzati."
+  remarks: "Questo costruttore viene chiamato durante la deserializzazione per ricostituire l&quot;oggetto eccezione trasmesso su un flusso. Per ulteriori informazioni, vedere [serializzazione XML e SOAP](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: protected AppDomainUnloadedException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The object that holds the serialized object data."
+      description: "Oggetto che contiene i dati oggetto serializzati."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The contextual information about the source or destination."
+      description: "Informazioni contestuali sull&quot;origine o destinazione."
   overload: System.AppDomainUnloadedException.#ctor*
   exceptions: []
   platform:
@@ -113,17 +113,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.AppDomainUnloadedException&quot;></xref> class with a specified error message and a reference to the inner exception that is the cause of this exception."
-  remarks: "The content of the `message` parameter is intended to be understood by humans. The caller of this constructor is required to ensure that this string has been localized for the current system culture.       An exception that is thrown as a direct result of a previous exception should include a reference to the previous exception in the <xref:System.Exception.InnerException%2A> property. The <xref:System.Exception.InnerException%2A> property returns the same value that is passed into the constructor, or a null reference if the <xref:System.Exception.InnerException%2A> property does not supply the inner exception value to the constructor.       The following table shows the initial property values for an instance of <xref:System.AppDomainUnloadedException>.      |Property|Value|   |--------------|-----------|   |<xref:System.Exception.InnerException%2A>|The inner exception reference.|   |<xref:System.Exception.Message%2A>|The error message string.|"
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.AppDomainUnloadedException&quot;> </xref> classe con un messaggio di errore specificato e un riferimento all&quot;eccezione interna che è la causa dell&quot;eccezione corrente."
+  remarks: "Il contenuto del `message` parametro deve essere facilmente comprensibile. Il chiamante del costruttore è necessario per garantire che la stringa sia stata localizzata per la lingua corrente.       Un&quot;eccezione generata come risultato diretto di un&quot;eccezione precedente deve includere un riferimento all&quot;eccezione precedente nella <xref:System.Exception.InnerException%2A>proprietà.</xref:System.Exception.InnerException%2A> Il <xref:System.Exception.InnerException%2A>proprietà restituisce lo stesso valore passato al costruttore o un riferimento null se il <xref:System.Exception.InnerException%2A>proprietà non fornisce il valore di eccezione interna al costruttore.</xref:System.Exception.InnerException%2A> </xref:System.Exception.InnerException%2A>       Nella tabella seguente vengono illustrati i valori di proprietà iniziali per un&quot;istanza di <xref:System.AppDomainUnloadedException>.</xref:System.AppDomainUnloadedException>      | Proprietà | Valore |   |--------------|-----------|   | <xref:System.Exception.InnerException%2A>| Il riferimento all&quot;eccezione interna. |   | <xref:System.Exception.Message%2A>| La stringa di messaggio di errore. |</xref:System.Exception.Message%2A> </xref:System.Exception.InnerException%2A>"
   syntax:
     content: public AppDomainUnloadedException (string message, Exception innerException);
     parameters:
     - id: message
       type: System.String
-      description: "The message that describes the error."
+      description: "Il messaggio che descrive l&quot;errore."
     - id: innerException
       type: System.Exception
-      description: "The exception that is the cause of the current exception. If the `innerException` parameter is not a null reference, the current exception is raised in a <xref uid=&quot;langword_csharp_catch&quot; name=&quot;catch&quot; href=&quot;&quot;></xref> block that handles the inner exception."
+      description: "Eccezione che è la causa dell&quot;eccezione corrente. Se il `innerException` parametro non è un riferimento null, verrà generata l&quot;eccezione corrente in un <xref uid=&quot;langword_csharp_catch&quot; name=&quot;catch&quot; href=&quot;&quot;> </xref> blocco che gestisce l&quot;eccezione interna."
   overload: System.AppDomainUnloadedException.#ctor*
   exceptions: []
   platform:
