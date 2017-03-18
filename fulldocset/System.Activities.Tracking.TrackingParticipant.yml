@@ -14,8 +14,8 @@ items:
   nameWithType: TrackingParticipant
   fullName: System.Activities.Tracking.TrackingParticipant
   type: Class
-  summary: "The base class for workflow extensions that interact with the workflow tracking infrastructure and access tracking records."
-  remarks: "A tracking participant is registered to receive tracking records. Currently, any class that implements the tracking participant can be registered with the workflow instance to receive tracking records. If the tracking participant is third party code, ensure that this is not malicious code. The tracking participants run in the same process as the workflow instance and in the case of malicious tracking participants, this code could affect the overall workflow execution. The tracking records are delivered to the registered tracking participants as the workflow executes, so the developer should ensure that the tracking participant does not affect the running workflow by performing unintended operations within the track method. Examples of this could be the alteration of workflow variables or operations that take a long time."
+  summary: "Classe di base per le estensioni del flusso di lavoro che interagiscono con il flusso di lavoro di rilevamento dell&quot;infrastruttura e i record di rilevamento di accesso."
+  remarks: "Un partecipante del rilevamento è registrato per ricevere record di rilevamento. Attualmente, qualsiasi classe che implementa il partecipante di rilevamento può essere registrati con l&quot;istanza del flusso di lavoro per ricevere i record di rilevamento. Se il partecipante di rilevamento è codice di terze parti, verificare che non si tratta di codice dannoso. I partecipanti del rilevamento eseguiti nello stesso processo dell&quot;istanza del flusso di lavoro e nel caso di partecipanti di rilevamento dannosi, questo codice potrebbe interessare l&quot;esecuzione del flusso di lavoro complessiva. I record di rilevamento vengono recapitati ai partecipanti di rilevamento registrati come viene eseguito il flusso di lavoro, in modo lo sviluppatore deve assicurarsi che il partecipante di rilevamento non influisce sul flusso di lavoro in esecuzione eseguendo operazioni impreviste all&quot;interno del metodo di traccia. Esempi di questo tipo potrebbe essere la modifica delle variabili del flusso di lavoro o delle operazioni che richiedono molto tempo."
   syntax:
     content: public abstract class TrackingParticipant
   inheritance:
@@ -36,7 +36,7 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "When implemented in a derived class, creates a new instance of the derived class."
+  summary: "Quando viene implementato in una classe derivata, crea una nuova istanza della classe derivata."
   syntax:
     content: protected TrackingParticipant ();
     parameters: []
@@ -56,26 +56,26 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "When implemented in a derived class, begins asynchronous processing of the tracking record."
-  remarks: "Participants are expected to begin a job to process the records and return an <xref:System.IAsyncResult> that the workflow runtime uses to wait for completion. The default implementation is to call <xref:System.Activities.Tracking.TrackingParticipant.Track%2A> and return a Completed status."
+  summary: "Quando implementato in una classe derivata, inizia l&quot;elaborazione asincrona del record di rilevamento."
+  remarks: "I partecipanti devono iniziare un processo per elaborare i record e restituire un <xref:System.IAsyncResult>che il runtime del flusso di lavoro utilizza per attendere il completamento.</xref:System.IAsyncResult> L&quot;implementazione predefinita consiste nel chiamare <xref:System.Activities.Tracking.TrackingParticipant.Track%2A>e restituire uno stato completato.</xref:System.Activities.Tracking.TrackingParticipant.Track%2A>"
   syntax:
     content: protected virtual IAsyncResult BeginTrack (System.Activities.Tracking.TrackingRecord record, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: record
       type: System.Activities.Tracking.TrackingRecord
-      description: "The generated tracking record."
+      description: "Record di rilevamento generati."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the provider aborts the attempt."
+      description: "Il periodo di tempo dopo il quale il provider interrompe il tentativo."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called on completion of the operation."
+      description: "Il metodo da chiamare al completamento dell&quot;operazione."
     - id: state
       type: System.Object
-      description: "A user-defined object that uniquely identifies this asynchronous operation."
+      description: "Oggetto definito dall&quot;utente che identifica in modo univoco questa operazione asincrona."
     return:
       type: System.IAsyncResult
-      description: "The result of the operation."
+      description: "Risultato dell&quot;operazione."
   overload: System.Activities.Tracking.TrackingParticipant.BeginTrack*
   exceptions: []
   platform:
@@ -92,14 +92,14 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "When implemented in a derived class, represents the end of an asynchronous tracking operation."
-  remarks: "This method is expected to block until the tracking operation is complete."
+  summary: "Quando viene implementato in una classe derivata, rappresenta la fine di un&quot;operazione di rilevamento asincrona."
+  remarks: "Questo metodo è previsto per il blocco fino al completamento dell&quot;operazione di rilevamento."
   syntax:
     content: protected virtual void EndTrack (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The status of the operation."
+      description: "Lo stato dell&quot;operazione."
   overload: System.Activities.Tracking.TrackingParticipant.EndTrack*
   exceptions: []
   platform:
@@ -116,17 +116,17 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "When implemented in a derived class, used to synchronously process the tracking record."
-  remarks: "The track method is called when the workflow instance emits a tracking record."
+  summary: "Quando viene implementato in una classe derivata, usato per elaborare in modo sincrono al record di rilevamento."
+  remarks: "Il metodo di rilevamento viene chiamato quando l&quot;istanza del flusso di lavoro genera un record di rilevamento."
   syntax:
     content: protected abstract void Track (System.Activities.Tracking.TrackingRecord record, TimeSpan timeout);
     parameters:
     - id: record
       type: System.Activities.Tracking.TrackingRecord
-      description: "The generated tracking record."
+      description: "Record di rilevamento generati."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the provider aborts the attempt."
+      description: "Il periodo di tempo dopo il quale il provider interrompe il tentativo."
   overload: System.Activities.Tracking.TrackingParticipant.Track*
   exceptions: []
   platform:
@@ -143,13 +143,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Tracking
-  summary: "The tracking profile object used by the tracking participant. Before adding the tracking participant to the workflow extensions, the tracking profile is set on the participant."
-  remarks: "The tracking profile defines which tracking events are sent to this tracking participant."
+  summary: "Oggetto utilizzato dal partecipante del rilevamento del profilo di rilevamento. Prima di aggiungere il partecipante di rilevamento alle estensioni del flusso di lavoro, il profilo di rilevamento viene impostato sul partecipante."
+  remarks: "Il profilo di rilevamento definisce quali eventi di rilevamento vengono inviati da questo partecipante di rilevamento."
   syntax:
     content: public virtual System.Activities.Tracking.TrackingProfile TrackingProfile { get; set; }
     return:
       type: System.Activities.Tracking.TrackingProfile
-      description: "The tracking profile."
+      description: "Il profilo di rilevamento."
   overload: System.Activities.Tracking.TrackingParticipant.TrackingProfile*
   exceptions: []
   platform:

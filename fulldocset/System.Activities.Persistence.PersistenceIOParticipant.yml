@@ -15,8 +15,8 @@ items:
   nameWithType: PersistenceIOParticipant
   fullName: System.Activities.Persistence.PersistenceIOParticipant
   type: Class
-  summary: "A derived vclass of the <xref href=&quot;System.Activities.Persistence.PersistenceParticipant&quot;></xref> class with methods that perform input and output operations in addition to the persisting and loading of workflow instances through the persistence process."
-  remarks: "A host executes the following steps (or stages) when persisting an instance:      1.  Collects values to be persisted.      2.  Maps fields of monolithic structured values to individual values.      3.  Issues the <xref:System.Activities.DurableInstancing.SaveWorkflowCommand> to the persistence provider.      4.  Performs I/O under the persistence transaction.       A host completes a stage before beginning the next stage. For example when persisting, the host collects values from all the persistence participants before moving to the second stage. In the second stage, the host provides all the values collected in the first stage to all persistence participants in the second stage for mapping. In the third stage, the host provides all the collected values in the first and second stages to the persistence provider when invoking the <xref:System.Activities.DurableInstancing.SaveWorkflowCommand>. Then in the fourth stage, the host provides all the collected values to all the persistence IO participants under the persistence transaction.       A host executes the following stages when loading a persistence instance:      1.  Issues the <xref:System.Activities.DurableInstancing.LoadWorkflowCommand> and <xref:System.Activities.DurableInstancing.LoadWorkflowByInstanceKeyCommand> to the persistence provider.      2.  Performs I/O under the persistence transaction.      3.  Publishes the loaded values.       At the highest level, workflow instance extensions that derive from the <xref:System.Activities.Persistence.PersistenceParticipant> class can participate in the first (Collect) and second (Map) stages of persisting process and the third stage (Publish) of loading process.  Workflow instance extensions deriving from the PersistenceIOParticipant class can additionally participate in the fourth stage of the persisting process and the second stage of the loading process (I/O)."
+  summary: "Una classe derivata del <xref href=&quot;System.Activities.Persistence.PersistenceParticipant&quot;> </xref> classe con metodi che eseguono l&quot;input e output inoltre le operazioni di impostazione della persistenza e il caricamento di istanze del flusso di lavoro tramite il processo di persistenza."
+  remarks: "Un host esegue i passaggi seguenti (o fasi) quando rende persistente un&quot;istanza: 1.  Raccoglie valori da rendere persistenti.      2.  Esegue il mapping campi di valori strutturati monolitici a singoli valori.      3.  Problemi di <xref:System.Activities.DurableInstancing.SaveWorkflowCommand>al provider di persistenza.</xref:System.Activities.DurableInstancing.SaveWorkflowCommand>      4.  Esegue i/o nella transazione di persistenza.       Un host completa una fase prima di iniziare la fase successiva. Ad esempio durante il salvataggio, l&quot;host raccoglie valori da tutti i partecipanti di persistenza prima di passare alla seconda fase. Nella seconda fase, l&quot;host fornisce tutti i valori raccolti nella prima fase a tutti i partecipanti di persistenza nella seconda fase per il mapping. Nella terza fase, l&quot;host fornisce tutti i valori raccolti nella prima e seconda fase al provider di persistenza durante la chiamata di <xref:System.Activities.DurableInstancing.SaveWorkflowCommand>.</xref:System.Activities.DurableInstancing.SaveWorkflowCommand> Nella quarta fase, l&quot;host fornisce quindi tutti i valori raccolti a tutti i partecipanti di IO di persistenza nella transazione di persistenza.       Un host esegue i passaggi seguenti durante il caricamento di un&quot;istanza di persistenza: 1.  Problemi di <xref:System.Activities.DurableInstancing.LoadWorkflowCommand>e <xref:System.Activities.DurableInstancing.LoadWorkflowByInstanceKeyCommand>al provider di persistenza.</xref:System.Activities.DurableInstancing.LoadWorkflowByInstanceKeyCommand> </xref:System.Activities.DurableInstancing.LoadWorkflowCommand>      2.  Esegue i/o nella transazione di persistenza.      3.  Pubblica i valori caricati.       Le estensioni più alto livello, istanza di flusso di lavoro che derivano dalla <xref:System.Activities.Persistence.PersistenceParticipant>classe può partecipare alla prima (raccolta) e alla seconda (mapping) fase del processo di persistenza e alla terza fase (pubblicazione) del processo di caricamento.</xref:System.Activities.Persistence.PersistenceParticipant>  Le estensioni dell&quot;istanza del flusso di lavoro derivanti dalla classe PersistenceIOParticipant possono partecipare inoltre alla quarta fase del processo di persistenza e alla seconda fase del processo di caricamento (i/o)."
   syntax:
     content: 'public abstract class PersistenceIOParticipant : System.Activities.Persistence.PersistenceParticipant'
   inheritance:
@@ -41,16 +41,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Persistence
-  summary: "Initializes an instance of the <xref href=&quot;System.Activities.Persistence.PersistenceIOParticipant&quot;></xref> class."
+  summary: "Inizializza un&quot;istanza di <xref href=&quot;System.Activities.Persistence.PersistenceIOParticipant&quot;> </xref> classe."
   syntax:
     content: protected PersistenceIOParticipant (bool isSaveTransactionRequired, bool isLoadTransactionRequired);
     parameters:
     - id: isSaveTransactionRequired
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a transaction is required for the Save operation. If the <xref href=&quot;System.Activities.Persistence.PersistenceIOParticipant&quot;></xref> object is created with this parameter set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>,  Transaction.Current is guaranteed to be set when BeginOnSave is invoked. The transaction is shared between the persistence provider, all PersistenceIOParticipant extensions, and potentially other transaction participants."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se una transazione è obbligatoria per l&quot;operazione di salvataggio. Se il <xref href=&quot;System.Activities.Persistence.PersistenceIOParticipant&quot;> </xref> oggetto viene creato con questo parametro impostato su <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, Current è garantita da impostare quando viene richiamato BeginOnSave. La transazione è condivisa tra il provider di persistenza, tutte le estensioni PersistenceIOParticipant e altri potenziali partecipanti alla transazione."
     - id: isLoadTransactionRequired
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a transaction is required for the Load operation. If the <xref href=&quot;System.Activities.Persistence.PersistenceIOParticipant&quot;></xref> object is created with this parameter set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>,  Transaction.Current is guaranteed to be set  when BeginOnLoad is invoked. The transaction is shared between the persistence provider, all PersistenceIOParticipant extensions, and potentially other transaction participants."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se una transazione è obbligatoria per l&quot;operazione di caricamento. Se il <xref href=&quot;System.Activities.Persistence.PersistenceIOParticipant&quot;> </xref> oggetto viene creato con questo parametro impostato su <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, Current è garantita da impostare quando viene richiamato BeginOnLoad. La transazione è condivisa tra il provider di persistenza, tutte le estensioni PersistenceIOParticipant e altri potenziali partecipanti alla transazione."
   overload: System.Activities.Persistence.PersistenceIOParticipant.#ctor*
   exceptions: []
   platform:
@@ -67,8 +67,8 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Persistence
-  summary: "Aborts the pending IO (Load or Save) operation."
-  remarks: "Derived classes that override BeginOnSave or BeginOnLoad and might not always complete immediately must override Abort. If Abort is invoked, any pending IO operations must be canceled. If an operation is canceled in this way, the corresponding End method should throw OperationCanceledException."
+  summary: "Interrompe l&quot;operazione dei / o (caricamento o salvataggio) in sospeso."
+  remarks: "Le classi derivate che eseguire l&quot;override di BeginOnSave o BeginOnLoad e potrebbero non essere sempre completate immediatamente devono eseguire l&quot;override di Abort. Se Abort viene richiamato, è necessario annullare le operazioni dei / o in sospeso. Se un&quot;operazione viene annullata in questo modo, il metodo End corrispondente deve generare OperationCanceledException."
   syntax:
     content: protected abstract void Abort ();
     parameters: []
@@ -88,25 +88,25 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Persistence
-  summary: "Begins an asynchronous operation to load additional state in conjunction with an instance being loaded from the instance store."
+  summary: "Avvia un&quot;operazione asincrona per caricare lo stato aggiuntivo insieme con un&quot;istanza caricata dall&quot;archivio di istanze."
   syntax:
     content: protected virtual IAsyncResult BeginOnLoad (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,object> readWriteValues, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: readWriteValues
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object}
-      description: "A dictionary of read-write values loaded by the persistence provider. This corresponds to the set of read-write values passed to BeginOnSave in the most recent persistence episode for this instance."
+      description: "Un dizionario di valori di lettura e scrittura caricati dal provider di persistenza. Corrisponde al set di valori di lettura e scrittura passati a BeginOnSave nell&quot;episodio di persistenza più recente per questa istanza."
     - id: timeout
       type: System.TimeSpan
-      description: "The time span within which the operation should be completed without timing out."
+      description: "L&quot;intervallo di tempo entro il quale l&quot;operazione deve essere completata prima del timeout."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives notification of the completion of the asynchronous Load operation."
+      description: "Delegato di callback asincrono che riceve la notifica del completamento dell&quot;operazione di caricamento asincrona."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Le informazioni sullo state associate all&quot;operazione asincrona."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Lo stato di un&quot;operazione asincrona."
   overload: System.Activities.Persistence.PersistenceIOParticipant.BeginOnLoad*
   exceptions: []
   platform:
@@ -123,28 +123,28 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Persistence
-  summary: "Begins an asynchronous operation to save additional state in conjunction with an instance being persisted to the instance store."
+  summary: "Avvia un&quot;operazione asincrona per salvare lo stato aggiuntivo insieme con un&quot;istanza resa persistente nell&quot;archivio di istanze."
   syntax:
     content: protected virtual IAsyncResult BeginOnSave (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,object> readWriteValues, System.Collections.Generic.IDictionary<System.Xml.Linq.XName,object> writeOnlyValues, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: readWriteValues
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object}
-      description: "A dictionary of read-write values collected in the CollectValues and MapValues stages."
+      description: "Un dizionario di valori di lettura-scrittura raccolti nelle fasi CollectValues e MapValues."
     - id: writeOnlyValues
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object}
-      description: "A dictionary of write-only values collected in the CollectValues and MapValues stages."
+      description: "Un dizionario dei valori di sola scrittura raccolti nelle fasi CollectValues e MapValues."
     - id: timeout
       type: System.TimeSpan
-      description: "The time span within which the operation should be completed without timing out."
+      description: "L&quot;intervallo di tempo entro il quale l&quot;operazione deve essere completata prima del timeout."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives notification of the completion of the asynchronous operation."
+      description: "Delegato di callback asincrono che riceve la notifica del completamento dell&quot;operazione asincrona."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Le informazioni sullo state associate all&quot;operazione asincrona."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Lo stato di un&quot;operazione asincrona."
   overload: System.Activities.Persistence.PersistenceIOParticipant.BeginOnSave*
   exceptions: []
   platform:
@@ -161,13 +161,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Persistence
-  summary: "Completes the asynchronous Load operation."
+  summary: "Completa l&quot;operazione di caricamento asincrona."
   syntax:
     content: protected virtual void EndOnLoad (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The asynchronous result returned by a call to the <xref:System.Activities.Persistence.PersistenceIOParticipant.BeginOnSave*> method."
+      description: "Risultato asincrono restituito da una chiamata al <xref:System.Activities.Persistence.PersistenceIOParticipant.BeginOnSave*>metodo.</xref:System.Activities.Persistence.PersistenceIOParticipant.BeginOnSave*>"
   overload: System.Activities.Persistence.PersistenceIOParticipant.EndOnLoad*
   exceptions: []
   platform:
@@ -184,13 +184,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.Persistence
-  summary: "Completes the asynchronous Save operation."
+  summary: "Completa l&quot;operazione di salvataggio asincrona."
   syntax:
     content: protected virtual void EndOnSave (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The asynchronous result returned by a call to the <xref:System.Activities.Persistence.PersistenceIOParticipant.BeginOnSave*> method."
+      description: "Risultato asincrono restituito da una chiamata al <xref:System.Activities.Persistence.PersistenceIOParticipant.BeginOnSave*>metodo.</xref:System.Activities.Persistence.PersistenceIOParticipant.BeginOnSave*>"
   overload: System.Activities.Persistence.PersistenceIOParticipant.EndOnSave*
   exceptions: []
   platform:
