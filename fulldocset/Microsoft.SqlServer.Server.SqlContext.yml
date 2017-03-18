@@ -13,8 +13,8 @@ items:
   nameWithType: SqlContext
   fullName: Microsoft.SqlServer.Server.SqlContext
   type: Class
-  summary: "Represents an abstraction of the caller&quot;s context, which provides access to the <xref href=&quot;Microsoft.SqlServer.Server.SqlPipe&quot;></xref>, <xref href=&quot;Microsoft.SqlServer.Server.SqlTriggerContext&quot;></xref>, and <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;></xref> objects. This class cannot be inherited."
-  remarks: "The SqlContext object can be used to obtain the trigger context (for code executing in a trigger) and the pipe object (when available, such as in stored procedures). It can also be used to obtain a <xref:System.Security.Principal.WindowsIdentity> object that represents the Microsoft Windows identity of the calling client, if the client authenticated with the server using integrated authentication."
+  summary: "Rappresenta un&quot;astrazione del contesto del chiamante, che fornisce l&quot;accesso per il <xref href=&quot;Microsoft.SqlServer.Server.SqlPipe&quot;> </xref>, <xref href=&quot;Microsoft.SqlServer.Server.SqlTriggerContext&quot;> </xref>, e <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;> </xref> oggetti. Questa classe non può essere ereditata."
+  remarks: "Oggetto SqlContext può essere utilizzato per ottenere il contesto del trigger (per il codice eseguito in un trigger) e l&quot;oggetto pipe (quando disponibile, ad esempio nelle stored procedure). E può essere utilizzato per ottenere un <xref:System.Security.Principal.WindowsIdentity>oggetto che rappresenta l&quot;identità di Microsoft Windows del client chiamante, se il client autenticato al server usando l&quot;autenticazione integrata.</xref:System.Security.Principal.WindowsIdentity>"
   example:
   - "The following example creates a new <xref:Microsoft.SqlServer.Server.SqlDataRecord> and its <xref:Microsoft.SqlServer.Server.SqlMetaData>. The example then marks the beginning of a result set using the <xref:Microsoft.SqlServer.Server.SqlPipe.SendResultsStart%2A> method, sends records with example data back to the client using the <xref:Microsoft.SqlServer.Server.SqlPipe.SendResultsRow%2A> method, and marks the end of the result set with the <xref:Microsoft.SqlServer.Server.SqlPipe.SendResultsEnd%2A> method.  \n  \n [!code-vb[DataWorks SqlPipe.SendResultsRow#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_11_1.vb)]\n [!code-cs[DataWorks SqlPipe.SendResultsRow#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_11_1.cs)]"
   syntax:
@@ -37,13 +37,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Specifies whether the calling code is running within SQL Server, and if the context connection can be accessed."
-  remarks: "If this property returns false, all the other <xref:Microsoft.SqlServer.Server.SqlContext> members throw an <xref:System.InvalidOperationException> if used.       If this property returns false, any attempt to open a connection object that has &quot;context connection=true&quot; in the connection string fails.       This property is read-only.       When using ADO.NET for data-access, if a piece of code may run both inside SQL Server (using common language runtime integration) and outside SQL Server, this property can be used to check whether the context connection is available."
+  summary: "Specifica se il codice chiamante è in esecuzione all&quot;interno di SQL Server e, se la connessione di contesto è possibile accedere."
+  remarks: "Se questa proprietà restituisce false, tutti gli altri <xref:Microsoft.SqlServer.Server.SqlContext>membri generano un <xref:System.InvalidOperationException>Se utilizzato.</xref:System.InvalidOperationException> </xref:Microsoft.SqlServer.Server.SqlContext>       Se questa proprietà restituisce false, qualsiasi tentativo di aprire un oggetto connessione contenente &quot;connessione di contesto = true&quot; nella stringa di connessione ha esito negativo.       Questa proprietà è di sola lettura.       Quando si utilizza ADO.NET per accedere ai dati, se un frammento di codice è in esecuzione all&quot;interno di SQL Server (utilizzando l&quot;integrazione common language runtime) e all&quot;esterno di SQL Server, questa proprietà può essere utilizzata per controllare se la connessione di contesto è disponibile."
   syntax:
     content: public static bool IsAvailable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the context connection is available and the other <xref href=&quot;Microsoft.SqlServer.Server.SqlContext&quot;></xref> members can be accessed."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Se la connessione di contesto è disponibile e l&quot;altro <xref href=&quot;Microsoft.SqlServer.Server.SqlContext&quot;> </xref> membri sono accessibili."
   overload: Microsoft.SqlServer.Server.SqlContext.IsAvailable*
   exceptions: []
   platform:
@@ -60,13 +60,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Gets the pipe object that allows the caller to send result sets, messages, and the results of executing commands back to the client."
-  remarks: "If invoked from outside SQL Server, a <xref:System.NotSupportedException> is thrown.       This property is read-only."
+  summary: "Ottiene l&quot;oggetto pipe che consente al chiamante di inviare set di risultati, i messaggi e i risultati dell&quot;esecuzione di comandi al client."
+  remarks: "Se chiamato da fuori di SQL Server, un <xref:System.NotSupportedException>viene generata un&quot;eccezione.</xref:System.NotSupportedException>       Questa proprietà è di sola lettura."
   syntax:
     content: public static Microsoft.SqlServer.Server.SqlPipe Pipe { get; }
     return:
       type: Microsoft.SqlServer.Server.SqlPipe
-      description: "An instance of <xref href=&quot;Microsoft.SqlServer.Server.SqlPipe&quot;></xref> if a pipe is available, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if called in a context where pipe is not available (for example, in a user-defined function)."
+      description: "Un&quot;istanza di <xref href=&quot;Microsoft.SqlServer.Server.SqlPipe&quot;> </xref> se è disponibile, una pipe o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se viene chiamato in un contesto in cui pipe non è disponibile (ad esempio, in una funzione definita dall&quot;utente)."
   overload: Microsoft.SqlServer.Server.SqlContext.Pipe*
   exceptions: []
   platform:
@@ -83,13 +83,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Gets the trigger context used to provide the caller with information about what caused the trigger to fire, and a map of the columns that were updated."
-  remarks: "The <xref:Microsoft.SqlServer.Server.SqlTriggerContext> object can only be retrieved from within a common language runtime trigger.       If the TriggerContext property is accessed from outside of SQL Server, a <xref:System.NotSupportedException> is thrown.       This property is read-only."
+  summary: "Ottiene il contesto di trigger utilizzato per fornire al chiamante le informazioni su ciò che ha causato l&quot;attivazione del trigger e una mappa delle colonne che sono stati aggiornati."
+  remarks: "Il <xref:Microsoft.SqlServer.Server.SqlTriggerContext>oggetto può essere recuperato solo dall&quot;interno di un trigger CLR.</xref:Microsoft.SqlServer.Server.SqlTriggerContext>       Se si accede alla proprietà di TriggerContext da esterno a SQL Server, un <xref:System.NotSupportedException>viene generata un&quot;eccezione.</xref:System.NotSupportedException>       Questa proprietà è di sola lettura."
   syntax:
     content: public static Microsoft.SqlServer.Server.SqlTriggerContext TriggerContext { get; }
     return:
       type: Microsoft.SqlServer.Server.SqlTriggerContext
-      description: "An instance of <xref href=&quot;Microsoft.SqlServer.Server.SqlTriggerContext&quot;></xref> if a trigger context is available, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if called outside of a trigger invocation."
+      description: "Un&quot;istanza di <xref href=&quot;Microsoft.SqlServer.Server.SqlTriggerContext&quot;> </xref> se è disponibile, il contesto di un trigger o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se chiamata all&quot;esterno di una chiamata del trigger."
   overload: Microsoft.SqlServer.Server.SqlContext.TriggerContext*
   exceptions: []
   platform:
@@ -106,15 +106,15 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The Microsoft Windows identity of the caller."
-  remarks: "Common language runtime (CLR) code inside SQL Server is always invoked in the context of the process account. If it is necessary for the code to perform an action using calling user’s identity instead of the SQL Server process identity, then an impersonation token should be obtained through this property. After obtaining the <xref:System.Security.Principal.WindowsIdentity> object, callers can impersonate the client account and perform actions on their behalf.       If invoked from outside SQL Server, a <xref:System.NotSupportedException> is thrown.       Only assemblies marked with `EXTERNAL_ACCESS` or `UNSAFE` permissions can access this property.       This property is read-only."
+  summary: "L&quot;identità di Microsoft Windows del chiamante."
+  remarks: "Codice di Common language runtime (CLR) all&quot;interno di SQL Server viene sempre richiamato nel contesto dell&quot;account del processo. Se è necessario per il codice eseguire un&quot;azione utilizzando l&quot;identità dell&quot;utente chiamante anziché l&quot;identità del processo di SQL Server, un token di rappresentazione deve essere ottenuto tramite questa proprietà. Dopo aver ottenuto il <xref:System.Security.Principal.WindowsIdentity>dell&quot;oggetto, i chiamanti possono rappresentare l&quot;account del client ed eseguire azioni per suo conto.</xref:System.Security.Principal.WindowsIdentity>       Se chiamato da fuori di SQL Server, un <xref:System.NotSupportedException>viene generata un&quot;eccezione.</xref:System.NotSupportedException>       Solo gli assembly contrassegnati con `EXTERNAL_ACCESS` o `UNSAFE` le autorizzazioni possono accedere a questa proprietà.       Questa proprietà è di sola lettura."
   example:
   - "The following example shows how to get the Windows identity of the calling client and impersonate the client. See \"Impersonation Sample\" in SQL Server Books Online for an example of impersonation using the WindowsIdentity property.  \n  \n [!code-cs[DataWorks SqlContext.WindowsIdentity Sample#1](~/add/codesnippet/csharp/p-microsoft.sqlserver.se_6_1.cs)]\n [!code-vb[DataWorks SqlContext.WindowsIdentity Sample#1](~/add/codesnippet/visualbasic/p-microsoft.sqlserver.se_6_1.vb)]"
   syntax:
     content: public static System.Security.Principal.WindowsIdentity WindowsIdentity { get; }
     return:
       type: System.Security.Principal.WindowsIdentity
-      description: "A <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;></xref> instance representing the Windows identity of the caller, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the client was authenticated using SQL Server Authentication."
+      description: "Oggetto <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;> </xref> istanza che rappresenta l&quot;identità Windows del chiamante, o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il client è stato autenticato tramite l&quot;autenticazione di SQL Server."
   overload: Microsoft.SqlServer.Server.SqlContext.WindowsIdentity*
   exceptions: []
   platform:

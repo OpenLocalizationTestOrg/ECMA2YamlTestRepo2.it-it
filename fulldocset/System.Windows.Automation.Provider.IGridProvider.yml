@@ -12,8 +12,8 @@ items:
   nameWithType: IGridProvider
   fullName: System.Windows.Automation.Provider.IGridProvider
   type: Interface
-  summary: "Exposes methods and properties to support UI Automation client access to controls that act as containers for a collection of child elements. The children of this element must implement <xref href=&quot;System.Windows.Automation.Provider.IGridItemProvider&quot;></xref> and be organized in a two-dimensional logical coordinate system that can be traversed (that is, a UI Automation client can move to adjacent controls) by using the keyboard."
-  remarks: "Implemented on a UI Automation provider that must support the <xref:System.Windows.Automation.GridPattern> control pattern.       IGridProvider does not enable active manipulation of a grid; <xref:System.Windows.Automation.Provider.ITransformProvider> must be implemented to enable this functionality."
+  summary: "Espone metodi e proprietà per supportare l&quot;accesso client di automazione interfaccia utente ai controlli che fungono da contenitori per una raccolta di elementi figlio. Gli elementi figlio di questo elemento devono implementare <xref href=&quot;System.Windows.Automation.Provider.IGridItemProvider&quot;> </xref> e devono essere organizzati in un sistema di coordinate logico bidimensionale che può essere attraversato (ovvero, un client di automazione interfaccia utente può spostarsi sui controlli adiacenti) usando la tastiera."
+  remarks: "Implementato su un provider di automazione interfaccia utente che deve supportare il <xref:System.Windows.Automation.GridPattern>pattern di controllo.</xref:System.Windows.Automation.GridPattern>       IGridProvider non consente la modifica attiva di una griglia. <xref:System.Windows.Automation.Provider.ITransformProvider>deve essere implementata per abilitare questa funzionalità.</xref:System.Windows.Automation.Provider.ITransformProvider>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -38,15 +38,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets the total number of columns in a grid."
-  remarks: "Hidden rows and columns, depending on the provider implementation, can be loaded in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tree and will therefore be reflected in the <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> and <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they will not be counted."
+  summary: "Ottiene il numero totale di colonne in una griglia."
+  remarks: "Le righe e colonne, a seconda dell&quot;implementazione di provider, possono essere caricate nel [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] ad albero e pertanto influenzare la <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>e <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>proprietà.</xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> </xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> Le righe e colonne nascoste non sono ancora state caricate non da contare."
   example:
   - "The following example code returns the property value.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#102](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#102)]\n [!code-cs[UIAMiscPatternProviders_snip#102](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#102)]"
   syntax:
     content: public int ColumnCount { get; }
     return:
       type: System.Int32
-      description: "The total number of columns in a grid."
+      description: "Numero totale di colonne in una griglia."
   overload: System.Windows.Automation.Provider.IGridProvider.ColumnCount*
   exceptions: []
   platform:
@@ -63,8 +63,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the UI Automation provider for the specified cell."
-  remarks: "-   Grid coordinates are zero-based with the upper left (or upper right cell depending on locale) having coordinates (0,0).      -   If a cell is empty a UI Automation provider must still be returned in order to support the <xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A> property for that cell. This is possible when the layout of child elements in the grid is similar to a ragged array.       ![Windows Explorer view showing ragged layout.](~/add/media/uia-gridpattern-ragged-array.PNG &quot;Windows Explorer view showing ragged layout.&quot;)   Example of a Grid Control with Empty Coordinates      -   Hidden rows and columns, depending on the provider implementation, can be loaded in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tree and will therefore be reflected in the <xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A> and <xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they should not be counted."
+  summary: "Recupera il provider di automazione interfaccia utente per la cella specificata."
+  remarks: "-Le coordinate della griglia sono in base zero con alto a sinistra (o cella in alto a destra a seconda delle impostazioni locali) ha coordinate (0,0).      -Se una cella vuota è necessario che venga restituito un provider di automazione interfaccia utente per supportare il <xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A>proprietà per tale cella.</xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A> Questo è possibile quando il layout degli elementi figlio nella griglia è simile a una matrice irregolare.       ![Visualizzazione di Esplora con layout irregolare. ] (~/add/media/uia-gridpattern-ragged-array.PNG &quot;Con layout visualizzazione Esplora irregolare.&quot;)   Esempio di un controllo griglia con coordinate vuote - nascoste righe e colonne, a seconda dell&quot;implementazione di provider, può essere caricato nel [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] ad albero e pertanto influenzare la <xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A>e <xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A>proprietà.</xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A> </xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A> Se le righe e colonne nascoste non ancora caricate non deve essere contate."
   example:
   - "The following code is an example implementation of this method that returns an object representing the item at the specified location.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#101](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#101)]\n [!code-cs[UIAMiscPatternProviders_snip#101](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#101)]"
   syntax:
@@ -72,13 +72,13 @@ items:
     parameters:
     - id: row
       type: System.Int32
-      description: "The ordinal number of the row of interest."
+      description: "Il numero ordinale della riga di interesse."
     - id: column
       type: System.Int32
-      description: "The ordinal number of the column of interest."
+      description: "Il numero ordinale della colonna di interesse."
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderSimple
-      description: "The UI Automation provider for the specified cell."
+      description: "Il provider di automazione interfaccia utente per la cella specificata."
   overload: System.Windows.Automation.Provider.IGridProvider.GetItem*
   exceptions: []
   platform:
@@ -95,15 +95,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets the total number of rows in a grid."
-  remarks: "Hidden rows and columns, depending on the provider implementation, can be loaded in the logical tree and will therefore be reflected in the <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> and <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they will not be counted."
+  summary: "Ottiene il numero totale di righe in una griglia."
+  remarks: "Le righe e colonne, a seconda dell&quot;implementazione di provider, possono essere caricate nell&quot;albero logico e verranno pertanto riflesse nel <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>e <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>proprietà.</xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> </xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> Le righe e colonne nascoste non sono ancora state caricate non da contare."
   example:
   - "The following example code returns the property value.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#103](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#103)]\n [!code-cs[UIAMiscPatternProviders_snip#103](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#103)]"
   syntax:
     content: public int RowCount { get; }
     return:
       type: System.Int32
-      description: "The total number of rows in a grid."
+      description: "Numero totale di righe in una griglia."
   overload: System.Windows.Automation.Provider.IGridProvider.RowCount*
   exceptions: []
   platform:

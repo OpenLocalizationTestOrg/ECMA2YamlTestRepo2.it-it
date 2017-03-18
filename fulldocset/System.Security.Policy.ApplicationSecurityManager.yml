@@ -12,8 +12,8 @@ items:
   nameWithType: ApplicationSecurityManager
   fullName: System.Security.Policy.ApplicationSecurityManager
   type: Class
-  summary: "Manages trust decisions for manifest-activated applications."
-  remarks: "The ApplicationSecurityManager class provides essential information for the execution of a manifest-based application. The <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> property identifies the trust manager responsible for determining whether an application is trusted. The <xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A> method calls the application trust manager to determine whether an application is trusted. The <xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A> property contains the cached trust decisions for the user."
+  summary: "Gestisce le decisioni di attendibilità per le applicazioni attivate mediante manifesto."
+  remarks: "La classe ApplicationSecurityManager fornisce informazioni essenziali per l&quot;esecuzione di un&quot;applicazione basata su manifesto. Il <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A>proprietà identifica il gestore di attendibilità per determinare se un&quot;applicazione sia attendibile.</xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> Il <xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A>metodo chiama l&quot;attendibilità dell&quot;applicazione di gestione per determinare se un&quot;applicazione è attendibile.</xref:System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust%2A> Il <xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A>proprietà contiene le decisioni di attendibilità memorizzato nella cache per l&quot;utente.</xref:System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -37,18 +37,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets the current application trust manager."
-  remarks: "In the current release there is only one trust manager, which can be a custom implementation of the <xref:System.Security.Policy.IApplicationTrustManager> interface. The default trust manager implementation prompts the user for permission to install the application and elevate the permissions granted to the application. Other trust manager implementations might have different user experiences. For example, an implementation might check an enterprise list for trusted applications, rather than prompting the user for that information."
+  summary: "Ottiene il gestore di attendibilità dell&quot;applicazione corrente."
+  remarks: "Nella versione corrente è disponibile un solo gestore di attendibilità, che può essere un&quot;implementazione personalizzata del <xref:System.Security.Policy.IApplicationTrustManager>interfaccia.</xref:System.Security.Policy.IApplicationTrustManager> L&quot;implementazione predefinita trust manager richiede all&quot;utente le autorizzazioni per installare l&quot;applicazione e aumentare le autorizzazioni concesse all&quot;applicazione. Altre implementazioni potrebbero essere esperienze utente diverso. Ad esempio, un&quot;implementazione potrebbe verificare un elenco di enterprise per le applicazioni attendibili, anziché chiedere conferma all&quot;utente di quell&quot;informazione."
   syntax:
     content: public static System.Security.Policy.IApplicationTrustManager ApplicationTrustManager { get; }
     return:
       type: System.Security.Policy.IApplicationTrustManager
-      description: "An <xref href=&quot;System.Security.Policy.IApplicationTrustManager&quot;></xref> that represents the current trust manager."
+      description: "Un <xref href=&quot;System.Security.Policy.IApplicationTrustManager&quot;> </xref> che rappresenta il gestore di attendibilità corrente."
   overload: System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager*
   exceptions:
   - type: System.Security.Policy.PolicyException
     commentId: T:System.Security.Policy.PolicyException
-    description: "The policy on this application does not have a trust manager."
+    description: "I criteri in questa applicazione non dispone di un gestore di attendibilità."
   platform:
   - net462
 - uid: System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust(System.ActivationContext,System.Security.Policy.TrustManagerContext)
@@ -63,20 +63,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Determines whether the user approves the specified application to execute with the requested permission set."
-  remarks: "DetermineApplicationTrust uses the configured <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> property to determine whether to allow execution of the specified application with the permission set requested in the application manifest. The trust manager&quot;s behavior is dependent on the trust manager implementation and the information passed in the `context` parameter. The default behavior of the trust manager is to establish a user interface (UI) dialog box to determine the user&quot;s approval. However, a trust manager can also determine an application&quot;s trust status based on other criteria, such as decisions provided by a corporate database. The trust decision can be persisted, depending upon the `context` parameters properties and the trust manager implementation. If the trust for the application is persisted for a decision based on a user dialog box, future calls to the <xref:System.Security.Policy.ApplicationSecurityManager> will not present the UI dialog box for every request for that application. DetermineApplicationTrust is called after the manifest, but before the application has been downloaded to the local system."
+  summary: "Determina se l&quot;utente approva l&quot;applicazione specificata per l&quot;esecuzione con il set di autorizzazioni richiesto."
+  remarks: "DetermineApplicationTrust utilizza configurato <xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A>proprietà per determinare se consentire l&quot;esecuzione dell&quot;applicazione specificata con il set di autorizzazioni richiesto nel manifesto dell&quot;applicazione.</xref:System.Security.Policy.ApplicationSecurityManager.ApplicationTrustManager%2A> Comportamento del gestore di attendibilità è dipendente dall&quot;implementazione di gestione di trust e le informazioni passate nel `context` parametro. Il comportamento predefinito del gestore di attendibilità consiste nello stabilire una finestra di dialogo dell&quot;interfaccia utente per determinare l&quot;approvazione dell&quot;utente. Tuttavia, un gestore di attendibilità può inoltre determinare lo stato di attendibilità di un&quot;applicazione in base ad altri criteri, ad esempio le decisioni fornite da un database aziendale. La decisione di attendibilità può essere reso persistente, a seconda di `context` proprietà dei parametri e dell&quot;implementazione del gestore di attendibilità. Se la relazione di trust per l&quot;applicazione viene resa persistente per una decisione basata su una finestra di dialogo utente, le chiamate successive al <xref:System.Security.Policy.ApplicationSecurityManager>non mostrerà la finestra di dialogo dell&quot;interfaccia utente per ogni richiesta per l&quot;applicazione.</xref:System.Security.Policy.ApplicationSecurityManager> DetermineApplicationTrust viene chiamato dopo il manifesto, ma prima è stata scaricata l&quot;applicazione al sistema locale."
   syntax:
     content: public static bool DetermineApplicationTrust (ActivationContext activationContext, System.Security.Policy.TrustManagerContext context);
     parameters:
     - id: activationContext
       type: System.ActivationContext
-      description: "An <xref href=&quot;System.ActivationContext&quot;></xref> identifying the activation context for the application."
+      description: "Un <xref href=&quot;System.ActivationContext&quot;> </xref> che identifica il contesto di attivazione per l&quot;applicazione."
     - id: context
       type: System.Security.Policy.TrustManagerContext
-      description: "A <xref href=&quot;System.Security.Policy.TrustManagerContext&quot;></xref> identifying the trust manager context for the application."
+      description: "Oggetto <xref href=&quot;System.Security.Policy.TrustManagerContext&quot;> </xref> che identifica il contesto del gestore di attendibilità per l&quot;applicazione."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to execute the specified application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Per eseguire l&quot;applicazione specificata. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Policy.ApplicationSecurityManager.DetermineApplicationTrust*
   exceptions:
   - type: System.ArgumentNullException
@@ -96,13 +96,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets an application trust collection that contains the cached trust decisions for the user."
-  remarks: "The trust decisions in the collection are maintained using the methods of the collection, such as the <xref:System.Security.Policy.ApplicationTrustCollection.Add%2A> method or the <xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A> method."
+  summary: "Ottiene una raccolta di attendibilità dell&quot;applicazione che contiene le decisioni di attendibilità memorizzato nella cache per l&quot;utente."
+  remarks: "Le decisioni di attendibilità nella raccolta vengono gestite utilizzando i metodi di raccolta, ad esempio il <xref:System.Security.Policy.ApplicationTrustCollection.Add%2A>metodo o <xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A>metodo.</xref:System.Security.Policy.ApplicationTrustCollection.Remove%2A> </xref:System.Security.Policy.ApplicationTrustCollection.Add%2A>"
   syntax:
     content: public static System.Security.Policy.ApplicationTrustCollection UserApplicationTrusts { get; }
     return:
       type: System.Security.Policy.ApplicationTrustCollection
-      description: "An <xref href=&quot;System.Security.Policy.ApplicationTrustCollection&quot;></xref> that contains the cached trust decisions for the user."
+      description: "Un <xref href=&quot;System.Security.Policy.ApplicationTrustCollection&quot;> </xref> che contiene le decisioni di attendibilità memorizzato nella cache per l&quot;utente."
   overload: System.Security.Policy.ApplicationSecurityManager.UserApplicationTrusts*
   exceptions: []
   platform:
