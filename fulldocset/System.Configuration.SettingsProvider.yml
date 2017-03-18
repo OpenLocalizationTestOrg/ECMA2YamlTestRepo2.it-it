@@ -13,8 +13,8 @@ items:
   nameWithType: SettingsProvider
   fullName: System.Configuration.SettingsProvider
   type: Class
-  summary: "Acts as a base class for deriving custom settings providers in the application settings architecture."
-  remarks: "A settings provider defines the mechanism for storing configuration data used in the application settings architecture. The .NET Framework contains a single default settings provider, <xref:System.Configuration.LocalFileSettingsProvider>, which stores configuration data to the local file system. However, you can create alternate storage mechanisms by deriving from the abstract SettingsProvider class. The provider that a wrapper class uses is determined by decorating the wrapper class with the <xref:System.Configuration.SettingsProviderAttribute>. If this attribute is not provided, the default, <xref:System.Configuration.LocalFileSettingsProvider>, is used.       When you create a custom settings provider, at minimum, you must provide implementations for the three methods of this class: <xref:System.Configuration.SettingsProvider.GetPropertyValues%2A>, <xref:System.Configuration.SettingsProvider.SetPropertyValues%2A> and <xref:System.Configuration.SettingsProvider.ApplicationName%2A>.       For client applications, you can add more standardized functionality to a custom provider by also implementing the <xref:System.Configuration.IApplicationSettingsProvider> interface. This interface mirrors methods found in the <xref:System.Configuration.ApplicationSettingsBase> class, which mainly enables versioning support.       Typically, you should design settings providers to be single-instanced to avoid storage resource contention. Providers should also be thread-safe because they can be called simultaneously from multiple wrapper instances in a single application domain or from multiple applications in different domains.       At minimum, a settings provider must recognize three attributes—<xref:System.Configuration.ApplicationScopedSettingAttribute>, <xref:System.Configuration.UserScopedSettingAttribute>, and <xref:System.Configuration.DefaultSettingValueAttribute>. For a full listing of attributes that can be applied to application settings, see [Application Settings Attributes](~/add/includes/ajax-current-ext-md.md). A custom setting provider should resolve attributes applied to settings properties in the following manner:      1.  If the provider can fulfill the request implied by the attribute, obviously it should do so.      2.  If the provider cannot fulfill the request, it should ignore it silently.      3.  If two or more properties conflict; for example, a property being decorated with both <xref:System.Configuration.ApplicationScopedSettingAttribute> and <xref:System.Configuration.UserScopedSettingAttribute>; the provider should throw a <xref:System.Configuration.ConfigurationException>."
+  summary: "Funge da classe base per la derivazione di provider di impostazioni personalizzati nell&quot;architettura Impostazioni applicazione."
+  remarks: "Un provider di impostazioni definisce il meccanismo per archiviare i dati di configurazione utilizzati nell&quot;architettura Impostazioni applicazione. .NET Framework contiene un solo impostazioni provider predefinito, <xref:System.Configuration.LocalFileSettingsProvider>, che archivia i dati di configurazione per il file system locale.</xref:System.Configuration.LocalFileSettingsProvider> Tuttavia, è possibile creare meccanismi di archiviazione alternativo derivandolo dalla classe astratta SettingsProvider. Il provider utilizzato da una classe wrapper viene determinato tramite la classe wrapper con <xref:System.Configuration.SettingsProviderAttribute>.</xref:System.Configuration.SettingsProviderAttribute> Se questo attributo viene omesso, il valore predefinito, <xref:System.Configuration.LocalFileSettingsProvider>, viene utilizzato.</xref:System.Configuration.LocalFileSettingsProvider>       Quando si crea un provider di impostazioni personalizzate, come minimo, è necessario fornire implementazioni per i tre metodi di questa classe: <xref:System.Configuration.SettingsProvider.GetPropertyValues%2A> <xref:System.Configuration.SettingsProvider.SetPropertyValues%2A>e <xref:System.Configuration.SettingsProvider.ApplicationName%2A>.</xref:System.Configuration.SettingsProvider.ApplicationName%2A> </xref:System.Configuration.SettingsProvider.SetPropertyValues%2A> </xref:System.Configuration.SettingsProvider.GetPropertyValues%2A>       Per le applicazioni client, è possibile aggiungere altre funzionalità standard per un provider personalizzato anche implementando il <xref:System.Configuration.IApplicationSettingsProvider>interfaccia.</xref:System.Configuration.IApplicationSettingsProvider> Mirroring dei metodi, vedere il <xref:System.Configuration.ApplicationSettingsBase>(classe), che consente principalmente di supporto delle versioni.</xref:System.Configuration.ApplicationSettingsBase>       In genere, è consigliabile progettare i provider di impostazioni di istanza singola per evitare conflitti di risorse di archiviazione. I provider devono inoltre essere thread-safe, perché può essere chiamati simultaneamente da più istanze di wrapper in un singolo dominio applicazione o da più applicazioni in domini diversi.       Come minimo, un provider di impostazioni deve riconoscere i tre attributi:<xref:System.Configuration.ApplicationScopedSettingAttribute>, <xref:System.Configuration.UserScopedSettingAttribute>e <xref:System.Configuration.DefaultSettingValueAttribute>.</xref:System.Configuration.DefaultSettingValueAttribute> </xref:System.Configuration.UserScopedSettingAttribute> </xref:System.Configuration.ApplicationScopedSettingAttribute> Per un elenco completo degli attributi che possono essere applicati alle impostazioni dell&quot;applicazione, vedere [gli attributi di impostazioni applicazione](~/add/includes/ajax-current-ext-md.md). Un provider di impostazioni personalizzato deve risolvere gli attributi applicati alle proprietà delle impostazioni nel modo seguente: 1.  Se il provider può soddisfare la richiesta in cui è inclusa l&quot;attributo, ovviamente, è necessario farlo.      2.  Se il provider non è possibile soddisfare la richiesta, è necessario ignorarla automaticamente.      3.  Se due o più proprietà in conflitto; ad esempio, una proprietà viene decorata con entrambi <xref:System.Configuration.ApplicationScopedSettingAttribute>e <xref:System.Configuration.UserScopedSettingAttribute>; il provider deve generare un <xref:System.Configuration.ConfigurationException>.</xref:System.Configuration.ConfigurationException> </xref:System.Configuration.UserScopedSettingAttribute> </xref:System.Configuration.ApplicationScopedSettingAttribute>"
   syntax:
     content: 'public abstract class SettingsProvider : System.Configuration.Provider.ProviderBase'
   inheritance:
@@ -39,8 +39,8 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Initializes an instance of the <xref href=&quot;System.Configuration.SettingsProvider&quot;></xref> class."
-  remarks: "This is this default protected constructor for this abstract class. Derived custom settings providers are not required to provide an explicit constructor because the <xref:System.Configuration.Provider.ProviderBase.Initialize%2A> method typically performs all initialization.       Client code typically does not directly instantiate a settings provider; instead, you use the following procedure to find a settings provider for a particular settings property:      1.  Call the <xref:System.ComponentModel.Component.GetService%2A> method on the current <xref:System.ComponentModel.Component> or <xref:System.ComponentModel.ISite> to return a reference to the current <xref:System.Configuration.ISettingsProviderService>.      2.  Call the <xref:System.Configuration.ISettingsProviderService.GetSettingsProvider%2A> method of the <xref:System.Configuration.ISettingsProviderService> retrieved in the first step to return the settings provider."
+  summary: "Inizializza un&quot;istanza di <xref href=&quot;System.Configuration.SettingsProvider&quot;> </xref> classe."
+  remarks: "Questo è il costruttore protetto predefinito per questa classe astratta. I provider di impostazioni personalizzato derivato non è necessario fornire un costruttore esplicito perché il <xref:System.Configuration.Provider.ProviderBase.Initialize%2A>metodo esegue in genere l&quot;inizializzazione tutti.</xref:System.Configuration.Provider.ProviderBase.Initialize%2A>       Il codice client in genere non creino direttamente un provider di impostazioni. Utilizzare invece la procedura seguente per trovare un provider di impostazioni per una determinata proprietà delle impostazioni: 1.  Chiamare il <xref:System.ComponentModel.Component.GetService%2A>metodo corrente <xref:System.ComponentModel.Component>o <xref:System.ComponentModel.ISite>per restituire un riferimento all&quot;oggetto corrente <xref:System.Configuration.ISettingsProviderService>.</xref:System.Configuration.ISettingsProviderService> </xref:System.ComponentModel.ISite> </xref:System.ComponentModel.Component> </xref:System.ComponentModel.Component.GetService%2A>      2.  Chiamare il <xref:System.Configuration.ISettingsProviderService.GetSettingsProvider%2A>metodo il <xref:System.Configuration.ISettingsProviderService>recuperato nel primo passaggio per restituire il provider di impostazioni.</xref:System.Configuration.ISettingsProviderService> </xref:System.Configuration.ISettingsProviderService.GetSettingsProvider%2A>"
   syntax:
     content: protected SettingsProvider ();
     parameters: []
@@ -60,13 +60,13 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Gets or sets the name of the currently running application."
-  remarks: "The ApplicationName and <xref:System.Configuration.Provider.ProviderBase.Name%2A> properties help to disambiguate similarly named setting properties in different applications."
+  summary: "Ottiene o imposta il nome dell&quot;applicazione attualmente in esecuzione."
+  remarks: "ApplicationName e <xref:System.Configuration.Provider.ProviderBase.Name%2A>consentono di risolvere l&quot;ambiguità in modo analogo denominata impostazione delle proprietà in applicazioni diverse.</xref:System.Configuration.Provider.ProviderBase.Name%2A>"
   syntax:
     content: public abstract string ApplicationName { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> that contains the application&quot;s shortened name, which does not contain a full path or extension, for example, `SimpleAppSettings`."
+      description: "Oggetto <xref:System.String>che contiene nome abbreviato dell&quot;applicazione, che non contiene un percorso completo o l&quot;estensione, ad esempio, `SimpleAppSettings`.</xref:System.String>"
   overload: System.Configuration.SettingsProvider.ApplicationName*
   exceptions: []
   platform:
@@ -83,20 +83,20 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Returns the collection of settings property values for the specified application instance and settings property group."
-  remarks: "The GetPropertyValues method must be implemented to handle special settings, those marked with <xref:System.Configuration.SpecialSettingAttribute>, as well as reconcile application and user settings."
+  summary: "Restituisce la raccolta di impostazioni di valori di proprietà per il gruppo di proprietà istanza e le impostazioni dell&quot;applicazione specificato."
+  remarks: "Il metodo GetPropertyValues deve essere implementato per gestire le impostazioni speciali, quelli contrassegnati con <xref:System.Configuration.SpecialSettingAttribute>, nonché risolvere le differenze tra applicazioni e le impostazioni utente.</xref:System.Configuration.SpecialSettingAttribute>"
   syntax:
     content: public abstract System.Configuration.SettingsPropertyValueCollection GetPropertyValues (System.Configuration.SettingsContext context, System.Configuration.SettingsPropertyCollection collection);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application use."
+      description: "Oggetto <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> che descrive l&quot;utilizzo dell&quot;applicazione corrente."
     - id: collection
       type: System.Configuration.SettingsPropertyCollection
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyCollection&quot;></xref> containing the settings property group whose values are to be retrieved."
+      description: "Oggetto <xref href=&quot;System.Configuration.SettingsPropertyCollection&quot;> </xref> contenente il gruppo di impostazioni di proprietà i cui valori devono essere recuperate."
     return:
       type: System.Configuration.SettingsPropertyValueCollection
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyValueCollection&quot;></xref> containing the values for the specified settings property group."
+      description: "Oggetto <xref href=&quot;System.Configuration.SettingsPropertyValueCollection&quot;> </xref> contenente i valori per il gruppo di proprietà delle impostazioni specificate."
   overload: System.Configuration.SettingsProvider.GetPropertyValues*
   exceptions: []
   platform:
@@ -113,17 +113,17 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Sets the values of the specified group of property settings."
-  remarks: "<xref:System.Configuration.ApplicationSettingsBase> contains the <xref:System.Configuration.ApplicationSettingsBase.Save%2A> method, which is called to persist the values of all of its settings properties. This method enumerates through all the settings providers associated with its settings properties, and calls the SetPropertyValues method for each <xref:System.Configuration.SettingsProvider> to perform the actual serialization operation.       The SetPropertyValues method should be implemented with security in mind:      -   Only fully trusted code should be allowed to update application settings. Partially trusted code should be allowed to update only user application settings. Untrusted code is not typically allowed to update application settings.      -   Usage quotas should be considered to guard against resource attacks by partially trusted applications."
+  summary: "Imposta i valori delle impostazioni delle proprietà del gruppo specificato."
+  remarks: "<xref:System.Configuration.ApplicationSettingsBase>contiene il <xref:System.Configuration.ApplicationSettingsBase.Save%2A>metodo, che viene chiamato per mantenere i valori di tutte le proprietà delle impostazioni.</xref:System.Configuration.ApplicationSettingsBase.Save%2A></xref:System.Configuration.ApplicationSettingsBase> Questo metodo enumera tutti i provider di impostazioni associati alle proprietà delle impostazioni e chiama il metodo SetPropertyValues per ogni <xref:System.Configuration.SettingsProvider>per eseguire l&quot;operazione di serializzazione effettiva.</xref:System.Configuration.SettingsProvider>       Il metodo SetPropertyValues deve essere implementato con particolare attenzione alla sicurezza: - solo completamente attendibili codice deve essere consentito per aggiornare le impostazioni dell&quot;applicazione. Codice parzialmente attendibile deve essere consentito l&quot;aggiornamento solo le impostazioni dell&quot;applicazione. Codice non attendibile non è in genere possibile aggiornare le impostazioni dell&quot;applicazione.      -Le quote di utilizzo devono essere considerati come salvaguardarsi da attacchi di risorse da applicazioni parzialmente attendibili."
   syntax:
     content: public abstract void SetPropertyValues (System.Configuration.SettingsContext context, System.Configuration.SettingsPropertyValueCollection collection);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application usage."
+      description: "Oggetto <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> che descrive l&quot;utilizzo dell&quot;applicazione corrente."
     - id: collection
       type: System.Configuration.SettingsPropertyValueCollection
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyValueCollection&quot;></xref> representing the group of property settings to set."
+      description: "Oggetto <xref href=&quot;System.Configuration.SettingsPropertyValueCollection&quot;> </xref> che rappresenta il gruppo di impostazioni delle proprietà da impostare."
   overload: System.Configuration.SettingsProvider.SetPropertyValues*
   exceptions: []
   platform:

@@ -33,8 +33,8 @@ items:
   nameWithType: Transaction
   fullName: System.Transactions.Transaction
   type: Class
-  summary: "Represents a transaction."
-  remarks: "The <xref:System.Transactions> namespace provides both an explicit programming model based on the Transaction class, as well as an implicit programming model using the <xref:System.Transactions.TransactionScope> class, in which transactions are automatically managed by the infrastructure. It is highly recommended that you use the easier implicit model for development. To get started, please see the [Implementing An Implicit Transaction Using Transaction Scope](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) topic. For more information on writing a transactional application, see [Writing A Transactional Application](http://msdn.microsoft.com/en-us/4a7cc4d1-0891-4605-941f-a933b9ce5bc8).       The Transaction class contains methods used by developers implementing resource managers for enlistment. It also provides functionalities for cloning a transaction and controlling the current transaction context. You can obtain the current transaction, if one is set, using the static <xref:System.Transactions.Transaction.Current%2A> property."
+  summary: "Rappresenta una transazione."
+  remarks: "Il <xref:System.Transactions>spazio dei nomi fornisce un modello di programmazione esplicito basato sulla classe delle transazioni, nonché un modello di programmazione implicito mediante la <xref:System.Transactions.TransactionScope>(classe), in cui le transazioni vengono gestite automaticamente dall&quot;infrastruttura.</xref:System.Transactions.TransactionScope> </xref:System.Transactions> È consigliabile utilizzare il modello implicito più semplice per lo sviluppo. Per iniziare, vedere il [implementazione un implicita delle transazioni con ambito di transazione](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) argomento. Per ulteriori informazioni sulla scrittura di un&quot;applicazione transazionale, vedere [la scrittura di applicazioni transazionali A](http://msdn.microsoft.com/en-us/4a7cc4d1-0891-4605-941f-a933b9ce5bc8).       La classe di transazione contiene i metodi utilizzati dagli sviluppatori di implementare i gestori di risorse per l&quot;integrazione. Fornisce inoltre funzionalità per la clonazione di una transazione e controllare il contesto della transazione corrente. È possibile ottenere la transazione corrente, se uno è impostato, utilizzando il metodo statico <xref:System.Transactions.Transaction.Current%2A>proprietà.</xref:System.Transactions.Transaction.Current%2A>"
   syntax:
     content: 'public class Transaction : IDisposable, System.Runtime.Serialization.ISerializable'
   inheritance:
@@ -57,14 +57,14 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Creates a clone of the transaction."
-  remarks: "Clones are created to pass transactions.  For example, you might not want to pass a <xref:System.Transactions.CommittableTransaction> to other applications, because you do not want others to commit your transaction.  If you try to marshal or serialize a transaction, a clone is created for you automatically."
+  summary: "Crea un clone della transazione."
+  remarks: "Per passare le transazioni vengono creati cloni.  Ad esempio, potrebbe non si desidera passare un <xref:System.Transactions.CommittableTransaction>ad altre applicazioni, perché non si desidera ad altri utenti di eseguire il commit della transazione.</xref:System.Transactions.CommittableTransaction>  Se si tenta di effettuare il marshalling o la serializzazione di una transazione, un clone viene creato automaticamente."
   syntax:
     content: public System.Transactions.Transaction Clone ();
     parameters: []
     return:
       type: System.Transactions.Transaction
-      description: "A <xref href=&quot;System.Transactions.Transaction&quot;></xref> that is a copy of the current transaction object."
+      description: "Oggetto <xref href=&quot;System.Transactions.Transaction&quot;> </xref> che rappresenta una copia dell&quot;oggetto di transazione corrente."
   overload: System.Transactions.Transaction.Clone*
   exceptions: []
   platform:
@@ -81,13 +81,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets or sets the ambient transaction."
-  remarks: "For more information on ambient transactions, please see the &quot;Managing transaction flow using TransactionScopeOption&quot; section of the [Implementing an Implicit Transaction using Transaction Scope](~/add/includes/ajax-current-ext-md.md) topic.       Although you can set the ambient transaction using this property, you should use the <xref:System.Transactions.TransactionScope> object to manipulate the ambient transaction whenever possible.       This property is thread static. If you change the ambient transaction using this property inside a <xref:System.Transactions.TransactionScope> an <xref:System.InvalidOperationException> is thrown when <xref:System.Transactions.TransactionScope.Dispose%2A> is called, and the previous ambient transaction value is restored."
+  summary: "Ottiene o imposta la transazione di ambiente."
+  remarks: "Per ulteriori informazioni sulle transazioni di ambiente, vedere la sezione &quot;Gestione del flusso delle transazioni mediante TransactionScopeOption&quot; del [implementazione di una transazione implicita con ambito di transazione](~/add/includes/ajax-current-ext-md.md) argomento.       Sebbene sia possibile impostare la transazione di ambiente utilizzando questa proprietà, è consigliabile utilizzare il <xref:System.Transactions.TransactionScope>oggetto per modificare la transazione di ambiente quando possibile.</xref:System.Transactions.TransactionScope>       Questa proprietà è di thread statici. Se si modifica la transazione di ambiente utilizzando questa proprietà all&quot;interno di un <xref:System.Transactions.TransactionScope>un <xref:System.InvalidOperationException>viene generata quando <xref:System.Transactions.TransactionScope.Dispose%2A>viene chiamato e viene ripristinato il valore precedente della transazione di ambiente.</xref:System.Transactions.TransactionScope.Dispose%2A> </xref:System.InvalidOperationException> </xref:System.Transactions.TransactionScope>"
   syntax:
     content: public static System.Transactions.Transaction Current { get; set; }
     return:
       type: System.Transactions.Transaction
-      description: "A <xref href=&quot;System.Transactions.Transaction&quot;></xref> that describes the current transaction."
+      description: "Oggetto <xref href=&quot;System.Transactions.Transaction&quot;> </xref> che descrive la transazione corrente."
   overload: System.Transactions.Transaction.Current*
   exceptions: []
   platform:
@@ -104,8 +104,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Creates a dependent clone of the transaction."
-  remarks: "A dependent transaction is a transaction whose outcome depends on the outcome of the transaction from which it was cloned.       The `cloneoption` parameter controls what kind of dependent transaction to create. If a dependent transaction is created with <xref:System.Transactions.DependentCloneOption>, it blocks the commit process of the transaction until the transaction times out, or <xref:System.Transactions.DependentTransaction.Complete%2A> is called on the <xref:System.Transactions.DependentTransaction>. If it is created with <xref:System.Transactions.DependentCloneOption>, it automatically aborts the transaction if <xref:System.Transactions.CommittableTransaction.Commit%2A> is called before <xref:System.Transactions.DependentTransaction.Complete%2A> is called on the <xref:System.Transactions.DependentTransaction>."
+  summary: "Crea un clone dipendente della transazione."
+  remarks: "Una transazione dipendente è una transazione il cui risultato dipende dal risultato della transazione da cui è stato clonato.       Il `cloneoption` parametro controlla il tipo di transazione dipendente da creare. Se viene creata una transazione dipendente con <xref:System.Transactions.DependentCloneOption>, si blocca il processo di commit della transazione fino a quando la transazione scade, o <xref:System.Transactions.DependentTransaction.Complete%2A>viene chiamato su <xref:System.Transactions.DependentTransaction>.</xref:System.Transactions.DependentTransaction> </xref:System.Transactions.DependentTransaction.Complete%2A> </xref:System.Transactions.DependentCloneOption> Se viene creata con <xref:System.Transactions.DependentCloneOption>, la transazione viene interrotta automaticamente se <xref:System.Transactions.CommittableTransaction.Commit%2A>viene chiamato prima che <xref:System.Transactions.DependentTransaction.Complete%2A>viene chiamato su <xref:System.Transactions.DependentTransaction>.</xref:System.Transactions.DependentTransaction> </xref:System.Transactions.DependentTransaction.Complete%2A> </xref:System.Transactions.CommittableTransaction.Commit%2A> </xref:System.Transactions.DependentCloneOption>"
   example:
   - "The following example shows you how to create a dependent transaction.  \n  \n [!code-vb[Tx_DependentTx#1](~/add/codesnippet/visualbasic/a081f0f4-5473-43fc-b7fe-_1.vb)]\n [!code-cs[Tx_DependentTx#1](~/add/codesnippet/csharp/a081f0f4-5473-43fc-b7fe-_1.cs)]"
   syntax:
@@ -113,10 +113,10 @@ items:
     parameters:
     - id: cloneOption
       type: System.Transactions.DependentCloneOption
-      description: "A <xref href=&quot;System.Transactions.DependentCloneOption&quot;></xref> that controls what kind of dependent transaction to create."
+      description: "Oggetto <xref href=&quot;System.Transactions.DependentCloneOption&quot;> </xref> che controlla il tipo di transazione dipendente da creare."
     return:
       type: System.Transactions.DependentTransaction
-      description: "A <xref href=&quot;System.Transactions.DependentTransaction&quot;></xref> that represents the dependent clone."
+      description: "Oggetto <xref href=&quot;System.Transactions.DependentTransaction&quot;> </xref> che rappresenta il duplicato dipendente."
   overload: System.Transactions.Transaction.DependentClone*
   exceptions: []
   platform:
@@ -133,8 +133,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Releases the resources that are held by the object."
-  remarks: "If you change the ambient transaction by setting <xref:System.Transactions.Transaction.Current%2A> inside a <xref:System.Transactions.TransactionScope> an <xref:System.InvalidOperationException> is thrown when <xref:System.Transactions.TransactionScope.Dispose%2A> is called, and the previous ambient transaction value is restored."
+  summary: "Rilascia le risorse utilizzate dall&quot;oggetto."
+  remarks: "Se si modifica la transazione di ambiente impostando <xref:System.Transactions.Transaction.Current%2A>all&quot;interno di un <xref:System.Transactions.TransactionScope>un <xref:System.InvalidOperationException>viene generata quando <xref:System.Transactions.TransactionScope.Dispose%2A>viene chiamato e viene ripristinato il valore precedente della transazione di ambiente.</xref:System.Transactions.TransactionScope.Dispose%2A> </xref:System.InvalidOperationException> </xref:System.Transactions.TransactionScope> </xref:System.Transactions.Transaction.Current%2A>"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -154,23 +154,23 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Enlists a durable resource manager that supports two phase commit to participate in a transaction."
-  remarks: "Resource managers with a durable enlistment must be able to perform recovery if they experience a failure. For more information on recovery, see [Performing Recovery](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691). For more information on volatile and durable resources, as well as how to enlist a resource, see [Implementing A Resource Manager](http://msdn.microsoft.com/en-us/81509719-d579-4530-831e-42e1acdef63e).  For more information on how a resource manager responds to commit notification and prepare the commit in two-phase commit, see [Committing A Transaction In Single-Phase and Multi-Phase](http://msdn.microsoft.com/en-us/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d).       Resource managers enlisted for participation in a transaction through this method receive two phase commit notifications that correspond to the methods defined on the <xref:System.Transactions.IEnlistmentNotification> interface."
+  summary: "Inserisce un gestore di risorse durevole che supporta il commit a due fasi per partecipare in una transazione."
+  remarks: "Gestori di risorse con un elenco durevole devono essere in grado di eseguire il ripristino in caso di un errore. Per ulteriori informazioni sul recupero, vedere [esecuzione ripristino](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691). Per ulteriori informazioni su risorse volatili e durevoli, nonché come integrare una risorsa, vedere [Implementing a Resource Manager](http://msdn.microsoft.com/en-us/81509719-d579-4530-831e-42e1acdef63e).  Per ulteriori informazioni sulla modalità di risposta a una notifica di commit e prepara il commit in un commit di un gestore di risorse, vedere [commit di una transazione In Phase e multifase](http://msdn.microsoft.com/en-us/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d).       Gestori delle risorse integrati per la partecipazione in una transazione tramite questo metodo ricevono le notifiche di commit a due fasi che corrispondono ai metodi definiti nel <xref:System.Transactions.IEnlistmentNotification>interfaccia.</xref:System.Transactions.IEnlistmentNotification>"
   syntax:
     content: public System.Transactions.Enlistment EnlistDurable (Guid resourceManagerIdentifier, System.Transactions.IEnlistmentNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions);
     parameters:
     - id: resourceManagerIdentifier
       type: System.Guid
-      description: "A unique identifier for a resource manager, which should persist across resource manager failure or reboot."
+      description: "Un identificatore univoco per un gestore delle risorse, che deve persistere attraverso un errore del gestore di risorse o riavviare il computer."
     - id: enlistmentNotification
       type: System.Transactions.IEnlistmentNotification
-      description: "An object that implements the <xref href=&quot;System.Transactions.IEnlistmentNotification&quot;></xref> interface to receive two phase commit notifications."
+      description: "Oggetto che implementa il <xref href=&quot;System.Transactions.IEnlistmentNotification&quot;> </xref> interfaccia per ricevere le notifiche di commit a due fasi."
     - id: enlistmentOptions
       type: System.Transactions.EnlistmentOptions
-      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref> if the resource manager wants to perform additional work during the prepare phase."
+      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref>Se il gestore delle risorse desidera eseguire altre operazioni durante la fase di preparazione."
     return:
       type: System.Transactions.Enlistment
-      description: "An <xref href=&quot;System.Transactions.Enlistment&quot;></xref> object that describes the enlistment."
+      description: "Un <xref href=&quot;System.Transactions.Enlistment&quot;> </xref> oggetto che descrive l&quot;elenco."
   overload: System.Transactions.Transaction.EnlistDurable*
   exceptions: []
   platform:
@@ -187,23 +187,23 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Enlists a durable resource manager that supports single phase commit optimization to participate in a transaction."
-  remarks: "Resource managers with a durable enlistment must be able to perform recovery if they experience a failure. For more information on recovery, see [Performing Recovery](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691). For more information on volatile and durable resources, as well as how to enlist a resource, see [Implementing A Resource Manager](http://msdn.microsoft.com/en-us/81509719-d579-4530-831e-42e1acdef63e).       You should note that even when your resource manager implementation enlists with this method, it is not guaranteed that it receives a single phase commit. The transaction manager can still send two phase commit notifications instead. For more information on the single phase commit optimization, see [Optimization Using Single Phase Commit and Promotable Single Phase Notification](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb)."
+  summary: "Inserisce un gestore di risorse durevole che supporta l&quot;ottimizzazione di commit di una fase per la partecipazione in una transazione."
+  remarks: "Gestori di risorse con un elenco durevole devono essere in grado di eseguire il ripristino in caso di un errore. Per ulteriori informazioni sul recupero, vedere [esecuzione ripristino](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691). Per ulteriori informazioni su risorse volatili e durevoli, nonché come integrare una risorsa, vedere [Implementing a Resource Manager](http://msdn.microsoft.com/en-us/81509719-d579-4530-831e-42e1acdef63e).       Si noti che anche quando l&quot;implementazione del gestore di risorse viene integrato con questo metodo, non è garantito che riceva un commit monofase. Il gestore delle transazioni può comunque inviare invece le notifiche di commit a due fasi. Per ulteriori informazioni sull&quot;ottimizzazione del commit di una fase, vedere [ottimizzazione utilizzando Single Phase Commit and Promotable Single Phase Notification](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb)."
   syntax:
     content: public System.Transactions.Enlistment EnlistDurable (Guid resourceManagerIdentifier, System.Transactions.ISinglePhaseNotification singlePhaseNotification, System.Transactions.EnlistmentOptions enlistmentOptions);
     parameters:
     - id: resourceManagerIdentifier
       type: System.Guid
-      description: "A unique identifier for a resource manager, which should persist across resource manager failure or reboot."
+      description: "Un identificatore univoco per un gestore delle risorse, che deve persistere attraverso un errore del gestore di risorse o riavviare il computer."
     - id: singlePhaseNotification
       type: System.Transactions.ISinglePhaseNotification
-      description: "An object that implements the <xref href=&quot;System.Transactions.ISinglePhaseNotification&quot;></xref> interface that must be able to receive single phase commit and two phase commit notifications."
+      description: "Oggetto che implementa il <xref href=&quot;System.Transactions.ISinglePhaseNotification&quot;> </xref> interfaccia che deve essere in grado di ricevere le notifiche di commit a due fasi e di commit monofase."
     - id: enlistmentOptions
       type: System.Transactions.EnlistmentOptions
-      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref> if the resource manager wants to perform additional work during the prepare phase."
+      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref>Se il gestore delle risorse desidera eseguire altre operazioni durante la fase di preparazione."
     return:
       type: System.Transactions.Enlistment
-      description: "An <xref href=&quot;System.Transactions.Enlistment&quot;></xref> object that describes the enlistment."
+      description: "Un <xref href=&quot;System.Transactions.Enlistment&quot;> </xref> oggetto che descrive l&quot;elenco."
   overload: System.Transactions.Transaction.EnlistDurable*
   exceptions: []
   platform:
@@ -220,17 +220,17 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Enlists a resource manager that has an internal transaction using a promotable single phase enlistment (PSPE)."
-  remarks: "Enlistments in a transaction are volatile; that is, they do not survive the failure of the participant. In addition, this method only suggests the transaction manager to escalate control, but the escalation itself is not guaranteed. If escalation fails, the user is not notified and the transaction is rolled back.       The parameter `promotableSinglePhaseNotification` is used to communicate to the transaction manager the outcome of attempting to commit the resource manager&quot;s internal transaction.  If inconsistent data is reported, the transaction manager throws an exception. If an <xref:System.Transactions.TransactionStatus> outcome is reported, the transaction manager looks for the outcome notification in its own internal enlistment and ignores the reported response.       For more information on enlistments and escalation of a transaction, please see [Transaction Management Escalation](http://msdn.microsoft.com/en-us/5b87ae58-8ccf-4b9b-9715-41e4aade89b7). For more information on PSPE, see [Optimization Using Single Phase Commit and Promotable Single Phase Notification](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb).       **Note** This method uses <xref:System.Security.Permissions.SecurityAction> to prevent it from being called from untrusted code; however, only the immediate caller is required to possess the `FullTrust` permission set."
+  summary: "Inserisce un gestore di risorse che dispone di una transazione interna che usa un&quot;integrazione monofase PSPE (Promotable)."
+  remarks: "Se sono volatili; elenchi in una transazione vale a dire non sopravvivono dell&quot;errore del partecipante. Inoltre, questo metodo suggerisce solo il gestore delle transazioni per eseguire l&quot;escalation di controllo, ma non è garantito l&quot;escalation a se stesso. Se l&quot;escalation non riesce, l&quot;utente non riceve una notifica e viene eseguito il rollback della transazione.       Il parametro `promotableSinglePhaseNotification` viene utilizzato per comunicare al gestore delle transazioni, il risultato del tentativo di eseguire il commit delle transazioni interna di gestione risorse.  Se viene segnalati dati incoerenti, il gestore delle transazioni genera un&quot;eccezione. Se un <xref:System.Transactions.TransactionStatus>risultato viene restituito, il gestore delle transazioni Cerca notifica del risultato nel proprio elenco interno e la risposta segnalata viene ignorata.</xref:System.Transactions.TransactionStatus>       Per ulteriori informazioni sulle integrazioni ed escalation di una transazione, vedere [escalation della gestione transazioni](http://msdn.microsoft.com/en-us/5b87ae58-8ccf-4b9b-9715-41e4aade89b7). Per ulteriori informazioni su PSPE, vedere [ottimizzazione utilizzando Single Phase Commit and Promotable Single Phase Notification](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb).       **Nota** questo metodo utilizza <xref:System.Security.Permissions.SecurityAction>per evitare che venga chiamato da codice non attendibile; tuttavia, solo il chiamante immediato è necessario disporre di `FullTrust` set di autorizzazioni.</xref:System.Security.Permissions.SecurityAction>"
   syntax:
     content: public bool EnlistPromotableSinglePhase (System.Transactions.IPromotableSinglePhaseNotification promotableSinglePhaseNotification);
     parameters:
     - id: promotableSinglePhaseNotification
       type: System.Transactions.IPromotableSinglePhaseNotification
-      description: "A <xref href=&quot;System.Transactions.IPromotableSinglePhaseNotification&quot;></xref> interface implemented by the participant."
+      description: "Oggetto <xref href=&quot;System.Transactions.IPromotableSinglePhaseNotification&quot;> </xref> interfaccia implementata dal partecipante."
     return:
       type: System.Boolean
-      description: "A <xref href=&quot;System.Transactions.SinglePhaseEnlistment&quot;></xref> interface implementation that describes the enlistment."
+      description: "Oggetto <xref href=&quot;System.Transactions.SinglePhaseEnlistment&quot;> </xref> implementazione che descrive l&quot;integrazione dell&quot;interfaccia."
   overload: System.Transactions.Transaction.EnlistPromotableSinglePhase*
   exceptions: []
   platform:
@@ -247,20 +247,20 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Enlists a resource manager that has an internal transaction using a promotable single phase enlistment (PSPE)."
-  remarks: "If the value specified for the `promoterType` parameter is `TransactionInterop.PromoterTypeDtc`, the transaction **must** be promoted by MSDTC and the `byte[]` returned from the `IPromotableSinglePhaseNotification.Promote` method **must** be an MSDTC transaction propagation token.       If the value specified for the `promoterType` parameter is **not**`TransactionInterop.PromoterTypeDTC`, the transaction will not be promoted by MSDTC, but rather by the caller’s implementation of `IPromotableSinglePhaseNotification`. If this call is successful, there is a set of subsequent operations on the transaction that will return a `TransactionPromotionException`. These operations are:      -   `Transaction.EnlistDurable`      -   `TransactionInterop.GetDtcTransaction`      -   `TransactionInterop.GetExportCookie`      -   `TransctionInterop.GetTransmitterPropagationToken`      -   Serialization of a Transaction object"
+  summary: "Inserisce un gestore di risorse che dispone di una transazione interna che usa un&quot;integrazione monofase PSPE (Promotable)."
+  remarks: "Se il valore specificato per il `promoterType` parametro è `TransactionInterop.PromoterTypeDtc`, la transazione **deve** da innalzare di livello da MSDTC e `byte[]` restituito dal `IPromotableSinglePhaseNotification.Promote` metodo **deve** da un token di propagazione delle transazioni MSDTC.       Se il valore specificato per il `promoterType` parametro **non**`TransactionInterop.PromoterTypeDTC`, la transazione non sarà promossa da MSDTC, ma piuttosto dall&quot;implementazione del chiamante di `IPromotableSinglePhaseNotification`. Se la chiamata ha esito positivo, è presente un set di operazioni successive sulla transazione che verrà restituito un `TransactionPromotionException`. Queste operazioni sono:- `Transaction.EnlistDurable`       -    `TransactionInterop.GetDtcTransaction`       -    `TransactionInterop.GetExportCookie`       -    `TransctionInterop.GetTransmitterPropagationToken` -serializzazione di un oggetto di transazione"
   syntax:
     content: public bool EnlistPromotableSinglePhase (System.Transactions.IPromotableSinglePhaseNotification promotableSinglePhaseNotification, Guid promoterType);
     parameters:
     - id: promotableSinglePhaseNotification
       type: System.Transactions.IPromotableSinglePhaseNotification
-      description: "A <xref href=&quot;System.Transactions.IPromotableSinglePhaseNotification&quot;></xref> interface implemented by the participant."
+      description: "Oggetto <xref href=&quot;System.Transactions.IPromotableSinglePhaseNotification&quot;> </xref> interfaccia implementata dal partecipante."
     - id: promoterType
       type: System.Guid
-      description: "The type of the distributed transaction processor."
+      description: "Tipo di elaborazione delle transazioni distribuite."
     return:
       type: System.Boolean
-      description: "A <xref href=&quot;System.Transactions.SinglePhaseEnlistment&quot;></xref> interface implementation that describes the enlistment."
+      description: "Oggetto <xref href=&quot;System.Transactions.SinglePhaseEnlistment&quot;> </xref> implementazione che descrive l&quot;integrazione dell&quot;interfaccia."
   overload: System.Transactions.Transaction.EnlistPromotableSinglePhase*
   exceptions: []
   platform:
@@ -277,8 +277,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Enlists a volatile resource manager that supports two phase commit to participate in a transaction."
-  remarks: "Volatile resource managers cannot recovery from failure to complete a transaction in which they were participating. To obtain a durable enlistment in a transaction, use the <xref:System.Transactions.Transaction.EnlistDurable%2A> method.       Resource managers enlisted for participation in a transaction through this method receive two phase commit notifications that correspond to the methods defined on the <xref:System.Transactions.IEnlistmentNotification> interface."
+  summary: "Inserisce un gestore di risorse volatili che supporta il commit a due fasi per partecipare in una transazione."
+  remarks: "Gestori di risorse volatili non è possibile eseguire il recupero per completare una transazione in cui hanno preso parte. Per ottenere un elenco durevole in una transazione, usare il <xref:System.Transactions.Transaction.EnlistDurable%2A>metodo.</xref:System.Transactions.Transaction.EnlistDurable%2A>       Gestori delle risorse integrati per la partecipazione in una transazione tramite questo metodo ricevono le notifiche di commit a due fasi che corrispondono ai metodi definiti nel <xref:System.Transactions.IEnlistmentNotification>interfaccia.</xref:System.Transactions.IEnlistmentNotification>"
   example:
   - "The following example shows an implementation of <xref:System.Transactions.IEnlistmentNotification> interface, as well as enlisting the object as a participant in a transaction using the <xref:System.Transactions.Transaction.EnlistVolatile%2A> method.  \n  \n [!code-cs[Tx_Enlist#1](~/add/codesnippet/csharp/1d69bab4-4268-46d9-8f3f-_1.cs)]\n [!code-vb[Tx_Enlist#1](~/add/codesnippet/visualbasic/1d69bab4-4268-46d9-8f3f-_1.vb)]"
   syntax:
@@ -286,13 +286,13 @@ items:
     parameters:
     - id: enlistmentNotification
       type: System.Transactions.IEnlistmentNotification
-      description: "An object that implements the <xref href=&quot;System.Transactions.IEnlistmentNotification&quot;></xref> interface to receive two-phase commit notifications."
+      description: "Oggetto che implementa il <xref href=&quot;System.Transactions.IEnlistmentNotification&quot;> </xref> interfaccia per ricevere notifiche di commit in due fasi."
     - id: enlistmentOptions
       type: System.Transactions.EnlistmentOptions
-      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref> if the resource manager wants to perform additional work during the prepare phase."
+      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref>Se il gestore delle risorse desidera eseguire altre operazioni durante la fase di preparazione."
     return:
       type: System.Transactions.Enlistment
-      description: "An <xref href=&quot;System.Transactions.Enlistment&quot;></xref> object that describes the enlistment."
+      description: "Un <xref href=&quot;System.Transactions.Enlistment&quot;> </xref> oggetto che descrive l&quot;elenco."
   overload: System.Transactions.Transaction.EnlistVolatile*
   exceptions: []
   platform:
@@ -309,20 +309,20 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Enlists a volatile resource manager that supports single phase commit optimization to participate in a transaction."
-  remarks: "Volatile resource managers cannot recovery from failure to complete a transaction in which they were participating. To obtain a durable enlistment in a transaction, use the <xref:System.Transactions.Transaction.EnlistDurable%2A> method. For more information on volatile and durable resources, as well as how to enlist a resource, see [Implementing A Resource Manager](http://msdn.microsoft.com/en-us/81509719-d579-4530-831e-42e1acdef63e). For more information on how a resource manager responds to commit notification and prepare the commit, see [Committing A Transaction In Single-Phase and Multi-Phase](http://msdn.microsoft.com/en-us/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d).       You should note that even when your resource manager implementation enlists with this method, it is not guaranteed that it receives a single phase commit. The transaction manager can still send two phase commit notifications instead. For more information on the single phase commit optimization, see [Optimization Using Single Phase Commit and Promotable Single Phase Notification](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb)."
+  summary: "Inserisce un gestore di risorse volatili che supporta l&quot;ottimizzazione di commit di una fase per la partecipazione in una transazione."
+  remarks: "Gestori di risorse volatili non è possibile eseguire il recupero per completare una transazione in cui hanno preso parte. Per ottenere un elenco durevole in una transazione, usare il <xref:System.Transactions.Transaction.EnlistDurable%2A>metodo.</xref:System.Transactions.Transaction.EnlistDurable%2A> Per ulteriori informazioni su risorse volatili e durevoli, nonché come integrare una risorsa, vedere [Implementing a Resource Manager](http://msdn.microsoft.com/en-us/81509719-d579-4530-831e-42e1acdef63e). Per ulteriori informazioni sulla modalità di risposta a una notifica di commit e prepara il commit di un gestore di risorse, vedere [commit di una transazione In Phase e multifase](http://msdn.microsoft.com/en-us/74b3cfe1-d33a-45b8-91f4-dfd6f6598c4d).       Si noti che anche quando l&quot;implementazione del gestore di risorse viene integrato con questo metodo, non è garantito che riceva un commit monofase. Il gestore delle transazioni può comunque inviare invece le notifiche di commit a due fasi. Per ulteriori informazioni sull&quot;ottimizzazione del commit di una fase, vedere [ottimizzazione utilizzando Single Phase Commit and Promotable Single Phase Notification](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb)."
   syntax:
     content: public System.Transactions.Enlistment EnlistVolatile (System.Transactions.ISinglePhaseNotification singlePhaseNotification, System.Transactions.EnlistmentOptions enlistmentOptions);
     parameters:
     - id: singlePhaseNotification
       type: System.Transactions.ISinglePhaseNotification
-      description: "An object that implements the <xref href=&quot;System.Transactions.ISinglePhaseNotification&quot;></xref> interface that must be able to receive single phase commit and two phase commit notifications."
+      description: "Oggetto che implementa il <xref href=&quot;System.Transactions.ISinglePhaseNotification&quot;> </xref> interfaccia che deve essere in grado di ricevere le notifiche di commit a due fasi e di commit monofase."
     - id: enlistmentOptions
       type: System.Transactions.EnlistmentOptions
-      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref> if the resource manager wants to perform additional work during the prepare phase."
+      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref>Se il gestore delle risorse desidera eseguire altre operazioni durante la fase di preparazione."
     return:
       type: System.Transactions.Enlistment
-      description: "An <xref href=&quot;System.Transactions.Enlistment&quot;></xref> object that describes the enlistment."
+      description: "Un <xref href=&quot;System.Transactions.Enlistment&quot;> </xref> oggetto che descrive l&quot;elenco."
   overload: System.Transactions.Transaction.EnlistVolatile*
   exceptions: []
   platform:
@@ -339,16 +339,16 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Determines whether this transaction and the specified object are equal."
+  summary: "Determina se la transazione e l&quot;oggetto specificato sono uguali."
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to compare with this instance."
+      description: "Oggetto da confrontare con questa istanza."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>obj</code> and this transaction are identical; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se <code> obj </code> e questa transazione sono identici; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Transactions.Transaction.Equals*
   exceptions: []
   platform:
@@ -365,13 +365,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Returns the hash code for this instance."
+  summary: "Restituisce il codice hash per questa istanza."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A 32-bit signed integer hash code."
+      description: "Codice hash di un intero con segno a 32 bit."
   overload: System.Transactions.Transaction.GetHashCode*
   exceptions: []
   platform:
@@ -388,14 +388,14 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets the  `byte[]` returned by the `Promote` method when the transaction is promoted."
-  remarks: "This method has the side effect of causing promotion of the transaction if it is not already promoted.       The format of the returned `byte[]` is defined by the value of the `Transation.PromoterType` property. If the value of the `Transaction.PromoterType` property is `TransactionInterop.PromoterTypeDtc` or `Guid.Empty`, then the `byte[]` returned by this method is an MSDTC transmitter propagation token. Any other value for the `Transaction.PromoterType` property specifies a format that is defined by the caller of `Transaction.EnlistPromotableSinglePhase` that specified the property type value. In order to interpret the promoted token in this latter case, you will need to consult the documentation for the code that made the `EnlistPromotableSinglePhase` call."
+  summary: "Ottiene il `byte[]` restituito dal `Promote` metodo quando la transazione viene promossa."
+  remarks: "Questo metodo ha l&quot;effetto collaterale di causa la promozione della transazione se non è già stato promosso.       Il formato dell&quot;oggetto restituito `byte[]` è definito dal valore della `Transation.PromoterType` proprietà. Se il valore di `Transaction.PromoterType` proprietà è `TransactionInterop.PromoterTypeDtc` o `Guid.Empty`, il `byte[]` restituito da questo metodo è un token di propagazione del trasmettitore MSDTC. Qualsiasi altro valore per il `Transaction.PromoterType` proprietà specifica un formato definito dal chiamante di `Transaction.EnlistPromotableSinglePhase` che specifica il valore di tipo di proprietà. Per interpretare l&quot;innalzate di livello il token in questo secondo caso, sarà necessario consultare la documentazione per il codice che ha effettuato la `EnlistPromotableSinglePhase` chiamare."
   syntax:
     content: public byte[] GetPromotedToken ();
     parameters: []
     return:
       type: System.Byte[]
-      description: "The  `byte[]` returned by the `Promote` method when the transaction is promoted."
+      description: "Il `byte[]` restituito dal `Promote` metodo quando la transazione viene promossa."
   overload: System.Transactions.Transaction.GetPromotedToken*
   exceptions: []
   platform:
@@ -412,13 +412,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets the isolation level of the transaction."
-  remarks: "The isolation level of a transaction determines what level of access other transactions have to volatile data before a transaction completes. For more information about isolation levels, see the documentation for the <xref:System.Transactions.IsolationLevel> enumeration."
+  summary: "Ottiene il livello di isolamento della transazione."
+  remarks: "Il livello di isolamento di una transazione determina il livello di altre transazioni di accesso ai dati volatili prima di una transazione viene completata. Per ulteriori informazioni sui livelli di isolamento, vedere la documentazione per il <xref:System.Transactions.IsolationLevel>enumerazione.</xref:System.Transactions.IsolationLevel>"
   syntax:
     content: public System.Transactions.IsolationLevel IsolationLevel { get; }
     return:
       type: System.Transactions.IsolationLevel
-      description: "One of the <xref href=&quot;System.Transactions.IsolationLevel&quot;></xref> values that indicates the isolation level of the transaction."
+      description: "Uno del <xref href=&quot;System.Transactions.IsolationLevel&quot;> </xref> valori che indica il livello di isolamento della transazione."
   overload: System.Transactions.Transaction.IsolationLevel*
   exceptions: []
   platform:
@@ -435,19 +435,19 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Tests whether two specified <xref href=&quot;System.Transactions.Transaction&quot;></xref> instances are equivalent."
+  summary: "Verifica se due specificate <xref href=&quot;System.Transactions.Transaction&quot;> </xref> istanze sono equivalenti."
   syntax:
     content: public static bool op_Equality (System.Transactions.Transaction x, System.Transactions.Transaction y);
     parameters:
     - id: x
       type: System.Transactions.Transaction
-      description: "The <xref href=&quot;System.Transactions.Transaction&quot;></xref> instance that is to the left of the equality operator."
+      description: "Il <xref href=&quot;System.Transactions.Transaction&quot;> </xref> istanza a sinistra dell&quot;operatore di uguaglianza."
     - id: y
       type: System.Transactions.Transaction
-      description: "The <xref href=&quot;System.Transactions.Transaction&quot;></xref> instance that is to the right of the equality operator."
+      description: "Il <xref href=&quot;System.Transactions.Transaction&quot;> </xref> istanza a destra dell&quot;operatore di uguaglianza."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>x</code> and <code>y</code> are equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>if <code>x</code> and <code>y</code> are equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Transactions.Transaction.op_Equality*
   exceptions: []
   platform:
@@ -464,19 +464,19 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Returns a value that indicates whether two <xref href=&quot;System.Transactions.Transaction&quot;></xref> instances are not equal."
+  summary: "Restituisce un valore che indica se due <xref href=&quot;System.Transactions.Transaction&quot;> </xref> istanze non sono uguali."
   syntax:
     content: public static bool op_Inequality (System.Transactions.Transaction x, System.Transactions.Transaction y);
     parameters:
     - id: x
       type: System.Transactions.Transaction
-      description: "The <xref href=&quot;System.Transactions.Transaction&quot;></xref> instance that is to the left of the inequality operator."
+      description: "Il <xref href=&quot;System.Transactions.Transaction&quot;> </xref> istanza a sinistra dell&quot;operatore di disuguaglianza."
     - id: y
       type: System.Transactions.Transaction
-      description: "The <xref href=&quot;System.Transactions.Transaction&quot;></xref> instance that is to the right of the inequality operator."
+      description: "Il <xref href=&quot;System.Transactions.Transaction&quot;> </xref> istanza a destra dell&quot;operatore di disuguaglianza."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>x</code> and <code>y</code> are not equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>if <code>x</code> and <code>y</code> are not equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Transactions.Transaction.op_Inequality*
   exceptions: []
   platform:
@@ -493,25 +493,25 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "[Supported in the .NET Framework 4.5.2 and later versions]       Promotes and enlists a durable resource manager that supports two phase commit to participate in a transaction."
+  summary: "[Supportato in .NET Framework 4.5.2 e versioni successive]       Alza di livello e inserisce un gestore di risorse durevole che supporta il commit a due fasi per partecipare in una transazione."
   syntax:
     content: public System.Transactions.Enlistment PromoteAndEnlistDurable (Guid resourceManagerIdentifier, System.Transactions.IPromotableSinglePhaseNotification promotableNotification, System.Transactions.ISinglePhaseNotification enlistmentNotification, System.Transactions.EnlistmentOptions enlistmentOptions);
     parameters:
     - id: resourceManagerIdentifier
       type: System.Guid
-      description: "A unique identifier for a resource manager, which should persist across resource manager failure or reboot."
+      description: "Un identificatore univoco per un gestore delle risorse, che deve persistere attraverso un errore del gestore di risorse o riavviare il computer."
     - id: promotableNotification
       type: System.Transactions.IPromotableSinglePhaseNotification
-      description: "An object that acts as a commit delegate for a non-distributed transaction internal to a resource manager."
+      description: "Oggetto che funge da un delegato di commit per una transazione non distribuita interna a un gestore di risorse."
     - id: enlistmentNotification
       type: System.Transactions.ISinglePhaseNotification
-      description: "An object that implements the <xref href=&quot;System.Transactions.IEnlistmentNotification&quot;></xref> interface to receive two phase commit notifications."
+      description: "Oggetto che implementa il <xref href=&quot;System.Transactions.IEnlistmentNotification&quot;> </xref> interfaccia per ricevere le notifiche di commit a due fasi."
     - id: enlistmentOptions
       type: System.Transactions.EnlistmentOptions
-      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref> if the resource manager wants to perform additional work during the prepare phase."
+      description: "<xref href=&quot;System.Transactions.EnlistmentOptions&quot;></xref>Se il gestore delle risorse desidera eseguire altre operazioni durante la fase di preparazione."
     return:
       type: System.Transactions.Enlistment
-      description: "[Supported in the .NET Framework 4.5.2 and later versions]       Promotes and enlists a durable resource manager that supports two phase commit to participate in a transaction."
+      description: "[Supportato in .NET Framework 4.5.2 e versioni successive]       Alza di livello e inserisce un gestore di risorse durevole che supporta il commit a due fasi per partecipare in una transazione."
   overload: System.Transactions.Transaction.PromoteAndEnlistDurable*
   exceptions: []
   platform:
@@ -528,13 +528,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Uniquely identifies the format of the `byte[]` returned by the Promote method when the transaction is promoted."
-  remarks: "If the transaction has not yet been promoted and does not yet have a promotable single phase enlistment, the value of this property will be `Guid.Empty`. If the transaction has been or will be promoted to MSDTC, then the value of this property will be `TransactionInterop.PromoterTypeDtc`. If the transaction has been or will be promoted by a non-MSDTC promoter, the value of this property will be the value specified to an earlier call to `Transaction.EnlistPromotableSinglePhase`."
+  summary: "Identifica il formato del `byte[]` restituito dal metodo Promote quando la transazione viene promossa."
+  remarks: "Se la transazione non è ancora stato promosso e non dispone ancora di un&quot;integrazione promuovibile monofase, il valore di questa proprietà sarà `Guid.Empty`. Se la transazione è stata o verrà alzata di livello a MSDTC, quindi il valore di questa proprietà sarà `TransactionInterop.PromoterTypeDtc`. Se la transazione è stata o verrà alzata di livello da un promotore non MSDTC, il valore di questa proprietà sarà il valore specificato da una precedente chiamata a `Transaction.EnlistPromotableSinglePhase`."
   syntax:
     content: public Guid PromoterType { get; }
     return:
       type: System.Guid
-      description: "A guid that uniquely identifies the format of the `byte[]` returned by the Promote method when the transaction is promoted."
+      description: "Un guid che identifica in modo univoco il formato del `byte[]` restituito dal metodo Promote quando la transazione viene promossa."
   overload: System.Transactions.Transaction.PromoterType*
   exceptions: []
   platform:
@@ -551,8 +551,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Rolls back (aborts) the transaction."
-  remarks: "Any copy of a transaction object can initiate the rollback of the transaction by calling this method. Only the original transaction object, which is a <xref:System.Transactions.CommittableTransaction> object, can be used to initiate an attempt to commit the transaction. An exception is thrown when this method is called after the outcome of the transaction has already been determined."
+  summary: "Rollback (interruzione) della transazione."
+  remarks: "Qualsiasi copia di un oggetto di transazione è possibile avviare il rollback della transazione chiamando questo metodo. Solo l&quot;oggetto transazione originale, ovvero un <xref:System.Transactions.CommittableTransaction>di oggetto, può essere utilizzato per avviare un tentativo di eseguire il commit della transazione.</xref:System.Transactions.CommittableTransaction> Quando questo metodo viene chiamato dopo che il risultato della transazione è già stato determinato, viene generata un&quot;eccezione."
   syntax:
     content: public void Rollback ();
     parameters: []
@@ -572,13 +572,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Rolls back (aborts) the transaction."
+  summary: "Rollback (interruzione) della transazione."
   syntax:
     content: public void Rollback (Exception e);
     parameters:
     - id: e
       type: System.Exception
-      description: "An explanation of why a rollback occurred."
+      description: "Spiegazione del motivo per cui si è verificato durante un&quot;operazione di rollback."
   overload: System.Transactions.Transaction.Rollback*
   exceptions: []
   platform:
@@ -595,17 +595,17 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Sets the distributed transaction identifier generated by the non-MSDTC promoter."
-  remarks: "This method can only be called successfully while the `IPromotableSinglePhaseNotification.Promote` method is being processed. If this method is called at any other time, a `TransactionException` is thrown.       The specified value of the `promotableNotification` parameter must be the same object that was originally specified to the `Transaction.EnlistPromotableSinglePhase` invocation. If this is not the case, then an `InvalidOperationException` is thrown."
+  summary: "Imposta l&quot;identificatore di transazione distribuita generato dal promotore non MSDTC."
+  remarks: "Questo metodo può essere chiamato correttamente durante la `IPromotableSinglePhaseNotification.Promote` l&quot;elaborazione di metodo. Se questo metodo viene chiamato in qualsiasi momento, un `TransactionException` viene generata un&quot;eccezione.       Il valore specificato per il `promotableNotification` parametro deve essere lo stesso oggetto è stato specificato in origine per il `Transaction.EnlistPromotableSinglePhase` chiamata. Se non è il caso, un oggetto `InvalidOperationException` viene generata un&quot;eccezione."
   syntax:
     content: public void SetDistributedTransactionIdentifier (System.Transactions.IPromotableSinglePhaseNotification promotableNotification, Guid distributedTransactionIdentifier);
     parameters:
     - id: promotableNotification
       type: System.Transactions.IPromotableSinglePhaseNotification
-      description: "A <xref href=&quot;System.Transactions.IPromotableSinglePhaseNotification&quot;></xref> interface implemented by the participant."
+      description: "Oggetto <xref href=&quot;System.Transactions.IPromotableSinglePhaseNotification&quot;> </xref> interfaccia implementata dal partecipante."
     - id: distributedTransactionIdentifier
       type: System.Guid
-      description: "The identifier for the transaction used by the distributed transaction manager."
+      description: "Identificatore della transazione usato per la gestione transazioni distribuite."
   overload: System.Transactions.Transaction.SetDistributedTransactionIdentifier*
   exceptions: []
   platform:
@@ -623,16 +623,16 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets a <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> with the data required to serialize this transaction."
+  summary: "Ottiene un <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> con i dati necessari per serializzare la transazione."
   syntax:
     content: void ISerializable.GetObjectData (System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: serializationInfo
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> to populate with data."
+      description: "Il <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> da popolare con i dati."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The destination (see <xref:System.Runtime.Serialization.StreamingContext> ) for this serialization."
+      description: "La destinazione (vedere <xref:System.Runtime.Serialization.StreamingContext>) per questa serializzazione.</xref:System.Runtime.Serialization.StreamingContext>"
   overload: System.Transactions.Transaction.System#Runtime#Serialization#ISerializable#GetObjectData*
   exceptions: []
   platform:
@@ -649,19 +649,19 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Indicates that the transaction is completed."
-  remarks: "You can register for this event instead of using a volatile enlistment to get outcome information for transactions. The parameter passed to the <xref:System.Transactions.TransactionCompletedEventHandler> delegate is a <xref:System.Transactions.Transaction> instance. You can then query the <xref:System.Transactions.Transaction.TransactionInformation%2A> property of the specific instance to get an instance of <xref:System.Transactions.TransactionInformation>, whose <xref:System.Transactions.TransactionInformation.Status%2A> property contains the status of a transaction with either the <xref:System.Transactions.TransactionStatus> or <xref:System.Transactions.TransactionStatus> value.       **Caution** Signing up for this event negatively affects the performance of the transaction it is attached to."
+  summary: "Indica che la transazione viene completata."
+  remarks: "È possibile registrare questo evento anziché un elenco volatile per ottenere informazioni sul risultato per le transazioni. Il parametro passato per il <xref:System.Transactions.TransactionCompletedEventHandler>delegato è un <xref:System.Transactions.Transaction>istanza.</xref:System.Transactions.Transaction> </xref:System.Transactions.TransactionCompletedEventHandler> È quindi possibile eseguire una query di <xref:System.Transactions.Transaction.TransactionInformation%2A>proprietà dell&quot;istanza specifica per ottenere un&quot;istanza di <xref:System.Transactions.TransactionInformation>, il cui <xref:System.Transactions.TransactionInformation.Status%2A>proprietà contiene lo stato di una transazione con il <xref:System.Transactions.TransactionStatus>o <xref:System.Transactions.TransactionStatus>valore.</xref:System.Transactions.TransactionStatus> </xref:System.Transactions.TransactionStatus> </xref:System.Transactions.TransactionInformation.Status%2A> </xref:System.Transactions.TransactionInformation> </xref:System.Transactions.Transaction.TransactionInformation%2A>       **Attenzione** iscriversi a questo evento negativamente influisce sulle prestazioni della transazione è associato."
   example:
   - "The following sample shows how an application can obtain the outcome of a transaction by subscribing to the TransactionCompleted event.  \n  \n [!code-cs[Tx_Outcome#1](~/add/codesnippet/csharp/e-system.transactions.tr_1.cs)]\n [!code-vb[Tx_Outcome#1](~/add/codesnippet/visualbasic/e-system.transactions.tr_1.vb)]"
   syntax:
     content: public event System.Transactions.TransactionCompletedEventHandler TransactionCompleted;
     return:
       type: System.Transactions.TransactionCompletedEventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt to subscribe this event on a transaction that has been disposed."
+    description: "Tentativo di sottoscrivere questo evento in una transazione che è stato eliminato."
   platform:
   - net462
 - uid: System.Transactions.Transaction.TransactionInformation
@@ -676,12 +676,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Retrieves additional information about a transaction."
+  summary: "Recupera informazioni aggiuntive su una transazione."
   syntax:
     content: public System.Transactions.TransactionInformation TransactionInformation { get; }
     return:
       type: System.Transactions.TransactionInformation
-      description: "A <xref href=&quot;System.Transactions.TransactionInformation&quot;></xref> that contains additional information about the transaction."
+      description: "Oggetto <xref href=&quot;System.Transactions.TransactionInformation&quot;> </xref> che contiene informazioni aggiuntive sulla transazione."
   overload: System.Transactions.Transaction.TransactionInformation*
   exceptions: []
   platform:
