@@ -13,8 +13,8 @@ items:
   nameWithType: IInstanceContextProvider
   fullName: System.ServiceModel.Dispatcher.IInstanceContextProvider
   type: Interface
-  summary: "Implement to participate in the creation or choosing of a &lt;xref:System.ServiceModel.InstanceContext?displayProperty=fullName&gt; object, especially to enable shared sessions."
-  remarks: "Implement the IInstanceContextProvider interface to provide the appropriate <xref:System.ServiceModel.InstanceContext?displayProperty=fullName> object to the system. Typically, this interface is implemented to support shared sessions, enable service instance pooling, control lifetimes of service instances, or to group contexts among clients.       For example, to implement sharing, insert a custom IInstanceContextProvider to decide which session or call from a client is associated with which <xref:System.ServiceModel.InstanceContext> object. For an example that demonstrates the sharing of instance contexts, see [InstanceContextSharing](http://msdn.microsoft.com/en-us/4a6a46d7-b7d7-4bb5-a0dd-03ffa3cbc230).      > [!NOTE] >  When an IInstanceContextProvider is inserted into [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)], the normal property that controls the creation of <xref:System.ServiceModel.InstanceContext> objects (the <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A?displayProperty=fullName> property) is no longer checked and has no effect.       A more generic mechanism by which you can initialize <xref:System.ServiceModel.InstanceContext> objects when created (for example, to attach custom extensions to each <xref:System.ServiceModel.InstanceContext>) is the <xref:System.ServiceModel.Dispatcher.IInstanceContextInitializer?displayProperty=fullName>."
+  summary: "Procedere all&quot;implementazione per partecipare alla creazione o alla scelta di un &lt;xref:System.ServiceModel.InstanceContext?displayProperty=fullName&gt; oggetto, soprattutto per abilitare le sessioni condivise."
+  remarks: "Implementare l&quot;interfaccia IInstanceContextProvider per fornire appropriata <xref:System.ServiceModel.InstanceContext?displayProperty=fullName>oggetto al sistema.</xref:System.ServiceModel.InstanceContext?displayProperty=fullName> In genere, questa interfaccia viene implementata per supportare sessioni condivise, abilitare il pool di istanza di servizio, controllare la durata delle istanze del servizio o per raggruppare i contesti fra client.       Ad esempio, per implementare la condivisione, inserire un IInstanceContextProvider personalizzata per decidere quale sessione o chiamate da un client sono associata a cui <xref:System.ServiceModel.InstanceContext>oggetto.</xref:System.ServiceModel.InstanceContext> Per un esempio che illustra la condivisione dei contesti di istanza, vedere [InstanceContextSharing](http://msdn.microsoft.com/en-us/4a6a46d7-b7d7-4bb5-a0dd-03ffa3cbc230).      > [!NOTE] > IInstanceContextProvider un quando viene inserito in [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)], la proprietà normale che controlla la creazione di <xref:System.ServiceModel.InstanceContext>oggetti (il <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A?displayProperty=fullName>proprietà) non viene più controllata e non ha alcun effetto.</xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode%2A?displayProperty=fullName> </xref:System.ServiceModel.InstanceContext>       Un meccanismo più generico da cui è possibile inizializzare <xref:System.ServiceModel.InstanceContext>oggetti quando creato (ad esempio, per allegare estensioni personalizzate a ogni <xref:System.ServiceModel.InstanceContext>) è <xref:System.ServiceModel.Dispatcher.IInstanceContextInitializer?displayProperty=fullName>.</xref:System.ServiceModel.Dispatcher.IInstanceContextInitializer?displayProperty=fullName> </xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.InstanceContext>"
   syntax:
     content: public interface IInstanceContextProvider
   implements: []
@@ -32,20 +32,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Called when a new message is received."
-  remarks: "The GetExistingInstanceContext method is called when a message is received. Return the <xref:System.ServiceModel.InstanceContext> object that you want to process the message, or `null`. In the case of `null`, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] creates a new <xref:System.ServiceModel.InstanceContext> object for the message and then calls the <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.InitializeInstanceContext%2A> method.       If you return `null`, the new <xref:System.ServiceModel.InstanceContext> object goes through the throttling system and increments the count of <xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances%2A?displayProperty=fullName>."
+  summary: "Chiamato quando viene ricevuto un nuovo messaggio."
+  remarks: "Il metodo GetExistingInstanceContext viene chiamato quando viene ricevuto un messaggio. Restituire il <xref:System.ServiceModel.InstanceContext>dell&quot;oggetto che si desidera elaborare il messaggio, o `null`.</xref:System.ServiceModel.InstanceContext> In caso di `null`, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] crea un nuovo <xref:System.ServiceModel.InstanceContext>oggetto per il messaggio e quindi chiama il <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.InitializeInstanceContext%2A>metodo.</xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.InitializeInstanceContext%2A> </xref:System.ServiceModel.InstanceContext>       Se si restituisce `null`, il nuovo <xref:System.ServiceModel.InstanceContext>oggetto passa attraverso il sistema di limitazione delle richieste e incrementa il conteggio di <xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances%2A?displayProperty=fullName>.</xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances%2A?displayProperty=fullName> </xref:System.ServiceModel.InstanceContext>"
   syntax:
     content: public System.ServiceModel.InstanceContext GetExistingInstanceContext (System.ServiceModel.Channels.Message message, System.ServiceModel.IContextChannel channel);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The incoming message."
+      description: "Il messaggio in arrivo."
     - id: channel
       type: System.ServiceModel.IContextChannel
-      description: "The channel that received the message."
+      description: "Il canale che riceve il messaggio."
     return:
       type: System.ServiceModel.InstanceContext
-      description: "The &lt;xref:System.ServiceModel.InstanceContext?displayProperty=fullName&gt; object that is used to process the message; return <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to instruct [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] to create a new <xref:System.ServiceModel.InstanceContext> object."
+      description: "Il &lt;xref:System.ServiceModel.InstanceContext?displayProperty=fullName&gt; oggetto che viene utilizzato per elaborare il messaggio, restituirà <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> per indicare [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] per creare un nuovo <xref:System.ServiceModel.InstanceContext>oggetto.</xref:System.ServiceModel.InstanceContext>"
   overload: System.ServiceModel.Dispatcher.IInstanceContextProvider.GetExistingInstanceContext*
   exceptions: []
   platform:
@@ -62,20 +62,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Called when <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is returned from the <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.GetExistingInstanceContext*> method."
-  remarks: "InitializeInstanceContext is called when <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.GetExistingInstanceContext%2A> returns `null` and a new <xref:System.ServiceModel.InstanceContext> object is created. This method is called to notify you that a new <xref:System.ServiceModel.InstanceContext> has been created."
+  summary: "Chiamato quando <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> restituito dal <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.GetExistingInstanceContext*>metodo.</xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.GetExistingInstanceContext*>"
+  remarks: "InitializeInstanceContext viene chiamato quando <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.GetExistingInstanceContext%2A>restituisce `null` e un nuovo <xref:System.ServiceModel.InstanceContext>viene creato l&quot;oggetto.</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.GetExistingInstanceContext%2A> Questo metodo viene chiamato per notificare che un nuovo <xref:System.ServiceModel.InstanceContext>è stato creato.</xref:System.ServiceModel.InstanceContext>"
   syntax:
     content: public void InitializeInstanceContext (System.ServiceModel.InstanceContext instanceContext, System.ServiceModel.Channels.Message message, System.ServiceModel.IContextChannel channel);
     parameters:
     - id: instanceContext
       type: System.ServiceModel.InstanceContext
-      description: "The new &lt;xref:System.ServiceModel.InstanceContext?displayProperty=fullName&gt; object."
+      description: "Il nuovo &lt;xref:System.ServiceModel.InstanceContext?displayProperty=fullName&gt; oggetto."
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The incoming message."
+      description: "Il messaggio in arrivo."
     - id: channel
       type: System.ServiceModel.IContextChannel
-      description: "The channel that received the message."
+      description: "Il canale che riceve il messaggio."
   overload: System.ServiceModel.Dispatcher.IInstanceContextProvider.InitializeInstanceContext*
   exceptions: []
   platform:
@@ -92,17 +92,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Called when all <xref:System.ServiceModel.InstanceContext> activities have completed to enable implementers to prevent the <xref:System.ServiceModel.InstanceContext> from being recycled."
-  remarks: "IsIdle is called when [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] is about to close and recycle an idle <xref:System.ServiceModel.InstanceContext> object so that you can inform the runtime whether to continue doing so.       For an example that demonstrates the sharing of instance contexts, see [InstanceContextSharing](http://msdn.microsoft.com/en-us/4a6a46d7-b7d7-4bb5-a0dd-03ffa3cbc230)."
+  summary: "Chiamato quando tutte <xref:System.ServiceModel.InstanceContext>attività sono state completate per consentire agli implementatori di impedire il <xref:System.ServiceModel.InstanceContext>di essere riciclati.</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.InstanceContext>"
+  remarks: "IsIdle viene chiamato quando [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] sta per chiudere e riciclare un inattività <xref:System.ServiceModel.InstanceContext>dell&quot;oggetto in modo che è possibile informare il runtime se si desidera continuare a svolgere necessaria.</xref:System.ServiceModel.InstanceContext>       Per un esempio che illustra la condivisione dei contesti di istanza, vedere [InstanceContextSharing](http://msdn.microsoft.com/en-us/4a6a46d7-b7d7-4bb5-a0dd-03ffa3cbc230)."
   syntax:
     content: public bool IsIdle (System.ServiceModel.InstanceContext instanceContext);
     parameters:
     - id: instanceContext
       type: System.ServiceModel.InstanceContext
-      description: "The <xref:System.ServiceModel.InstanceContext> object that is considered idle."
+      description: "Il <xref:System.ServiceModel.InstanceContext>oggetto che viene considerato inattivo.</xref:System.ServiceModel.InstanceContext>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] is to close and recycle the <xref:System.ServiceModel.InstanceContext> object and adjust the value of &lt;xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances%2A?displayProperty=fullName&gt;; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] deve chiudere e riciclare il <xref:System.ServiceModel.InstanceContext>dell&quot;oggetto e modificare il valore di &lt;xref:System.ServiceModel.Dispatcher.ServiceThrottle.MaxConcurrentInstances%2A?displayProperty=fullName&gt;; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceModel.InstanceContext>"
   overload: System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle*
   exceptions: []
   platform:
@@ -119,17 +119,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Called when the <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle*> method returns <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to enable implementers to provide a callback to notify [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] when the <xref:System.ServiceModel.InstanceContext> object is finished."
-  remarks: "The NotifyIdle method is called when the <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A> method returns `false` to enable you to provide [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] with a <xref:System.ServiceModel.Dispatcher.InstanceContextIdleCallback?displayProperty=fullName> object that you use to inform the runtime that the <xref:System.ServiceModel.InstanceContext> has finished its work. When the <xref:System.ServiceModel.Dispatcher.InstanceContextIdleCallback?displayProperty=fullName> object notifies the runtime that the <xref:System.ServiceModel.InstanceContext> has finished its work, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] calls <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A> once again. This cycle continues until <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A> returns `true` and the context is closed and recycled."
+  summary: "Chiamato quando il <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle*>restituisce <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> per consentire agli implementatori di fornire un callback per notificare [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] quando il <xref:System.ServiceModel.InstanceContext>oggetto termina.</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle*>"
+  remarks: "NotifyIdle viene chiamato quando il <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A>restituisce `false` che consente di fornire [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] con un <xref:System.ServiceModel.Dispatcher.InstanceContextIdleCallback?displayProperty=fullName>che consentono di informare il runtime dell&quot;oggetto che il <xref:System.ServiceModel.InstanceContext>ha completato l&quot;elaborazione.</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.Dispatcher.InstanceContextIdleCallback?displayProperty=fullName> </xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A> Quando il <xref:System.ServiceModel.Dispatcher.InstanceContextIdleCallback?displayProperty=fullName>oggetto notifica il runtime che il <xref:System.ServiceModel.InstanceContext>ha completato l&quot;elaborazione, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] chiamate <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A>nuovamente.</xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A> </xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.Dispatcher.InstanceContextIdleCallback?displayProperty=fullName> Questo ciclo continua fino a <xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A>restituisce `true` e il contesto viene chiuso e riciclato.</xref:System.ServiceModel.Dispatcher.IInstanceContextProvider.IsIdle%2A>"
   syntax:
     content: public void NotifyIdle (System.ServiceModel.Dispatcher.InstanceContextIdleCallback callback, System.ServiceModel.InstanceContext instanceContext);
     parameters:
     - id: callback
       type: System.ServiceModel.Dispatcher.InstanceContextIdleCallback
-      description: "The <xref href=&quot;System.ServiceModel.Dispatcher.InstanceContextIdleCallback&quot;></xref> object that notifies [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] when the <xref:System.ServiceModel.InstanceContext> object is to be closed and recycled."
+      description: "Il <xref href=&quot;System.ServiceModel.Dispatcher.InstanceContextIdleCallback&quot;> </xref> oggetto notifica [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] quando il <xref:System.ServiceModel.InstanceContext>oggetto viene chiuso e riciclato.</xref:System.ServiceModel.InstanceContext>"
     - id: instanceContext
       type: System.ServiceModel.InstanceContext
-      description: "The current <xref:System.ServiceModel.InstanceContext>."
+      description: "<xref:System.ServiceModel.InstanceContext>.</xref:System.ServiceModel.InstanceContext> Corrente"
   overload: System.ServiceModel.Dispatcher.IInstanceContextProvider.NotifyIdle*
   exceptions: []
   platform:

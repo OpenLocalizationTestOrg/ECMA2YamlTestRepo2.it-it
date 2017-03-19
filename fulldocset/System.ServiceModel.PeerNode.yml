@@ -16,8 +16,8 @@ items:
   nameWithType: PeerNode
   fullName: System.ServiceModel.PeerNode
   type: Class
-  summary: "Defines the instance of of a peer node used by an application participating in a specific peer mesh."
-  remarks: "A peer node can host multiple peer channels within the mesh as long as they share a common URI and host name in the <xref:System.ServiceModel.EndpointAddress> supplied to the binding for each channel.       If two or more peer channels defined for a peer node are created with separate bindings, then the <xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>, <xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A>, and <xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A> properties must be identical on all bindings.       If a subsequent channel binding is created after the first one for the same peer node instance, then the <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> property on this and subsequent bindings must be less than or equal to the value of <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> property as set on the first channel binding."
+  summary: "Definisce l&quot;istanza di un nodo peer utilizzato da un&quot;applicazione che fa parte di una rete di peer specifica."
+  remarks: "Un nodo peer può ospitare più canali peer della rete, purché si presentino lo stesso nome host e l&quot;URI nel <xref:System.ServiceModel.EndpointAddress>fornito all&quot;associazione per ogni canale.</xref:System.ServiceModel.EndpointAddress>       Se due o più canali del peer definiti per un nodo peer sono creati con associazioni distinte, quindi il <xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>, <xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A>, e <xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A>le proprietà devono essere identiche in tutti i binding.</xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A> </xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A> </xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>       Se viene creata un&quot;associazione di canale per la stessa istanza di nodo peer, dopo la prima il <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>questa proprietà e quelle successive devono essere minore o uguale al valore di <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>impostata nell&quot;associazione del canale prima la proprietà.</xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> </xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>"
   syntax:
     content: 'public sealed class PeerNode : System.ServiceModel.IOnlineStatus'
   inheritance:
@@ -39,13 +39,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets a value indicating whether the peer node is online and able to send messages to neighboring nodes in the peer mesh."
-  remarks: "&quot;Online&quot; indicates that a peer node has available neighbor nodes. &quot;Offline&quot; indicates that a peer node has no available neighbors."
+  summary: "Ottiene un valore che indica se il nodo peer è online e in grado di inviare messaggi ai nodi adiacenti nella rete di peer."
+  remarks: "&quot;Online&quot; indica che un nodo peer nodo adiacente disponibile. &quot;Offline&quot; indica che un nodo peer non ha adiacente disponibile."
   syntax:
     content: public bool IsOnline { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the peer node is online; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il nodo peer è online; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.PeerNode.IsOnline*
   exceptions: []
   platform:
@@ -62,18 +62,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets and sets a custom filter for messages received over the peer channel."
-  remarks: "The message filter must be a derived type and should be recast to that type to use any custom features defined on it."
+  summary: "Ottiene e imposta un filtro personalizzato per i messaggi ricevuti attraverso il canale peer."
+  remarks: "Il filtro messaggi deve essere un tipo derivato e deve essere eseguito il cast da utilizzare le funzionalità personalizzate in cui è definite per tale tipo."
   syntax:
     content: public System.ServiceModel.PeerMessagePropagationFilter MessagePropagationFilter { get; set; }
     return:
       type: System.ServiceModel.PeerMessagePropagationFilter
-      description: "<xref href=&quot;System.ServiceModel.PeerMessagePropagationFilter&quot;></xref> that contains a custom message filter."
+      description: "<xref href=&quot;System.ServiceModel.PeerMessagePropagationFilter&quot;></xref>che contiene un filtro messaggi personalizzato."
   overload: System.ServiceModel.PeerNode.MessagePropagationFilter*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "Nessun canale è aperto per l&quot;ascolto."
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.Offline
@@ -88,13 +88,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Signals when the peer node goes offline from the peer mesh."
-  remarks: "An offline peer node has no neighbor nodes within the peer mesh to which it can connect."
+  summary: "Segnala quando il nodo di peer passa alla modalità offline dal peer rete."
+  remarks: "Un nodo peer non in linea presenta alcun nodo adiacente all&quot;interno della rete di peer a cui possono connettersi."
   syntax:
     content: public event EventHandler Offline;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -110,13 +110,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Signals when a peer node comes online within the peer mesh."
-  remarks: "An online peer node has at least one neighbor node within the peer mesh to which it is connected."
+  summary: "Segnala quando un nodo peer è in linea all&quot;interno della rete di peer."
+  remarks: "Un nodo peer in linea presentano almeno un nodo adiacente all&quot;interno della rete di peer a cui è connesso."
   syntax:
     content: public event EventHandler Online;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -132,17 +132,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the network port on which the peer node is listening."
+  summary: "Ottiene la porta di rete in cui il nodo peer resta in ascolto."
   syntax:
     content: public int Port { get; }
     return:
       type: System.Int32
-      description: "<xref:System.Int32> that specifies the network port on which the peer node is listening."
+      description: "<xref:System.Int32>che specifica la porta di rete in cui il nodo peer resta in ascolto.</xref:System.Int32>"
   overload: System.ServiceModel.PeerNode.Port*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "Nessun canale è aperto per l&quot;ascolto."
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.RefreshConnection
@@ -157,7 +157,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Refreshes the connection with the peer mesh."
+  summary: "Aggiorna la connessione di rete di peer."
   syntax:
     content: public void RefreshConnection ();
     parameters: []
@@ -165,19 +165,19 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "Nessun canale è aperto per l&quot;ascolto."
   - type: System.TimeoutException
     commentId: T:System.TimeoutException
-    description: "The refresh operation timed out."
+    description: "Timeout dell&quot;operazione di aggiornamento."
   - type: System.ServiceModel.CommunicationException
     commentId: T:System.ServiceModel.CommunicationException
-    description: "A network error occurred during the refresh attempt."
+    description: "Si è verificato un errore di rete durante il tentativo di aggiornamento."
   - type: System.ServiceModel.CommunicationObjectAbortedException
     commentId: T:System.ServiceModel.CommunicationObjectAbortedException
-    description: "The connection aborted during the refresh attempt."
+    description: "La connessione è interrotta durante il tentativo di aggiornamento."
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The connection faulted during the refresh attempt."
+    description: "La connessione non riuscita durante il tentativo di aggiornamento."
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.ToString
@@ -192,13 +192,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Provides a string representation of a peer node."
+  summary: "Fornisce una rappresentazione di stringa di un nodo peer."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "<xref:System.String> value that contains the mesh ID of the peer node if the mesh ID is set; otherwise, it returns the type."
+      description: "<xref:System.String>valore che contiene l&quot;ID di rete del nodo peer, se è impostato l&quot;ID di rete; in caso contrario, restituisce il tipo.</xref:System.String>"
   overload: System.ServiceModel.PeerNode.ToString*
   exceptions: []
   platform:

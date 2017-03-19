@@ -15,8 +15,8 @@ items:
   nameWithType: ChannelDispatcherBase
   fullName: System.ServiceModel.Dispatcher.ChannelDispatcherBase
   type: Class
-  summary: "Abstract base class for the channel dispatcher that accepts channels and associates them with a service."
-  remarks: "This is used by developers who want to keep the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] programming model but replace the system-provided runtime. Such applications will pull messages out of channels and handle them directly with user-defined dispatchers. To use ChannelDispatcherBase , create a class derived from it, extend <xref:System.ServiceModel.ServiceHost> and override <xref:System.ServiceModel.ServiceHostBase.InitializeRuntime%2A>, adding instances of your class derived from ChannelDispatcherBase to <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>.       The <xref:System.ServiceModel.Channels.IChannelListener> and the <xref:System.ServiceModel.ServiceHost>, associated with the ChannelDispatcherBase object are available for inspection or modification through the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Listener%2A> and <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A> respectively.       <xref:System.ServiceModel.ServiceHost> calls the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Attach%28System.ServiceModel.ServiceHostBase%29> or <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Detach%28System.ServiceModel.ServiceHostBase%29> methods when adding or removing a ChannelDispatcherBase item from its <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> collection.       <xref:System.ServiceModel.ServiceHost> calls the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.CloseInput%2A> during shutdown before closing InstanceContexts. [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] uses this call to close datagram channels and wait for all messages to get to an InstanceContext."
+  summary: "Classe base astratta per il dispatcher del canale che accetta canali e li associa a un servizio."
+  remarks: "Viene utilizzato dagli sviluppatori che vogliono mantenere il [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] programmazione modello ma sostituire la fase di esecuzione fornita dal sistema. Tali applicazioni verranno pull dei messaggi dai canali e li gestiranno direttamente con i dispatcher definiti dall&quot;utente. Per utilizzare ChannelDispatcherBase, creare una classe derivata, estendere <xref:System.ServiceModel.ServiceHost>ed eseguire l&quot;override <xref:System.ServiceModel.ServiceHostBase.InitializeRuntime%2A>, aggiungendo istanze della classe derivata da ChannelDispatcherBase a <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.ServiceHostBase.InitializeRuntime%2A> </xref:System.ServiceModel.ServiceHost>       Il <xref:System.ServiceModel.Channels.IChannelListener>e <xref:System.ServiceModel.ServiceHost>, associato con l&quot;oggetto ChannelDispatcherBase sono disponibili per essere controllate o modificate tramite il <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Listener%2A>e <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A>rispettivamente.</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Listener%2A> </xref:System.ServiceModel.ServiceHost> </xref:System.ServiceModel.Channels.IChannelListener>       <xref:System.ServiceModel.ServiceHost>chiamate di <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Attach%28System.ServiceModel.ServiceHostBase%29>o <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Detach%28System.ServiceModel.ServiceHostBase%29>metodi durante l&quot;aggiunta o rimozione di un elemento ChannelDispatcherBase dal relativo <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>insieme.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Detach%28System.ServiceModel.ServiceHostBase%29> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Attach%28System.ServiceModel.ServiceHostBase%29></xref:System.ServiceModel.ServiceHost>       <xref:System.ServiceModel.ServiceHost>chiamate di <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.CloseInput%2A>durante l&quot;arresto prima di chiudere InstanceContexts.</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.CloseInput%2A></xref:System.ServiceModel.ServiceHost> [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]utilizza questa chiamata per chiudere i canali del datagramma e attendere che tutti i messaggi ottengano un InstanceContext."
   syntax:
     content: 'public abstract class ChannelDispatcherBase : System.ServiceModel.Channels.CommunicationObject'
   inheritance:
@@ -37,7 +37,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Dispatcher.ChannelDispatcherBase&quot;></xref> class."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ServiceModel.Dispatcher.ChannelDispatcherBase&quot;> </xref> classe."
   syntax:
     content: protected ChannelDispatcherBase ();
     parameters: []
@@ -57,28 +57,28 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, attaches the channel dispatcher to a specific host."
-  remarks: "This method can only be set when the instance of the <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> is in the <xref:System.ServiceModel.CommunicationState> state, as this is the only state that is both mutable and not disposed.       A <xref:System.ServiceModel.ServiceHost> calls this method when the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> is added to its <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> collection.  This gives the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> a chance to hook events and inspect the <xref:System.ServiceModel.ServiceHost>, and provides the value that should be returned from the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A> property."
+  summary: "Quando sottoposto a override in una classe derivata, allega il ChannelDispatcher a un host specifico."
+  remarks: "Questo metodo può essere impostato solo quando l&quot;istanza del <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>è il <xref:System.ServiceModel.CommunicationState>dello stato, poiché questa è l&quot;unico stato che è modificabile e non è stato eliminato.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher>       A <xref:System.ServiceModel.ServiceHost>chiama questo metodo quando il <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>viene aggiunto alla relativa <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>insieme.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> </xref:System.ServiceModel.ServiceHost>  In questo modo il <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>la possibilità di associare gli eventi e controllare il <xref:System.ServiceModel.ServiceHost>e fornisce il valore che deve essere restituito dal <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A>proprietà.</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host%2A> </xref:System.ServiceModel.ServiceHost> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>"
   syntax:
     content: protected virtual void Attach (System.ServiceModel.ServiceHostBase host);
     parameters:
     - id: host
       type: System.ServiceModel.ServiceHostBase
-      description: "The <xref href=&quot;System.ServiceModel.ServiceHostBase&quot;></xref> for the service."
+      description: "Il <xref href=&quot;System.ServiceModel.ServiceHostBase&quot;> </xref> per il servizio."
   overload: System.ServiceModel.Dispatcher.ChannelDispatcherBase.Attach*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>host</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>host</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The communication object is in an <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state or the host is already set."
+    description: "L&quot;oggetto di comunicazione è in un <xref:System.ServiceModel.CommunicationState>o <xref:System.ServiceModel.CommunicationState>stato o l&quot;host è già impostato.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The communication object is in a <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state."
+    description: "L&quot;oggetto di comunicazione è in un <xref:System.ServiceModel.CommunicationState>o <xref:System.ServiceModel.CommunicationState>stato.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The communication object is in a <xref:System.ServiceModel.CommunicationState> state."
+    description: "L&quot;oggetto di comunicazione è in un <xref:System.ServiceModel.CommunicationState>stato.</xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.ChannelDispatcherBase.CloseInput
@@ -93,8 +93,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, removes the endpoint dispatchers associated with the channel dispatcher."
-  remarks: "<xref:System.ServiceModel.ServiceHost> calls this method during shutdown to give the dispatcher a chance to drain messages. <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> uses this call to close datagram channels."
+  summary: "Quando sottoposto a override in una classe derivata, rimuove i dispatcher dell&quot;endpoint associati al ChannelDispatcher."
+  remarks: "<xref:System.ServiceModel.ServiceHost>chiama questo metodo durante l&quot;arresto per dare al dispatcher la possibilità di svuotare i messaggi.</xref:System.ServiceModel.ServiceHost> <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>utilizza questa chiamata per chiudere i canali del datagramma.</xref:System.ServiceModel.Dispatcher.ChannelDispatcher>"
   syntax:
     content: public virtual void CloseInput ();
     parameters: []
@@ -114,8 +114,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, detaches the channel dispatcher from a specific host."
-  remarks: "The <xref:System.ServiceModel.ServiceHostBase> can only be detached when the instance of the <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> is in the <xref:System.ServiceModel.CommunicationState> state, as this is the only state that is both mutable and not disposed.       Should set the <xref:System.ServiceModel.ServiceHostBase> associated with the channel dispatcher to `null`.       <xref:System.ServiceModel.ServiceHost> calls this method when the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> is removed from its <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> collection. This gives the <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> a chance to unhook events and inspect the <xref:System.ServiceModel.ServiceHost>."
+  summary: "Quando sottoposto a override in una classe derivata, disconnette il ChannelDispatcher da un host specifico."
+  remarks: "Il <xref:System.ServiceModel.ServiceHostBase>può solo essere scollegato quando l&quot;istanza del <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>è il <xref:System.ServiceModel.CommunicationState>dello stato, poiché questa è l&quot;unico stato che è modificabile e non è stato eliminato.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher> </xref:System.ServiceModel.ServiceHostBase>       Impostare il <xref:System.ServiceModel.ServiceHostBase>associato al ChannelDispatcher su `null`.</xref:System.ServiceModel.ServiceHostBase>       <xref:System.ServiceModel.ServiceHost>Questo metodo viene chiamato quando il <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>viene rimosso dal relativo <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>insieme.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase></xref:System.ServiceModel.ServiceHost> In questo modo la <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>possibilità di eseguire l&quot;unhook degli eventi ed esaminare <xref:System.ServiceModel.ServiceHost>.</xref:System.ServiceModel.ServiceHost> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>"
   syntax:
     content: protected virtual void Detach (System.ServiceModel.ServiceHostBase host);
     parameters:
@@ -126,16 +126,16 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>host</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>host</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The communication object is in an <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state or the host is already set."
+    description: "L&quot;oggetto di comunicazione è in un <xref:System.ServiceModel.CommunicationState>o <xref:System.ServiceModel.CommunicationState>stato o l&quot;host è già impostato.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The communication object is in a <xref:System.ServiceModel.CommunicationState> or <xref:System.ServiceModel.CommunicationState> state."
+    description: "L&quot;oggetto di comunicazione è in un <xref:System.ServiceModel.CommunicationState>o <xref:System.ServiceModel.CommunicationState>stato.</xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.CommunicationState>"
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The communication object is in a <xref:System.ServiceModel.CommunicationState> state."
+    description: "L&quot;oggetto di comunicazione è in un <xref:System.ServiceModel.CommunicationState>stato.</xref:System.ServiceModel.CommunicationState>"
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host
@@ -150,13 +150,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, gets the service host associated with the channel dispatcher."
-  remarks: "Each <xref:System.ServiceModel.ServiceHost> object can have many <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> objects, each associated with a different <xref:System.ServiceModel.Channels.IChannelListener> for that service. The host keeps a list of these <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> objects in the <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> collection."
+  summary: "Quando sottoposto a override in una classe derivata, ottiene l&quot;host del servizio associato al ChannelDispatcher."
+  remarks: "Ogni <xref:System.ServiceModel.ServiceHost>oggetto può avere molti <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>oggetti, ognuno associato con un altro <xref:System.ServiceModel.Channels.IChannelListener>per quel servizio.</xref:System.ServiceModel.Channels.IChannelListener> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher> </xref:System.ServiceModel.ServiceHost> L&quot;host conserva un elenco di tali <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>gli oggetti di <xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A>insieme.</xref:System.ServiceModel.ServiceHostBase.ChannelDispatchers%2A> </xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>"
   syntax:
     content: public abstract System.ServiceModel.ServiceHostBase Host { get; }
     return:
       type: System.ServiceModel.ServiceHostBase
-      description: "The <xref href=&quot;System.ServiceModel.ServiceHostBase&quot;></xref> for the service associated with the dispatcher."
+      description: "Il <xref href=&quot;System.ServiceModel.ServiceHostBase&quot;> </xref> per il servizio associato al dispatcher."
   overload: System.ServiceModel.Dispatcher.ChannelDispatcherBase.Host*
   exceptions: []
   platform:
@@ -173,13 +173,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, gets the channel listener associated with the channel dispatcher."
-  remarks: "A <xref:System.ServiceModel.Dispatcher.ChannelDispatcher> associates an <xref:System.ServiceModel.Channels.IChannelListener> whose channels and messages this <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> is dispatching."
+  summary: "Quando sottoposto a override in una classe derivata, ottiene il listener del canale associato al ChannelDispatcher."
+  remarks: "Oggetto <xref:System.ServiceModel.Dispatcher.ChannelDispatcher>Associa un <xref:System.ServiceModel.Channels.IChannelListener>cui canali e messaggi <xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase>sta inviando.</xref:System.ServiceModel.Dispatcher.ChannelDispatcherBase> </xref:System.ServiceModel.Channels.IChannelListener> </xref:System.ServiceModel.Dispatcher.ChannelDispatcher>"
   syntax:
     content: public abstract System.ServiceModel.Channels.IChannelListener Listener { get; }
     return:
       type: System.ServiceModel.Channels.IChannelListener
-      description: "The <xref href=&quot;System.ServiceModel.Channels.IChannelListener&quot;></xref> associated with the channel dispatcher."
+      description: "Il <xref href=&quot;System.ServiceModel.Channels.IChannelListener&quot;> </xref> associato al ChannelDispatcher."
   overload: System.ServiceModel.Dispatcher.ChannelDispatcherBase.Listener*
   exceptions: []
   platform:

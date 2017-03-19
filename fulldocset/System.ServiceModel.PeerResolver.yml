@@ -16,8 +16,8 @@ items:
   nameWithType: PeerResolver
   fullName: System.ServiceModel.PeerResolver
   type: Class
-  summary: "Specifies a base type used to define the contract for the registration and resolution of a peer mesh ID to the endpoint addresses of nodes participating in the mesh."
-  remarks: "This class is the base class for the implementation of custom peer name resolvers. A peer name resolver is a discovery service used by peer channels to find peer nodes participating in a peer mesh. It is also used to &quot;register&quot; a node with a peer mesh, the mechanism by which the peer node becomes known and available from the peer mesh."
+  summary: "Specifica un tipo di base utilizzata per definire il contratto per la registrazione e risoluzione di un peer di ID di rete negli indirizzi endpoint dei nodi che fanno parte della rete."
+  remarks: "Questa classe è la classe base per l&quot;implementazione del resolver del peer personalizzati nome. Un resolver di nomi peer è un servizio di individuazione utilizzato dai canali peer per trovare i nodi peer che partecipano a una rete di peer. Consente inoltre di &quot;registrare&quot; un nodo in una rete di peer, il meccanismo mediante il quale il nodo peer renderlo individuabile e disponibile dalla rete di peer."
   syntax:
     content: public abstract class PeerResolver
   inheritance:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.PeerResolver&quot;></xref> class."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ServiceModel.PeerResolver&quot;> </xref> classe."
   syntax:
     content: protected PeerResolver ();
     parameters: []
@@ -58,12 +58,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets whether the peer name resolver can share referrals."
+  summary: "Indica se il resolver di nomi peer può condividere i riferimenti."
   syntax:
     content: public abstract bool CanShareReferrals { get; }
     return:
       type: System.Boolean
-      description: "If true, the peer name resolver can share referrals; if false, it cannot."
+      description: "Se true, il resolver di nomi peer può condividere i riferimenti; Se false, non è possibile."
   overload: System.ServiceModel.PeerResolver.CanShareReferrals*
   exceptions: []
   platform:
@@ -80,23 +80,23 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes the current peer resolver instance with the new supplied endpoint address and settings."
-  remarks: "This method simply initializes the existing peer resolver instance; it does not create a new one. To create a new peer resolver, call the CreatePeerResolver method on the corresponding binding element (for example, <xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>)."
+  summary: "Inizializza l&quot;istanza corrente del resolver peer con le impostazioni e il nuovo indirizzo endpoint specificato."
+  remarks: "Questo metodo inizializza semplicemente l&quot;istanza del resolver peer esistente; non crea uno nuovo. Per creare un nuovo resolver peer, chiamare il metodo CreatePeerResolver sull&quot;elemento di associazione corrispondenti (ad esempio, <xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>).</xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>"
   syntax:
     content: public virtual void Initialize (System.ServiceModel.EndpointAddress address, System.ServiceModel.Channels.Binding binding, System.ServiceModel.Description.ClientCredentials credentials, System.ServiceModel.PeerResolvers.PeerReferralPolicy referralPolicy);
     parameters:
     - id: address
       type: System.ServiceModel.EndpointAddress
-      description: "<xref:System.ServiceModel.EndpointAddress> that contains the new endpoint address of this peer resolver instance."
+      description: "<xref:System.ServiceModel.EndpointAddress>che contiene il nuovo indirizzo di endpoint di questa istanza del resolver peer.</xref:System.ServiceModel.EndpointAddress>"
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "<xref:System.ServiceModel.Channels.Binding> that specifies the new network binding for this peer resolver."
+      description: "<xref:System.ServiceModel.Channels.Binding>che specifica la nuova associazione di rete per questo resolver peer.</xref:System.ServiceModel.Channels.Binding>"
     - id: credentials
       type: System.ServiceModel.Description.ClientCredentials
-      description: "<xref:System.ServiceModel.Description.ClientCredentials> that specifies the new client credentials for this peer resolver."
+      description: "<xref:System.ServiceModel.Description.ClientCredentials>Specifica le nuove credenziali client per questo resolver peer.</xref:System.ServiceModel.Description.ClientCredentials>"
     - id: referralPolicy
       type: System.ServiceModel.PeerResolvers.PeerReferralPolicy
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.PeerReferralPolicy&quot;></xref> that specifies the new referral policy for this peer resolver."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.PeerReferralPolicy&quot;></xref>che specifica il nuovo criterio di riferimento per questo resolver peer."
   overload: System.ServiceModel.PeerResolver.Initialize*
   exceptions: []
   platform:
@@ -113,22 +113,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Registers a <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> for a specific peer mesh."
+  summary: "Registra un <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> per una rete di peer specifica."
   syntax:
     content: public abstract object Register (string meshId, System.ServiceModel.PeerNodeAddress nodeAddress, TimeSpan timeout);
     parameters:
     - id: meshId
       type: System.String
-      description: "The ID of the peer mesh in which the peer node is to be registered."
+      description: "L&quot;ID della rete di peer in cui il nodo peer è da registrare."
     - id: nodeAddress
       type: System.ServiceModel.PeerNodeAddress
-      description: "The <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> to be registered with the peer mesh."
+      description: "Il <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> da registrare nella rete di peer."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to register with the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Il periodo di tempo di attesa per il completamento prima di interrompere il tentativo di registrazione nella rete di peer. Se il tentativo non riesce, <xref:System.TimeoutException>viene generato sul peer.</xref:System.TimeoutException>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the registration ID. This registration ID object is passed to the <xref:System.ServiceModel.PeerResolver.Update*> and <xref:System.ServiceModel.PeerResolver.Unregister*> methods."
+      description: "Un <xref:System.Object>che rappresenta l&quot;ID di registrazione</xref:System.Object> Questo oggetto viene passato per il <> </> *> e <> </> *> metodi."
   overload: System.ServiceModel.PeerResolver.Register*
   exceptions: []
   platform:
@@ -145,22 +145,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Resolves the supplied mesh ID to zero or more endpoint addresses of nodes participating in the peer mesh."
+  summary: "Risolve l&quot;ID di rete fornito in zero o più indirizzi endpoint dei nodi appartenenti alla rete di peer."
   syntax:
     content: public abstract System.Collections.ObjectModel.ReadOnlyCollection<System.ServiceModel.PeerNodeAddress> Resolve (string meshId, int maxAddresses, TimeSpan timeout);
     parameters:
     - id: meshId
       type: System.String
-      description: "The mesh ID of the peer mesh within which the <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> objects representing participating nodes are to be obtained."
+      description: "L&quot;ID di rete del peer della rete all&quot;interno del quale il <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> oggetti che rappresentano partecipano ai nodi da ottenere."
     - id: maxAddresses
       type: System.Int32
-      description: "The number of endpoint addresses to return."
+      description: "Il numero di indirizzi endpoint da restituire."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to resolve endpoint addresses within the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Il periodo di tempo di attesa per il completamento prima di interrompere il tentativo di risolvere gli indirizzi endpoint all&quot;interno della rete di peer. Se il tentativo non riesce, <xref:System.TimeoutException>viene generato sul peer.</xref:System.TimeoutException>"
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.ServiceModel.PeerNodeAddress}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; that contains <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> objects representing nodes participating in the peer mesh."
+      description: "Oggetto &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; contenente <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> oggetti che rappresentano i nodi che fanno parte della rete di peer."
   overload: System.ServiceModel.PeerResolver.Resolve*
   exceptions: []
   platform:
@@ -177,17 +177,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Removes the registration entry for a node from a peer mesh."
-  remarks: "A registration ID is a peer resolver token, that, at the very minimum, represents the tuple of a peer node ID and the mesh ID. This ID value must have been obtained in a previous call to <xref:System.ServiceModel.PeerResolver.Register%2A>.       Unregister is called in two specific cases:      -   When the <xref:System.ServiceModel.PeerNode> is leaving the peer mesh (usually as the result of closing the last peer channel or service host that is associated with it).      -   When the <xref:System.ServiceModel.PeerNode> can find no available endpoint addresses of other nodes participating in the peer mesh. As a result, the <xref:System.ServiceModel.PeerNode> is no longer reachable, and it will attempt to call Unregister to unregister itself from the <xref:System.ServiceModel.PeerResolver>. If other peer nodes within the mesh become available subsequent to unregistration, the node can re-register itself by calling <xref:System.ServiceModel.PeerResolver.Register%2A> and obtaining a new registration ID."
+  summary: "Rimuove la voce di registrazione per un nodo da una rete di peer."
+  remarks: "Un ID di registrazione è un token del resolver peer che, nel caso minimo, rappresenta la tupla di un ID di nodo peer e l&quot;ID di rete. Il valore dell&quot;ID deve essere ottenuto in una precedente chiamata a <xref:System.ServiceModel.PeerResolver.Register%2A>.</xref:System.ServiceModel.PeerResolver.Register%2A>       Annullare la registrazione viene chiamato in due casi specifici:: se il <xref:System.ServiceModel.PeerNode>viene rimosso dalla rete di peer (di solito a seguito della chiusura dell&quot;ultimo servizio o canale host peer che è associato).</xref:System.ServiceModel.PeerNode>      -Quando il <xref:System.ServiceModel.PeerNode>non possibile trovare alcun indirizzo endpoint disponibili di altri nodi che fanno parte della rete di peer.</xref:System.ServiceModel.PeerNode> Di conseguenza, il <xref:System.ServiceModel.PeerNode>non è più raggiungibile, e tenterà di annullare la registrazione per annullare la registrazione di se stesso dal <xref:System.ServiceModel.PeerResolver>.</xref:System.ServiceModel.PeerResolver> chiamare</xref:System.ServiceModel.PeerNode> Se gli altri nodi peer appartenenti alla mesh diventano disponibili dopo l&quot;annullamento della registrazione, il nodo può registrarsi nuovamente chiamando <xref:System.ServiceModel.PeerResolver.Register%2A>e ottenere una nuova registrazione ID.</xref:System.ServiceModel.PeerResolver.Register%2A>"
   syntax:
     content: public abstract void Unregister (object registrationId, TimeSpan timeout);
     parameters:
     - id: registrationId
       type: System.Object
-      description: "A registration ID for the node obtained by a previous call to <xref:System.ServiceModel.PeerResolver.Register*>."
+      description: "Un ID di registrazione per il nodo ottenuto mediante una chiamata precedente a <xref:System.ServiceModel.PeerResolver.Register*>.</xref:System.ServiceModel.PeerResolver.Register*>"
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for a successful removal of the registration from the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Il periodo di tempo di attesa per una corretta rimozione della registrazione dalla rete di peer. Se il tentativo non riesce, <xref:System.TimeoutException>viene generato sul peer.</xref:System.TimeoutException>"
   overload: System.ServiceModel.PeerResolver.Unregister*
   exceptions: []
   platform:
@@ -204,20 +204,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Updates the <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> for a node registered with a specific peer mesh."
-  remarks: "Update is called when the address of the <xref:System.ServiceModel.PeerNode> changes on the local machine."
+  summary: "Gli aggiornamenti di <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> per un nodo registrato in una rete di peer specifica."
+  remarks: "Aggiornamento viene chiamato quando l&quot;indirizzo del <xref:System.ServiceModel.PeerNode>modifiche nel computer locale.</xref:System.ServiceModel.PeerNode>"
   syntax:
     content: public abstract void Update (object registrationId, System.ServiceModel.PeerNodeAddress updatedNodeAddress, TimeSpan timeout);
     parameters:
     - id: registrationId
       type: System.Object
-      description: "A registration ID token for the node, obtained by a previous call to <xref:System.ServiceModel.PeerResolver.Register*>"
+      description: "Un token di ID registrazione per il nodo ottenuto mediante una chiamata precedente a<xref:System.ServiceModel.PeerResolver.Register*></xref:System.ServiceModel.PeerResolver.Register*>"
     - id: updatedNodeAddress
       type: System.ServiceModel.PeerNodeAddress
-      description: "The updated endpoint address (and other multihoming IP addresses)."
+      description: "L&quot;indirizzo endpoint aggiornato e altri indirizzi IP di multihoming."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to update the node&quot;s registration within the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Il periodo di tempo di attesa per il completamento prima di interrompere il tentativo di aggiornare la registrazione del nodo all&quot;interno della rete di peer. Se il tentativo non riesce, <xref:System.TimeoutException>viene generato sul peer.</xref:System.TimeoutException>"
   overload: System.ServiceModel.PeerResolver.Update*
   exceptions: []
   platform:

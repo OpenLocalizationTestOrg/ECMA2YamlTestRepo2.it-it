@@ -12,8 +12,8 @@ items:
   nameWithType: IInstanceProvider
   fullName: System.ServiceModel.Dispatcher.IInstanceProvider
   type: Interface
-  summary: "Declares methods that provide a service object or recycle a service object for a [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] service."
-  remarks: "Implement the IInstanceProvider interface to control the creation and recycling of service objects when one is requested or disposed by an <xref:System.ServiceModel.InstanceContext> object.       Once the IInstanceProvider interface is implemented, you must assign your custom instance provider object to the <xref:System.ServiceModel.Dispatcher.DispatchRuntime.InstanceProvider%2A> property using either an endpoint behavior (a <xref:System.ServiceModel.Description.IEndpointBehavior> object) or a contract behavior (a <xref:System.ServiceModel.Description.IContractBehavior> object).       If the insertion mechanism is an endpoint behavior you can also implement a <xref:System.ServiceModel.Configuration.BehaviorExtensionElement> object that can insert your custom behavior using a configuration file. If the insertion mechanism is a contract behavior, you can insert the behavior programmatically prior to the opening of the service host or you can implement a custom attribute. (For an example of the contract behavior approach, see the Example section.)       IInstanceProvider has two methods, <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> and <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A>. These methods are typically implemented to create service objects using a non-default constructor or to initialize or dispose of some state related to the lifetime of the object. Service object pooling is one example of custom IInstanceProvider functionality.       Typically, the <xref:System.ServiceModel.InstanceContext> invokes the <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> when the <xref:System.ServiceModel.InstanceContext> is first created and invokes the <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> method when the <xref:System.ServiceModel.InstanceContext> is closed.       There are two ways to cause an <xref:System.ServiceModel.InstanceContext> object to release a service object before the <xref:System.ServiceModel.InstanceContext> is closed. The first method is to set the <xref:System.ServiceModel.OperationBehaviorAttribute.ReleaseInstanceMode%2A> to <xref:System.ServiceModel.ReleaseInstanceMode> or <xref:System.ServiceModel.ReleaseInstanceMode>. The second method is to call the <xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A> method. If this is done, the <xref:System.ServiceModel.InstanceContext> calls the <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> method on the dispatcher&quot;s instance provider. If a new message arrives after the instance has been released, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] creates a new instance using the <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> method.      > [!NOTE] >  If the <xref:System.ServiceModel.InstanceContextMode> of the service is <xref:System.ServiceModel.InstanceContextMode>, the system does not call the <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> or <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> methods even when the user did not provide a well-known service object unless the user directly calls <xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A> and then calls <xref:System.ServiceModel.InstanceContext.GetServiceInstance%2A>."
+  summary: "Dichiara metodi che forniscono un servizio dell&quot;oggetto o riciclano un oggetto servizio per un [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] servizio."
+  remarks: "Implementare l&quot;interfaccia IInstanceProvider per controllare la creazione e riciclaggio di oggetti servizio quando uno è stato richiesto o eliminato da un <xref:System.ServiceModel.InstanceContext>oggetto.</xref:System.ServiceModel.InstanceContext>       Dopo aver implementato l&quot;interfaccia IInstanceProvider, è necessario assegnare l&quot;oggetto provider di istanze personalizzato per il <xref:System.ServiceModel.Dispatcher.DispatchRuntime.InstanceProvider%2A>proprietà utilizzando un comportamento dell&quot;endpoint (un <xref:System.ServiceModel.Description.IEndpointBehavior>oggetto) o un comportamento del contratto (un <xref:System.ServiceModel.Description.IContractBehavior>oggetto).</xref:System.ServiceModel.Description.IContractBehavior> </xref:System.ServiceModel.Description.IEndpointBehavior> </xref:System.ServiceModel.Dispatcher.DispatchRuntime.InstanceProvider%2A>       Se il meccanismo di inserimento è un comportamento dell&quot;endpoint è anche possibile implementare un <xref:System.ServiceModel.Configuration.BehaviorExtensionElement>oggetto che è possibile inserire il comportamento personalizzato utilizzando un file di configurazione.</xref:System.ServiceModel.Configuration.BehaviorExtensionElement> Se il meccanismo di inserimento è un comportamento del contratto, è possibile inserire il comportamento a livello di codice prima dell&quot;apertura dell&quot;host del servizio o è possibile implementare un attributo personalizzato. (Per un esempio dell&quot;approccio di comportamento del contratto, vedere la sezione di esempio).       Provider di istanze dispone di due metodi <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A>e <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A>.</xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> </xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> Questi metodi in genere vengono implementati per creare oggetti servizio utilizzando un costruttore non predefinito o per inizializzare o eliminare stati correlati alla durata dell&quot;oggetto. Il pool di oggetti servizio è un esempio di funzionalità di provider di istanze personalizzata.       In genere, il <xref:System.ServiceModel.InstanceContext>richiama il <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A>quando il <xref:System.ServiceModel.InstanceContext>viene creato inizialmente e chiama il <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A>metodo quando il <xref:System.ServiceModel.InstanceContext>è chiuso.</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> </xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> </xref:System.ServiceModel.InstanceContext>       Esistono due modi per causare un <xref:System.ServiceModel.InstanceContext>oggetto per un oggetto servizio prima di rilasciare il <xref:System.ServiceModel.InstanceContext>è chiuso.</xref:System.ServiceModel.InstanceContext> </xref:System.ServiceModel.InstanceContext> Il primo metodo consiste nell&quot;impostare il <xref:System.ServiceModel.OperationBehaviorAttribute.ReleaseInstanceMode%2A>o <xref:System.ServiceModel.ReleaseInstanceMode> <xref:System.ServiceModel.ReleaseInstanceMode>.</xref:System.ServiceModel.ReleaseInstanceMode> </xref:System.ServiceModel.ReleaseInstanceMode> </xref:System.ServiceModel.OperationBehaviorAttribute.ReleaseInstanceMode%2A> Il secondo metodo consiste nel chiamare il <xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A>metodo.</xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A> In tal caso, il <xref:System.ServiceModel.InstanceContext>chiamate di <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A>(metodo) nel provider di istanze del dispatcher.</xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> </xref:System.ServiceModel.InstanceContext> Se arriva un nuovo messaggio dopo che l&quot;istanza è stata rilasciata, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] crea una nuova istanza utilizzando il <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A>metodo.</xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A>      > [!NOTE] > Se <xref:System.ServiceModel.InstanceContextMode>del servizio è <xref:System.ServiceModel.InstanceContextMode>, il sistema non chiama <xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A>o i <xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A>metodi, anche quando l&quot;utente non ha fornito un oggetto servizio noto, a meno che l&quot;utente direttamente chiama <xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A>e quindi chiama <xref:System.ServiceModel.InstanceContext.GetServiceInstance%2A>.</xref:System.ServiceModel.InstanceContext.GetServiceInstance%2A> </xref:System.ServiceModel.InstanceContext.ReleaseServiceInstance%2A> </xref:System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance%2A> </xref:System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance%2A> </xref:System.ServiceModel.InstanceContextMode> </xref:System.ServiceModel.InstanceContextMode>"
   example:
   - "The following code example shows how to implement IInstanceProvider that provides \"singleton\" behavior; it always returns the same service instance and does not recycle it.  \n  \n [!code-cs[IContractBehavior#1](~/add/codesnippet/csharp/icontractbehavior.client/objectproviderbehavior.cs#1)]\n [!code-vb[IContractBehavior#1](~/add/codesnippet/visualbasic/icontractbehavior.client/objectproviderbehavior.vb#1)]  \n  \n The following code example shows how to implement a custom attribute that implements <xref:System.ServiceModel.Description.IContractBehavior> to insert the custom service instance provider. It also implements <xref:System.ServiceModel.Description.IContractBehaviorAttribute>, which binds its use to a specific contract.  \n  \n [!code-cs[IContractBehavior#2](~/add/codesnippet/csharp/icontractbehavior.client/objectproviderbehavior.cs#2)]\n [!code-vb[IContractBehavior#2](~/add/codesnippet/visualbasic/icontractbehavior.client/objectproviderbehavior.vb#2)]"
   syntax:
@@ -33,8 +33,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Returns a service object given the specified <xref:System.ServiceModel.InstanceContext> object."
-  remarks: "Use the GetInstance method to control the exact service object that a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] service receives when it attempts to create a new one."
+  summary: "Restituisce un oggetto servizio dato specificato <xref:System.ServiceModel.InstanceContext>oggetto.</xref:System.ServiceModel.InstanceContext>"
+  remarks: "Utilizzare il metodo GetInstance per controllare il servizio esatto dell&quot;oggetto che un [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] servizio riceve durante il tentativo di crearne uno nuovo."
   example:
   - "The following code example shows how to implement <xref:System.ServiceModel.Dispatcher.IInstanceProvider> that provides \"singleton\" behavior; it always returns the same service instance and does not recycle it.  \n  \n [!code-cs[IContractBehavior#1](~/add/codesnippet/csharp/icontractbehavior.client/objectproviderbehavior.cs#1)]\n [!code-vb[IContractBehavior#1](~/add/codesnippet/visualbasic/icontractbehavior.client/objectproviderbehavior.vb#1)]  \n  \n The following code example shows how to implement a custom attribute that implements <xref:System.ServiceModel.Description.IContractBehavior> to insert the custom service instance provider. It also implements <xref:System.ServiceModel.Description.IContractBehaviorAttribute>, which binds its use to a specific contract.  \n  \n [!code-cs[IContractBehavior#2](~/add/codesnippet/csharp/icontractbehavior.client/objectproviderbehavior.cs#2)]\n [!code-vb[IContractBehavior#2](~/add/codesnippet/visualbasic/icontractbehavior.client/objectproviderbehavior.vb#2)]"
   syntax:
@@ -42,10 +42,10 @@ items:
     parameters:
     - id: instanceContext
       type: System.ServiceModel.InstanceContext
-      description: "The current <xref:System.ServiceModel.InstanceContext> object."
+      description: "Corrente <xref:System.ServiceModel.InstanceContext>oggetto.</xref:System.ServiceModel.InstanceContext>"
     return:
       type: System.Object
-      description: "A user-defined service object."
+      description: "Un oggetto servizio definito dall&quot;utente."
   overload: System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance*
   exceptions: []
   platform:
@@ -62,8 +62,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Returns a service object given the specified <xref:System.ServiceModel.InstanceContext> object."
-  remarks: "Use the GetInstance method to control the exact service object that a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] service receives when it attempts to create a new one."
+  summary: "Restituisce un oggetto servizio dato specificato <xref:System.ServiceModel.InstanceContext>oggetto.</xref:System.ServiceModel.InstanceContext>"
+  remarks: "Utilizzare il metodo GetInstance per controllare il servizio esatto dell&quot;oggetto che un [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] servizio riceve durante il tentativo di crearne uno nuovo."
   example:
   - "The following code example shows how to implement <xref:System.ServiceModel.Dispatcher.IInstanceProvider> that provides \"singleton\" behavior; it always returns the same service instance and does not recycle it.  \n  \n [!code-cs[IContractBehavior#1](~/add/codesnippet/csharp/icontractbehavior.client/objectproviderbehavior.cs#1)]\n [!code-vb[IContractBehavior#1](~/add/codesnippet/visualbasic/icontractbehavior.client/objectproviderbehavior.vb#1)]  \n  \n The following code example shows how to implement a custom attribute that implements <xref:System.ServiceModel.Description.IContractBehavior> to insert the custom service instance provider. It also implements <xref:System.ServiceModel.Description.IContractBehaviorAttribute>, which binds its use to a specific contract.  \n  \n [!code-cs[IContractBehavior#2](~/add/codesnippet/csharp/icontractbehavior.client/objectproviderbehavior.cs#2)]\n [!code-vb[IContractBehavior#2](~/add/codesnippet/visualbasic/icontractbehavior.client/objectproviderbehavior.vb#2)]"
   syntax:
@@ -71,13 +71,13 @@ items:
     parameters:
     - id: instanceContext
       type: System.ServiceModel.InstanceContext
-      description: "The current <xref:System.ServiceModel.InstanceContext> object."
+      description: "Corrente <xref:System.ServiceModel.InstanceContext>oggetto.</xref:System.ServiceModel.InstanceContext>"
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message that triggered the creation of a service object."
+      description: "Il messaggio che ha causato la creazione di un oggetto servizio."
     return:
       type: System.Object
-      description: "The service object."
+      description: "L&quot;oggetto servizio."
   overload: System.ServiceModel.Dispatcher.IInstanceProvider.GetInstance*
   exceptions: []
   platform:
@@ -94,17 +94,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Called when an <xref:System.ServiceModel.InstanceContext> object recycles a service object."
-  remarks: "Use the ReleaseInstance method to perform some custom resource disposal or other recycling customization when a service recycles a service object."
+  summary: "Chiamato quando un <xref:System.ServiceModel.InstanceContext>oggetto ricicla un oggetto servizio.</xref:System.ServiceModel.InstanceContext>"
+  remarks: "Utilizzare il metodo ReleaseInstance per eseguire alcune eliminazione risorsa personalizzata o riciclare quando un servizio ricicla un oggetto servizio."
   syntax:
     content: public void ReleaseInstance (System.ServiceModel.InstanceContext instanceContext, object instance);
     parameters:
     - id: instanceContext
       type: System.ServiceModel.InstanceContext
-      description: "The service&quot;s instance context."
+      description: "Contesto dell&quot;istanza del servizio."
     - id: instance
       type: System.Object
-      description: "The service object to be recycled."
+      description: "Oggetto servizio da riciclare."
   overload: System.ServiceModel.Dispatcher.IInstanceProvider.ReleaseInstance*
   exceptions: []
   platform:
