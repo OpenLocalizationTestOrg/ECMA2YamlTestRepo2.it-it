@@ -20,7 +20,7 @@ items:
   nameWithType: ServiceDebugBehavior
   fullName: System.ServiceModel.Description.ServiceDebugBehavior
   type: Class
-  summary: "Enables debugging and help information features for a [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] service."
+  summary: "Abilita le funzionalità di informazioni di debug e di Guida per un [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] servizio."
   remarks: "Use the ServiceDebugBehavior properties from a configuration file or programmatically to enable the flow of managed exception information to the client for debugging purposes as well as the publication of HTML information files for users browsing the service in Web browsers.  \n  \n Set the <xref:System.ServiceModel.Description.ServiceDebugBehavior.IncludeExceptionDetailInFaults%2A> property to `true` to instruct [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] to return managed exception information in SOAP faults to clients for debugging purposes.  \n  \n> [!CAUTION]\n>  Returning managed exception information to clients can be a security risk because exception details expose information about the internal service implementation that could be used by unauthorized clients. In addition, although the ServiceDebugBehavior properties can also be set programmatically, it can be easy to forget to disable <xref:System.ServiceModel.Description.ServiceDebugBehavior.IncludeExceptionDetailInFaults%2A> when deploying.  \n  \n Because of the security issues involved, it is strongly recommended that:  \n  \n-   You use an application configuration file to set the value of the <xref:System.ServiceModel.Description.ServiceDebugBehavior.IncludeExceptionDetailInFaults%2A> property to `true`.  \n  \n-   You only do so only in controlled debugging scenarios.  \n  \n [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] the security issues related to managed exception information, see [Specifying and Handling Faults in Contracts and Services](~/add/includes/ajax-current-ext-md.md).  \n  \n The <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageEnabled%2A> and <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageEnabled%2A> properties instruct the service to publish HTML help files when the service is viewed using an HTML browser.  \n  \n The <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageUrl%2A> and <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> properties control the location of the HTML help page that is viewed.  \n  \n To enable or disable one of the ServiceDebugBehavior features using a configuration file:  \n  \n1.  Add a `behaviorConfiguration` attribute to the [\\&lt;service\\&gt;](../Topic/%3Cservice%3E.md) element for your [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] service. Endpoint behaviors are configured on [\\<endpoint>](http://msdn.microsoft.com/en-us/13aa23b7-2f08-4add-8dbf-a99f8127c017) elements; service behaviors on [\\&lt;service\\&gt;](../Topic/%3Cservice%3E.md) elements.  \n  \n2.  Add to or create a [\\&lt;serviceBehaviors\\&gt;](../Topic/%3CserviceBehaviors%3E.md) section and add a [\\&lt;behavior\\&gt;](../Topic/%3Cbehavior%3E%20of%20%3CendpointBehaviors%3E.md) element to that with the name that matches the `behaviorConfiguration` attribute value from step 1. Endpoint behaviors are configured using an [\\&lt;endpointBehaviors\\&gt;](../Topic/%3CendpointBehaviors%3E.md) element; service behaviors are configured using a [\\&lt;serviceBehaviors\\&gt;](../Topic/%3CserviceBehaviors%3E.md) element.  \n  \n3.  Add a [\\&lt;serviceDebug\\&gt;](../Topic/%3CserviceDebug%3E.md) element to the [\\&lt;behavior\\&gt;](../Topic/%3Cbehavior%3E%20of%20%3CendpointBehaviors%3E.md) element from step 2 and enable or disable the various properties appropriate to your scenario.  \n  \n For a specific example, see the Example section."
   example:
   - "The following code example shows how to use a configuration file to enable the HTML help page feature and return exception information inside a SOAP fault back to the client for debugging purposes, in addition to enabling metadata support. This configuration file shows the following basic steps to adding support for the ServiceDebugBehavior features:  \n  \n-   Because the ServiceDebugBehavior type is an <xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName> implementation, the [\\&lt;service\\&gt;](../Topic/%3Cservice%3E.md) element that represents the service type has a behavior configuration identifier of `behaviorConfiguration=\"metadataAndDebug\"`.  \n  \n-   Because the ServiceDebugBehavior type is an <xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName> implementation a [\\&lt;behavior\\&gt;](../Topic/%3Cbehavior%3E%20of%20%3CendpointBehaviors%3E.md) element is added to a [\\&lt;serviceBehaviors\\&gt;](../Topic/%3CserviceBehaviors%3E.md) section. Set the `name` attribute of the [\\&lt;behavior\\&gt;](../Topic/%3Cbehavior%3E%20of%20%3CendpointBehaviors%3E.md) element the value of which is the identifier of the `behaviorConfiguration` attribute of the [\\&lt;service\\&gt;](../Topic/%3Cservice%3E.md) element. In this case, the value is `metadataAndDebug`.  \n  \n-   Add a [\\&lt;serviceDebug\\&gt;](../Topic/%3CserviceDebug%3E.md) element with the various attributes set to the desired configuration. In this case, the `httpHelpPageEnabled` and `includeExceptionDetailInFaults` attribute values are set to `true`.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
@@ -45,8 +45,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Description.ServiceDebugBehavior&quot;></xref> class."
-  remarks: "The constructor creates a <xref:System.ServiceModel.Description.ServiceDebugBehavior> object with the following defaults:      -   The <xref:System.ServiceModel.Description.ServiceDebugBehavior.IncludeExceptionDetailInFaults%2A> property is `false`.      -   The <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageEnabled%2A> property is `true`.      -   The <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageEnabled%2A> property is `true`.      -   The <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageUrl%2A> property is the base address of the service that supports HTTP requests.      -   The <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> is the base address of the service that supports HTTPS requests."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.ServiceModel.Description.ServiceDebugBehavior&quot;> </xref> classe."
+  remarks: "Il costruttore crea un <xref:System.ServiceModel.Description.ServiceDebugBehavior>oggetto con i valori predefiniti seguenti: - il <xref:System.ServiceModel.Description.ServiceDebugBehavior.IncludeExceptionDetailInFaults%2A>proprietà `false`.</xref:System.ServiceModel.Description.ServiceDebugBehavior.IncludeExceptionDetailInFaults%2A> </xref:System.ServiceModel.Description.ServiceDebugBehavior>      -La <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageEnabled%2A>proprietà `true`.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageEnabled%2A>      -La <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageEnabled%2A>proprietà `true`.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageEnabled%2A>      -La <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageUrl%2A>proprietà è l&quot;indirizzo di base del servizio che supporta le richieste HTTP.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageUrl%2A>      -La <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>è l&quot;indirizzo di base del servizio che supporta le richieste HTTPS.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>"
   syntax:
     content: public ServiceDebugBehavior ();
     parameters: []
@@ -66,12 +66,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets high-level access to the definition of a binding."
+  summary: "Ottiene o imposta accesso di alto livello alla definizione di un&quot;associazione."
   syntax:
     content: public System.ServiceModel.Channels.Binding HttpHelpPageBinding { get; set; }
     return:
       type: System.ServiceModel.Channels.Binding
-      description: "A channel binding."
+      description: "Associazione di canale."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageBinding*
   exceptions: []
   platform:
@@ -88,15 +88,15 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets a value that controls whether [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] publishes an HTML help page at the address controlled by the <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageUrl*> property."
-  remarks: "Set the HttpHelpPageEnabled property to `false` to disable the publication of an HTML help page visible to HTML browsers.       To ensure the HTML help page is published at the location controlled by the <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> property, you must set this property to `true` and then one of the following conditions must also be true:      -   The <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> property is an absolute address that supports the HTTP protocol scheme.      -   There is a base address for the service that supports the HTTP protocol scheme.       Although an exception is thrown if an absolute address that does not support the HTTP protocol scheme is assigned to the <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> property, any other scenario in which neither of the preceding criteria is met results in no exception and no HTML help page."
+  summary: "Ottiene o imposta un valore che controlla se [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] pubblica una pagina della Guida HTML all&quot;indirizzo controllato dal <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageUrl*>proprietà.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageUrl*>"
+  remarks: "Impostare la proprietà HttpHelpPageEnabled `false` per disabilitare la pubblicazione di una pagina della Guida HTML visibile ai browser HTML.       Per garantire la Guida HTML pagina sia pubblicata nel percorso controllato dal <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>proprietà, è necessario impostare questa proprietà su `true` e quindi una delle condizioni seguenti debba essere true: - il <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>proprietà è un indirizzo assoluto che supporta lo schema del protocollo HTTP.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> </xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>      -È un indirizzo di base per il servizio che supporta lo schema del protocollo HTTP.       Anche se viene generata un&quot;eccezione se viene assegnato un indirizzo assoluto che non supporta lo schema del protocollo HTTP per il <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>pagina della Guida di proprietà, qualsiasi altro scenario in cui nessuno dei criteri precedenti viene soddisfatto comporta alcuna eccezione e non in formato HTML.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>"
   example:
   - "The following code example shows how to use a configuration file to enable the HTML help page feature and return exception information inside a SOAP fault back to the client for debugging purposes. This configuration file shows the following basic steps to adding support for the <xref:System.ServiceModel.Description.ServiceDebugBehavior> features:  \n  \n-   Because the <xref:System.ServiceModel.Description.ServiceDebugBehavior> type is a <xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName> implementation, the [\\&lt;service\\&gt;](../Topic/%3Cservice%3E.md) element that represents the service type has a behavior configuration identifier of `behaviorConfiguration=\"metadataAndDebug\"`.  \n  \n-   Again, because the <xref:System.ServiceModel.Description.ServiceDebugBehavior> type is an <xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName> implementation a [\\&lt;behavior\\&gt;](../Topic/%3Cbehavior%3E%20of%20%3CendpointBehaviors%3E.md) element is added to a [\\&lt;serviceBehaviors\\&gt;](../Topic/%3CserviceBehaviors%3E.md) section. The `name` attribute of the [\\&lt;behavior\\&gt;](../Topic/%3Cbehavior%3E%20of%20%3CendpointBehaviors%3E.md) element the value of which is the identifier of the `behaviorConfiguration` attribute of the [\\&lt;service\\&gt;](../Topic/%3Cservice%3E.md) element. In this case, the value is `metadataAndDebug`.  \n  \n-   Add a [\\&lt;serviceDebug\\&gt;](../Topic/%3CserviceDebug%3E.md) element with the various attributes set to the desired configuration. In this case, the `httpHelpPageEnabled` and `includeExceptionDetailInFaults` attribute values are set to `true`.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public bool HttpHelpPageEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] publishes an HTML help page; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] pubblica una pagina della Guida HTML in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Il valore predefinito è <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageEnabled*
   exceptions: []
   platform:
@@ -113,13 +113,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets the location at which the HTML help file is published."
-  remarks: "Use the HttpHelpPageUrl property to enable the use of a custom HTML help file that is returned from an HTTP/Get request such as that of an HTML browser. The location of the HTML help file is resolved as follows:      -   If the value of this property is a relative address, then the location of the HTML help file is the value of the service base address that supports HTTP requests plus this property value.      -   If the value of this property is an absolute address and supports HTTP requests, then the location of the HTML help file is the value of this property.      -   If the value of this property is absolute but does not support HTTP requests, an exception is thrown.       This property is applied only in the case that the <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageEnabled%2A> property is `true`."
+  summary: "Ottiene o imposta il percorso in cui è pubblicato il file della Guida HTML."
+  remarks: "Utilizzare la proprietà HttpHelpPageUrl per consentire l&quot;utilizzo di un file della Guida HTML personalizzato restituito da una richiesta HTTP Get, ad esempio di un browser HTML. Il percorso del file della Guida HTML viene risolto come segue: - se il valore di questa proprietà è un indirizzo relativo, il percorso del file della Guida HTML è il valore del servizio di indirizzo di base che supporta HTTP richiede più il valore della proprietà.      -Se il valore di questa proprietà è un indirizzo assoluto e supporta le richieste HTTP, il percorso del file della Guida HTML è il valore di questa proprietà.      -Se il valore di questa proprietà è assoluto ma non supporta le richieste HTTP, viene generata un&quot;eccezione.       Questa proprietà viene applicata solo nel caso che la <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageEnabled%2A>proprietà `true`.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageEnabled%2A>"
   syntax:
     content: public Uri HttpHelpPageUrl { get; set; }
     return:
       type: System.Uri
-      description: "The relative or absolute HTTP-based URL of the custom HTML help file that the user sees when the endpoint is viewed using an HTML browser."
+      description: "Il relativo o assoluto basato su HTTP URL HTML personalizzato file della Guida che l&quot;utente vede quando l&quot;endpoint viene visualizzato tramite un browser HTML."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.HttpHelpPageUrl*
   exceptions: []
   platform:
@@ -136,12 +136,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets high-level access to the definition of a binding."
+  summary: "Ottiene o imposta accesso di alto livello alla definizione di un&quot;associazione."
   syntax:
     content: public System.ServiceModel.Channels.Binding HttpsHelpPageBinding { get; set; }
     return:
       type: System.ServiceModel.Channels.Binding
-      description: "A channel binding."
+      description: "Associazione di canale."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageBinding*
   exceptions: []
   platform:
@@ -158,13 +158,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets a value that specifies whether [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] returns an HTML help file over HTTPS at the address controlled by the <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl*> property."
-  remarks: "Set the HttpsHelpPageEnabled property to `false` to disable the publication of an HTML help page visible to HTML browsers.       To ensure the HTML help page is published at the location controlled by the <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> property, you must set this property to `true` and then one of the following conditions must also be true:      -   The <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> property is an absolute address that supports the HTTPS protocol scheme.      -   There is a base address for the service that supports the HTTPS protocol scheme.       Although an exception is thrown if an absolute address that does not support the HTTPS protocol scheme is assigned to the <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> property, any other scenario in which neither of the preceding criteria is met results in no exception and no HTML help page."
+  summary: "Ottiene o imposta un valore che specifica se [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] restituisce un file della Guida HTML su HTTPS all&quot;indirizzo controllato dal <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl*>proprietà.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl*>"
+  remarks: "Impostare la proprietà HttpsHelpPageEnabled `false` per disabilitare la pubblicazione di una pagina della Guida HTML visibile ai browser HTML.       Per garantire la Guida HTML pagina sia pubblicata nel percorso controllato dal <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>proprietà, è necessario impostare questa proprietà su `true` e quindi una delle condizioni seguenti debba essere true: - il <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>proprietà è un indirizzo assoluto che supporta lo schema del protocollo HTTPS.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A> </xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>      -È un indirizzo di base per il servizio che supporta lo schema del protocollo HTTPS.       Anche se viene generata un&quot;eccezione se viene assegnato un indirizzo assoluto che non supporta lo schema del protocollo HTTPS per il <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>pagina della Guida di proprietà, qualsiasi altro scenario in cui nessuno dei criteri precedenti viene soddisfatto comporta alcuna eccezione e non in formato HTML.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl%2A>"
   syntax:
     content: public bool HttpsHelpPageEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if an HTML help file is returned to clients making an HTTPS/GET request such as that of an HTML browser; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se un file della Guida HTML viene restituito ai client che fanno una richiesta HTTPS/GET, ad esempio quella di un browser HTML. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Il valore predefinito è <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageEnabled*
   exceptions: []
   platform:
@@ -181,13 +181,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets the location at which an HTML file is published for retrieval using HTTPS."
-  remarks: "Use the HttpsHelpPageUrl property to enable the use of a custom HTML help file that is returned from an HTTPS/Get request such as that of an HTML browser.       The location of the HTML help file is resolved as follows:      -   If the value of this property is a relative address, then the location of the HTML help file is the value of the service base address that supports HTTPS requests plus this property value.      -   If the value of this property is an absolute address and supports HTTPS requests, then the location of the HTML help file is the value of this property.      -   If the value of this property is absolute but does not support HTTPS requests, an exception is thrown.       This property is applied only in the case that the <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageEnabled%2A> property is `true`."
+  summary: "Ottiene o imposta il percorso in cui è pubblicato un file HTML per il recupero tramite HTTPS."
+  remarks: "Utilizzare la proprietà HttpsHelpPageUrl per consentire l&quot;utilizzo di un file della Guida HTML personalizzato restituito da una richiesta HTTPS/Get, ad esempio di un browser HTML.       Il percorso del file della Guida HTML viene risolto come segue: - se il valore di questa proprietà è un indirizzo relativo, il percorso del file della Guida HTML è il valore del servizio di indirizzo di base che supporta HTTPS richiede più il valore della proprietà.      -Se il valore di questa proprietà è un indirizzo assoluto e supporta le richieste HTTPS, il percorso del file della Guida HTML è il valore di questa proprietà.      -Se il valore di questa proprietà è assoluto ma non supporta le richieste HTTPS, viene generata un&quot;eccezione.       Questa proprietà viene applicata solo nel caso che la <xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageEnabled%2A>proprietà `true`.</xref:System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageEnabled%2A>"
   syntax:
     content: public Uri HttpsHelpPageUrl { get; set; }
     return:
       type: System.Uri
-      description: "The relative or absolute HTTPS-based URL of the custom HTML help file that the user sees when the endpoint is viewed using an HTML browser."
+      description: "L&quot;URL relativo o assoluto basato su HTTPS del codice HTML personalizzato Guida file che l&quot;utente vede quando l&quot;endpoint viene visualizzato tramite un browser HTML."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.HttpsHelpPageUrl*
   exceptions: []
   platform:
@@ -204,15 +204,15 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets a value that specifies whether to include managed exception information in the detail of SOAP faults returned to the client for debugging purposes."
-  remarks: "Set the IncludeExceptionDetailInFaults property to `true` to instruct [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] to return managed exception information to the client in SOAP faults to ease debugging.      > [!CAUTION] >  Returning managed exception information to clients can be a security risk because exception details expose information about the internal service implementation that could be used by unauthorized clients. In addition, although the <xref:System.ServiceModel.Description.ServiceDebugBehavior> properties can also be set programmatically, it can be easy to forget to disable IncludeExceptionDetailInFaults when deploying.       Because of the security issues involved, it is strongly recommended that:      -   You use an application configuration file to set the value of the IncludeExceptionDetailInFaults property to `true`.      -   You only do so only in controlled debugging scenarios.       [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)] [Specifying and Handling Faults in Contracts and Services](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Ottiene o imposta un valore che specifica se includere informazioni sulle eccezioni gestite nei dettagli sugli errori SOAP restituiti al client a fini di debug."
+  remarks: "Impostare la proprietà IncludeExceptionDetailInFaults `true` per indicare [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] per gestito di restituire informazioni sull&quot;eccezione al client in SOAP errori per facilitare il debug.      > [!CAUTION] > La restituzione ai client informazioni sulle eccezioni gestite può costituire un rischio di sicurezza perché i dettagli delle eccezioni espongono informazioni sull&quot;implementazione interna del servizio che potrebbe essere usata da client non autorizzati. Inoltre, sebbene il <xref:System.ServiceModel.Description.ServiceDebugBehavior>proprietà possono essere impostate a livello di programmazione, può essere facile dimenticare di disattivare IncludeExceptionDetailInFaults quando si distribuisce.</xref:System.ServiceModel.Description.ServiceDebugBehavior>       A causa di problemi di sicurezza coinvolti, è consigliabile che:-è utilizzare un file di configurazione dell&quot;applicazione per impostare il valore della proprietà da IncludeExceptionDetailInFaults `true`.      -Si procede in modo che solo negli scenari di debug controllati.       [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Specifica e gestione di errori in contratti e servizi](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example shows how to use a configuration file to enable the HTML help page feature and return exception information inside a SOAP fault back to the client for debugging purposes. This configuration file shows the following basic steps to adding support for the <xref:System.ServiceModel.Description.ServiceDebugBehavior> features:  \n  \n-   Because the <xref:System.ServiceModel.Description.ServiceDebugBehavior> type is an <xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName> implementation, the [\\&lt;service\\&gt;](../Topic/%3Cservice%3E.md) element that represents the service type has a behavior configuration identifier of `behaviorConfiguration=\"metadataAndDebug\"`.  \n  \n-   Again, because the <xref:System.ServiceModel.Description.ServiceDebugBehavior> type is an <xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName> implementation a [\\&lt;behavior\\&gt;](../Topic/%3Cbehavior%3E%20of%20%3CendpointBehaviors%3E.md) element is added to a [\\&lt;serviceBehaviors\\&gt;](../Topic/%3CserviceBehaviors%3E.md) section. Set the `name` attribute of the [\\&lt;behavior\\&gt;](../Topic/%3Cbehavior%3E%20of%20%3CendpointBehaviors%3E.md) element the value of which is the identifier of the `behaviorConfiguration` attribute of the [\\&lt;service\\&gt;](../Topic/%3Cservice%3E.md) element. In this case, the value is `metadataAndDebug`.  \n  \n-   Add a [\\&lt;serviceDebug\\&gt;](../Topic/%3CserviceDebug%3E.md) element with the various attributes set to the desired configuration. In this case, the `httpHelpPageEnabled` and `includeExceptionDetailInFaults` attribute values are set to `true`.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public bool IncludeExceptionDetailInFaults { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] returns managed exception information in the SOAP faults for client debugging purposes; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] restituisce informazioni sulle eccezioni gestite negli errori SOAP per il client di debug; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Il valore predefinito è <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.IncludeExceptionDetailInFaults*
   exceptions: []
   platform:
@@ -230,23 +230,23 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Implements the &lt;xref:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters%2A?displayProperty=fullName&gt; method to support the behavior."
-  remarks: "Modifies the bindings to support the behavior. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)] the <xref:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters%2A?displayProperty=fullName> method."
+  summary: "Implementa il &lt;xref:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters%2A?displayProperty=fullName&gt; metodo per supportare il comportamento."
+  remarks: "Modifica le associazioni per supportare il comportamento. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]il <xref:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters%2A?displayProperty=fullName>metodo.</xref:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters%2A?displayProperty=fullName>"
   syntax:
     content: void IServiceBehavior.AddBindingParameters (System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.ServiceModel.Channels.BindingParameterCollection parameters);
     parameters:
     - id: description
       type: System.ServiceModel.Description.ServiceDescription
-      description: "The service description."
+      description: "Descrizione del servizio."
     - id: serviceHostBase
       type: System.ServiceModel.ServiceHostBase
-      description: "The service host."
+      description: "L&quot;host del servizio."
     - id: endpoints
       type: System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint}
-      description: "The endpoints for the service."
+      description: "Gli endpoint per il servizio."
     - id: parameters
       type: System.ServiceModel.Channels.BindingParameterCollection
-      description: "The binding parameters that support modifying the bindings."
+      description: "I parametri di associazione che supportano la modifica delle associazioni."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.System#ServiceModel#Description#IServiceBehavior#AddBindingParameters*
   exceptions: []
   platform:
@@ -264,16 +264,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Implements the &lt;xref:System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior%2A?displayProperty=fullName&gt; method to support the behavior."
+  summary: "Implementa il &lt;xref:System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior%2A?displayProperty=fullName&gt; metodo per supportare il comportamento."
   syntax:
     content: void IServiceBehavior.ApplyDispatchBehavior (System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase);
     parameters:
     - id: description
       type: System.ServiceModel.Description.ServiceDescription
-      description: "The service description."
+      description: "Descrizione del servizio."
     - id: serviceHostBase
       type: System.ServiceModel.ServiceHostBase
-      description: "The service host."
+      description: "L&quot;host del servizio."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.System#ServiceModel#Description#IServiceBehavior#ApplyDispatchBehavior*
   exceptions: []
   platform:
@@ -291,16 +291,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Implements the &lt;xref:System.ServiceModel.Description.IServiceBehavior.Validate%2A?displayProperty=fullName&gt; method to support the behavior."
+  summary: "Implementa il &lt;xref:System.ServiceModel.Description.IServiceBehavior.Validate%2A?displayProperty=fullName&gt; metodo per supportare il comportamento."
   syntax:
     content: void IServiceBehavior.Validate (System.ServiceModel.Description.ServiceDescription description, System.ServiceModel.ServiceHostBase serviceHostBase);
     parameters:
     - id: description
       type: System.ServiceModel.Description.ServiceDescription
-      description: "The service description."
+      description: "Descrizione del servizio."
     - id: serviceHostBase
       type: System.ServiceModel.ServiceHostBase
-      description: "The service host."
+      description: "L&quot;host del servizio."
   overload: System.ServiceModel.Description.ServiceDebugBehavior.System#ServiceModel#Description#IServiceBehavior#Validate*
   exceptions: []
   platform:
