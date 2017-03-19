@@ -11,8 +11,8 @@ items:
   nameWithType: IStreamProvider
   fullName: System.Xml.IStreamProvider
   type: Interface
-  summary: "Represents an interface that can be implemented by classes providing streams."
-  remarks: "When writing an outgoing message containing a streamed body to an XML writer, the <xref:System.ServiceModel.Channels.Message> will use a sequence of calls similar to the following in its <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> implementation:      -   Write any necessary information preceding the stream (For example, the opening XML tag).      -   Write the stream.      -   Write any information following the stream (For example, the closing XML tag).       This works well with encodings that are similar to the textual XML encoding. However, there are some encodings that do not place XML infoset information (For example, tags for starting and ending XML elements) together with the data contained within elements. For example, in the MTOM encoding, the message is split into multiple parts. One part contains the XML infoset, which may contain references to other parts for actual element contents. Since the XML infoset will normally be small compared to the streamed contents, it makes sense to buffer the infoset, write it out, and then write the contents in a streamed way. This means that by the time the closing element tag is written, we should not have written out the stream yet.       For this purpose, the IStreamProvider interface is used. The interface has a <xref:System.Xml.IStreamProvider.GetStream> method that returns the stream to be written. The correct way to write out a streamed message body in <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> is as follows:      -   Write any necessary information preceding the stream (For example, the opening XML tag)      -   Call the `WriteValue` overload on the <xref:System.Xml.XmlDictionaryWriter> that takes an IStreamProvider, with an `IStreamProvider` implementation that returns the stream to be written.      -   Write any information following the stream (For example, the closing XML tag)       With this approach, the XML writer has a choice of when to call <xref:System.Xml.IStreamProvider.GetStream> and write out the streamed data. For example, the textual and binary XML writers will call it immediately and write out the streamed contents in between the start and end tags. The MTOM writer may decide to call <xref:System.Xml.IStreamProvider.GetStream> later, when it is ready to write the appropriate part of the message."
+  summary: "Rappresenta un&quot;interfaccia che può essere implementata da classi che fornisce flussi."
+  remarks: "Quando si scrive un messaggio in uscita che contiene un corpo inviato nel flusso in un writer XML, il <xref:System.ServiceModel.Channels.Message>utilizzerà una sequenza di chiamate simili alle seguenti nel relativo <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>implementazione:-scrivere tutte le informazioni necessarie che precedono il flusso (ad esempio, il tag di apertura XML).</xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> </xref:System.ServiceModel.Channels.Message>      -Scrivere il flusso.      -Scrivere tutte le informazioni dopo il flusso (ad esempio, il tag di chiusura XML).       Questo procedimento funziona bene con codifiche simili alla codifica XML testuale. Tuttavia, esistono alcune codifiche che non inseriscono informazioni infoset XML (ad esempio, i tag di inizio e fine di elementi XML) insieme ai dati contenuti all&quot;interno di elementi. Nella codifica MTOM, ad esempio, il messaggio è suddiviso in più parti. Una parte contiene l&quot;infoset XML, che può contenere riferimenti ad altre parti per il contenuto effettivo degli elementi. Poiché l&quot;infoset XML normalmente saranno ridotte rispetto al contenuto inviato nel flusso, è opportuno l&quot;infoset del buffer, scriverlo e quindi scrivere il contenuto in un flusso. Ciò significa che l&quot;ora di chiusura viene scritto il tag di elemento, dovrebbe essere non hanno scritto nel flusso ancora.       A tale scopo, viene utilizzata l&quot;interfaccia IStreamProvider. L&quot;interfaccia dispone di un <xref:System.Xml.IStreamProvider.GetStream>metodo che restituisce il flusso da scrivere.</xref:System.Xml.IStreamProvider.GetStream> Il modo corretto per scrivere il corpo di un messaggio trasmesso in <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>è il seguente: - scrivere tutte le informazioni necessarie che precedono il flusso (ad esempio, il tag di apertura XML) - chiamare il `WriteValue` eseguire l&quot;overload di <xref:System.Xml.XmlDictionaryWriter>che accetta un IStreamProvider, con un `IStreamProvider` implementazione che restituisce il flusso da scrivere.</xref:System.Xml.XmlDictionaryWriter> </xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>      -Scrivere tutte le informazioni dopo il flusso (ad esempio, il tag di chiusura XML) con questo approccio, il writer XML può scegliere quando chiamare <xref:System.Xml.IStreamProvider.GetStream>e scrivere i dati inviati nel flusso.</xref:System.Xml.IStreamProvider.GetStream> Il writer XML binari e testuali, ad esempio, verrà chiameranno immediatamente e scriveranno il contenuto nel flusso tra il tag di inizio e di fine. Il writer MTOM può decidere di chiamare <xref:System.Xml.IStreamProvider.GetStream>successivamente, quando è pronto per scrivere la parte appropriata del messaggio.</xref:System.Xml.IStreamProvider.GetStream>"
   syntax:
     content: public interface IStreamProvider
   implements: []
@@ -30,14 +30,14 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Gets a stream."
-  remarks: "This method can be used to return the stream to be written."
+  summary: "Ottiene un flusso."
+  remarks: "Questo metodo può essere utilizzato per restituire il flusso da scrivere."
   syntax:
     content: public System.IO.Stream GetStream ();
     parameters: []
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> object."
+      description: "Oggetto <xref:System.IO.Stream>oggetto.</xref:System.IO.Stream>"
   overload: System.Xml.IStreamProvider.GetStream*
   exceptions: []
   platform:
@@ -54,13 +54,13 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Releases a stream to output."
+  summary: "Rilascia un flusso di output."
   syntax:
     content: public void ReleaseStream (System.IO.Stream stream);
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The stream being released."
+      description: "Flusso rilasciato."
   overload: System.Xml.IStreamProvider.ReleaseStream*
   exceptions: []
   platform:

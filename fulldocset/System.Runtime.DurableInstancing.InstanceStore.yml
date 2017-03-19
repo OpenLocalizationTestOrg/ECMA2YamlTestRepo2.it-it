@@ -30,8 +30,8 @@ items:
   nameWithType: InstanceStore
   fullName: System.Runtime.DurableInstancing.InstanceStore
   type: Class
-  summary: "Represents an instance store."
-  remarks: "A persistence provider provides access to an instance store through a concrete implementation of the InstanceStore class.       Persistence providers may call InstanceHandle.Free on handles passed to TryCommand, even after the command has finished executing. But persistence providers must not hold strong references to InstanceHandle or InstanceOwner objects, as this can prevent InstanceStore from being garbage collected.      > [!WARNING] >  Workflow definitions for persisted workflows cannot be changed. If a workflow definition is changed after it is persisted, the workflow runtime will crash when the workflow is reloaded."
+  summary: "Rappresenta un archivio di istanze."
+  remarks: "Un provider di persistenza fornisce l&quot;accesso a un archivio di istanze tramite un&quot;implementazione concreta della classe InstanceStore.       I provider di persistenza possono chiamare InstanceHandle sugli handle passati a TryCommand anche dopo il comando ha terminato l&quot;esecuzione. Ma non devono mantenere sicuri i provider di persistenza fa riferimento a oggetti InstanceHandle o InstanceOwner, poiché ciò potrebbe impedire InstanceStore nel garbage collector.      > [!WARNING] > Non è possibile modificare le definizioni del flusso di lavoro per i flussi di lavoro persistente. Se una definizione del flusso di lavoro viene modificata dopo che è persistente, il runtime del flusso di lavoro viene interrotta quando il flusso di lavoro è stato ricaricato."
   syntax:
     content: public abstract class InstanceStore
   inheritance:
@@ -52,7 +52,7 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Initializes an instance of the <xref href=&quot;System.Runtime.DurableInstancing.InstanceStore&quot;></xref> class."
+  summary: "Inizializza un&quot;istanza di <xref href=&quot;System.Runtime.DurableInstancing.InstanceStore&quot;> </xref> classe."
   syntax:
     content: protected InstanceStore ();
     parameters: []
@@ -72,29 +72,29 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Asynchronously executes persistence commands such as <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;></xref> and <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;></xref>."
-  remarks: "A host calls the BeginExecute method to execute a persistence command against an instance handle asynchronously. The host obtains the instance handle by invoking the <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> method. The instance handle may be bound to entities that represent the context and subject of the command, such as an instance, instance owner, or instance lock.  Only one command may be issued against an instance handle at a time."
+  summary: "Esegue in modo asincrono i comandi di persistenza, ad esempio <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;> </xref> e <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;> </xref>."
+  remarks: "Un host chiama il metodo BeginExecute per eseguire un comando di persistenza su un handle di istanza in modo asincrono. L&quot;host ottiene l&quot;handle di istanza richiamando il <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A>metodo.</xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> L&quot;handle di istanza può essere associato a entità che rappresentano il contesto e l&quot;oggetto del comando, ad esempio un&quot;istanza di un proprietario di istanza oppure un blocco di istanza.  Solo un comando può essere rilasciato su un handle di istanza alla volta."
   syntax:
     content: public IAsyncResult BeginExecute (System.Runtime.DurableInstancing.InstanceHandle handle, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "Handle di istanza."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "Il comando da eseguire."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the command execution."
+      description: "Il valore di timeout per l&quot;esecuzione del comando."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives notification of the completion of the asynchronous operation."
+      description: "Delegato di callback asincrono che riceve la notifica del completamento dell&quot;operazione asincrona."
     - id: state
       type: System.Object
-      description: "The state information."
+      description: "Le informazioni sullo stato."
     return:
       type: System.IAsyncResult
-      description: "The state of the asynchronous operation."
+      description: "Lo stato dell&quot;operazione asincrona."
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginExecute*
   exceptions: []
   platform:
@@ -111,29 +111,29 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A persistence provider implements this method, which determines whether a particular persistence command can be executed. If the command can be executed, executes the command asynchronously."
-  remarks: "If the command can be executed, the persistence provider calls relevant methods on the InstancePersistenceContext to provide the results of the command.      > [!WARNING] >  Even though this method is declared as `virtual` rather than `abstract`, there is no implementation. This method must be overridden in order to provide functionality."
+  summary: "Un provider di persistenza implementa questo metodo, che determina se un particolare comando di persistenza può essere eseguito. Se il comando può essere eseguito, esegue il comando in modo asincrono."
+  remarks: "Se il comando può essere eseguito, il provider di persistenza chiamerà i metodi pertinenti su InstancePersistenceContext per fornire i risultati del comando.      > [!WARNING] > Anche se questo metodo è dichiarato come `virtual` anziché `abstract`, non vi è alcuna implementazione. Questo metodo deve essere sostituito per fornire funzionalità."
   syntax:
     content: protected virtual IAsyncResult BeginTryCommand (System.Runtime.DurableInstancing.InstancePersistenceContext context, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: context
       type: System.Runtime.DurableInstancing.InstancePersistenceContext
-      description: "The instance context."
+      description: "Il contesto dell&quot;istanza."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The persistence command to be executed."
+      description: "Il comando di persistenza da eseguire."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the command execution."
+      description: "Il valore di timeout per l&quot;esecuzione del comando."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives notification of the completion of the asynchronous operation."
+      description: "Delegato di callback asincrono che riceve la notifica del completamento dell&quot;operazione asincrona."
     - id: state
       type: System.Object
-      description: "The state information."
+      description: "Le informazioni sullo stato."
     return:
       type: System.IAsyncResult
-      description: "The state of the asynchronous operation."
+      description: "Lo stato dell&quot;operazione asincrona."
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginTryCommand*
   exceptions: []
   platform:
@@ -150,25 +150,25 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Begins an asynchronous operation to listen for any events raised by the instance store for a specific instance handle."
+  summary: "Avvia un&quot;operazione asincrona per attendere gli eventi generati dall&quot;archivio di istanze per un handle di istanza specifico."
   syntax:
     content: public IAsyncResult BeginWaitForEvents (System.Runtime.DurableInstancing.InstanceHandle handle, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "Handle di istanza."
     - id: timeout
       type: System.TimeSpan
-      description: "The period after which the operation times out."
+      description: "Il periodo dopo il quale timeout dell&quot;operazione."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called after the asynchronous operation is complete."
+      description: "Il metodo da chiamare al termine dell&quot;operazione asincrona è stato completato."
     - id: state
       type: System.Object
-      description: "An object containing the state information associated with the asynchronous operation."
+      description: "Oggetto che contiene le informazioni sullo state associate all&quot;operazione asincrona."
     return:
       type: System.IAsyncResult
-      description: "Returns an <xref:System.IAsyncResult> object.."
+      description: "Restituisce un <xref:System.IAsyncResult>oggetto...</xref:System.IAsyncResult>"
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*
   exceptions: []
   platform:
@@ -185,13 +185,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle."
+  summary: "Crea un handle di istanza."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle ();
     parameters: []
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "Handle di istanza."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -208,16 +208,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle.  If the DefaultInstanceOwner is set, the value is automatically bound as the new handle’s instance owner.  The instance identifier passed as a parameter is automatically bound as the new handle’s instance."
+  summary: "Crea un handle di istanza.  Se DefaultInstanceOwner è stato impostato, il valore viene associato automaticamente come proprietario dell&quot;istanza del nuovo handle.  L&quot;identificatore dell&quot;istanza passato come parametro viene associato automaticamente come istanza del nuovo handle."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (Guid instanceId);
     parameters:
     - id: instanceId
       type: System.Guid
-      description: "An instance identifier. Must not be Guid.Empty."
+      description: "Identificatore dell&quot;istanza. Non deve essere Empty."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "Handle di istanza."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -234,16 +234,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle. If the instance owner passed as a parameter is not null, the value is automatically bound as the new handle’s instance owner.  (Otherwise, no instance owner is bound, even if DefaultInstanceOwner is set.)"
+  summary: "Crea un handle di istanza. Se il proprietario dell&quot;istanza passato come parametro non è null, il valore viene associato automaticamente come proprietario dell&quot;istanza del nuovo handle.  (In caso contrario, alcun proprietario di istanza non è associato, anche se DefaultInstanceOwner è stato impostato.)"
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The owner of an instance."
+      description: "Il proprietario di un&quot;istanza."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle. A null value indicates that the new handle should not be automatically bound to an instance owner."
+      description: "Handle di istanza. Un valore null indica che il nuovo handle non deve associato automaticamente a un proprietario di istanza."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -260,19 +260,19 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle. If the instance owner passed as a parameter is not null, the value is automatically bound as the new handle’s instance owner.  (Otherwise, no instance owner is bound, even if DefaultInstanceOwner is set.) The instance identifier passed as a parameter is automatically bound as the new handle’s instance."
+  summary: "Crea un handle di istanza. Se il proprietario dell&quot;istanza passato come parametro non è null, il valore viene associato automaticamente come proprietario dell&quot;istanza del nuovo handle.  (In caso contrario, alcun proprietario di istanza non è associato, anche se DefaultInstanceOwner è stato impostato.) L&quot;identificatore dell&quot;istanza passato come parametro viene associato automaticamente come istanza del nuovo handle."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (System.Runtime.DurableInstancing.InstanceOwner owner, Guid instanceId);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "An InstanceOwner object  that represents the owner of an instance. Pass null as the value for this parameter to indicate that the new handle should not be automatically bound to an instance owner."
+      description: "Un oggetto InstanceOwner che rappresenta il proprietario di un&quot;istanza. Passare null come valore per questo parametro indicare che il nuovo handle non deve associato automaticamente a un proprietario di istanza."
     - id: instanceId
       type: System.Guid
-      description: "An instance identifier. Must not be Guid.Empty."
+      description: "Identificatore dell&quot;istanza. Non deve essere Empty."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "Handle di istanza."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -289,13 +289,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets or sets the default instance owner."
-  remarks: "Some hosts infer the instance owner to use by reading this property. WorkflowApplication can use this property. WorkflowServiceHost does not use this property.       The DefaultInstanceOwner propery must be set to null when it is no longer necessary. InstanceStore objects might not be garbage collected if DefaultInstanceOwner is not null.      > [!WARNING] >  Even though this method is declared as `virtual` rather than `abstract`, there is no implementation. This method must be overridden in order to provide functionality."
+  summary: "Ottiene o imposta il proprietario di istanza predefinito."
+  remarks: "Alcuni host deducono il proprietario di istanza da utilizzare per la lettura di questa proprietà. WorkflowApplication può utilizzare questa proprietà. WorkflowServiceHost non utilizza questa proprietà.       La proprietà DefaultInstanceOwner deve essere impostata su null quando non è più necessario. Gli oggetti InstanceStore potrebbero non essere sottoposto a garbage collection se DefaultInstanceOwner non è null.      > [!WARNING] > Anche se questo metodo è dichiarato come `virtual` anziché `abstract`, non vi è alcuna implementazione. Questo metodo deve essere sostituito per fornire funzionalità."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceOwner DefaultInstanceOwner { get; set; }
     return:
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The default instance owner."
+      description: "Il proprietario di istanza predefinito."
   overload: System.Runtime.DurableInstancing.InstanceStore.DefaultInstanceOwner*
   exceptions: []
   platform:
@@ -312,17 +312,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation."
-  remarks: "If BeginExecute was called under a transaction, this state may include uncommitted data. Once the transaction is committed successfully, the data in the InstanceView object can be considered committed."
+  summary: "Termina l&quot;operazione asincrona."
+  remarks: "Se è stato chiamato BeginExecute in una transazione, questo stato includa dati di commit. Una volta completata, viene eseguito il commit della transazione, i dati può essere considerato oggetto instanceview come eseguito il commit."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceView EndExecute (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the operation."
+      description: "Risultato dell&quot;operazione."
     return:
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "An InstanceView object  representing the known state of the instance after the successful completion of the command."
+      description: "Oggetto InstanceView che rappresenta lo stato dell&quot;istanza noto dopo il completamento del comando."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndExecute*
   exceptions: []
   platform:
@@ -339,7 +339,7 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends an asynchronous operation."
+  summary: "Termina un&quot;operazione asincrona."
   remarks: >-
     > [!WARNING]
 
@@ -349,10 +349,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the operation."
+      description: "Risultato dell&quot;operazione."
     return:
       type: System.Boolean
-      description: "A persistence provider implementation should return false if it doesn’t support the command passed to the BeginTryCommand method. Otherwise it should return true or throw an exception."
+      description: "Implementazione di un provider di persistenza deve restituire false se non supporta il comando passato al metodo BeginTryCommand. In caso contrario deve restituire true o generare un&quot;eccezione."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndTryCommand*
   exceptions: []
   platform:
@@ -369,16 +369,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation initiated by the <xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*> method."
+  summary: "Termina l&quot;operazione asincrona avviata dal <xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*>metodo.</xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*>"
   syntax:
     content: public System.Collections.Generic.List<System.Runtime.DurableInstancing.InstancePersistenceEvent> EndWaitForEvents (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "An IAsyncResult object that was handed over to the client by the Begin method."
+      description: "Oggetto IAsyncResult consegnato al client dal metodo Begin."
     return:
       type: System.Collections.Generic.List{System.Runtime.DurableInstancing.InstancePersistenceEvent}
-      description: "Returns a list of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects.."
+      description: "Restituisce un elenco di <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> oggetti..."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndWaitForEvents*
   exceptions: []
   platform:
@@ -395,23 +395,23 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: 'Executes a persistence command synchronously. Examples of persistence commands are: <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;></xref> and <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;></xref>.'
-  remarks: "A host calls the Execute method to execute a persistence command against an instance handle, which the host obtains by invoking the <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> method. The instance handle may be bound to entities that represent the context and subject of the command, such as an instance, instance owner, or instance lock.  Only one command may be issued against an instance handle at a time.      > [!WARNING] >  If this method is executed with a <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>, it will create an <xref:System.Runtime.DurableInstancing.InstanceOwner> and bind it to the instance. This means that no other process will be able to access that workflow; if the process ends, the workflow cannot be recovered or executed. If such a workflow is executed again, a <xref:System.Runtime.DurableInstancing.InstanceLockedException> will be thrown.   >    >  If <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> is not used, the instance store will create a temporary <xref:System.Runtime.DurableInstancing.InstanceOwner> that will be deleted at the end of the process. However, if the process ends before the workflow’s final persistence point, this exception will be thrown, unless the period of time specified in the **HostLockRenewalPeriod** parameter has expired."
+  summary: 'Esegue un comando di persistenza in modo sincrono. Sono esempi di comandi di persistenza: <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;> </xref> e <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;> </xref>.'
+  remarks: "Un host chiama il metodo Execute per eseguire un comando di persistenza su un handle di istanza, l&quot;host ottiene richiamando il <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A>metodo.</xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> L&quot;handle di istanza può essere associato a entità che rappresentano il contesto e l&quot;oggetto del comando, ad esempio un&quot;istanza di un proprietario di istanza oppure un blocco di istanza.  Solo un comando può essere rilasciato su un handle di istanza alla volta.      > [!WARNING] > Se questo metodo viene eseguito con un <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>, verrà creato un <xref:System.Runtime.DurableInstancing.InstanceOwner>e associarlo all&quot;istanza.</xref:System.Runtime.DurableInstancing.InstanceOwner> </xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> Ciò significa che nessun altro processo sarà in grado di accedere a tale flusso di lavoro. Se il processo termina, il flusso di lavoro non può essere recuperato o eseguito. Se un flusso di lavoro viene eseguito nuovamente, un <xref:System.Runtime.DurableInstancing.InstanceLockedException>verrà generata.</xref:System.Runtime.DurableInstancing.InstanceLockedException>   >> Se <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>non è utilizzato, l&quot;archivio di istanze verrà creata una variabile temporanea <xref:System.Runtime.DurableInstancing.InstanceOwner>che verranno eliminati alla fine del processo.</xref:System.Runtime.DurableInstancing.InstanceOwner> </xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> Tuttavia, se il processo termina prima punto finale di persistenza del flusso di lavoro, questa eccezione verrà generata, a meno che il periodo di tempo specificato nel **HostLockRenewalPeriod** parametro è scaduto."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceView Execute (System.Runtime.DurableInstancing.InstanceHandle handle, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "Handle di istanza."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "Il comando da eseguire."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the operation."
+      description: "Il valore di timeout per l&quot;operazione."
     return:
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "An InstanceView object representing the known state of the instance after the successful completion of the command.  If Execute was called under a transaction, this state may include uncommitted data. Once the transaction is committed successfully, the data in the InstanceView object can be considered committed"
+      description: "Oggetto InstanceView che rappresenta lo stato dell&quot;istanza noto dopo il completamento del comando.  Se è stato chiamato Execute in una transazione, questo stato includa dati di commit. Una volta completata, viene eseguito il commit della transazione, i dati può essere considerato oggetto instanceview come commit"
   overload: System.Runtime.DurableInstancing.InstanceStore.Execute*
   exceptions: []
   platform:
@@ -428,16 +428,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets all the signaled events bound to an <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;></xref> object."
+  summary: "Ottiene tutti gli eventi segnalati associati a un <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;> </xref> oggetto."
   syntax:
     content: protected System.Runtime.DurableInstancing.InstancePersistenceEvent[] GetEvents (System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "An <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;></xref> object representing the owner of an instance."
+      description: "Un <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;> </xref> oggetto che rappresenta il proprietario di un&quot;istanza."
     return:
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent[]
-      description: "Returns an array of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects.."
+      description: "Restituisce una matrice di <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> oggetti..."
   overload: System.Runtime.DurableInstancing.InstanceStore.GetEvents*
   exceptions: []
   platform:
@@ -454,14 +454,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets each InstanceOwner object that is bound to a valid instance handle or has not been garbage collected."
-  remarks: "Returns an array of InstanceOwner objects."
+  summary: "Ottiene ogni oggetto InstanceOwner associato a un handle di istanza valido o non è stato sottoposto a garbage collection."
+  remarks: "Restituisce una matrice di oggetti InstanceOwner."
   syntax:
     content: protected System.Runtime.DurableInstancing.InstanceOwner[] GetInstanceOwners ();
     parameters: []
     return:
       type: System.Runtime.DurableInstancing.InstanceOwner[]
-      description: "The owner of the instance."
+      description: "Il proprietario dell&quot;istanza."
   overload: System.Runtime.DurableInstancing.InstanceStore.GetInstanceOwners*
   exceptions: []
   platform:
@@ -478,16 +478,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Invoked when an instance handle is freed."
+  summary: "Richiamato quando viene liberato un handle di istanza."
   syntax:
     content: protected virtual void OnFreeInstanceHandle (System.Runtime.DurableInstancing.InstanceHandle instanceHandle, object userContext);
     parameters:
     - id: instanceHandle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle that was freed."
+      description: "Handle di istanza liberato."
     - id: userContext
       type: System.Object
-      description: "The persistence provider’s user context information that was returned from OnNewInstanceHandle, or null if OnNewInstanceHandle is not overridden."
+      description: "Informazioni del contesto utente del provider di persistenza restituite da OnNewInstanceHandle oppure null se non esegue l&quot;override di OnNewInstanceHandle."
   overload: System.Runtime.DurableInstancing.InstanceStore.OnFreeInstanceHandle*
   exceptions: []
   platform:
@@ -504,16 +504,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Invoked when a new instance handle is created."
+  summary: "Richiamato quando viene creato un nuovo handle di istanza."
   syntax:
     content: protected virtual object OnNewInstanceHandle (System.Runtime.DurableInstancing.InstanceHandle instanceHandle);
     parameters:
     - id: instanceHandle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "Handle di istanza."
     return:
       type: System.Object
-      description: "An object.  This user context object will be available to the persistence provider when commands are executed using the handle, and when the handle is freed."
+      description: "Un oggetto.  Questo oggetto di contesto utente sarà disponibile per il provider di persistenza quando vengono eseguiti i comandi utilizzando l&quot;handle e quando l&quot;handle viene liberato."
   overload: System.Runtime.DurableInstancing.InstanceStore.OnNewInstanceHandle*
   exceptions: []
   platform:
@@ -530,16 +530,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Resets the signaled event and removes the event from the signaled events list maintained by the instance owner."
+  summary: "Reimposta l&quot;evento segnalato e rimuove l&quot;evento dall&quot;elenco degli eventi segnalati gestito dal proprietario dell&quot;istanza."
   syntax:
     content: protected void ResetEvent (System.Runtime.DurableInstancing.InstancePersistenceEvent persistenceEvent, System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: persistenceEvent
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent
-      description: "The persistence event that was signaled earlier and to be reset."
+      description: "L&quot;evento di persistenza segnalato in precedenza da reimpostare."
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The instance owner associated with the persistence event."
+      description: "Il proprietario di istanza associato all&quot;evento di persistenza."
   overload: System.Runtime.DurableInstancing.InstanceStore.ResetEvent*
   exceptions: []
   platform:
@@ -556,16 +556,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "An instance store invokes this method to signal an event. A workflow host that subscribes for this persistence event receives it and takes an appropriate action."
+  summary: "Un archivio di istanze richiama questo metodo per segnalare un evento. Un host del flusso di lavoro che sottoscrive questo evento di persistenza riceve e intraprende un&quot;azione appropriata."
   syntax:
     content: protected void SignalEvent (System.Runtime.DurableInstancing.InstancePersistenceEvent persistenceEvent, System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: persistenceEvent
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent
-      description: "The persistence event to be signaled."
+      description: "L&quot;evento di persistenza da segnalare."
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The instance owner."
+      description: "Il proprietario dell&quot;istanza."
   overload: System.Runtime.DurableInstancing.InstanceStore.SignalEvent*
   exceptions: []
   platform:
@@ -582,23 +582,23 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A persistence provider implements this method, which determines whether a particular persistence command can be executed and if the command can be executed executes it asynchronously."
-  remarks: "If the command can be executed, the persistence provider calls relevant methods on the <xref:System.Runtime.DurableInstancing.InstancePersistenceContext> to provide the results of the command."
+  summary: "Un provider di persistenza implementa questo metodo, che determina se un particolare comando di persistenza può essere eseguito e se può essere eseguito il comando viene eseguito in modo asincrono."
+  remarks: "Se il comando può essere eseguito, il provider di persistenza chiamerà i metodi pertinenti sul <xref:System.Runtime.DurableInstancing.InstancePersistenceContext>per fornire i risultati del comando.</xref:System.Runtime.DurableInstancing.InstancePersistenceContext>"
   syntax:
     content: protected virtual bool TryCommand (System.Runtime.DurableInstancing.InstancePersistenceContext context, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout);
     parameters:
     - id: context
       type: System.Runtime.DurableInstancing.InstancePersistenceContext
-      description: "The instance context."
+      description: "Il contesto dell&quot;istanza."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "Il comando da eseguire."
     - id: timeout
       type: System.TimeSpan
-      description: "Timeout value for the operation."
+      description: "Valore di timeout per l&quot;operazione."
     return:
       type: System.Boolean
-      description: "A persistence provider implementation should return <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it doesn’t support the command passed as a parameter; otherwise it should return <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> or throw an exception."
+      description: "Implementazione di un provider di persistenza deve restituire <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> se non supporta il comando passato come parametro; in caso contrario restituisce <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> o generare un&quot;eccezione."
   overload: System.Runtime.DurableInstancing.InstanceStore.TryCommand*
   exceptions: []
   platform:
@@ -615,19 +615,19 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A workflow host typically invokes this method to wait for an event to be signaled."
+  summary: "Un host del flusso di lavoro richiama in genere questo metodo per attendere un evento venga segnalato."
   syntax:
     content: public System.Collections.Generic.List<System.Runtime.DurableInstancing.InstancePersistenceEvent> WaitForEvents (System.Runtime.DurableInstancing.InstanceHandle handle, TimeSpan timeout);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle that is bound to the event."
+      description: "Handle di istanza associato all&quot;evento."
     - id: timeout
       type: System.TimeSpan
-      description: "The time span after which the waiting operation times out."
+      description: "L&quot;intervallo di tempo dopo il quale timeout dell&quot;operazione di attesa."
     return:
       type: System.Collections.Generic.List{System.Runtime.DurableInstancing.InstancePersistenceEvent}
-      description: "A list of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects."
+      description: "Un elenco di <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> oggetti."
   overload: System.Runtime.DurableInstancing.InstanceStore.WaitForEvents*
   exceptions: []
   platform:
