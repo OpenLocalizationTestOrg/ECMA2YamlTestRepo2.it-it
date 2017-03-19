@@ -23,7 +23,7 @@ items:
   nameWithType: FontFamily
   fullName: System.Windows.Media.FontFamily
   type: Class
-  summary: "Represents a family of related fonts."
+  summary: "Rappresenta una famiglia di tipi di carattere correlati."
   remarks: "A font family is a set of typefaces that share the same family name, such as \"Times New Roman\", but that differ in features. These feature differences include <xref:System.Windows.Media.Typeface.Style%2A>, such as italic, and <xref:System.Windows.Media.Typeface.Weight%2A>, such as bold.  \n  \n ![Fonts](~/add/media/fonts.PNG \"Fonts\")  \nExample of typefaces that are members of the \"Times New Roman\" font family  \n  \n Most [!INCLUDE[TLA#tla_ui](~/add/includes/tlasharptla-ui-md.md)] elements, such as <xref:System.Windows.Controls.Button> and <xref:System.Windows.Controls.TextBlock>, provide a <xref:System.Windows.Controls.Control.FontFamily%2A> property that can be used to specify a font for the text content of a control. You define the font by setting that property with a FontFamily value. The following examples show how to reference a font, in [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] and in code.  \n  \n [!code-vb[FontSnippets#FontFallbackSnippet3](~/add/codesnippet/visualbasic/fontsnippets/fontfamilysnippets.xaml.vb#fontfallbacksnippet3)]\n [!code-cs[FontSnippets#FontFallbackSnippet3](~/add/codesnippet/csharp/FontSnippets/FontFamilySnippets.xaml.cs#fontfallbacksnippet3)]\n [!code-xml[FontSnippets#FontFallbackSnippet3](~/add/codesnippet/xaml/FontSnippets/FontFamilySnippets.xaml#fontfallbacksnippet3)]  \n  \n In the preceding example, the font that is referenced, \"Comic Sans MS\", is referred to by its *friendly name*. Also, in this example the font is assumed to be in the system font collection.  \n  \n## Specifying Fonts in Alternate Directories  \n A [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] application can specify a directory, other than the directory that contains the systems font collection, for resolving font references. The friendly name of the font can specify an absolute [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] value to resolve the font reference, as shown in the following [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] and code examples.  \n  \n [!code-xml[FontSnippets#FontPackageSnippet6](~/add/codesnippet/xaml/FontSnippets/FontPackageSnippets.xaml#fontpackagesnippet6)]\n [!code-vb[FontSnippets#FontPackageSnippet6](~/add/codesnippet/visualbasic/fontsnippets/fontpackagesnippets.xaml.vb#fontpackagesnippet6)]\n [!code-cs[FontSnippets#FontPackageSnippet6](~/add/codesnippet/csharp/FontSnippets/FontPackageSnippets.xaml.cs#fontpackagesnippet6)]  \n  \n The friendly name of the font can also specify a relative [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value, which requires a base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] to resolve the font reference. The <xref:System.Windows.Media.FontFamily.BaseUri%2A> property of the FontFamily object corresponds to the base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value. The following code example shows how to create a font reference that is composed of a base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value and a relative [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value.  \n  \n [!code-vb[FontSnippets#FontPackageSnippet7](~/add/codesnippet/visualbasic/fontsnippets/fontpackagesnippets.xaml.vb#fontpackagesnippet7)]\n [!code-cs[FontSnippets#FontPackageSnippet7](~/add/codesnippet/csharp/FontSnippets/FontPackageSnippets.xaml.cs#fontpackagesnippet7)]  \n  \n You can use a base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value when you reference a font that is packaged as part of the application. For example, the base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value can be a \"pack://application\" [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)], which lets you reference fonts that are packaged as application resources. The following code example shows a font reference that is composed of a base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value and a relative [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value.  \n  \n [!code-vb[FontSnippets#FontPackageSnippet2](~/add/codesnippet/visualbasic/fontsnippets/fontpackagesnippets.xaml.vb#fontpackagesnippet2)]\n [!code-cs[FontSnippets#FontPackageSnippet2](~/add/codesnippet/csharp/FontSnippets/FontPackageSnippets.xaml.cs#fontpackagesnippet2)]  \n  \n When a FontFamily is specified as an attribute in markup, the base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value is always implied—its value is the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the [!INCLUDE[TLA#tla_titlexaml](~/add/includes/ajax-current-ext-md.md)] page. The implied base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value is used with the relative [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value in the friendly name string to obtain the location of the font. In the following [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] example, notice that the relative [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value uses the \"./\" notation, which means \"in the current folder\" of the base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value.  \n  \n [!code-xml[FontSnippets#FontPackageSnippet1](~/add/codesnippet/xaml/FontSnippets/FontPackageSnippets.xaml#fontpackagesnippet1)]  \n  \n A [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] application can package fonts as either a content item, a resource item, or a library resource item. For more information, see [Packaging Fonts with Applications](~/add/includes/ajax-current-ext-md.md).  \n  \n## Font Fallback  \n Font fallback refers to the automatic substitution of a font other than the font that is selected by the client application. There are two primary reasons why font fallback is invoked:  \n  \n-   The font that is specified by the client application does not exist on the system.  \n  \n-   The font that is specified by the client application does not contain the glyphs that are required to render text.  \n  \n In[!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], the font fallback mechanism uses the default fallback font family, \"Global User Interface\", as the substitute font. This font is defined as a composite font, whose file name is \"GlobalUserInterface.CompositeFont\". For more information about composite fonts, see the Composite Fonts section in this topic.  \n  \n The [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] font fallback mechanism replaces previous [!INCLUDE[TLA#tla_win32](~/add/includes/tlasharptla-win32-md.md)] font substitution technologies.  \n  \n## Defining a Font Fallback Sequence in Code  \n You can define a font fallback sequence in your code, which lets you define an alternate font. When you create a FontFamily object, provide multiple font family names, separated by commas, for the <xref:System.String> parameter, such as \"Comic Sans MS, Verdana\". In this case, if the glyphs from the \"Comic Sans MS\" typeface are not available, glyphs from the \"Verdana\" typeface are used. If neither \"Comic Sans MS\" nor \"Verdana\" have the required glyphs, the fallback font family of the typeface is used, which is \"Global User Interface\" by default.  \n  \n The following examples show how to define a font fallback sequence, in [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] and in code.  \n  \n [!code-vb[FontSnippets#FontFallbackSnippet1](~/add/codesnippet/visualbasic/fontsnippets/fontfamilysnippets.xaml.vb#fontfallbacksnippet1)]\n [!code-cs[FontSnippets#FontFallbackSnippet1](~/add/codesnippet/csharp/FontSnippets/FontFamilySnippets.xaml.cs#fontfallbacksnippet1)]\n [!code-xml[FontSnippets#FontFallbackSnippet1](~/add/codesnippet/xaml/FontSnippets/FontFamilySnippets.xaml#fontfallbacksnippet1)]  \n  \n Any one of the fonts in the fallback sequence can specify font locations. In the following examples, \"Pericles Light\" is referenced as an application resource, and \"Verdana\" is referenced as a system font collection member.  \n  \n [!code-vb[FontSnippets#FontFallbackSnippet2](~/add/codesnippet/visualbasic/fontsnippets/fontfamilysnippets.xaml.vb#fontfallbacksnippet2)]\n [!code-cs[FontSnippets#FontFallbackSnippet2](~/add/codesnippet/csharp/FontSnippets/FontFamilySnippets.xaml.cs#fontfallbacksnippet2)]\n [!code-xml[FontSnippets#FontFallbackSnippet2](~/add/codesnippet/xaml/FontSnippets/FontFamilySnippets.xaml#fontfallbacksnippet2)]  \n  \n## Composite Fonts  \n The [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] platform provides a composite font feature to allow the construction of full range multilingual fonts, and to avoid displaying missing glyphs. Composite fonts replace the [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] font linking, font fallback, font binding, font association, and end-user-defined characters (EUDC) mechanisms.  \n  \n A composite font family is available to applications through the FontFamily and <xref:System.Windows.Media.Typeface> constructors just like any other font family. Each composite font family is named, and, as with other fonts, can provide localized variants of its name in multiple languages.  \n  \n The following markup example shows how a composite font family can be defined as a disk file. This file can be stored in the default [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] font directory as with any other installed font, or can be referenced in any location by including its [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] when referencing the family by name.  \n  \n The following example shows the font family markup in a \".CompositeFont\" file.  \n  \n [!code-xml[CompositeFontMarkup#CF](~/add/codesnippet/xaml/compositefontmarkup/comp.xaml#cf)]  \n  \n The following four composite fonts appear in the default [!INCLUDE[TLA2#tla_win](~/add/includes/tla2sharptla-win-md.md)] font directory as part of the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] installation.  \n  \n|Font|Notes|  \n|----------|-----------|  \n|GlobalMonospace.CompositeFont|Renders text by using a monospace font, for example, \"Courier New\" for Latin characters.|  \n|GlobalSanSerif.CompositeFont|Renders text by using a sans serif font, for example, \"Arial\" for Latin characters.|  \n|GlobalSerif.CompositeFont|Renders text by using a serif font, for example, \"Times New Roman\" for Latin characters.|  \n|GlobalUserInterface.CompositeFont|Renders text by using a default font, for example, \"Times New Roman\" for Latin characters.|  \n  \n<a name=\"xamlAttributeUsage_FontFamily\"></a>   \n## XAML Attribute Usage  \n  \n```  \n<object FontFamily=\"fontFamilyName\"/>  \n- or -  \n<object FontFamily=\"fontFamilyNamesList\"/>  \n- or -  \n<object FontFamily=\"fontFamilyFolderReference\"/>  \n- or -  \n<object FontFamily=\"fontFamilyUriReference\"/>  \n```  \n  \n<a name=\"xamlValues_FontFamily\"></a>   \n## XAML Values  \n *fontFamilyName*  \n A string specifying a font family name.  For example, `\"Arial\"` or `\"Century Gothic\"`.  \n  \n *fontFamilyNamesList*  \n A string specifying multiple font family names, each separated by a comma (any whitespace following a comma is ignored).  The first font family specified serves as the primary font family; subsequent font families serve as fallback families to be used in cases where the primary font family is unavailable or not applicable.  For example, `\"Arial, Century Gothic\"` specifies Arial as the primary font family, with Century Gothic as the fallback font family.  \n  \n *fontFamilyFolderReference*  \n A string specifying a folder containing the font, along with a font family name.  The folder and font family name are delimited by a # character.  The folder reference may be absolute, or relative.  For example, `\"Custom Fonts\\#My Custom Font\"`.  \n  \n *fontFamilyUriReference*  \n A string specifying a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for the font, along with a font family name.  The [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] and font family name are delimited by a # character.  For example, `\"http://MyFontServer/Fonts/#My Custom Font\"`."
   syntax:
     content: >-
@@ -52,8 +52,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Initializes a new instance of an anonymous <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> class."
-  remarks: "Use this default constructor when you want to create a composite font programmatically. This means that you do not have to specify a font family name for the constructor, but you must populate the collections in the <xref:System.Windows.Media.FontFamily.FamilyMaps%2A> and <xref:System.Windows.Media.FontFamily.FamilyNames%2A> collections prior to using the constructed instance."
+  summary: "Inizializza una nuova istanza di un tipo anonimo <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> classe."
+  remarks: "Utilizzare questo costruttore predefinito quando si desidera creare un tipo di carattere composito a livello di codice. Ciò significa che non è necessario specificare un nome di famiglia di tipi di carattere per il costruttore, ma è necessario popolare gli insiemi di <xref:System.Windows.Media.FontFamily.FamilyMaps%2A>e <xref:System.Windows.Media.FontFamily.FamilyNames%2A>raccolte prima di utilizzare l&quot;istanza costruita.</xref:System.Windows.Media.FontFamily.FamilyNames%2A> </xref:System.Windows.Media.FontFamily.FamilyMaps%2A>"
   syntax:
     content: public FontFamily ();
     parameters: []
@@ -73,8 +73,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> class from the specified font family name."
-  remarks: "Each family name that is specified in the `familyName` parameter can be preceded by a location reference to either a directory or a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)]. The location reference is separated from the family name by a pound (`#`) character. Multiple family names that are specified in the `familyName` parameter must be separated by commas.       Each family can be a real font that directly represents a set of font files that share the same family name, or can be a reference to a family name that is defined in a composite font file.       When multiple families are identified, the second and subsequent font families serve as fallback families, handling code points that are not supported by the first font family. For every code point that is not supported by the first font family, each subsequent family is checked in turn."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> classe dal nome della famiglia di caratteri specificato."
+  remarks: "Ogni nome di famiglia specificato nella `familyName` parametro può essere preceduto da un riferimento al percorso a una directory o un [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)]. Il riferimento al percorso è separato dal nome della famiglia da un cancelletto (`#`) caratteri. Più nomi specificati nel `familyName` parametro deve essere separato da virgole.       Ogni gruppo può essere un tipo di carattere reale direttamente rappresenta un set di file di caratteri che condividono lo stesso nome di famiglia, o può essere un riferimento a un nome di famiglia è definito in un file di tipo di carattere composito.       Quando vengono rilevati più gruppi, la seconda e le famiglie fungono da famiglie di fallback, la gestione di punti di codice che non sono supportati dalla famiglia prima. Per ogni punto di codice che non è supportata dalla famiglia prima, ogni famiglia successivi viene controllata."
   example:
   - >-
     [!code-cs[FontSnippets#103](~/add/codesnippet/csharp/FontSnippets/Window1.xaml.cs#103)]
@@ -84,12 +84,12 @@ items:
     parameters:
     - id: familyName
       type: System.String
-      description: "The family name or names that comprise the new <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref>. Multiple family names should be separated by commas."
+      description: "Il nome della famiglia o nomi che costituiscono il nuovo <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref>. Più nomi devono essere separati da virgole."
   overload: System.Windows.Media.FontFamily.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>familyName</code> cannot be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>familyName</code>non può essere <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Windows.Media.FontFamily.#ctor(System.Uri,System.String)
@@ -104,8 +104,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> class from the specified font family name and an optional base [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] value."
-  remarks: "The `familyName` value can specify a relative [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value, which requires a base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] to resolve the font reference. The `baseUri` value can be `null`."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> classe da una base facoltativo e il nome della famiglia specificata [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] valore."
+  remarks: "Il `familyName` può specificare un valore [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] valore, che richiede una base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] per risolvere il riferimento al tipo di carattere. Il `baseUri` valore può essere `null`."
   example:
   - "The following code shows a font reference that is composed of a base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value and a relative [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] value.  \n  \n [!code-vb[FontSnippets#FontPackageSnippet2](~/add/codesnippet/visualbasic/fontsnippets/fontpackagesnippets.xaml.vb#fontpackagesnippet2)]\n [!code-cs[FontSnippets#FontPackageSnippet2](~/add/codesnippet/csharp/FontSnippets/FontPackageSnippets.xaml.cs#fontpackagesnippet2)]"
   syntax:
@@ -113,10 +113,10 @@ items:
     parameters:
     - id: baseUri
       type: System.Uri
-      description: "Specifies the base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] that is used to resolve `familyName`."
+      description: "Specifica la base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] che viene utilizzato per risolvere `familyName`."
     - id: familyName
       type: System.String
-      description: "The family name or names that comprise the new <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref>. Multiple family names should be separated by commas."
+      description: "Il nome della famiglia o nomi che costituiscono il nuovo <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref>. Più nomi devono essere separati da virgole."
   overload: System.Windows.Media.FontFamily.#ctor*
   exceptions: []
   platform:
@@ -133,12 +133,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the distance between the baseline and the character cell top."
+  summary: "Ottiene o imposta la distanza tra la linea di base e la parte superiore della cella carattere."
   syntax:
     content: public double Baseline { get; set; }
     return:
       type: System.Double
-      description: "A <xref:System.Double> that indicates the distance between the baseline and the character cell top, expressed as a fraction of the font em size."
+      description: "Oggetto <xref:System.Double>che indica la distanza tra la linea di base e la parte superiore della cella del carattere, espresso come frazione della dimensione em del carattere.</xref:System.Double>"
   overload: System.Windows.Media.FontFamily.Baseline*
   exceptions: []
   platform:
@@ -155,15 +155,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets the base [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] that is used to resolve a font family name."
-  remarks: "The return value is `null` if the font family name does not rely on a base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for resolving the font reference. To retrieve the font family name that is used to construct the <xref:System.Windows.Media.FontFamily> object, use the <xref:System.Windows.Media.FontFamily.Source%2A> property."
+  summary: "Ottiene il tipo di base [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] utilizzato per risolvere un nome di famiglia."
+  remarks: "Il valore restituito è `null` se il nome della famiglia non si basa su una base [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] per risolvere il riferimento al tipo di carattere. Per recuperare il nome della famiglia che viene utilizzato per costruire il <xref:System.Windows.Media.FontFamily>oggetto, usare il <xref:System.Windows.Media.FontFamily.Source%2A>proprietà.</xref:System.Windows.Media.FontFamily.Source%2A> </xref:System.Windows.Media.FontFamily>"
   example:
   - "The following example shows the results of retrieving the BaseUri property from a <xref:System.Windows.Media.FontFamily> object.  \n  \n [!code-vb[FontSnippets#FontPackageSnippet9](~/add/codesnippet/visualbasic/fontsnippets/fontpackagesnippets.xaml.vb#fontpackagesnippet9)]\n [!code-cs[FontSnippets#FontPackageSnippet9](~/add/codesnippet/csharp/FontSnippets/FontPackageSnippets.xaml.cs#fontpackagesnippet9)]"
   syntax:
     content: public Uri BaseUri { get; }
     return:
       type: System.Uri
-      description: "A value of type <xref:System.Uri>."
+      description: "Un valore di tipo <xref:System.Uri>.</xref:System.Uri>"
   overload: System.Windows.Media.FontFamily.BaseUri*
   exceptions: []
   platform:
@@ -180,16 +180,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets a value that indicates whether the current font family object and the specified font family object are the same."
+  summary: "Ottiene un valore che indica se l&quot;oggetto della famiglia del carattere corrente e l&quot;oggetto della famiglia del carattere specificato sono uguali."
   syntax:
     content: public override bool Equals (object o);
     parameters:
     - id: o
       type: System.Object
-      description: "The <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object to compare."
+      description: "Il <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto da confrontare."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>o</code> is equal to the current <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If <code>o</code> is not a <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> is returned."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se <code> o </code> è uguale all&quot;oggetto corrente <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. If <code>o</code> is not a <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> is returned."
   overload: System.Windows.Media.FontFamily.Equals*
   exceptions: []
   platform:
@@ -206,13 +206,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets the collection of <xref href=&quot;System.Windows.Media.FontFamilyMap&quot;></xref> objects."
-  remarks: "For <xref:System.Windows.Media.FontFamily> objects that are created by using a font family name, the FamilyMaps property returns an empty, read-only collection.       The <xref:System.Windows.Media.FontFamilyMap> object defines which font to use for displaying a specified set of Unicode characters of a specified culture."
+  summary: "Ottiene la raccolta di <xref href=&quot;System.Windows.Media.FontFamilyMap&quot;> </xref> oggetti."
+  remarks: "Per <xref:System.Windows.Media.FontFamily>gli oggetti che vengono creati utilizzando un nome di famiglia del tipo di carattere, la proprietà FamilyMaps restituisce una raccolta vuota, di sola lettura.</xref:System.Windows.Media.FontFamily>       Il <xref:System.Windows.Media.FontFamilyMap>oggetto definisce il tipo di carattere da utilizzare per visualizzare un set specificato di caratteri Unicode di impostazioni cultura specificate.</xref:System.Windows.Media.FontFamilyMap>"
   syntax:
     content: public System.Windows.Media.FontFamilyMapCollection FamilyMaps { get; }
     return:
       type: System.Windows.Media.FontFamilyMapCollection
-      description: "A <xref href=&quot;System.Windows.Media.FontFamilyMapCollection&quot;></xref> that contains <xref href=&quot;System.Windows.Media.FontFamilyMap&quot;></xref> objects."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.FontFamilyMapCollection&quot;> </xref> contenente <xref href=&quot;System.Windows.Media.FontFamilyMap&quot;> </xref> oggetti."
   overload: System.Windows.Media.FontFamily.FamilyMaps*
   exceptions: []
   platform:
@@ -229,7 +229,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets a collection of strings and <xref:System.Globalization.CultureInfo> values that represent the font family names of the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object."
+  summary: "Ottiene una raccolta di stringhe e <xref:System.Globalization.CultureInfo>valori che rappresentano i nomi della famiglia di <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto.</xref:System.Globalization.CultureInfo>"
   remarks: ''
   example:
   - >-
@@ -239,7 +239,7 @@ items:
     content: public System.Windows.Media.LanguageSpecificStringDictionary FamilyNames { get; }
     return:
       type: System.Windows.Media.LanguageSpecificStringDictionary
-      description: "A <xref href=&quot;System.Windows.Media.LanguageSpecificStringDictionary&quot;></xref> that represents the font family names."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.LanguageSpecificStringDictionary&quot;> </xref> che rappresenta i nomi dei prodotti della famiglia di caratteri."
   overload: System.Windows.Media.FontFamily.FamilyNames*
   exceptions: []
   platform:
@@ -256,8 +256,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets a collection of typefaces for the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object."
-  remarks: "<a name=&quot;xamlPropertyElementUsage_FamilyTypefaces&quot;></a>    ## XAML Property Element Usage      ```   <object>     <object.FamilyTypefaces>       <OneOrMoreFontFamilyTypefaces/>     </object.FamilyTypefaces>   </object>   ```      <a name=&quot;xamlValues_FamilyTypefaces&quot;></a>    ## XAML Values    *OneOrMoreFontFamilyTypefaces*    One or more of typefaces for the <xref:System.Windows.Media.FontFamily> object."
+  summary: "Ottiene una raccolta di caratteri tipografici per il <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto."
+  remarks: "<a name=&quot;xamlPropertyElementUsage_FamilyTypefaces&quot;></a># # Utilizzo degli elementi XAML ```   <object>     <object.FamilyTypefaces>       <OneOrMoreFontFamilyTypefaces/>     </object.FamilyTypefaces>   </object>   ``` <a name=&quot;xamlValues_FamilyTypefaces&quot;> </a> # # valori XAML *OneOrMoreFontFamilyTypefaces* uno o più caratteri tipografici per il <xref:System.Windows.Media.FontFamily>oggetto.</xref:System.Windows.Media.FontFamily>      "
   example:
   - >-
     [!code-cs[FontSnippets#107](~/add/codesnippet/csharp/FontSnippets/Window1.xaml.cs#107)]
@@ -266,7 +266,7 @@ items:
     content: public System.Windows.Media.FamilyTypefaceCollection FamilyTypefaces { get; }
     return:
       type: System.Windows.Media.FamilyTypefaceCollection
-      description: "A <xref href=&quot;System.Windows.Media.FamilyTypefaceCollection&quot;></xref> that represents a collection of typefaces for the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.FamilyTypefaceCollection&quot;> </xref> che rappresenta un insieme di caratteri tipografici per il <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto."
   overload: System.Windows.Media.FontFamily.FamilyTypefaces*
   exceptions: []
   platform:
@@ -283,13 +283,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Serves as a hash function for <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref>. It is suitable for use in hashing algorithms and data structures such as a hash table."
+  summary: "Funge da funzione hash per <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref>. È adatto per l&quot;uso in algoritmi hash e dati strutture, ad esempio una tabella hash."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> value that represents the hash code for the current object."
+      description: "Un <xref:System.Int32>valore che rappresenta il codice hash per l&quot;oggetto corrente.</xref:System.Int32>"
   overload: System.Windows.Media.FontFamily.GetHashCode*
   exceptions: []
   platform:
@@ -306,7 +306,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a collection of <xref href=&quot;System.Windows.Media.Typeface&quot;></xref> objects that represent the type faces in the default system font location."
+  summary: "Restituisce una raccolta di <xref href=&quot;System.Windows.Media.Typeface&quot;> </xref> gli oggetti che rappresentano i caratteri tipografici nel percorso predefinito del sistema."
   remarks: ''
   example:
   - >-
@@ -317,7 +317,7 @@ items:
     parameters: []
     return:
       type: System.Collections.Generic.ICollection{System.Windows.Media.Typeface}
-      description: "An &lt;xref:System.Collections.Generic.ICollection%601&gt; of <xref href=&quot;System.Windows.Media.Typeface&quot;></xref> objects."
+      description: "Un &lt;xref:System.Collections.Generic.ICollection%601&gt; di <xref href=&quot;System.Windows.Media.Typeface&quot;> </xref> oggetti."
   overload: System.Windows.Media.FontFamily.GetTypefaces*
   exceptions: []
   platform:
@@ -334,12 +334,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the line spacing value for the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object. The line spacing is the recommended baseline-to-baseline distance for the text in this font relative to the em size."
+  summary: "Ottiene o imposta il valore di spaziatura per il <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto. L&quot;interlinea rappresenta la distanza di linea di base consigliata per il testo alla dimensione em di questo tipo di carattere."
   syntax:
     content: public double LineSpacing { get; set; }
     return:
       type: System.Double
-      description: "A <xref:System.Double> that represents the line spacing for the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object."
+      description: "Oggetto <xref:System.Double>che rappresenta l&quot;interlinea di <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto.</xref:System.Double>"
   overload: System.Windows.Media.FontFamily.LineSpacing*
   exceptions: []
   platform:
@@ -356,15 +356,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets the font family name that is used to construct the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object."
-  remarks: "To return the base [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] value of a <xref:System.Windows.Media.FontFamily> object, use the <xref:System.Windows.Media.FontFamily.BaseUri%2A>.       If the <xref:System.Windows.Media.FontFamily> object was created without specifying a font family name, the return value is <xref:System.String.Empty>."
+  summary: "Ottiene il nome della famiglia che viene utilizzato per costruire il <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto."
+  remarks: "Per restituire la base [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] valore di un <xref:System.Windows.Media.FontFamily>oggetto, utilizzare il <xref:System.Windows.Media.FontFamily.BaseUri%2A>.</xref:System.Windows.Media.FontFamily.BaseUri%2A> </xref:System.Windows.Media.FontFamily>       Se l&quot; <xref:System.Windows.Media.FontFamily>oggetto è stato creato senza specificare un nome di famiglia del tipo di carattere, il valore restituito è <xref:System.String.Empty>.</xref:System.String.Empty> </xref:System.Windows.Media.FontFamily>"
   example:
   - "The following example shows the results of retrieving the <xref:System.Windows.Media.FontFamily.BaseUri%2A> and Source property values from a <xref:System.Windows.Media.FontFamily> object.  \n  \n [!code-vb[FontSnippets#FontPackageSnippet10](~/add/codesnippet/visualbasic/fontsnippets/fontpackagesnippets.xaml.vb#fontpackagesnippet10)]\n [!code-cs[FontSnippets#FontPackageSnippet10](~/add/codesnippet/csharp/FontSnippets/FontPackageSnippets.xaml.cs#fontpackagesnippet10)]"
   syntax:
     content: public string Source { get; }
     return:
       type: System.String
-      description: "The font family name of the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object."
+      description: "Il nome della famiglia del <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto."
   overload: System.Windows.Media.FontFamily.Source*
   exceptions: []
   platform:
@@ -381,14 +381,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns the value of the <xref:System.Windows.Media.FontFamily.Source*> property."
-  remarks: "If the <xref:System.Windows.Media.FontFamily> object was created without specifying a font family name, the return value is <xref:System.String.Empty>."
+  summary: "Restituisce il valore della <xref:System.Windows.Media.FontFamily.Source*>proprietà.</xref:System.Windows.Media.FontFamily.Source*>"
+  remarks: "Se l&quot; <xref:System.Windows.Media.FontFamily>oggetto è stato creato senza specificare un nome di famiglia del tipo di carattere, il valore restituito è <xref:System.String.Empty>.</xref:System.String.Empty> </xref:System.Windows.Media.FontFamily>"
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "The source location of the <xref href=&quot;System.Windows.Media.FontFamily&quot;></xref> object, including the directory or [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] location reference."
+      description: "La posizione di origine di <xref href=&quot;System.Windows.Media.FontFamily&quot;> </xref> oggetto, inclusa la directory o [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] riferimento al percorso."
   overload: System.Windows.Media.FontFamily.ToString*
   exceptions: []
   platform:
