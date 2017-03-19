@@ -13,8 +13,8 @@ items:
   nameWithType: PreparingEnlistment
   fullName: System.Transactions.PreparingEnlistment
   type: Class
-  summary: "Facilitates communication between an enlisted transaction participant and the transaction manager during the Prepare phase of the transaction."
-  remarks: "During the initial (prepare) phase of the transaction, the transaction manager passes this type to the resource manager by calling the <xref:System.Transactions.IEnlistmentNotification.Prepare%2A> method to obtain a resource&quot;s vote on the transaction. Depending on whether it votes to commit or roll back, your implementation of the resource manager should call the <xref:System.Transactions.PreparingEnlistment.Prepared%2A> or <xref:System.Transactions.PreparingEnlistment.ForceRollback%2A> methods of this type.       The resource manager can also call the <xref:System.Transactions.Enlistment.Done%2A> method at anytime before it has called the <xref:System.Transactions.PreparingEnlistment.Prepared%2A> method. By doing so, the enlistment is casting a read only vote, meaning that it votes commit on the transaction but does not need to receive the final outcome.       Durable resource managers can retrieve the information that is be needed by the transaction manager for re-enlistment from the <xref:System.Transactions.PreparingEnlistment.RecoveryInformation%2A> property. For more information on recovery, see [Performing Recovery](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691)."
+  summary: "Facilita la comunicazione tra un partecipante della transazione e la gestione delle transazioni durante la fase di preparazione della transazione."
+  remarks: "Iniziale (preparazione) fase della transazione, il gestore delle transazioni questo tipo viene passato al gestore di risorse chiamando il <xref:System.Transactions.IEnlistmentNotification.Prepare%2A>per ottenere la scelta della risorsa nella transazione.</xref:System.Transactions.IEnlistmentNotification.Prepare%2A> A seconda se tenta di eseguire il commit o il rollback, è necessario chiamare l&quot;implementazione del gestore di risorse di <xref:System.Transactions.PreparingEnlistment.Prepared%2A>o <xref:System.Transactions.PreparingEnlistment.ForceRollback%2A>metodi di questo tipo.</xref:System.Transactions.PreparingEnlistment.ForceRollback%2A> </xref:System.Transactions.PreparingEnlistment.Prepared%2A>       Inoltre è possibile chiamare il gestore delle risorse di <xref:System.Transactions.Enlistment.Done%2A>in qualsiasi momento prima ha chiamato la <xref:System.Transactions.PreparingEnlistment.Prepared%2A>metodo.</xref:System.Transactions.PreparingEnlistment.Prepared%2A> </xref:System.Transactions.Enlistment.Done%2A> In questo modo, l&quot;integrazione esegue il cast di un voto di solo letto, per cui viene scelto il commit della transazione ma non è necessario ricevere il risultato finale.       I gestori delle risorse permanente è possono recuperare le informazioni che sono necessaria per il gestore delle transazioni per il reinserimento nell&quot;elenco dal <xref:System.Transactions.PreparingEnlistment.RecoveryInformation%2A>proprietà.</xref:System.Transactions.PreparingEnlistment.RecoveryInformation%2A> Per ulteriori informazioni sul recupero, vedere [esecuzione ripristino](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691)."
   example:
   - >-
     [!code-cs[Tx_Enlist#2](~/add/codesnippet/csharp/t-system.transactions.pr_1.cs)]
@@ -41,8 +41,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Indicates that the transaction should be rolled back."
-  remarks: "An implementation of the <xref:System.Transactions.IEnlistmentNotification.Prepare%2A> method of the <xref:System.Transactions.IEnlistmentNotification> interface calls this method to indicate that the transaction must be rolled back."
+  summary: "Indica che deve essere eseguito il rollback della transazione."
+  remarks: "Un&quot;implementazione del <xref:System.Transactions.IEnlistmentNotification.Prepare%2A>metodo il <xref:System.Transactions.IEnlistmentNotification>interfaccia chiama questo metodo per indicare che deve essere eseguito il rollback della transazione.</xref:System.Transactions.IEnlistmentNotification> </xref:System.Transactions.IEnlistmentNotification.Prepare%2A>"
   example:
   - >-
     [!code-cs[Tx_Enlist#2](~/add/codesnippet/csharp/m-system.transactions.pr_0_1.cs)]
@@ -66,13 +66,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Indicates that the transaction should be rolled back."
+  summary: "Indica che deve essere eseguito il rollback della transazione."
   syntax:
     content: public void ForceRollback (Exception e);
     parameters:
     - id: e
       type: System.Exception
-      description: "An explanation of why a rollback is triggered."
+      description: "Spiegazione del motivo per cui è attivata un&quot;operazione di rollback."
   overload: System.Transactions.PreparingEnlistment.ForceRollback*
   exceptions: []
   platform:
@@ -89,8 +89,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Indicates that the transaction can be committed."
-  remarks: "In the first (prepare) phase of a two phase commit, a resource manager implementing the <xref:System.Transactions.IEnlistmentNotification.Prepare%2A> method of the <xref:System.Transactions.IEnlistmentNotification> interface, calls this method to indicate that the transaction can be committed.       The resource manager can call the <xref:System.Transactions.Enlistment.Done%2A> method at anytime before it has called this method.  By doing so, the enlistment is casting a read only vote, meaning that it votes commit on the transaction but does not need to receive the final outcome.       Once this method is called by an enlistment and before it returns, it is possible that another thread or this same thread could make a call into the same enlistment method such as <xref:System.Transactions.IEnlistmentNotification.Rollback%2A> to perform a rollback. This can result in a deadlock situation if the resource manager implementation does not release resource locks until after this method returns."
+  summary: "Indica che è possibile eseguire il commit della transazione."
+  remarks: "Nel primo (preparazione) fase di un commit a due fasi, un gestore di risorse che implementa il <xref:System.Transactions.IEnlistmentNotification.Prepare%2A>metodo il <xref:System.Transactions.IEnlistmentNotification>interfaccia, chiama questo metodo per indicare che è possibile eseguire il commit della transazione.</xref:System.Transactions.IEnlistmentNotification> </xref:System.Transactions.IEnlistmentNotification.Prepare%2A>       Il gestore delle risorse è possibile chiamare il <xref:System.Transactions.Enlistment.Done%2A>metodo in qualsiasi momento prima di chiamare questo metodo.</xref:System.Transactions.Enlistment.Done%2A>  In questo modo, l&quot;integrazione esegue il cast di un voto di solo letto, per cui viene scelto il commit della transazione ma non è necessario ricevere il risultato finale.       Dopo questo metodo viene chiamato da un elenco e prima della restituzione, è possibile che un altro thread o lo stesso thread esegua una chiamata al metodo di integrazione stesso, ad esempio <xref:System.Transactions.IEnlistmentNotification.Rollback%2A>per eseguire un rollback.</xref:System.Transactions.IEnlistmentNotification.Rollback%2A> Ciò può generare una situazione di deadlock se l&quot;implementazione di gestione risorse non rilascia i blocchi di risorsa fino a dopo che questo metodo restituisce."
   example:
   - >-
     [!code-cs[Tx_Enlist#2](~/add/codesnippet/csharp/m-system.transactions.pr_1_1.cs)]
@@ -114,18 +114,18 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets the recovery information of an enlistment."
+  summary: "Ottiene le informazioni di ripristino di un elenco."
   syntax:
     content: public byte[] RecoveryInformation ();
     parameters: []
     return:
       type: System.Byte[]
-      description: "The recovery information of an enlistment."
+      description: "Le informazioni di ripristino di un elenco."
   overload: System.Transactions.PreparingEnlistment.RecoveryInformation*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt to get recovery information inside a volatile enlistment, which does not generate any recovery information."
+    description: "Tentativo di ottenere le informazioni di ripristino all&quot;interno di un elenco volatile, che non genera alcuna informazione di ripristino."
   platform:
   - net462
 references:

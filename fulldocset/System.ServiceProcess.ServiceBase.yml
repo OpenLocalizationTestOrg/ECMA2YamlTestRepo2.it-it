@@ -35,7 +35,7 @@ items:
   nameWithType: ServiceBase
   fullName: System.ServiceProcess.ServiceBase
   type: Class
-  summary: "Provides a base class for a service that will exist as part of a service application. ServiceBase must be derived from when creating a new service class."
+  summary: "Fornisce una classe base per un servizio che sarà disponibili come parte di un&quot;applicazione di servizio. ServiceBase deve essere derivato da quando si crea una nuova classe di servizio."
   remarks: "Derive from ServiceBase when defining your service class in a service application. Any useful service overrides the [OnStart(String\\[\\])](assetId:///M:System.ServiceProcess.ServiceBase.OnStart(System.String[])?qualifyHint=False&autoUpgrade=True) and <xref:System.ServiceProcess.ServiceBase.OnStop%2A> methods. For additional functionality, you can override <xref:System.ServiceProcess.ServiceBase.OnPause%2A> and <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> with specific behavior in response to changes in the service state.  \n  \n A service is a long-running executable that does not support a user interface, and which might not run under the logged-on user account. The service can run without any user being logged on to the computer.  \n  \n By default, services run under the System account, which is not the same as the Administrator account. You cannot change the rights of the System account. Alternatively, you can use a <xref:System.ServiceProcess.ServiceProcessInstaller> to specify a user account under which the service will run.  \n  \n An executable can contain more than one service but must contain a separate <xref:System.ServiceProcess.ServiceInstaller> for each service. The <xref:System.ServiceProcess.ServiceInstaller> instance registers the service with the system. The installer also associates each service with an event log that you can use to record service commands. The `main()` function in the executable defines which services should run. The current working directory of the service is the system directory, not the directory in which the executable is located.  \n  \n When you start a service, the system locates the executable and runs the <xref:System.ServiceProcess.ServiceBase.OnStart%2A> method for that service, contained within the executable. However, running the service is not the same as running the executable. The executable only loads the service. The service is accessed (for example, started and stopped) through the Service Control Manager.  \n  \n The executable calls the ServiceBase derived class's constructor the first time you call Start on the service. The <xref:System.ServiceProcess.ServiceBase.OnStart%2A> command-handling method is called immediately after the constructor executes. The constructor is not executed again after the first time the service has been loaded, so it is necessary to separate the processing performed by the constructor from that performed by <xref:System.ServiceProcess.ServiceBase.OnStart%2A>. Any resources that can be released by <xref:System.ServiceProcess.ServiceBase.OnStop%2A> should be created in <xref:System.ServiceProcess.ServiceBase.OnStart%2A>. Creating resources in the constructor prevents them from being created properly if the service is started again after <xref:System.ServiceProcess.ServiceBase.OnStop%2A> has released the resources.  \n  \n The Service Control Manager (SCM) provides a way to interact with the service. You can use the SCM to pass Start, Stop, Pause, Continue, or custom commands into the service. The SCM uses the values of <xref:System.ServiceProcess.ServiceBase.CanStop%2A> and <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> to determine whether the service accepts Stop, Pause, or Continue commands. Stop, Pause, and Continue are enabled in the SCM's context menus only if the corresponding property <xref:System.ServiceProcess.ServiceBase.CanStop%2A> or <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> is `true` in the service class. If enabled, the command is passed to the service, and <xref:System.ServiceProcess.ServiceBase.OnStop%2A>, <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, or <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> is called. If <xref:System.ServiceProcess.ServiceBase.CanStop%2A>, <xref:System.ServiceProcess.ServiceBase.CanShutdown%2A>, or <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> is `false`, the corresponding command-handling method (such as <xref:System.ServiceProcess.ServiceBase.OnStop%2A>) will not be processed, even if you have implemented the method.  \n  \n You can use the <xref:System.ServiceProcess.ServiceController> class to do programmatically what the SCM does using a user interface. You can automate the tasks available in the console. If <xref:System.ServiceProcess.ServiceBase.CanStop%2A>, <xref:System.ServiceProcess.ServiceBase.CanShutdown%2A>, or <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> is `true` but you have not implemented a corresponding command-handling method (such as <xref:System.ServiceProcess.ServiceBase.OnStop%2A>) the system throws an exception and ignores the command.  \n  \n You do not have to implement <xref:System.ServiceProcess.ServiceBase.OnStart%2A>, <xref:System.ServiceProcess.ServiceBase.OnStop%2A>, or any other method in ServiceBase. However, the service's behavior is described in <xref:System.ServiceProcess.ServiceBase.OnStart%2A>, so at minimum, this member should be overridden. The `main()` function of the executable registers the service in the executable with the Service Control Manager by calling the <xref:System.ServiceProcess.ServiceBase.Run%2A> method. The <xref:System.ServiceProcess.ServiceBase.ServiceName%2A> property of the ServiceBase object passed to the <xref:System.ServiceProcess.ServiceBase.Run%2A> method must match the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A> property of the service installer for that service.  \n  \n You can use `InstallUtil.exe` to install services on your system.  \n  \n> [!NOTE]\n>  You can specify a log other than the Application event log to receive notification of service calls, but neither the <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> nor the <xref:System.ServiceProcess.ServiceBase.EventLog%2A> property can write to a custom log. Set <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> to `false` if you do not want to use automatic logging."
   syntax:
     content: >-
@@ -75,8 +75,8 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Creates a new instance of the <xref href=&quot;System.ServiceProcess.ServiceBase&quot;></xref> class."
-  remarks: "Do not create an instance of the <xref:System.ServiceProcess.ServiceBase> class. Instead, derive from <xref:System.ServiceProcess.ServiceBase> and instantiate your derived class. The minimum you need to implement in the constructor for a class inherited from <xref:System.ServiceProcess.ServiceBase> is to set the <xref:System.ServiceProcess.ServiceBase.ServiceName%2A> on your component. No other processing is specifically required in the constructor. You should handle most initialization in <xref:System.ServiceProcess.ServiceBase.OnStart%2A> rather than in the constructor. Otherwise, there is no guarantee the objects will be reinitialized when you restart a service after it has been stopped.       If you override the constructor in your derived class, call the base class constructor in your code.       The <xref:System.ServiceProcess.ServiceBase> constructor sets <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> to `true`. If you do not want to automatically log calls to the service from the Service Control Manager (SCM), set <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> to `false`.       If the executable contains a single service, the system calls the service&quot;s constructor when Start is selected from the SCM, and runs the destructor if Stop is called.       If the executable contains multiple services, calling Start on one service causes the constructors to be called for all services in the executable, but only the specified service is started. Destructors for the services are run together when all services have been stopped, not individually when each service is stopped.      > [!NOTE] >  If you override the base class constructor, you should explicitly call it in the constructor of your derived class."
+  summary: "Crea una nuova istanza di <xref href=&quot;System.ServiceProcess.ServiceBase&quot;> </xref> classe."
+  remarks: "Non creare un&quot;istanza della <xref:System.ServiceProcess.ServiceBase>classe.</xref:System.ServiceProcess.ServiceBase> Al contrario, derivano dalle <xref:System.ServiceProcess.ServiceBase>e creare un&quot;istanza di classe derivata.</xref:System.ServiceProcess.ServiceBase> Il valore minimo è necessario implementare nel costruttore per una classe ereditata da <xref:System.ServiceProcess.ServiceBase>consiste nell&quot;impostare il <xref:System.ServiceProcess.ServiceBase.ServiceName%2A>nel componente.</xref:System.ServiceProcess.ServiceBase.ServiceName%2A> </xref:System.ServiceProcess.ServiceBase> Altre elaborazioni non sono specificamente richiesto nel costruttore. È necessario gestire la maggior parte di inizializzazione in <xref:System.ServiceProcess.ServiceBase.OnStart%2A>piuttosto che nel costruttore.</xref:System.ServiceProcess.ServiceBase.OnStart%2A> In caso contrario, non è garantito che quando si riavvia un servizio dopo che è stato interrotto gli oggetti verranno reinizializzati.       Se si esegue l&quot;override del costruttore nella classe derivata, chiamare il costruttore di classe di base nel codice.       Il <xref:System.ServiceProcess.ServiceBase>costruttore imposta <xref:System.ServiceProcess.ServiceBase.AutoLog%2A>a `true`.</xref:System.ServiceProcess.ServiceBase.AutoLog%2A> </xref:System.ServiceProcess.ServiceBase> Se non si desidera registrare automaticamente le chiamate al servizio da Gestione controllo servizi (SCM), impostare <xref:System.ServiceProcess.ServiceBase.AutoLog%2A>a `false`.</xref:System.ServiceProcess.ServiceBase.AutoLog%2A>       Se il file eseguibile contiene un singolo servizio, il sistema chiama il costruttore del servizio quando viene selezionato da Gestione controllo servizi, avvio e viene eseguito il distruttore se viene chiamato.       Se il file eseguibile contiene più servizi, chiamare Start su un servizio fa sì che il costruttore da chiamare per tutti i servizi nell&quot;eseguibile, ma solo il servizio specificato è stato avviato. Quando tutti i servizi siano stati arrestati, non singolarmente quando ogni servizio viene arrestato, i distruttori per i servizi vengono eseguiti insieme.      > [!NOTE] > Se si sostituisce il costruttore della classe base, è necessario chiamarlo in modo esplicito nel costruttore della classe derivata."
   syntax:
     content: public ServiceBase ();
     parameters: []
@@ -96,13 +96,13 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Indicates whether to report Start, Stop, Pause, and Continue commands in the event log."
-  remarks: "Setting AutoLog to `true` instructs the service to use the Application event log to report command failures, as well as state change information for Start, Stop, Pause, and Continue events on the service. The name of the service is used as the log&quot;s <xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName>.       To report information to a custom event log rather than the Application log, set AutoLog to `false` and write instructions within the command-handling methods <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>, <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, or <xref:System.ServiceProcess.ServiceBase.OnStop%2A> to post to the appropriate log.      > [!NOTE] >  The <xref:System.ServiceProcess.ServiceBase.ServiceName%2A>, which supplies the source string for the event log, must be set before the service attempts to write to the event log. Trying to access the event log before the source name is set throws an exception."
+  summary: "Indica se i comandi Start, Stop, Pause e continua nel registro eventi di report."
+  remarks: "Impostare AutoLog `true` indica al servizio per utilizzare il registro eventi applicazione per i report non riuscite di comando, nonché informazioni sulle modifiche di stato per Start, Stop, Pause e Continue eventi sul servizio. Il nome del servizio viene utilizzato come <xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName>.</xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName> del log       Per registrare le informazioni in un log eventi personalizzato anziché nel registro applicazioni, impostare AutoLog `false` e scrivere le istruzioni all&quot;interno dei metodi di gestione dei comandi <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>, <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, o <xref:System.ServiceProcess.ServiceBase.OnStop%2A>la registrazione per il log appropriato.</xref:System.ServiceProcess.ServiceBase.OnStop%2A> </xref:System.ServiceProcess.ServiceBase.OnPause%2A> </xref:System.ServiceProcess.ServiceBase.OnContinue%2A>      > [!NOTE] > <xref:System.ServiceProcess.ServiceBase.ServiceName%2A>Che fornisce la stringa di origine per il log eventi, deve essere impostata prima che il servizio tenta di scrivere nel registro eventi.</xref:System.ServiceProcess.ServiceBase.ServiceName%2A> Tentativo di accedere al registro eventi prima di imposta il nome dell&quot;origine genera un&quot;eccezione."
   syntax:
     content: public bool AutoLog { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to report information in the event log; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>per fornire le informazioni nel log eventi. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceProcess.ServiceBase.AutoLog*
   exceptions: []
   platform:
@@ -119,18 +119,18 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets a value indicating whether the service can handle notifications of computer power status changes."
-  remarks: "When the computer power status changes, the Service Control Manager (SCM) verifies whether the service accepts power event commands using the value of CanHandlePowerEvent.       If CanHandlePowerEvent is `true`, the command is passed to the service and the <xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A> method is called if defined. If <xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A> is not implemented in the derived class, the SCM handles the power event through the empty base class <xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A?displayProperty=fullName> method."
+  summary: "Ottiene o imposta un valore che indica se il servizio può gestire le notifiche delle modifiche dello stato dell&quot;alimentazione di computer."
+  remarks: "Quando cambia lo stato di alimentazione del computer, Gestione controllo servizi (SCM) consente di verificare se il servizio accetta comandi evento power utilizzando il valore di e.       Se è e `true`, il comando viene passato al servizio e <xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A>metodo viene chiamato se definito.</xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A> Se <xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A>non è implementata nella classe derivata, SCM gestisce l&quot;evento di risparmio energia tramite la classe base vuota <xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A?displayProperty=fullName>metodo.</xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A?displayProperty=fullName> </xref:System.ServiceProcess.ServiceBase.OnPowerEvent%2A>"
   syntax:
     content: public bool CanHandlePowerEvent { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the service handles the computer power status changes indicated in the <xref href=&quot;System.ServiceProcess.PowerBroadcastStatus&quot;></xref> class, otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il servizio gestisce lo stato di alimentazione di computer le modifiche indicate nella <xref href=&quot;System.ServiceProcess.PowerBroadcastStatus&quot;> </xref> (classe), in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceProcess.ServiceBase.CanHandlePowerEvent*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This property is modified after the service was started."
+    description: "Questa proprietà viene modificata dopo l&quot;avvio del servizio."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.CanHandleSessionChangeEvent
@@ -145,17 +145,17 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets a value that indicates whether the service can handle session change events received from a Terminal Server session."
+  summary: "Ottiene o imposta un valore che indica se il servizio può gestire gli eventi di modifica di sessione ricevuti da una sessione di Terminal Server."
   syntax:
     content: public bool CanHandleSessionChangeEvent { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the service can handle Terminal Server session change events; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il servizio può gestire eventi di modifica della sessione di Terminal Server; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceProcess.ServiceBase.CanHandleSessionChangeEvent*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This property is modified after the service was started."
+    description: "Questa proprietà viene modificata dopo l&quot;avvio del servizio."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.CanPauseAndContinue
@@ -170,18 +170,18 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets a value indicating whether the service can be paused and resumed."
-  remarks: "Set the value of the CanPauseAndContinue property in the constructor for the service.       When a service is paused, it halts what it is doing. When you continue the service (either through the Service Control Manager or programmatically), <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> runs.       Sending a Pause request to the service can conserve system resources. Pause may not release all system resources, but Stop does. <xref:System.ServiceProcess.ServiceBase.OnPause%2A> and <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> are often implemented to perform less processing than <xref:System.ServiceProcess.ServiceBase.OnStop%2A> and <xref:System.ServiceProcess.ServiceBase.OnStart%2A>.       When CanPauseAndContinue is `true`, override <xref:System.ServiceProcess.ServiceBase.OnPause%2A> and <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> to specify the processing that should occur when the Service Control Manager (SCM) passes a Pause or Continue request to your service. <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> should be implemented to undo the processing in <xref:System.ServiceProcess.ServiceBase.OnPause%2A>.       If CanPauseAndContinue is `false`, the SCM will not pass Pause or Continue requests to the service, so the <xref:System.ServiceProcess.ServiceBase.OnPause%2A> and <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> methods will not be called even if they are implemented. In the SCM, the `Pause` and `Continue` controls are disabled when CanPauseAndContinue is `false`."
+  summary: "Ottiene o imposta un valore che indica se il servizio può essere sospesa e ripresa."
+  remarks: "Impostare il valore della proprietà CanPauseAndContinue nel costruttore per il servizio.       Quando un servizio viene sospesa, arresta quanto accade. Quando si continua del servizio (tramite Gestione controllo servizi o a livello di codice), <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>viene eseguito.</xref:System.ServiceProcess.ServiceBase.OnContinue%2A>       L&quot;invio di una richiesta di sospensione per il servizio, è possibile risparmiare risorse di sistema. Sospensione potrebbe non rilasciare tutte le risorse di sistema, l&quot;interruzione. <xref:System.ServiceProcess.ServiceBase.OnPause%2A>e <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>spesso vengono implementati per eseguire operazioni di elaborazione minore e <xref:System.ServiceProcess.ServiceBase.OnStop%2A> <xref:System.ServiceProcess.ServiceBase.OnStart%2A>.</xref:System.ServiceProcess.ServiceBase.OnStart%2A> </xref:System.ServiceProcess.ServiceBase.OnStop%2A> </xref:System.ServiceProcess.ServiceBase.OnContinue%2A></xref:System.ServiceProcess.ServiceBase.OnPause%2A>       Quando CanPauseAndContinue è `true`, eseguire l&quot;override <xref:System.ServiceProcess.ServiceBase.OnPause%2A>e <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>per specificare l&quot;elaborazione che deve verificarsi quando Gestione controllo servizi (SCM) passa una richiesta di sospensione o continuazione al servizio.</xref:System.ServiceProcess.ServiceBase.OnContinue%2A> </xref:System.ServiceProcess.ServiceBase.OnPause%2A> <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>deve essere implementato per annullare l&quot;elaborazione in <xref:System.ServiceProcess.ServiceBase.OnPause%2A>.</xref:System.ServiceProcess.ServiceBase.OnPause%2A></xref:System.ServiceProcess.ServiceBase.OnContinue%2A>       Se è CanPauseAndContinue `false`, SCM non passerà sospensione o continua richieste al servizio, pertanto il <xref:System.ServiceProcess.ServiceBase.OnPause%2A>e <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>metodi non verranno chiamati anche se sono implementate.</xref:System.ServiceProcess.ServiceBase.OnContinue%2A> </xref:System.ServiceProcess.ServiceBase.OnPause%2A> In Gestione controllo servizi, il `Pause` e `Continue` controlli sono disabilitati quando è CanPauseAndContinue `false`."
   syntax:
     content: public bool CanPauseAndContinue { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the service can be paused; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il servizio può essere sospeso; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceProcess.ServiceBase.CanPauseAndContinue*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The service has already been started. The CanPauseAndContinue property cannot be changed once the service has started."
+    description: "Il servizio è già stato avviato. La proprietà CanPauseAndContinue non può essere modificata dopo l&quot;avvio del servizio."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.CanShutdown
@@ -196,18 +196,18 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets a value indicating whether the service should be notified when the system is shutting down."
-  remarks: "If CanShutdown is `true`, the service is notified when the system is shutting down. At shutdown, the <xref:System.ServiceProcess.ServiceBase.OnShutdown%2A> method is called if it has been implemented in your derived class.      > [!NOTE] >  Only the system should cause the <xref:System.ServiceProcess.ServiceBase.OnShutdown%2A> method to execute; the service can call it, but this is not recommended."
+  summary: "Ottiene o imposta un valore che indica se il servizio deve ricevere notifica quando il sistema è in corso l&quot;arresto."
+  remarks: "Se è CanShutdown `true`, il servizio riceve una notifica quando il sistema è in corso l&quot;arresto. Al momento della chiusura, il <xref:System.ServiceProcess.ServiceBase.OnShutdown%2A>metodo viene chiamato se è stato implementato nella classe derivata.</xref:System.ServiceProcess.ServiceBase.OnShutdown%2A>      > [!NOTE] > Solo il sistema deve provocare il <xref:System.ServiceProcess.ServiceBase.OnShutdown%2A>metodo da eseguire; il servizio può essere chiamato, ma questa operazione è sconsigliata.</xref:System.ServiceProcess.ServiceBase.OnShutdown%2A>"
   syntax:
     content: public bool CanShutdown { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the service should be notified when the system is shutting down; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>.  The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il servizio deve essere notificato quando il sistema è in fase di chiusura; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.  Il valore predefinito è <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceProcess.ServiceBase.CanShutdown*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The service has already been started. The CanShutdown property cannot be changed once the service has started."
+    description: "Il servizio è già stato avviato. La proprietà CanShutdown non può essere modificata dopo l&quot;avvio del servizio."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.CanStop
@@ -222,18 +222,18 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets a value indicating whether the service can be stopped once it has started."
-  remarks: "When Stop is called on a service, the Service Control Manager (SCM) verifies whether the service accepts Stop commands using the value of CanStop. For most services, the value of CanStop is `true`, but some operating system services, for example, do not allow the user to stop them.       If CanStop is `true`, the Stop command is passed to the service and the <xref:System.ServiceProcess.ServiceBase.OnStop%2A> method is called if it is defined. If <xref:System.ServiceProcess.ServiceBase.OnStop%2A> is not implemented in the derived class, the SCM handles the Stop command through the empty base class <xref:System.ServiceProcess.ServiceBase.OnStop%2A?displayProperty=fullName> method."
+  summary: "Ottiene o imposta un valore che indica se il servizio può essere arrestato dopo averlo avviato."
+  remarks: "Quando viene chiamato su un servizio, Gestione controllo servizi (SCM) consente di verificare se il servizio accetta tali comandi utilizzando il valore di CanStop. Per la maggior parte dei servizi, il valore di CanStop è `true`, ma alcuni servizi del sistema operativo, ad esempio, consente all&quot;utente di arrestarli.       Se è CanStop `true`, il comando di interruzione viene passato al servizio e <xref:System.ServiceProcess.ServiceBase.OnStop%2A>metodo viene chiamato se è definito.</xref:System.ServiceProcess.ServiceBase.OnStop%2A> Se <xref:System.ServiceProcess.ServiceBase.OnStop%2A>non è implementata nella classe derivata, il gestore SCM gestisce il comando di interruzione tramite la classe base vuota <xref:System.ServiceProcess.ServiceBase.OnStop%2A?displayProperty=fullName>metodo.</xref:System.ServiceProcess.ServiceBase.OnStop%2A?displayProperty=fullName> </xref:System.ServiceProcess.ServiceBase.OnStop%2A>"
   syntax:
     content: public bool CanStop { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the service can be stopped and the <xref:System.ServiceProcess.ServiceBase.OnStop*> method called; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il servizio può essere arrestato e <xref:System.ServiceProcess.ServiceBase.OnStop*>metodo chiamato; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceProcess.ServiceBase.OnStop*>"
   overload: System.ServiceProcess.ServiceBase.CanStop*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The service has already been started. The CanStop property cannot be changed once the service has started."
+    description: "Il servizio è già stato avviato. La proprietà CanStop non può essere modificata dopo l&quot;avvio del servizio."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.Dispose(System.Boolean)
@@ -248,14 +248,14 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Disposes of the resources (other than memory) used by the <xref href=&quot;System.ServiceProcess.ServiceBase&quot;></xref>."
-  remarks: "Call Dispose in your derived class (and through it, in the <xref:System.ServiceProcess.ServiceBase> class) when you are finished using the derived class. The Dispose method leaves the derived class in an unusable state. After calling Dispose, you must release all references to the derived class and <xref:System.ServiceProcess.ServiceBase> so the memory they were occupying can be reclaimed by garbage collection.      > [!NOTE] >  Always call Dispose before you release your last reference to the class derived from <xref:System.ServiceProcess.ServiceBase>. Otherwise, the resources <xref:System.ServiceProcess.ServiceBase> and the derived class are using will not be freed until garbage collection calls the objects&quot; destructors.       <xref:System.ServiceProcess.ServiceBase.OnStop%2A> is often implemented to process the code in <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, combined with a call to Dispose. If you choose to do this in your derived class, it is customary to implement <xref:System.ServiceProcess.ServiceBase.OnStart%2A> to allocate whatever Dispose released."
+  summary: "Elimina le risorse (ad eccezione di memoria) utilizzate per il <xref href=&quot;System.ServiceProcess.ServiceBase&quot;> </xref>."
+  remarks: "Chiamare il metodo Dispose della classe derivata (e attraverso di esso, nel <xref:System.ServiceProcess.ServiceBase>classe) quando si è terminato di utilizzare la classe derivata.</xref:System.ServiceProcess.ServiceBase> Il metodo Dispose lascia la classe derivata in uno stato inutilizzabile. Dopo aver chiamato Dispose, è necessario rilasciare tutti i riferimenti alla classe derivata e <xref:System.ServiceProcess.ServiceBase>in modo che la memoria occupata può essere recuperata tramite garbage collection.</xref:System.ServiceProcess.ServiceBase>      > [!NOTE] > Sempre chiami Dispose prima di rilasciare l&quot;ultimo riferimento alla classe derivata da <xref:System.ServiceProcess.ServiceBase>.</xref:System.ServiceProcess.ServiceBase> In caso contrario, le risorse <xref:System.ServiceProcess.ServiceBase>e verrà utilizza la classe derivata non verranno liberate finché l&quot;operazione di garbage collection chiama i distruttori degli oggetti.</xref:System.ServiceProcess.ServiceBase>       <xref:System.ServiceProcess.ServiceBase.OnStop%2A>viene spesso implementato per elaborare il codice in <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, combinata con una chiamata al metodo Dispose.</xref:System.ServiceProcess.ServiceBase.OnPause%2A></xref:System.ServiceProcess.ServiceBase.OnStop%2A> Se si sceglie di eseguire questa operazione nella classe derivata, è facoltativa per implementare <xref:System.ServiceProcess.ServiceBase.OnStart%2A>allocare qualsiasi rilasciato Dispose.</xref:System.ServiceProcess.ServiceBase.OnStart%2A>"
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>per rilasciare le risorse gestite e non gestite. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> per rilasciare solo le risorse non gestite."
   overload: System.ServiceProcess.ServiceBase.Dispose*
   exceptions: []
   platform:
@@ -272,13 +272,13 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets an event log you can use to write notification of service command calls, such as Start and Stop, to the Application event log."
-  remarks: "The constructor initializes the EventLog property to an instance with the <xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName> and <xref:System.Diagnostics.EventLog.Log%2A?displayProperty=fullName> properties set. The source is the <xref:System.ServiceProcess.ServiceBase.ServiceName%2A> of the service, and the log is the computer&quot;s Application log. These values are set automatically and cannot be changed for automatic logging of service commands.       When <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> is `true`, Start, Stop, Pause, Continue, and custom commands are recorded automatically in the Application event log. You can use the EventLog property to write additional messages to that log as well. The component calls <xref:System.Diagnostics.EventLog.WriteEntry%2A?displayProperty=fullName> using this EventLog member.       To report information to a custom event log rather than the Application log, set <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> to `false` and write instructions within the command-handling methods <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>, <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, or <xref:System.ServiceProcess.ServiceBase.OnStop%2A> to post to the appropriate log."
+  summary: "Ottiene un registro eventi che è possibile utilizzare per scrivere la notifica delle chiamate di comando di servizio, ad esempio Start e Stop, nel registro eventi dell&quot;applicazione."
+  remarks: "Il costruttore inizializza la proprietà EventLog a un&quot;istanza con il <xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName>e <xref:System.Diagnostics.EventLog.Log%2A?displayProperty=fullName>set di proprietà.</xref:System.Diagnostics.EventLog.Log%2A?displayProperty=fullName> </xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName> L&quot;origine è il <xref:System.ServiceProcess.ServiceBase.ServiceName%2A>del servizio, e il log è log. applicazione del computer</xref:System.ServiceProcess.ServiceBase.ServiceName%2A> Questi valori vengono impostati automaticamente e non possono essere modificati per la registrazione automatica dei comandi di servizio.       Quando <xref:System.ServiceProcess.ServiceBase.AutoLog%2A>è `true`, Start, Stop, Pause, continua e comandi personalizzati vengono registrati automaticamente nel log eventi dell&quot;applicazione.</xref:System.ServiceProcess.ServiceBase.AutoLog%2A> È possibile utilizzare la proprietà EventLog per scrivere messaggi aggiuntivi in tale registro anche. Il componente chiama <xref:System.Diagnostics.EventLog.WriteEntry%2A?displayProperty=fullName>utilizzo di questo membro EventLog.</xref:System.Diagnostics.EventLog.WriteEntry%2A?displayProperty=fullName>       Per registrare le informazioni in un log eventi personalizzato anziché nel registro applicazioni, impostare <xref:System.ServiceProcess.ServiceBase.AutoLog%2A>a `false` e scrivere le istruzioni all&quot;interno dei metodi di gestione dei comandi <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>, <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, o <xref:System.ServiceProcess.ServiceBase.OnStop%2A>la registrazione per il log appropriato.</xref:System.ServiceProcess.ServiceBase.OnStop%2A> </xref:System.ServiceProcess.ServiceBase.OnPause%2A> </xref:System.ServiceProcess.ServiceBase.OnContinue%2A> </xref:System.ServiceProcess.ServiceBase.AutoLog%2A>"
   syntax:
     content: public virtual System.Diagnostics.EventLog EventLog { get; }
     return:
       type: System.Diagnostics.EventLog
-      description: "An <xref href=&quot;System.Diagnostics.EventLog&quot;></xref> instance whose source is registered to the Application log."
+      description: "Un <xref href=&quot;System.Diagnostics.EventLog&quot;> </xref> istanza la cui origine è registrato nel registro applicazioni."
   overload: System.ServiceProcess.ServiceBase.EventLog*
   exceptions: []
   platform:
@@ -295,13 +295,13 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets the exit code for the service."
-  remarks: "Set the ExitCode property to a non-zero value before stopping the service to indicate an error to the Service Control Manager."
+  summary: "Ottiene o imposta il codice di uscita per il servizio."
+  remarks: "Impostare la proprietà ExitCode su un valore diverso da zero prima di arrestare il servizio per indicare un errore in Gestione controllo servizi."
   syntax:
     content: public int ExitCode { get; set; }
     return:
       type: System.Int32
-      description: "The exit code for the service."
+      description: "Il codice di uscita per il servizio."
   overload: System.ServiceProcess.ServiceBase.ExitCode*
   exceptions: []
   platform:
@@ -318,13 +318,13 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Indicates the maximum size for a service name."
-  remarks: "ServiceName and DisplayName both have size restrictions that must be observed when setting the properties on your service class."
+  summary: "Indica la dimensione massima per un nome di servizio."
+  remarks: "ServiceName e DisplayName hanno limitazioni di dimensione che devono essere osservate quando si impostano le proprietà della classe del servizio."
   syntax:
     content: public const int MaxNameLength = 80;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -340,8 +340,8 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "When implemented in a derived class, OnContinue runs when a Continue command is sent to the service by the Service Control Manager (SCM). Specifies actions to take when a service resumes normal functioning after being paused."
-  remarks: "Implement OnContinue to mirror your application&quot;s response to <xref:System.ServiceProcess.ServiceBase.OnPause%2A>. When you continue the service (either through the Services console or programmatically), the OnContinue processing runs, and the service becomes active again.       OnContinue is expected to be overridden when the <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> property is `true`.       If <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> is `false`, the SCM will not pass Pause or Continue requests to the service, so the <xref:System.ServiceProcess.ServiceBase.OnPause%2A> and OnContinue methods will not be called even if they are implemented. In the SCM, the `Pause` and `Continue` controls are disabled when <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> is `false`."
+  summary: "Quando implementato in una classe derivata, OnContinue viene eseguito quando un comando di continuazione viene inviato al servizio da Gestione controllo servizi (SCM). Specifica le azioni da intraprendere quando un servizio riprende il normale funzionamento dopo essere stato sospeso."
+  remarks: "Implementare OnContinue per riflettere la risposta dell&quot;applicazione per <xref:System.ServiceProcess.ServiceBase.OnPause%2A>.</xref:System.ServiceProcess.ServiceBase.OnPause%2A> Quando si continua del servizio (tramite la console servizi o a livello di codice), il OnContinue viene eseguita l&quot;elaborazione e il servizio diventa nuovamente attivo.       OnContinue deve essere sottoposto a override quando il <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>proprietà `true`.</xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>       Se <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>è `false`, SCM non passerà sospensione o continua richieste al servizio, pertanto il <xref:System.ServiceProcess.ServiceBase.OnPause%2A>e metodi OnContinue non verranno chiamati anche se sono implementate.</xref:System.ServiceProcess.ServiceBase.OnPause%2A> </xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> In Gestione controllo servizi, il `Pause` e `Continue` controlli sono disabilitati quando <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>è `false`.</xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>"
   syntax:
     content: protected virtual void OnContinue ();
     parameters: []
@@ -361,14 +361,14 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "When implemented in a derived class, OnCustomCommand executes when the Service Control Manager (SCM) passes a custom command to the service. Specifies actions to take when a command with the specified parameter value occurs."
-  remarks: "OnCustomCommand lets you specify additional functionality beyond starting, stopping, pausing and continuing services.       The SCM does not examine the custom command to verify whether the service supports the `command` parameter passed in. It passes the custom command directly to the service. If the service does not recognize the `command` parameter, it does nothing.       Custom commands are raised by an <xref:System.ServiceProcess.ServiceController.ExecuteCommand%2A> statement in a <xref:System.ServiceProcess.ServiceController> component. Use a switch statement or if..then condition to handle the custom commands you define on your service.       The only values for a custom command that you can define in your application or use in OnCustomCommand are those between 128 and 255. Integers below 128 correspond to system-reserved values.       If the <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> property is `true`, custom commands, like all other commands, write entries to the event log to report whether the method execution succeeded or failed."
+  summary: "Quando viene implementato in una classe derivata, viene eseguito OnCustomCommand quando Gestione controllo servizi (SCM) passa un comando personalizzato per il servizio. Specifica le azioni da intraprendere quando si verifica un comando con il valore del parametro specificato."
+  remarks: "OnCustomCommand consente di specificare funzionalità aggiuntive oltre all&quot;avvio, arresto, sospensione e continuazione dei servizi.       Gestione controllo servizi non esamina il comando personalizzato per verificare se il servizio supporta il `command` parametro passato. Il comando personalizzato passa direttamente al servizio. Se il servizio non riconosce il `command` parametro, non esegue alcuna operazione.       Comandi personalizzati sono attivati da un <xref:System.ServiceProcess.ServiceController.ExecuteCommand%2A>istruzione in un <xref:System.ServiceProcess.ServiceController>componente.</xref:System.ServiceProcess.ServiceController> </xref:System.ServiceProcess.ServiceController.ExecuteCommand%2A> Usare un&quot;istruzione switch o se... Then per gestire i comandi personalizzati definiti nel servizio.       Gli unici valori per un comando personalizzato che è possibile definire nell&quot;applicazione in uso o utilizzare in OnCustomCommand sono quelli compresi tra 128 e 255. Gli integer sotto 128 corrispondono ai valori riservati al sistema.       Se il <xref:System.ServiceProcess.ServiceBase.AutoLog%2A>proprietà `true`, comandi personalizzati, analogamente a tutti gli altri comandi, scriveranno voci nel registro eventi per segnalare se l&quot;esecuzione del metodo ha avuto esito positivo o negativo.</xref:System.ServiceProcess.ServiceBase.AutoLog%2A>"
   syntax:
     content: protected virtual void OnCustomCommand (int command);
     parameters:
     - id: command
       type: System.Int32
-      description: "The command message sent to the service."
+      description: "Il messaggio di comando inviato al servizio."
   overload: System.ServiceProcess.ServiceBase.OnCustomCommand*
   exceptions: []
   platform:
@@ -385,8 +385,8 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "When implemented in a derived class, executes when a Pause command is sent to the service by the Service Control Manager (SCM). Specifies actions to take when a service pauses."
-  remarks: "Use OnPause to specify the processing that occurs when the service receives a Pause command. OnPause is expected to be overridden when the <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> property is `true`.       When you continue a paused service (either through the Services console or programmatically), the <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> processing is run, and the service becomes active again.       The Pause command only allows your application to react to a specific event. OnPause does nothing to the service that you do not define it to do.       Sending a Pause request to the service can conserve system resources because Pause need not release all system resources. For example, if threads have been opened by the process, pausing a service rather than stopping it can allow the threads to remain open, obviating the need to reallocate them when the service continues. If you define Pause to release all system resources, it behaves like a Stop command.       Set <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> to `true`, and override OnPause and <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> to specify the processing that should occur when the SCM passes a Pause or Continue request to your service. <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> should be implemented to undo the processing in OnPause.       If <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> is `false`, the SCM will not pass Pause or Continue requests to the service, so the OnPause and <xref:System.ServiceProcess.ServiceBase.OnContinue%2A> methods will not be called even if implemented. In the SCM, the `Pause` and `Continue` controls are disabled when <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> is `false`."
+  summary: "Quando viene implementato in una classe derivata, viene eseguito quando un comando di sospensione viene inviato al servizio da Gestione controllo servizi (SCM). Specifica le azioni da intraprendere quando un servizio viene sospeso."
+  remarks: "Utilizzare OnPause per specificare l&quot;elaborazione che si verifica quando il servizio riceve un comando di sospensione. OnPause deve essere sottoposto a override quando il <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>proprietà `true`.</xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>       Quando si continua un servizio sospeso (tramite la console servizi o a livello di codice), il <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>viene eseguita l&quot;elaborazione e il servizio diventa nuovamente attivo.</xref:System.ServiceProcess.ServiceBase.OnContinue%2A>       Il comando pausa consente solo l&quot;applicazione rispondere a un evento specifico. OnPause non esegue alcuna operazione per il servizio che non si definisce per l&quot;esecuzione.       L&quot;invio di una richiesta di sospensione per il servizio, è possibile risparmiare risorse di sistema perché Pause non è necessario rilasciare tutte le risorse di sistema. Ad esempio, se il processo, la sospensione di un servizio, anziché l&quot;arresto possibile consentire i thread rimangano aperti, sono state aperte thread non dovranno quindi riallocarli quando il servizio continua. Se si definiscono Sospendi per rilasciare tutte le risorse di sistema, si comporta come un comando di arresto.       Impostare <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>a `true`ed eseguire l&quot;override OnPause e <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>per specificare l&quot;elaborazione che deve verificarsi quando il server passa una richiesta di sospensione o continuazione al servizio.</xref:System.ServiceProcess.ServiceBase.OnContinue%2A> </xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>deve essere implementato per annullare l&quot;elaborazione in OnPause.</xref:System.ServiceProcess.ServiceBase.OnContinue%2A>       Se <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>è `false`, SCM non passerà sospensione o continua di richieste al servizio, pertanto OnPause e <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>metodi non verranno chiamati anche se è implementato.</xref:System.ServiceProcess.ServiceBase.OnContinue%2A> </xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A> In Gestione controllo servizi, il `Pause` e `Continue` controlli sono disabilitati quando <xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>è `false`.</xref:System.ServiceProcess.ServiceBase.CanPauseAndContinue%2A>"
   syntax:
     content: protected virtual void OnPause ();
     parameters: []
@@ -406,17 +406,17 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "When implemented in a derived class, executes when the computer&quot;s power status has changed. This applies to laptop computers when they go into suspended mode, which is not the same as a system shutdown."
-  remarks: "Use OnPowerEvent to specify the processing that occurs when the system event indicated in the <xref:System.ServiceProcess.PowerBroadcastStatus> enumeration occurs--for example, when the computer is placed in suspended mode or indicates low battery power.       OnPowerEvent is expected to be overridden when the <xref:System.ServiceProcess.ServiceBase.CanHandlePowerEvent%2A> property is `true`."
+  summary: "Quando viene implementato in una classe derivata, viene eseguito quando lo stato di alimentazione del computer è stato modificato. Questo vale per i computer portatili che entrano in modalità sospensione, che non è lo stesso come un arresto del sistema."
+  remarks: "Consente di specificare l&quot;elaborazione che si verifica quando l&quot;evento di sistema indicata OnPowerEvent il <xref:System.ServiceProcess.PowerBroadcastStatus>enumerazione si verifica, ad esempio, quando il computer si trova in modalità sospensione o indica consumo della batteria.</xref:System.ServiceProcess.PowerBroadcastStatus>       OnPowerEvent deve essere sottoposto a override quando il <xref:System.ServiceProcess.ServiceBase.CanHandlePowerEvent%2A>proprietà `true`.</xref:System.ServiceProcess.ServiceBase.CanHandlePowerEvent%2A>"
   syntax:
     content: protected virtual bool OnPowerEvent (System.ServiceProcess.PowerBroadcastStatus powerStatus);
     parameters:
     - id: powerStatus
       type: System.ServiceProcess.PowerBroadcastStatus
-      description: "A <xref href=&quot;System.ServiceProcess.PowerBroadcastStatus&quot;></xref> that indicates a notification from the system about its power status."
+      description: "Oggetto <xref href=&quot;System.ServiceProcess.PowerBroadcastStatus&quot;> </xref> che indica una notifica dal sistema sul relativo stato di alimentazione."
     return:
       type: System.Boolean
-      description: "When implemented in a derived class, the needs of your application determine what value to return. For example, if a <xref uid=&quot;langword_csharp_QuerySuspend&quot; name=&quot;QuerySuspend&quot; href=&quot;&quot;></xref> broadcast status is passed, you could cause your application to reject the query by returning <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Quando viene implementato in una classe derivata, le esigenze della propria applicazione di determinano il valore da restituire. Ad esempio, se un <xref uid=&quot;langword_csharp_QuerySuspend&quot; name=&quot;QuerySuspend&quot; href=&quot;&quot;> </xref> stato viene passato, è possibile che l&quot;applicazione per rifiutare la query restituendo <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceProcess.ServiceBase.OnPowerEvent*
   exceptions: []
   platform:
@@ -433,14 +433,14 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Executes when a change event is received from a Terminal Server session."
-  remarks: "You must set the <xref:System.ServiceProcess.ServiceBase.CanHandleSessionChangeEvent%2A> property to `true` to enable the execution of this method."
+  summary: "Viene eseguito quando viene ricevuto un evento di modifica da una sessione di Terminal Server."
+  remarks: "È necessario impostare il <xref:System.ServiceProcess.ServiceBase.CanHandleSessionChangeEvent%2A>proprietà `true` per abilitare l&quot;esecuzione di questo metodo.</xref:System.ServiceProcess.ServiceBase.CanHandleSessionChangeEvent%2A>"
   syntax:
     content: protected virtual void OnSessionChange (System.ServiceProcess.SessionChangeDescription changeDescription);
     parameters:
     - id: changeDescription
       type: System.ServiceProcess.SessionChangeDescription
-      description: "A structure that identifies the change type."
+      description: "Struttura che identifica il tipo di modifica."
   overload: System.ServiceProcess.ServiceBase.OnSessionChange*
   exceptions: []
   platform:
@@ -457,8 +457,8 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "When implemented in a derived class, executes when the system is shutting down. Specifies what should occur immediately prior to the system shutting down."
-  remarks: "Use OnShutdown to specify the processing that occurs when the system shuts down.       This event occurs only when the operating system is shut down, not when the computer is turned off.       OnShutdown is expected to be overridden when the <xref:System.ServiceProcess.ServiceBase.CanShutdown%2A> property is `true`."
+  summary: "Quando viene implementato in una classe derivata, viene eseguito quando il sistema è in corso l&quot;arresto. Specifica cosa dovrebbe accadere immediatamente prima della chiusura del sistema."
+  remarks: "Utilizzare OnShutdown per specificare l&quot;elaborazione che si verifica quando il sistema si arresta.       Questo evento si verifica solo quando il sistema operativo viene arrestato, non quando il computer è spento.       OnShutdown deve essere sottoposto a override quando il <xref:System.ServiceProcess.ServiceBase.CanShutdown%2A>proprietà `true`.</xref:System.ServiceProcess.ServiceBase.CanShutdown%2A>"
   syntax:
     content: protected virtual void OnShutdown ();
     parameters: []
@@ -478,14 +478,14 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "When implemented in a derived class, executes when a Start command is sent to the service by the Service Control Manager (SCM) or when the operating system starts (for a service that starts automatically). Specifies actions to take when the service starts."
+  summary: "Quando viene implementato in una classe derivata, viene eseguito quando un comando di avvio viene inviato al servizio da Gestione controllo servizi (SCM) o quando l&quot;avvio del sistema operativo (per un servizio che viene avviato automaticamente). Specifica le azioni da eseguire all&quot;avvio del servizio."
   remarks: "Use OnStart to specify the processing that occurs when the service receives a Start command. OnStart is the method in which you specify the behavior of the service. OnStart can take arguments as a way to pass data, but this usage is rare.  \n  \n> [!CAUTION]\n>  Do not use the constructor to perform processing that should be in OnStart. Use OnStart to handle all initialization of your service. The constructor is called when the application's executable runs, not when the service runs. The executable runs before OnStart. When you continue, for example, the constructor is not called again because the SCM already holds the object in memory. If <xref:System.ServiceProcess.ServiceBase.OnStop%2A> releases resources allocated in the constructor rather than in OnStart, the needed resources would not be created again the second time the service is called.  \n  \n Services can be set to start automatically when the computer reboots by setting the <xref:System.ServiceProcess.ServiceInstaller.StartType%2A> on the service's installer to <xref:System.ServiceProcess.ServiceStartMode>. In such a situation, OnStart would be called at system startup.  \n  \n OnStart is expected to be overridden in the derived class. For the service to be useful, OnStart and <xref:System.ServiceProcess.ServiceBase.OnStop%2A> should both be implemented in your service class.  \n  \n Process initialization arguments for the service in the OnStart method, not in the Main method. The arguments in the `args` parameter array can be set manually in the properties window for the service in the Services console. The arguments entered in the console are not saved; they are passed to the service on a one-time basis when the service is started from the control panel. Arguments that must be present when the service is automatically started can be placed in the ImagePath string value for the service's registry key (HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\\\*\\<service name>*). You can obtain the arguments from the registry using the <xref:System.Environment.GetCommandLineArgs%2A> method, for example:  `string[] imagePathArgs = Environment.GetCommandLineArgs();`."
   syntax:
     content: protected virtual void OnStart (string[] args);
     parameters:
     - id: args
       type: System.String[]
-      description: "Data passed by the start command."
+      description: "Dati passati dal comando di avvio."
   overload: System.ServiceProcess.ServiceBase.OnStart*
   exceptions: []
   platform:
@@ -502,8 +502,8 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "When implemented in a derived class, executes when a Stop command is sent to the service by the Service Control Manager (SCM). Specifies actions to take when a service stops running."
-  remarks: "Use OnStop to specify the processing that occurs when the service receives a Stop command.       When the SCM receives a Stop command, it uses the value of <xref:System.ServiceProcess.ServiceBase.CanStop%2A> to verify whether the service accepts Stop commands. If <xref:System.ServiceProcess.ServiceBase.CanStop%2A> is `true`, the Stop command is passed to the service, and the OnStop method is called if it is defined. If OnStop is not implemented in the service, the SCM handles the Stop command.       If <xref:System.ServiceProcess.ServiceBase.CanStop%2A> is `false`, the SCM ignores the Stop command. It is not passed to the service. The Stop command returns and throws an exception.       OnStop is expected to be overridden in the derived class. For the service to be useful, <xref:System.ServiceProcess.ServiceBase.OnStart%2A> and OnStop should both be implemented in your service class."
+  summary: "Quando viene implementato in una classe derivata, viene eseguito quando il servizio viene inviato un comando di arresto da Gestione controllo servizi (SCM). Specifica le azioni da intraprendere quando si arresta un servizio."
+  remarks: "Consente di specificare l&quot;elaborazione che si verifica quando il servizio riceve un comando Stop OnStop.       Quando il server riceve un comando di interruzione, viene utilizzato il valore di <xref:System.ServiceProcess.ServiceBase.CanStop%2A>per verificare se il servizio accetta comandi Stop.</xref:System.ServiceProcess.ServiceBase.CanStop%2A> Se <xref:System.ServiceProcess.ServiceBase.CanStop%2A>è `true`, il comando di interruzione viene passato al servizio e viene chiamato il metodo OnStop se è definito.</xref:System.ServiceProcess.ServiceBase.CanStop%2A> Se OnStop non viene implementata nel servizio, il server gestisce il comando di arresto.       Se <xref:System.ServiceProcess.ServiceBase.CanStop%2A>è `false`, il comando di interruzione viene ignorato.</xref:System.ServiceProcess.ServiceBase.CanStop%2A> Non viene passato al servizio. Il comando Stop restituisce e genera un&quot;eccezione.       OnStop deve essere sottoposto a override nella classe derivata. Per il servizio siano utili, <xref:System.ServiceProcess.ServiceBase.OnStart%2A>e OnStop deve implementato nella classe del servizio.</xref:System.ServiceProcess.ServiceBase.OnStart%2A>"
   syntax:
     content: protected virtual void OnStop ();
     parameters: []
@@ -523,19 +523,19 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Requests additional time for a pending operation."
-  remarks: "The RequestAdditionalTime method is intended to be called by the overridden <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>, <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, <xref:System.ServiceProcess.ServiceBase.OnStart%2A>, or <xref:System.ServiceProcess.ServiceBase.OnStop%2A> methods to request additional time for a pending operation, to prevent the Service Control Manager (SCM) from marking the service as not responding.  If the pending operation is not a continue, pause, start, or stop, an <xref:System.InvalidOperationException> is thrown."
+  summary: "Ora di ulteriori richieste per un&quot;operazione in sospeso."
+  remarks: "Il metodo RequestAdditionalTime è destinato a essere chiamato da sottoposto a override <xref:System.ServiceProcess.ServiceBase.OnContinue%2A>, <xref:System.ServiceProcess.ServiceBase.OnPause%2A>, <xref:System.ServiceProcess.ServiceBase.OnStart%2A>, o <xref:System.ServiceProcess.ServiceBase.OnStop%2A>metodi per richiedere ulteriore tempo per un&quot;operazione in sospeso, per impedire che Gestione controllo servizi (SCM) contrassegni il servizio come non risponde.</xref:System.ServiceProcess.ServiceBase.OnStop%2A> </xref:System.ServiceProcess.ServiceBase.OnStart%2A> </xref:System.ServiceProcess.ServiceBase.OnPause%2A> </xref:System.ServiceProcess.ServiceBase.OnContinue%2A>  Se l&quot;operazione in sospeso non è una continuazione, pausa, start o stop, un <xref:System.InvalidOperationException>viene generata un&quot;eccezione.</xref:System.InvalidOperationException>"
   syntax:
     content: public void RequestAdditionalTime (int milliseconds);
     parameters:
     - id: milliseconds
       type: System.Int32
-      description: "The requested time in milliseconds."
+      description: "Il tempo richiesto in millisecondi."
   overload: System.ServiceProcess.ServiceBase.RequestAdditionalTime*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The service is not in a pending state."
+    description: "Il servizio non è stato in sospeso."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.Run(System.ServiceProcess.ServiceBase)
@@ -550,19 +550,19 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Registers the executable for a service with the Service Control Manager (SCM)."
-  remarks: "Call this overload in the `main()` function of the service executable to register the service with the Service Control Manager. After you call Run, the Service Control Manager issues a Start command, which results in a call to the <xref:System.ServiceProcess.ServiceBase.OnStart%2A> method in the service. The service is not started until the Start command is executed.       The Run method is called in much the same way as <xref:System.Windows.Forms.Application.Run%2A?displayProperty=fullName> for Windows Forms applications.       If <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> is `true`, an entry is written to the event log if the service specified by the `service` parameter fails to start."
+  summary: "Registra il file eseguibile per un servizio con Gestione controllo servizi (SCM)."
+  remarks: "Chiamare questo overload nella `main()` funzione del servizio eseguibile per registrare il servizio con Gestione controllo servizi. Dopo la chiamata di esecuzione, Gestione controllo servizi esegue un comando di avvio, che comporta una chiamata al <xref:System.ServiceProcess.ServiceBase.OnStart%2A>metodo nel servizio.</xref:System.ServiceProcess.ServiceBase.OnStart%2A> Il servizio non viene avviato finché non viene eseguito il comando di avvio.       Viene chiamato il metodo Run in modo analogo a come <xref:System.Windows.Forms.Application.Run%2A?displayProperty=fullName>per applicazioni Windows Forms.</xref:System.Windows.Forms.Application.Run%2A?displayProperty=fullName>       Se <xref:System.ServiceProcess.ServiceBase.AutoLog%2A>è `true`, viene scritta una voce nel registro eventi se il servizio specificato per il `service` parametro non viene avviato.</xref:System.ServiceProcess.ServiceBase.AutoLog%2A>"
   syntax:
     content: public static void Run (System.ServiceProcess.ServiceBase service);
     parameters:
     - id: service
       type: System.ServiceProcess.ServiceBase
-      description: "A <xref href=&quot;System.ServiceProcess.ServiceBase&quot;></xref> which indicates a service to start."
+      description: "Oggetto <xref href=&quot;System.ServiceProcess.ServiceBase&quot;> </xref> che indica un servizio da avviare."
   overload: System.ServiceProcess.ServiceBase.Run*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>service</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>service</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.Run(System.ServiceProcess.ServiceBase[])
@@ -577,19 +577,19 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Registers the executable for multiple services with the Service Control Manager (SCM)."
-  remarks: "Call this overload in the `main()` function of the service executable to register the services with the Service Control Manager. After you call Run, the Service Control Manager issues Start commands, which result in calls to the <xref:System.ServiceProcess.ServiceBase.OnStart%2A> methods in the services. The services are not started until the Start commands are executed.       The Run method is called in much the same way as the <xref:System.Windows.Forms.Application.Run%2A?displayProperty=fullName> method for Windows Forms applications.       If <xref:System.ServiceProcess.ServiceBase.AutoLog%2A> is `true`, an entry is written to the event log if any service in the array fails to start."
+  summary: "Registra il file eseguibile per più servizi con Gestione controllo servizi (SCM)."
+  remarks: "Chiamare questo overload nella `main()` funzione del servizio eseguibile per registrare i servizi con Gestione controllo servizi. Dopo la chiamata di esecuzione, Gestione controllo servizi esegue i comandi di avvio, generare chiamate per il <xref:System.ServiceProcess.ServiceBase.OnStart%2A>metodi nei servizi.</xref:System.ServiceProcess.ServiceBase.OnStart%2A> I servizi non vengono avviati fino a quando non vengono eseguiti i comandi di avvio.       Viene chiamato il metodo Run in modo analogo a come il <xref:System.Windows.Forms.Application.Run%2A?displayProperty=fullName>metodo per applicazioni Windows Forms.</xref:System.Windows.Forms.Application.Run%2A?displayProperty=fullName>       Se <xref:System.ServiceProcess.ServiceBase.AutoLog%2A>è `true`, viene scritta una voce nel registro eventi se non si avvia qualsiasi servizio nella matrice.</xref:System.ServiceProcess.ServiceBase.AutoLog%2A>"
   syntax:
     content: public static void Run (System.ServiceProcess.ServiceBase[] services);
     parameters:
     - id: services
       type: System.ServiceProcess.ServiceBase[]
-      description: "An array of ServiceBase instances, which indicate services to start."
+      description: "Matrice di istanze ServiceBase, che indica i servizi da avviare."
   overload: System.ServiceProcess.ServiceBase.Run*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "You did not supply a service to start. The array might be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "Non è stato fornito un servizio da avviare. La matrice potrebbe essere <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> o vuoto."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.ServiceHandle
@@ -604,13 +604,13 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets the service control handle for the service."
-  remarks: "The service control handle is used to communicate with the Service Control Manager (SCM).  The handle can be used to update the service control manager&quot;s status information for the calling service using the unmanaged `SetServiceStatus` function."
+  summary: "Ottiene l&quot;handle del controllo del servizio per il servizio."
+  remarks: "L&quot;handle del controllo del servizio viene utilizzato per comunicare con Gestione controllo servizi (SCM).  L&quot;handle può essere utilizzato per aggiornare le informazioni sullo stato della gestione controllo servizi per il servizio chiamante mediante non gestito `SetServiceStatus` (funzione)."
   syntax:
     content: protected IntPtr ServiceHandle { get; }
     return:
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> structure that contains the service control handle for the service."
+      description: "Un <xref:System.IntPtr>struttura che contiene l&quot;handle del controllo del servizio per il servizio.</xref:System.IntPtr>"
   overload: System.ServiceProcess.ServiceBase.ServiceHandle*
   exceptions: []
   platform:
@@ -627,16 +627,16 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Registers the command handler and starts the service."
+  summary: "Registra il gestore del comando e avvia il servizio."
   syntax:
     content: public void ServiceMainCallback (int argCount, IntPtr argPointer);
     parameters:
     - id: argCount
       type: System.Int32
-      description: "The number of arguments in the argument array."
+      description: "Il numero di argomenti nella matrice di argomenti."
     - id: argPointer
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> structure that points to an array of arguments."
+      description: "Un <xref:System.IntPtr>struttura che punta a una matrice di argomenti.</xref:System.IntPtr>"
   overload: System.ServiceProcess.ServiceBase.ServiceMainCallback*
   exceptions: []
   platform:
@@ -653,21 +653,21 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Gets or sets the short name used to identify the service to the system."
-  remarks: "The ServiceName identifies the service to the Service Control Manager. The value of this property must be identical to the name recorded for the service in the <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A?displayProperty=fullName> property of the corresponding installer class. In code, the ServiceName of the service is usually set in the `main()` function of the executable.       The ServiceName is also used to specify the <xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName> associated with the <xref:System.ServiceProcess.ServiceBase.EventLog%2A> property. This <xref:System.ServiceProcess.ServiceBase.EventLog%2A> is an instance that writes service command information to the Application log.       The ServiceName, which supplies the source string for the event log, must be set before the service writes to the event log. Trying to access the event log before the source name is set causes an exception to be thrown."
+  summary: "Ottiene o imposta il nome breve utilizzato per identificare il servizio di sistema."
+  remarks: "La proprietà ServiceName identifica il servizio di Gestione controllo servizi. Il valore di questa proprietà deve essere identico al nome registrato per il servizio nella <xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A?displayProperty=fullName>proprietà della classe corrispondente. programma di installazione</xref:System.ServiceProcess.ServiceInstaller.ServiceName%2A?displayProperty=fullName> Nel codice, ServiceName del servizio è in genere impostato nella `main()` funzione del file eseguibile.       La proprietà ServiceName viene inoltre utilizzato per specificare il <xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName>associato il <xref:System.ServiceProcess.ServiceBase.EventLog%2A>proprietà.</xref:System.ServiceProcess.ServiceBase.EventLog%2A> </xref:System.Diagnostics.EventLog.Source%2A?displayProperty=fullName> Questa <xref:System.ServiceProcess.ServiceBase.EventLog%2A>è un&quot;istanza che scrive le informazioni di comando di servizio nel registro applicazione.</xref:System.ServiceProcess.ServiceBase.EventLog%2A>       La proprietà ServiceName, che fornisce la stringa di origine per il log eventi, deve essere impostato prima che il servizio scrive nel registro eventi. Tentativo di accedere al registro eventi prima di imposta il nome dell&quot;origine genererà un&quot;eccezione generata."
   syntax:
     content: public string ServiceName { get; set; }
     return:
       type: System.String
-      description: "The name of the service."
+      description: "Il nome del servizio."
   overload: System.ServiceProcess.ServiceBase.ServiceName*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The service has already been started. The ServiceName property cannot be changed once the service has started."
+    description: "Il servizio è già stato avviato. La proprietà ServiceName non può essere modificata dopo l&quot;avvio del servizio."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The specified name is a zero-length string or is longer than <xref href=&quot;System.ServiceProcess.ServiceBase.MaxNameLength&quot;></xref>, or the specified name contains forward slash or backslash characters."
+    description: "Il nome specificato è una stringa di lunghezza zero o più di <xref href=&quot;System.ServiceProcess.ServiceBase.MaxNameLength&quot;> </xref>, o il nome specificato contiene caratteri di barra o barra rovesciata in avanti."
   platform:
   - net462
 - uid: System.ServiceProcess.ServiceBase.Stop
@@ -682,8 +682,8 @@ items:
   assemblies:
   - System.ServiceProcess
   namespace: System.ServiceProcess
-  summary: "Stops the executing service."
-  remarks: "The Stop method sets the service state to indicate a stop is pending and calls the <xref:System.ServiceProcess.ServiceBase.OnStop%2A> method.  After the application is stopped, the service state is set to stopped. If the application is a hosted service, the application domain is unloaded."
+  summary: "Arresta il servizio in esecuzione."
+  remarks: "Il metodo di arresto imposta la stato del servizio per indicare un arresto in sospeso e chiama il <xref:System.ServiceProcess.ServiceBase.OnStop%2A>metodo.</xref:System.ServiceProcess.ServiceBase.OnStop%2A>  Dopo l&quot;applicazione è stato arrestato, lo stato del servizio è impostato su arrestato. Se l&quot;applicazione è un servizio ospitato, viene scaricato il dominio dell&quot;applicazione."
   syntax:
     content: public void Stop ();
     parameters: []

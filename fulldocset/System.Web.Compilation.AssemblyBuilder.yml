@@ -16,8 +16,8 @@ items:
   nameWithType: AssemblyBuilder
   fullName: System.Web.Compilation.AssemblyBuilder
   type: Class
-  summary: "Provides a container for building an assembly from one or more virtual paths within an ASP.NET project."
-  remarks: "Instances of the AssemblyBuilder class are used with <xref:System.Web.Compilation.BuildProvider> class methods to build one or more files into a compiled assembly.       The <xref:System.Web.Compilation.BuildProvider> class defines build functionality for individual files, and the AssemblyBuilder class combines the source code contributed by each <xref:System.Web.Compilation.BuildProvider> instance into a single assembly. The ASP.NET build environment passes an AssemblyBuilder object to the <xref:System.Web.Compilation.BuildProvider> methods when building an assembly from one or more files, so that each <xref:System.Web.Compilation.BuildProvider> instance can contribute source code for its file to the overall assembly.       The ASP.NET build environment determines the language and compiler required by files within the project, based on the <xref:System.Web.Compilation.BuildProvider.CodeCompilerType%2A?displayProperty=fullName> property. The build environment groups files based on their compiler settings and builds an assembly from files that require the same compiler.       The <xref:System.Web.Compilation.AssemblyBuilder.CodeDomProvider%2A> property indicates the <xref:System.CodeDom.Compiler.CodeDomProvider> implementation that the ASP.NET build environment uses to compile an assembly from the source code contributed by each <xref:System.Web.Compilation.BuildProvider> implementation.       A <xref:System.Web.Compilation.BuildProvider> object contributes source code in the form of a CodeDOM graph using the <xref:System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit%2A> method. A <xref:System.Web.Compilation.BuildProvider> object contributes source code stored in a physical file using the <xref:System.Web.Compilation.AssemblyBuilder.CreateCodeFile%2A> method.       After each <xref:System.Web.Compilation.BuildProvider> object contributes source code using the appropriate AssemblyBuilder methods, the ASP.NET build environment uses the AssemblyBuilder class to compile the collected source code into an assembly."
+  summary: "Fornisce un contenitore per la creazione di un assembly da uno o più percorsi virtuali all&quot;interno di un progetto ASP.NET."
+  remarks: "Le istanze della classe AssemblyBuilder vengono utilizzate con <xref:System.Web.Compilation.BuildProvider>classe metodi per creare uno o più file in un assembly compilato.</xref:System.Web.Compilation.BuildProvider>       La <xref:System.Web.Compilation.BuildProvider>classe definisce la funzionalità di compilazione per i singoli file e la classe AssemblyBuilder combina il codice sorgente reso disponibile da ogni <xref:System.Web.Compilation.BuildProvider>istanza in un unico assembly.</xref:System.Web.Compilation.BuildProvider> </xref:System.Web.Compilation.BuildProvider> ASP.NET compila viene passato un oggetto AssemblyBuilder il <xref:System.Web.Compilation.BuildProvider>metodi quando si compila un assembly da uno o più file, in modo che ogni <xref:System.Web.Compilation.BuildProvider>istanza possa fornire il codice sorgente per il rispettivo file di assembly globale.</xref:System.Web.Compilation.BuildProvider> </xref:System.Web.Compilation.BuildProvider>       L&quot;ambiente di compilazione ASP.NET determina la lingua e il compilatore richiesti dai file all&quot;interno del progetto, in base il <xref:System.Web.Compilation.BuildProvider.CodeCompilerType%2A?displayProperty=fullName>proprietà.</xref:System.Web.Compilation.BuildProvider.CodeCompilerType%2A?displayProperty=fullName> I file di gruppi dell&quot;ambiente di compilazione in base alle relative impostazioni del compilatore e compila un assembly da file che richiedono lo stesso compilatore.       Il <xref:System.Web.Compilation.AssemblyBuilder.CodeDomProvider%2A>proprietà indica il <xref:System.CodeDom.Compiler.CodeDomProvider>implementazione nell&quot;ambiente di compilazione ASP.NET viene utilizzato per compilare un assembly dal codice sorgente reso disponibile da ogni <xref:System.Web.Compilation.BuildProvider>implementazione.</xref:System.Web.Compilation.BuildProvider> </xref:System.CodeDom.Compiler.CodeDomProvider> </xref:System.Web.Compilation.AssemblyBuilder.CodeDomProvider%2A>       Oggetto <xref:System.Web.Compilation.BuildProvider>oggetto fornisce codice sorgente sotto forma di grafico CodeDOM mediante il <xref:System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit%2A>metodo.</xref:System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit%2A> </xref:System.Web.Compilation.BuildProvider> Oggetto <xref:System.Web.Compilation.BuildProvider>oggetto fornisce codice sorgente archiviato in un file fisico mediante la <xref:System.Web.Compilation.AssemblyBuilder.CreateCodeFile%2A>metodo.</xref:System.Web.Compilation.AssemblyBuilder.CreateCodeFile%2A> </xref:System.Web.Compilation.BuildProvider>       Dopo ogni <xref:System.Web.Compilation.BuildProvider>oggetto fornisce codice sorgente utilizzando i metodi AssemblyBuilder appropriati, l&quot;ambiente di compilazione ASP.NET utilizza la classe AssemblyBuilder per compilare il codice sorgente raccolti in un assembly.</xref:System.Web.Compilation.BuildProvider>"
   example:
   - "The following code example illustrates a simple build provider implementation, inheriting from the abstract <xref:System.Web.Compilation.BuildProvider> base class. The build provider overrides the <xref:System.Web.Compilation.BuildProvider.CodeCompilerType%2A>, <xref:System.Web.Compilation.BuildProvider.GetGeneratedType%2A>, and <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> members of the base class.  \n  \n In the <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> method implementation, the build provider adds the generated code for the assembly compilation using the <xref:System.Web.Compilation.AssemblyBuilder.CreateCodeFile%2A> method. The example does not include the implementation of the `SampleClassGenerator` class. For more information, see <xref:System.CodeDom.CodeCompileUnit>.  \n  \n [!code-cs[System.Web.Compilation_SampleBuildProvider#2](~/add/codesnippet/csharp/t-system.web.compilation_10_1.cs)]\n [!code-vb[System.Web.Compilation_SampleBuildProvider#2](~/add/codesnippet/visualbasic/t-system.web.compilation_10_1.vb)]"
   syntax:
@@ -40,14 +40,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Adds an assembly that is referenced by source code generated for a file."
-  remarks: "A <xref:System.Web.Compilation.BuildProvider> implementation uses the AddAssemblyReference method when generating source code that references types within the input assembly.       The ASP.NET build environment initializes the default collection of assemblies available for reference through the build provider in the <xref:System.Web.Compilation.BuildProvider.ReferencedAssemblies%2A?displayProperty=fullName> property. If the build provider generates source code that references additional assemblies, the build provider adds the additional assemblies using the AddAssemblyReference method. The ASP.NET build environment resolves external types during assembly compilation using both the referenced assemblies added by build providers and the default collection of assemblies available for reference.       Typically, a <xref:System.Web.Compilation.BuildProvider> object adds source code to the <xref:System.Web.Compilation.AssemblyBuilder> object in the <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> method. If a build provider generates source code that uses an external type, the build provider adds the type&quot;s assembly using the AddAssemblyReference method.       Use the AddAssemblyReference method to add a referenced assembly required in source code generated by a <xref:System.Web.Compilation.BuildProvider> instance for a specific file type. Use the [assemblies Element for compilation (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/3811c448-af1c-498d-be2b-6ed2634c51e9) configuration element to configure an assembly for reference across multiple file types in a project."
+  summary: "Aggiunge un assembly a cui fa riferimento il codice sorgente generato per un file."
+  remarks: "Oggetto <xref:System.Web.Compilation.BuildProvider>implementazione utilizza il metodo AddAssemblyReference durante la generazione di codice sorgente che fa riferimento a tipi nell&quot;assembly di input.</xref:System.Web.Compilation.BuildProvider>       ASP.NET ambiente di compilazione Inizializza l&quot;insieme predefinito di assembly disponibili per riferimento nel provider di compilazione di <xref:System.Web.Compilation.BuildProvider.ReferencedAssemblies%2A?displayProperty=fullName>proprietà.</xref:System.Web.Compilation.BuildProvider.ReferencedAssemblies%2A?displayProperty=fullName> Se il provider di compilazione genera codice sorgente che fa riferimento ad assembly aggiuntivi, il provider di compilazione consente di aggiungere ulteriori assembly usando il metodo AddAssemblyReference. L&quot;ambiente di compilazione ASP.NET risolve i tipi esterni durante la compilazione di assembly utilizzando entrambi gli assembly di riferimento aggiunti da compilare i provider e l&quot;insieme predefinito di assembly disponibili per riferimento.       In genere, un <xref:System.Web.Compilation.BuildProvider>oggetto aggiunge il codice sorgente per il <xref:System.Web.Compilation.AssemblyBuilder>oggetto la <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A>metodo.</xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> </xref:System.Web.Compilation.AssemblyBuilder> </xref:System.Web.Compilation.BuildProvider> Se un provider di compilazione genera codice sorgente che utilizza un tipo esterno, il provider di compilazione aggiunge l&quot;assembly del tipo utilizzando il metodo AddAssemblyReference.       Utilizzare il metodo AddAssemblyReference per aggiungere un assembly di riferimento obbligatorio nel codice sorgente generato da un <xref:System.Web.Compilation.BuildProvider>istanza per un tipo di file specifico.</xref:System.Web.Compilation.BuildProvider> Utilizzare il [elemento assemblies per compilation (Schema delle impostazioni ASP.NET)](http://msdn.microsoft.com/en-us/3811c448-af1c-498d-be2b-6ed2634c51e9) elemento di configurazione per configurare un assembly di riferimento in più tipi di file in un progetto."
   syntax:
     content: public void AddAssemblyReference (System.Reflection.Assembly a);
     parameters:
     - id: a
       type: System.Reflection.Assembly
-      description: "An assembly referenced by a code compile unit or source file included in the assembly compilation."
+      description: "Un assembly a cui fa riferimento una compilazione origine o unità file di codice incluso nella compilazione dell&quot;assembly."
   overload: System.Web.Compilation.AssemblyBuilder.AddAssemblyReference*
   exceptions: []
   platform:
@@ -64,17 +64,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Adds source code for the assembly in the form of a CodeDOM graph."
-  remarks: "A <xref:System.Web.Compilation.BuildProvider> implementation calls the AddCodeCompileUnit method when generating a CodeDOM graph for a virtual path. Source code added with AddCodeCompileUnit is included in the assembly compilation.       Typically, a build provider&quot;s <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> method implementation reads the <xref:System.Web.Compilation.BuildProvider.VirtualPath%2A> property, parses the contents, and then adds the generated source code to the specified <xref:System.Web.Compilation.AssemblyBuilder> object. The build provider uses the AddCodeCompileUnit method to add source code as a CodeDOM graph to the assembly. Alternately, the build provider can use the <xref:System.Web.Compilation.AssemblyBuilder.CreateCodeFile%2A> method to add source code as a physical file to the assembly."
+  summary: "Aggiunge il codice sorgente per l&quot;assembly sotto forma di un grafo CodeDOM."
+  remarks: "Un&quot; <xref:System.Web.Compilation.BuildProvider>implementazione chiama il metodo AddCodeCompileUnit durante la generazione di un grafo CodeDOM per un percorso virtuale.</xref:System.Web.Compilation.BuildProvider> Il codice sorgente aggiunto con AddCodeCompileUnit è incluso nella compilazione dell&quot;assembly.       In genere, un provider di compilazione <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A>letture di implementazione di metodo di <xref:System.Web.Compilation.BuildProvider.VirtualPath%2A>Analizza il contenuto, proprietà e quindi aggiunge il codice sorgente generato all&quot;oggetto specificato <xref:System.Web.Compilation.AssemblyBuilder>oggetto.</xref:System.Web.Compilation.AssemblyBuilder> </xref:System.Web.Compilation.BuildProvider.VirtualPath%2A> </xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> Il provider di compilazione Usa il metodo AddCodeCompileUnit per aggiungere codice sorgente come un grafo CodeDOM all&quot;assembly. In alternativa, è possibile utilizzare il provider di compilazione di <xref:System.Web.Compilation.AssemblyBuilder.CreateCodeFile%2A>per aggiungere codice sorgente come un file fisico per l&quot;assembly.</xref:System.Web.Compilation.AssemblyBuilder.CreateCodeFile%2A>"
   syntax:
     content: public void AddCodeCompileUnit (System.Web.Compilation.BuildProvider buildProvider, System.CodeDom.CodeCompileUnit compileUnit);
     parameters:
     - id: buildProvider
       type: System.Web.Compilation.BuildProvider
-      description: "The build provider generating `compileUnit`."
+      description: "Il provider di generazione `compileUnit`."
     - id: compileUnit
       type: System.CodeDom.CodeCompileUnit
-      description: "The code compile unit to include in the assembly compilation."
+      description: "Unità di compilazione di codice da includere nella compilazione dell&quot;assembly."
   overload: System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit*
   exceptions: []
   platform:
@@ -91,13 +91,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets the compiler used to build source code into an assembly."
-  remarks: "The CodeDomProvider property indicates the <xref:System.CodeDom.Compiler.CodeDomProvider?displayProperty=fullName> implementation that the ASP.NET build environment uses to compile an assembly from the source code contributed by each <xref:System.Web.Compilation.BuildProvider> implementation.       The ASP.NET build environment determines the language and compiler required by files within the project, based on the <xref:System.Web.Compilation.BuildProvider.CodeCompilerType%2A?displayProperty=fullName> property. The build environment groups files based on their compiler settings and builds an assembly from files that require the same compiler."
+  summary: "Ottiene il compilatore usato per compilare il codice sorgente in un assembly."
+  remarks: "La proprietà CodeDomProvider indica il <xref:System.CodeDom.Compiler.CodeDomProvider?displayProperty=fullName>implementazione nell&quot;ambiente di compilazione ASP.NET viene utilizzato per compilare un assembly dal codice sorgente reso disponibile da ogni <xref:System.Web.Compilation.BuildProvider>implementazione.</xref:System.Web.Compilation.BuildProvider> </xref:System.CodeDom.Compiler.CodeDomProvider?displayProperty=fullName>       L&quot;ambiente di compilazione ASP.NET determina la lingua e il compilatore richiesti dai file all&quot;interno del progetto, in base il <xref:System.Web.Compilation.BuildProvider.CodeCompilerType%2A?displayProperty=fullName>proprietà.</xref:System.Web.Compilation.BuildProvider.CodeCompilerType%2A?displayProperty=fullName> I file di gruppi dell&quot;ambiente di compilazione in base alle relative impostazioni del compilatore e compila un assembly da file che richiedono lo stesso compilatore."
   syntax:
     content: public System.CodeDom.Compiler.CodeDomProvider CodeDomProvider { get; }
     return:
       type: System.CodeDom.Compiler.CodeDomProvider
-      description: "A read-only <xref href=&quot;System.CodeDom.Compiler.CodeDomProvider&quot;></xref> implementation used for compiling source code contributed by each build provider into an assembly."
+      description: "Sola lettura <xref href=&quot;System.CodeDom.Compiler.CodeDomProvider&quot;> </xref> implementazione utilizzato per la compilazione di codice sorgente fornito da ogni provider di compilazione in un assembly."
   overload: System.Web.Compilation.AssemblyBuilder.CodeDomProvider*
   exceptions: []
   platform:
@@ -114,8 +114,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Allows a build provider to create a temporary source file, and include the source file in the assembly compilation."
-  remarks: "A <xref:System.Web.Compilation.BuildProvider> implementation calls the CreateCodeFile method when generating a source file for a virtual path. Source code added with CreateCodeFile is included in the assembly compilation.       Typically, a build provider <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> method implementation reads the <xref:System.Web.Compilation.BuildProvider.VirtualPath%2A> property, parses the contents, and then adds the generated source code to the specified <xref:System.Web.Compilation.AssemblyBuilder> object. The build provider uses the CreateCodeFile method to add source code as a physical file to the assembly. Alternately, the build provider can use the <xref:System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit%2A> method to add source code as a CodeDOM graph to the assembly.       After calling CreateCodeFile, the build provider writes the source file contents using the returned <xref:System.IO.TextWriter> object. After writing the source file, the <xref:System.Web.Compilation.BuildProvider> object must use the <xref:System.IO.TextWriter.Close%2A> method to close the <xref:System.IO.TextWriter> object and free associated system resources."
+  summary: "Consente a un provider di compilazione creare un file di origine temporanea e includere il file di origine nella compilazione dell&quot;assembly."
+  remarks: "Un&quot; <xref:System.Web.Compilation.BuildProvider>implementazione chiama il metodo CreateCodeFile durante la generazione di un file di origine per un percorso virtuale.</xref:System.Web.Compilation.BuildProvider> Il codice sorgente aggiunto con CreateCodeFile è incluso nella compilazione dell&quot;assembly.       In genere, un provider di compilazione <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A>letture di implementazione di metodo di <xref:System.Web.Compilation.BuildProvider.VirtualPath%2A>Analizza il contenuto, proprietà e quindi aggiunge il codice sorgente generato all&quot;oggetto specificato <xref:System.Web.Compilation.AssemblyBuilder>oggetto.</xref:System.Web.Compilation.AssemblyBuilder> </xref:System.Web.Compilation.BuildProvider.VirtualPath%2A> </xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> Il provider di compilazione Usa il metodo CreateCodeFile per aggiungere codice sorgente come un file fisico all&quot;assembly. In alternativa, è possibile utilizzare il provider di compilazione di <xref:System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit%2A>per aggiungere codice sorgente come un grafo CodeDOM per l&quot;assembly.</xref:System.Web.Compilation.AssemblyBuilder.AddCodeCompileUnit%2A>       Dopo aver chiamato CreateCodeFile, il provider di compilazione scrive l&quot;origine contenuto del file tramite l&quot;oggetto restituito <xref:System.IO.TextWriter>oggetto.</xref:System.IO.TextWriter> Dopo aver scritto il file di origine, il <xref:System.Web.Compilation.BuildProvider>deve utilizzare l&quot;oggetto di <xref:System.IO.TextWriter.Close%2A>metodo per chiudere la <xref:System.IO.TextWriter>dell&quot;oggetto e liberare le risorse di sistema associate.</xref:System.IO.TextWriter> </xref:System.IO.TextWriter.Close%2A> </xref:System.Web.Compilation.BuildProvider>"
   example:
   - "The following code example illustrates a simple build provider implementation, inheriting from the abstract <xref:System.Web.Compilation.BuildProvider> base class. The build provider overrides the <xref:System.Web.Compilation.BuildProvider.CodeCompilerType%2A>, <xref:System.Web.Compilation.BuildProvider.GetGeneratedType%2A>, and <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> members of the base class.  \n  \n In the <xref:System.Web.Compilation.BuildProvider.GenerateCode%2A> method implementation, the build provider adds the generated code for the assembly compilation using the CreateCodeFile method. The example does not include the implementation of the `SampleClassGenerator` class. For more information, see <xref:System.CodeDom.CodeCompileUnit>.  \n  \n [!code-cs[System.Web.Compilation_SampleBuildProvider#2](~/add/codesnippet/csharp/3ed51741-a65c-4f55-993c-_1.cs)]\n [!code-vb[System.Web.Compilation_SampleBuildProvider#2](~/add/codesnippet/visualbasic/3ed51741-a65c-4f55-993c-_1.vb)]"
   syntax:
@@ -123,10 +123,10 @@ items:
     parameters:
     - id: buildProvider
       type: System.Web.Compilation.BuildProvider
-      description: "The build provider generating the code source file."
+      description: "Generazione del file di origine del codice del provider di compilazione."
     return:
       type: System.IO.TextWriter
-      description: "An open <xref:System.IO.TextWriter> that can be used to write source code to a temporary file."
+      description: "Open <xref:System.IO.TextWriter>che può essere utilizzato per scrivere codice sorgente in un file temporaneo.</xref:System.IO.TextWriter>"
   overload: System.Web.Compilation.AssemblyBuilder.CreateCodeFile*
   exceptions: []
   platform:
@@ -143,25 +143,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Allows a build provider to create a resource file to include in the assembly compilation."
-  remarks: "After calling the CreateEmbeddedResource method, a <xref:System.Web.Compilation.BuildProvider> object writes the resource file contents using the returned <xref:System.IO.Stream> object. For example, the build provider can write the resources using a <xref:System.Resources.ResourceWriter> object. After writing the resource file, the build provider must use the <xref:System.IO.Stream.Close%2A> method to close the <xref:System.IO.Stream> object and free associated system resources."
+  summary: "Consente a un provider di compilazione creare un file di risorse da includere nella compilazione dell&quot;assembly."
+  remarks: "Dopo aver chiamato il metodo CreateEmbeddedResource, un <xref:System.Web.Compilation.BuildProvider>oggetto scrive la risorsa di contenuto del file tramite l&quot;oggetto restituito <xref:System.IO.Stream>oggetto.</xref:System.IO.Stream> </xref:System.Web.Compilation.BuildProvider> Ad esempio, il provider di compilazione può scrivere le risorse utilizzate da un <xref:System.Resources.ResourceWriter>oggetto.</xref:System.Resources.ResourceWriter> Dopo aver scritto il file di risorse, è necessario utilizzare il provider di compilazione di <xref:System.IO.Stream.Close%2A>metodo per chiudere la <xref:System.IO.Stream>dell&quot;oggetto e liberare le risorse di sistema associate.</xref:System.IO.Stream> </xref:System.IO.Stream.Close%2A>"
   syntax:
     content: public System.IO.Stream CreateEmbeddedResource (System.Web.Compilation.BuildProvider buildProvider, string name);
     parameters:
     - id: buildProvider
       type: System.Web.Compilation.BuildProvider
-      description: "The build provider generating the resource."
+      description: "Il provider di generazione della risorsa."
     - id: name
       type: System.String
-      description: "The name of the resource file to be created."
+      description: "Il nome del file di risorse da creare."
     return:
       type: System.IO.Stream
-      description: "An open <xref:System.IO.Stream> that can be used to write resources, which are included in the assembly compilation."
+      description: "Open <xref:System.IO.Stream>che può essere utilizzato per scrivere le risorse, che sono inclusi nella compilazione dell&quot;assembly.</xref:System.IO.Stream>"
   overload: System.Web.Compilation.AssemblyBuilder.CreateEmbeddedResource*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is not a valid file name."
+    description: "<code>name</code>non è un nome file valido."
   platform:
   - net462
 - uid: System.Web.Compilation.AssemblyBuilder.GenerateTypeFactory(System.String)
@@ -176,14 +176,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Inserts a fast object factory template for a type into the compiled assembly."
-  remarks: "A <xref:System.Web.Compilation.BuildProvider> implementation calls the GenerateTypeFactory method to optimize performance for frequent creations of type instances."
+  summary: "Inserisce un modello di factory oggetti rapida per un tipo nell&quot;assembly compilato."
+  remarks: "Oggetto <xref:System.Web.Compilation.BuildProvider>implementazione chiama il metodo GenerateTypeFactory per ottimizzare le prestazioni relative alle creazioni di istanze del tipo frequenti.</xref:System.Web.Compilation.BuildProvider>"
   syntax:
     content: public void GenerateTypeFactory (string typeName);
     parameters:
     - id: typeName
       type: System.String
-      description: "The name of the type to generate."
+      description: "Il nome del tipo da generare."
   overload: System.Web.Compilation.AssemblyBuilder.GenerateTypeFactory*
   exceptions: []
   platform:
@@ -200,17 +200,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Generates a temporary file path."
-  remarks: "A <xref:System.Web.Compilation.BuildProvider> implementation calls the GetTempFilePhysicalPath method to get a temporary file path that is deleted automatically after the assembly is compiled.       The GetTempFilePhysicalPath method generates a unique temporary file path, but does not create the file."
+  summary: "Genera un percorso file temporaneo."
+  remarks: "Oggetto <xref:System.Web.Compilation.BuildProvider>implementazione chiama il metodo GetTempFilePhysicalPath per ottenere un percorso file temporaneo che viene eliminato automaticamente dopo la compilazione dell&quot;assembly.</xref:System.Web.Compilation.BuildProvider>       Il metodo GetTempFilePhysicalPath genera un percorso file temporaneo univoco, ma non crea il file."
   syntax:
     content: public string GetTempFilePhysicalPath (string extension);
     parameters:
     - id: extension
       type: System.String
-      description: "The file extension to use for the temporary file."
+      description: "Estensione di file da utilizzare per il file temporaneo."
     return:
       type: System.String
-      description: "A path to a temporary file, with the specified file extension."
+      description: "Un percorso in un file temporaneo, con l&quot;estensione di file specificato."
   overload: System.Web.Compilation.AssemblyBuilder.GetTempFilePhysicalPath*
   exceptions: []
   platform:

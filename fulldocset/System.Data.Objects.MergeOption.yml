@@ -13,8 +13,8 @@ items:
   nameWithType: MergeOption
   fullName: System.Data.Objects.MergeOption
   type: Enum
-  summary: "Specifies how objects being loaded into the object context are merged with objects already in the object context."
-  remarks: "The [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] only maintains a single instance of an object with a specific entity key in the cache. The <xref:System.Data.EntityKey> objects are immutable objects that that represent object&quot;s identity. Entity keys are used to perform identity resolution in the object context. For more information, see [Working with Entity Keys](http://msdn.microsoft.com/en-us/fe3f4206-d277-43a1-a72f-4e86fdf12b9f). If an entity with the same identity is already being tracked, the data coming from the data source and the data already in the state manager are merged according to the MergeOption of the query."
+  summary: "Specifica come gli oggetti da caricare nel contesto dell&quot;oggetto vengono uniti con gli oggetti già nel contesto dell&quot;oggetto."
+  remarks: "Il [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] mantiene solo una singola istanza di un oggetto con una chiave di entità specifico nella cache. Il <xref:System.Data.EntityKey>gli oggetti sono oggetti non modificabili che rappresentano l&quot;identità dell&quot;oggetto.</xref:System.Data.EntityKey> Le chiavi di entità vengono utilizzate per eseguire la risoluzione di identità nel contesto dell&quot;oggetto. Per ulteriori informazioni, vedere [utilizzo delle chiavi di entità](http://msdn.microsoft.com/en-us/fe3f4206-d277-43a1-a72f-4e86fdf12b9f). Se è già stata rilevata un&quot;entità con la stessa identità, i dati provenienti dall&quot;origine dati e i dati già il gestore degli stati vengono uniti in base alle MergeOption della query."
   syntax:
     content: public enum MergeOption
   inheritance:
@@ -33,12 +33,12 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Objects that do not exist in the object context are attached to the context. If an object is already in the context, the current and original values of object&quot;s properties in the entry are not overwritten with data source values. The state of the object&quot;s entry and state of properties of the object in the entry do not change. AppendOnly is the default merge option."
+  summary: "Gli oggetti che non esistono nel contesto dell&quot;oggetto vengono connessi al contesto. Se un oggetto è già nel contesto, i valori correnti e originali delle proprietà dell&quot;oggetto nella voce non vengono sovrascritti con i valori dell&quot;origine dati. Lo stato della voce dell&quot;oggetto e lo stato delle proprietà dell&quot;oggetto nella voce non cambiano. AppendOnly è l&quot;opzione di unione predefinita."
   syntax:
     content: AppendOnly
     return:
       type: System.Data.Objects.MergeOption
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -54,12 +54,12 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Objects are maintained in a <xref:System.Data.EntityState.Detached> state and are not tracked in the <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;></xref>. However, [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)]-generated entities and POCO entities with proxies maintain a reference to the object context to facilitate loading of related objects."
+  summary: "Gli oggetti vengono gestiti un <xref:System.Data.EntityState.Detached>stato e non vengono rilevate nel <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;> </xref>.</xref:System.Data.EntityState.Detached> Tuttavia, [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)]-entità generate e le entità POCO con proxy mantengono un riferimento al contesto dell&quot;oggetto per facilitare il caricamento di oggetti correlati."
   syntax:
     content: NoTracking
     return:
       type: System.Data.Objects.MergeOption
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -75,12 +75,12 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Objects that do not exist in the object context are attached to the context. If an object is already in the context, the current and original values of object&quot;s properties in the entry are overwritten with data source values. The state of the object&quot;s entry is set to <xref:System.Data.EntityState.Unchanged>, no properties are marked as modified."
+  summary: "Gli oggetti che non esistono nel contesto dell&quot;oggetto vengono connessi al contesto. Se un oggetto è già nel contesto, i valori correnti e originali delle proprietà dell&quot;oggetto nella voce vengono sovrascritti con i valori dell&quot;origine dati. Lo stato della voce dell&quot;oggetto è impostato su <xref:System.Data.EntityState.Unchanged>, nessuna proprietà viene contrassegnata come modificata.</xref:System.Data.EntityState.Unchanged>"
   syntax:
     content: OverwriteChanges
     return:
       type: System.Data.Objects.MergeOption
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -96,13 +96,13 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Objects that do not exist in the object context are attached to the context."
-  remarks: "If the state of the entity is <xref:System.Data.EntityState.Unchanged>, the current and original values in the entry are overwritten with data source values. The state of the entity remains <xref:System.Data.EntityState.Unchanged> and no properties are marked as modified.       If the state of the entity is <xref:System.Data.EntityState.Modified>, the current values of modified properties are not overwritten with data source values. The original values of unmodified properties are overwritten with the values from the data source.       In the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] version 4, the [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] compares the current values of unmodified properties with the values that were returned from the data source. If the values are not the same, the property is marked as modified.       In the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] version 3.5 SP1, the [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] does not mark the property as modified, even if the value in the data source is different.       Only modified properties are persisted to the data source when you call <xref:System.Data.Objects.ObjectContext.SaveChanges%2A>.       To preserve the 3.5 SP1 behavior, set <xref:System.Data.Objects.ObjectContextOptions.UseLegacyPreserveChangesBehavior%2A> to `true`. The PreserveChanges option can be used to resolve optimistic concurrency exceptions while preserving changes in the local context. For more information, see [Saving Changes and Managing Concurrency](http://msdn.microsoft.com/en-us/b8378601-4f26-4a05-a24a-f50aeb68610e)."
+  summary: "Gli oggetti che non esistono nel contesto dell&quot;oggetto vengono connessi al contesto."
+  remarks: "Se lo stato dell&quot;entità è <xref:System.Data.EntityState.Unchanged>, i valori correnti e originali nella voce vengono sovrascritti con i valori dell&quot;origine dati.</xref:System.Data.EntityState.Unchanged> Lo stato dell&quot;entità rimane <xref:System.Data.EntityState.Unchanged>e nessuna proprietà viene contrassegnata come modificata.</xref:System.Data.EntityState.Unchanged>       Se lo stato dell&quot;entità è <xref:System.Data.EntityState.Modified>, i valori correnti delle proprietà modificate non vengono sovrascritti con i valori dell&quot;origine dati.</xref:System.Data.EntityState.Modified> I valori originali delle proprietà non modificate vengono sovrascritti con i valori dall&quot;origine dati.       Nel [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] versione 4, il [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] confronta i valori correnti delle proprietà non modificate con i valori restituiti dall&quot;origine dati. Se i valori non corrispondono, la proprietà è contrassegnata come modificata.       Nel [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] versione 3.5 SP1, il [!INCLUDE[adonet_ef](~/add/includes/adonet-ef-md.md)] contrassegna la proprietà come modificata, anche se il valore nell&quot;origine dati è diverso.       Solo le proprietà modificate vengono rese persistenti nell&quot;origine dati quando si chiama <xref:System.Data.Objects.ObjectContext.SaveChanges%2A>.</xref:System.Data.Objects.ObjectContext.SaveChanges%2A>       Per mantenere il comportamento 3.5 SP1, impostare <xref:System.Data.Objects.ObjectContextOptions.UseLegacyPreserveChangesBehavior%2A>a `true`.</xref:System.Data.Objects.ObjectContextOptions.UseLegacyPreserveChangesBehavior%2A> L&quot;opzione PreserveChanges può essere utilizzata per risolvere eccezioni di concorrenza ottimistica mantenendo le modifiche nel contesto locale. Per ulteriori informazioni, vedere [salvando le modifiche e gestione della concorrenza](http://msdn.microsoft.com/en-us/b8378601-4f26-4a05-a24a-f50aeb68610e)."
   syntax:
     content: PreserveChanges
     return:
       type: System.Data.Objects.MergeOption
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
