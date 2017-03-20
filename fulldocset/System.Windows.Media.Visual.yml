@@ -46,8 +46,8 @@ items:
   nameWithType: Visual
   fullName: System.Windows.Media.Visual
   type: Class
-  summary: "Provides rendering support in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], which includes hit testing, coordinate transformation, and bounding box calculations."
-  remarks: "The Visual class is the basic abstraction from which every <xref:System.Windows.FrameworkElement> object derives. It also serves as the entry point for writing new controls in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], and in many ways can be thought of as an equivalent of a window handle (HWND) in the [!INCLUDE[TLA#tla_win32](~/add/includes/tlasharptla-win32-md.md)] application model.       The Visual object is a core [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] object, whose primary role is to provide rendering support. User interface controls, such as <xref:System.Windows.Controls.Button> and <xref:System.Windows.Controls.TextBox>, derive from the Visual class, and use the Visual defined properties for persisting their rendering data. The Visual object provides support for the following:      -   Output display: Rendering the persisted, serialized drawing content of a visual.      -   Transformations: Performing transformations on a visual.      -   Clipping: Providing clipping region support for a visual.      -   Hit testing: Determining whether a specified coordinate (point) or geometry is contained within the bounds of a visual.      -   Bounding box calculations: Determining the bounding rectangle of a visual.       Architecturally, the Visual object does not include support for other application development requirements / [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] features that are not immediately related to its rendering, such as the following:      -   Event handling      -   Layout      -   Styles      -   Data binding      -   Globalization       Visual is provided as a public abstract class from which further classes can be derived. The following illustration shows the hierarchy of the existing visual objects that are defined in the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] architecture.       ![Diagram of classes derived from the Visual object](~/add/media/visualclass01.png &quot;Diagram of classes derived from the Visual object&quot;)   Visual class hierarchy       In some cases, members that are defined as protected in Visual are exposed as more readily accessible members with similar names in the derived <xref:System.Windows.UIElement> class.       For more information, see [WPF Graphics Rendering Overview](~/add/includes/ajax-current-ext-md.md).       A Visual has a limited number of levels. In previous versions of the .NET Framework, this maximum depth was 255. This limit is inadequate for some layouts that have many levels in the visual tree.       In [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the maximum depth of a Visual is 2047, which enables much deeper visual trees. In most applications, there is not enough stack space to traverse so many levels, and the result is a <xref:System.StackOverflowException> during layout. For the default stack size, this exception is usually thrown when the tree depth is approximately 800, which corresponds to about 190 nested <xref:System.Windows.Controls.TreeViewItem> objects.       If this exception is thrown by your application and you need to have a deeper visual tree, you can increase the application&quot;s stack size. You can increase the size of the stack by using the /STACK option at compile time or by using the EDITBIN utility. Increasing the stack size may affect your application&quot;s performance. For more information, see [Stack Allocations](http://go.microsoft.com/fwlink/?LinkId=165510) and [EDITBIN Options](http://go.microsoft.com/fwlink/?LinkId=165511)."
+  summary: "Fornisce il supporto per il rendering in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], che include hit test, di trasformazione delle coordinate e calcoli relativi al riquadro."
+  remarks: "La classe Visual è l&quot;astrazione di base da cui ogni <xref:System.Windows.FrameworkElement>oggetto deriva.</xref:System.Windows.FrameworkElement> Funge inoltre il punto di ingresso per la scrittura di nuovi controlli in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]e in molti modi può essere considerato come un equivalente di un handle di finestra (HWND) nei [!INCLUDE[TLA#tla_win32](~/add/includes/tlasharptla-win32-md.md)] modello dell&quot;applicazione.       L&quot;oggetto visivo è dei principali [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] oggetto, il cui ruolo primario è di fornire supporto per il rendering. Controlli dell&quot;interfaccia utente, ad esempio <xref:System.Windows.Controls.Button>e <xref:System.Windows.Controls.TextBox>derivano dalla classe Visual e utilizzare le proprietà definite Visual per mantenere i dati di rendering.</xref:System.Windows.Controls.TextBox> </xref:System.Windows.Controls.Button> L&quot;oggetto visivo fornisce il supporto per le operazioni seguenti:-visualizzazione Output: Rendering persistente e serializzato il contenuto del disegno di un oggetto visivo.      -Trasformazioni: Esecuzione di trasformazioni su un oggetto visivo.      -Il ritaglio: Fornendo il supporto di area di ritaglio per un oggetto visivo.      -Hit testing: determinare se una coordinata specificata (punto) o una geometria è contenuta all&quot;interno di un oggetto visivo.      -Calcoli relativi al riquadro: determinare il rettangolo di delimitazione di un oggetto visivo.       L&quot;architettura, l&quot;oggetto visivo non includono il supporto per altri requisiti di sviluppo di applicazioni / [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] funzionalità che non siano immediatamente correlate al rendering, ad esempio le operazioni seguenti: - - Layout - gestione di eventi stili - Data binding - globalizzazione Visual viene fornito come classe astratta da cui possono essere derivate ulteriori classi pubblica. Nella figura seguente illustra la gerarchia di oggetti visivi esistenti che sono definiti nel [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] architettura.       ![Diagramma delle classi derivate dall&quot;oggetto Visual](~/add/media/visualclass01.png &quot;diagramma delle classi derivate dall&quot;oggetto Visual&quot;) gerarchia di classi Visual In alcuni casi, i membri che sono definiti come protetto nella Visual vengono esposti come membri più facilmente accessibili con nomi simili nella classe derivata di <xref:System.Windows.UIElement>classe.</xref:System.Windows.UIElement>       Per ulteriori informazioni, vedere [Panoramica per il Rendering della grafica WPF](~/add/includes/ajax-current-ext-md.md).       Un oggetto visivo ha un numero limitato di livelli. Nelle versioni precedenti di .NET Framework, la profondità massima è 255. Questo limite è inadeguato per alcuni layout che hanno numerosi livelli di struttura ad albero visuale.       In [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], la profondità massima di un oggetto visivo è 2047, che consente di strutture ad albero visuali molto più approfondita. Nella maggior parte delle applicazioni, non c&quot;è abbastanza spazio per attraversare un numero così elevato di livelli e il risultato è un <xref:System.StackOverflowException>durante il layout.</xref:System.StackOverflowException> Per la dimensione dello stack predefinita, questa eccezione viene generata in genere quando la profondità dell&quot;albero è approssimativamente 800, che corrisponde a 190 annidati <xref:System.Windows.Controls.TreeViewItem>oggetti.</xref:System.Windows.Controls.TreeViewItem>       Se questa eccezione viene generata dall&quot;applicazione ed è necessario disporre di un struttura ad albero visuale più approfondito, è possibile aumentare le dimensioni dello stack dell&quot;applicazione. È possibile aumentare le dimensioni dello stack utilizzando l&quot;opzione /STACK in fase di compilazione o tramite l&quot;utilità EDITBIN. Aumentare la dimensione dello stack influisca sulle prestazioni dell&quot;applicazione. Per ulteriori informazioni, vedere [allocazioni Stack](http://go.microsoft.com/fwlink/?LinkId=165510) e [opzioni di EDITBIN](http://go.microsoft.com/fwlink/?LinkId=165511)."
   syntax:
     content: 'public abstract class Visual : System.Windows.DependencyObject'
   inheritance:
@@ -89,7 +89,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Provides the base initialization for objects derived from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> class."
+  summary: "Fornisce l&quot;inizializzazione di base per oggetti derivati dal <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> classe."
   syntax:
     content: protected Visual ();
     parameters: []
@@ -109,8 +109,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Defines the parent-child relationship between two visuals."
-  remarks: "The AddVisualChild method sets up the parent-child relationship between two visual objects. This method must be used when you need greater low-level control over the underlying storage implementation of visual child objects. <xref:System.Windows.Media.VisualCollection> can be used as a default implementation for storing child objects."
+  summary: "Definisce la relazione padre-figlio tra due elementi visivi."
+  remarks: "Il metodo AddVisualChild imposta una relazione padre-figlio tra due oggetti visivi. Questo metodo deve essere utilizzato quando è necessario un maggiore controllo di basso livello sull&quot;implementazione di archiviazione sottostante degli oggetti visivi figlio. <xref:System.Windows.Media.VisualCollection>può essere utilizzato come un&quot;implementazione predefinita per archiviare gli oggetti figlio.</xref:System.Windows.Media.VisualCollection>"
   example:
   - "The following example shows how to define custom storage requirements for a visual child. The example uses the AddVisualChild and <xref:System.Windows.Media.Visual.RemoveVisualChild%2A> methods to sets up the parent-child relationship between the parent visual and `child`. In order for the visual tree to be enumerated correctly, the example provides overridden implementations of the <xref:System.Windows.Media.Visual.GetVisualChild%2A> method and <xref:System.Windows.Media.Visual.VisualChildrenCount%2A> property.  \n  \n> [!NOTE]\n>  Although it is possible to use <xref:System.Windows.Media.VisualCollection> to create parent-child relationships between visual objects, it is more efficient to provide your own custom storage implementation when only one child is linked to a parent.  \n  \n [!code-cs[AddVisualChild#AddVisualChild01](~/add/codesnippet/csharp/AddVisualChild/Window1.xaml.cs#addvisualchild01)]\n [!code-vb[AddVisualChild#AddVisualChild01](~/add/codesnippet/visualbasic/addvisualchild/window1.xaml.vb#addvisualchild01)]"
   syntax:
@@ -118,7 +118,7 @@ items:
     parameters:
     - id: child
       type: System.Windows.Media.Visual
-      description: "The child visual object to add to parent visual."
+      description: "L&quot;oggetto visivo figlio da aggiungere all&quot;elemento visivo padre."
   overload: System.Windows.Media.Visual.AddVisualChild*
   exceptions: []
   platform:
@@ -135,17 +135,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns the common ancestor of two visual objects."
-  remarks: "2D and 3D objects can have common visual ancestors, so it is possible to pass a <xref:System.Windows.Media.Media3D.Visual3D> for `otherVisual`."
+  summary: "Restituisce il predecessore comune di due oggetti visivi."
+  remarks: "Gli oggetti 2D e 3D possono avere predecessori visivi comuni, pertanto è possibile passare un <xref:System.Windows.Media.Media3D.Visual3D>per `otherVisual`.</xref:System.Windows.Media.Media3D.Visual3D>"
   syntax:
     content: public System.Windows.DependencyObject FindCommonVisualAncestor (System.Windows.DependencyObject otherVisual);
     parameters:
     - id: otherVisual
       type: System.Windows.DependencyObject
-      description: "A visual object of type <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+      description: "Un oggetto visivo di tipo <xref href=&quot;System.Windows.DependencyObject&quot;> </xref>."
     return:
       type: System.Windows.DependencyObject
-      description: "The common ancestor of the visual object and <code>otherVisual</code> if one exists; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Il predecessore comune dell&quot;oggetto visivo e <code> otherVisual </code> se ne esiste uno; in caso contrario, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Media.Visual.FindCommonVisualAncestor*
   exceptions: []
   platform:
@@ -162,8 +162,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns the specified <xref href=&quot;System.Windows.Media.Visual&quot;></xref> in the parent <xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref>."
-  remarks: "By default, a <xref:System.Windows.Media.Visual> has no children. Therefore, the default implementation always throws an <xref:System.ArgumentOutOfRangeException>."
+  summary: "Restituisce l&quot;oggetto specificato <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> nell&quot;elemento padre <xref href=&quot;System.Windows.Media.VisualCollection&quot;> </xref>."
+  remarks: "Per impostazione predefinita, un <xref:System.Windows.Media.Visual>non ha elementi figlio.</xref:System.Windows.Media.Visual> Pertanto, l&quot;implementazione predefinita genera sempre un <xref:System.ArgumentOutOfRangeException>.</xref:System.ArgumentOutOfRangeException>"
   example:
   - "The following example defines an overridden implementation of GetVisualChild.  \n  \n [!code-cs[DrawingVisualSample#102b](~/add/codesnippet/csharp/DrawingVisual/Window1.xaml.cs#102b)]\n [!code-vb[DrawingVisualSample#102b](~/add/codesnippet/visualbasic/drawingvisual/window1.xaml.vb#102b)]"
   syntax:
@@ -171,10 +171,10 @@ items:
     parameters:
     - id: index
       type: System.Int32
-      description: "The index of the visual object in the <xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref>."
+      description: "L&quot;indice dell&quot;oggetto visivo nel <xref href=&quot;System.Windows.Media.VisualCollection&quot;> </xref>."
     return:
       type: System.Windows.Media.Visual
-      description: "The child in the <xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref> at the specified <code>index</code> value."
+      description: "L&quot;elemento figlio di <xref href=&quot;System.Windows.Media.VisualCollection&quot;> </xref> specificato <code> index </code> valore."
   overload: System.Windows.Media.Visual.GetVisualChild*
   exceptions: []
   platform:
@@ -191,8 +191,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Determines whether a geometry value is within the bounds of the visual object."
-  remarks: "You can override default hit testing support for a visual object by overriding the <xref:System.Windows.Media.Visual.HitTestCore%2A> method. This means that when you invoke the <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> method, your overridden implementation of <xref:System.Windows.Media.Visual.HitTestCore%2A> is called. Your overridden method is called when a hit test falls within the bounding rectangle of the visual object, even if the coordinate falls outside the geometry of the visual object."
+  summary: "Determina se un valore di geometria è entro i limiti dell&quot;oggetto visivo."
+  remarks: "È possibile eseguire l&quot;override di supporto di hit test per un oggetto visivo eseguendo l&quot;override di <xref:System.Windows.Media.Visual.HitTestCore%2A>metodo.</xref:System.Windows.Media.Visual.HitTestCore%2A> Ciò significa che quando si richiama il <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A>(metodo), l&quot;implementazione sottoposta a override di <xref:System.Windows.Media.Visual.HitTestCore%2A>viene chiamato.</xref:System.Windows.Media.Visual.HitTestCore%2A> </xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> Il metodo sottoposto a override viene chiamato quando un hit test viene eseguito all&quot;interno del rettangolo di delimitazione dell&quot;oggetto visivo, anche se la coordinata rientra la geometria dell&quot;oggetto visivo."
   example:
   - "The following example shows how to override the HitTestCore method. One reason you might want to override this method is to provide additional functionality during the hit testing process.  \n  \n [!code-vb[HitTestingOverview#HitTestingOverviewSnippet13](~/add/codesnippet/visualbasic/hittestingoverview/geometryhittest.vb#hittestingoverviewsnippet13)]\n [!code-cs[HitTestingOverview#HitTestingOverviewSnippet13](~/add/codesnippet/csharp/HitTestingOverview/GeometryHitTest.cs#hittestingoverviewsnippet13)]"
   syntax:
@@ -200,10 +200,10 @@ items:
     parameters:
     - id: hitTestParameters
       type: System.Windows.Media.GeometryHitTestParameters
-      description: "A <xref href=&quot;System.Windows.Media.GeometryHitTestParameters&quot;></xref> object that specifies the <xref href=&quot;System.Windows.Media.Geometry&quot;></xref> to hit test against."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.GeometryHitTestParameters&quot;> </xref> oggetto che specifica il <xref href=&quot;System.Windows.Media.Geometry&quot;> </xref> per eseguire l&quot;hit test."
     return:
       type: System.Windows.Media.GeometryHitTestResult
-      description: "A <xref href=&quot;System.Windows.Media.GeometryHitTestResult&quot;></xref> that represents the result of the hit test."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.GeometryHitTestResult&quot;> </xref> che rappresenta il risultato dell&quot;hit test."
   overload: System.Windows.Media.Visual.HitTestCore*
   exceptions: []
   platform:
@@ -220,8 +220,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Determines whether a point coordinate value is within the bounds of the visual object."
-  remarks: "You can override the default hit testing support on visual objects by overriding the <xref:System.Windows.Media.Visual.HitTestCore%2A> method. This means that when you invoke the <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> method, your overridden implementation of <xref:System.Windows.Media.Visual.HitTestCore%2A> is called. Your overridden method is called when a hit test falls within the bounding rectangle of the visual object, even if the coordinate falls outside the geometry of the visual object."
+  summary: "Determina se un valore della coordinata punto è all&quot;interno dell&quot;oggetto visivo."
+  remarks: "È possibile ignorare il supporto di hit test sugli oggetti visivi eseguendo l&quot;override di <xref:System.Windows.Media.Visual.HitTestCore%2A>metodo.</xref:System.Windows.Media.Visual.HitTestCore%2A> Ciò significa che quando si richiama il <xref:System.Windows.Media.VisualTreeHelper.HitTest%2A>(metodo), l&quot;implementazione sottoposta a override di <xref:System.Windows.Media.Visual.HitTestCore%2A>viene chiamato.</xref:System.Windows.Media.Visual.HitTestCore%2A> </xref:System.Windows.Media.VisualTreeHelper.HitTest%2A> Il metodo sottoposto a override viene chiamato quando un hit test viene eseguito all&quot;interno del rettangolo di delimitazione dell&quot;oggetto visivo, anche se la coordinata rientra la geometria dell&quot;oggetto visivo."
   example:
   - "The following example shows how to override the HitTestCore method. One reason you might want to override this method is to provide additional functionality during the hit testing process.  \n  \n [!code-cs[HitTestingOverview#107](~/add/codesnippet/csharp/HitTestingOverview/Window1.xaml.cs#107)]\n [!code-vb[HitTestingOverview#107](~/add/codesnippet/visualbasic/hittestingoverview/window1.xaml.vb#107)]"
   syntax:
@@ -229,10 +229,10 @@ items:
     parameters:
     - id: hitTestParameters
       type: System.Windows.Media.PointHitTestParameters
-      description: "A <xref href=&quot;System.Windows.Media.PointHitTestParameters&quot;></xref> object that specifies the <xref href=&quot;System.Windows.Point&quot;></xref> to hit test against."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.PointHitTestParameters&quot;> </xref> oggetto che specifica il <xref href=&quot;System.Windows.Point&quot;> </xref> per eseguire l&quot;hit test."
     return:
       type: System.Windows.Media.HitTestResult
-      description: "A <xref href=&quot;System.Windows.Media.HitTestResult&quot;></xref> that represents the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> that is returned from a hit test."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.HitTestResult&quot;> </xref> che rappresenta il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> restituito da un hit test."
   overload: System.Windows.Media.Visual.HitTestCore*
   exceptions: []
   platform:
@@ -249,16 +249,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Determines whether the visual object is an ancestor of the descendant visual object."
+  summary: "Determina se l&quot;oggetto visivo è un predecessore dell&quot;oggetto visivo discendente."
   syntax:
     content: public bool IsAncestorOf (System.Windows.DependencyObject descendant);
     parameters:
     - id: descendant
       type: System.Windows.DependencyObject
-      description: "A value of type <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+      description: "Un valore di tipo <xref href=&quot;System.Windows.DependencyObject&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the visual object is an ancestor of <code>descendant</code>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se l&quot;oggetto visivo è un predecessore di <code> descendant </code>; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Media.Visual.IsAncestorOf*
   exceptions: []
   platform:
@@ -275,16 +275,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Determines whether the visual object is a descendant of the ancestor visual object."
+  summary: "Determina se l&quot;oggetto visivo è un discendente dell&quot;oggetto visivo predecessore."
   syntax:
     content: public bool IsDescendantOf (System.Windows.DependencyObject ancestor);
     parameters:
     - id: ancestor
       type: System.Windows.DependencyObject
-      description: "A value of type <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+      description: "Un valore di tipo <xref href=&quot;System.Windows.DependencyObject&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the visual object is a descendant of <code>ancestor</code>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se l&quot;oggetto visivo è un discendente di <code> ancestor </code>; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Media.Visual.IsDescendantOf*
   exceptions: []
   platform:
@@ -301,16 +301,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Called when the DPI at which this View is rendered changes."
+  summary: "Chiamato quando il valore di DPI in questa vista viene eseguito il rendering di modifiche."
   syntax:
     content: protected virtual void OnDpiChanged (System.Windows.DpiScale oldDpi, System.Windows.DpiScale newDpi);
     parameters:
     - id: oldDpi
       type: System.Windows.DpiScale
-      description: "The previous DPI scale setting."
+      description: "La scala DPI precedente impostazione."
     - id: newDpi
       type: System.Windows.DpiScale
-      description: "The new DPI scale setting."
+      description: "La scala DPI nuova impostazione."
   overload: System.Windows.Media.Visual.OnDpiChanged*
   exceptions: []
   platform:
@@ -327,16 +327,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Called when the <xref href=&quot;System.Windows.Media.VisualCollection&quot;></xref> of the visual object is modified."
+  summary: "Chiamato quando il <xref href=&quot;System.Windows.Media.VisualCollection&quot;> </xref> dell&quot;oggetto visivo è stato modificato."
   syntax:
     content: protected virtual void OnVisualChildrenChanged (System.Windows.DependencyObject visualAdded, System.Windows.DependencyObject visualRemoved);
     parameters:
     - id: visualAdded
       type: System.Windows.DependencyObject
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> that was added to the collection"
+      description: "Il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> che è stato aggiunto alla raccolta"
     - id: visualRemoved
       type: System.Windows.DependencyObject
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> that was removed from the collection"
+      description: "Il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> che è stato rimosso dalla raccolta"
   overload: System.Windows.Media.Visual.OnVisualChildrenChanged*
   exceptions: []
   platform:
@@ -353,8 +353,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Called when the parent of the visual object is changed."
-  remarks: "A class that derives from <xref:System.Windows.Media.Visual> can choose to override this method.       There is no &quot;VisualParentChanged&quot; event provided that reports this change to instances. Therefore, you must override this method to handle notification scenarios and provide an instance version of the notification if that is part of your scenario."
+  summary: "Chiamato quando viene modificato l&quot;elemento padre dell&quot;oggetto visivo."
+  remarks: "Una classe che deriva da <xref:System.Windows.Media.Visual>possibile scegliere di eseguire l&quot;override di questo metodo.</xref:System.Windows.Media.Visual>       Sia presente alcun evento di &quot;VisualParentChanged&quot; che riferisca alle istanze di questa modifica. Pertanto, è necessario eseguire l&quot;override di questo metodo per gestire scenari di notifica e fornire una versione dell&quot;istanza della notifica se fa parte del proprio scenario."
   example:
   - "The following example defines an overridden implementation of OnVisualParentChanged.  \n  \n [!code-vb[VisualSnippets#VisualSnippet10](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet10)]\n [!code-cs[VisualSnippets#VisualSnippet10](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet10)]"
   syntax:
@@ -362,7 +362,7 @@ items:
     parameters:
     - id: oldParent
       type: System.Windows.DependencyObject
-      description: "A value of type <xref href=&quot;System.Windows.DependencyObject&quot;></xref> that represents the previous parent of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> object. If the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> object did not have a previous parent, the value of the parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Un valore di tipo <xref href=&quot;System.Windows.DependencyObject&quot;> </xref> che rappresenta l&quot;elemento padre precedente del <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> oggetto. Se il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> oggetto non era un elemento padre precedente, il valore del parametro è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Media.Visual.OnVisualParentChanged*
   exceptions: []
   platform:
@@ -379,17 +379,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Converts a <xref href=&quot;System.Windows.Point&quot;></xref> in screen coordinates into a <xref href=&quot;System.Windows.Point&quot;></xref> that represents the current coordinate system of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "Use the <xref:System.Windows.Media.Visual.PointToScreen%2A> method to convert a <xref:System.Windows.Point> that represents the current coordinate system of the <xref:System.Windows.Media.Visual> into a <xref:System.Windows.Point> in screen coordinates."
+  summary: "Converte un <xref href=&quot;System.Windows.Point&quot;> </xref> nelle coordinate dello schermo in un <xref href=&quot;System.Windows.Point&quot;> </xref> che rappresenta il sistema di coordinate corrente il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
+  remarks: "Utilizzare il <xref:System.Windows.Media.Visual.PointToScreen%2A>metodo per convertire un <xref:System.Windows.Point>che rappresenta il sistema di coordinate corrente il <xref:System.Windows.Media.Visual>in un <xref:System.Windows.Point>nelle coordinate dello schermo.</xref:System.Windows.Point> </xref:System.Windows.Media.Visual> </xref:System.Windows.Point> </xref:System.Windows.Media.Visual.PointToScreen%2A>"
   syntax:
     content: public System.Windows.Point PointFromScreen (System.Windows.Point point);
     parameters:
     - id: point
       type: System.Windows.Point
-      description: "The <xref href=&quot;System.Windows.Point&quot;></xref> value in screen coordinates."
+      description: "Il <xref href=&quot;System.Windows.Point&quot;> </xref> valore nelle coordinate dello schermo."
     return:
       type: System.Windows.Point
-      description: "The converted <xref href=&quot;System.Windows.Point&quot;></xref> value that represents the current coordinate system of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+      description: "Convertito <xref href=&quot;System.Windows.Point&quot;> </xref> valore che rappresenta il sistema di coordinate corrente il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   overload: System.Windows.Media.Visual.PointFromScreen*
   exceptions: []
   platform:
@@ -406,17 +406,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Converts a <xref href=&quot;System.Windows.Point&quot;></xref> that represents the current coordinate system of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> into a <xref href=&quot;System.Windows.Point&quot;></xref> in screen coordinates."
-  remarks: "Use the <xref:System.Windows.Media.Visual.PointFromScreen%2A> method to convert a <xref:System.Windows.Point> in screen coordinates into a <xref:System.Windows.Point> that represents the current coordinate system of the <xref:System.Windows.Media.Visual>."
+  summary: "Converte un <xref href=&quot;System.Windows.Point&quot;> </xref> che rappresenta il sistema di coordinate corrente il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> in un <xref href=&quot;System.Windows.Point&quot;> </xref> nelle coordinate dello schermo."
+  remarks: "Utilizzare il <xref:System.Windows.Media.Visual.PointFromScreen%2A>metodo per convertire un <xref:System.Windows.Point>nelle coordinate dello schermo in una <xref:System.Windows.Point>che rappresenta il sistema di coordinate corrente <xref:System.Windows.Media.Visual>.</xref:System.Windows.Media.Visual> </xref:System.Windows.Point> </xref:System.Windows.Point> </xref:System.Windows.Media.Visual.PointFromScreen%2A>"
   syntax:
     content: public System.Windows.Point PointToScreen (System.Windows.Point point);
     parameters:
     - id: point
       type: System.Windows.Point
-      description: "The <xref href=&quot;System.Windows.Point&quot;></xref> value that represents the current coordinate system of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+      description: "Il <xref href=&quot;System.Windows.Point&quot;> </xref> valore che rappresenta il sistema di coordinate corrente il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
     return:
       type: System.Windows.Point
-      description: "The converted <xref href=&quot;System.Windows.Point&quot;></xref> value in screen coordinates."
+      description: "Convertito <xref href=&quot;System.Windows.Point&quot;> </xref> valore nelle coordinate dello schermo."
   overload: System.Windows.Media.Visual.PointToScreen*
   exceptions: []
   platform:
@@ -433,8 +433,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Removes the parent-child relationship between two visuals."
-  remarks: "The RemoveVisualChild method removes the parent-child relationship between two visuals. This method, along with the <xref:System.Windows.Media.Visual.AddVisualChild%2A> method, must be used when you need greater low-level control over the underlying storage implementation of visual child objects. <xref:System.Windows.Media.VisualCollection> can be used as a default implementation for storing child objects."
+  summary: "Rimuove la relazione padre-figlio tra due elementi visivi."
+  remarks: "Il metodo RemoveVisualChild rimuove la relazione padre-figlio tra due oggetti visivi. Questo metodo, insieme al <xref:System.Windows.Media.Visual.AddVisualChild%2A>metodo, deve essere utilizzato quando è necessario un maggiore controllo di basso livello sull&quot;implementazione di archiviazione sottostante degli oggetti visivi figlio.</xref:System.Windows.Media.Visual.AddVisualChild%2A> <xref:System.Windows.Media.VisualCollection>può essere utilizzato come un&quot;implementazione predefinita per archiviare gli oggetti figlio.</xref:System.Windows.Media.VisualCollection>"
   example:
   - "The following example shows how to define custom storage requirements for a visual child. The example uses the <xref:System.Windows.Media.Visual.AddVisualChild%2A> and RemoveVisualChild methods to sets up the parent-child relationship between the parent visual and `child`. In order for the visual tree to be enumerated correctly, the example provides overridden implementations of the <xref:System.Windows.Media.Visual.GetVisualChild%2A> method and <xref:System.Windows.Media.Visual.VisualChildrenCount%2A> property.  \n  \n> [!NOTE]\n>  Although it is possible to use <xref:System.Windows.Media.VisualCollection> to create parent-child relationships between visual objects, it is more efficient to provide your own custom storage implementation when only one child is linked to a parent.  \n  \n [!code-cs[AddVisualChild#AddVisualChild01](~/add/codesnippet/csharp/AddVisualChild/Window1.xaml.cs#addvisualchild01)]\n [!code-vb[AddVisualChild#AddVisualChild01](~/add/codesnippet/visualbasic/addvisualchild/window1.xaml.vb#addvisualchild01)]"
   syntax:
@@ -442,7 +442,7 @@ items:
     parameters:
     - id: child
       type: System.Windows.Media.Visual
-      description: "The child visual object to remove from the parent visual."
+      description: "L&quot;oggetto visivo figlio da rimuovere dal visual padre."
   overload: System.Windows.Media.Visual.RemoveVisualChild*
   exceptions: []
   platform:
@@ -459,16 +459,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;></xref> ancestor of the visual object."
+  summary: "Restituisce una trasformazione che può essere utilizzata per trasformare le coordinate dal <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> specificata <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;> </xref> predecessore dell&quot;oggetto visivo."
   syntax:
     content: public System.Windows.Media.Media3D.GeneralTransform2DTo3D TransformToAncestor (System.Windows.Media.Media3D.Visual3D ancestor);
     parameters:
     - id: ancestor
       type: System.Windows.Media.Media3D.Visual3D
-      description: "The <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;></xref> to which the coordinates are transformed."
+      description: "Il <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;> </xref> per cui le coordinate trasformate."
     return:
       type: System.Windows.Media.Media3D.GeneralTransform2DTo3D
-      description: "A transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;></xref> ancestor of the visual object."
+      description: "Una trasformazione che può essere utilizzata per trasformare le coordinate dal <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> specificata <xref href=&quot;System.Windows.Media.Media3D.Visual3D&quot;> </xref> predecessore dell&quot;oggetto visivo."
   overload: System.Windows.Media.Visual.TransformToAncestor*
   exceptions: []
   platform:
@@ -485,8 +485,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified <xref href=&quot;System.Windows.Media.Visual&quot;></xref> ancestor of the visual object."
-  remarks: "Alternatively, you can use the <xref:System.Windows.Media.VisualTreeHelper.GetOffset%2A?displayProperty=fullName> method to retrieve the offset of a visual object relative to its parent. The offset values are contained within the returned <xref:System.Windows.Vector> value.       [!code-vb[VisualSnippets#VisualSnippet2](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet2)]  [!code-cs[VisualSnippets#VisualSnippet2](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet2)]"
+  summary: "Restituisce una trasformazione che può essere utilizzata per trasformare le coordinate dal <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> specificata <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> predecessore dell&quot;oggetto visivo."
+  remarks: "In alternativa, è possibile utilizzare il <xref:System.Windows.Media.VisualTreeHelper.GetOffset%2A?displayProperty=fullName>metodo per recuperare l&quot;offset di un oggetto visivo rispetto al padre.</xref:System.Windows.Media.VisualTreeHelper.GetOffset%2A?displayProperty=fullName> Sono contenuti i valori di offset all&quot;interno di restituito <xref:System.Windows.Vector>valore.</xref:System.Windows.Vector>       [!code-vb[VisualSnippets #VisualSnippet2](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet2)][!code-cs[VisualSnippets #VisualSnippet2  ](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet2)]"
   example:
   - "The following markup example shows a <xref:System.Windows.Controls.TextBlock> that is nested within two <xref:System.Windows.Controls.StackPanel> objects.  \n  \n [!code-xml[VisualSnippets#VisualSnippet7](~/add/codesnippet/xaml/VisualSnippets/Window2.xaml#visualsnippet7)]  \n  \n The following code example shows how to use the TransformToAncestor method to retrieve the offset of the <xref:System.Windows.Controls.TextBlock> relative to the containing <xref:System.Windows.Window>. The offset values are contained in the returned <xref:System.Windows.Media.GeneralTransform>.  \n  \n [!code-vb[VisualSnippets#VisualSnippet5](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet5)]\n [!code-cs[VisualSnippets#VisualSnippet5](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet5)]  \n  \n The offset takes into account the <xref:System.Windows.FrameworkElement.Margin%2A> values for all objects within the containing <xref:System.Windows.Window>. In this case, <xref:System.Windows.Vector.X%2A> is 28, and <xref:System.Windows.Vector.Y%2A> is 28."
   syntax:
@@ -494,21 +494,21 @@ items:
     parameters:
     - id: ancestor
       type: System.Windows.Media.Visual
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to which the coordinates are transformed."
+      description: "Il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> per cui le coordinate trasformate."
     return:
       type: System.Windows.Media.GeneralTransform
-      description: "A value of type <xref href=&quot;System.Windows.Media.GeneralTransform&quot;></xref>."
+      description: "Un valore di tipo <xref href=&quot;System.Windows.Media.GeneralTransform&quot;> </xref>."
   overload: System.Windows.Media.Visual.TransformToAncestor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>ancestor</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>ancestor</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>ancestor</code> is not an ancestor of the visual."
+    description: "<code>ancestor</code>non è un predecessore dell&quot;oggetto visivo."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The visual objects are not related."
+    description: "Gli oggetti visivi non sono correlati."
   platform:
   - net462
 - uid: System.Windows.Media.Visual.TransformToDescendant(System.Windows.Media.Visual)
@@ -523,7 +523,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified visual object descendant."
+  summary: "Restituisce una trasformazione che può essere utilizzata per trasformare le coordinate dal <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> al discendente specificato dell&quot;oggetto visivo."
   remarks: ''
   example:
   - "The following markup example shows a <xref:System.Windows.Controls.TextBlock> that is contained within a <xref:System.Windows.Controls.StackPanel> object.  \n  \n [!code-xml[VisualSnippets#VisualSnippet4](~/add/codesnippet/xaml/VisualSnippets/Window1.xaml#visualsnippet4)]  \n  \n The following code example shows how to use the TransformToDescendant method to retrieve the offset of the <xref:System.Windows.Controls.StackPanel> relative to its child <xref:System.Windows.Controls.TextBlock>. The offset values are contained within the returned <xref:System.Windows.Media.GeneralTransform> value.  \n  \n [!code-vb[VisualSnippets#VisualSnippet9](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet9)]\n [!code-cs[VisualSnippets#VisualSnippet9](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet9)]  \n  \n The offset takes into account the <xref:System.Windows.FrameworkElement.Margin%2A> values for all objects. In this case, <xref:System.Windows.Vector.X%2A> is -4, and <xref:System.Windows.Vector.Y%2A> is -4. The offset values are negative values because the parent object is negatively offset relative to its child object."
@@ -532,21 +532,21 @@ items:
     parameters:
     - id: descendant
       type: System.Windows.Media.Visual
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to which the coordinates are transformed."
+      description: "Il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> per cui le coordinate trasformate."
     return:
       type: System.Windows.Media.GeneralTransform
-      description: "A value of type <xref href=&quot;System.Windows.Media.GeneralTransform&quot;></xref>."
+      description: "Un valore di tipo <xref href=&quot;System.Windows.Media.GeneralTransform&quot;> </xref>."
   overload: System.Windows.Media.Visual.TransformToDescendant*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>descendant</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>descendant</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The visual is not an ancestor of the <code>descendant</code> visual."
+    description: "Il visual non è un predecessore del <code> descendant </code> visual."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The visual objects are not related."
+    description: "Gli oggetti visivi non sono correlati."
   platform:
   - net462
 - uid: System.Windows.Media.Visual.TransformToVisual(System.Windows.Media.Visual)
@@ -561,8 +561,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Returns a transform that can be used to transform coordinates from the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to the specified visual object."
-  remarks: "The <xref:System.Windows.Media.Visual.TransformToAncestor%2A> and <xref:System.Windows.Media.Visual.TransformToDescendant%2A> methods can also be used to return a transform for a visual object."
+  summary: "Restituisce una trasformazione che può essere utilizzata per trasformare le coordinate dal <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> per l&quot;oggetto visivo specificato."
+  remarks: "Il <xref:System.Windows.Media.Visual.TransformToAncestor%2A>e <xref:System.Windows.Media.Visual.TransformToDescendant%2A>metodi possono essere usati anche per restituire una trasformazione per un oggetto visivo.</xref:System.Windows.Media.Visual.TransformToDescendant%2A> </xref:System.Windows.Media.Visual.TransformToAncestor%2A>"
   example:
   - "The following markup example shows a <xref:System.Windows.Controls.TextBlock> that is contained within a <xref:System.Windows.Controls.StackPanel> object.  \n  \n [!code-xml[VisualSnippets#VisualSnippet4](~/add/codesnippet/xaml/VisualSnippets/Window1.xaml#visualsnippet4)]  \n  \n The following code example shows how to use the TransformToVisual method to retrieve the offset of the <xref:System.Windows.Controls.StackPanel> relative to its child <xref:System.Windows.Controls.TextBlock>. The offset values are contained within the returned <xref:System.Windows.Media.GeneralTransform> value.  \n  \n [!code-vb[VisualSnippets#VisualSnippet8](~/add/codesnippet/visualbasic/visualsnippets/window1.xaml.vb#visualsnippet8)]\n [!code-cs[VisualSnippets#VisualSnippet8](~/add/codesnippet/csharp/VisualSnippets/Window1.xaml.cs#visualsnippet8)]  \n  \n The offset takes into account the <xref:System.Windows.FrameworkElement.Margin%2A> values for all objects. In this case, <xref:System.Windows.Vector.X%2A> is -4, and <xref:System.Windows.Vector.Y%2A> is -4. The offset values are negative values because the parent object is negatively offset relative to its child object."
   syntax:
@@ -570,18 +570,18 @@ items:
     parameters:
     - id: visual
       type: System.Windows.Media.Visual
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> to which the coordinates are transformed."
+      description: "Il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> per cui le coordinate trasformate."
     return:
       type: System.Windows.Media.GeneralTransform
-      description: "A value of type <xref href=&quot;System.Windows.Media.GeneralTransform&quot;></xref>."
+      description: "Un valore di tipo <xref href=&quot;System.Windows.Media.GeneralTransform&quot;> </xref>."
   overload: System.Windows.Media.Visual.TransformToVisual*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>visual</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>visual</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The visual objects are not related."
+    description: "Gli oggetti visivi non sono correlati."
   platform:
   - net462
 - uid: System.Windows.Media.Visual.VisualBitmapEffect
@@ -596,12 +596,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Effects.BitmapEffect&quot;></xref> value for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Media.Effects.BitmapEffect&quot;> </xref> valore per il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   syntax:
     content: protected System.Windows.Media.Effects.BitmapEffect VisualBitmapEffect { get; set; }
     return:
       type: System.Windows.Media.Effects.BitmapEffect
-      description: "The bitmap effect for this visual object."
+      description: "Effetto bitmap per questo oggetto visivo."
   overload: System.Windows.Media.Visual.VisualBitmapEffect*
   exceptions: []
   platform:
@@ -618,12 +618,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Effects.BitmapEffectInput&quot;></xref> value for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Media.Effects.BitmapEffectInput&quot;> </xref> valore per il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   syntax:
     content: protected System.Windows.Media.Effects.BitmapEffectInput VisualBitmapEffectInput { get; set; }
     return:
       type: System.Windows.Media.Effects.BitmapEffectInput
-      description: "The bitmap effect input value for this visual object."
+      description: "L&quot;effetto bitmap valore per questo oggetto visivo di input."
   overload: System.Windows.Media.Visual.VisualBitmapEffectInput*
   exceptions: []
   platform:
@@ -640,7 +640,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.BitmapScalingMode&quot;></xref> for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Media.BitmapScalingMode&quot;> </xref> per il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   syntax:
     content: protected System.Windows.Media.BitmapScalingMode VisualBitmapScalingMode { get; set; }
     return:
@@ -662,13 +662,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets a cached representation of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "Set the VisualCacheMode property when you need to increase performance for content that is time-consuming to render. For more information, see <xref:System.Windows.Media.BitmapCache>."
+  summary: "Ottiene o imposta una rappresentazione memorizzata nella cache il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
+  remarks: "Impostare la proprietà VisualCacheMode quando è necessario migliorare le prestazioni per il contenuto che richiede molto tempo eseguire il rendering. Per ulteriori informazioni, vedere <xref:System.Windows.Media.BitmapCache>.</xref:System.Windows.Media.BitmapCache>"
   syntax:
     content: protected System.Windows.Media.CacheMode VisualCacheMode { get; set; }
     return:
       type: System.Windows.Media.CacheMode
-      description: "A <xref href=&quot;System.Windows.Media.CacheMode&quot;></xref> that holds a cached representation of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.CacheMode&quot;> </xref> che contiene una rappresentazione memorizzata nella cache il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   overload: System.Windows.Media.Visual.VisualCacheMode*
   exceptions: []
   platform:
@@ -685,15 +685,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets the number of child elements for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "By default, a <xref:System.Windows.Media.Visual> has no children. Therefore, the default implementation always returns 0."
+  summary: "Ottiene il numero di elementi figlio per il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
+  remarks: "Per impostazione predefinita, un <xref:System.Windows.Media.Visual>non ha elementi figlio.</xref:System.Windows.Media.Visual> Pertanto, l&quot;implementazione predefinita restituisce sempre 0."
   example:
   - "The following example defines an overridden implementation of VisualChildrenCount.  \n  \n [!code-cs[DrawingVisualSample#102a](~/add/codesnippet/csharp/DrawingVisual/Window1.xaml.cs#102a)]\n [!code-vb[DrawingVisualSample#102a](~/add/codesnippet/visualbasic/drawingvisual/window1.xaml.vb#102a)]"
   syntax:
     content: protected virtual int VisualChildrenCount { get; }
     return:
       type: System.Int32
-      description: "The number of child elements."
+      description: "Il numero di elementi figlio."
   overload: System.Windows.Media.Visual.VisualChildrenCount*
   exceptions: []
   platform:
@@ -710,7 +710,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.ClearTypeHint&quot;></xref> that determines how ClearType is rendered in the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Media.ClearTypeHint&quot;> </xref> che determina la modalità di rendering ClearType nel <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   syntax:
     content: protected System.Windows.Media.ClearTypeHint VisualClearTypeHint { get; set; }
     return:
@@ -732,12 +732,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the clip region of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> as a <xref href=&quot;System.Windows.Media.Geometry&quot;></xref> value."
+  summary: "Ottiene o imposta l&quot;area di ritaglio del <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> come un <xref href=&quot;System.Windows.Media.Geometry&quot;> </xref> valore."
   syntax:
     content: protected System.Windows.Media.Geometry VisualClip { get; set; }
     return:
       type: System.Windows.Media.Geometry
-      description: "The clip region value of the visual as a <xref href=&quot;System.Windows.Media.Geometry&quot;></xref> type."
+      description: "Il valore di area di ritaglio dell&quot;oggetto visivo come una <xref href=&quot;System.Windows.Media.Geometry&quot;> </xref> tipo."
   overload: System.Windows.Media.Visual.VisualClip*
   exceptions: []
   platform:
@@ -754,12 +754,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the edge mode of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref> as an <xref href=&quot;System.Windows.Media.EdgeMode&quot;></xref> value."
+  summary: "Ottiene o imposta la modalità di bordo del <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> come un <xref href=&quot;System.Windows.Media.EdgeMode&quot;> </xref> valore."
   syntax:
     content: protected System.Windows.Media.EdgeMode VisualEdgeMode { get; set; }
     return:
       type: System.Windows.Media.EdgeMode
-      description: "The <xref href=&quot;System.Windows.Media.EdgeMode&quot;></xref> value of the visual."
+      description: "Il <xref href=&quot;System.Windows.Media.EdgeMode&quot;> </xref> valore dell&quot;oggetto visivo."
   overload: System.Windows.Media.Visual.VisualEdgeMode*
   exceptions: []
   platform:
@@ -776,12 +776,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the bitmap effect to apply to the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "Ottiene o imposta l&quot;effetto bitmap da applicare per il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   syntax:
     content: protected System.Windows.Media.Effects.Effect VisualEffect { get; set; }
     return:
       type: System.Windows.Media.Effects.Effect
-      description: "An <xref href=&quot;System.Windows.Media.Effects.Effect&quot;></xref> that represents the bitmap effect."
+      description: "Un <xref href=&quot;System.Windows.Media.Effects.Effect&quot;> </xref> che rappresenta l&quot;effetto bitmap."
   overload: System.Windows.Media.Visual.VisualEffect*
   exceptions: []
   platform:
@@ -798,12 +798,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the offset value of the visual object."
+  summary: "Ottiene o imposta il valore di offset dell&quot;oggetto visivo."
   syntax:
     content: protected System.Windows.Vector VisualOffset { get; set; }
     return:
       type: System.Windows.Vector
-      description: "A <xref href=&quot;System.Windows.Vector&quot;></xref> that specifies the offset value."
+      description: "Oggetto <xref href=&quot;System.Windows.Vector&quot;> </xref> che specifica il valore di offset."
   overload: System.Windows.Media.Visual.VisualOffset*
   exceptions: []
   platform:
@@ -820,13 +820,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the opacity of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "The value of the opacity of the <xref:System.Windows.Media.Visual> is expressed as a value between 0 and 1. A value of 0 indicates that the element is completely transparent, whereas a value of 1 indicates that the element is completely opaque. A value of 0.5 indicates that the element is 50 percent opaque. Values that are less than 0 are treated as 0; values that are greater than 1 are treated as 1."
+  summary: "Ottiene o imposta l&quot;opacità del <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
+  remarks: "Il valore dell&quot;opacità del <xref:System.Windows.Media.Visual>viene espresso come un valore compreso tra 0 e 1.</xref:System.Windows.Media.Visual> Il valore 0 indica che l&quot;elemento è completamente trasparente, mentre un valore pari a 1 indica che l&quot;elemento è completamente opaco. Il valore 0,5 indica che l&quot;elemento è opaca al 50%. I valori minori di 0 vengono considerati come 0; i valori maggiori di 1 vengono considerati come 1."
   syntax:
     content: protected double VisualOpacity { get; set; }
     return:
       type: System.Double
-      description: "The opacity value of the visual."
+      description: "Il valore di opacità dell&quot;oggetto visivo."
   overload: System.Windows.Media.Visual.VisualOpacity*
   exceptions: []
   platform:
@@ -843,13 +843,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Brush&quot;></xref> value that represents the opacity mask of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "The opacity mask is a <xref:System.Windows.Media.Brush> that is applied to any alpha-channel masking for the rendered content of this visual."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Media.Brush&quot;> </xref> valore che rappresenta la maschera di opacità del <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
+  remarks: "La maschera di opacità è un <xref:System.Windows.Media.Brush>che viene applicata a qualsiasi mascheramento del canale alfa per il contenuto di questo oggetto visivo.</xref:System.Windows.Media.Brush>"
   syntax:
     content: protected System.Windows.Media.Brush VisualOpacityMask { get; set; }
     return:
       type: System.Windows.Media.Brush
-      description: "A <xref href=&quot;System.Windows.Media.Brush&quot;></xref> that represents the opacity mask value of the visual."
+      description: "Oggetto <xref href=&quot;System.Windows.Media.Brush&quot;> </xref> che rappresenta il valore della maschera di opacità dell&quot;oggetto visivo."
   overload: System.Windows.Media.Visual.VisualOpacityMask*
   exceptions: []
   platform:
@@ -866,12 +866,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets the visual tree parent of the visual object."
+  summary: "Ottiene la struttura ad albero visuale padre dell&quot;oggetto visivo."
   syntax:
     content: protected System.Windows.DependencyObject VisualParent { get; }
     return:
       type: System.Windows.DependencyObject
-      description: "The <xref href=&quot;System.Windows.Media.Visual&quot;></xref> parent."
+      description: "Il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref> padre."
   overload: System.Windows.Media.Visual.VisualParent*
   exceptions: []
   platform:
@@ -888,13 +888,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets a clipped scrollable area for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
-  remarks: "Set the VisualScrollableAreaClip property to enable accelerated scrolling when rendering in software. This is useful in remote rendering scenarios, such as running over Remote Desktop or running in a virtual machine. Set this property on the parent element whose children will be scrolled. Setting the VisualScrollableAreaClip property has no effect when rendering is hardware accelerated.       The VisualScrollableAreaClip property enables specific, advanced scenarios. The following list shows the caveats that apply when you use the VisualScrollableAreaClip property.      -   The background of the scrolled area must be opaque, or scrolling artifacts will occur.      -   The VisualScrollableAreaClip property accelerates scrolling only when WPF is rendering in software. For example, this situation occurs when the application is running over Remote Desktop or running locally in a virtual machine.      -   The scrolling behavior is unchanged when rendering in hardware. To prevent differences in scrolling behavior, you should keep the VisualScrollableAreaClip property enabled for both hardware and software.      -   Rotate and skew transforms disable accelerated scrolling. Scale transforms and horizontal or vertical translations above the scrolled region work correctly and do not disable scrolling acceleration.      -   Changing the subtree or triggering parts of the scrollable area to redraw via animation behave as expected, but lose the benefit of accelerated scrolling for the redrawn area. Any animation that invalidates the scrolled area during the same frame in which scrolling occurs eliminates the benefit of this optimization.      -   The VisualScrollableAreaClip rectangle snaps inward to pixels. Therefore, the snapped size of the scrolling rectangle is always less than or equal to the size you have set.      -   Offsets snap downward. This means that the difference of the previous snapped offset and current snapped offset is always an integer number of pixels.      -   Hit tests can be off by up to a pixel.      -   Layout rounding should be turned on, because it ensures that the edges of scrollable areas and the boundary window client area are snapped to pixel boundaries, resulting in correct alignment.      -   Scrolling acceleration does not work on layered windows. This means windows in which AllowTransparency == true, window.windowstyle == none, and so on.      -   Scrolling acceleration does not occur during full-window rendering.      -   Scrolling acceleration does not work when the window straddles two monitors.      -   Scrolling acceleration does not work in the presence of intermediate render targets in the parent chain of the scrolled element. The following list shows some of these intermediate render targets.          -   Clips          -   Effects          -   DrawingBrushes          -   VisualBrushes          -   OpacityMasks          -   Opacity      -   Only one accelerated scroll can happen per frame. There can be multiple accelerated scroll areas, but only one of them can perform an accelerated scroll during a frame. Which area is scrolled is indeterminate.      -   Scrolling acceleration supports content above the scrolling region (in z-order) that is not scrolled with the rest of the content. The system calculates all necessary dirty regions and completes the accelerated scroll, but it sends several additional bitmaps over the wire to move the unintentionally scrolled portion back to its correct position on screen."
+  summary: "Ottiene o imposta un&quot;area scorrevole ritagliata per il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
+  remarks: "Impostare la proprietà VisualScrollableAreaClip per abilitare lo scorrimento accelerato durante il rendering nel software. Ciò risulta utile in scenari remoti per il rendering, ad esempio in esecuzione tramite Desktop remoto o in una macchina virtuale. Impostare questa proprietà per l&quot;elemento padre sarà possibile scorrere i cui elementi figlio. L&quot;impostazione della proprietà VisualScrollableAreaClip non ha alcun effetto quando per il rendering con accelerazione hardware.       La proprietà VisualScrollableAreaClip consente scenari avanzati specifici. Nell&quot;elenco seguente vengono mostrati le condizioni che si applicano quando si utilizza la proprietà VisualScrollableAreaClip.      -Lo sfondo dell&quot;area di scorrimento deve essere opaco o verrà eseguito lo scorrimento degli elementi.      -La proprietà VisualScrollableAreaClip accelera lo scorrimento solo quando WPF viene eseguito il rendering nel software. Ad esempio, questa situazione si verifica quando l&quot;applicazione è in esecuzione tramite Desktop remoto o in esecuzione in locale in una macchina virtuale.      -Il comportamento di scorrimento è invariato quando il rendering in hardware. Per evitare che le differenze nel comportamento di scorrimento, è consigliabile mantenere la proprietà VisualScrollableAreaClip abilitata per l&quot;hardware e software.      -Trasformazioni rotazione e inclinazione disabilitano lo scorrimento accelerato. Trasformazioni di scala e le traduzioni in orizzontale o verticale sopra l&quot;area di scorrimento funzioni correttamente e non disabilitare l&quot;accelerazione dello scorrimento.      -La modifica del sottoalbero o l&quot;attivazione di parti dell&quot;area di scorrimento per ridisegnare tramite l&quot;animazione si comportano come previsto, ma perdere il vantaggio di scorrimento accelerato per l&quot;area ridisegnata. Le animazioni che invalida l&quot;area di scorrimento durante il frame stesso si verifica in cui lo scorrimento Elimina il vantaggio di questa ottimizzazione.      -Il rettangolo VisualScrollableAreaClip consente di agganciare verso l&quot;interno per pixel. Di conseguenza, le dimensioni del rettangolo di scorrimento bloccate sono sempre minore o uguale alla dimensione che è stata impostata.      -Offset snap verso il basso. Ciò significa che la differenza del precedente snap offset e offset bloccati corrente è sempre un numero intero di pixel.      -Hit test può essere al massimo un pixel.      -Arrotondamento del layout deve essere acceso, poiché garantisce che i bordi delle aree scorrevoli e l&quot;area client della finestra limite vengono bloccati i limiti di pixel, con allineamento corretto.      -L&quot;accelerazione dello scorrimento non funziona nelle finestre sovrapposte. Ciò significa che windows in cui AllowTransparency = = true, Window. WindowStyle = = nessuno e così via.      -L&quot;accelerazione dello scorrimento non si verifica durante il rendering a finestra intera.      -L&quot;accelerazione dello scorrimento non funziona quando la finestra gestisce due monitoraggi.      -L&quot;accelerazione dello scorrimento non funziona in presenza di destinazioni di rendering intermedie nella catena padre dell&quot;elemento a scorrimento. L&quot;elenco seguente mostra che alcune di queste destinazioni di rendering intermedie.          -Taglia - effetti - DrawingBrushes - VisualBrushes - OpacityMasks - Opacity - solo uno scorrimento accelerato può verificarsi per ogni frame. Possono essere presenti più aree di scorrimento accelerato, ma solo uno di essi può eseguire uno scorrimento accelerato durante un frame. L&quot;area di scorrimento è indeterminato.      -L&quot;accelerazione dello scorrimento supporta contenuto sopra l&quot;area di scorrimento (nell&quot;ordine z) che non scorre con il resto del contenuto. Il sistema calcola tutte le aree dirty necessarie e completa lo scorrimento accelerato, ma invia diverse bitmap aggiuntive in transito per spostare la parte involontariamente scorrimento nuovamente nella posizione corretta sullo schermo."
   syntax:
     content: protected Nullable<System.Windows.Rect> VisualScrollableAreaClip { get; set; }
     return:
       type: System.Nullable{System.Windows.Rect}
-      description: "A <xref href=&quot;System.Windows.Rect&quot;></xref> that represents the scrollable clipping area, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no clipping area is assigned."
+      description: "Oggetto <xref href=&quot;System.Windows.Rect&quot;> </xref> che rappresenta l&quot;area di ritaglio scorrevole, o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se non viene assegnata alcuna area di ritaglio."
   overload: System.Windows.Media.Visual.VisualScrollableAreaClip*
   exceptions: []
   platform:
@@ -911,7 +911,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.TextHintingMode&quot;></xref> of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Media.TextHintingMode&quot;> </xref> del <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   syntax:
     content: protected System.Windows.Media.TextHintingMode VisualTextHintingMode { get; set; }
     return:
@@ -933,7 +933,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.TextRenderingMode&quot;></xref> of the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Media.TextRenderingMode&quot;> </xref> del <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   syntax:
     content: protected System.Windows.Media.TextRenderingMode VisualTextRenderingMode { get; set; }
     return:
@@ -955,12 +955,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Media.Transform&quot;></xref> value for the <xref href=&quot;System.Windows.Media.Visual&quot;></xref>."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Media.Transform&quot;> </xref> valore per il <xref href=&quot;System.Windows.Media.Visual&quot;> </xref>."
   syntax:
     content: protected System.Windows.Media.Transform VisualTransform { get; set; }
     return:
       type: System.Windows.Media.Transform
-      description: "The transform value of the visual."
+      description: "Il valore di trasformazione dell&quot;oggetto visivo."
   overload: System.Windows.Media.Visual.VisualTransform*
   exceptions: []
   platform:
@@ -977,13 +977,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the x-coordinate (vertical) guideline collection."
-  remarks: "Pixel snapping is the process in which content layout is fixed so that object edges are rendered on device-specific pixels. The [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] graphics system uses device-independent units to enable resolution and device independence. Each device independent pixel automatically scales with the system&quot;s [!INCLUDE[TLA#tla_dpi](~/add/includes/ajax-current-ext-md.md)] setting. This provides [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] applications proper scaling for different [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] settings and makes the application automatically [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]-aware.       However, this [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] independence can create irregular edge rendering due to anti-aliasing. These artifacts, commonly seen as blurry or &quot;soft&quot; edges, can occur when the location of an edge falls in the middle of a device pixel rather than between device pixels. To address this issue, [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] provides a way for object edges in a visual tree to &quot;snap&quot; to device pixels, eliminating the soft edges produced by anti-aliasing."
+  summary: "Ottiene o imposta la raccolta delle linee guida per coordinata x (verticale)."
+  remarks: "Allineamento ai pixel è il processo in cui il layout del contenuto è fissa in modo che i bordi degli oggetti vengono sottoposti a rendering in pixel specifiche del dispositivo. Il [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] sistema grafico utilizza unità indipendenti dal dispositivo per abilitare l&quot;indipendenza dalla risoluzione e dispositivo. Ogni pixel indipendente dal dispositivo viene automaticamente ridimensionato con il sistema [!INCLUDE[TLA#tla_dpi](~/add/includes/ajax-current-ext-md.md)] impostazione. In questo modo [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] applicazioni scalabilità appropriate per diversi [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] impostazioni e rende automaticamente l&quot;applicazione [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]-compatibile con.       Tuttavia, questo [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] indipendenza è possibile creare per il rendering irregolare dei bordi a causa di anti-aliasing. Questi elementi, presente comunemente come bordi sfocati o &quot;soft&quot;, possono verificarsi quando il percorso di un bordo rientra all&quot;interno di un pixel anziché tra pixel del dispositivo. Per risolvere questo problema, [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] offre un modo per i bordi degli oggetti in una struttura ad albero visuale per &quot;Guide&quot; ai pixel del dispositivo, contorni sfumati prodotti dall&quot;anti-aliasing."
   syntax:
     content: protected System.Windows.Media.DoubleCollection VisualXSnappingGuidelines { get; set; }
     return:
       type: System.Windows.Media.DoubleCollection
-      description: "The x-coordinate guideline collection of the visual."
+      description: "Raccolta delle linee guida coordinata x dell&quot;oggetto visivo."
   overload: System.Windows.Media.Visual.VisualXSnappingGuidelines*
   exceptions: []
   platform:
@@ -1000,13 +1000,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media
-  summary: "Gets or sets the y-coordinate (horizontal) guideline collection."
-  remarks: "Pixel snapping is the process in which content layout is fixed so that object edges are rendered on device-specific pixels. The [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] graphics system uses device-independent units to enable resolution and device independence. Each device independent pixel automatically scales with the system&quot;s [!INCLUDE[TLA#tla_dpi](~/add/includes/ajax-current-ext-md.md)] setting. This provides [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] applications proper scaling for different [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] settings and makes the application automatically [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]-aware.       However, this [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] independence can create irregular edge rendering due to anti-aliasing. These artifacts, commonly seen as blurry, or &quot;soft&quot; edges, can occur when the location of an edge falls in the middle of a device pixel rather than between device pixels. To address this issue, [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] provides a way for object edges in a visual tree to &quot;snap&quot; to device pixels, eliminating the soft edges produced by anti-aliasing."
+  summary: "Ottiene o imposta la raccolta delle linee guida per coordinata y (orizzontale)."
+  remarks: "Allineamento ai pixel è il processo in cui il layout del contenuto è fissa in modo che i bordi degli oggetti vengono sottoposti a rendering in pixel specifiche del dispositivo. Il [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] sistema grafico utilizza unità indipendenti dal dispositivo per abilitare l&quot;indipendenza dalla risoluzione e dispositivo. Ogni pixel indipendente dal dispositivo viene automaticamente ridimensionato con il sistema [!INCLUDE[TLA#tla_dpi](~/add/includes/ajax-current-ext-md.md)] impostazione. In questo modo [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] applicazioni scalabilità appropriate per diversi [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] impostazioni e rende automaticamente l&quot;applicazione [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)]-compatibile con.       Tuttavia, questo [!INCLUDE[TLA2#tla_dpi](~/add/includes/tla2sharptla-dpi-md.md)] indipendenza è possibile creare per il rendering irregolare dei bordi a causa di anti-aliasing. Questi elementi, presente comunemente come bordi sfocati o &quot;soft&quot;, possono verificarsi quando il percorso di un bordo rientra all&quot;interno di un pixel anziché tra pixel del dispositivo. Per risolvere questo problema, [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] offre un modo per i bordi degli oggetti in una struttura ad albero visuale per &quot;Guide&quot; ai pixel del dispositivo, contorni sfumati prodotti dall&quot;anti-aliasing."
   syntax:
     content: protected System.Windows.Media.DoubleCollection VisualYSnappingGuidelines { get; set; }
     return:
       type: System.Windows.Media.DoubleCollection
-      description: "The y-coordinate guideline collection of the visual."
+      description: "Raccolta delle linee guida coordinata y dell&quot;oggetto visivo."
   overload: System.Windows.Media.Visual.VisualYSnappingGuidelines*
   exceptions: []
   platform:

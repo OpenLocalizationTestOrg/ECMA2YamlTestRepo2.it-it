@@ -37,8 +37,8 @@ items:
   nameWithType: Binding
   fullName: System.Windows.Forms.Binding
   type: Class
-  summary: "Represents the simple binding between the property value of an object and the property value of a control."
-  remarks: "Use the Binding class to create and maintain a simple binding between the property of a control and either the property of an object, or the property of the current object in a list of objects.       As an example of the first case, you can bind the <xref:System.Windows.Forms.Control.Text%2A> property of a <xref:System.Windows.Forms.TextBox> control to the `FirstName` property of a `Customer` object. As an example of the second case, you can bind the <xref:System.Windows.Forms.Control.Text%2A> property of a <xref:System.Windows.Forms.TextBox> control to the `FirstName` property of a <xref:System.Data.DataTable> that contains customers.       The Binding class also enables you to format values for display through the <xref:System.Windows.Forms.Binding.Format> event and to retrieve formatted values through the <xref:System.Windows.Forms.Binding.Parse> event.       When constructing a Binding instance with <xref:System.Windows.Forms.Binding.%23ctor%2A> constructor, you must specify three items:      -   The name of the control property to bind to.      -   The data source.      -   The navigation path that resolves to a list or property in the data source. The navigation path is also used to create the object&quot;s <xref:System.Windows.Forms.Binding.BindingMemberInfo%2A> property.       First, you must specify name of the control property you want to bind the data to. For example, to display data in a <xref:System.Windows.Forms.TextBox> control, specify the <xref:System.Windows.Forms.TextBoxBase.Text%2A> property.       Second, you can specify an instance of any one of the classes in the following table as the data source.        Third, you must specify the navigation path, which can be an empty string (&quot;&quot;), a single property name, or a period-delimited hierarchy of names. If you set the navigation path to an empty string, the <xref:System.Object.ToString%2A> method will be called on the underlying data source object.       If the data source is a <xref:System.Data.DataTable>, which can contain multiple <xref:System.Data.DataColumn> objects, the navigation path must be used to resolve to a specific column.      > [!NOTE] >  When the data source is a <xref:System.Data.DataSet>, <xref:System.Data.DataViewManager>, or <xref:System.Data.DataTable>, you are actually binding to a <xref:System.Data.DataView>. Consequently, the bound rows are actually <xref:System.Data.DataRowView> objects.       A period-delimited navigation path is required when the data source is set to an object that contains multiple <xref:System.Data.DataTable> objects (such as a <xref:System.Data.DataSet> or <xref:System.Data.DataViewManager>). You can also use a period-delimited navigation path when you bind to an object whose properties return references to other objects (such as a class with properties that return other class objects). For example, the following navigation paths all describe valid data fields:      -   &quot;Size.Height&quot;      -   &quot;Suppliers.CompanyName&quot;      -   &quot;Regions.regionsToCustomers.CustomerFirstName&quot;      -   &quot;Regions.regionsToCustomers.customersToOrders.ordersToDetails.Quantity&quot;       Each member of the path can return either a property that resolves to a single value (such as an integer), or a list of values (such as an array of strings). Although each member in the path can be a list or property, the final member must resolve to a property. Each member builds on the previous member: &quot;Size.Height&quot; resolves to the <xref:System.Drawing.Size.Height%2A> property for the current <xref:System.Drawing.Size>; &quot;Regions.regionsToCustomers.CustomerFirstName&quot; resolves to the first name for the current customer, where the customer is one of the customers for the current region.       A <xref:System.Data.DataRelation> returns a list of values by linking one <xref:System.Data.DataTable> to a second <xref:System.Data.DataTable> in a <xref:System.Data.DataSet>. If the <xref:System.Data.DataSet> contains <xref:System.Data.DataRelation> objects, you can specify the data member as a <xref:System.Data.DataTable.TableName%2A> followed by a <xref:System.Data.DataRelation.RelationName%2A>, and then a <xref:System.Data.DataColumn.ColumnName%2A>. For example, if the <xref:System.Data.DataTable> named &quot;Suppliers&quot; contains a <xref:System.Data.DataRelation> named &quot;suppliers2products&quot;, the data member could be &quot;Suppliers.suppliers2products.ProductName&quot;.       The data source can consist of a set of related classes. For example, imagine a set of classes that catalogs solar systems. The class named `System` contains a property named `Stars` that returns a collection of `Star` objects. Each `Star` object has `Name` and `Mass` properties, as well as a `Planets` property that returns a collection of `Planet` objects. In this system, each planet also has `Mass` and `Name` properties. Each `Planet` object further has a `Moons` property that returns a collection of `Moon` objects, each of which also has `Name` and `Mass` properties. If you specify a `System` object as the data source, you can specify any of the following as the data member:      -   &quot;Stars.Name&quot;      -   &quot;Stars.Mass&quot;      -   &quot;Stars.Planets.Name&quot;      -   &quot;Stars.Planets.Mass&quot;      -   &quot;Stars.Planets.Moons.Name&quot;      -   &quot;Stars.Planets.Moons.Mass&quot;       Controls that can be simple-bound feature a collection of Binding objects in a <xref:System.Windows.Forms.ControlBindingsCollection>, which you can access through the control&quot;s <xref:System.Windows.Forms.Control.DataBindings%2A> property. You add a Binding to the collection by calling the <xref:System.Windows.Forms.ControlBindingsCollection.Add%2A> method, thereby binding a property of the control to a property of an object (or to a property of the current object in a list).       You can simple-bind to any object that derives from the <xref:System.Windows.Forms.Control?displayProperty=fullName> class, for example, the following Windows controls:      -   <xref:System.Windows.Forms.Button>      -   <xref:System.Windows.Forms.CheckBox>      -   <xref:System.Windows.Forms.CheckedListBox>      -   <xref:System.Windows.Forms.ComboBox>      -   <xref:System.Windows.Forms.DateTimePicker>      -   <xref:System.Windows.Forms.DomainUpDown>      -   <xref:System.Windows.Forms.GroupBox>      -   <xref:System.Windows.Forms.HScrollBar>      -   <xref:System.Windows.Forms.Label>      -   <xref:System.Windows.Forms.LinkLabel>      -   <xref:System.Windows.Forms.ListBox>      -   <xref:System.Windows.Forms.ListView>      -   <xref:System.Windows.Forms.MonthCalendar>      -   <xref:System.Windows.Forms.NumericUpDown>      -   <xref:System.Windows.Forms.PictureBox>      -   <xref:System.Windows.Forms.ProgressBar>      -   <xref:System.Windows.Forms.RadioButton>      -   <xref:System.Windows.Forms.RichTextBox>      -   <xref:System.Windows.Forms.ScrollBar>      -   <xref:System.Windows.Forms.StatusBar>      -   <xref:System.Windows.Forms.TextBox>      -   <xref:System.Windows.Forms.TreeView>      -   <xref:System.Windows.Forms.VScrollBar>      > [!NOTE] >  Only the <xref:System.Windows.Forms.ListControl.SelectedValue%2A> property of the <xref:System.Windows.Forms.ComboBox>, <xref:System.Windows.Forms.CheckedListBox>, and <xref:System.Windows.Forms.ListBox> control is simple bound.       The <xref:System.Windows.Forms.BindingManagerBase> class is an abstract class that manages all the Binding objects for a particular data source and data member. Classes that derive from <xref:System.Windows.Forms.BindingManagerBase> are the <xref:System.Windows.Forms.CurrencyManager> and the <xref:System.Windows.Forms.PropertyManager> classes. How a Binding is managed depends on whether the Binding is a list binding or a property binding. For example, if it is a list binding, you can use the <xref:System.Windows.Forms.BindingManagerBase> to specify a <xref:System.Windows.Forms.BindingManagerBase.Position%2A> in the list; the <xref:System.Windows.Forms.BindingManagerBase.Position%2A>, therefore, determines which item (out of all items in the list) is actually bound to a control. To return the appropriate <xref:System.Windows.Forms.BindingManagerBase>, use the <xref:System.Windows.Forms.BindingContext>.       To add a new row to a set of controls bound to the same <xref:System.Windows.Forms.Binding.DataSource%2A>, use the <xref:System.Windows.Forms.BindingManagerBase.AddNew%2A> method of the <xref:System.Windows.Forms.BindingManagerBase> class. Use the <xref:System.Windows.Forms.BindingContext.Item%2A> property of the <xref:System.Windows.Forms.BindingContext> class to return the appropriate <xref:System.Windows.Forms.CurrencyManager>. To escape the addition of the new row, use the <xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A> method."
+  summary: "Rappresenta l&quot;associazione semplice tra il valore della proprietà di un oggetto e il valore della proprietà di un controllo."
+  remarks: "Utilizzare la classe di associazione per creare e gestire un&quot;associazione semplice tra la proprietà di un controllo e la proprietà di un oggetto o dell&quot;oggetto corrente in un elenco di oggetti.       Ad esempio del primo caso, è possibile associare il <xref:System.Windows.Forms.Control.Text%2A>proprietà di un <xref:System.Windows.Forms.TextBox>il controllo al `FirstName` proprietà di un `Customer` oggetto.</xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control.Text%2A> Ad esempio del secondo caso, è possibile associare il <xref:System.Windows.Forms.Control.Text%2A>proprietà di un <xref:System.Windows.Forms.TextBox>il controllo al `FirstName` proprietà di un <xref:System.Data.DataTable>contenente i clienti.</xref:System.Data.DataTable> </xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control.Text%2A>       La classe di associazione è inoltre possibile formattare i valori per la visualizzazione mediante il <xref:System.Windows.Forms.Binding.Format>eventi e per il recupero dei valori formattati mediante il <xref:System.Windows.Forms.Binding.Parse>evento.</xref:System.Windows.Forms.Binding.Parse> </xref:System.Windows.Forms.Binding.Format>       Quando si crea un&quot;istanza dell&quot;associazione con <xref:System.Windows.Forms.Binding.%23ctor%2A>costruttore, è necessario specificare tre elementi:-il nome della proprietà del controllo da associare.</xref:System.Windows.Forms.Binding.%23ctor%2A>      -L&quot;origine dati.      -Il percorso di navigazione che viene risolta in un elenco o una proprietà dell&quot;origine dati. Il percorso di navigazione viene inoltre utilizzato per creare l&quot;oggetto <xref:System.Windows.Forms.Binding.BindingMemberInfo%2A>proprietà.</xref:System.Windows.Forms.Binding.BindingMemberInfo%2A>       In primo luogo, è necessario specificare il nome della proprietà del controllo a cui che si desidera associare i dati. Ad esempio, per visualizzare i dati in un <xref:System.Windows.Forms.TextBox>di controllo, specificare il <xref:System.Windows.Forms.TextBoxBase.Text%2A>proprietà.</xref:System.Windows.Forms.TextBoxBase.Text%2A> </xref:System.Windows.Forms.TextBox>       In secondo luogo, è possibile specificare un&quot;istanza di una delle classi nella tabella seguente come origine dati.        In terzo luogo, è necessario specificare il percorso di navigazione, che può essere una stringa vuota (&quot;&quot;), il nome di una singola proprietà o una gerarchia delimitato da virgole di nomi. Se si imposta il percorso di navigazione su una stringa vuota, il <xref:System.Object.ToString%2A>metodo verrà chiamato sull&quot;oggetto origine dati sottostante.</xref:System.Object.ToString%2A>       Se l&quot;origine dati è un <xref:System.Data.DataTable>, che può contenere più <xref:System.Data.DataColumn>oggetti, il percorso di navigazione deve essere utilizzato per risolvere una colonna specifica.</xref:System.Data.DataColumn> </xref:System.Data.DataTable>      > [!NOTE] > Quando l&quot;origine dati è un <xref:System.Data.DataSet>, <xref:System.Data.DataViewManager>, o <xref:System.Data.DataTable>, si è effettivamente l&quot;associazione a un <xref:System.Data.DataView>.</xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataViewManager> </xref:System.Data.DataSet> Di conseguenza, le righe associate sono effettivamente <xref:System.Data.DataRowView>oggetti.</xref:System.Data.DataRowView>       Quando l&quot;origine dati è impostata su un oggetto che contiene più, è necessario un percorso di navigazione delimitato <xref:System.Data.DataTable>oggetti (ad esempio un <xref:System.Data.DataSet>o <xref:System.Data.DataViewManager>).</xref:System.Data.DataViewManager> </xref:System.Data.DataSet> </xref:System.Data.DataTable> Quando si associa a un oggetto le cui proprietà restituiscono riferimenti ad altri oggetti (ad esempio una classe con le proprietà che restituiscono altri oggetti di classe), è possibile utilizzare anche un percorso di navigazione delimitato. Ad esempio, tutti i percorsi di navigazione seguenti descrivono i campi di dati validi: - &quot;Size. Height&quot; - &quot;Suppliers.CompanyName&quot; - &quot;Regions.regionsToCustomers.CustomerFirstName&quot; - &quot;Regions.regionsToCustomers.customersToOrders.ordersToDetails.Quantity&quot; ogni membro del percorso può restituire una proprietà che si risolve in un singolo valore (ad esempio un numero intero) o un elenco di valori (ad esempio una matrice di stringhe). Anche se ogni membro del percorso può essere un elenco o una proprietà, il membro finale deve essere risolto in una proprietà. Ciascun membro viene generato sul membro precedente: &quot;Size. Height&quot; viene risolto per la proprietà <xref:System.Drawing.Size.Height%2A>corrente <xref:System.Drawing.Size>; &quot;Regions.regionsToCustomers.CustomerFirstName&quot; viene risolto il nome per il cliente corrente, in cui il cliente è uno dei clienti per l&quot;area corrente.</xref:System.Drawing.Size> </xref:System.Drawing.Size.Height%2A>       <xref:System.Data.DataRelation>Restituisce un elenco di valori collegando un <xref:System.Data.DataTable>a un secondo <xref:System.Data.DataTable>in un <xref:System.Data.DataSet>.</xref:System.Data.DataSet> </xref:System.Data.DataTable> </xref:System.Data.DataTable> </xref:System.Data.DataRelation> a Se il <xref:System.Data.DataSet>contiene <xref:System.Data.DataRelation>oggetti, è possibile specificare il membro dati come un <xref:System.Data.DataTable.TableName%2A>seguito da un <xref:System.Data.DataRelation.RelationName%2A>e quindi un <xref:System.Data.DataColumn.ColumnName%2A>.</xref:System.Data.DataColumn.ColumnName%2A> </xref:System.Data.DataRelation.RelationName%2A> </xref:System.Data.DataTable.TableName%2A> </xref:System.Data.DataRelation> </xref:System.Data.DataSet> Ad esempio, se il <xref:System.Data.DataTable>denominato &quot;Suppliers&quot; contiene un <xref:System.Data.DataRelation>denominato &quot;suppliers2products&quot;, il membro dati potrebbe essere &quot;Suppliers2products&quot;.</xref:System.Data.DataRelation> </xref:System.Data.DataTable>       L&quot;origine dati può essere costituito da un set di classi correlate. Si supponga, ad esempio, un set di classi che cataloghi sistemi solari. La classe denominata `System` contiene una proprietà denominata `Stars` che restituisce una raccolta di `Star` oggetti. Ogni `Star` oggetto ha `Name` e `Mass` proprietà, nonché una `Planets` proprietà che restituisce una raccolta di `Planet` oggetti. In questo sistema, ogni pianeta include anche `Mass` e `Name` proprietà. Ogni `Planet` ulteriormente l&quot;oggetto ha un `Moons` proprietà che restituisce una raccolta di `Moon` oggetti, ognuno dei quali dispone anche di `Name` e `Mass` proprietà. Se si specifica un `System` dell&quot;oggetto come origine dati, è possibile specificare una delle seguenti come membro dei dati: - &quot;Stars.Name&quot; - &quot;Stars.Mass&quot; - &quot;Stars.Planets.Name&quot; - &quot;Stars.Planets.Mass&quot; - &quot;Stars.Planets.Moons.Name&quot; - &quot;Stars.Planets.Moons.Mass&quot; controlli che possono essere con associazione semplice funzionalità di una raccolta di associazione di oggetti in un <xref:System.Windows.Forms.ControlBindingsCollection>, che è possibile accedere tramite il controllo <xref:System.Windows.Forms.Control.DataBindings%2A>proprietà.</xref:System.Windows.Forms.Control.DataBindings%2A> </xref:System.Windows.Forms.ControlBindingsCollection> Per aggiungere un&quot;associazione alla raccolta, chiamare il <xref:System.Windows.Forms.ControlBindingsCollection.Add%2A>(metodo), quindi associando una proprietà del controllo a una proprietà di un oggetto (o a una proprietà dell&quot;oggetto corrente in un elenco).</xref:System.Windows.Forms.ControlBindingsCollection.Add%2A>       You can simple-bind to any object that derives from the <xref:System.Windows.Forms.Control?displayProperty=fullName> class, for example, the following Windows controls:      -   <xref:System.Windows.Forms.Button>      -   <xref:System.Windows.Forms.CheckBox>      -   <xref:System.Windows.Forms.CheckedListBox>      -   <xref:System.Windows.Forms.ComboBox>      -   <xref:System.Windows.Forms.DateTimePicker>      -   <xref:System.Windows.Forms.DomainUpDown>      -   <xref:System.Windows.Forms.GroupBox>      -   <xref:System.Windows.Forms.HScrollBar>      -   <xref:System.Windows.Forms.Label>      -   <xref:System.Windows.Forms.LinkLabel>      -   <xref:System.Windows.Forms.ListBox>      -   <xref:System.Windows.Forms.ListView>      -   <xref:System.Windows.Forms.MonthCalendar>      -   <xref:System.Windows.Forms.NumericUpDown>      -   <xref:System.Windows.Forms.PictureBox>      -   <xref:System.Windows.Forms.ProgressBar>      -   <xref:System.Windows.Forms.RadioButton>      -   <xref:System.Windows.Forms.RichTextBox>      -   <xref:System.Windows.Forms.ScrollBar>      -   <xref:System.Windows.Forms.StatusBar>      -   <xref:System.Windows.Forms.TextBox>      -   <xref:System.Windows.Forms.TreeView>      -   <xref:System.Windows.Forms.VScrollBar>      > [!NOTE] >  Only the <xref:System.Windows.Forms.ListControl.SelectedValue%2A> property of the <xref:System.Windows.Forms.ComboBox>, <xref:System.Windows.Forms.CheckedListBox>, and <xref:System.Windows.Forms.ListBox> control is simple bound.</xref:System.Windows.Forms.ListBox></xref:System.Windows.Forms.CheckedListBox></xref:System.Windows.Forms.ComboBox></xref:System.Windows.Forms.ListControl.SelectedValue%2A></xref:System.Windows.Forms.VScrollBar></xref:System.Windows.Forms.TreeView></xref:System.Windows.Forms.TextBox></xref:System.Windows.Forms.StatusBar></xref:System.Windows.Forms.ScrollBar></xref:System.Windows.Forms.RichTextBox></xref:System.Windows.Forms.RadioButton></xref:System.Windows.Forms.ProgressBar></xref:System.Windows.Forms.PictureBox></xref:System.Windows.Forms.NumericUpDown></xref:System.Windows.Forms.MonthCalendar></xref:System.Windows.Forms.ListView></xref:System.Windows.Forms.ListBox></xref:System.Windows.Forms.LinkLabel></xref:System.Windows.Forms.Label></xref:System.Windows.Forms.HScrollBar></xref:System.Windows.Forms.GroupBox></xref:System.Windows.Forms.DomainUpDown></xref:System.Windows.Forms.DateTimePicker></xref:System.Windows.Forms.ComboBox></xref:System.Windows.Forms.CheckedListBox></xref:System.Windows.Forms.CheckBox></xref:System.Windows.Forms.Button></xref:System.Windows.Forms.Control?displayProperty=fullName>       La <xref:System.Windows.Forms.BindingManagerBase>classe è una classe astratta che gestisce tutti gli oggetti di associazione per una determinata origine dati e di un membro dati.</xref:System.Windows.Forms.BindingManagerBase> Le classi che derivano da <xref:System.Windows.Forms.BindingManagerBase>sono il <xref:System.Windows.Forms.CurrencyManager>e <xref:System.Windows.Forms.PropertyManager>classi.</xref:System.Windows.Forms.PropertyManager> </xref:System.Windows.Forms.CurrencyManager> </xref:System.Windows.Forms.BindingManagerBase> La modalità di gestione di un&quot;associazione varia a seconda che l&quot;associazione dell&quot;associazione di un elenco o un&quot;associazione di proprietà. Ad esempio, se si tratta di un&quot;associazione di elenco, è possibile utilizzare il <xref:System.Windows.Forms.BindingManagerBase>per specificare un <xref:System.Windows.Forms.BindingManagerBase.Position%2A>nell&quot;elenco; il <xref:System.Windows.Forms.BindingManagerBase.Position%2A>, pertanto, determina quale elemento (tra tutti gli elementi nell&quot;elenco) è effettivamente associato a un controllo.</xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingManagerBase> Per restituire l&quot;appropriato <xref:System.Windows.Forms.BindingManagerBase>utilizzare <xref:System.Windows.Forms.BindingContext>.</xref:System.Windows.Forms.BindingContext> </xref:System.Windows.Forms.BindingManagerBase>       Per aggiungere una nuova riga a un set di controlli associati alla stessa <xref:System.Windows.Forms.Binding.DataSource%2A>utilizzare il <xref:System.Windows.Forms.BindingManagerBase.AddNew%2A>metodo della <xref:System.Windows.Forms.BindingManagerBase>classe.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.AddNew%2A> </xref:System.Windows.Forms.Binding.DataSource%2A> Utilizzare la <xref:System.Windows.Forms.BindingContext.Item%2A>proprietà della <xref:System.Windows.Forms.BindingContext>classe per restituire il <xref:System.Windows.Forms.CurrencyManager>.</xref:System.Windows.Forms.CurrencyManager> appropriato</xref:System.Windows.Forms.BindingContext> </xref:System.Windows.Forms.BindingContext.Item%2A> Per annullare l&quot;aggiunta della nuova riga, utilizzare il <xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A>metodo.</xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A>"
   example:
   - "The following code example creates a Windows Form with several controls that demonstrate simple data binding. The example creates a <xref:System.Data.DataSet> with two tables named `Customers` and `Orders`, and a <xref:System.Data.DataRelation> named `custToOrders`. Four controls (a <xref:System.Windows.Forms.DateTimePicker> and three <xref:System.Windows.Forms.TextBox> controls) are data bound to columns in the tables. For each control, the example creates and adds a Binding to the control through the <xref:System.Windows.Forms.Control.DataBindings%2A> property. The example returns a <xref:System.Windows.Forms.BindingManagerBase> for each table through the form's <xref:System.Windows.Forms.BindingContext>. Four <xref:System.Windows.Forms.Button> controls increment or decrement the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> property on the <xref:System.Windows.Forms.BindingManagerBase> objects.  \n  \n [!code-cs[Classic Binding Example#1](~/add/codesnippet/csharp/t-system.windows.forms.b_1_1.cs)]\n [!code-cpp[Classic Binding Example#1](~/add/codesnippet/cpp/t-system.windows.forms.b_1_1.cpp)]\n [!code-vb[Classic Binding Example#1](~/add/codesnippet/visualbasic/t-system.windows.forms.b_1_1.vb)]"
   syntax:
@@ -64,8 +64,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that simple-binds the indicated control property to the specified data member of the data source."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)       If you attempt to bind to a property that does not exist, an <xref:System.ArgumentException> will be thrown when the <xref:System.Windows.Forms.Binding> is added to the control&quot;s <xref:System.Windows.Forms.Control.DataBindings%2A?displayProperty=fullName> collection."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> classe che stabilisce un&quot;associazione semplice tra la proprietà del controllo indicata e il membro dati indicato dell&quot;origine dati."
+  remarks: "È possibile specificare un&quot;istanza di una delle seguenti classi per l&quot;origine dati:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-qualsiasi classe che implementa il <xref:System.Collections.IList>qualsiasi classe vedere - interfaccia il <xref:System.Windows.Forms.Binding>Per ulteriori informazioni sulla creazione di `dataMember` stringa.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       Quando si crea un&quot;associazione a una proprietà del controllo, il nuovo <xref:System.Windows.Forms.Binding>esamina gli eventi esposti dal controllo associato e associa due particolari eventi:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>- un evento denominato *PropertyName* `Changed` (ad esempio, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>) se si tenta di associare a una proprietà che non esiste, un <xref:System.ArgumentException>viene generata quando il <xref:System.Windows.Forms.Binding>viene aggiunto al controllo <xref:System.Windows.Forms.Control.DataBindings%2A?displayProperty=fullName>insieme.</xref:System.Windows.Forms.Control.DataBindings%2A?displayProperty=fullName> </xref:System.Windows.Forms.Binding> </xref:System.ArgumentException> </xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName> </xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>"
   example:
   - "The following code example binds a <xref:System.Windows.Forms.TextBox> control to a table column in a <xref:System.Data.DataSet> named `myDataSet`. The example requires that you have declared `myDataSet` in the declarations section of the module.  \n  \n [!code-cs[Classic Binding.Binding Example#1](~/add/codesnippet/csharp/49bd158c-67fd-4ab1-9c8d-_1.cs)]\n [!code-vb[Classic Binding.Binding Example#1](~/add/codesnippet/visualbasic/49bd158c-67fd-4ab1-9c8d-_1.vb)]\n [!code-cpp[Classic Binding.Binding Example#1](~/add/codesnippet/cpp/49bd158c-67fd-4ab1-9c8d-_1.cpp)]"
   syntax:
@@ -73,21 +73,21 @@ items:
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "Il nome della proprietà del controllo da associare."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> that represents the data source."
+      description: "Un <xref:System.Object>che rappresenta l&quot;origine dati.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "La proprietà o un elenco da associare."
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "<code>propertyName</code> is neither a valid property of a control nor an empty string (&quot;&quot;)."
+    description: "<code>propertyName</code>è una proprietà valida di un controllo né una stringa vuota (&quot;&quot;)."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control."
+    description: "La proprietà specificata da <code> propertyName </code> non esiste nel controllo."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean)
@@ -102,30 +102,30 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that binds the indicated control property to the specified data member of the data source, and optionally enables formatting to be applied."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> classe che associa la proprietà del controllo indicata e il membro dati indicato dell&quot;origine dati e, facoltativamente abilita la formattazione da applicare."
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "Il nome della proprietà del controllo da associare."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> that represents the data source."
+      description: "Un <xref:System.Object>che rappresenta l&quot;origine dati.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "La proprietà o un elenco da associare."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Per formattare i dati visualizzati; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The property given is a read-only property."
+    description: "La proprietà specificata da <code> propertyName </code> non esiste nel controllo.       - oppure - la proprietà specificata è una proprietà di sola lettura."
   - type: System.Exception
     commentId: T:System.Exception
-    description: "Formatting is disabled and <code>propertyName</code> is neither a valid property of a control nor an empty string (&quot;&quot;)."
+    description: "La formattazione è disabilitata e <code> propertyName </code> non corrisponde a una proprietà valida di un controllo né una stringa vuota (&quot;&quot;)."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean,System.Windows.Forms.DataSourceUpdateMode)
@@ -140,31 +140,31 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that binds the specified control property to the specified data member of the specified data source. Optionally enables formatting and propagates values to the data source based on the specified update setting."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>.      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)"
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> classe che associa la proprietà del controllo specificato per il membro dati indicato dell&quot;origine dati specificata. Facoltativamente, consente la formattazione e propaga i valori all&quot;origine dati in base all&quot;impostazione di aggiornamento specificate."
+  remarks: "È possibile specificare un&quot;istanza di una delle seguenti classi per l&quot;origine dati:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-qualsiasi classe che implementa il <xref:System.Collections.IList>qualsiasi classe vedere - interfaccia il <xref:System.Windows.Forms.Binding>Per ulteriori informazioni sulla creazione di `dataMember` stringa.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       Quando si crea un&quot;associazione a una proprietà del controllo, il nuovo <xref:System.Windows.Forms.Binding>esamina gli eventi esposti dal controllo associato e associa due particolari eventi:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>.</xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>      -Un evento denominato *PropertyName* `Changed` (ad esempio, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)</xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>"
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "Il nome della proprietà del controllo da associare."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> representing the data source."
+      description: "Un <xref:System.Object>che rappresenta l&quot;origine dati.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "La proprietà o un elenco da associare."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Per formattare i dati visualizzati; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: dataSourceUpdateMode
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref> values."
+      description: "Uno del <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref> valori."
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The data source or data member or control property specified are associated with another binding in the collection."
+    description: "La proprietà specificata da <code> propertyName </code> non esiste nel controllo.       - oppure - l&quot;origine dati o membro o un controllo proprietà dati specificata sono associati a un&quot;altra associazione nella raccolta."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean,System.Windows.Forms.DataSourceUpdateMode,System.Object)
@@ -179,34 +179,34 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that binds the indicated control property to the specified data member of the specified data source. Optionally enables formatting, propagates values to the data source based on the specified update setting, and sets the property to the specified value when a <xref href=&quot;System.DBNull&quot;></xref> is returned from the data source."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)"
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> classe che associa la proprietà del controllo indicata per il membro dati indicato dell&quot;origine dati specificata. Abilita la formattazione, propaga i valori all&quot;origine dati in base all&quot;impostazione di aggiornamento specificato e imposta la proprietà specificata, facoltativamente, quando un <xref href=&quot;System.DBNull&quot;> </xref> viene restituito dall&quot;origine dati."
+  remarks: "È possibile specificare un&quot;istanza di una delle seguenti classi per l&quot;origine dati:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-qualsiasi classe che implementa il <xref:System.Collections.IList>qualsiasi classe vedere - interfaccia il <xref:System.Windows.Forms.Binding>Per ulteriori informazioni sulla creazione di `dataMember` stringa.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       Quando si crea un&quot;associazione a una proprietà del controllo, il nuovo <xref:System.Windows.Forms.Binding>esamina gli eventi esposti dal controllo associato e associa due particolari eventi:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>- un evento denominato *PropertyName* `Changed` (ad esempio, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)</xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName> </xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>"
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode, object nullValue);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "Il nome della proprietà del controllo da associare."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> representing the data source."
+      description: "Un <xref:System.Object>che rappresenta l&quot;origine dati.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "La proprietà o un elenco da associare."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Per formattare i dati visualizzati; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: dataSourceUpdateMode
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref> values."
+      description: "Uno del <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref> valori."
     - id: nullValue
       type: System.Object
-      description: "The <xref:System.Object> to be applied to the bound control property if the data source value is <xref href=&quot;System.DBNull&quot;></xref>."
+      description: "Il <xref:System.Object>da applicare alla proprietà del controllo associato, se l&quot;origine dati valore è <xref href=&quot;System.DBNull&quot;> </xref>.</xref:System.Object>"
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The data source or data member or control property specified are associated with another binding in the collection."
+    description: "La proprietà specificata da <code> propertyName </code> non esiste nel controllo.       - oppure - l&quot;origine dati o membro o un controllo proprietà dati specificata sono associati a un&quot;altra associazione nella raccolta."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean,System.Windows.Forms.DataSourceUpdateMode,System.Object,System.String)
@@ -221,37 +221,37 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class that binds the specified control property to the specified data member of the specified data source. Optionally enables formatting with the specified format string; propagates values to the data source based on the specified update setting; and sets the property to the specified value when a <xref href=&quot;System.DBNull&quot;></xref> is returned from the data source."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)"
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> classe che associa la proprietà del controllo specificato per il membro dati indicato dell&quot;origine dati specificata. Consente, facoltativamente, la formattazione con la stringa di formato specificato. propaga i valori all&quot;origine dati in base all&quot;impostazione di aggiornamento specificato; e imposta la proprietà specificata valore quando un <xref href=&quot;System.DBNull&quot;> </xref> viene restituito dall&quot;origine dati."
+  remarks: "È possibile specificare un&quot;istanza di una delle seguenti classi per l&quot;origine dati:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-qualsiasi classe che implementa il <xref:System.Collections.IList>qualsiasi classe vedere - interfaccia il <xref:System.Windows.Forms.Binding>Per ulteriori informazioni sulla creazione di `dataMember` stringa.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       Quando si crea un&quot;associazione a una proprietà del controllo, il nuovo <xref:System.Windows.Forms.Binding>esamina gli eventi esposti dal controllo associato e associa due particolari eventi:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>- un evento denominato *PropertyName* `Changed` (ad esempio, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)</xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName> </xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>"
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode, object nullValue, string formatString);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "Il nome della proprietà del controllo da associare."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> representing the data source."
+      description: "Un <xref:System.Object>che rappresenta l&quot;origine dati.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "La proprietà o un elenco da associare."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Per formattare i dati visualizzati; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: dataSourceUpdateMode
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref> values."
+      description: "Uno del <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref> valori."
     - id: nullValue
       type: System.Object
-      description: "The <xref:System.Object> to be applied to the bound control property if the data source value is <xref href=&quot;System.DBNull&quot;></xref>."
+      description: "Il <xref:System.Object>da applicare alla proprietà del controllo associato, se l&quot;origine dati valore è <xref href=&quot;System.DBNull&quot;> </xref>.</xref:System.Object>"
     - id: formatString
       type: System.String
-      description: "One or more format specifier characters that indicate how a value is to be displayed."
+      description: "Uno o più caratteri identificatori di formato che indicano come deve essere visualizzato un valore."
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The data source or data member or control property specified are associated with another binding in the collection."
+    description: "La proprietà specificata da <code> propertyName </code> non esiste nel controllo.       - oppure - l&quot;origine dati o membro o un controllo proprietà dati specificata sono associati a un&quot;altra associazione nella raccolta."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.#ctor(System.String,System.Object,System.String,System.Boolean,System.Windows.Forms.DataSourceUpdateMode,System.Object,System.String,System.IFormatProvider)
@@ -266,40 +266,40 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> class with the specified control property to the specified data member of the specified data source. Optionally enables formatting with the specified format string; propagates values to the data source based on the specified update setting; enables formatting with the specified format string; sets the property to the specified value when a <xref href=&quot;System.DBNull&quot;></xref> is returned from the data source; and sets the specified format provider."
-  remarks: "You can specify an instance of any of the following classes for the data source:      -   <xref:System.Data.DataSet>      -   <xref:System.Data.DataTable>      -   <xref:System.Data.DataView>      -   <xref:System.Data.DataViewManager>      -   <xref:System.Windows.Forms.BindingSource>      -   Any class that implements the <xref:System.Collections.IList> interface      -   Any class       See the <xref:System.Windows.Forms.Binding> class for more information about creating the `dataMember` string.       When you create a binding to a control&quot;s property, the new <xref:System.Windows.Forms.Binding> inspects the events exposed by the bound control and attaches to two particular events:      -   <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>      -   An event named *PropertyName*`Changed` (for example, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)"
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> classe con la proprietà del controllo specificato per il membro dati indicato dell&quot;origine dati specificata. Consente, facoltativamente, la formattazione con la stringa di formato specificato. propaga i valori all&quot;origine dati in base all&quot;impostazione di aggiornamento specificato; Abilita la formattazione con la stringa di formato specificato. Imposta la proprietà specificata valore quando un <xref href=&quot;System.DBNull&quot;> </xref> viene restituito dall&quot;origine dati; e imposta il provider di formato specificato."
+  remarks: "È possibile specificare un&quot;istanza di una delle seguenti classi per l&quot;origine dati:- <xref:System.Data.DataSet>- <xref:System.Data.DataTable>- <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- <xref:System.Windows.Forms.BindingSource>-qualsiasi classe che implementa il <xref:System.Collections.IList>qualsiasi classe vedere - interfaccia il <xref:System.Windows.Forms.Binding>Per ulteriori informazioni sulla creazione di `dataMember` stringa.</xref:System.Windows.Forms.Binding> </xref:System.Collections.IList> </xref:System.Windows.Forms.BindingSource> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>       Quando si crea un&quot;associazione a una proprietà del controllo, il nuovo <xref:System.Windows.Forms.Binding>esamina gli eventi esposti dal controllo associato e associa due particolari eventi:- <xref:System.Windows.Forms.Control.Validating?displayProperty=fullName>- un evento denominato *PropertyName* `Changed` (ad esempio, <xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName>)</xref:System.Windows.Forms.Control.BackColorChanged?displayProperty=fullName> </xref:System.Windows.Forms.Control.Validating?displayProperty=fullName> </xref:System.Windows.Forms.Binding>"
   syntax:
     content: public Binding (string propertyName, object dataSource, string dataMember, bool formattingEnabled, System.Windows.Forms.DataSourceUpdateMode dataSourceUpdateMode, object nullValue, string formatString, IFormatProvider formatInfo);
     parameters:
     - id: propertyName
       type: System.String
-      description: "The name of the control property to bind."
+      description: "Il nome della proprietà del controllo da associare."
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> representing the data source."
+      description: "Un <xref:System.Object>che rappresenta l&quot;origine dati.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The property or list to bind to."
+      description: "La proprietà o un elenco da associare."
     - id: formattingEnabled
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to format the displayed data; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Per formattare i dati visualizzati; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: dataSourceUpdateMode
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref> values."
+      description: "Uno del <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref> valori."
     - id: nullValue
       type: System.Object
-      description: "The <xref:System.Object> to be applied to the bound control property if the data source value is <xref href=&quot;System.DBNull&quot;></xref>."
+      description: "Il <xref:System.Object>da applicare alla proprietà del controllo associato, se l&quot;origine dati valore è <xref href=&quot;System.DBNull&quot;> </xref>.</xref:System.Object>"
     - id: formatString
       type: System.String
-      description: "One or more format specifier characters that indicate how a value is to be displayed."
+      description: "Uno o più caratteri identificatori di formato che indicano come deve essere visualizzato un valore."
     - id: formatInfo
       type: System.IFormatProvider
-      description: "An implementation of <xref:System.IFormatProvider> to override default formatting behavior."
+      description: "Un&quot;implementazione di <xref:System.IFormatProvider>per eseguire l&quot;override di comportamento predefinito della formattazione.</xref:System.IFormatProvider>"
   overload: System.Windows.Forms.Binding.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The property given by <code>propertyName</code> does not exist on the control.       -or-       The data source or data member or control property specified are associated with another binding in the collection."
+    description: "La proprietà specificata da <code> propertyName </code> non esiste nel controllo.       - oppure - l&quot;origine dati o membro o un controllo proprietà dati specificata sono associati a un&quot;altra associazione nella raccolta."
   platform:
   - net462
 - uid: System.Windows.Forms.Binding.BindableComponent
@@ -314,12 +314,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the control the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> is associated with."
+  summary: "Ottiene il controllo di <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> è associato."
   syntax:
     content: public System.Windows.Forms.IBindableComponent BindableComponent { get; }
     return:
       type: System.Windows.Forms.IBindableComponent
-      description: "The <xref href=&quot;System.Windows.Forms.IBindableComponent&quot;></xref> the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> is associated with."
+      description: "Il <xref href=&quot;System.Windows.Forms.IBindableComponent&quot;> </xref> il <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> è associato."
   overload: System.Windows.Forms.Binding.BindableComponent*
   exceptions: []
   platform:
@@ -336,15 +336,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.Binding.FormattingEnabled*> property is set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> and a binding operation is complete, such as when data is pushed from the control to the data source or vice versa"
-  remarks: "This event is raised under any of the following conditions when <xref:System.Windows.Forms.Binding.FormattingEnabled%2A> is `true`:      -   Data from the data source is pushed onto the control property.      -   Data from the control property is pushed onto the data source.       This event is raised at the completion of these operations, independent of the completion status. For example, if a binding operation binds a null value to a <xref:System.Windows.Forms.DateTimePicker.Value%2A> property, an exception is thrown, but the BindingComplete event still occurs. The handler of this event can take the appropriate action, based on the success, error, or exceptions in the binding process, by examining the <xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A> property of the <xref:System.Windows.Forms.BindingCompleteEventArgs> parameter.       For more information about handling events, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Si verifica quando il <xref:System.Windows.Forms.Binding.FormattingEnabled*>è impostata su <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> e un&quot;operazione di associazione viene completata, ad esempio quando i dati vengono spostati dal controllo all&quot;origine dati o viceversa</xref:System.Windows.Forms.Binding.FormattingEnabled*>"
+  remarks: "Questo evento viene generato in presenza delle seguenti condizioni quando <xref:System.Windows.Forms.Binding.FormattingEnabled%2A>è `true`:-i dati dall&quot;origine dati vengono spostati nella proprietà del controllo.</xref:System.Windows.Forms.Binding.FormattingEnabled%2A>      -I dati dalla proprietà del controllo, viene inseriti l&quot;origine dati.       Questo evento viene generato al completamento di queste operazioni, indipendentemente dallo stato di completamento. Ad esempio, se un&quot;operazione di associazione associa un valore null per un <xref:System.Windows.Forms.DateTimePicker.Value%2A>proprietà, viene generata un&quot;eccezione, ma viene comunque generato l&quot;evento di BindingComplete.</xref:System.Windows.Forms.DateTimePicker.Value%2A> Il gestore di questo evento può eseguire l&quot;azione appropriata, in base all&quot;esito positivo, l&quot;errore o eccezioni nel processo di associazione, esaminando la <xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A>proprietà del <xref:System.Windows.Forms.BindingCompleteEventArgs>parametro.</xref:System.Windows.Forms.BindingCompleteEventArgs> </xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A>       Per ulteriori informazioni sulla gestione degli eventi, vedere [gestione e generazione di eventi](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to handle the BindingComplete event.  \n  \n [!code-cs[System.Windows.Forms.DataConnectorBindingComplete#3](~/add/codesnippet/csharp/e-system.windows.forms.b_7_1.cs)]\n [!code-cpp[System.Windows.Forms.DataConnectorBindingComplete#3](~/add/codesnippet/cpp/e-system.windows.forms.b_7_1.cpp)]\n [!code-vb[System.Windows.Forms.DataConnectorBindingComplete#3](~/add/codesnippet/visualbasic/e-system.windows.forms.b_7_1.vb)]"
   syntax:
     content: public event System.Windows.Forms.BindingCompleteEventHandler BindingComplete;
     return:
       type: System.Windows.Forms.BindingCompleteEventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -361,14 +361,14 @@ items:
   - System.Windows.Forms
   namespace: System.Windows.Forms
   summary: "Gets the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> for this <xref href=&quot;System.Windows.Forms.Binding&quot;></xref>."
-  remarks: "Use the <xref:System.Windows.Forms.BindingManagerBase> to iterate through a data-bound list by incrementing or decrementing the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> property. The <xref:System.Windows.Forms.BindingManagerBase> class is abstract. The <xref:System.Windows.Forms.CurrencyManager> class, which manages data-bound lists, inherits from the <xref:System.Windows.Forms.BindingManagerBase> class."
+  remarks: "Utilizzare il <xref:System.Windows.Forms.BindingManagerBase>per scorrere un elenco con associazione a dati aumentando o diminuendo il <xref:System.Windows.Forms.BindingManagerBase.Position%2A>proprietà.</xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingManagerBase> La <xref:System.Windows.Forms.BindingManagerBase>classe è astratta.</xref:System.Windows.Forms.BindingManagerBase> <xref:System.Windows.Forms.CurrencyManager>Gli elenchi di classe, che gestisce l&quot;associazione a dati, eredita dalla <xref:System.Windows.Forms.BindingManagerBase>classe.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.CurrencyManager>"
   example:
   - "The following code example gets the <xref:System.Windows.Forms.BindingManagerBase> of every <xref:System.Windows.Forms.Binding> on the form, and prints the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> property for each <xref:System.Windows.Forms.BindingManagerBase>.  \n  \n [!code-cpp[Classic Binding.BindingManagerBase Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_13_1.cpp)]\n [!code-cs[Classic Binding.BindingManagerBase Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_13_1.cs)]\n [!code-vb[Classic Binding.BindingManagerBase Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_13_1.vb)]"
   syntax:
     content: public System.Windows.Forms.BindingManagerBase BindingManagerBase { get; }
     return:
       type: System.Windows.Forms.BindingManagerBase
-      description: "The <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> that manages this <xref href=&quot;System.Windows.Forms.Binding&quot;></xref>."
+      description: "Il <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> che gestisce questa <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref>."
   overload: System.Windows.Forms.Binding.BindingManagerBase*
   exceptions: []
   platform:
@@ -385,15 +385,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets an object that contains information about this binding based on the <code>dataMember</code> parameter in the &lt;xref:System.Windows.Forms.Binding.%23ctor%2A&gt; constructor."
-  remarks: "The <xref:System.Windows.Forms.BindingMemberInfo> is created from the `dataMember` string passed to the <xref:System.Windows.Forms.Binding.%23ctor%2A> constructor."
+  summary: "Ottiene un oggetto che contiene informazioni su questa associazione in base il <code> dataMember </code> parametro il &lt;xref:System.Windows.Forms.Binding.%23ctor%2A&gt; costruttore."
+  remarks: "Il <xref:System.Windows.Forms.BindingMemberInfo>viene creato dal `dataMember` stringa passata per il <xref:System.Windows.Forms.Binding.%23ctor%2A>costruttore.</xref:System.Windows.Forms.Binding.%23ctor%2A> </xref:System.Windows.Forms.BindingMemberInfo>"
   example:
   - "The following code example gets the <xref:System.Windows.Forms.BindingMemberInfo> of each <xref:System.Windows.Forms.Binding> on a form, and prints the <xref:System.Windows.Forms.BindingMemberInfo.BindingPath%2A>, <xref:System.Windows.Forms.BindingMemberInfo.BindingField%2A>, and <xref:System.Windows.Forms.BindingMemberInfo.BindingMember%2A> property values for that <xref:System.Windows.Forms.Binding>.  \n  \n [!code-cs[Classic Binding.BindingMemberInfo Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_22_1.cs)]\n [!code-vb[Classic Binding.BindingMemberInfo Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_22_1.vb)]\n [!code-cpp[Classic Binding.BindingMemberInfo Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_22_1.cpp)]"
   syntax:
     content: public System.Windows.Forms.BindingMemberInfo BindingMemberInfo { get; }
     return:
       type: System.Windows.Forms.BindingMemberInfo
-      description: "A <xref href=&quot;System.Windows.Forms.BindingMemberInfo&quot;></xref> that contains information about this <xref href=&quot;System.Windows.Forms.Binding&quot;></xref>."
+      description: "Oggetto <xref href=&quot;System.Windows.Forms.BindingMemberInfo&quot;> </xref> che contiene informazioni su questo <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref>."
   overload: System.Windows.Forms.Binding.BindingMemberInfo*
   exceptions: []
   platform:
@@ -410,7 +410,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the control that the binding belongs to."
+  summary: "Ottiene il controllo cui appartiene l&quot;associazione."
   remarks: ''
   example:
   - "The following code example gets the <xref:System.Windows.Forms.BindingManagerBase> for a specific data source, and prints information about each Control property that is bound to the data source. The example uses the <xref:System.Windows.Forms.BindingManagerBase.Bindings%2A> property of the <xref:System.Windows.Forms.BindingManagerBase> to get all controls.  \n  \n [!code-cpp[Classic Binding.Control Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_20_1.cpp)]\n [!code-vb[Classic Binding.Control Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_20_1.vb)]\n [!code-cs[Classic Binding.Control Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_20_1.cs)]"
@@ -418,7 +418,7 @@ items:
     content: public System.Windows.Forms.Control Control { get; }
     return:
       type: System.Windows.Forms.Control
-      description: "The <xref href=&quot;System.Windows.Forms.Control&quot;></xref> that the binding belongs to."
+      description: "Il <xref href=&quot;System.Windows.Forms.Control&quot;> </xref> l&quot;associazione a cui appartiene."
   overload: System.Windows.Forms.Binding.Control*
   exceptions: []
   platform:
@@ -435,12 +435,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets when changes to the data source are propagated to the bound control property."
+  summary: "Ottiene o imposta quando le modifiche all&quot;origine dati vengono propagate alla proprietà del controllo associato."
   syntax:
     content: public System.Windows.Forms.ControlUpdateMode ControlUpdateMode { get; set; }
     return:
       type: System.Windows.Forms.ControlUpdateMode
-      description: "One of the <xref href=&quot;System.Windows.Forms.ControlUpdateMode&quot;></xref> values. The default is <xref href=&quot;System.Windows.Forms.ControlUpdateMode&quot;></xref>."
+      description: "Uno del <xref href=&quot;System.Windows.Forms.ControlUpdateMode&quot;> </xref> valori. Il valore predefinito è <xref href=&quot;System.Windows.Forms.ControlUpdateMode&quot;> </xref>."
   overload: System.Windows.Forms.Binding.ControlUpdateMode*
   exceptions: []
   platform:
@@ -457,15 +457,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the data source for this binding."
-  remarks: "Possible data sources include:      -   A <xref:System.Data.DataSet>      -   A <xref:System.Data.DataTable>      -   A <xref:System.Data.DataView>      -   A <xref:System.Data.DataViewManager>      -   Any object that implements the <xref:System.Collections.IList> interface      -   Any object"
+  summary: "Ottiene l&quot;origine dati per questa associazione."
+  remarks: "Origini dati possibili includono: - il <xref:System.Data.DataSet>: <xref:System.Data.DataTable>: un <xref:System.Data.DataView>- <xref:System.Data.DataViewManager>- qualsiasi oggetto che implementa l&quot; <xref:System.Collections.IList>interfaccia, qualsiasi oggetto</xref:System.Collections.IList> </xref:System.Data.DataViewManager> </xref:System.Data.DataView> </xref:System.Data.DataTable> </xref:System.Data.DataSet>"
   example:
   - "The following code example uses the DataSource property to return a <xref:System.Data.DataSet>.  \n  \n [!code-cpp[Classic Binding.DataSource Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_28_1.cpp)]\n [!code-cs[Classic Binding.DataSource Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_28_1.cs)]\n [!code-vb[Classic Binding.DataSource Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_28_1.vb)]"
   syntax:
     content: public object DataSource { get; }
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the data source."
+      description: "Un <xref:System.Object>che rappresenta l&quot;origine dati.</xref:System.Object>"
   overload: System.Windows.Forms.Binding.DataSource*
   exceptions: []
   platform:
@@ -482,13 +482,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the value to be stored in the data source if the control value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
-  remarks: "You can use the <xref:System.Windows.Forms.Binding.NullValue%2A> property to specify the value displayed in a bound control when the data source contains <xref:System.DBNull>."
+  summary: "Ottiene o imposta il valore da archiviare nell&quot;origine dati se il valore di controllo è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> o vuoto."
+  remarks: "È possibile utilizzare la <xref:System.Windows.Forms.Binding.NullValue%2A>proprietà per specificare il valore visualizzato in un controllo associato quando l&quot;origine dati contiene <xref:System.DBNull>.</xref:System.DBNull> </xref:System.Windows.Forms.Binding.NullValue%2A>"
   syntax:
     content: public object DataSourceNullValue { get; set; }
     return:
       type: System.Object
-      description: "The <xref:System.Object> to be stored in the data source when the control property is empty or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. The default is <xref href=&quot;System.DBNull&quot;></xref> for value types and <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> for non-value types."
+      description: "Il <xref:System.Object>da archiviare nell&quot;origine dati quando la proprietà del controllo è vuota o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Object> Il valore predefinito è <xref href=&quot;System.DBNull&quot;> </xref> per i tipi valore e <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> per tipi non di valore."
   overload: System.Windows.Forms.Binding.DataSourceNullValue*
   exceptions: []
   platform:
@@ -505,13 +505,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value that indicates when changes to the bound control property are propagated to the data source."
-  remarks: "Note that even if this property is set to <xref:System.Windows.Forms.DataSourceUpdateMode>, the binding will update at least one time, when it is first established."
+  summary: "Ottiene o imposta un valore che indica quando le modifiche apportate alla proprietà del controllo associato vengono propagate all&quot;origine dati."
+  remarks: "Si noti che anche se questa proprietà è impostata su <xref:System.Windows.Forms.DataSourceUpdateMode>, l&quot;associazione verrà aggiornata almeno una volta, quando viene innanzitutto stabilito.</xref:System.Windows.Forms.DataSourceUpdateMode>"
   syntax:
     content: public System.Windows.Forms.DataSourceUpdateMode DataSourceUpdateMode { get; set; }
     return:
       type: System.Windows.Forms.DataSourceUpdateMode
-      description: "A value that indicates when changes are propagated. The default is <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;></xref>."
+      description: "Un valore che indica quando le modifiche vengono propagate. Il valore predefinito è <xref href=&quot;System.Windows.Forms.DataSourceUpdateMode&quot;> </xref>."
   overload: System.Windows.Forms.Binding.DataSourceUpdateMode*
   exceptions: []
   platform:
@@ -528,15 +528,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the property of a control is bound to a data value."
-  remarks: "The Format event is raised when data is pushed from the data source into the control. You can handle the Format event to convert unformatted data from the data source into formatted data for display. When data is pulled from the control into the data source, the <xref:System.Windows.Forms.Binding.Parse> event is raised to unformat the displayed value, then the Format event occurs to reformat the data for display. This ensures that the bound control displays correctly formatted data regardless of whether the user enters formatted or unformatted data in the control.       The Format and <xref:System.Windows.Forms.Binding.Parse> events allow you to create custom formats for displaying data. For example, if the data in a table is of type <xref:System.Decimal>, you can display the data in the local currency format by setting the <xref:System.Windows.Forms.ConvertEventArgs.Value%2A> property of the <xref:System.Windows.Forms.ConvertEventArgs> to the formatted value in the Format event. You must consequently unformat the displayed value in the <xref:System.Windows.Forms.Binding.Parse> event.       The Format event occurs whenever the <xref:System.Windows.Forms.BindingManagerBase.Current%2A> value of the <xref:System.Windows.Forms.BindingManagerBase> changes, which includes:      -   The first time the property is bound.      -   Any time the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> changes.      -   Whenever the data-bound list is sorted or filtered, which is accomplished when a <xref:System.Data.DataView> supplies the list.       The Format event also occurs after the <xref:System.Windows.Forms.Binding.Parse> event. For example, when a control loses focus, its contents are parsed. Immediately afterward, as new data is pushed into the control, the Format event occurs allowing the new contents to be formatted.       For more information about handling events, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Si verifica quando la proprietà di un controllo è associata a un valore di dati."
+  remarks: "Quando i dati vengono spostati dall&quot;origine dati nel controllo, viene generato l&quot;evento di formato. È possibile gestire l&quot;evento Format per convertire i dati non formattati dall&quot;origine dati in dati formattati per la visualizzazione. Quando i dati vengono spostati dal controllo all&quot;origine dati, il <xref:System.Windows.Forms.Binding.Parse>per annullare la formattazione del valore visualizzato viene generato l&quot;evento, quindi si verifica l&quot;evento di formato per riformattare i dati da visualizzare.</xref:System.Windows.Forms.Binding.Parse> In questo modo si garantisce che il controllo associato visualizza dati formattati correttamente indipendentemente dal fatto che l&quot;utente immetta formattati o dati nel controllo.       Il formato e <xref:System.Windows.Forms.Binding.Parse>eventi consentono di creare formati personalizzati per la visualizzazione dei dati.</xref:System.Windows.Forms.Binding.Parse> Ad esempio, se i dati in una tabella sono di tipo <xref:System.Decimal>, è possibile visualizzare i dati nel formato della valuta locale impostando il <xref:System.Windows.Forms.ConvertEventArgs.Value%2A>proprietà del <xref:System.Windows.Forms.ConvertEventArgs>per il valore formattato nell&quot;evento di formato.</xref:System.Windows.Forms.ConvertEventArgs> </xref:System.Windows.Forms.ConvertEventArgs.Value%2A> </xref:System.Decimal> È quindi necessario annullare la formattazione del valore visualizzato nel <xref:System.Windows.Forms.Binding.Parse>evento.</xref:System.Windows.Forms.Binding.Parse>       Si verifica ogni volta che l&quot;evento di formato di <xref:System.Windows.Forms.BindingManagerBase.Current%2A>valore il <xref:System.Windows.Forms.BindingManagerBase>modifiche, che include: - la prima volta che la proprietà è associata.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.Current%2A>      -Qualsiasi tempo di <xref:System.Windows.Forms.BindingManagerBase.Position%2A>le modifiche.</xref:System.Windows.Forms.BindingManagerBase.Position%2A>      -Ogni volta che l&quot;elenco associato ai dati è ordinato o vengono filtrato, che viene eseguita quando un <xref:System.Data.DataView>fornisce l&quot;elenco.</xref:System.Data.DataView>       Il formato di evento si verifica anche dopo il <xref:System.Windows.Forms.Binding.Parse>evento.</xref:System.Windows.Forms.Binding.Parse> Ad esempio, quando un controllo perde lo stato attivo, il relativo contenuto viene analizzato. Immediatamente dopo, come nuovi dati viene inseriti nel controllo, viene generato l&quot;evento formato consentendo il nuovo contenuto da formattare.       Per ulteriori informazioni sulla gestione degli eventi, vedere [gestione e generazione di eventi](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example creates a <xref:System.Windows.Forms.Binding>, adds a <xref:System.Windows.Forms.ConvertEventHandler> delegate to both the <xref:System.Windows.Forms.Binding.Parse> and Format events, and adds the <xref:System.Windows.Forms.Binding> to the <xref:System.Windows.Forms.BindingsCollection> of a <xref:System.Windows.Forms.TextBox> control through the <xref:System.Windows.Forms.Control.DataBindings%2A> property. The `DecimalToCurrencyString` event delegate, added to the Format event, formats the bound value (a <xref:System.Decimal> type) as currency using the <xref:System.Decimal.ToString%2A> method. The `CurrencyStringToDecimal` event delegate, added to the <xref:System.Windows.Forms.Binding.Parse> event, converts the value displayed by the control back to the <xref:System.Decimal> type.  \n  \n This example assumes the presence of a <xref:System.Data.DataSet> named `ds`.  \n  \n [!code-cpp[Classic Binding.Format Example#1](~/add/codesnippet/cpp/e-system.windows.forms.b_2_1.cpp)]\n [!code-vb[Classic Binding.Format Example#1](~/add/codesnippet/visualbasic/e-system.windows.forms.b_2_1.vb)]\n [!code-cs[Classic Binding.Format Example#1](~/add/codesnippet/csharp/e-system.windows.forms.b_2_1.cs)]"
   syntax:
     content: public event System.Windows.Forms.ConvertEventHandler Format;
     return:
       type: System.Windows.Forms.ConvertEventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -552,13 +552,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the <xref:System.IFormatProvider> that provides custom formatting behavior."
-  remarks: "Setting this property will override the default formatting behavior, which uses the <xref:System.Windows.Forms.Application.CurrentCulture%2A?displayProperty=fullName> property setting."
+  summary: "Ottiene o imposta il <xref:System.IFormatProvider>che fornisce il comportamento della formattazione personalizzato.</xref:System.IFormatProvider>"
+  remarks: "Impostazione di questa proprietà sostituirà il comportamento predefinito della formattazione, che utilizza il <xref:System.Windows.Forms.Application.CurrentCulture%2A?displayProperty=fullName>l&quot;impostazione della proprietà.</xref:System.Windows.Forms.Application.CurrentCulture%2A?displayProperty=fullName>"
   syntax:
     content: public IFormatProvider FormatInfo { get; set; }
     return:
       type: System.IFormatProvider
-      description: "The <xref:System.IFormatProvider> implementation that provides custom formatting behavior."
+      description: "Il <xref:System.IFormatProvider>implementazione che fornisce il comportamento di formattazione personalizzato.</xref:System.IFormatProvider>"
   overload: System.Windows.Forms.Binding.FormatInfo*
   exceptions: []
   platform:
@@ -575,13 +575,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the format specifier characters that indicate how a value is to be displayed."
-  remarks: "The format string used should follow standard .NET Framework format specifications. For more information, see [Formatting Types in the .NET Framework](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Ottiene o imposta il formato identificatore caratteri che indicano come deve essere visualizzato un valore."
+  remarks: "La stringa di formato utilizzata deve seguire le specifiche di formato standard di .NET Framework. Per ulteriori informazioni, vedere [formattazione dei tipi in .NET Framework](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public string FormatString { get; set; }
     return:
       type: System.String
-      description: "The string of format specifier characters that indicate how a value is to be displayed."
+      description: "La stringa di caratteri identificatori di formato che indicano come deve essere visualizzato un valore."
   overload: System.Windows.Forms.Binding.FormatString*
   exceptions: []
   platform:
@@ -598,13 +598,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether type conversion and formatting is applied to the control property data."
-  remarks: "Setting this property to `true` also enables error-handling behavior and causes the <xref:System.Windows.Forms.Binding.BindingComplete> event to be raised. The handler of this event can take the appropriate action, based on the success, error, or exceptions in the binding process, by examining the <xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A> property of the <xref:System.Windows.Forms.BindingCompleteEventArgs> parameter."
+  summary: "Ottiene o imposta un valore che indica se la conversione di tipo e la formattazione viene applicato ai dati di proprietà del controllo."
+  remarks: "Impostando questa proprietà su `true` anche Abilita il comportamento di gestione degli errori e fa sì che il <xref:System.Windows.Forms.Binding.BindingComplete>evento da generare.</xref:System.Windows.Forms.Binding.BindingComplete> Il gestore di questo evento può eseguire l&quot;azione appropriata, in base all&quot;esito positivo, l&quot;errore o eccezioni nel processo di associazione, esaminando la <xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A>proprietà del <xref:System.Windows.Forms.BindingCompleteEventArgs>parametro.</xref:System.Windows.Forms.BindingCompleteEventArgs> </xref:System.Windows.Forms.BindingCompleteEventArgs.BindingCompleteState%2A>"
   syntax:
     content: public bool FormattingEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if type conversion and formatting of control property data is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se la conversione di tipo e la formattazione dei dati di proprietà di controllo è abilitato; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Il valore predefinito è <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.Binding.FormattingEnabled*
   exceptions: []
   platform:
@@ -621,15 +621,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets a value indicating whether the binding is active."
-  remarks: "A binding is active when it meets these conditions:      -   All its properties are set.      -   The user did not call <xref:System.Windows.Forms.BindingManagerBase.ResumeBinding%2A> or <xref:System.Windows.Forms.BindingManagerBase.SuspendBinding%2A> on the <xref:System.Windows.Forms.BindingManagerBase> that the <xref:System.Windows.Forms.Binding> belongs to.      -   The control to which the <xref:System.Windows.Forms.Binding> belongs has been created."
+  summary: "Ottiene un valore che indica se l&quot;associazione è attiva."
+  remarks: "Un&quot;associazione è attiva quando soddisfa queste condizioni:-tutte le proprietà vengono impostate.      -L&quot;utente non ha chiamato <xref:System.Windows.Forms.BindingManagerBase.ResumeBinding%2A>o <xref:System.Windows.Forms.BindingManagerBase.SuspendBinding%2A>sul <xref:System.Windows.Forms.BindingManagerBase>che il <xref:System.Windows.Forms.Binding>appartiene.</xref:System.Windows.Forms.Binding> </xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.SuspendBinding%2A> </xref:System.Windows.Forms.BindingManagerBase.ResumeBinding%2A>      -Il controllo a cui il <xref:System.Windows.Forms.Binding>appartiene è stato creato.</xref:System.Windows.Forms.Binding>"
   example:
   - "The following code example prints the <xref:System.Windows.Forms.Binding.PropertyName%2A> and IsBinding value for each <xref:System.Windows.Forms.Binding> on a form.  \n  \n [!code-cs[Classic Binding.IsBinding Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_8_1.cs)]\n [!code-vb[Classic Binding.IsBinding Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_8_1.vb)]\n [!code-cpp[Classic Binding.IsBinding Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_8_1.cpp)]"
   syntax:
     content: public bool IsBinding { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the binding is active; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se l&quot;associazione è attiva. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.Binding.IsBinding*
   exceptions: []
   platform:
@@ -646,13 +646,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the <xref:System.Object> to be set as the control property when the data source contains a <xref href=&quot;System.DBNull&quot;></xref> value."
-  remarks: "The data source must contain <xref:System.DBNull> for the NullValue property to be correctly applied. If the data source type is a type such as a string or integer the value of the NullValue property will be ignored. Also, the NullValue property is ignored if it is set to `null`.       A null value will be added to the data source when the control property is set to the object of NullValue. If NullValue is set to a string value, comparisons are case-insensitive."
+  summary: "Ottiene o imposta il <xref:System.Object>da impostare come proprietà del controllo quando l&quot;origine dati contiene un <xref href=&quot;System.DBNull&quot;> </xref> valore.</xref:System.Object>"
+  remarks: "L&quot;origine dati deve contenere <xref:System.DBNull>per la proprietà NullValue per essere applicate correttamente.</xref:System.DBNull> Se il tipo di origine dati è un tipo, ad esempio una stringa o intero il valore della proprietà NullValue verrà ignorato. Inoltre, la proprietà NullValue viene ignorata se è impostato su `null`.       Un valore null verrà aggiunto all&quot;origine dati quando la proprietà del controllo è impostata sull&quot;oggetto di tipo NullValue. Se NullValue è impostata su un valore stringa, i confronti sono tra maiuscole e minuscole."
   syntax:
     content: public object NullValue { get; set; }
     return:
       type: System.Object
-      description: "The <xref:System.Object> to be set as the control property when the data source contains a <xref href=&quot;System.DBNull&quot;></xref> value. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Il <xref:System.Object>da impostare come proprietà del controllo quando l&quot;origine dati contiene un <xref href=&quot;System.DBNull&quot;> </xref> valore.</xref:System.Object> Il valore predefinito è <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.Binding.NullValue*
   exceptions: []
   platform:
@@ -669,14 +669,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Binding.BindingComplete&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md).       The OnBindingComplete method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Genera il <xref href=&quot;System.Windows.Forms.Binding.BindingComplete&quot;> </xref> evento."
+  remarks: "Viene generato un evento richiama il gestore dell&quot;evento tramite un delegato. Per ulteriori informazioni, vedere [gestione e generazione di eventi](~/add/includes/ajax-current-ext-md.md).       Il metodo OnBindingComplete consente inoltre alle classi derivate di gestire l&quot;evento senza associare un delegato. Questa è la tecnica consigliata per la gestione dell&quot;evento in una classe derivata."
   syntax:
     content: protected virtual void OnBindingComplete (System.Windows.Forms.BindingCompleteEventArgs e);
     parameters:
     - id: e
       type: System.Windows.Forms.BindingCompleteEventArgs
-      description: "A <xref href=&quot;System.Windows.Forms.BindingCompleteEventArgs&quot;></xref> that contains the event data."
+      description: "Oggetto <xref href=&quot;System.Windows.Forms.BindingCompleteEventArgs&quot;> </xref> che contiene i dati dell&quot;evento."
   overload: System.Windows.Forms.Binding.OnBindingComplete*
   exceptions: []
   platform:
@@ -693,14 +693,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Binding.Format&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md).       The OnFormat method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Genera il <xref href=&quot;System.Windows.Forms.Binding.Format&quot;> </xref> evento."
+  remarks: "Viene generato un evento richiama il gestore dell&quot;evento tramite un delegato. Per ulteriori informazioni, vedere [gestione e generazione di eventi](~/add/includes/ajax-current-ext-md.md).       Il metodo su formattazione consente inoltre alle classi derivate di gestire l&quot;evento senza associare un delegato. Questa è la tecnica consigliata per la gestione dell&quot;evento in una classe derivata."
   syntax:
     content: protected virtual void OnFormat (System.Windows.Forms.ConvertEventArgs cevent);
     parameters:
     - id: cevent
       type: System.Windows.Forms.ConvertEventArgs
-      description: "A <xref href=&quot;System.Windows.Forms.ConvertEventArgs&quot;></xref> that contains the event data."
+      description: "Oggetto <xref href=&quot;System.Windows.Forms.ConvertEventArgs&quot;> </xref> che contiene i dati dell&quot;evento."
   overload: System.Windows.Forms.Binding.OnFormat*
   exceptions: []
   platform:
@@ -717,14 +717,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.Binding.Parse&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md).       The OnParse method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Genera il <xref href=&quot;System.Windows.Forms.Binding.Parse&quot;> </xref> evento."
+  remarks: "Viene generato un evento richiama il gestore dell&quot;evento tramite un delegato. Per ulteriori informazioni, vedere [gestione e generazione di eventi](~/add/includes/ajax-current-ext-md.md).       Il metodo OnParse consente inoltre alle classi derivate di gestire l&quot;evento senza associare un delegato. Questa è la tecnica consigliata per la gestione dell&quot;evento in una classe derivata."
   syntax:
     content: protected virtual void OnParse (System.Windows.Forms.ConvertEventArgs cevent);
     parameters:
     - id: cevent
       type: System.Windows.Forms.ConvertEventArgs
-      description: "A <xref href=&quot;System.Windows.Forms.ConvertEventArgs&quot;></xref> that contains the event data."
+      description: "Oggetto <xref href=&quot;System.Windows.Forms.ConvertEventArgs&quot;> </xref> che contiene i dati dell&quot;evento."
   overload: System.Windows.Forms.Binding.OnParse*
   exceptions: []
   platform:
@@ -741,15 +741,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the value of a data-bound control changes."
-  remarks: "The <xref:System.Windows.Forms.Binding.Format> and Parse events allow you to create custom formats for displaying data. For example, if the data in a table is of type <xref:System.Decimal>, you can display the data in the local currency format by setting the <xref:System.Windows.Forms.ConvertEventArgs.Value%2A> property of the <xref:System.Windows.Forms.ConvertEventArgs> to the formatted value in the <xref:System.Windows.Forms.Binding.Format> event. You must consequently unformat the displayed value in the Parse event.       The Parse event occurs under the following conditions:      -   After the <xref:System.Windows.Forms.Control.Validated> event of the <xref:System.Windows.Forms.Control> occurs.      -   When the <xref:System.Windows.Forms.BindingManagerBase.EndCurrentEdit%2A> method of the <xref:System.Windows.Forms.BindingManagerBase> is called.      -   When the <xref:System.Windows.Forms.BindingManagerBase.Current%2A> of the <xref:System.Windows.Forms.BindingManagerBase> changes (in other words, when the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> changes).       For more information about handling events, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Si verifica quando cambia il valore di un controllo con associazione a dati."
+  remarks: "Il <xref:System.Windows.Forms.Binding.Format>e analisi eventi consentono di creare formati personalizzati per la visualizzazione dei dati.</xref:System.Windows.Forms.Binding.Format> Ad esempio, se i dati in una tabella sono di tipo <xref:System.Decimal>, è possibile visualizzare i dati nel formato della valuta locale impostando il <xref:System.Windows.Forms.ConvertEventArgs.Value%2A>proprietà del <xref:System.Windows.Forms.ConvertEventArgs>per il valore formattato nel <xref:System.Windows.Forms.Binding.Format>evento.</xref:System.Windows.Forms.Binding.Format> </xref:System.Windows.Forms.ConvertEventArgs> </xref:System.Windows.Forms.ConvertEventArgs.Value%2A> </xref:System.Decimal> Di conseguenza è necessario annullare la formattazione del valore visualizzato nell&quot;evento di analisi.       Si verifica l&quot;evento di analisi nelle condizioni seguenti: - dopo la <xref:System.Windows.Forms.Control.Validated>evento del <xref:System.Windows.Forms.Control>si verifica.</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.Control.Validated>      -Quando il <xref:System.Windows.Forms.BindingManagerBase.EndCurrentEdit%2A>metodo il <xref:System.Windows.Forms.BindingManagerBase>viene chiamato.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.EndCurrentEdit%2A>      -Quando il <xref:System.Windows.Forms.BindingManagerBase.Current%2A>del <xref:System.Windows.Forms.BindingManagerBase>modifiche (in altre parole, quando il <xref:System.Windows.Forms.BindingManagerBase.Position%2A>modifiche).</xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.Current%2A>       Per ulteriori informazioni sulla gestione degli eventi, vedere [gestione e generazione di eventi](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example creates a <xref:System.Windows.Forms.Binding>, adds a <xref:System.Windows.Forms.ConvertEventHandler> delegate to both the Parse and <xref:System.Windows.Forms.Binding.Format> events, and adds the <xref:System.Windows.Forms.Binding> to the <xref:System.Windows.Forms.BindingsCollection> of a <xref:System.Windows.Forms.TextBox> control through the <xref:System.Windows.Forms.Control.DataBindings%2A> property. The `DecimalToCurrencyString` event delegate, added to the <xref:System.Windows.Forms.Binding.Format> event, formats the bound value (a <xref:System.Decimal> type) as currency using the <xref:System.Decimal.ToString%2A> method. The `CurrencyStringToDecimal` event delegate, added to the Parse event, converts the value displayed by the control back to the <xref:System.Decimal> type.  \n  \n [!code-cs[Classic Binding.Parse Example#1](~/add/codesnippet/csharp/e-system.windows.forms.b_1_1.cs)]\n [!code-cpp[Classic Binding.Parse Example#1](~/add/codesnippet/cpp/e-system.windows.forms.b_1_1.cpp)]\n [!code-vb[Classic Binding.Parse Example#1](~/add/codesnippet/visualbasic/e-system.windows.forms.b_1_1.vb)]"
   syntax:
     content: public event System.Windows.Forms.ConvertEventHandler Parse;
     return:
       type: System.Windows.Forms.ConvertEventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -765,15 +765,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the name of the control&quot;s data-bound property."
-  remarks: "Use the PropertyName to specify the control property that you want to bind to a list in a data source. Most commonly, you bind a display property such as the <xref:System.Windows.Forms.Control.Text%2A> property of a <xref:System.Windows.Forms.TextBox> control. However, because you can bind any property of a control, you can programmatically create controls at run time using data from a database."
+  summary: "Ottiene o imposta il nome della proprietà associata ai dati del controllo."
+  remarks: "Utilizzare PropertyName per specificare la proprietà del controllo che si desidera associare a un elenco in un&quot;origine dati. In genere, è associata una proprietà di visualizzazione, ad esempio il <xref:System.Windows.Forms.Control.Text%2A>proprietà di un <xref:System.Windows.Forms.TextBox>controllo.</xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control.Text%2A> Tuttavia, poiché è possibile associare qualsiasi proprietà di un controllo, è possibile creare a livello di codice i controlli in fase di esecuzione utilizzando i dati di un database."
   example:
   - "The following code example prints the PropertyName value of each <xref:System.Windows.Forms.Binding> for each control on a form.  \n  \n [!code-cpp[Classic Binding.PropertyName Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_26_1.cpp)]\n [!code-vb[Classic Binding.PropertyName Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_26_1.vb)]\n [!code-cs[Classic Binding.PropertyName Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_26_1.cs)]"
   syntax:
     content: public string PropertyName { get; }
     return:
       type: System.String
-      description: "The name of a control property to bind to."
+      description: "Il nome di una proprietà del controllo da associare."
   overload: System.Windows.Forms.Binding.PropertyName*
   exceptions: []
   platform:
@@ -790,7 +790,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Sets the control property to the value read from the data source."
+  summary: "Imposta la proprietà del controllo sul valore letto dall&quot;origine dati."
   syntax:
     content: public void ReadValue ();
     parameters: []
@@ -810,7 +810,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Reads the current value from the control property and writes it to the data source."
+  summary: "Legge il valore corrente dalla proprietà del controllo e lo scrive nell&quot;origine dati."
   syntax:
     content: public void WriteValue ();
     parameters: []
