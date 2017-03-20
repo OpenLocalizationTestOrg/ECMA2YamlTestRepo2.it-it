@@ -59,8 +59,8 @@ items:
   nameWithType: Dispatcher
   fullName: System.Windows.Threading.Dispatcher
   type: Class
-  summary: "Provides services for managing the queue of work items for a thread."
-  remarks: "The Dispatcher maintains a prioritized queue of work items for a specific thread.       When a Dispatcher is created on a thread, it becomes the only Dispatcher that can be associated with the thread, even if the Dispatcher is shut down.       If you attempt to get the <xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A> for the current thread and a Dispatcher is not associated with the thread, a Dispatcher will be created. A Dispatcher is also created when you create a <xref:System.Windows.Threading.DispatcherObject>. If you create a Dispatcher on a background thread, be sure to shut down the dispatcher before exiting the thread.       If a Dispatcher is shut down, it cannot be restarted.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], a <xref:System.Windows.Threading.DispatcherObject> can only be accessed by the Dispatcher it is associated with.  For example, a background thread cannot update the contents of a <xref:System.Windows.Controls.Button> that is associated with the Dispatcher on the [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] thread.  In order for the background thread to access the <xref:System.Windows.Controls.ContentControl.Content%2A> property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the Dispatcher associated with the [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the queue of the Dispatcher at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a Dispatcher that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>.       All of the methods on Dispatcher, with the exception of <xref:System.Windows.Threading.Dispatcher.DisableProcessing%2A>, are free-threaded.       Objects that derive from <xref:System.Windows.Threading.DispatcherObject> have thread affinity.       Objects that derive from <xref:System.Windows.Freezable> are free-threaded when they are frozen.  For more information, see [Freezable Objects Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Fornisce servizi per la gestione della coda di elementi di lavoro per un thread."
+  remarks: "Il Dispatcher gestisce una coda con priorità degli elementi di lavoro per un thread specifico.       Creazione di un Dispatcher in un thread, diventa l&quot;unico Dispatcher che possono essere associate al thread, anche se il Dispatcher è stato arrestato.       Se si tenta di ottenere il <xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A>per il thread corrente e un Dispatcher non è associato al thread, verrà creato un Dispatcher.</xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A> Quando si crea un <xref:System.Windows.Threading.DispatcherObject>.</xref:System.Windows.Threading.DispatcherObject> viene inoltre creato un Dispatcher Se si crea un Dispatcher in un thread in background, assicurarsi di arrestare il dispatcher prima della chiusura del thread.       Se un Dispatcher viene arrestato, non può essere riavviato.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], <xref:System.Windows.Threading.DispatcherObject>accessibile solo dal Dispatcher è associato.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è associato al Dispatcher sul [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] thread.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere il <xref:System.Windows.Controls.ContentControl.Content%2A>proprietà del <xref:System.Windows.Controls.Button>, il thread in background deve delegare l&quot;operazione per il Dispatcher associato il [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] thread.</xref:System.Windows.Controls.Button> </xref:System.Windows.Controls.ContentControl.Content%2A>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A> <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda del Dispatcher all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority>       Se <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>viene chiamato in un Dispatcher che arrestato, la proprietà status dell&quot; restituito <xref:System.Windows.Threading.DispatcherOperation>è impostato su <xref:System.Windows.Threading.DispatcherOperationStatus>.</xref:System.Windows.Threading.DispatcherOperationStatus> </xref:System.Windows.Threading.DispatcherOperation> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       Tutti i metodi nel Dispatcher, ad eccezione di <xref:System.Windows.Threading.Dispatcher.DisableProcessing%2A>, sono a thread libero.</xref:System.Windows.Threading.Dispatcher.DisableProcessing%2A>       Gli oggetti che derivano da <xref:System.Windows.Threading.DispatcherObject>presentano affinità di thread.</xref:System.Windows.Threading.DispatcherObject>       Gli oggetti che derivano da <xref:System.Windows.Freezable>sono a thread libero quando sono bloccati.</xref:System.Windows.Freezable>  Per ulteriori informazioni, vedere [panoramica sugli oggetti Freezable](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example shows how to place an operation onto a Dispatcher.  For the full source code of this example, see [Single-Threaded Application with Long-Running Calculation Sample](http://go.microsoft.com/fwlink/?LinkID=160038).  \n  \n First, a delegate is created that accepts no arguments.  \n  \n [!code-vb[ThreadingPrimeNumber#ThreadingPrimeNumberInit](~/add/codesnippet/visualbasic/t-system.windows.threadi_2_1.vb)]\n [!code-cs[ThreadingPrimeNumber#ThreadingPrimeNumberInit](~/add/codesnippet/csharp/t-system.windows.threadi_2_1.cs)]  \n  \n Next, <xref:System.Windows.Threading.Dispatcher.BeginInvoke%28System.Windows.Threading.DispatcherPriority%2CSystem.Delegate%29> is called.  This call to <xref:System.Windows.Threading.Dispatcher.BeginInvoke%28System.Windows.Threading.DispatcherPriority%2CSystem.Delegate%29> takes two parameters: the priority, which is set to <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>, and the callback, which is passed in through an instance of the delegate `NextPrimeDelegate`.  \n  \n [!code-vb[ThreadingPrimeNumber#ThreadingPrimeNumberBeingInvoke](~/add/codesnippet/visualbasic/t-system.windows.threadi_2_2.vb)]\n [!code-cs[ThreadingPrimeNumber#ThreadingPrimeNumberBeingInvoke](~/add/codesnippet/csharp/t-system.windows.threadi_2_2.cs)]"
   syntax:
@@ -83,20 +83,20 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously with the specified arguments on the thread that the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> was created on."
-  remarks: "The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "Esegue il delegato specificato in modo asincrono con gli argomenti specificati nel thread che il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è stato creato."
+  remarks: "Il <xref:System.Windows.Threading.DispatcherOperation>oggetto restituito da <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>può essere usato in vari modi per interagire con il delegato specificato, ad esempio: - modifica il <xref:System.Windows.Threading.DispatcherPriority>del delegato mentre è in attesa esecuzione nella coda degli eventi.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -Rimozione del delegato dalla coda degli eventi.      -In attesa per il delegato da restituire.      -Il recupero del valore restituito dal delegato dopo di esso viene eseguito.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrona; Pertanto, restituendo immediatamente il controllo per l&quot;oggetto chiamante dopo la chiamata.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject> Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button> Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A> <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       Se <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>viene chiamato su un <xref:System.Windows.Threading.Dispatcher>oggetto arrestato, la proprietà status dell&quot; restituito <xref:System.Windows.Threading.DispatcherOperation>è impostato su <xref:System.Windows.Threading.DispatcherOperationStatus>.</xref:System.Windows.Threading.DispatcherOperationStatus> </xref:System.Windows.Threading.DispatcherOperation> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation BeginInvoke (Delegate method, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "The delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Il delegato a un metodo che accetta i parametri specificati `args`, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "Un oggetto che viene restituito immediatamente dopo <xref:System.Windows.Threading.Dispatcher.BeginInvoke*>viene chiamato, che può essere utilizzato per interagire con il delegato mentre è in attesa di esecuzione dell&quot;evento della coda.</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions: []
   platform:
@@ -113,8 +113,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "If multiple BeginInvoke calls are made at the same <xref:System.Windows.Threading.DispatcherPriority>, they will be executed in the order the calls were made.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> returns a <xref:System.Windows.Threading.DispatcherOperation> object that can be used to interact with the delegate when the delegate is in the event queue.       The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "Esegue in modo asincrono il delegato specificato con la priorità specificata nel thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "Se vengono apportate più chiamate BeginInvoke contemporaneamente <xref:System.Windows.Threading.DispatcherPriority>, verranno eseguite nell&quot;ordine in cui sono state effettuate.</xref:System.Windows.Threading.DispatcherPriority>       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>Restituisce un <xref:System.Windows.Threading.DispatcherOperation>oggetto che può essere utilizzato per interagire con il delegato quando il delegato incluso nella coda degli eventi.</xref:System.Windows.Threading.DispatcherOperation></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       Il <xref:System.Windows.Threading.DispatcherOperation>oggetto restituito da <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>può essere usato in vari modi per interagire con il delegato specificato, ad esempio: - modifica il <xref:System.Windows.Threading.DispatcherPriority>del delegato mentre è in attesa esecuzione nella coda degli eventi.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -Rimozione del delegato dalla coda degli eventi.      -In attesa per il delegato da restituire.      -Il recupero del valore restituito dal delegato dopo di esso viene eseguito.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrona; Pertanto, restituendo immediatamente il controllo per l&quot;oggetto chiamante dopo la chiamata.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       Se <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>viene chiamato su un <xref:System.Windows.Threading.Dispatcher>oggetto arrestato, la proprietà status dell&quot; restituito <xref:System.Windows.Threading.DispatcherOperation>è impostato su <xref:System.Windows.Threading.DispatcherOperationStatus>.</xref:System.Windows.Threading.DispatcherOperationStatus> </xref:System.Windows.Threading.DispatcherOperation> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   example:
   - "The following example shows how to place an operation onto a <xref:System.Windows.Threading.Dispatcher>.  For the full source code of this example, see [Single-Threaded Application with Long-Running Calculation Sample](http://go.microsoft.com/fwlink/?LinkID=160038).  \n  \n First, a delegate is created that accepts no arguments.  \n  \n [!code-vb[ThreadingPrimeNumber#ThreadingPrimeNumberInit](~/add/codesnippet/visualbasic/8c08cb62-5b5f-4560-a7bd-_1.vb)]\n [!code-cs[ThreadingPrimeNumber#ThreadingPrimeNumberInit](~/add/codesnippet/csharp/8c08cb62-5b5f-4560-a7bd-_1.cs)]  \n  \n Next, BeginInvoke is called.  Because every <xref:System.Windows.Threading.DispatcherObject> has a property that returns the <xref:System.Windows.Threading.Dispatcher> it is associated with, the desired <xref:System.Windows.Threading.Dispatcher> is obtained by querying the <xref:System.Windows.Threading.DispatcherObject>, in this case a <xref:System.Windows.Controls.Button> named `startStopButton`.   The call to BeginInvoke takes two parameters: the priority, which is set to <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>, and the callback, which is passed in through an instance of the delegate `NextPrimeDelegate`.  \n  \n [!code-vb[ThreadingPrimeNumber#ThreadingPrimeNumberBeingInvoke](~/add/codesnippet/visualbasic/8c08cb62-5b5f-4560-a7bd-_2.vb)]\n [!code-cs[ThreadingPrimeNumber#ThreadingPrimeNumberBeingInvoke](~/add/codesnippet/csharp/8c08cb62-5b5f-4560-a7bd-_2.cs)]"
   syntax:
@@ -122,21 +122,21 @@ items:
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: method
       type: System.Delegate
-      description: "The delegate to a method that takes no arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Il delegato a un metodo che non accetta alcun argomento, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "Un oggetto che viene restituito immediatamente dopo <xref:System.Windows.Threading.Dispatcher.BeginInvoke*>viene chiamato, che può essere utilizzato per interagire con il delegato mentre è in attesa di esecuzione dell&quot;evento della coda.</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>non è un valido <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.BeginInvoke(System.Delegate,System.Windows.Threading.DispatcherPriority,System.Object[])
@@ -151,23 +151,23 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously with the specified arguments, at the specified priority, on the thread that the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> was created on."
-  remarks: "The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "Esegue il delegato specificato in modo asincrono con gli argomenti specificati, la priorità specificata sul thread che il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è stato creato."
+  remarks: "Il <xref:System.Windows.Threading.DispatcherOperation>oggetto restituito da <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>può essere usato in vari modi per interagire con il delegato specificato, ad esempio: - modifica il <xref:System.Windows.Threading.DispatcherPriority>del delegato mentre è in attesa esecuzione nella coda degli eventi.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -Rimozione del delegato dalla coda degli eventi.      -In attesa per il delegato da restituire.      -Il recupero del valore restituito dal delegato dopo di esso viene eseguito.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrona; Pertanto, restituendo immediatamente il controllo per l&quot;oggetto chiamante dopo la chiamata.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject> Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button> Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A> <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       Se <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>viene chiamato su un <xref:System.Windows.Threading.Dispatcher>oggetto arrestato, la proprietà status dell&quot; restituito <xref:System.Windows.Threading.DispatcherOperation>è impostato su <xref:System.Windows.Threading.DispatcherOperationStatus>.</xref:System.Windows.Threading.DispatcherOperationStatus> </xref:System.Windows.Threading.DispatcherOperation> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation BeginInvoke (Delegate method, System.Windows.Threading.DispatcherPriority priority, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "The delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Il delegato a un metodo che accetta i parametri specificati `args`, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "Un oggetto che viene restituito immediatamente dopo <xref:System.Windows.Threading.Dispatcher.BeginInvoke*>viene chiamato, che può essere utilizzato per interagire con il delegato mentre è in attesa di esecuzione dell&quot;evento della coda.</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions: []
   platform:
@@ -184,8 +184,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously at the specified priority and with the specified argument on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if no arguments are needed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> returns a <xref:System.Windows.Threading.DispatcherOperation> object that can be used to interact with the delegate when the delegate is in the event queue.       The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If multiple <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> calls are made at the same <xref:System.Windows.Threading.DispatcherPriority>, they will be executed in the order the calls were made.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "Esegue il delegato specificato in modo asincrono la priorità specificata e con l&quot;argomento specificato sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "`Arg`può essere `null` se non sono richiesti argomenti.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>Restituisce un <xref:System.Windows.Threading.DispatcherOperation>oggetto che può essere utilizzato per interagire con il delegato quando il delegato incluso nella coda degli eventi.</xref:System.Windows.Threading.DispatcherOperation></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       Il <xref:System.Windows.Threading.DispatcherOperation>oggetto restituito da <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>può essere usato in vari modi per interagire con il delegato specificato, ad esempio: - modifica il <xref:System.Windows.Threading.DispatcherPriority>del delegato mentre è in attesa esecuzione nella coda degli eventi.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -Rimozione del delegato dalla coda degli eventi.      -In attesa per il delegato da restituire.      -Il recupero del valore restituito dal delegato dopo di esso viene eseguito.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrona; Pertanto, restituendo immediatamente il controllo per l&quot;oggetto chiamante dopo la chiamata.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       Se più <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>chiamate vengono eseguite contemporaneamente <xref:System.Windows.Threading.DispatcherPriority>, verranno eseguite nell&quot;ordine in cui sono state effettuate.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       Se <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>viene chiamato su un <xref:System.Windows.Threading.Dispatcher>oggetto arrestato, la proprietà status dell&quot; restituito <xref:System.Windows.Threading.DispatcherOperation>è impostato su <xref:System.Windows.Threading.DispatcherOperationStatus>.</xref:System.Windows.Threading.DispatcherOperationStatus> </xref:System.Windows.Threading.DispatcherOperation> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   example:
   - "The following example shows how to place an operation onto a <xref:System.Windows.Threading.Dispatcher>.  \n  \n First, a delegate is created that accepts one argument, in this case a string.  \n  \n [!code-vb[ThreadingWeatherForecast#ThreadingWeatherDelegates](~/add/codesnippet/visualbasic/threadingweatherforecastsample/window1.xaml.vb#threadingweatherdelegates)]\n [!code-cs[ThreadingWeatherForecast#ThreadingWeatherDelegates](~/add/codesnippet/csharp/ThreadingWeatherForecastSample/Window1.xaml.cs#threadingweatherdelegates)]  \n  \n Next, BeginInvoke is called.  Because every <xref:System.Windows.Threading.DispatcherObject> has a property that returns the <xref:System.Windows.Threading.Dispatcher> it is associated with, the desired <xref:System.Windows.Threading.Dispatcher> is obtained by querying the <xref:System.Windows.Threading.DispatcherObject>, in this case a <xref:System.Windows.Controls.Grid> named `tomorrowsWeather`. The call to BeginInvoke takes three parameters: the priority, which is set to <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>; the callback, which is passed in through an instance of the delegate `OneArgDelegate`; and a string named `weather`, which is the argument for the callback.  \n  \n [!code-vb[threadingweatherforecast#ThreadingWeatherDispatcherOneArge](~/add/codesnippet/visualbasic/threadingweatherforecastsample/window1.xaml.vb#threadingweatherdispatcheronearge)]\n [!code-cs[threadingweatherforecast#ThreadingWeatherDispatcherOneArge](~/add/codesnippet/csharp/ThreadingWeatherForecastSample/Window1.xaml.cs#threadingweatherdispatcheronearge)]"
   syntax:
@@ -193,24 +193,24 @@ items:
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes one argument, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta un argomento, viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: arg
       type: System.Object
-      description: "The object to pass as an argument to the specified method."
+      description: "Oggetto da passare come argomento al metodo specificato."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "Un oggetto che viene restituito immediatamente dopo <xref:System.Windows.Threading.Dispatcher.BeginInvoke*>viene chiamato, che può essere utilizzato per interagire con il delegato mentre è in attesa di esecuzione dell&quot;evento della coda.</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>non è un valido <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority,System.Delegate,System.Object,System.Object[])
@@ -225,34 +225,34 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate asynchronously at the specified priority and with the specified array of arguments on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "The `arg` parameter can be `null` if no arguments are needed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> returns a <xref:System.Windows.Threading.DispatcherOperation> object that can be used to interact with the delegate when the delegate is in the event queue.       The <xref:System.Windows.Threading.DispatcherOperation> object returned by <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> can be used in several ways to interact with the specified delegate, such as:      -   Changing the <xref:System.Windows.Threading.DispatcherPriority> of the delegate as it is pending execution in the event queue.      -   Removing the delegate from the event queue.      -   Waiting for the delegate to return.      -   Obtaining the value that the delegate returns after it is executed.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous; therefore, control returns immediately to the calling object after it is called.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       If multiple <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> calls are made at the same <xref:System.Windows.Threading.DispatcherPriority>, they will be executed in the order the calls were made.       If <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is called on a <xref:System.Windows.Threading.Dispatcher> that has shut down, the status property of the returned <xref:System.Windows.Threading.DispatcherOperation> is set to <xref:System.Windows.Threading.DispatcherOperationStatus>."
+  summary: "Esegue il delegato specificato in modo asincrono la priorità specificata e con la matrice di argomenti specificati nel thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "Il `arg` parametro può essere `null` se non sono richiesti argomenti.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>Restituisce un <xref:System.Windows.Threading.DispatcherOperation>oggetto che può essere utilizzato per interagire con il delegato quando il delegato incluso nella coda degli eventi.</xref:System.Windows.Threading.DispatcherOperation></xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       Il <xref:System.Windows.Threading.DispatcherOperation>oggetto restituito da <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>può essere usato in vari modi per interagire con il delegato specificato, ad esempio: - modifica il <xref:System.Windows.Threading.DispatcherPriority>del delegato mentre è in attesa esecuzione nella coda degli eventi.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.DispatcherOperation>      -Rimozione del delegato dalla coda degli eventi.      -In attesa per il delegato da restituire.      -Il recupero del valore restituito dal delegato dopo di esso viene eseguito.       <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrona; Pertanto, restituendo immediatamente il controllo per l&quot;oggetto chiamante dopo la chiamata.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       Se più <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>chiamate vengono eseguite contemporaneamente <xref:System.Windows.Threading.DispatcherPriority>, verranno eseguite nell&quot;ordine in cui sono state effettuate.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>       Se <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>viene chiamato su un <xref:System.Windows.Threading.Dispatcher>oggetto arrestato, la proprietà status dell&quot; restituito <xref:System.Windows.Threading.DispatcherOperation>è impostato su <xref:System.Windows.Threading.DispatcherOperationStatus>.</xref:System.Windows.Threading.DispatcherOperationStatus> </xref:System.Windows.Threading.DispatcherOperation> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation BeginInvoke (System.Windows.Threading.DispatcherPriority priority, Delegate method, object arg, object[] args);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes multiple arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta più argomenti, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: arg
       type: System.Object
-      description: "The object to pass as an argument to the specified method."
+      description: "Oggetto da passare come argomento al metodo specificato."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the specified method."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> is called, that can be used to interact with the delegate as it is pending execution in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> queue."
+      description: "Un oggetto che viene restituito immediatamente dopo <xref:System.Windows.Threading.Dispatcher.BeginInvoke*>viene chiamato, che può essere utilizzato per interagire con il delegato mentre è in attesa di esecuzione nel <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda.</xref:System.Windows.Threading.Dispatcher.BeginInvoke*>"
   overload: System.Windows.Threading.Dispatcher.BeginInvoke*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref> is not a valid priority."
+    description: "<xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>non è una priorità valida."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.BeginInvokeShutdown(System.Windows.Threading.DispatcherPriority)
@@ -267,14 +267,14 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Initiates shutdown of the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> asynchronously."
-  remarks: "BeginInvokeShutdown demands unrestricted UI Permissions.       When the <xref:System.Windows.Threading.Dispatcher> starts to shut down, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shut down completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "Avvia la chiusura del <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> in modo asincrono."
+  remarks: "BeginInvokeShutdown richiede le autorizzazioni senza restrizioni dell&quot;interfaccia utente.       Quando il <xref:System.Windows.Threading.Dispatcher>inizia l&quot;arresto, la <xref:System.Windows.Threading.Dispatcher.ShutdownStarted>evento viene generato e <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>è impostato su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       Il <xref:System.Windows.Threading.Dispatcher>non arresta completamente finché la coda degli eventi viene rimosso.</xref:System.Windows.Threading.Dispatcher>       Al termine dell&quot;arresto, il Dispatcher di <xref:System.Windows.Threading.Dispatcher.ShutdownFinished>evento viene generato e <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>è impostata su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       Una volta avviato il processo di arresto, tutte in sospeso di lavoro vengono interrotti elementi nella coda."
   syntax:
     content: public void BeginInvokeShutdown (System.Windows.Threading.DispatcherPriority priority);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority at which to begin shutting down the dispatcher."
+      description: "La priorità da cui iniziare l&quot;arresto del dispatcher."
   overload: System.Windows.Threading.Dispatcher.BeginInvokeShutdown*
   exceptions: []
   platform:
@@ -291,8 +291,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the calling thread is the thread associated with this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "Only the <xref:System.Windows.Threading.Dispatcher> that a <xref:System.Windows.Threading.DispatcherObject> is created on may access the object.  Use <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> to access the object from a different thread.       CheckAccess can be called from any thread.       The difference between CheckAccess and <xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A> is CheckAccess returns a Boolean indicating whether the calling thread has access to the <xref:System.Windows.Threading.Dispatcher> and <xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A> throws an exception."
+  summary: "Determina se il thread chiamante è il thread associato a questo <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
+  remarks: "Solo il <xref:System.Windows.Threading.Dispatcher>che un <xref:System.Windows.Threading.DispatcherObject>viene creato in cui possono accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.Dispatcher>  Utilizzare <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>per accedere all&quot;oggetto da un thread diverso.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>       CheckAccess può essere chiamato da qualsiasi thread.       La differenza tra CheckAccess e <xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A>CheckAccess restituisce un valore booleano che indica se il thread chiamante dispone dell&quot;accesso per il <xref:System.Windows.Threading.Dispatcher>e <xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A>genera un&quot;eccezione.</xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.VerifyAccess%2A>"
   example:
   - "The following example uses CheckAccess to determine whether a thread has access to a <xref:System.Windows.Controls.Button>.  The CheckAccess method on the <xref:System.Windows.Threading.Dispatcher> associated with the <xref:System.Windows.Controls.Button> is called to verify access to the thread.  If the calling thread has access to the <xref:System.Windows.Threading.Dispatcher>, the <xref:System.Windows.Controls.Button> is updated by accessing the members of the <xref:System.Windows.Controls.Button>; otherwise, a delegate, which accepts a <xref:System.Windows.Controls.Button> as an argument, is placed onto the <xref:System.Windows.Threading.Dispatcher>.  The <xref:System.Windows.Threading.Dispatcher> will delegate the work of updating the <xref:System.Windows.Controls.Button>.  \n  \n [!code-cs[DispatcherAccessSample#DispatcherAccessCheckAccess](~/add/codesnippet/csharp/DispatcherAccessSample/Window1.xaml.cs#dispatcheraccesscheckaccess)]\n [!code-vb[DispatcherAccessSample#DispatcherAccessCheckAccess](~/add/codesnippet/visualbasic/dispatcheraccesssample/window1.xaml.vb#dispatcheraccesscheckaccess)]"
   syntax:
@@ -300,7 +300,7 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the calling thread is the thread associated with this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il thread chiamante è il thread associato a questo <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Threading.Dispatcher.CheckAccess*
   exceptions: []
   platform:
@@ -317,13 +317,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> for the thread currently executing and creates a new <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> if one is not already associated with the thread."
-  remarks: "If a <xref:System.Windows.Threading.Dispatcher> is not associated with the current thread, a new <xref:System.Windows.Threading.Dispatcher> will be created.  This is not the case with the <xref:System.Windows.Threading.Dispatcher.FromThread%2A> method.  <xref:System.Windows.Threading.Dispatcher.FromThread%2A> will return `null` if there is not a dispatcher associated with the specified thread."
+  summary: "Ottiene il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> per il thread attualmente in esecuzione e crea un nuovo <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> se non è già associato al thread."
+  remarks: "Se un <xref:System.Windows.Threading.Dispatcher>non è associato il thread corrente, un nuovo <xref:System.Windows.Threading.Dispatcher>verrà creato.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher>  Non è il caso di <xref:System.Windows.Threading.Dispatcher.FromThread%2A>metodo.</xref:System.Windows.Threading.Dispatcher.FromThread%2A>  <xref:System.Windows.Threading.Dispatcher.FromThread%2A>restituirà `null` se non è disponibile un dispatcher associato al thread specificato.</xref:System.Windows.Threading.Dispatcher.FromThread%2A>"
   syntax:
     content: public static System.Windows.Threading.Dispatcher CurrentDispatcher { get; }
     return:
       type: System.Windows.Threading.Dispatcher
-      description: "The dispatcher associated with the current thread."
+      description: "Il dispatcher associato al thread corrente."
   overload: System.Windows.Threading.Dispatcher.CurrentDispatcher*
   exceptions: []
   platform:
@@ -340,8 +340,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Disables processing of the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> queue."
-  remarks: "Disabling dispatcher processing is an advanced method that is intended to eliminate the chance of unrelated reentrancy.       The effects of disabling processing are as follows:      -   [!INCLUDE[TLA2#tla_clr#initcap](~/add/includes/tla2sharptla-clrsharpinitcap-md.md)] locks will not pump messages internally.      -   <xref:System.Windows.Threading.DispatcherFrame> objects are not allowed to be pushed.      -   Message processing is not permitted.       The <xref:System.Windows.Threading.DispatcherProcessingDisabled> structure that DisableProcessing returns when it is called can be used to re-enable dispatcher processing.  Calling <xref:System.Windows.Threading.DispatcherProcessingDisabled.Dispose%2A> on the <xref:System.Windows.Threading.DispatcherProcessingDisabled> structure re-enables processing.       DisableProcessing can only be called on the thread the <xref:System.Windows.Threading.Dispatcher> is associated with."
+  summary: "Disabilita l&quot;elaborazione del <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda."
+  remarks: "Disabilitare l&quot;elaborazione del dispatcher è un metodo avanzato è pensato per eliminare la possibilità di reentrancy non correlata.       Gli effetti della disabilitazione dell&quot;elaborazione sono i seguenti:- [!INCLUDE[TLA2#tla_clr#initcap](~/add/includes/tla2sharptla-clrsharpinitcap-md.md)] blocchi verranno non message pump internamente.      - <xref:System.Windows.Threading.DispatcherFrame>oggetti non sono consentiti per essere inserita.</xref:System.Windows.Threading.DispatcherFrame>      -L&quot;elaborazione dei messaggi non è consentito.       Il <xref:System.Windows.Threading.DispatcherProcessingDisabled>struttura DisableProcessing restituisce quando viene chiamata consente di abilitare di nuovo l&quot;elaborazione del dispatcher.</xref:System.Windows.Threading.DispatcherProcessingDisabled>  La chiamata <xref:System.Windows.Threading.DispatcherProcessingDisabled.Dispose%2A>sul <xref:System.Windows.Threading.DispatcherProcessingDisabled>struttura elaborazione verrà riattivata.</xref:System.Windows.Threading.DispatcherProcessingDisabled> </xref:System.Windows.Threading.DispatcherProcessingDisabled.Dispose%2A>       DisableProcessing può essere chiamato solo sul thread di <xref:System.Windows.Threading.Dispatcher>è associato.</xref:System.Windows.Threading.Dispatcher>"
   example:
   - "The following example shows how to disable dispatcher processing and re-enable dispatcher processing.  DisableProcessing is called in a **using** statement.  DisableProcessing returns a <xref:System.Windows.Threading.DispatcherProcessingDisabled> structure that is used as the object to be disposed when the **using** block finishes.  When <xref:System.Windows.Threading.DispatcherProcessingDisabled.Dispose%2A> is called on the <xref:System.Windows.Threading.DispatcherProcessingDisabled> structure, dispatcher processing is re-enabled.  \n  \n [!code-vb[DispatcherSnippets#DispatcherDisableProcessing](~/add/codesnippet/visualbasic/dispatchersnippets/window1.xaml.vb#dispatcherdisableprocessing)]\n [!code-cs[DispatcherSnippets#DispatcherDisableProcessing](~/add/codesnippet/csharp/DispatcherSnippets/Window1.xaml.cs#dispatcherdisableprocessing)]"
   syntax:
@@ -349,7 +349,7 @@ items:
     parameters: []
     return:
       type: System.Windows.Threading.DispatcherProcessingDisabled
-      description: "A structure used to re-enable dispatcher processing."
+      description: "Una struttura utilizzata per abilitare nuovamente l&quot;elaborazione del dispatcher."
   overload: System.Windows.Threading.Dispatcher.DisableProcessing*
   exceptions: []
   platform:
@@ -366,7 +366,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Requests that all frames exit, including nested frames."
+  summary: "Richiede che tutti i frame uscire, inclusi i frame annidati."
   syntax:
     content: public static void ExitAllFrames ();
     parameters: []
@@ -386,17 +386,17 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> for the specified thread."
-  remarks: "If a dispatcher is not available for the specified thread, `null` will be returned.       FromThread does not create a <xref:System.Windows.Threading.Dispatcher> on a thread that does not have a <xref:System.Windows.Threading.Dispatcher>.   A new <xref:System.Windows.Threading.Dispatcher> is created on a thread that does not already have a <xref:System.Windows.Threading.Dispatcher> when attempting to get the <xref:System.Windows.Threading.Dispatcher> by using the <xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A> property."
+  summary: "Ottiene il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> per il thread specificato."
+  remarks: "Se non è disponibile per il thread specificato, un dispatcher `null` verranno restituiti.       FromThread non crea un <xref:System.Windows.Threading.Dispatcher>su un thread che non dispone di un <xref:System.Windows.Threading.Dispatcher>.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher>   Un nuovo <xref:System.Windows.Threading.Dispatcher>viene creato su un thread che non dispone già di un <xref:System.Windows.Threading.Dispatcher>durante il tentativo di ottenere il <xref:System.Windows.Threading.Dispatcher>utilizzando il <xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A>proprietà.</xref:System.Windows.Threading.Dispatcher.CurrentDispatcher%2A> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher>"
   syntax:
     content: public static System.Windows.Threading.Dispatcher FromThread (System.Threading.Thread thread);
     parameters:
     - id: thread
       type: System.Threading.Thread
-      description: "The thread to obtain the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> from."
+      description: "Il thread per ottenere il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> da."
     return:
       type: System.Windows.Threading.Dispatcher
-      description: "The dispatcher for <code>thread</code>."
+      description: "Il dispatcher per <code> thread </code>."
   overload: System.Windows.Threading.Dispatcher.FromThread*
   exceptions: []
   platform:
@@ -413,13 +413,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> has finished shutting down."
-  remarks: "When the <xref:System.Windows.Threading.Dispatcher> starts to shut down, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shutdown completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the HasShutdownFinished property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "Determina se il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> ha terminato l&quot;arresto."
+  remarks: "Quando il <xref:System.Windows.Threading.Dispatcher>inizia l&quot;arresto, la <xref:System.Windows.Threading.Dispatcher.ShutdownStarted>evento viene generato e <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>è impostato su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       Il <xref:System.Windows.Threading.Dispatcher>non si arresta completamente fino a quando la coda degli eventi viene rimosso.</xref:System.Windows.Threading.Dispatcher>       Al termine dell&quot;arresto, il Dispatcher di <xref:System.Windows.Threading.Dispatcher.ShutdownFinished>viene generato l&quot;evento e la proprietà HasShutdownFinished è impostata su `true`.</xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       Una volta avviato il processo di arresto, tutte in sospeso di lavoro vengono interrotti elementi nella coda."
   syntax:
     content: public bool HasShutdownFinished { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the dispatcher has finished shutting down; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il dispatcher ha completato l&quot;arresto; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Threading.Dispatcher.HasShutdownFinished*
   exceptions: []
   platform:
@@ -436,13 +436,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is shutting down."
-  remarks: "When the <xref:System.Windows.Threading.Dispatcher> starts to shut down, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and HasShutdownStarted is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shut down completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "Determina se il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è in corso l&quot;arresto."
+  remarks: "Quando il <xref:System.Windows.Threading.Dispatcher>inizia l&quot;arresto, la <xref:System.Windows.Threading.Dispatcher.ShutdownStarted>evento viene generato e HasShutdownStarted è impostato su `true`.</xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       Il <xref:System.Windows.Threading.Dispatcher>non arresta completamente finché la coda degli eventi viene rimosso.</xref:System.Windows.Threading.Dispatcher>       Al termine dell&quot;arresto, il Dispatcher di <xref:System.Windows.Threading.Dispatcher.ShutdownFinished>evento viene generato e <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>è impostata su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       Una volta avviato il processo di arresto, tutte in sospeso di lavoro vengono interrotti elementi nella coda."
   syntax:
     content: public bool HasShutdownStarted { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> has started shutting down; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> avviato la fase di chiusura; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Threading.Dispatcher.HasShutdownStarted*
   exceptions: []
   platform:
@@ -459,13 +459,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the collection of hooks that provide additional event information about the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "The <xref:System.Windows.Threading.DispatcherHooks> class provides additional event information about the <xref:System.Windows.Threading.Dispatcher>, such as when the <xref:System.Windows.Threading.Dispatcher> is inactive or when an operation has competed."
+  summary: "Ottiene la raccolta di hook che forniscono informazioni aggiuntive sull&quot;evento relativamente il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
+  remarks: "Il <xref:System.Windows.Threading.DispatcherHooks>classe vengono fornite informazioni aggiuntive sul <xref:System.Windows.Threading.Dispatcher>, ad esempio quando il <xref:System.Windows.Threading.Dispatcher>è inattivo o quando un&quot;operazione è stata completata.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.DispatcherHooks>"
   syntax:
     content: public System.Windows.Threading.DispatcherHooks Hooks { get; }
     return:
       type: System.Windows.Threading.DispatcherHooks
-      description: "The hooks associated with this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "Gli hook associati a questo <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
   overload: System.Windows.Threading.Dispatcher.Hooks*
   exceptions: []
   platform:
@@ -482,13 +482,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "Esegue l&quot;oggetto specificato <xref:System.Action>in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato.</xref:System.Action>"
   syntax:
     content: public void Invoke (Action callback);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "Un delegato da richiamare tramite il dispatcher."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -505,16 +505,16 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> synchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "Esegue l&quot;oggetto specificato <xref:System.Action>in modo sincrono con una priorità specificata sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato.</xref:System.Action>"
   syntax:
     content: public void Invoke (Action callback, System.Windows.Threading.DispatcherPriority priority);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "Un delegato da richiamare tramite il dispatcher."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "La priorità determina l&quot;ordine viene richiamato il callback specificato rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -531,20 +531,20 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato con gli argomenti specificati in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject> Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button> Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A> <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (Delegate method, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta i parametri specificati `args`, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -561,8 +561,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate synchronously at the specified priority on the thread on which the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue in modo sincrono il delegato specificato con la priorità specificata sul thread in cui il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   example:
   - "The following example places a delegate onto a <xref:System.Windows.Threading.Dispatcher> at <xref:System.Windows.Threading.DispatcherPriority> using Invoke.  \n  \n [!code-vb[invalidaterequerywithsystemtimer#SystemTimerDispatcherInvoke](~/add/codesnippet/visualbasic/invalidaterequerywithsystemtimer/window1.xaml.vb#systemtimerdispatcherinvoke)]\n [!code-cs[invalidaterequerywithsystemtimer#SystemTimerDispatcherInvoke](~/add/codesnippet/csharp/InvalidateRequeryWithSystemTimer/Window1.xaml.cs#systemtimerdispatcherinvoke)]"
   syntax:
@@ -570,24 +570,24 @@ items:
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes no arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che non accetta argomenti, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>è uguale a <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid priority."
+    description: "<code>priority</code>non è una priorità valida."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke(System.Action,System.Windows.Threading.DispatcherPriority,System.Threading.CancellationToken)
@@ -602,19 +602,19 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> synchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "Esegue l&quot;oggetto specificato <xref:System.Action>in modo sincrono con una priorità specificata sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato.</xref:System.Action>"
   syntax:
     content: public void Invoke (Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "Un delegato da richiamare tramite il dispatcher."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "La priorità determina l&quot;ordine viene richiamato il callback specificato rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "An object that indicates whether to cancel the action."
+      description: "Oggetto che indica se annullare l&quot;azione."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -631,23 +631,23 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate within the designated time span at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato entro l&quot;intervallo di tempo designato la priorità specificata con gli argomenti specificati in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject> Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button> Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A> <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (Delegate method, TimeSpan timeout, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta i parametri specificati `args`, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum amount of time to wait for the operation to complete."
+      description: "La quantità massima di tempo di attesa del completamento dell&quot;operazione."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -664,23 +664,23 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato con la priorità specificata con gli argomenti specificati in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject> Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button> Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A> <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (Delegate method, System.Windows.Threading.DispatcherPriority priority, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta i parametri specificati `args`, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -697,34 +697,34 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified argument synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if an argument is not needed       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato con la priorità specificata con l&quot;argomento specificato in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "`Arg`può essere `null` se un argomento non è necessaria In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, Delegate method, object arg);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes one argument, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta un argomento, viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: arg
       type: System.Object
-      description: "An object to pass as an argument to the given method."
+      description: "Oggetto da passare come argomento al metodo specificato."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>è uguale a <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid priority."
+    description: "<code>priority</code>non è una priorità valida."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority,System.TimeSpan,System.Delegate)
@@ -739,23 +739,23 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate synchronously at the specified priority and with the specified time-out value on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> was created."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato in modo sincrono la priorità specificata e con il valore di timeout specificato sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è stato creato."
+  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, TimeSpan timeout, Delegate method);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum time to wait for the operation to finish."
+      description: "Il tempo massimo di attesa per l&quot;operazione da completare."
     - id: method
       type: System.Delegate
-      description: "The delegate to a method that takes no arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Il delegato a un metodo che non accetta alcun argomento, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -772,22 +772,22 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> synchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "Esegue l&quot;oggetto specificato <xref:System.Action>in modo sincrono con una priorità specificata sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato.</xref:System.Action>"
   syntax:
     content: public void Invoke (Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken, TimeSpan timeout);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "Un delegato da richiamare tramite il dispatcher."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "La priorità determina l&quot;ordine viene richiamato il callback specificato rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "An object that indicates whether to cancel the action."
+      description: "Oggetto che indica se annullare l&quot;azione."
     - id: timeout
       type: System.TimeSpan
-      description: "The minimum amount of time to wait for the operation to start."
+      description: "La quantità minima di tempo di attesa per l&quot;operazione di avvio."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -804,26 +804,26 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate within the designated time span at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object. For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread. In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread. This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>. <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous. The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato entro l&quot;intervallo di tempo designato la priorità specificata con gli argomenti specificati in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject> Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button> Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button> Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A> <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A> L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (Delegate method, TimeSpan timeout, System.Windows.Threading.DispatcherPriority priority, object[] args);
     parameters:
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes parameters specified in `args`, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta i parametri specificati `args`, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum amount of time to wait for the operation to complete."
+      description: "La quantità massima di tempo di attesa del completamento dell&quot;operazione."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato. Can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions: []
   platform:
@@ -840,37 +840,37 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if an argument is not needed       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato con la priorità specificata con gli argomenti specificati in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "`Arg`può essere `null` se un argomento non è necessaria In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, Delegate method, object arg, object[] args);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes multiple arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta più argomenti, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: arg
       type: System.Object
-      description: "An object to pass as an argument to the given method."
+      description: "Oggetto da passare come argomento al metodo specificato."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the given method."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>è uguale a <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid priority."
+    description: "<code>priority</code>non è una priorità valida."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority,System.TimeSpan,System.Delegate,System.Object)
@@ -885,37 +885,37 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified argument synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if an argument is not needed       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato con la priorità specificata con l&quot;argomento specificato in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "`Arg`può essere `null` se un argomento non è necessaria In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, TimeSpan timeout, Delegate method, object arg);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum time to wait for the operation to finish."
+      description: "Il tempo massimo di attesa per l&quot;operazione da completare."
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes multiple arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta più argomenti, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: arg
       type: System.Object
-      description: "An object to pass as an argument to the given method. This can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no arguments are needed."
+      description: "Oggetto da passare come argomento al metodo specificato. Può trattarsi di <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se non sono richiesti argomenti."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>è uguale a <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid priority."
+    description: "<code>priority</code>non è una priorità valida."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority,System.TimeSpan,System.Delegate,System.Object,System.Object[])
@@ -930,40 +930,40 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified delegate at the specified priority with the specified arguments synchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
-  remarks: "`Arg` can be `null` if an argument is not needed.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], only the thread that created a <xref:System.Windows.Threading.DispatcherObject> may access that object.  For example, a background thread that is spun off from the main UI thread cannot update the contents of a <xref:System.Windows.Controls.Button> that was created on the UI thread.  In order for the background thread to access the Content property of the <xref:System.Windows.Controls.Button>, the background thread must delegate the work to the <xref:System.Windows.Threading.Dispatcher> associated with the UI thread.  This is accomplished by using either <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.  <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is synchronous and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is asynchronous.  The operation is added to the event queue of the <xref:System.Windows.Threading.Dispatcher> at the specified <xref:System.Windows.Threading.DispatcherPriority>.       <xref:System.Windows.Threading.Dispatcher.Invoke%2A> is a synchronous operation; therefore, control will not return to the calling object until after the callback returns."
+  summary: "Esegue il delegato specificato con la priorità specificata con gli argomenti specificati in modo sincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
+  remarks: "`Arg`può essere `null` se non è necessario un argomento.       In [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)], solo i thread che ha creato un <xref:System.Windows.Threading.DispatcherObject>può accedere all&quot;oggetto.</xref:System.Windows.Threading.DispatcherObject>  Ad esempio, un thread in background che viene rimosso dal thread principale della UI non è possibile aggiornare il contenuto di un <xref:System.Windows.Controls.Button>che è stato creato nel thread UI.</xref:System.Windows.Controls.Button>  Affinché il thread in background accedere alla proprietà di contenuto di <xref:System.Windows.Controls.Button>, il thread in background deve delegare il lavoro dal <xref:System.Windows.Threading.Dispatcher>associata al thread dell&quot;interfaccia utente.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Controls.Button>  Questa operazione viene eseguita tramite uno <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>  <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è sincrono e <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>è asincrono.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A></xref:System.Windows.Threading.Dispatcher.Invoke%2A>  L&quot;operazione viene aggiunta alla coda degli eventi <xref:System.Windows.Threading.Dispatcher>all&quot;indirizzo specificato <xref:System.Windows.Threading.DispatcherPriority>.</xref:System.Windows.Threading.DispatcherPriority> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.Dispatcher.Invoke%2A>è un&quot;operazione sincrona. Pertanto, controllo non verrà restituito per l&quot;oggetto chiamante fino a dopo il callback restituisce.</xref:System.Windows.Threading.Dispatcher.Invoke%2A>"
   syntax:
     content: public object Invoke (System.Windows.Threading.DispatcherPriority priority, TimeSpan timeout, Delegate method, object arg, object[] args);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority, relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue, the specified method is invoked."
+      description: "La priorità, rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda degli eventi, il metodo specificato viene richiamata."
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum time to wait for the operation to finish."
+      description: "Il tempo massimo di attesa per l&quot;operazione da completare."
     - id: method
       type: System.Delegate
-      description: "A delegate to a method that takes multiple arguments, which is pushed onto the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> event queue."
+      description: "Un delegato a un metodo che accetta più argomenti, che viene inserito il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> coda eventi."
     - id: arg
       type: System.Object
-      description: "An object to pass as an argument to the specified method."
+      description: "Oggetto da passare come argomento al metodo specificato."
     - id: args
       type: System.Object[]
-      description: "An array of objects to pass as arguments to the specified method."
+      description: "Matrice di oggetti da passare come argomenti al metodo specificato."
     return:
       type: System.Object
-      description: "The return value from the delegate being invoked or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the delegate has no return value."
+      description: "Il valore restituito dal delegato richiamato oppure <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se il delegato non restituisce alcun valore."
   overload: System.Windows.Threading.Dispatcher.Invoke*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>priority</code> is equal to <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>è uguale a <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>non è un valido <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>method</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>method</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Invoke``1(System.Func{``0})
@@ -983,10 +983,10 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "Da aggiungere."
     return:
       type: TResult
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Windows.Threading.Dispatcher.Invoke<TResult>*
   exceptions: []
   platform:
@@ -1008,13 +1008,13 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "Da aggiungere."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "Da aggiungere."
     return:
       type: TResult
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Windows.Threading.Dispatcher.Invoke<TResult>*
   exceptions: []
   platform:
@@ -1036,16 +1036,16 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "Da aggiungere."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "Da aggiungere."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "To be added."
+      description: "Da aggiungere."
     return:
       type: TResult
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Windows.Threading.Dispatcher.Invoke<TResult>*
   exceptions: []
   platform:
@@ -1067,19 +1067,19 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "Da aggiungere."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "Da aggiungere."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "To be added."
+      description: "Da aggiungere."
     - id: timeout
       type: System.TimeSpan
-      description: "To be added."
+      description: "Da aggiungere."
     return:
       type: TResult
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Windows.Threading.Dispatcher.Invoke<TResult>*
   exceptions: []
   platform:
@@ -1096,16 +1096,16 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> asynchronously on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "Esegue l&quot;oggetto specificato <xref:System.Action>in modo asincrono sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato.</xref:System.Action>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation InvokeAsync (Action callback);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "Un delegato da richiamare tramite il dispatcher."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after InvokeAsync is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "Un oggetto, che viene restituito immediatamente dopo la chiamata di metodo InvokeAsync, che può essere utilizzato per interagire con il delegato mentre è in attesa di esecuzione dell&quot;evento della coda."
   overload: System.Windows.Threading.Dispatcher.InvokeAsync*
   exceptions: []
   platform:
@@ -1122,19 +1122,19 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> asynchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "Esegue l&quot;oggetto specificato <xref:System.Action>in modo asincrono con una priorità specificata sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato.</xref:System.Action>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation InvokeAsync (Action callback, System.Windows.Threading.DispatcherPriority priority);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "Un delegato da richiamare tramite il dispatcher."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "La priorità determina l&quot;ordine viene richiamato il callback specificato rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after InvokeAsync is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "Un oggetto, che viene restituito immediatamente dopo la chiamata di metodo InvokeAsync, che può essere utilizzato per interagire con il delegato mentre è in attesa di esecuzione dell&quot;evento della coda."
   overload: System.Windows.Threading.Dispatcher.InvokeAsync*
   exceptions: []
   platform:
@@ -1151,22 +1151,22 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Executes the specified <xref:System.Action> asynchronously at the specified priority on the thread the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "Esegue l&quot;oggetto specificato <xref:System.Action>in modo asincrono con una priorità specificata sul thread di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato.</xref:System.Action>"
   syntax:
     content: public System.Windows.Threading.DispatcherOperation InvokeAsync (Action callback, System.Windows.Threading.DispatcherPriority priority, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: callback
       type: System.Action
-      description: "A delegate to invoke through the dispatcher."
+      description: "Un delegato da richiamare tramite il dispatcher."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority that determines in what order the specified callback is invoked relative to the other pending operations in the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+      description: "La priorità determina l&quot;ordine viene richiamato il callback specificato rispetto alle altre operazioni in sospeso il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "An object that indicates whether to cancel the action."
+      description: "Oggetto che indica se annullare l&quot;azione."
     return:
       type: System.Windows.Threading.DispatcherOperation
-      description: "An object, which is returned immediately after InvokeAsync is called, that can be used to interact with the delegate as it is pending execution in the event queue."
+      description: "Un oggetto, che viene restituito immediatamente dopo la chiamata di metodo InvokeAsync, che può essere utilizzato per interagire con il delegato mentre è in attesa di esecuzione dell&quot;evento della coda."
   overload: System.Windows.Threading.Dispatcher.InvokeAsync*
   exceptions: []
   platform:
@@ -1188,10 +1188,10 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "Da aggiungere."
     return:
       type: System.Windows.Threading.DispatcherOperation`1
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Windows.Threading.Dispatcher.InvokeAsync<TResult>*
   exceptions: []
   platform:
@@ -1213,13 +1213,13 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "Da aggiungere."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "Da aggiungere."
     return:
       type: System.Windows.Threading.DispatcherOperation`1
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Windows.Threading.Dispatcher.InvokeAsync<TResult>*
   exceptions: []
   platform:
@@ -1241,16 +1241,16 @@ items:
     parameters:
     - id: callback
       type: System.Func{TResult}
-      description: "To be added."
+      description: "Da aggiungere."
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "To be added."
+      description: "Da aggiungere."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "To be added."
+      description: "Da aggiungere."
     return:
       type: System.Windows.Threading.DispatcherOperation`1
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Windows.Threading.Dispatcher.InvokeAsync<TResult>*
   exceptions: []
   platform:
@@ -1267,8 +1267,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Initiates the shutdown process of the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> synchronously."
-  remarks: "InvokeShutdown demands unrestricted UI Permissions.       When the <xref:System.Windows.Threading.Dispatcher> starts to shut down, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shut down completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "Avvia il processo di arresto di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> in modo sincrono."
+  remarks: "InvokeShutdown richiede le autorizzazioni senza restrizioni dell&quot;interfaccia utente.       Quando il <xref:System.Windows.Threading.Dispatcher>inizia l&quot;arresto, la <xref:System.Windows.Threading.Dispatcher.ShutdownStarted>evento viene generato e <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>è impostato su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       Il <xref:System.Windows.Threading.Dispatcher>non arresta completamente finché la coda degli eventi viene rimosso.</xref:System.Windows.Threading.Dispatcher>       Al termine dell&quot;arresto, il Dispatcher di <xref:System.Windows.Threading.Dispatcher.ShutdownFinished>evento viene generato e <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>è impostata su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       Una volta avviato il processo di arresto, tutte in sospeso di lavoro vengono interrotti elementi nella coda."
   syntax:
     content: public void InvokeShutdown ();
     parameters: []
@@ -1288,8 +1288,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Enters an execute loop."
-  remarks: "A <xref:System.Windows.Threading.DispatcherFrame> represents a loop that processes pending work items.       The Dispatcher processes the work item queue in a loop.  The loop is referred to as a frame.  The initial loop is typically initiated by the application by calling <xref:System.Windows.Threading.Dispatcher.Run%2A>.       PushFrame enters a loop represented by the parameter `frame`.  At each iteration of the loop, the <xref:System.Windows.Threading.Dispatcher> will check the <xref:System.Windows.Threading.DispatcherFrame.Continue%2A> property on the <xref:System.Windows.Threading.DispatcherFrame> class to determine whether the loop should continue or if it should stop.       <xref:System.Windows.Threading.DispatcherFrame> allows for the <xref:System.Windows.Threading.DispatcherFrame.Continue%2A> property to be set explicitly and it respects the <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> property on the <xref:System.Windows.Threading.Dispatcher>.  This means when the <xref:System.Windows.Threading.Dispatcher> starts to shut down, frames that use the default <xref:System.Windows.Threading.DispatcherFrame> implementation will exit, which enables all nested frames to exit."
+  summary: "Immette un ciclo di esecuzione."
+  remarks: "Oggetto <xref:System.Windows.Threading.DispatcherFrame>rappresenta un ciclo che elabora gli elementi di lavoro in sospeso.</xref:System.Windows.Threading.DispatcherFrame>       Il Dispatcher elabora la coda di elementi di lavoro in un ciclo.  Il ciclo viene considerato un frame.  Il ciclo iniziale viene in genere avviato dall&quot;applicazione chiamando <xref:System.Windows.Threading.Dispatcher.Run%2A>.</xref:System.Windows.Threading.Dispatcher.Run%2A>       PushFrame entra in un ciclo rappresentato dal parametro `frame`.  A ogni iterazione del ciclo, il <xref:System.Windows.Threading.Dispatcher>controllerà il <xref:System.Windows.Threading.DispatcherFrame.Continue%2A>proprietà la <xref:System.Windows.Threading.DispatcherFrame>classe per determinare se il ciclo deve continuare o se deve essere arrestata.</xref:System.Windows.Threading.DispatcherFrame> </xref:System.Windows.Threading.DispatcherFrame.Continue%2A> </xref:System.Windows.Threading.Dispatcher>       <xref:System.Windows.Threading.DispatcherFrame>Consente di <xref:System.Windows.Threading.DispatcherFrame.Continue%2A>proprietà da impostare in modo esplicito e rispetta la <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>proprietà <xref:System.Windows.Threading.Dispatcher>.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.DispatcherFrame.Continue%2A></xref:System.Windows.Threading.DispatcherFrame>  Ciò significa che, quando il <xref:System.Windows.Threading.Dispatcher>inizia l&quot;arresto, frame che utilizzano il valore predefinito <xref:System.Windows.Threading.DispatcherFrame>implementazione viene chiusa, che consente a tutti i frame annidati uscire dall&quot;installazione.</xref:System.Windows.Threading.DispatcherFrame> </xref:System.Windows.Threading.Dispatcher>"
   example:
   - "The following example shows how to use a <xref:System.Windows.Threading.DispatcherFrame> to achieve similar results as the [!INCLUDE[TLA#tla_winforms](~/add/includes/ajax-current-ext-md.md)] <xref:System.Windows.Forms.Application.DoEvents%2A> method.  \n  \n [!code-vb[dispatchersnippets#DispatcherDispatcherFrameDoEvents](~/add/codesnippet/visualbasic/dispatchersnippets/window1.xaml.vb#dispatcherdispatcherframedoevents)]\n [!code-cs[dispatchersnippets#DispatcherDispatcherFrameDoEvents](~/add/codesnippet/csharp/DispatcherSnippets/Window1.xaml.cs#dispatcherdispatcherframedoevents)]"
   syntax:
@@ -1297,15 +1297,15 @@ items:
     parameters:
     - id: frame
       type: System.Windows.Threading.DispatcherFrame
-      description: "The frame for the dispatcher to process."
+      description: "Il frame per il dispatcher da elaborare."
   overload: System.Windows.Threading.Dispatcher.PushFrame*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>frame</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>frame</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished*> is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>       -or-       <code>frame</code> is running on a different <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>.       -or-       Dispatcher processing has been disabled."
+    description: "<xref:System.Windows.Threading.Dispatcher.HasShutdownFinished*>is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>       -or-       <code>frame</code> is running on a different <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>.</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished*>       - oppure - l&quot;elaborazione del Dispatcher è stata disabilitata."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Run
@@ -1320,8 +1320,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Pushes the main execution frame on the event queue of the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "The <xref:System.Windows.Threading.Dispatcher> processes the event queue in a loop.  The loop is referred to as a frame.  The initial loop is typically initiated by the application by calling Run.       The main execution frame will continue until the <xref:System.Windows.Threading.Dispatcher> is shutdown."
+  summary: "Inserisce il frame di esecuzione principale nella coda degli eventi di <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
+  remarks: "Il <xref:System.Windows.Threading.Dispatcher>Elabora la coda degli eventi in un ciclo.</xref:System.Windows.Threading.Dispatcher>  Il ciclo viene considerato un frame.  Il ciclo iniziale viene in genere avviato dall&quot;applicazione mediante la chiamata di esecuzione.       Il frame di esecuzione principale continuerà fino a quando il <xref:System.Windows.Threading.Dispatcher>viene arrestato.</xref:System.Windows.Threading.Dispatcher>"
   syntax:
     content: public static void Run ();
     parameters: []
@@ -1341,13 +1341,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Occurs when the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> finishes shutting down."
-  remarks: "When the shutdown process of a <xref:System.Windows.Threading.Dispatcher> is started, the <xref:System.Windows.Threading.Dispatcher.ShutdownStarted> event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shutdown completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the ShutdownFinished event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "Si verifica quando il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> termina l&quot;arresto."
+  remarks: "Quando il processo di arresto di un <xref:System.Windows.Threading.Dispatcher>viene avviato, il <xref:System.Windows.Threading.Dispatcher.ShutdownStarted>evento viene generato e <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>è impostato su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownStarted> </xref:System.Windows.Threading.Dispatcher>       Il <xref:System.Windows.Threading.Dispatcher>non si arresta completamente fino a quando la coda degli eventi viene rimosso.</xref:System.Windows.Threading.Dispatcher>       Quando il Dispatcher termina l&quot;arresto, viene generato l&quot;evento ShutdownFinished e <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>è impostata su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>       Una volta avviato il processo di arresto, tutte in sospeso di lavoro vengono interrotti elementi nella coda."
   syntax:
     content: public event EventHandler ShutdownFinished;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -1363,13 +1363,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Occurs when the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> begins to shut down."
-  remarks: "When the shutdown process of a <xref:System.Windows.Threading.Dispatcher> is started, the ShutdownStarted event is raised and <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> is set to `true`.       The <xref:System.Windows.Threading.Dispatcher> does not shutdown completely until the event queue unwinds.       When the Dispatcher finishes shutting down, the <xref:System.Windows.Threading.Dispatcher.ShutdownFinished> event is raised and the <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> property is set to `true`.       Once the shutdown process begins, all pending work items in the queue are aborted."
+  summary: "Si verifica quando il <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> inizia l&quot;arresto."
+  remarks: "Quando il processo di arresto di un <xref:System.Windows.Threading.Dispatcher>viene avviato, viene generato l&quot;evento ShutdownStarted e <xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A>è impostato su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownStarted%2A> </xref:System.Windows.Threading.Dispatcher>       Il <xref:System.Windows.Threading.Dispatcher>non si arresta completamente fino a quando la coda degli eventi viene rimosso.</xref:System.Windows.Threading.Dispatcher>       Al termine dell&quot;arresto, il Dispatcher di <xref:System.Windows.Threading.Dispatcher.ShutdownFinished>evento viene generato e <xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A>è impostata su `true`.</xref:System.Windows.Threading.Dispatcher.HasShutdownFinished%2A> </xref:System.Windows.Threading.Dispatcher.ShutdownFinished>       Una volta avviato il processo di arresto, tutte in sospeso di lavoro vengono interrotti elementi nella coda."
   syntax:
     content: public event EventHandler ShutdownStarted;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -1385,12 +1385,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the thread this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> is associated with."
+  summary: "Ottiene il thread si <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> è associato."
   syntax:
     content: public System.Threading.Thread Thread { get; }
     return:
       type: System.Threading.Thread
-      description: "The thread."
+      description: "Il thread."
   overload: System.Windows.Threading.Dispatcher.Thread*
   exceptions: []
   platform:
@@ -1407,13 +1407,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Occurs when a thread exception is thrown and uncaught during execution of a delegate by way of <xref:System.Windows.Threading.Dispatcher.Invoke*> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke*>."
-  remarks: "This event is raised when an exception that was thrown during execution of a delegate by way of <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> is uncaught.       A handler can mark the exception as handled, which will prevent the internal exception handler from being called.       Event handlers for this event must be written with care to avoid creating secondary exceptions and to catch any that occur. It is recommended to avoid allocating memory or doing any resource intensive operations in the handler.       The <xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter> event provides a means to not raise the UnhandledException event.  The <xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter> event is raised first, and If <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A> on the <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs> is set to `false`, the UnhandledException event will not be raised."
+  summary: "Si verifica quando una thread viene generata un&quot;eccezione intercettata durante l&quot;esecuzione di un delegato per mezzo di <> </> *> o <> </> *>."
+  remarks: "Questo evento viene generato quando un&quot;eccezione generata durante l&quot;esecuzione di un delegato per mezzo di <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>non viene intercettata.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>       Un gestore può contrassegnare l&quot;eccezione come gestito, che impedirà il gestore dell&quot;eccezione interna la chiamata.       Gestori eventi per questo evento devono essere scritto con attenzione per evitare di creare eccezioni secondarie e per rilevare eventuali che si verificano. È consigliabile evitare di allocare memoria o effettuare operazioni con uso intensivo nel gestore di qualsiasi risorsa.       Il <xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter>evento fornisce un mezzo per non generare l&quot;evento UnhandledException.</xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter>  Il <xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter>evento viene generato per primo e se <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A>sul <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs>è impostato su `false`, non verrà generato l&quot;evento UnhandledException.</xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs> </xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A> </xref:System.Windows.Threading.Dispatcher.UnhandledExceptionFilter>"
   syntax:
     content: public event System.Windows.Threading.DispatcherUnhandledExceptionEventHandler UnhandledException;
     return:
       type: System.Windows.Threading.DispatcherUnhandledExceptionEventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -1429,13 +1429,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Occurs when a thread exception is thrown and uncaught during execution of a delegate by way of <xref:System.Windows.Threading.Dispatcher.Invoke*> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke*> when in the filter stage."
-  remarks: "This event is raised during the filter stage for an exception that is raised during execution of a delegate by way of <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> and is uncaught.       The call stack is not unwound at this point (first-chance exception).       Event handlers for this event must be written with care to avoid creating secondary exceptions and to catch any that occur.  It is recommended to avoid allocating memory or doing any resource intensive operations in the handler.       The UnhandledExceptionFilter event provides a means to not raise the <xref:System.Windows.Threading.Dispatcher.UnhandledException> event.  The UnhandledExceptionFilter event is raised first, and If <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A> on the <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs> is set to `false`, the <xref:System.Windows.Threading.Dispatcher.UnhandledException> event will not be raised."
+  summary: "Si verifica quando una thread viene generata un&quot;eccezione intercettata durante l&quot;esecuzione di un delegato per mezzo di <> </> *> o <> </> *> quando in fase di filtro."
+  remarks: "Questo evento viene generato in fase di filtro per un&quot;eccezione generata durante l&quot;esecuzione di un delegato per mezzo di <xref:System.Windows.Threading.Dispatcher.Invoke%2A>o <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>e non viene intercettata.</xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>       Lo stack di chiamate non viene rimosso a questo punto (eccezione first-chance).       Gestori eventi per questo evento devono essere scritto con attenzione per evitare di creare eccezioni secondarie e per rilevare eventuali che si verificano.  È consigliabile evitare di allocare memoria o effettuare operazioni con uso intensivo nel gestore di qualsiasi risorsa.       L&quot;evento UnhandledExceptionFilter fornisce un mezzo per non generare la <xref:System.Windows.Threading.Dispatcher.UnhandledException>evento.</xref:System.Windows.Threading.Dispatcher.UnhandledException>  Viene generato l&quot;evento UnhandledExceptionFilter prima e se <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A>nel <xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs>è impostato su `false`, <xref:System.Windows.Threading.Dispatcher.UnhandledException>non verrà generato l&quot;evento.</xref:System.Windows.Threading.Dispatcher.UnhandledException> </xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs> </xref:System.Windows.Threading.DispatcherUnhandledExceptionFilterEventArgs.RequestCatch%2A>"
   syntax:
     content: public event System.Windows.Threading.DispatcherUnhandledExceptionFilterEventHandler UnhandledExceptionFilter;
     return:
       type: System.Windows.Threading.DispatcherUnhandledExceptionFilterEventHandler
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -1451,21 +1451,21 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the specified <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref> is a valid priority."
+  summary: "Determina se l&quot;oggetto specificato <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref> una priorità valida."
   syntax:
     content: public static void ValidatePriority (System.Windows.Threading.DispatcherPriority priority, string parameterName);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority to check."
+      description: "La priorità da controllare."
     - id: parameterName
       type: System.String
-      description: "A string that will be returned by the exception that occurs if the priority is invalid."
+      description: "Stringa che verrà restituita l&quot;eccezione che si verifica se la priorità non è valida."
   overload: System.Windows.Threading.Dispatcher.ValidatePriority*
   exceptions:
   - type: System.ComponentModel.InvalidEnumArgumentException
     commentId: T:System.ComponentModel.InvalidEnumArgumentException
-    description: "<code>priority</code> is not a valid <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;></xref>."
+    description: "<code>priority</code>non è un valido <xref href=&quot;System.Windows.Threading.DispatcherPriority&quot;> </xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.VerifyAccess
@@ -1480,8 +1480,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the calling thread has access to this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "Only the thread the <xref:System.Windows.Threading.Dispatcher> is created on may access the <xref:System.Windows.Threading.Dispatcher>.       This method is public; therefore, any thread can check to see whether it has access to the <xref:System.Windows.Threading.Dispatcher>.       The difference between <xref:System.Windows.Threading.Dispatcher.CheckAccess%2A> and VerifyAccess is <xref:System.Windows.Threading.Dispatcher.CheckAccess%2A> returns a Boolean if the calling thread does not have access to the <xref:System.Windows.Threading.Dispatcher> and VerifyAccess throws an exception."
+  summary: "Determina se il thread chiamante ha accesso a questo <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
+  remarks: "Solo il thread di <xref:System.Windows.Threading.Dispatcher>viene creato sarà accessibile <xref:System.Windows.Threading.Dispatcher>.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher>       Questo metodo è pubblico; Pertanto, qualsiasi thread può verificare se ha accesso a <xref:System.Windows.Threading.Dispatcher>.</xref:System.Windows.Threading.Dispatcher>       La differenza tra <xref:System.Windows.Threading.Dispatcher.CheckAccess%2A>e VerifyAccess <xref:System.Windows.Threading.Dispatcher.CheckAccess%2A>restituisce un valore booleano se il thread chiamante non dispone di accesso per il <xref:System.Windows.Threading.Dispatcher>e VerifyAccess genera un&quot;eccezione.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.CheckAccess%2A> </xref:System.Windows.Threading.Dispatcher.CheckAccess%2A>"
   example:
   - "The following example uses VerifyAccess to determine whether a thread has access to the thread that a <xref:System.Windows.Controls.Button> was created on.  The method takes an object as an argument, which is cast to a <xref:System.Windows.Controls.Button>.  The VerifyAccess method on the <xref:System.Windows.Threading.Dispatcher> of the <xref:System.Windows.Controls.Button> is called to verify access to the thread.  \n  \n If the calling thread has access to the <xref:System.Windows.Threading.Dispatcher>, the <xref:System.Windows.Controls.Button> is updated by just accessing the members of the <xref:System.Windows.Controls.Button>.  \n  \n If the calling thread does not have access, an <xref:System.InvalidOperationException> is thrown.  This example catches the exception and pushes a delegate, which accepts a <xref:System.Windows.Controls.Button> as an argument, onto the <xref:System.Windows.Threading.Dispatcher> of the <xref:System.Windows.Controls.Button>.  This <xref:System.Windows.Threading.Dispatcher> will do the work of updating the <xref:System.Windows.Controls.Button>.  \n  \n [!code-cs[DispatcherAccessSample#DispatcherAccessVerifyAccess](~/add/codesnippet/csharp/DispatcherAccessSample/Window1.xaml.cs#dispatcheraccessverifyaccess)]\n [!code-vb[DispatcherAccessSample#DispatcherAccessVerifyAccess](~/add/codesnippet/visualbasic/dispatcheraccesssample/window1.xaml.vb#dispatcheraccessverifyaccess)]"
   syntax:
@@ -1491,7 +1491,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The calling thread does not have access to this <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
+    description: "Il thread chiamante non ha accesso a <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
   platform:
   - net462
 - uid: System.Windows.Threading.Dispatcher.Yield
@@ -1506,14 +1506,14 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Creates an awaitable object that asynchronously yields control back to the current dispatcher and provides an opportunity for the dispatcher to process other events."
-  remarks: "This method provides a way for you to temporarily release execution control to the current dispatcher so it can do other work, such as process other events. Use the `await`, or `Await` in Visual Basic, operator on the return value to return control to the current dispatcher. Use this method if want to give your app a chance to process events while you app is doing a lot of work on the UI thread. For example, you can use this method in a long-running loop that updates a control.       This method is equivalent to calling the <xref:System.Windows.Threading.Dispatcher.Yield%28System.Windows.Threading.DispatcherPriority%29> method and passing in <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>."
+  summary: "Crea un oggetto awaitable che restituisce il controllo torna al dispatcher corrente in modo asincrono e offre l&quot;opportunità per il dispatcher elaborare gli altri eventi."
+  remarks: "Questo metodo fornisce un modo rilasciare temporaneamente il controllo di esecuzione per il dispatcher corrente in modo è possibile eseguire altre operazioni, ad esempio elaborare altri eventi. Utilizzare il `await`, o `Await` in Visual Basic, l&quot;operatore sul valore restituito per restituire il controllo al dispatcher corrente. Utilizzare questo metodo se desidera possibilità di elaborare gli eventi, mentre l&quot;app esegue il lavoro nel thread UI dell&quot;app. Ad esempio, è possibile utilizzare questo metodo in un ciclo a esecuzione prolungata che aggiorna un controllo.       Questo metodo equivale a chiamare il <xref:System.Windows.Threading.Dispatcher.Yield%28System.Windows.Threading.DispatcherPriority%29>metodo e passando <xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName>.</xref:System.Windows.Threading.DispatcherPriority?displayProperty=fullName> </xref:System.Windows.Threading.Dispatcher.Yield%28System.Windows.Threading.DispatcherPriority%29>"
   syntax:
     content: public static System.Windows.Threading.DispatcherPriorityAwaitable Yield ();
     parameters: []
     return:
       type: System.Windows.Threading.DispatcherPriorityAwaitable
-      description: "An awaitable object that asynchronously yields control back to the current dispatcher and provides an opportunity for the dispatcher to process other events."
+      description: "Un oggetto awaitable che restituisce il controllo torna al dispatcher corrente in modo asincrono e offre l&quot;opportunità per il dispatcher elaborare gli altri eventi."
   overload: System.Windows.Threading.Dispatcher.Yield*
   exceptions: []
   platform:
@@ -1530,17 +1530,17 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Creates an awaitable object that asynchronously yields control back to the current dispatcher and provides an opportunity for the dispatcher to process other events.  The work that occurs when control returns to the code awaiting the result of this method is scheduled with the specified priority."
-  remarks: "This method provides a way for you to temporarily release execution control to the current dispatcher so it can do other work, such as process other events. Use the `await`, or `Await` in Visual Basic, operator on the return value to return control to the current dispatcher. Use this method if want to give your app a chance to process events while you app is doing a lot of work on the UI thread. For example, you can use this method in a long-running loop that updates a control."
+  summary: "Crea un oggetto awaitable che restituisce il controllo torna al dispatcher corrente in modo asincrono e offre l&quot;opportunità per il dispatcher elaborare gli altri eventi.  Il lavoro che si verifica quando il controllo torna al codice in attesa il risultato di questo metodo è pianificato con la priorità specificata."
+  remarks: "Questo metodo fornisce un modo rilasciare temporaneamente il controllo di esecuzione per il dispatcher corrente in modo è possibile eseguire altre operazioni, ad esempio elaborare altri eventi. Utilizzare il `await`, o `Await` in Visual Basic, l&quot;operatore sul valore restituito per restituire il controllo al dispatcher corrente. Utilizzare questo metodo se desidera possibilità di elaborare gli eventi, mentre l&quot;app esegue il lavoro nel thread UI dell&quot;app. Ad esempio, è possibile utilizzare questo metodo in un ciclo a esecuzione prolungata che aggiorna un controllo."
   syntax:
     content: public static System.Windows.Threading.DispatcherPriorityAwaitable Yield (System.Windows.Threading.DispatcherPriority priority);
     parameters:
     - id: priority
       type: System.Windows.Threading.DispatcherPriority
-      description: "The priority at which to schedule the continuation."
+      description: "La priorità in cui pianificare la continuazione."
     return:
       type: System.Windows.Threading.DispatcherPriorityAwaitable
-      description: "An awaitable object that asynchronously yields control back to the current dispatcher and provides an opportunity for the dispatcher to process other events."
+      description: "Un oggetto awaitable che restituisce il controllo torna al dispatcher corrente in modo asincrono e offre l&quot;opportunità per il dispatcher elaborare gli altri eventi."
   overload: System.Windows.Threading.Dispatcher.Yield*
   exceptions: []
   platform:

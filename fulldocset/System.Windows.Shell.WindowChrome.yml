@@ -33,8 +33,8 @@ items:
   nameWithType: WindowChrome
   fullName: System.Windows.Shell.WindowChrome
   type: Class
-  summary: "Represents an object that describes the customizations to the non-client area of a window."
-  remarks: "The                          WindowChrome class enables you to extend Windows Presentation Foundation (WPF) content into the non-client area of a window that is typically reserved for the operating system’s window manager.      ## Standard Windows    Standard windows are composed of two overlapping rectangles. The outer rectangle is the                                  *non-client area*, which is often referred to as                                  *chrome*. It is drawn and managed by the operating system’s window manager. Its dimensions are determined by standard operating system settings. The non-client frame provides standard window features and behaviors. These include caption buttons (Minimize, Maximize, and Close), the window border, resize and move behaviors, the application icon and title, and the system menu. The inner rectangle is the                                  *client area*. It contains the contents of your application, and it is drawn and managed by the application. For more information about windows in WPF applications, see                                  [WPF Windows Overview](~/add/includes/ajax-current-ext-md.md).       The following illustration shows the parts of a standard window.       ![Window elements](~/add/media/windowoverviewfigure1.PNG &quot;Window elements&quot;)      ## Custom Windows    You can customize a window border by setting the                                  <xref:System.Windows.Window.WindowStyle%2A?displayProperty=fullName> property to                                  <xref:System.Windows.WindowStyle> or by using the                                  WindowChrome class.      ### WindowStyle.None    One way to customize the appearance of a WPF application window is to set the                                          <xref:System.Windows.Window.WindowStyle%2A?displayProperty=fullName> property to                                          <xref:System.Windows.WindowStyle>. This removes the non-client frame from the window and leaves only the client area, to which you can apply a custom style. However, when the non-client frame is removed, you also lose the system features and behaviors that it provides, such as caption buttons and window resizing. Another side effect is that the window will cover the Windows taskbar when it is maximized. Setting                                          <xref:System.Windows.WindowStyle?displayProperty=fullName> enables you to create a completely custom application, but also requires that you implement custom logic in your application to emulate standard window behavior.      ### WindowChrome    To customize a window while retaining its standard functionality, you can use the                                          WindowChrome class. The                                          WindowChrome class separates the functionality of the window frame from the visuals, and lets you control the boundary between the client and non-client areas of your application window. The                                          WindowChrome class lets you put WPF content in the window frame by extending the client area to cover the non-client area. At the same time, it retains system behaviors through two invisible areas; the                                          *resize border* and                                          *caption* areas                                         .       There are                                          two main parts                                          to creating a custom window using the                                          WindowChrome class. First, you customize the non-client part of the window by setting properties exposed on the                                          WindowChrome object. Then you provide a template for the window that defines the part of your application that is extended into the non-client area.The properties exposed on the                                          WindowChrome object are                                          <xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A>,                                          <xref:System.Windows.Shell.WindowChrome.CaptionHeight%2A>,                                          <xref:System.Windows.Shell.WindowChrome.CornerRadius%2A>, and                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>.       The                                          <xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A> property specifies an invisible border around the outside of the application window that the user can click-and-drag to resize the window.       The                                          <xref:System.Windows.Shell.WindowChrome.CaptionHeight%2A> property specifies an invisible area at the top of the window that enables system behaviors typically associated with the title bar. These behaviors include: click and drag to move the window, double-click to maximize the window, and right-click to show the system menu.       The resize border and caption area do not have any visual elements; they only define areas that respond to input and enable standard system-provided window behaviors.       The                                          <xref:System.Windows.Shell.WindowChrome.CornerRadius%2A> property specifies the amount that the corners of the window are rounded. This property does not have any effect if the glass frame is enabled for a window.       The                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property specifies the width of the glass frame around the window. By default, it uses the system value specified by the                                          <xref:System.Windows.SystemParameters.WindowNonClientFrameThickness%2A> property to emulate the appearance of a standard window. When the glass frame is used, the caption buttons for Minimize, Maximize, and Close are visible and interactive. The application is responsible for displaying the application icon and caption text. You can set the                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property to make the glass frame wider or narrower than the default.      > [!CAUTION] >  The size of the caption buttons does not change when the                                              <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property is changed. If the height of the top of the glass frame is less than the height of the caption buttons, the caption buttons will not be completely visible.       To make a custom window that does not have a glass frame, set the                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property to a uniform value of 0. This will disable and hide the standard caption buttons.       To extend the glass frame to cover the entire window, set the                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property to a negative value on any side. When the                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property is set to a negative value for any side, its coerced value will be equal to                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A>.      > [!NOTE] >  Aero is a set of visual enhancements to the look and functionality of the Windows desktop that was introduced in Windows Vista. One of the more visually obvious features of Aero is translucent glass window borders. Windows Aero is enabled by the desktop composition feature of the Desktop Window Manager (DWM).       Windows Aero glass effects are not supported on all operating systems, and can be disabled on supported operating systems. If Windows Aero is not available, the glass frame will not be displayed regardless of the                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property value. The border area specified by this property will appear black instead.Check the                                          <xref:System.Windows.SystemParameters.IsGlassEnabled%2A> property to verify that Windows Aero glass effects are available. If glass effects are not available, you should provide an alternate window style that does not use the glass frame or use the standard window by setting the window style to null.       You extend your WPF content into the window frame by specifying a ControlTemplate that defines the appearance and behavior of the frame content. You set the TargetType of the ControlTemplate to the type of the window that you are customizing.      ```   <ControlTemplate TargetType=&quot;{x:Type local:MainWindow}&quot;>   ```       By default, the parts of any visual elements that are within the non-client area of the window are not interactive. To enable interactive elements in the non-client area, attach the WindowsChrome.IsHitTestVisibleInChrome attached property to the element and set it to true.       The following XAML markup shows the main elements needed to customize a window using the WindowChrome class.      ```   <Style x:Key=&quot;StandardStyle&quot; TargetType=&quot;{x:Type local:MainWindow}&quot;>       <Setter Property=&quot;shell:WindowChrome.WindowChrome&quot;>           <Setter.Value>               <shell:WindowChrome />           </Setter.Value>       </Setter>       <Setter Property=&quot;Template&quot;>           <Setter.Value>               <ControlTemplate TargetType=&quot;{x:Type local:MainWindow}&quot;>                   <Grid>                       <Border Background=&quot;White&quot;                               Margin=&quot;{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowNonClientFrameThickness}&quot;>                           <ContentPresenter Content=&quot;{TemplateBinding Content}&quot; />                       </Border>                       <TextBlock Text=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}&quot;                                   VerticalAlignment=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot;                                   Margin=&quot;36,8,0,0&quot;/>                       <Image Source=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}&quot;                              VerticalAlignment=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot;                              Margin=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(shell:WindowChrome.WindowChrome).ResizeBorderThickness}&quot;                               Width=&quot;{Binding Source={x:Static shell:SystemParameters2.Current}, Path=SmallIconSize.Width}&quot;                              shell:WindowChrome.IsHitTestVisibleInChrome=&quot;True&quot;/>                   </Grid>               </ControlTemplate>           </Setter.Value>       </Setter>   </Style>   ```       The first setter attaches the WindowChrome to the window. It uses all default values for the WindowChrome properties, which makes the window look like a standard window.      ```   <Setter Property=&quot;shell:WindowChrome.WindowChrome&quot;>       <Setter.Value>           <shell:WindowChrome />       </Setter.Value>   </Setter>   ```       The window template must specify a content presenter to display the contents of the window specified in your application. By default the WindowChrome class extends the client area to cover the non-client border. In order to uncover the glass frame, you need to specify a margin around the ContentPresenter. This markup specifies a border with a white background around the content presenter to emulate the appearance of a standard window. It also specifies a margin that is bound to the WindowNonClientFrameThickness property, which gets the default system width for the frame.      ```   <Border Background=&quot;White&quot;       Margin=&quot;{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowNonClientFrameThickness}&quot;>       <ContentPresenter Content=&quot;{TemplateBinding Content}&quot; />   </Border>   ```       The application icon and title are not displayed by the WindowChrome class; they have to be added to the border as custom content. The following XAML adds an image and a textblock to display the icon and title. Both elements are bound to the corresponding properties on the window. The image width is bound to the SmallIconSize width, which gets the default system size for the icon. The IsHitTestVisibleInChrome attached property is set on the image so that it can receive mouse events.      ```   <Image Source=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}&quot;          VerticalAlignment=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot;          Margin=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(shell:WindowChrome.WindowChrome).ResizeBorderThickness}&quot;           Width=&quot;{Binding Source={x:Static shell:SystemParameters2.Current}, Path=SmallIconSize.Width}&quot;          shell:WindowChrome.IsHitTestVisibleInChrome=&quot;True&quot;/>      <TextBlock Text=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}&quot;               VerticalAlignment=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot;               Margin=&quot;36,8,0,0&quot;/>   ```"
+  summary: "Rappresenta un oggetto che descrive le personalizzazioni per l&quot;area non client di una finestra."
+  remarks: "La classe WindowChrome consente di estendere il contenuto di Windows Presentation Foundation (WPF) nell&quot;area non client di una finestra che in genere è riservata per la gestione delle finestre del sistema operativo.      ## Standard di windows Standard di Windows sono composti di due rettangoli sovrapposti. Il rettangolo esterno è il *area non client*, che è noto anche come *chrome*. Viene creato e gestito da Gestione finestre del sistema operativo. Le dimensioni sono determinate dalle impostazioni del sistema operativo standard. Il frame di client non fornisce funzionalità di finestra standard e i comportamenti. Sono inclusi pulsanti (Riduci a icona, Ingrandisci e Chiudi), il bordo della finestra, ridimensionare e spostare i comportamenti, l&quot;icona dell&quot;applicazione e titolo e il menu di sistema. Il rettangolo interno è il *area client*. Che include il contenuto dell&quot;applicazione e viene creato e gestito dall&quot;applicazione. Per ulteriori informazioni sulle finestre nelle applicazioni WPF, vedere [WPF Windows Overview](~/add/includes/ajax-current-ext-md.md).       Nella figura seguente mostra le parti di una finestra standard.       ![Gli elementi della finestra](~/add/media/windowoverviewfigure1.PNG &quot;gli elementi della finestra&quot;) # # Windows personalizzata è possibile personalizzare un bordo di finestra impostando la <xref:System.Windows.Window.WindowStyle%2A?displayProperty=fullName>proprietà <xref:System.Windows.WindowStyle>o tramite la classe WindowChrome.</xref:System.Windows.WindowStyle> </xref:System.Windows.Window.WindowStyle%2A?displayProperty=fullName>      ### WindowStyle un modo per personalizzare l&quot;aspetto di una finestra dell&quot;applicazione WPF consiste nell&quot;impostare la <xref:System.Windows.Window.WindowStyle%2A?displayProperty=fullName>proprietà <xref:System.Windows.WindowStyle>.</xref:System.Windows.WindowStyle> </xref:System.Windows.Window.WindowStyle%2A?displayProperty=fullName> Questo rimuove il frame non client dalla finestra, mantenendo solo l&quot;area client in cui è possibile applicare uno stile personalizzato. Tuttavia, quando il frame di client non viene rimosso, si perderà anche le funzionalità del sistema e i comportamenti che fornisce, ad esempio i pulsanti e il ridimensionamento della finestra. Un altro effetto collaterale è che la finestra coprirà applicazioni di Windows quando viene ingrandito. Impostazione <xref:System.Windows.WindowStyle?displayProperty=fullName>consente di creare un&quot;applicazione completamente personalizzata, ma richiede anche di implementare la logica personalizzata per emulare il comportamento standard delle finestre in un&quot;applicazione.</xref:System.Windows.WindowStyle?displayProperty=fullName>      ### WindowChrome per personalizzare una finestra, mantenendo le funzionalità standard, è possibile utilizzare la classe WindowChrome. La classe WindowChrome separa le funzionalità della cornice della finestra dagli oggetti visivi e consente di controllare il limite tra aree client e non client della finestra dell&quot;applicazione. La classe WindowChrome consente di inserire contenuto WPF nella cornice della finestra estendendo l&quot;area client per coprire l&quot;area non client. Allo stesso tempo, mantiene i comportamenti di sistema tramite due aree invisibile; the                                          *resize border* and                                          *caption* areas                                         .       Esistono due parti principali per la creazione di una finestra personalizzata utilizzando la classe WindowChrome. In primo luogo, personalizzare la parte non client della finestra impostando le proprietà esposte per l&quot;oggetto WindowChrome. Quindi fornire un modello per la finestra che definisce la parte dell&quot;applicazione che viene esteso l&quot;area non client. The properties exposed on the                                          WindowChrome object are                                          <xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A>,                                          <xref:System.Windows.Shell.WindowChrome.CaptionHeight%2A>,                                          <xref:System.Windows.Shell.WindowChrome.CornerRadius%2A>, and                                          <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A></xref:System.Windows.Shell.WindowChrome.CornerRadius%2A></xref:System.Windows.Shell.WindowChrome.CaptionHeight%2A></xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A>       Il <xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A>proprietà specifica un bordo intorno all&quot;esterno della finestra dell&quot;applicazione che l&quot;utente può fare clic e trascinare per ridimensionare la finestra invisibile.</xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A>       La <xref:System.Windows.Shell.WindowChrome.CaptionHeight%2A>proprietà specifica di un&quot;area invisibile nella parte superiore della finestra che abilita i comportamenti di sistema in genere associati con la barra del titolo.</xref:System.Windows.Shell.WindowChrome.CaptionHeight%2A> Questi comportamenti includono: fare clic e trascinare per spostare la finestra, fare doppio clic per ingrandire la finestra e fare doppio clic per visualizzare il menu di sistema.       L&quot;area di ridimensionamento del bordo e la didascalia non dispone di elementi visivi; solo definiscono le aree che rispondono all&quot;input e attivano i comportamenti di finestra standard fornito dal sistema.       Il <xref:System.Windows.Shell.WindowChrome.CornerRadius%2A>proprietà specifica la quantità che vengono arrotondati gli angoli della finestra.</xref:System.Windows.Shell.WindowChrome.CornerRadius%2A> Questa proprietà non ha alcun effetto se il frame effetto cristallo è abilitato per una finestra.       Il <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>proprietà specifica la larghezza del frame intorno alla finestra effetto cristallo.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> Per impostazione predefinita, viene utilizzato il valore di sistema specificato per il <xref:System.Windows.SystemParameters.WindowNonClientFrameThickness%2A>proprietà emulare l&quot;aspetto di una finestra standard.</xref:System.Windows.SystemParameters.WindowNonClientFrameThickness%2A> Quando viene utilizzato il frame effetto cristallo, i pulsanti di didascalia per Riduci a icona, Ingrandisci e Chiudi sono visibili e interattivi. L&quot;applicazione è responsabile per la visualizzazione di testo icona e la didascalia dell&quot;applicazione. È possibile impostare il <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>proprietà per il frame effetto cristallo più larga o più ristretto rispetto al valore predefinito.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>      > [!CAUTION] > Le dimensioni dei pulsanti di didascalia non cambiano quando il <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>proprietà viene modificata.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> Se l&quot;altezza della parte superiore del frame effetto cristallo è inferiore all&quot;altezza dei pulsanti didascalia, i pulsanti di didascalia non saranno completamente visibili.       Per creare una finestra personalizzati che non dispone di un frame effetto cristallo, impostare il <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>proprietà su un valore uniforme pari a 0.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> Questo verrà disattivata e nascondere i pulsanti standard.       Per estendere il frame per coprire l&quot;intera finestra effetto cristallo, impostare il <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>proprietà su un valore negativo per qualsiasi lato.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> Quando la <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>proprietà è impostata su un valore negativo per un lato, il relativo valore assegnato sarà uguale a <xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A>.</xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A> </xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>      > [!NOTE] > Aero è un set di miglioramenti visivi all&quot;aspetto e funzionalità nel desktop di Windows che è stata introdotta in Windows Vista. Una delle funzionalità più visivamente ovvie di Aero è bordi della finestra effetto cristallo semitrasparente. Windows Aero è abilitato per la funzionalità di composizione di gestione (Finestre).       Gli effetti cristallo Windows Aero non sono supportati in tutti i sistemi operativi e possono essere disabilitati nei sistemi operativi supportati. Se Windows Aero non è disponibile, il frame effetto cristallo non verrà visualizzato indipendentemente dal valore di <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>valore della proprietà.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> L&quot;area del bordo specificato da questa proprietà risulterà nera. Controllare il <xref:System.Windows.SystemParameters.IsGlassEnabled%2A>proprietà verificare che gli effetti cristallo Windows Aero.</xref:System.Windows.SystemParameters.IsGlassEnabled%2A> Se gli effetti cristallo non sono disponibili, è necessario fornire uno stile alternativo finestra che non utilizzi il frame effetto cristallo o utilizzare la finestra standard impostando lo stile della finestra su null.       Estendere il contenuto WPF nella cornice della finestra specificando ControlTemplate che definisce l&quot;aspetto e il comportamento del contenuto di frame. Il TargetType di ControlTemplate viene impostato il tipo di finestra che si desidera personalizzare.      ```   <ControlTemplate TargetType=&quot;{x:Type local:MainWindow}&quot;>   ```Per impostazione predefinita, le parti degli elementi visivi che sono all&quot;interno dell&quot;area non client della finestra non sono interattive. Per abilitare gli elementi interattivi nell&quot;area non client, associare la proprietà della proprietà associata WindowsChrome all&quot;elemento e impostarlo su true.       Il markup XAML seguente illustra gli elementi principali necessari per personalizzare una finestra con la classe WindowChrome.      ```   <Style x:Key=&quot;StandardStyle&quot; TargetType=&quot;{x:Type local:MainWindow}&quot;>       <Setter Property=&quot;shell:WindowChrome.WindowChrome&quot;>           <Setter.Value>               <shell:WindowChrome />           </Setter.Value>       </Setter>       <Setter Property=&quot;Template&quot;>           <Setter.Value>               <ControlTemplate TargetType=&quot;{x:Type local:MainWindow}&quot;>                   <Grid>                       <Border Background=&quot;White&quot;                               Margin=&quot;{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowNonClientFrameThickness}&quot;>                           <ContentPresenter Content=&quot;{TemplateBinding Content}&quot; />                       </Border>                       <TextBlock Text=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}&quot;                                   VerticalAlignment=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot;                                   Margin=&quot;36,8,0,0&quot;/>                       <Image Source=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}&quot;                              VerticalAlignment=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot;                              Margin=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(shell:WindowChrome.WindowChrome).ResizeBorderThickness}&quot;                               Width=&quot;{Binding Source={x:Static shell:SystemParameters2.Current}, Path=SmallIconSize.Width}&quot;                              shell:WindowChrome.IsHitTestVisibleInChrome=&quot;True&quot;/>                   </Grid>               </ControlTemplate>           </Setter.Value>       </Setter>   </Style>   ```Il primo metodo di impostazione collega WindowChrome alla finestra. Usa tutti i valori predefiniti per le proprietà WindowChrome, che rende la finestra simile a una finestra standard.      ```   <Setter Property=&quot;shell:WindowChrome.WindowChrome&quot;>       <Setter.Value>           <shell:WindowChrome />       </Setter.Value>   </Setter>   ```Il modello di finestra è necessario specificare un visualizzatore di contenuto per visualizzare il contenuto della finestra specificata nell&quot;applicazione. Per impostazione predefinita WindowChrome classe estende l&quot;area client per coprire il bordo non client. Per scoprire il frame effetto cristallo, è necessario specificare un margine intorno ContentPresenter. In questo markup specifica un bordo con uno sfondo bianco attorno il Visualizzatore di contenuto per emulare l&quot;aspetto di una finestra standard. Specifica inoltre un margine associato alla proprietà WindowNonClientFrameThickness, che ottiene la larghezza predefinita del sistema per il frame.      ```   <Border Background=&quot;White&quot;       Margin=&quot;{Binding Source={x:Static shell:SystemParameters2.Current}, Path=WindowNonClientFrameThickness}&quot;>       <ContentPresenter Content=&quot;{TemplateBinding Content}&quot; />   </Border>   ```Il titolo e l&quot;icona dell&quot;applicazione non vengono visualizzati dalla classe WindowChrome; devono essere aggiunti al bordo come contenuto personalizzato. Il codice XAML seguente aggiunge un&quot;immagine e un controllo textblock per visualizzare l&quot;icona e il titolo. Entrambi gli elementi vengono associati alle proprietà corrispondenti nella finestra. La larghezza dell&quot;immagine è associata alla larghezza SmallIconSize, che ottiene le dimensioni predefinite del sistema per l&quot;icona. La proprietà IsHitTestVisibleInChrome associata è impostata sull&quot;immagine in modo che possa ricevere gli eventi del mouse.      ```   <Image Source=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}&quot;          VerticalAlignment=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot;          Margin=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(shell:WindowChrome.WindowChrome).ResizeBorderThickness}&quot;           Width=&quot;{Binding Source={x:Static shell:SystemParameters2.Current}, Path=SmallIconSize.Width}&quot;          shell:WindowChrome.IsHitTestVisibleInChrome=&quot;True&quot;/>      <TextBlock Text=&quot;{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}&quot;               VerticalAlignment=&quot;Top&quot; HorizontalAlignment=&quot;Left&quot;               Margin=&quot;36,8,0,0&quot;/>   ```"
   syntax:
     content: 'public class WindowChrome : System.Windows.Freezable'
   inheritance:
@@ -98,7 +98,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Shell.WindowChrome&quot;></xref> class."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Shell.WindowChrome&quot;> </xref> classe."
   syntax:
     content: public WindowChrome ();
     parameters: []
@@ -118,13 +118,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets or sets the height of the caption area at the top of a window."
-  remarks: "Set the CaptionHeight property to specify the area at the top of the window that enables the system behaviors typically associated with the title bar. These behaviors include double-click to maximize the window, right-click to open the system menu, and click-and-drag to move the window. This property can be set to any non-negative double value.       The area defined by the CaptionHeight property starts at the bottom edge of the top resize border and extends downward the specified amount. It spans the width of the window inside the right and left resize borders. This area does not have any visual elements associated with it; it is only used to define the region that responds to the title bar behaviors. By default, the parts of any visual elements that are within the caption area of the window are not interactive. To enable interactive elements in the caption area, attach the <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome%2A> attached property to the element and set it to `true`.      <a name=&quot;dependencyPropertyInfo_CaptionHeight&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Shell.WindowChrome.CaptionHeightProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Ottiene o imposta l&quot;altezza dell&quot;area della didascalia nella parte superiore di una finestra."
+  remarks: "Impostare la proprietà CaptionHeight per specificare l&quot;area nella parte superiore della finestra che consente i comportamenti di sistema in genere associati sulla barra del titolo. Questi comportamenti includono fare doppio clic per ingrandire la finestra, fare doppio clic per aprire il menu di sistema e fare clic e trascinare per spostare la finestra. Questa proprietà può essere impostata su qualsiasi valore double non negativo.       L&quot;area definita dalla proprietà CaptionHeight il bordo inferiore del bordo di ridimensionamento dall&quot;alto e verso il basso la quantità specificata. Estende la larghezza della finestra all&quot;interno di destra e sinistra bordi di ridimensionamento. In questa area non dispone di elementi visivi associati. viene utilizzato soltanto per definire l&quot;area che risponde ai comportamenti barra del titolo. Per impostazione predefinita, le parti degli elementi visivi che sono all&quot;interno dell&quot;area della didascalia della finestra non sono interattive. Per abilitare gli elementi interattivi nell&quot;area della didascalia, collegare il <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome%2A>proprietà associata all&quot;elemento e impostarlo su `true`.</xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome%2A>      <a name=&quot;dependencyPropertyInfo_CaptionHeight&quot;></a># # Informazioni proprietà di dipendenza | | |   |-|-|   | Campo dell&quot;identificatore | <xref:System.Windows.Shell.WindowChrome.CaptionHeightProperty>|   | Impostare le proprietà dei metadati su `true`| None |</xref:System.Windows.Shell.WindowChrome.CaptionHeightProperty>"
   syntax:
     content: public double CaptionHeight { get; set; }
     return:
       type: System.Double
-      description: "The height of the caption area."
+      description: "L&quot;altezza dell&quot;area della didascalia."
   overload: System.Windows.Shell.WindowChrome.CaptionHeight*
   exceptions: []
   platform:
@@ -141,12 +141,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.CaptionHeight*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.CaptionHeight*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.CaptionHeight*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty CaptionHeightProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -162,13 +162,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets or sets a value that indicates the amount that the corners of a window are rounded."
-  remarks: "Set the CornerRadius property to specify the amount of rounding at the corners of a window. This property can be set to any non-negative double value. The values can be non-uniform.       This property does not affect maximized windows or windows that have a Windows Aero glass frame. It only has an effect when Windows Aero (also called Desktop Window Manager) is not enabled or the <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property is set to 0. Hit testing in the non-client area does not take the CornerRadius into account when determining whether the mouse is over a resize border. If the radius is too large relative to the <xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A> then it is possible that the user cannot perform a diagonal resize using the mouse.      <a name=&quot;dependencyPropertyInfo_CornerRadius&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Shell.WindowChrome.CornerRadiusProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Ottiene o imposta un valore che indica la quantità che vengono arrotondati gli angoli di una finestra."
+  remarks: "Impostare la proprietà CornerRadius per specificare la quantità di arrotondamento degli angoli di una finestra. Questa proprietà può essere impostata su qualsiasi valore double non negativo. I valori possono essere non uniformi.       Questa proprietà non influisce sulla modalità ingrandita o windows che hanno un effetto cristallo Windows Aero. Ha effetto solo quando Windows Aero (anche denominato Gestione finestre Desktop) non è abilitato o <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>è impostata su 0.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> Processo di hit testing nell&quot;area non client non considerare il CornerRadius nel determinare se il puntatore del mouse su un bordo di ridimensionamento. Se il raggio è troppo grande rispetto al <xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A>è possibile che l&quot;utente non può eseguire un ridimensionamento diagonale usando il mouse.</xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness%2A>      <a name=&quot;dependencyPropertyInfo_CornerRadius&quot;></a># # Informazioni proprietà di dipendenza | | |   |-|-|   | Campo dell&quot;identificatore | <xref:System.Windows.Shell.WindowChrome.CornerRadiusProperty>|   | Impostare le proprietà dei metadati su `true`| None |</xref:System.Windows.Shell.WindowChrome.CornerRadiusProperty>"
   syntax:
     content: public System.Windows.CornerRadius CornerRadius { get; set; }
     return:
       type: System.Windows.CornerRadius
-      description: "A value that describes the amount that corners are rounded."
+      description: "Un valore che descrive la quantità di arrotondamento degli angoli."
   overload: System.Windows.Shell.WindowChrome.CornerRadius*
   exceptions: []
   platform:
@@ -185,12 +185,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.CornerRadius*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.CornerRadius*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.CornerRadius*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty CornerRadiusProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -206,13 +206,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Creates a new instance of the <xref href=&quot;System.Windows.Shell.WindowChrome&quot;></xref> class."
+  summary: "Crea una nuova istanza di <xref href=&quot;System.Windows.Shell.WindowChrome&quot;> </xref> classe."
   syntax:
     content: protected override System.Windows.Freezable CreateInstanceCore ();
     parameters: []
     return:
       type: System.Windows.Freezable
-      description: "The new instance of this class."
+      description: "Nuova istanza di questa classe."
   overload: System.Windows.Shell.WindowChrome.CreateInstanceCore*
   exceptions: []
   platform:
@@ -229,24 +229,24 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets the value of the <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*> attached property from the specified input element."
+  summary: "Ottiene il valore della <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>proprietà associata da elemento di input specificato.</xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>"
   syntax:
     content: public static bool GetIsHitTestVisibleInChrome (System.Windows.IInputElement inputElement);
     parameters:
     - id: inputElement
       type: System.Windows.IInputElement
-      description: "The input element from which to read the property value."
+      description: "Elemento di input da cui leggere il valore della proprietà."
     return:
       type: System.Boolean
-      description: "The value of the <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*> attached property."
+      description: "Il valore di <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>proprietà associata.</xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>"
   overload: System.Windows.Shell.WindowChrome.GetIsHitTestVisibleInChrome*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>inputElement</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>inputElement</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>inputElement</code> is not a <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+    description: "<code>inputElement</code>is not a <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Shell.WindowChrome.GetResizeGripDirection(System.Windows.IInputElement)
@@ -261,24 +261,24 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets the value of the <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*> attached property from the specified input element."
+  summary: "Ottiene il valore della <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>proprietà associata da elemento di input specificato.</xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>"
   syntax:
     content: public static System.Windows.Shell.ResizeGripDirection GetResizeGripDirection (System.Windows.IInputElement inputElement);
     parameters:
     - id: inputElement
       type: System.Windows.IInputElement
-      description: "The input element from which to read the property value."
+      description: "Elemento di input da cui leggere il valore della proprietà."
     return:
       type: System.Windows.Shell.ResizeGripDirection
-      description: "The value of the <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*> attached property."
+      description: "Il valore di <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>proprietà associata.</xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>"
   overload: System.Windows.Shell.WindowChrome.GetResizeGripDirection*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>inputElement</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>inputElement</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>inputElement</code> is not a <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+    description: "<code>inputElement</code>is not a <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Shell.WindowChrome.GetWindowChrome(System.Windows.Window)
@@ -293,21 +293,21 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets the value of the <xref:System.Windows.Shell.WindowChrome.WindowChrome*> attached property from the specified <xref href=&quot;System.Windows.Window&quot;></xref>."
+  summary: "Ottiene il valore della <xref:System.Windows.Shell.WindowChrome.WindowChrome*>proprietà associata dall&quot;oggetto specificato <xref href=&quot;System.Windows.Window&quot;> </xref>.</xref:System.Windows.Shell.WindowChrome.WindowChrome*>"
   syntax:
     content: public static System.Windows.Shell.WindowChrome GetWindowChrome (System.Windows.Window window);
     parameters:
     - id: window
       type: System.Windows.Window
-      description: "The <xref href=&quot;System.Windows.Window&quot;></xref> from which to read the property value."
+      description: "Il <xref href=&quot;System.Windows.Window&quot;> </xref> da cui leggere il valore della proprietà."
     return:
       type: System.Windows.Shell.WindowChrome
-      description: "The instance of <xref href=&quot;System.Windows.Shell.WindowChrome&quot;></xref> that is attached to the specified <xref href=&quot;System.Windows.Window&quot;></xref>."
+      description: "L&quot;istanza di <xref href=&quot;System.Windows.Shell.WindowChrome&quot;> </xref> che è collegato all&quot;oggetto specificato <xref href=&quot;System.Windows.Window&quot;> </xref>."
   overload: System.Windows.Shell.WindowChrome.GetWindowChrome*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>window</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>window</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness
@@ -322,13 +322,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets a uniform thickness of -1."
-  remarks: "The GlassFrameCompleteThickness property is provided as a utility to enable you to set the thickness of the glass frame to a named property. You set the <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property equal to GlassFrameCompleteThickness to extend the glass frame over the entire window. If the <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> property is set to a negative value for any side, its coerced value will be equal to GlassFrameCompleteThickness."
+  summary: "Ottiene uno spessore uniforme pari a -1."
+  remarks: "La proprietà GlassFrameCompleteThickness viene fornita un&quot;utilità che consente di impostare lo spessore del frame effetto cristallo a una proprietà denominata. Impostare il <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>proprietà è uguale a GlassFrameCompleteThickness per estendere il frame effetto cristallo sull&quot;intera finestra.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A> Se il <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>è impostata su un valore negativo per un lato, il relativo valore assegnato sarà uguale a GlassFrameCompleteThickness.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness%2A>"
   syntax:
     content: public static System.Windows.Thickness GlassFrameCompleteThickness { get; }
     return:
       type: System.Windows.Thickness
-      description: "A uniform thickness of -1 in all cases."
+      description: "Uno spessore uniforme pari a -1 in tutti i casi."
   overload: System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness*
   exceptions: []
   platform:
@@ -345,13 +345,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets or sets a value that indicates the width of the glass border around a window."
-  remarks: "Set the GlassFrameThickness property to specify the amount that the Windows Aero glass frame extends into the client area of a window. By default, the glass frame will use system values to emulate the look of a standard window. If Windows Aero is enabled, then the standard caption buttons (Maximize, Minimize, Close) are enabled and interactive. To make a custom window that does not have a glass frame, set this thickness to a uniform value of 0. This will disable the standard caption buttons.       To extend the glass frame to cover the entire window, set the GlassFrameThickness property to a negative value on any side. If the GlassFrameThickness property is set to a negative value for any side, its coerced value will be equal to<xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A>. The <xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A> property is provided as a utility to enable you to set the thickness of the glass frame to a named property that extends the glass over the entire window.       Windows Aero glass effects are not supported on all operating systems, and can be disabled on supported operating systems. If Windows Aero is not available, the glass frame will not be displayed regardless of the GlassFrameThickness property value. You should check the <xref:System.Windows.SystemParameters.IsGlassEnabled%2A> property to verify that Windows Aero glass effects are available. If glass effects are not available, you should provide an alternate window style that does not use the glass frame.      <a name=&quot;dependencyPropertyInfo_GlassFrameThickness&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Shell.WindowChrome.GlassFrameThicknessProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Ottiene o imposta un valore che indica la larghezza del bordo intorno a una finestra effetto cristallo."
+  remarks: "Impostare la proprietà GlassFrameThickness per specificare la quantità che estende l&quot;effetto cristallo Windows Aero nell&quot;area client di una finestra. Per impostazione predefinita, il frame effetto cristallo utilizzerà i valori di sistema per emulare l&quot;aspetto di una finestra standard. Se è abilitato Windows Aero, i pulsanti del titolo standard (Riduci a icona, Ingrandisci Chiudi) sono abilitati e interattivi. Per creare una finestra personalizzata che non dispone di un frame effetto cristallo, impostare questo spessore su un valore uniforme pari a 0. I pulsanti standard didascalia verrà disabilitato.       Per estendere il frame effetto cristallo per coprire l&quot;intera finestra, è possibile impostare la proprietà di GlassFrameThickness su un valore negativo per qualsiasi lato. Se la proprietà GlassFrameThickness è impostata su un valore negativo per un lato, il relativo valore assegnato sarà uguale a<xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A>.</xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A> Il <xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A>proprietà viene fornita un&quot;utilità che consente di impostare lo spessore del frame effetto cristallo a una proprietà denominata che estende l&quot;effetto cristallo sull&quot;intera finestra.</xref:System.Windows.Shell.WindowChrome.GlassFrameCompleteThickness%2A>       Gli effetti cristallo Windows Aero non sono supportati in tutti i sistemi operativi e possono essere disabilitati nei sistemi operativi supportati. Se Windows Aero non è disponibile, il frame effetto cristallo non verrà visualizzato indipendentemente dal valore della proprietà GlassFrameThickness. È consigliabile controllare la <xref:System.Windows.SystemParameters.IsGlassEnabled%2A>proprietà verificare che gli effetti cristallo Windows Aero.</xref:System.Windows.SystemParameters.IsGlassEnabled%2A> Se gli effetti cristallo non sono disponibili, è necessario fornire uno stile alternativo finestra che non utilizza il frame effetto cristallo.      <a name=&quot;dependencyPropertyInfo_GlassFrameThickness&quot;></a># # Informazioni proprietà di dipendenza | | |   |-|-|   | Campo dell&quot;identificatore | <xref:System.Windows.Shell.WindowChrome.GlassFrameThicknessProperty>|   | Impostare le proprietà dei metadati su `true`| None |</xref:System.Windows.Shell.WindowChrome.GlassFrameThicknessProperty>"
   syntax:
     content: public System.Windows.Thickness GlassFrameThickness { get; set; }
     return:
       type: System.Windows.Thickness
-      description: "The width of the glass border around a window."
+      description: "La larghezza del bordo intorno a una finestra effetto cristallo."
   overload: System.Windows.Shell.WindowChrome.GlassFrameThickness*
   exceptions: []
   platform:
@@ -368,12 +368,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.GlassFrameThickness*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.GlassFrameThickness*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty GlassFrameThicknessProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -389,12 +389,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty IsHitTestVisibleInChromeProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -410,18 +410,18 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets or sets a value that indicates which edges of the window frame are not owned by the client."
-  remarks: "<a name=&quot;dependencyPropertyInfo_NonClientFrameEdges&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Shell.WindowChrome.NonClientFrameEdgesProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Ottiene o imposta un valore che indica quali bordi della cornice della finestra non sono dal client."
+  remarks: "<a name=&quot;dependencyPropertyInfo_NonClientFrameEdges&quot;></a># # Informazioni proprietà di dipendenza | | |   |-|-|   | Campo dell&quot;identificatore | <xref:System.Windows.Shell.WindowChrome.NonClientFrameEdgesProperty>|   | Impostare le proprietà dei metadati su `true`| None |</xref:System.Windows.Shell.WindowChrome.NonClientFrameEdgesProperty>"
   syntax:
     content: public System.Windows.Shell.NonClientFrameEdges NonClientFrameEdges { get; set; }
     return:
       type: System.Windows.Shell.NonClientFrameEdges
-      description: "A bitwise combination of the enumeration values that specify which edges of the frame are not owned by the client.       The registered default is <xref href=&quot;System.Windows.Shell.NonClientFrameEdges&quot;></xref>. For more information about what can influence the value, see [Dependency Property Value Precedence](~/add/includes/ajax-current-ext-md.md)."
+      description: "Combinazione bit per bit dei valori di enumerazione che specificano quali bordi del frame non sono dal client.       Il valore predefinito registrato è <xref href=&quot;System.Windows.Shell.NonClientFrameEdges&quot;> </xref>. Per ulteriori informazioni sugli elementi che possono influenzare il valore, vedere [precedenza dei valori di proprietà di dipendenza](~/add/includes/ajax-current-ext-md.md)."
   overload: System.Windows.Shell.WindowChrome.NonClientFrameEdges*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "‘Left, Right, Top, Bottom’ is not a valid value. At least one edge must belong to the client."
+    description: "&quot;Sinistro, destro, superiore, inferiore&quot; non è un valore valido. Almeno un bordo deve appartenere al client."
   platform:
   - net462
 - uid: System.Windows.Shell.WindowChrome.NonClientFrameEdgesProperty
@@ -436,12 +436,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.NonClientFrameEdges*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.NonClientFrameEdges*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.NonClientFrameEdges*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty NonClientFrameEdgesProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -457,13 +457,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets or sets a value that indicates the width of the border that is used to resize a window."
-  remarks: "Set the ResizeBorderThickness property to specify the width of the area where a user can click-and-drag to resize a window. The mouse pointer changes to resize arrows when it is moved over the resize border.       This property can be set to any non-negative double value. The values can be non-uniform. By default, the resize border will use system values to emulate the behavior of a standard window.       This area is only used to define the region that is used to resize the window; it does not have any visual elements associated with it. However, it does affect the layout of elements inside the resize border.      <a name=&quot;dependencyPropertyInfo_ResizeBorderThickness&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Shell.WindowChrome.ResizeBorderThicknessProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Ottiene o imposta un valore che indica la larghezza del bordo utilizzato per ridimensionare una finestra."
+  remarks: "Impostare la proprietà ResizeBorderThickness per specificare la larghezza dell&quot;area in cui un utente può fare clic e trascinare per ridimensionare una finestra. I puntatore del mouse cambia frecce di ridimensionamento quando viene spostato sul bordo di ridimensionamento.       Questa proprietà può essere impostata su qualsiasi valore double non negativo. I valori possono essere non uniformi. Per impostazione predefinita, il bordo di ridimensionamento utilizzerà i valori di sistema per emulare il comportamento di una finestra standard.       Questa area viene utilizzata solo per definire l&quot;area utilizzata per ridimensionare la finestra. non dispone di elementi visivi associati. Tuttavia, influisce il layout degli elementi all&quot;interno del bordo di ridimensionamento.      <a name=&quot;dependencyPropertyInfo_ResizeBorderThickness&quot;></a># # Informazioni proprietà di dipendenza | | |   |-|-|   | Campo dell&quot;identificatore | <xref:System.Windows.Shell.WindowChrome.ResizeBorderThicknessProperty>|   | Impostare le proprietà dei metadati su `true`| None |</xref:System.Windows.Shell.WindowChrome.ResizeBorderThicknessProperty>"
   syntax:
     content: public System.Windows.Thickness ResizeBorderThickness { get; set; }
     return:
       type: System.Windows.Thickness
-      description: "The width of the border that is used to resize a window."
+      description: "La larghezza del bordo utilizzato per ridimensionare una finestra."
   overload: System.Windows.Shell.WindowChrome.ResizeBorderThickness*
   exceptions: []
   platform:
@@ -480,12 +480,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.ResizeBorderThickness*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ResizeBorderThicknessProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -501,12 +501,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ResizeGripDirectionProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -522,24 +522,24 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Sets the value of the <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*> attached property on the specified input element."
+  summary: "Imposta il valore della <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>proprietà associata per l&quot;elemento di input specificato.</xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>"
   syntax:
     content: public static void SetIsHitTestVisibleInChrome (System.Windows.IInputElement inputElement, bool hitTestVisible);
     parameters:
     - id: inputElement
       type: System.Windows.IInputElement
-      description: "The element on which to set the <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*> attached property."
+      description: "L&quot;elemento su cui impostare il <xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>proprietà associata.</xref:System.Windows.Shell.WindowChrome.IsHitTestVisibleInChrome*>"
     - id: hitTestVisible
       type: System.Boolean
-      description: "The property value to set."
+      description: "Il valore della proprietà da impostare."
   overload: System.Windows.Shell.WindowChrome.SetIsHitTestVisibleInChrome*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>inputElement</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>inputElement</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>inputElement</code> is not a <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+    description: "<code>inputElement</code>is not a <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Shell.WindowChrome.SetResizeGripDirection(System.Windows.IInputElement,System.Windows.Shell.ResizeGripDirection)
@@ -554,24 +554,24 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Sets the value of the <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*> attached property on the specified input element."
+  summary: "Imposta il valore della <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>proprietà associata per l&quot;elemento di input specificato.</xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>"
   syntax:
     content: public static void SetResizeGripDirection (System.Windows.IInputElement inputElement, System.Windows.Shell.ResizeGripDirection direction);
     parameters:
     - id: inputElement
       type: System.Windows.IInputElement
-      description: "The element on which to set the <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*> attached property."
+      description: "L&quot;elemento su cui impostare il <xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>proprietà associata.</xref:System.Windows.Shell.WindowChrome.ResizeGripDirection*>"
     - id: direction
       type: System.Windows.Shell.ResizeGripDirection
-      description: "The property value to set."
+      description: "Il valore della proprietà da impostare."
   overload: System.Windows.Shell.WindowChrome.SetResizeGripDirection*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>inputElement</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>inputElement</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>inputElement</code> is not a <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
+    description: "<code>inputElement</code>is not a <xref href=&quot;System.Windows.DependencyObject&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Shell.WindowChrome.SetWindowChrome(System.Windows.Window,System.Windows.Shell.WindowChrome)
@@ -586,21 +586,21 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Sets the value of the <xref:System.Windows.Shell.WindowChrome.WindowChrome*> attached property on the specified <xref href=&quot;System.Windows.Window&quot;></xref>."
+  summary: "Imposta il valore della <xref:System.Windows.Shell.WindowChrome.WindowChrome*>proprietà sull&quot;oggetto specificato associata <xref href=&quot;System.Windows.Window&quot;> </xref>.</xref:System.Windows.Shell.WindowChrome.WindowChrome*>"
   syntax:
     content: public static void SetWindowChrome (System.Windows.Window window, System.Windows.Shell.WindowChrome chrome);
     parameters:
     - id: window
       type: System.Windows.Window
-      description: "The <xref href=&quot;System.Windows.Window&quot;></xref> on which to set the <xref:System.Windows.Shell.WindowChrome.WindowChrome*> attached property."
+      description: "Il <xref href=&quot;System.Windows.Window&quot;> </xref> su cui impostare il <xref:System.Windows.Shell.WindowChrome.WindowChrome*>proprietà associata.</xref:System.Windows.Shell.WindowChrome.WindowChrome*>"
     - id: chrome
       type: System.Windows.Shell.WindowChrome
-      description: "The instance of <xref href=&quot;System.Windows.Shell.WindowChrome&quot;></xref> to set."
+      description: "L&quot;istanza di <xref href=&quot;System.Windows.Shell.WindowChrome&quot;> </xref> da impostare."
   overload: System.Windows.Shell.WindowChrome.SetWindowChrome*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>window</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>window</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Shell.WindowChrome.UseAeroCaptionButtons
@@ -615,13 +615,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets or sets a value that indicates whether hit-testing is enabled on the Windows Aero caption buttons."
-  remarks: "The default Windows Aero caption buttons are Close, Maximize/Restore, and Minimize. If you do not use the Windows Aero captions buttons, you should provide an alternative method for a user to accomplish these tasks.      <a name=&quot;dependencyPropertyInfo_UseAeroCaptionButtons&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Shell.WindowChrome.UseAeroCaptionButtonsProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Ottiene o imposta un valore che indica se è abilitata l&quot;hit test sui pulsanti di didascalia Windows Aero."
+  remarks: "I pulsanti di didascalia Windows Aero predefiniti sono Riduci a icona, Ingrandisci/ripristino e Chiudi. Se non si utilizzano i pulsanti didascalie Windows Aero, è necessario fornire un metodo alternativo per un utente eseguire queste attività.      <a name=&quot;dependencyPropertyInfo_UseAeroCaptionButtons&quot;></a># # Informazioni proprietà di dipendenza | | |   |-|-|   | Campo dell&quot;identificatore | <xref:System.Windows.Shell.WindowChrome.UseAeroCaptionButtonsProperty>|   | Impostare le proprietà dei metadati su `true`| None |</xref:System.Windows.Shell.WindowChrome.UseAeroCaptionButtonsProperty>"
   syntax:
     content: public bool UseAeroCaptionButtons { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if hit-testing is enabled on the caption buttons; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The registered default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>. For more information about what can influence the value, see [Dependency Property Value Precedence](~/add/includes/ajax-current-ext-md.md)."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Se hit testing è abilitato sui pulsanti di didascalia; in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Il valore predefinito registrato è <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>. Per ulteriori informazioni sugli elementi che possono influenzare il valore, vedere [precedenza dei valori di proprietà di dipendenza](~/add/includes/ajax-current-ext-md.md)."
   overload: System.Windows.Shell.WindowChrome.UseAeroCaptionButtons*
   exceptions: []
   platform:
@@ -638,12 +638,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.UseAeroCaptionButtons*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.UseAeroCaptionButtons*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.UseAeroCaptionButtons*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty UseAeroCaptionButtonsProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -659,12 +659,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Identifies the <xref:System.Windows.Shell.WindowChrome.WindowChrome*> dependency property."
+  summary: "Identifica la <xref:System.Windows.Shell.WindowChrome.WindowChrome*>proprietà di dipendenza.</xref:System.Windows.Shell.WindowChrome.WindowChrome*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty WindowChromeProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462

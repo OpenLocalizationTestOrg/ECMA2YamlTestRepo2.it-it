@@ -11,8 +11,8 @@ items:
   nameWithType: WorkflowCommitWorkBatchService
   fullName: System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService
   type: Class
-  summary: "Allows custom logic for the commitment of work batches."
-  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]       When a work batch is committed the runtime calls into the WorkflowCommitWorkBatchService and gives it a delegate to call to do the actual committing of the work batch. The runtime still has the primary responsibility of committing the work batch but allows the WorkflowCommitWorkBatchService to insert itself in the process for customization around the commit process.       This process allows custom error handling logic. If the WorkflowCommitWorkBatchService owns the transaction, which is the case when the <xref:System.Transactions.Transaction.Current%2A?displayProperty=fullName> property returns `null` therefore necessitating the need to create a new ambient transaction, it is allowed to call the delegate more than once, creating a new transaction for each call. The most common case for this for example is to handle intermittent network problems or SQL cluster failovers. If the call to the <xref:System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService.CommitWorkBatchCallback> throws an exception WorkflowCommitWorkBatchService can catch this exception, start a new transaction and call the delegate again. This gives a level of resilience to workflow instance execution that otherwise would cause workflows to terminate."
+  summary: "Consente la logica personalizzata per il commit di batch di lavoro."
+  remarks: "> [!NOTE] >  [!INCLUDE[DeprecatedContent](~/add/includes/ajax-current-ext-md.md)]Quando un batch di lavoro viene eseguito il runtime chiama il WorkflowCommitWorkBatchService e fornisce un delegato da chiamare per eseguire l&quot;effettivo processo di commit del batch di lavoro. Il runtime è ancora il principale responsabile dell&quot;esecuzione del commit del batch di lavoro ma consente WorkflowCommitWorkBatchService di inserirsi nel processo per personalizzare il processo di commit.       In questo modo la logica di gestione degli errori personalizzata. Se il WorkflowCommitWorkBatchService possiede la transazione, come avviene quando il <xref:System.Transactions.Transaction.Current%2A?displayProperty=fullName>restituisce proprietà `null` rendendo la necessità di creare una nuova transazione di ambiente, è possibile chiamare il delegato più di una volta, creando una nuova transazione per ogni chiamata.</xref:System.Transactions.Transaction.Current%2A?displayProperty=fullName> Il caso più comune per questo è ad esempio per gestire i problemi di rete intermittenti o failover del cluster SQL. Se la chiamata al <xref:System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService.CommitWorkBatchCallback>genera un&quot;eccezione WorkflowCommitWorkBatchService può rilevare questa eccezione, avviare una nuova transazione e chiamare nuovamente il delegato.</xref:System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService.CommitWorkBatchCallback> In questo modo un livello di resilienza per l&quot;esecuzione dell&quot;istanza del flusso di lavoro che in caso contrario impedirebbe flussi di lavoro da terminare."
   example:
   - "The following example demonstrates a class that inherits from WorkflowCommitWorkBatchService.  \n  \n [!code-cs[WF_Samples#0](~/add/codesnippet/csharp/wf_snippets/snippets.cs#0)]\n [!code-vb[WF_Samples#0](~/add/codesnippet/visualbasic/wf_snippets/snippets.vb#0)]"
   syntax:
@@ -46,7 +46,7 @@ items:
   assemblies:
   - System.Workflow.Runtime
   namespace: System.Workflow.Runtime.Hosting
-  summary: "When implemented in a derived class, initializes a new instance of the <xref href=&quot;System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService&quot;></xref> class."
+  summary: "Quando viene implementato in una classe derivata, Inizializza una nuova istanza di <xref href=&quot;System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService&quot;> </xref> classe."
   syntax:
     content: protected WorkflowCommitWorkBatchService ();
     parameters: []
@@ -71,7 +71,7 @@ items:
     parameters:
     - id: commitWorkBatchCallback
       type: System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService.CommitWorkBatchCallback
-      description: "To be added."
+      description: "Da aggiungere."
   overload: System.Workflow.Runtime.Hosting.WorkflowCommitWorkBatchService.CommitWorkBatch*
   exceptions: []
   platform:

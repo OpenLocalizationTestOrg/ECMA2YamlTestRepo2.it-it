@@ -20,8 +20,8 @@ items:
   nameWithType: JournalEntry
   fullName: System.Windows.Navigation.JournalEntry
   type: Class
-  summary: "Represents an entry in either back or forward navigation history."
-  remarks: "[!INCLUDE[TLA#tla_wpf](~/add/includes/tlasharptla-wpf-md.md)] implements a navigation history service that stores one entry for each piece of content that has been previously navigated to, just like navigation history in [!INCLUDE[TLA#tla_ie](~/add/includes/tlasharptla-ie-md.md)]. Navigation history comprises two stacks, one that remembers back navigation history, and one that remembers forward navigation history.       An entry for the current item is added to back navigation history when a forward navigation occurs. This occurs in the following situations:      -   The `Navigate` method is called (<xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=fullName>, <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A?displayProperty=fullName>, <xref:System.Windows.Controls.Frame.Navigate%2A?displayProperty=fullName>).      -   The `GoForward` method is called (<xref:System.Windows.Navigation.NavigationService.GoForward%2A?displayProperty=fullName>, <xref:System.Windows.Navigation.NavigationWindow.GoForward%2A?displayProperty=fullName>, <xref:System.Windows.Controls.Frame.GoForward%2A?displayProperty=fullName>).      -   The forward button on the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] that is displayed from the current navigator ([!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)], <xref:System.Windows.Navigation.NavigationWindow>, <xref:System.Windows.Controls.Frame>).       Likewise, an entry for the current item is added to forward navigation history before a back navigation occurs, which happens when:      -   The `GoBack` method is called (<xref:System.Windows.Navigation.NavigationService.GoBack%2A?displayProperty=fullName>, <xref:System.Windows.Navigation.NavigationWindow.GoBack%2A?displayProperty=fullName>, <xref:System.Windows.Controls.Frame.GoBack%2A?displayProperty=fullName>).      -   The back button on the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] that is displayed from the current navigator ([!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)], <xref:System.Windows.Navigation.NavigationWindow>, <xref:System.Windows.Controls.Frame>).       Each entry in back and forward navigation history is an instance of the JournalEntry class.       Each JournalEntry object encapsulates information about a particular navigation, including a name for the entry (<xref:System.Windows.Navigation.JournalEntry.Name%2A>), whether the entry is kept alive (<xref:System.Windows.Navigation.JournalEntry.KeepAlive%2A>) and the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for the content that is navigated to (<xref:System.Windows.Navigation.JournalEntry.Source%2A>).       You can retrieve all the JournalEntry objects in back navigation history by enumerating the <xref:System.Windows.Navigation.NavigationWindow.BackStack%2A?displayProperty=fullName> or <xref:System.Windows.Controls.Frame.BackStack%2A?displayProperty=fullName> properties. For forward navigation history, you can retrieve all the JournalEntry objects by enumerating the <xref:System.Windows.Navigation.NavigationWindow.ForwardStack%2A?displayProperty=fullName> or <xref:System.Windows.Controls.Frame.ForwardStack%2A?displayProperty=fullName> properties.       If you need to remove the most recent JournalEntry object from back navigation history, to prevent navigation to it, for example, you can call the `RemoveBackEntry` method (<xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>, <xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A?displayProperty=fullName>, <xref:System.Windows.Controls.Frame.RemoveBackEntry%2A?displayProperty=fullName>), which removes the JournalEntry object and returns a reference to it.       You cannot add JournalEntry objects to navigation history, however, because you can neither instantiate nor derive from JournalEntry, and because no type implements a member to do so. However, you can add custom <xref:System.Windows.Navigation.CustomContentState> objects to back navigation history by calling the `AddBackEntry` method (<xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A>, <xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>, <xref:System.Windows.Controls.Frame.AddBackEntry%2A>); <xref:System.Windows.Navigation.NavigationService> adds the <xref:System.Windows.Navigation.CustomContentState> object to an internally-created JournalEntry object, which is then added to the back navigation history."
+  summary: "Rappresenta una voce in cronologia di navigazione in avanti o indietro."
+  remarks: "[!INCLUDE[TLA#tla_wpf](~/add/includes/tlasharptla-wpf-md.md)]implementa un servizio di cronologia di navigazione che archivia una voce per ogni parte del contenuto che è stato precedentemente aperto, esattamente come la cronologia di navigazione in [!INCLUDE[TLA#tla_ie](~/add/includes/tlasharptla-ie-md.md)]. Cronologia di navigazione è costituito da due stack, uno che memorizza la cronologia di navigazione all&quot;indietro e uno che memorizza la cronologia di navigazione in avanti.       Per eseguire il backup di cronologia di navigazione quando si verifica uno spostamento in avanti viene aggiunta una voce per l&quot;elemento corrente. Questo errore si verifica nelle situazioni seguenti: - il `Navigate` metodo viene chiamato (<xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=fullName>, <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A?displayProperty=fullName>, <xref:System.Windows.Controls.Frame.Navigate%2A?displayProperty=fullName>).</xref:System.Windows.Controls.Frame.Navigate%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationWindow.Navigate%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationService.Navigate%2A?displayProperty=fullName>      -La `GoForward` metodo viene chiamato (<xref:System.Windows.Navigation.NavigationService.GoForward%2A?displayProperty=fullName>, <xref:System.Windows.Navigation.NavigationWindow.GoForward%2A?displayProperty=fullName>, <xref:System.Windows.Controls.Frame.GoForward%2A?displayProperty=fullName>).</xref:System.Windows.Controls.Frame.GoForward%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationWindow.GoForward%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationService.GoForward%2A?displayProperty=fullName>      -Il pulsante Inoltra nel riquadro di spostamento [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] visualizzato dallo strumento di navigazione corrente ([!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)], <xref:System.Windows.Navigation.NavigationWindow>, <xref:System.Windows.Controls.Frame>).</xref:System.Windows.Controls.Frame> </xref:System.Windows.Navigation.NavigationWindow>       Analogamente, una voce per l&quot;elemento corrente viene aggiunta alla cronologia di navigazione in avanti prima che si verifichi una navigazione all&quot;indietro, situazione che si verifica quando: - il `GoBack` metodo viene chiamato (<xref:System.Windows.Navigation.NavigationService.GoBack%2A?displayProperty=fullName>, <xref:System.Windows.Navigation.NavigationWindow.GoBack%2A?displayProperty=fullName>, <xref:System.Windows.Controls.Frame.GoBack%2A?displayProperty=fullName>).</xref:System.Windows.Controls.Frame.GoBack%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationWindow.GoBack%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationService.GoBack%2A?displayProperty=fullName>      -Pulsante Indietro nel riquadro di spostamento [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] visualizzato dallo strumento di navigazione corrente ([!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)], <xref:System.Windows.Navigation.NavigationWindow>, <xref:System.Windows.Controls.Frame>).</xref:System.Windows.Controls.Frame> </xref:System.Windows.Navigation.NavigationWindow>       Ogni voce indietro e della cronologia di navigazione in avanti è un&quot;istanza della classe JournalEntry.       Ogni oggetto JournalEntry incapsula informazioni su un particolare spostamento include un nome per la voce (<xref:System.Windows.Navigation.JournalEntry.Name%2A>), se la voce viene mantenuta attiva (<xref:System.Windows.Navigation.JournalEntry.KeepAlive%2A>) e [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] per il contenuto di destinazione (<xref:System.Windows.Navigation.JournalEntry.Source%2A>).</xref:System.Windows.Navigation.JournalEntry.Source%2A> </xref:System.Windows.Navigation.JournalEntry.KeepAlive%2A> </xref:System.Windows.Navigation.JournalEntry.Name%2A>       È possibile recuperare tutti gli oggetti JournalEntry nella cronologia di navigazione all&quot;indietro enumerando la <xref:System.Windows.Navigation.NavigationWindow.BackStack%2A?displayProperty=fullName>o <xref:System.Windows.Controls.Frame.BackStack%2A?displayProperty=fullName>proprietà.</xref:System.Windows.Controls.Frame.BackStack%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationWindow.BackStack%2A?displayProperty=fullName> Per la cronologia di navigazione in avanti, è possibile recuperare tutti gli oggetti JournalEntry enumerando il <xref:System.Windows.Navigation.NavigationWindow.ForwardStack%2A?displayProperty=fullName>o <xref:System.Windows.Controls.Frame.ForwardStack%2A?displayProperty=fullName>proprietà.</xref:System.Windows.Controls.Frame.ForwardStack%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationWindow.ForwardStack%2A?displayProperty=fullName>       Se è necessario rimuovere l&quot;oggetto JournalEntry più recente dalla cronologia di navigazione all&quot;indietro, per impedire la navigazione, ad esempio, è possibile chiamare il `RemoveBackEntry` metodo (<xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>, <xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A?displayProperty=fullName>, <xref:System.Windows.Controls.Frame.RemoveBackEntry%2A?displayProperty=fullName>), che rimuove l&quot;oggetto JournalEntry e restituisce un riferimento.</xref:System.Windows.Controls.Frame.RemoveBackEntry%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>       È tuttavia possibile aggiungere oggetti JournalEntry alla cronologia di spostamento, poiché non è possibile creare un&quot;istanza né derivare da JournalEntry e nessun tipo implementa un membro a tale scopo. Tuttavia, è possibile aggiungere oggetti <xref:System.Windows.Navigation.CustomContentState>personalizzati per eseguire il backup di cronologia di navigazione chiamando il `AddBackEntry` metodo (<xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A>, <xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>, <xref:System.Windows.Controls.Frame.AddBackEntry%2A>); <xref:System.Windows.Navigation.NavigationService>aggiunge il <xref:System.Windows.Navigation.CustomContentState>oggetto a un oggetto JournalEntry create internamente, che viene quindi aggiunto alla cronologia di navigazione all&quot;indietro.</xref:System.Windows.Navigation.CustomContentState> </xref:System.Windows.Navigation.NavigationService> </xref:System.Windows.Controls.Frame.AddBackEntry%2A> </xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A> </xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A> </xref:System.Windows.Navigation.CustomContentState>"
   example:
   - "The following example shows how to retrieve the most recent JournalEntry object from the back navigation stack to get the <xref:System.Windows.Navigation.JournalEntry.Name%2A> and <xref:System.Windows.Navigation.JournalEntry.Source%2A> property values.  \n  \n [!code-vb[JournalEntrySnippets#GetJournalEntryCODEBEHIND](~/add/codesnippet/visualbasic/journalentrysnippets/datepage.xaml.vb#getjournalentrycodebehind)]\n [!code-cs[JournalEntrySnippets#GetJournalEntryCODEBEHIND](~/add/codesnippet/csharp/JournalEntrySnippets.CSharp/DatePage.xaml.cs#getjournalentrycodebehind)]"
   syntax:
@@ -66,16 +66,16 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Navigation.JournalEntry&quot;></xref> class."
+  summary: "Inizializza una nuova istanza di <xref href=&quot;System.Windows.Navigation.JournalEntry&quot;> </xref> classe."
   syntax:
     content: protected JournalEntry (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The serialization information."
+      description: "Le informazioni di serializzazione."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The streaming context."
+      description: "Il contesto di flusso."
   overload: System.Windows.Navigation.JournalEntry.#ctor*
   exceptions: []
   platform:
@@ -92,12 +92,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object that is associated with this journal entry."
+  summary: "Ottiene o imposta il <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;> </xref> oggetto associato a questa voce di journal."
   syntax:
     content: public System.Windows.Navigation.CustomContentState CustomContentState { get; }
     return:
       type: System.Windows.Navigation.CustomContentState
-      description: "The <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object that is associated with this journal entry. If one is not associated, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is returned."
+      description: "Il <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;> </xref> oggetto associato a questa voce di journal. Se non è associato, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> viene restituito."
   overload: System.Windows.Navigation.JournalEntry.CustomContentState*
   exceptions: []
   platform:
@@ -114,16 +114,16 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Returns the <xref:System.Windows.Navigation.JournalEntry.KeepAlive*> attached property of the journal entry for the specified element."
+  summary: "Restituisce il <xref:System.Windows.Navigation.JournalEntry.KeepAlive*>associata della voce di journal per l&quot;elemento specificato.</xref:System.Windows.Navigation.JournalEntry.KeepAlive*>"
   syntax:
     content: public static bool GetKeepAlive (System.Windows.DependencyObject dependencyObject);
     parameters:
     - id: dependencyObject
       type: System.Windows.DependencyObject
-      description: "The element from which to get the attached property value."
+      description: "L&quot;elemento da cui ottenere il valore della proprietà associata."
     return:
       type: System.Boolean
-      description: "The value of the <xref:System.Windows.Navigation.JournalEntry.KeepAlive*> attached property of the journal entry for the specified element."
+      description: "Il valore di <xref:System.Windows.Navigation.JournalEntry.KeepAlive*>associata della voce di journal per l&quot;elemento specificato.</xref:System.Windows.Navigation.JournalEntry.KeepAlive*>"
   overload: System.Windows.Navigation.JournalEntry.GetKeepAlive*
   exceptions: []
   platform:
@@ -140,16 +140,16 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets the <xref:System.Windows.Navigation.JournalEntry.Name*> attached property of the journal entry for the specified element."
+  summary: "Ottiene il <xref:System.Windows.Navigation.JournalEntry.Name*>associata della voce di journal per l&quot;elemento specificato.</xref:System.Windows.Navigation.JournalEntry.Name*>"
   syntax:
     content: public static string GetName (System.Windows.DependencyObject dependencyObject);
     parameters:
     - id: dependencyObject
       type: System.Windows.DependencyObject
-      description: "The element from which to get the attached property value."
+      description: "L&quot;elemento da cui ottenere il valore della proprietà associata."
     return:
       type: System.String
-      description: "The <xref:System.Windows.Navigation.JournalEntry.Name*> attached property of the journal entry for the specified element."
+      description: "Il <xref:System.Windows.Navigation.JournalEntry.Name*>associata della voce di journal per l&quot;elemento specificato.</xref:System.Windows.Navigation.JournalEntry.Name*>"
   overload: System.Windows.Navigation.JournalEntry.GetName*
   exceptions: []
   platform:
@@ -166,16 +166,16 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Called when this object is serialized."
+  summary: "Chiamato quando questo oggetto viene serializzato."
   syntax:
     content: public virtual void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The data that is required to serialize the target object."
+      description: "I dati necessari per serializzare l&quot;oggetto di destinazione."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The streaming context."
+      description: "Il contesto di flusso."
   overload: System.Windows.Navigation.JournalEntry.GetObjectData*
   exceptions: []
   platform:
@@ -192,12 +192,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.JournalEntry.KeepAlive*> attached property."
+  summary: "Identifica la <xref:System.Windows.Navigation.JournalEntry.KeepAlive*>proprietà associata.</xref:System.Windows.Navigation.JournalEntry.KeepAlive*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty KeepAliveProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -213,7 +213,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets the name of the journal entry."
+  summary: "Ottiene o imposta il nome della voce di journal."
   remarks: "Content hosted by <xref:System.Windows.Navigation.NavigationWindow>, <xref:System.Windows.Controls.Frame>, or [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)], display navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] that allows users to navigate through back and forward navigation history. The text that is displayed for each entry in navigation history depends on which of the following pieces of data are used to automatically construct a navigation history entry name, in order of precedence:  \n  \n-   The attached Name attribute.  \n  \n-   <xref:System.Windows.Controls.Page.Title%2A>.  \n  \n-   <xref:System.Windows.Controls.Page.WindowTitle%2A> and the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for the current page  \n  \n-   The [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for the current page.  \n  \n<a name=\"xamlAttributeUsage_Name\"></a>   \n## XAML Attribute Usage  \n \\<*object* **JournalEntry.Name**=\"<xref:System.String>\"/>  \n  \n<a name=\"dependencyPropertyInfo_Name\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|<xref:System.Windows.Navigation.JournalEntry.NameProperty>|  \n|Metadata properties set to `true`|None|"
   example:
   - "The following example shows how to set the Name property for a <xref:System.Windows.Controls.Page> from markup, with a [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] attached property usage.  \n  \n [!code-xml[JournalEntrySnippets#JENameMARKUP](~/add/codesnippet/xaml/JournalEntrySnippets.CSharp/JENamePage.xaml#jenamemarkup)]"
@@ -221,7 +221,7 @@ items:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "The name of the journal entry."
+      description: "Il nome della voce di journal."
   overload: System.Windows.Navigation.JournalEntry.Name*
   exceptions: []
   platform:
@@ -238,12 +238,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.JournalEntry.Name*> attached property."
+  summary: "Identifica la <xref:System.Windows.Navigation.JournalEntry.Name*>proprietà associata.</xref:System.Windows.Navigation.JournalEntry.Name*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty NameProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Da aggiungere."
   exceptions: []
   platform:
   - net462
@@ -259,16 +259,16 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Sets the <xref:System.Windows.Navigation.JournalEntry.KeepAlive*> attached property of the specified element."
+  summary: "Imposta il <xref:System.Windows.Navigation.JournalEntry.KeepAlive*>associata una proprietà dell&quot;elemento specificato.</xref:System.Windows.Navigation.JournalEntry.KeepAlive*>"
   syntax:
     content: public static void SetKeepAlive (System.Windows.DependencyObject dependencyObject, bool keepAlive);
     parameters:
     - id: dependencyObject
       type: System.Windows.DependencyObject
-      description: "The element on which to set the attached property value."
+      description: "L&quot;elemento su cui impostare il valore della proprietà associata."
     - id: keepAlive
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to keep the journal entry in memory; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Per mantenere la voce di journal in memoria. in caso contrario, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.JournalEntry.SetKeepAlive*
   exceptions: []
   platform:
@@ -285,16 +285,16 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Sets the <xref:System.Windows.Navigation.JournalEntry.Name*> attached property of the specified element."
+  summary: "Imposta il <xref:System.Windows.Navigation.JournalEntry.Name*>associata una proprietà dell&quot;elemento specificato.</xref:System.Windows.Navigation.JournalEntry.Name*>"
   syntax:
     content: public static void SetName (System.Windows.DependencyObject dependencyObject, string name);
     parameters:
     - id: dependencyObject
       type: System.Windows.DependencyObject
-      description: "The element on which to set the attached property value."
+      description: "L&quot;elemento su cui impostare il valore della proprietà associata."
     - id: name
       type: System.String
-      description: "The name to be assigned to the attached property."
+      description: "Il nome da assegnare alla proprietà associata."
   overload: System.Windows.Navigation.JournalEntry.SetName*
   exceptions: []
   platform:
@@ -311,12 +311,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets the URI of the content that was navigated to."
+  summary: "Ottiene o imposta l&quot;URI del contenuto che è stato aperto."
   syntax:
     content: public Uri Source { get; set; }
     return:
       type: System.Uri
-      description: "The URI of the content that was navigated to, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no URI is associated with the entry."
+      description: "L&quot;URI del contenuto che è stato aperto, o <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> se nessun URI è associato alla voce."
   overload: System.Windows.Navigation.JournalEntry.Source*
   exceptions: []
   platform:
